@@ -1,0 +1,50 @@
+---
+title: "Quarto & PDF avec Typst"
+---
+
+::: {.callout-note}
+## ⏱️ ~40 minutes — avant la pause
+:::
+
+## Slides
+
+### Partie A — Quarto & PDF (15 min)
+
+\[Slides à venir\]
+
+Points couverts :
+
+- `format: pdf` = LaTeX sous le capot (installation lourde, erreurs cryptiques, lenteur)
+- `format: typst` = intégré dans Quarto, rien à installer, compilation rapide, erreurs lisibles
+- Options de base : `papersize`, `margin`, `mainfont`, `toc`, `number-sections`
+- `keep-typ: true` pour inspecter le fichier `.typ` intermédiaire et apprendre/débugger
+
+### Partie B — Personnaliser avec `_brand.yml` (20 min)
+
+\[Slides à venir\]
+
+Points couverts :
+
+- Un seul fichier `_brand.yml` pour tous les formats : HTML, RevealJS, Typst
+- Structure : `meta` / `color` / `typography` / `logo`
+- Application automatique sur `format: typst` sans rien changer au `.qmd`
+- Quarto 1.9 : commande `quarto use brand githubuser/repo`
+- `theorem-appearance: fancy` pour des callouts aux couleurs de la brand
+
+## Exercice 1
+
+::: {.callout-tip}
+## Exercice
+
+Fichier : [exercices/01-document-typst/](#)
+
+1. Ouvrir `rapport-penguins.qmd` et changer `format: pdf` en `format: typst`, puis rendre
+2. Ajouter un `_brand.yml` avec 2-3 couleurs et une police Google
+3. Activer `keep-typ: true` et explorer le fichier `.typ` généré
+:::
+
+::: {.callout-warning collapse="true"}
+## Correction
+
+[Voir la correction](#)
+:::

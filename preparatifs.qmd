@@ -1,0 +1,32 @@
+---
+title: "Préparatifs"
+---
+
+Avant le tutoriel, merci de préparer votre environnement de travail.
+
+## Installation
+
+- **Quarto 1.9 ou supérieur** : <https://quarto.org/docs/get-started>
+- **R 4.2+** : <https://cran.r-project.org>
+- **RStudio** (dernière version) ou **VS Code** / **Positron**
+- **Packages R** :
+
+```r
+pkg <- c("rmarkdown", "palmerpenguins", "ggplot2", "knitr")
+install.packages(pkg)
+```
+
+## Téléchargements
+
+- 📦 [exercices.zip](#) — décompresser sur le bureau
+- 📦 [exercices-correction.zip](#) — ⚠️ ne pas ouvrir avant le tutoriel !
+
+## Vérification
+
+Vérifiez que tout fonctionne en exécutant dans R :
+
+```r
+quarto::quarto_version() # doit afficher 1.9 ou supérieur
+library(palmerpenguins)
+head(penguins)
+```

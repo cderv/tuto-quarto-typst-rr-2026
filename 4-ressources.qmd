@@ -1,0 +1,25 @@
+---
+title: "Pour aller plus loin"
+---
+
+## Documentation officielle Quarto
+
+- [Typst Basics](https://quarto.org/docs/output-formats/typst.html)
+- [Brand YAML](https://quarto.org/docs/authoring/brand.html)
+- [Custom Typst Formats](https://quarto.org/docs/output-formats/typst-custom.html)
+- [Changelog Quarto 1.9](https://github.com/quarto-dev/quarto-cli/blob/v1.9.36/news/changelog-1.9.md)
+
+## Apprendre Typst
+
+- [Typst in Production](https://typst-in-production.com) — crash course + section Quarto + section R
+- [Tutoriel officiel Typst](https://typst.app/docs/tutorial/)
+
+## Aller plus loin avec Quarto
+
+- [Mastering Quarto CLI](https://m.canouil.dev/mastering-quarto-cli/) (Mickaël Canouil) — sessions 4 & 5
+- [Awesome Quarto](https://github.com/mcanouil/awesome-quarto)
+
+## Formats Typst existants
+
+- [quarto-ext/typst-templates](https://github.com/quarto-ext/typst-templates) — poster, letter, ieee, fiction…
+- **orange-book** : intégré à Quarto 1.9 pour les projets book

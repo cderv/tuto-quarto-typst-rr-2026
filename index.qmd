@@ -1,0 +1,36 @@
+---
+title: "PDF sans frictions : Typst dans vos projets Quarto"
+subtitle: "Tutoriel 2 — Rencontres R 2026"
+---
+
+🗓️ Mardi 16 juin 2026 · 🕙 9h – 11h · 🏢 Nantes Université, Campus Lombarderie
+
+## À propos
+
+Ce tutoriel vous apprendra à produire des documents PDF professionnels avec Quarto en utilisant Typst comme moteur de rendu, sans avoir besoin d'installer LaTeX. Vous découvrirez comment personnaliser vos documents grâce à `_brand.yml` et aux templates Typst, pour obtenir des résultats soignés en quelques minutes.
+
+## Programme
+
+| Horaire | Bloc | Contenu | Durée |
+|---------|------|---------|-------|
+| 9h00 | **Bloc 1 — Quarto & PDF avec Typst** | `format: typst`, options de base, `_brand.yml` | 40 min |
+| 9h40 | *Pause* | | 10 min |
+| 9h50 | **Bloc 2 — Projets Quarto & Typst book** | `_quarto.yml`, `type: book`, orange-book | 25 min |
+| 10h15 | **Bloc 3 — Aller plus loin avec Typst** | raw typst, template partials, extensions | 25 min |
+
+## Instructeurs
+
+- **Christophe Dervieux** — Posit Software, PBC
+- **Maëlle Salmon** — ROpenSci, Cynkra
+
+## Se préparer
+
+Avant le jour J, assurez-vous d'avoir installé les outils nécessaires.
+
+[Consulter les préparatifs](preparatifs.qmd){.btn .btn-primary}
+
+## Licence
+
+[![CC BY 4.0](https://licensebuttons.net/l/by/4.0/88x31.png)](https://creativecommons.org/licenses/by/4.0/)
+
+Ce contenu est mis à disposition sous licence [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).

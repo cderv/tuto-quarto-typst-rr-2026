@@ -1,0 +1,29 @@
+project:
+  type: website
+
+website:
+  title: "PDF sans frictions : Typst dans vos projets Quarto"
+  repo-url: https://github.com/cderv/tuto-quarto-rr-2026
+  repo-actions: [edit, issue]
+  page-footer: "CC BY 4.0 · Christophe Dervieux & Maëlle Salmon · Rencontres R 2026"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Accueil
+      - href: preparatifs.qmd
+        text: Préparatifs
+      - text: "---"
+      - href: 1-quarto-typst/index.qmd
+        text: "Bloc 1 — Quarto & Typst"
+      - href: 2-projets/index.qmd
+        text: "Bloc 2 — Projets"
+      - href: 3-aller-plus-loin/index.qmd
+        text: "Bloc 3 — Aller plus loin"
+      - href: 4-ressources.qmd
+        text: Ressources
+
+lang: fr
+
+format:
+  html:
+    theme: flatly
