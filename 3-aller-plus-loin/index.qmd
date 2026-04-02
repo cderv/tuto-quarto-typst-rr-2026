@@ -1,0 +1,63 @@
+---
+title: "Aller plus loin avec Typst"
+---
+
+::: {.callout-note}
+## ⏱️ ~25 minutes
+:::
+
+Pour aller au-delà des options YAML, Typst offre une personnalisation fine via des templates et des extensions partageables.
+
+## Slides
+
+### 1 — Blocs raw Typst (5 min)
+
+\[Slides à venir\]
+
+Points couverts :
+
+- Blocs `` {=typst} `` : l'escape hatch quand Quarto ne suffit pas
+- Accès à `brand-color.primary` depuis un bloc raw
+- Propriétés CSS utilisables directement sur spans et divs (Typst CSS)
+
+### 2 — Template partials (12 min)
+
+\[Slides à venir\]
+
+Points couverts :
+
+- `typst-show.typ` : pont Quarto → Typst, passage des variables YAML
+- `typst-template.typ` : layout du document (header, footer, couleurs, logo)
+- Déclaration dans le YAML : `template-partials:`
+- Nouvelles variables Quarto 1.9 : `linkcolor`, `codefont`, `mathfont`, `linestretch`
+- ⚠️ Quarto décale les titres d'un niveau : h1 Quarto = h2 dans Typst
+
+### 3 — Extensions & partage (8 min)
+
+\[Slides à venir\]
+
+Points couverts :
+
+- `quarto create extension format:typst` pour scaffolder une extension
+- `quarto add user/repo` pour installer un format existant
+- `quarto use brand user/repo` pour partager une brand depuis GitHub
+- Formats existants : <https://github.com/quarto-ext/typst-templates>
+
+## Exercice 3
+
+::: {.callout-tip}
+## Exercice (optionnel)
+
+Fichier : [exercices/03-templates/](#)
+
+1. Ajouter `typst-show.typ` et `typst-template.typ` fournis au projet
+2. Les déclarer avec `template-partials:` dans le YAML du document
+3. Modifier le footer pour afficher le titre et la date
+4. (Bonus) Changer la couleur des liens avec `linkcolor`
+:::
+
+::: {.callout-warning collapse="true"}
+## Correction
+
+[Voir la correction](#)
+:::

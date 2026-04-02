@@ -1,0 +1,48 @@
+---
+title: "Projets Quarto & Typst book"
+---
+
+::: {.callout-note}
+## ⏱️ ~25 minutes — après la pause
+:::
+
+## Slides
+
+### Partie A — Travailler en projet (10 min)
+
+\[Slides à venir\]
+
+Points couverts :
+
+- `_quarto.yml` : la colonne vertébrale d'un projet Quarto
+- Déclarer `format: typst` au niveau projet pour tous les documents
+- `_brand.yml` au niveau projet → cohérence automatique sur tous les docs
+
+### Partie B — Le Typst book (15 min)
+
+\[Slides à venir\]
+
+Points couverts :
+
+- `type: book` : chapitres, TOC globale, références croisées
+- Nouveauté Quarto 1.9 : `format: typst` sur un book utilise automatiquement l'extension orange-book (numérotation chapitres, style manuel, couverture)
+- `_brand.yml` + book = livre aux couleurs de l'organisation en quelques minutes
+
+## Exercice 2
+
+::: {.callout-tip}
+## Exercice
+
+Fichier : [exercices/02-projet-book/](#)
+
+1. Créer un `_quarto.yml` avec `project: {type: book}` et `format: typst`
+2. Organiser le rapport en 2-3 chapitres (intro, analyse, conclusion)
+3. Rendre le book et observer l'effet orange-book
+4. (Bonus) Appliquer le `_brand.yml` de l'exercice 1 au projet
+:::
+
+::: {.callout-warning collapse="true"}
+## Correction
+
+[Voir la correction](#)
+:::
