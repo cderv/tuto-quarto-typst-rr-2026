@@ -1,5 +1,8 @@
 ---
 title: "Aller plus loin avec Typst"
+format: html
+author: ""
+date: ""
 ---
 
 ::: {.callout-note}
@@ -8,47 +11,53 @@ title: "Aller plus loin avec Typst"
 
 Pour aller au-delà des options YAML, Typst offre une personnalisation fine via des templates et des extensions partageables.
 
-## Slides
+## Diapos
+
+{{< fa tv >}} [Ouvrir les diapos en plein écran](3-aller-plus-loin.html)
+
+```{=html}
+<iframe class="slide-deck" src="3-aller-plus-loin.html" height="420" width="747" style="border: 1px solid #123233;"></iframe>
+```
+
+## Points couverts
 
 ### 1 — Blocs raw Typst (5 min)
 
-\[Slides à venir\]
+L'escape hatch pour injecter du Typst natif quand Quarto ne suffit pas.
 
-Points couverts :
-
-- Blocs `` {=typst} `` : l'escape hatch quand Quarto ne suffit pas
-- Accès à `brand-color.primary` depuis un bloc raw
-- Propriétés CSS utilisables directement sur spans et divs (Typst CSS)
+- Blocs `` {=typst} `` pour du code Typst brut
+- Accès aux valeurs brand : `brand-color.primary`, `brand-logo-images` depuis un bloc raw
+- Traduction CSS → Typst : propriétés CSS utilisables sur spans et divs (depuis Quarto 1.5)
+- Tableaux stylisés : les tableaux HTML avec CSS (gt, pandas) sont rendus dans Typst
 
 ### 2 — Template partials (12 min)
 
-\[Slides à venir\]
-
-Points couverts :
+Personnaliser la génération du fichier `.typ` pour contrôler le layout du PDF.
 
 - `typst-show.typ` : pont Quarto → Typst, passage des variables YAML
 - `typst-template.typ` : layout du document (header, footer, couleurs, logo)
+- Syntaxe Pandoc dans les partials : `$title$`, `$if(by-author)$`, `$for(author)$`
 - Déclaration dans le YAML : `template-partials:`
 - Nouvelles variables Quarto 1.9 : `linkcolor`, `codefont`, `mathfont`, `linestretch`
 - ⚠️ Quarto décale les titres d'un niveau : h1 Quarto = h2 dans Typst
 
 ### 3 — Extensions & partage (8 min)
 
-\[Slides à venir\]
-
-Points couverts :
+Packager et partager des formats Typst personnalisés.
 
 - `quarto create extension format:typst` pour scaffolder une extension
 - `quarto add user/repo` pour installer un format existant
 - `quarto use brand user/repo` pour partager une brand depuis GitHub
-- Formats existants : <https://github.com/quarto-ext/typst-templates>
+- Formats existants : [quarto-ext/typst-templates](https://github.com/quarto-ext/typst-templates)
+- Accessibilité PDF : `pdf-standard: ua-1` pour la conformité PDF/UA-1
+- ⚠️ Les Typst books ne sont pas encore compatibles UA-1
 
 ## Exercice 3
 
 ::: {.callout-tip}
 ## Exercice (optionnel)
 
-Fichier : [exercices/03-templates/](#)
+Fichier : {{< fa download >}} [exercices/03-templates/](#)
 
 1. Ajouter `typst-show.typ` et `typst-template.typ` fournis au projet
 2. Les déclarer avec `template-partials:` dans le YAML du document
@@ -59,5 +68,5 @@ Fichier : [exercices/03-templates/](#)
 ::: {.callout-warning collapse="true"}
 ## Correction
 
-[Voir la correction](#)
+{{< fa download >}} [Voir la correction](#)
 :::

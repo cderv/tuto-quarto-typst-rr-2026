@@ -1,5 +1,8 @@
 ---
 title: "Préparatifs"
+format: html
+author: ""
+date: ""
 ---
 
 Avant le tutoriel, merci de préparer votre environnement de travail.

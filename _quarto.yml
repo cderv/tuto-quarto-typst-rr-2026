@@ -3,7 +3,7 @@ project:
 
 website:
   title: "PDF sans frictions : Typst dans vos projets Quarto"
-  repo-url: https://github.com/cderv/tuto-quarto-rr-2026
+  repo-url: https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026
   repo-actions: [edit, issue]
   page-footer: "CC BY 4.0 · Christophe Dervieux & Maëlle Salmon · Rencontres R 2026"
   navbar:
@@ -12,7 +12,6 @@ website:
         text: Accueil
       - href: preparatifs.qmd
         text: Préparatifs
-      - text: "---"
       - href: 1-quarto-typst/index.qmd
         text: "Bloc 1 — Quarto & Typst"
       - href: 2-projets/index.qmd
@@ -27,3 +26,15 @@ lang: fr
 format:
   html:
     theme: flatly
+    toc: true
+    code-copy: true
+    code-overflow: wrap
+    mainfont: "Atkinson Hyperlegible"
+  clean-revealjs:
+    preview-links: auto
+    theme: [default, reveal-style.scss]
+    transition: fade
+    chalkboard: true
+    footer: "[🔗 cderv.github.io/cderv-tuto-quarto-typst-rr-2026](https://cderv.github.io/cderv-tuto-quarto-typst-rr-2026)"
+
+editor: visual
