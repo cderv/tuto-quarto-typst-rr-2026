@@ -1,0 +1,315 @@
+---
+title: "Projets Quarto & Typst book"
+subtitle: "PDF sans frictions : Typst dans vos projets Quarto"
+institute: "Posit / ROpenSci"
+author: "Christophe Dervieux & Maëlle Salmon"
+date: "2026-06-16"
+format: clean-revealjs
+editor: visual
+---
+
+# Partie A --- Travailler en projet {background-color="#2c3e50"}
+
+## `_quarto.yml` : la colonne vertébrale
+
+Un **projet Quarto** est un dossier avec un fichier `_quarto.yml`.
+
+::: incremental
+- Centralise la configuration pour **tous les documents** du projet
+- Définit le type de projet (`website`, `book`, `manuscript`...)
+- Applique des options de format communes
+- Fini la répétition de YAML dans chaque `.qmd` !
+:::
+
+::: notes
+Rappeler que les participants ont déjà vu `format: typst` dans un document unique au Bloc 1. Ici on passe à l'échelle projet.
+:::
+
+## Déclarer `format: typst` au niveau projet
+
+```{.yaml filename="_quarto.yml"}
+project:
+  type: default
+
+format:
+  typst: default
+```
+
+::: {.fragment .fade-in}
+Tous les `.qmd` du projet produiront un **PDF via Typst** sans rien ajouter dans leur en-tête.
+:::
+
+::: {.fragment .fade-in}
+On peut toujours surcharger dans un fichier individuel :
+
+```{.yaml filename="rapport-special.qmd"}
+---
+format:
+  typst:
+    keep-typ: true
+---
+```
+:::
+
+::: notes
+Montrer que la surcharge locale fonctionne comme un héritage CSS : le plus spécifique gagne.
+:::
+
+## `_brand.yml` au niveau projet
+
+```{.yaml filename="_brand.yml"}
+meta:
+  name: Mon Organisation
+color:
+  primary: "#1a5276"
+  secondary: "#f39c12"
+typography:
+  base:
+    family: "Noto Sans"
+logo:
+  medium: images/logo.png
+```
+
+::: {.fragment .fade-in}
+Placé **à la racine du projet**, il s'applique automatiquement à tous les documents.
+
+Un seul fichier = cohérence sur tous les PDF, HTML, slides...
+:::
+
+::: notes
+Lien avec le Bloc 1 : on a vu `_brand.yml` pour un document unique, ici même fichier mais effet démultiplié.
+:::
+
+## Contenu conditionnel selon le format
+
+Adapter le contenu selon que l'on produit du PDF ou du HTML :
+
+::: columns
+::: {.column width="50%"}
+**Visible uniquement en Typst/PDF :**
+
+```{.markdown}
+::: {.content-visible
+     when-format="typst"}
+Ce texte apparaît
+seulement dans le PDF.
+:::
+```
+:::
+
+::: {.column width="50%"}
+**Masqué en HTML :**
+
+```{.markdown}
+::: {.content-hidden
+     when-format="html"}
+Ce texte est caché
+sur le site web.
+:::
+```
+:::
+:::
+
+::: {.fragment .fade-in}
+Utile pour :
+
+- Ajouter un saut de page en PDF (`{{< pagebreak >}}`)
+- Masquer un bloc interactif dans le PDF
+- Adapter les instructions selon le format
+:::
+
+::: notes
+Cas concret : un même `.qmd` qui produit une page web ET un PDF, chacun avec du contenu adapté.
+:::
+
+# Partie B --- Le Typst book {background-color="#2c3e50"}
+
+## `type: book` : un projet multi-chapitres
+
+```{.yaml filename="_quarto.yml"}
+project:
+  type: book
+
+book:
+  title: "Analyse des manchots"
+  author: "Ada Lovelace"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - analyse.qmd
+    - conclusion.qmd
+
+format:
+  typst: default
+```
+
+::: notes
+Le type book assemble plusieurs .qmd en un seul document avec table des matières, numérotation continue, références croisées entre chapitres.
+:::
+
+## Ce que `type: book` apporte
+
+::: incremental
+- **Table des matières** globale générée automatiquement
+- **Numérotation continue** des pages à travers les chapitres
+- **Références croisées** entre chapitres (`@sec-analyse`, `@fig-penguins`)
+- Un **seul PDF** en sortie, assemblé depuis tous les `.qmd`
+:::
+
+## Numérotation par chapitre
+
+Les éléments numérotés reçoivent un **préfixe de chapitre** :
+
+::: columns
+::: {.column width="50%"}
+**Sans book :**
+
+- Figure 1, Figure 2...
+- Equation 1, Equation 2...
+:::
+
+::: {.column width="50%"}
+**Avec book :**
+
+- Figure 2.1, Figure 2.3...
+- Equation 3.1, Equation 3.2...
+:::
+:::
+
+::: {.fragment .fade-in}
+Cela concerne les figures, les équations, les tableaux et les callouts numérotés.
+:::
+
+## Nouveauté Quarto 1.9 : orange-book {.smaller}
+
+Depuis Quarto 1.9, `format: typst` sur un **book** active automatiquement l'extension **orange-book**.
+
+::: incremental
+- Style inspiré des manuels techniques professionnels
+- Page de couverture générée automatiquement
+- Numérotation par chapitre intégrée
+- En-têtes et pieds de page stylisés
+- Aucune configuration supplémentaire requise !
+:::
+
+::: {.fragment .fade-in}
+```{.yaml filename="_quarto.yml"}
+project:
+  type: book
+
+format:
+  typst: default  # <- orange-book activé automatiquement
+```
+:::
+
+::: notes
+Insister : zéro config. C'est la grande nouveauté de Quarto 1.9 pour les books Typst.
+:::
+
+## `_brand.yml` + book = livre personnalisé
+
+Combiner `_brand.yml` avec un book Typst :
+
+```{.yaml filename="_brand.yml"}
+color:
+  primary: "#8e44ad"
+logo:
+  medium: images/logo-labo.png
+```
+
+::: {.fragment .fade-in}
+Résultat en quelques minutes :
+
+::: incremental
+- Couleur **primaire** appliquée aux en-têtes de chapitres
+- **Logo** affiché sur la page de titre / couverture
+- Polices et couleurs cohérentes dans tout le livre
+:::
+:::
+
+::: notes
+Démo live : changer la couleur primaire et montrer l'effet immédiat sur le book rendu.
+:::
+
+## Article layout : Marginalia
+
+Le format **Marginalia** exploite les marges pour un rendu éditorial :
+
+::: incremental
+- **Figures en marge** avec la classe `.column-margin`
+- **Légendes en marge** avec `cap-location: margin`
+- **Notes de marge** avec la classe `.aside`
+:::
+
+::: {.fragment .fade-in}
+```{.markdown}
+::: {.column-margin}
+![Manchots](penguins.png){fig-alt="Photo de manchots"}
+:::
+```
+:::
+
+::: {.fragment .fade-in}
+```{.markdown}
+::: aside
+Source : palmerpenguins, Horst et al. 2020
+:::
+```
+:::
+
+::: notes
+Marginalia est un format article (pas book). Utile pour des rapports courts avec un rendu élégant.
+:::
+
+## `typst-gather` : travailler hors-ligne
+
+Les packages Typst sont téléchargés depuis le réseau par défaut.
+
+::: {.fragment .fade-in}
+**Problème :** pas de réseau = pas de rendu.
+:::
+
+::: {.fragment .fade-in}
+**Solution :** `typst-gather` embarque les packages localement.
+
+```{.bash}
+quarto typst gather mon-projet/
+```
+:::
+
+::: {.fragment .fade-in}
+::: incremental
+- Télécharge tous les packages Typst utilisés
+- Les stocke dans le projet
+- Le rendu fonctionne ensuite **sans connexion internet**
+- Idéal pour les environnements restreints ou reproductibles
+:::
+:::
+
+::: notes
+Utile aussi pour la reproductibilité : on fixe les versions des packages Typst.
+:::
+
+## Exercice 2 {background-color="#FDC538"}
+
+::: callout
+# A vous !
+
+1. Créer un `_quarto.yml` avec `project: {type: book}` et `format: typst`
+2. Organiser le rapport en 2-3 chapitres (intro, analyse, conclusion)
+3. Rendre le book et observer l'effet orange-book
+4. **(Bonus)** Appliquer le `_brand.yml` de l'exercice 1 au projet
+:::
+
+{{< countdown 05:00 >}}
+
+## Récapitulatif Bloc 2
+
+::: incremental
+- `_quarto.yml` centralise la config : un seul `format: typst` pour tout le projet
+- `_brand.yml` au niveau projet = cohérence automatique
+- Contenu conditionnel avec `.content-visible` / `.content-hidden`
+- `type: book` + `format: typst` = orange-book automatique (Quarto 1.9)
+- Marginalia pour des articles avec contenu en marge
+- `typst-gather` pour embarquer les packages et travailler hors-ligne
+:::

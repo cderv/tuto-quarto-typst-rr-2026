@@ -1,5 +1,8 @@
 ---
 title: "Pour aller plus loin"
+format: html
+author: ""
+date: ""
 ---
 
 ## Documentation officielle Quarto
@@ -14,10 +17,22 @@ title: "Pour aller plus loin"
 - [Typst in Production](https://typst-in-production.com) — crash course + section Quarto + section R
 - [Tutoriel officiel Typst](https://typst.app/docs/tutorial/)
 
+## Articles de blog Quarto
+
+- [Beautiful Tables in Typst](https://quarto.org/docs/blog/posts/2024-07-02-beautiful-tables-in-typst/) — styliser les tableaux HTML/CSS dans Typst
+- [PDF Accessibility and Standards](https://quarto.org/docs/blog/posts/2026-03-05-pdf-accessibility-and-standards/) — conformité PDF/UA-1 avec Typst
+- [Typst Books, Article Layout, and typst-gather](https://quarto.org/docs/blog/posts/2026-03-31-typst-books-and-more/) — nouveautés Quarto 1.9
+
 ## Aller plus loin avec Quarto
 
 - [Mastering Quarto CLI](https://m.canouil.dev/mastering-quarto-cli/) (Mickaël Canouil) — sessions 4 & 5
 - [Awesome Quarto](https://github.com/mcanouil/awesome-quarto)
+- [Slides `_brand.yml` — Rencontres R 2025](https://cderv.github.io/rr2025-quarto-brand-yml/) (Christophe Dervieux)
+
+## Typst depuis R
+
+- [tynding](https://github.com/kpolimis/tynding) — bindings R pour compiler du Typst
+- [r2typ](https://github.com/y-sunflower/r2typ) — générer du code Typst depuis R
 
 ## Formats Typst existants
 

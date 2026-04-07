@@ -1,39 +1,50 @@
 ---
 title: "Projets Quarto & Typst book"
+format: html
+author: ""
+date: ""
 ---
 
 ::: {.callout-note}
 ## ⏱️ ~25 minutes — après la pause
 :::
 
-## Slides
+## Diapos
+
+{{< fa tv >}} [Ouvrir les diapos en plein écran](2-projets.html)
+
+```{=html}
+<iframe class="slide-deck" src="2-projets.html" height="420" width="747" style="border: 1px solid #123233;"></iframe>
+```
+
+## Points couverts
 
 ### Partie A — Travailler en projet (10 min)
 
-\[Slides à venir\]
-
-Points couverts :
+Passer d'un document unique à un projet Quarto avec une configuration centralisée.
 
 - `_quarto.yml` : la colonne vertébrale d'un projet Quarto
 - Déclarer `format: typst` au niveau projet pour tous les documents
 - `_brand.yml` au niveau projet → cohérence automatique sur tous les docs
+- Contenu conditionnel : `.content-visible when-format="typst"` et `.content-hidden when-format="html"`
 
 ### Partie B — Le Typst book (15 min)
 
-\[Slides à venir\]
-
-Points couverts :
+Assembler plusieurs documents en un livre avec `type: book`.
 
 - `type: book` : chapitres, TOC globale, références croisées
-- Nouveauté Quarto 1.9 : `format: typst` sur un book utilise automatiquement l'extension orange-book (numérotation chapitres, style manuel, couverture)
-- `_brand.yml` + book = livre aux couleurs de l'organisation en quelques minutes
+- Numérotation par chapitre : figures, équations et callouts reçoivent un préfixe de chapitre
+- Nouveauté Quarto 1.9 : `format: typst` sur un book utilise automatiquement l'extension orange-book
+- `_brand.yml` + book = livre aux couleurs de l'organisation
+- Article layout / Marginalia : figures en marge, légendes en marge, notes de marge
+- `typst-gather` : embarquer les packages Typst pour rendre hors-ligne
 
 ## Exercice 2
 
 ::: {.callout-tip}
 ## Exercice
 
-Fichier : [exercices/02-projet-book/](#)
+Fichier : {{< fa download >}} [exercices/02-projet-book/](#)
 
 1. Créer un `_quarto.yml` avec `project: {type: book}` et `format: typst`
 2. Organiser le rapport en 2-3 chapitres (intro, analyse, conclusion)
@@ -44,5 +55,5 @@ Fichier : [exercices/02-projet-book/](#)
 ::: {.callout-warning collapse="true"}
 ## Correction
 
-[Voir la correction](#)
+{{< fa download >}} [Voir la correction](#)
 :::
