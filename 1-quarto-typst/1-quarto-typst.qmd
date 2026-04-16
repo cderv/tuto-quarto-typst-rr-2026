@@ -8,300 +8,41 @@ format: clean-revealjs
 editor: visual
 ---
 
-# Du PDF LaTeX au PDF Typst
-
-## Le problème avec `format: pdf`
-
-::: incremental
-- LaTeX doit être installé séparément (TinyTeX, TeX Live, MiKTeX...)
-- Compilation lente, parfois plusieurs passes
-- Messages d'erreur cryptiques et difficiles à déchiffrer
-- Packages LaTeX à gérer manuellement
-- Environnement lourd (~1 Go ou plus)
-:::
-
-::: notes
-Qui a déjà eu un problème d'installation LaTeX ? Qui a vu une erreur du style "Undefined control sequence" ? C'est exactement ce qu'on veut éviter.
-:::
-
-## La solution : `format: typst`
+## Le rythme du tutoriel
 
 ::: columns
-::: {.column width="50%"}
-**Avant — `format: pdf`**
+::: {.column width="33%"}
+::: {.callout-note appearance="minimal"}
+## My turn
 
-```{.yaml filename="document.qmd"}
----
-format: pdf
----
-```
-
-- LaTeX requis
-- Compilation lente
-- Erreurs cryptiques
-:::
-
-::: {.column width="50%"}
-**Après — `format: typst`**
-
-```{.yaml filename="document.qmd"}
----
-format: typst
----
-```
-
-- Intégré dans Quarto
-- Rien à installer
-- Compilation rapide
-- Erreurs lisibles
+Quelques slides pour poser les concepts clés.
 :::
 :::
 
-::: notes
-Typst est bundlé directement dans Quarto depuis la version 1.4. Rien à installer séparément — c'est l'un des grands avantages.
+::: {.column width="33%"}
+::: {.callout-tip appearance="minimal"}
+## Our turn
+
+Démo live — vous suivez dans votre éditeur.
+:::
 :::
 
-## Typst : intégré, rapide, lisible
+::: {.column width="33%"}
+::: {.callout appearance="minimal"}
+## Your turn
 
-::: incremental
-- **Rien à installer** : Typst est embarqué dans Quarto (v1.4+)
-- **Compilation rapide** : quelques secondes au lieu de dizaines
-- **Erreurs lisibles** : messages clairs avec numéros de ligne
-- **Syntaxe moderne** : propre et compréhensible
-- **Résultat** : un fichier `.pdf` de qualité professionnelle
-:::
-
-::: aside
-Quarto 1.9 utilise Typst 0.14.2
-:::
-
-# Les options de base
-
-## Changer la taille et les marges
-
-```{.yaml filename="document.qmd"}
----
-format:
-  typst:
-    papersize: a4
-    margin:
-      top: 2cm
-      bottom: 2cm
-      left: 2.5cm
-      right: 2.5cm
----
-```
-
-::: notes
-papersize accepte : a4, us-letter, a3, a5, etc. Les marges peuvent être définies globalement ou côté par côté.
-:::
-
-## Table des matières et numérotation
-
-```{.yaml filename="document.qmd"}
----
-format:
-  typst:
-    toc: true
-    number-sections: true
----
-```
-
-::: incremental
-- `toc: true` — génère une table des matières automatique
-- `number-sections: true` — numérote les sections (1, 1.1, 1.2...)
-:::
-
-## Typographie : polices et interlignage
-
-```{.yaml filename="document.qmd"}
----
-format:
-  typst:
-    mainfont: "Source Serif 4"
-    linestretch: 1.5
----
-```
-
-::: notes
-mainfont doit correspondre à une police disponible sur le système. On verra plus tard comment utiliser font-paths pour des polices locales.
-:::
-
-## Nouvelles options Quarto 1.9
-
-```{.yaml filename="document.qmd"}
----
-format:
-  typst:
-    linkcolor: "#0055A4"
-    codefont: "JetBrains Mono"
-    mathfont: "STIX Two Math"
-    linestretch: 1.4
-    font-paths: ["fonts/"]
----
-```
-
-::: incremental
-- `linkcolor` — couleur des hyperliens
-- `codefont` — police monospace pour le code
-- `mathfont` — police pour les formules mathématiques
-- `font-paths` — chercher des polices dans un dossier local
-:::
-
-::: notes
-font-paths est très utile pour les projets qui doivent fonctionner sans installation système — on embarque les polices directement dans le projet.
-:::
-
-## Récapitulatif des options de base
-
-| Option | Rôle |
-|--------|------|
-| `papersize` | Format du papier (a4, letter...) |
-| `margin` | Marges (top, bottom, left, right) |
-| `mainfont` | Police principale |
-| `toc` | Table des matières |
-| `number-sections` | Numérotation des sections |
-| `linkcolor` | Couleur des liens (1.9+) |
-| `codefont` | Police du code (1.9+) |
-| `mathfont` | Police des maths (1.9+) |
-| `font-paths` | Polices locales (1.9+) |
-
-# `keep-typ: true` — inspecter les coulisses
-
-## Comment fonctionne la compilation ?
-
-::: columns
-::: {.column width="55%"}
-```
-document.qmd
-    ↓  (Pandoc)
-document.typ
-    ↓  (Typst)
-document.pdf
-```
-:::
-
-::: {.column width="45%"}
-::: incremental
-- Quarto appelle Pandoc
-- Pandoc produit un fichier `.typ`
-- Typst compile le `.typ` en PDF
-- Le `.typ` est effacé par défaut
+Exercice en autonomie avec chronomètre.
 :::
 :::
 :::
 
 ::: notes
-Le fichier .typ est l'intermédiaire — c'est la "source Typst" générée par Pandoc. Normalement on ne le voit pas, mais on peut le garder pour apprendre ou déboguer.
+Expliquer le rythme dès le début. Chaque bloc suit ce cycle. L'idée c'est de passer un maximum de temps les mains dans le code, pas à regarder des slides.
 :::
 
-## Activer `keep-typ: true`
+## `format: typst` — un PDF sans LaTeX
 
-```{.yaml filename="document.qmd" code-line-numbers="3"}
----
-format:
-  typst:
-    keep-typ: true
----
-```
-
-Après le rendu, vous trouvez :
-
-::: incremental
-- `document.pdf` — le résultat final
-- `document.typ` — le fichier Typst intermédiaire
-:::
-
-## À quoi sert `keep-typ: true` ?
-
-::: incremental
-- **Apprendre Typst** : voir comment Quarto traduit le Markdown en Typst
-- **Déboguer** : trouver l'origine d'une mise en page inattendue
-- **Personnaliser** : identifier les éléments à surcharger avec du Typst brut
-- **Comprendre** : décoder les messages d'erreur Typst en les localisant dans le `.typ`
-:::
-
-::: callout
-# Faisons ensemble !
-
-Ouvrons un document `.qmd` simple, activons `keep-typ: true`, et explorons le fichier `.typ` généré.
-:::
-
-::: notes
-Montrer en live : un document simple avec titre, paragraphes, et un bloc de code. Comparer le .qmd et le .typ côte à côte.
-:::
-
-## Ce qu'on voit dans le fichier `.typ`
-
-```{.typ filename="document.typ"}
-#import "@preview/charged-ieee:0.1.3": ieee
-// ... template Quarto ...
-
-#show: doc => template(
-  title: [Mon rapport],
-  // ...
-  doc,
-)
-
-= Introduction
-
-Mon premier paragraphe avec du texte.
-
-```
-
-::: notes
-L'en-tête importe le template Quarto. Les = correspondent aux titres Markdown. C'est un vrai fichier Typst valide qu'on peut ouvrir dans l'éditeur Typst.
-:::
-
-# Personnaliser avec `_brand.yml`
-
-## Qu'est-ce que `_brand.yml` ?
-
-::: incremental
-- Un **fichier unique** pour définir l'identité visuelle d'un projet
-- Couleurs, polices, logos... au même endroit
-- Fonctionne avec **tous les formats Quarto** : HTML, RevealJS, Typst, Dashboards
-- Pas besoin de toucher au `.qmd` pour personnaliser le rendu
-:::
-
-::: aside
-Présenté aux [Rencontres R 2025](https://cderv.github.io/rr2025-quarto-brand-yml/)
-:::
-
-::: notes
-Si vous avez assisté à notre présentation aux RR 2025 sur brand.yml, cette section approfondit son utilisation spécifique avec Typst pour le PDF.
-:::
-
-## La structure de `_brand.yml`
-
-```{.yaml filename="_brand.yml"}
-meta:
-  name: "Mon Organisation"
-color:
-  primary: "#0055A4"
-  secondary: "#EF4135"
-  background: "#FFFFFF"
-typography:
-  base:
-    family: "Source Serif 4"
-  headings:
-    family: "Fira Sans"
-  mono:
-    family: "JetBrains Mono"
-logo:
-  images:
-    logo-wide: images/logo-wide.png
-```
-
-::: notes
-Quatre sections principales : meta pour les métadonnées, color pour les couleurs, typography pour les polices, logo pour les images de marque.
-:::
-
-## Application automatique sur `format: typst`
-
-::: columns
-::: {.column width="50%"}
-**Le `.qmd` reste simple**
+Vous avez un document Quarto et vous voulez un PDF ?
 
 ```{.yaml filename="rapport.qmd"}
 ---
@@ -310,242 +51,145 @@ format: typst
 ---
 ```
 
-Aucune option de style dans le document !
-:::
-
-::: {.column width="50%"}
-**`_brand.yml` fait le travail**
-
-- Couleurs appliquées automatiquement
-- Polices configurées
-- Logo positionné
-- Cohérence entre formats
-:::
+::: incremental
+- **Rien à installer** — Typst est intégré à Quarto depuis la version 1.5
+- **Rapide** — compilation en quelques secondes, pas plusieurs minutes
+- **Erreurs lisibles** — fini les messages LaTeX cryptiques
+- **Léger** — pas de distribution TeX de 1 Go à gérer
 :::
 
 ::: notes
-C'est la magie de brand.yml — le même document .qmd donne un PDF stylé sans aucune configuration inline. Changez le brand, tous les documents changent.
+Le point d'entrée : une seule ligne de YAML. Pas besoin de convaincre les gens que LaTeX est mauvais — montrer directement que Typst est simple.
 :::
 
-## Les couleurs dans la brand
+## Les options essentielles
 
+```{.yaml filename="rapport.qmd" code-line-numbers="3-5"}
+---
+format:
+  typst:
+    papersize: a4
+    margin:
+      x: 2.5cm
+      y: 2.5cm
+---
+```
+
+::: {.fragment .fade-in}
+D'autres options existent (`toc`, `mainfont`, `number-sections`, `linestretch`...) — on les verra en démo.
+:::
+
+::: notes
+Ne pas tout montrer ici. Juste papersize et margin pour que les gens voient la structure YAML. Le reste sera manipulé en live.
+:::
+
+## `keep-typ: true` — comprendre les coulisses
+
+```
+rapport.qmd  →  rapport.typ  →  rapport.pdf
+              Pandoc            Typst
+```
+
+::: {.fragment .fade-in}
+```{.yaml filename="rapport.qmd" code-line-numbers="4"}
+---
+format:
+  typst:
+    keep-typ: true
+---
+```
+:::
+
+::: {.fragment .fade-in}
+Le fichier `.typ` intermédiaire vous permet de :
+
+- Comprendre ce que Quarto génère pour Typst
+- Déboguer un rendu inattendu
+- Apprendre la syntaxe Typst progressivement
+:::
+
+::: notes
+Moment pédagogique clé. Le pipeline démystifie la magie : Quarto n'est pas une boîte noire, on peut voir ce qui se passe entre le .qmd et le .pdf.
+:::
+
+## `_brand.yml` — un doc stylé en un fichier {.smaller}
+
+Un seul fichier YAML pour définir l'identité visuelle de vos documents :
+
+::: columns
+::: {.column width="55%"}
 ```{.yaml filename="_brand.yml"}
 color:
-  palette:
-    bleu-france: "#0055A4"
-    rouge-france: "#EF4135"
-    gris-clair: "#F5F5F5"
-  primary: bleu-france
-  secondary: rouge-france
-  background: "#FFFFFF"
-  foreground: "#1A1A1A"
-```
-
-::: incremental
-- `palette` — définir des couleurs nommées réutilisables
-- `primary` / `secondary` — couleurs principales
-- `background` / `foreground` — fond et texte
-- Les couleurs sont appliquées aux titres, liens, encadrés...
-:::
-
-## La typographie dans la brand
-
-```{.yaml filename="_brand.yml"}
+  primary: "#1a5276"
+  secondary: "#f39c12"
 typography:
   base:
-    family: "Source Serif 4"
-    size: 11pt
-    line-height: 1.5
-  headings:
-    family: "Fira Sans"
-    weight: bold
-  mono:
-    family: "JetBrains Mono"
-    size: 0.9em
+    family: "Noto Sans"
+    source: google
 ```
+:::
 
+::: {.column width="45%"}
 ::: incremental
-- `base` — police du corps de texte, taille, interlignage
-- `headings` — police des titres
-- `mono` — police du code
-- Les polices Google sont téléchargées automatiquement par Quarto
+- Placez `_brand.yml` à côté de votre `.qmd`
+- Quarto l'applique **automatiquement**
+- Couleurs, polices, logo...
+- Fonctionne avec HTML, Typst, RevealJS...
 :::
-
-::: notes
-L'avantage par rapport à mainfont dans le YAML : on peut tout centraliser et distinguer titres, texte et code facilement.
-:::
-
-## Logo dans le PDF Typst
-
-```{.yaml filename="_brand.yml"}
-logo:
-  images:
-    logo-wide: images/logo.png
-```
-
-```{.yaml filename="rapport.qmd"}
----
-format:
-  typst:
-    logo:
-      width: 4cm
-      location: header
-      padding: 5mm
-      alt: "Logo de mon organisation"
----
-```
-
-::: incremental
-- `width` — largeur du logo
-- `location` — `header` ou `footer`
-- `padding` — espace autour du logo
-- `alt` — texte alternatif pour l'accessibilité
-:::
-
-::: notes
-Le logo est défini dans brand.yml, mais les options de positionnement sont dans le YAML du document ou du projet. Cela permet d'adapter le placement selon le format.
-:::
-
-## `theorem-appearance` : styliser les encadrés {.smaller}
-
-```{.yaml filename="rapport.qmd"}
----
-format:
-  typst:
-    theorem-appearance: fancy
----
-```
-
-4 styles disponibles aux couleurs de la brand :
-
-::: columns
-::: {.column width="50%"}
-- **`simple`** — sobre, ligne latérale
-- **`fancy`** — encadré coloré avec fond
-:::
-
-::: {.column width="50%"}
-- **`clouds`** — coins arrondis, léger
-- **`rainbow`** — gradient multicolore
-:::
-:::
-
-::: {.fragment .fade-in}
-Les théorèmes, définitions, exemples et preuves adoptent automatiquement les couleurs de `_brand.yml`.
-:::
-
-::: notes
-Ces styles s'appliquent aux environnements theorem, definition, lemma, corollary, proof, example, etc. Les couleurs viennent de la brand automatiquement.
-:::
-
-## Accès aux valeurs brand dans Typst
-
-Avec `keep-typ: true`, vous verrez des dictionnaires Typst :
-
-```{.typ filename="document.typ"}
-// Couleurs de la brand
-#let brand-color = (
-  primary: rgb("#0055A4"),
-  secondary: rgb("#EF4135"),
-)
-
-// Logos
-#let brand-logo = "images/logo.png"
-#let brand-logo-images = (
-  logo-wide: "images/logo-wide.png",
-)
-```
-
-::: incremental
-- `brand-color` — toutes les couleurs définies dans `_brand.yml`
-- `brand-logo` — le logo par défaut
-- `brand-logo-images` — tous les logos nommés
-- Utilisables dans du Typst brut pour personnaliser finement
-:::
-
-::: notes
-C'est le pont entre brand.yml et Typst natif. On peut accéder à ces valeurs dans des blocs raw Typst pour aller plus loin que ce que Quarto propose par défaut. On verra ça en détail dans le bloc 3.
-:::
-
-## `brand-mode: dark` — thème sombre
-
-```{.yaml filename="rapport.qmd"}
----
-format:
-  typst:
-    brand-mode: dark
----
-```
-
-::: columns
-::: {.column width="50%"}
-**Mode clair (défaut)**
-
-- Fond blanc
-- Texte sombre
-- Couleurs `color.background` et `color.foreground`
-:::
-
-::: {.column width="50%"}
-**Mode sombre**
-
-- Fond sombre
-- Texte clair
-- Les couleurs `background` et `foreground` sont inversées
 :::
 :::
 
 ::: notes
-Utile pour les présentations sur écran ou pour les documents consultés principalement en numérique. Le même document peut être rendu en clair ou en sombre juste en changeant cette option.
+C'est le deuxième moment fort : on passe d'un PDF basique à un PDF aux couleurs de son organisation. Rappeler que _brand.yml a été présenté aux RR 2025 pour ceux qui l'ont vu.
 :::
 
-## Partager une brand : `quarto use brand`
+## Faisons ensemble ! {background-color="#27ae60"}
 
-::: {.fragment .fade-in}
-Nouveau dans Quarto 1.9 :
+::: {.callout-tip}
+## Faisons ensemble !
 
-```{.bash filename="Terminal"}
-quarto use brand githubuser/mon-brand
-```
-:::
-
-::: {.fragment .fade-in}
-- Télécharge le `_brand.yml` depuis un dépôt GitHub
-- Inclut les logos, polices et ressources associées
-- Facilite le partage d'une charte graphique dans une équipe ou organisation
+1. Ouvrez `rapport-penguins.qmd` dans votre éditeur
+2. Ajoutez `format: typst` et rendez le document
+3. Ajoutez quelques options (`toc`, `mainfont`, `papersize`...)
+4. Créez un `_brand.yml` avec 2 couleurs et une police Google
+5. Activez `keep-typ: true` et explorez le fichier `.typ` généré
 :::
 
 ::: notes
-C'est l'équivalent de quarto use template mais pour la brand. Très pratique pour les organisations qui veulent standardiser leur charte graphique sur tous les projets Quarto.
+C'est la démo live. Les participants suivent dans leur éditeur. Aller doucement, laisser le temps de taper. Montrer le rendu après chaque étape. Mentionner linkcolor, codefont, mathfont en passant.
 :::
 
-## Récapitulatif : `_brand.yml` et Typst
-
-| Fonctionnalité | Description |
-|----------------|-------------|
-| `color` | Couleurs appliquées aux titres, liens, encadrés |
-| `typography` | Polices base, titres, code |
-| `logo` | Logo positionné dans le header/footer |
-| `theorem-appearance` | 4 styles d'encadrés colorés |
-| `brand-color` / `brand-logo` | Dictionnaires accessibles dans Typst |
-| `brand-mode: dark` | PDF en thème sombre |
-| `quarto use brand` | Partage de brand via GitHub |
-
-# Exercice
-
-## Exercice {background-color="#FDC538"}
+## Exercice 1 {background-color="#FDC538"}
 
 ::: callout
-# À vous !
+## À vous !
 
-1. Ouvrez `rapport-penguins.qmd` et changez `format: pdf` en `format: typst`, puis rendez le document
-2. Créez un fichier `_brand.yml` avec 2-3 couleurs et une police Google (ex. `Source Serif 4`)
-3. Rendez à nouveau le document et observez les changements
-4. Activez `keep-typ: true` et explorez le fichier `.typ` généré — repérez les dictionnaires `brand-color`
+1. Ouvrez `rapport-penguins.qmd` et ajoutez `format: typst`, puis rendez
+2. Personnalisez avec des options : `papersize`, `toc`, `mainfont`...
+3. Créez un `_brand.yml` avec vos couleurs et une police Google
+4. Activez `keep-typ: true` et ouvrez le fichier `.typ` généré
 :::
 
-{{< countdown 05:00 >}}
+{{< countdown 15:00 >}}
 
 ::: notes
-Circuler dans la salle pour aider. Les étapes 1-2 sont prioritaires. L'étape 4 est un bonus pour ceux qui vont vite. L'objectif : voir la transition pdf vers typst, puis la personnalisation avec brand.yml.
+15 minutes. Passer dans les rangs pour aider. Les problèmes fréquents : oubli des guillemets sur les couleurs hex dans brand.yml, nom de police Google mal orthographié, indentation YAML.
+:::
+
+## Saviez-vous que... {.smaller}
+
+::: {.callout-note}
+## Pépites pour aller plus loin
+
+- **Blocs raw Typst** — Besoin de Typst natif ? Utilisez `` ```{=typst} `` pour injecter du code Typst directement dans votre `.qmd`
+- **Vos tableaux fonctionnent** — Les tableaux `gt` (R) et `Great Tables` (Python) avec du CSS sont traduits automatiquement en Typst par Quarto
+- **PDF accessible en une ligne** — Ajoutez `pdf-standard: ua-1` dans le YAML pour un PDF conforme au standard d'accessibilité PDF/UA-1
+:::
+
+::: {.fragment .fade-in}
+{{< fa link >}} Plus de détails sur la page [Ressources](../4-ressources.qmd)
+:::
+
+::: notes
+Slide rapide, 2-3 minutes max. L'objectif est juste de planter des graines. Les gens curieux iront voir la page Ressources. Cette slide est le premier fusible à couper si on manque de temps.
 :::

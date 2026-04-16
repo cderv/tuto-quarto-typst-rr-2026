@@ -26,19 +26,15 @@ Ce tutoriel vous apprendra à produire des **documents PDF professionnels** avec
 ## Programme
 
 ::: programme
-- {{< fa file-pdf >}} [Bloc 1 — Quarto & PDF avec Typst](1-quarto-typst/index.qmd) (40 min)
+- {{< fa file-pdf >}} [Bloc 1 — Un PDF pro en quelques minutes](1-quarto-typst/index.qmd) (40 min)
 
-  `format: typst`, options de base, `_brand.yml`, personnalisation
+  `format: typst`, options essentielles, `keep-typ: true`, `_brand.yml`
 
 - _☕ Pause (10 min)_
 
-- {{< fa folder >}} [Bloc 2 — Projets & Typst book](2-projets/index.qmd) (25 min)
+- {{< fa folder >}} [Bloc 2 — Passer à l'échelle : projet et livre](2-projets/index.qmd) (40 min)
 
-  `_quarto.yml`, `type: book`, orange-book, Marginalia, `typst-gather`
-
-- {{< fa rocket >}} [Bloc 3 — Aller plus loin](3-aller-plus-loin/index.qmd) (25 min)
-
-  Raw Typst, template partials, extensions, accessibilité PDF
+  `_quarto.yml`, `type: book`, orange-book, `_brand.yml` au niveau projet
 :::
 
 ## Instructeurs
