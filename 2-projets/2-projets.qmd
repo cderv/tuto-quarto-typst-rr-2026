@@ -8,24 +8,9 @@ format: clean-revealjs
 editor: visual
 ---
 
-# Partie A --- Travailler en projet {background-color="#2c3e50"}
+## `_quarto.yml` — centraliser la config
 
-## `_quarto.yml` : la colonne vertébrale
-
-Un **projet Quarto** est un dossier avec un fichier `_quarto.yml`.
-
-::: incremental
-- Centralise la configuration pour **tous les documents** du projet
-- Définit le type de projet (`website`, `book`, `manuscript`...)
-- Applique des options de format communes
-- Finie la répétition de YAML dans chaque `.qmd` !
-:::
-
-::: notes
-Rappeler que les participants ont déjà vu `format: typst` dans un document unique au Bloc 1. Ici on passe à l'échelle projet.
-:::
-
-## Déclarer `format: typst` au niveau projet
+Un **projet Quarto** = un dossier avec `_quarto.yml`.
 
 ```{.yaml filename="_quarto.yml"}
 project:
@@ -35,96 +20,17 @@ format:
   typst: default
 ```
 
-::: {.fragment .fade-in}
-Tous les `.qmd` du projet produiront un **PDF via Typst** sans rien ajouter dans leur en-tête.
-:::
-
-::: {.fragment .fade-in}
-On peut toujours surcharger dans un fichier individuel :
-
-```{.yaml filename="rapport-special.qmd"}
----
-format:
-  typst:
-    keep-typ: true
----
-```
+::: incremental
+- Tous les `.qmd` du projet produisent un **PDF via Typst** automatiquement
+- Votre `_brand.yml` à la racine s'applique à **tout le projet**
+- Finie la répétition de YAML dans chaque fichier !
 :::
 
 ::: notes
-Montrer que la surcharge locale fonctionne comme un héritage CSS : le plus spécifique gagne.
+Transition naturelle : au Bloc 1 on a stylé un document unique. Maintenant on passe à l'échelle. Le _brand.yml créé dans l'exercice 1 va être réutilisé ici — on le déplace juste à la racine.
 :::
 
-## `_brand.yml` au niveau projet
-
-```{.yaml filename="_brand.yml"}
-meta:
-  name: Mon Organisation
-color:
-  primary: "#1a5276"
-  secondary: "#f39c12"
-typography:
-  base:
-    family: "Noto Sans"
-logo:
-  medium: images/logo.png
-```
-
-::: {.fragment .fade-in}
-Placé **à la racine du projet**, il s'applique automatiquement à tous les documents.
-
-Un seul fichier = cohérence sur tous les PDF, HTML, slides...
-:::
-
-::: notes
-Lien avec le Bloc 1 : on a vu `_brand.yml` pour un document unique, ici même fichier mais effet démultiplié.
-:::
-
-## Contenu conditionnel selon le format
-
-Adapter le contenu selon que l'on produit du PDF ou du HTML :
-
-::: columns
-::: {.column width="50%"}
-**Visible uniquement en Typst/PDF :**
-
-```{.markdown}
-::: {.content-visible
-     when-format="typst"}
-Ce texte apparaît
-seulement dans le PDF.
-:::
-```
-:::
-
-::: {.column width="50%"}
-**Masqué en HTML :**
-
-```{.markdown}
-::: {.content-hidden
-     when-format="html"}
-Ce texte est caché
-sur le site web.
-:::
-```
-:::
-:::
-
-::: {.fragment .fade-in}
-Utile pour :
-
-- Ajouter un saut de page en PDF (`{{< pagebreak >}}`)
-- Masquer un bloc interactif dans le PDF
-- Adapter les instructions selon le format
-:::
-
-::: notes
-Cas concret : un même `.qmd` qui produit une page web ET un PDF, chacun avec du contenu adapté.
-:::
-
-# Partie B --- Le Typst book {background-color="#2c3e50"}
-
-## `type: book` : un projet multi-chapitres
+## `type: book` + orange-book {.smaller}
 
 ```{.yaml filename="_quarto.yml"}
 project:
@@ -139,177 +45,75 @@ book:
     - analyse.qmd
     - conclusion.qmd
 
-format:
-  typst: default
+format: typst
 ```
 
-::: notes
-Le type book assemble plusieurs .qmd en un seul document avec table des matières, numérotation continue, références croisées entre chapitres.
-:::
-
-## Ce que `type: book` apporte
-
-::: incremental
-- **Table des matières** globale générée automatiquement
-- **Numérotation continue** des pages à travers les chapitres
-- **Références croisées** entre chapitres (`@sec-analyse`, `@fig-penguins`)
-- Un **seul PDF** en sortie, assemblé depuis tous les `.qmd`
-:::
-
-## Numérotation par chapitre
-
-Les éléments numérotés reçoivent un **préfixe de chapitre** :
-
-::: columns
-::: {.column width="50%"}
-**Sans book :**
-
-- Figure 1, Figure 2...
-- Equation 1, Equation 2...
-:::
-
-::: {.column width="50%"}
-**Avec book :**
-
-- Figure 2.1, Figure 2.3...
-- Equation 3.1, Equation 3.2...
-:::
-:::
-
 ::: {.fragment .fade-in}
-Cela concerne les figures, les équations, les tableaux et les callouts numérotés.
-:::
-
-## Nouveauté Quarto 1.9 : orange-book {.smaller}
-
-Depuis Quarto 1.9, `format: typst` sur un **book** active automatiquement l'extension **orange-book**.
+Depuis Quarto 1.9, `format: typst` sur un book active automatiquement **orange-book** :
 
 ::: incremental
-- Style inspiré des manuels techniques professionnels
 - Page de couverture générée automatiquement
-- Numérotation par chapitre intégrée
+- Numérotation par chapitre (Fig 2.1, Eq 3.1...)
 - En-têtes et pieds de page stylisés
-- Aucune configuration supplémentaire requise !
-:::
-
-::: {.fragment .fade-in}
-```{.yaml filename="_quarto.yml"}
-project:
-  type: book
-
-format:
-  typst: default  # <- orange-book activé automatiquement
-```
-:::
-
-::: notes
-Insister : zéro config. C'est la grande nouveauté de Quarto 1.9 pour les books Typst.
-:::
-
-## `_brand.yml` + book = livre personnalisé
-
-Combiner `_brand.yml` avec un book Typst :
-
-```{.yaml filename="_brand.yml"}
-color:
-  primary: "#8e44ad"
-logo:
-  medium: images/logo-labo.png
-```
-
-::: {.fragment .fade-in}
-Résultat en quelques minutes :
-
-::: incremental
-- Couleur **primaire** appliquée aux en-têtes de chapitres
-- **Logo** affiché sur la page de titre / couverture
-- Polices et couleurs cohérentes dans tout le livre
+- Intégration `_brand.yml` pour les couleurs et le logo
 :::
 :::
 
 ::: notes
-Démo live : changer la couleur primaire et montrer l'effet immédiat sur le book rendu.
+Le moment wow : zéro configuration supplémentaire. On montre le _quarto.yml, on rend, et on obtient un livre pro. Orange-book est une extension bundlée dans Quarto 1.9.
 :::
 
-## Article layout : Marginalia
+## Construisons un livre ensemble {background-color="#27ae60"}
 
-Le format **Marginalia** exploite les marges pour un rendu éditorial :
+::: {.callout-tip}
+## Faisons ensemble !
 
-::: incremental
-- **Figures en marge** avec la classe `.column-margin`
-- **Légendes en marge** avec `cap-location: margin`
-- **Notes de marge** avec la classe `.aside`
-:::
-
-::: {.fragment .fade-in}
-```{.markdown}
-::: {.column-margin}
-![Manchots](penguins.png){fig-alt="Photo de manchots"}
-:::
-```
-:::
-
-::: {.fragment .fade-in}
-```{.markdown}
-::: aside
-Source : palmerpenguins, Horst et al. 2020
-:::
-```
+1. Créez un `_quarto.yml` avec `type: book` et `format: typst`
+2. Organisez le rapport en 2-3 chapitres
+3. Déplacez le `_brand.yml` du Bloc 1 à la racine du projet
+4. Rendez le book et observez l'effet orange-book
+5. Ajoutez `.content-visible when-format="typst"` pour un saut de page
 :::
 
 ::: notes
-Marginalia est un format article (pas book). Utile pour des rapports courts avec un rendu élégant.
-:::
-
-## `typst-gather` : travailler hors-ligne
-
-Les packages Typst sont téléchargés depuis le réseau par défaut.
-
-::: {.fragment .fade-in}
-**Problème :** pas de réseau = pas de rendu.
-:::
-
-::: {.fragment .fade-in}
-**Solution :** `typst-gather` embarque les packages localement.
-
-```{.bash}
-quarto typst gather mon-projet/
-```
-:::
-
-::: {.fragment .fade-in}
-::: incremental
-- Télécharge tous les packages Typst utilisés
-- Les stocke dans le projet
-- Le rendu fonctionne ensuite **sans connexion internet**
-- Idéal pour les environnements restreints ou reproductibles
-:::
-:::
-
-::: notes
-Utile aussi pour la reproductibilité : on fixe les versions des packages Typst.
+Démo live. Aller étape par étape. Montrer les cross-refs entre chapitres, la numérotation automatique Fig 2.1. Montrer un content-visible avec un pagebreak. Si le _brand.yml du Bloc 1 n'est pas prêt, utiliser le fichier fourni dans le zip.
 :::
 
 ## Exercice 2 {background-color="#FDC538"}
 
 ::: callout
-# À vous !
+## À vous !
 
-1. Créer un `_quarto.yml` avec `project: {type: book}` et `format: typst`
-2. Organiser le rapport en 2-3 chapitres (intro, analyse, conclusion)
-3. Rendre le book et observer l'effet orange-book
-4. **(Bonus)** Appliquer le `_brand.yml` de l'exercice 1 au projet
+1. Créez un `_quarto.yml` avec `project: {type: book}` et `format: typst`
+2. Organisez votre rapport en 2-3 chapitres (intro, analyse, conclusion)
+3. Rendez le book et observez l'effet orange-book
+4. **(Bonus)** Appliquez le `_brand.yml` de l'exercice 1 au projet
 :::
 
-{{< countdown 05:00 >}}
+::: {.callout-warning appearance="minimal"}
+Pas de `_brand.yml` ? Copiez le fichier `_brand.yml` fourni dans le dossier `exercices/`.
+:::
 
-## Récapitulatif Bloc 2
+{{< countdown 15:00 >}}
 
-::: incremental
-- `_quarto.yml` centralise la config : un seul `format: typst` pour tout le projet
-- `_brand.yml` au niveau projet = cohérence automatique
-- Contenu conditionnel avec `.content-visible` / `.content-hidden`
-- `type: book` + `format: typst` = orange-book automatique (Quarto 1.9)
-- Marginalia pour des articles avec contenu en marge
-- `typst-gather` pour embarquer les packages et travailler hors-ligne
+::: notes
+15 minutes. Le fallback est important : ceux qui n'ont pas fini l'exercice 1 peuvent copier le fichier _brand.yml template fourni. Passer dans les rangs. Problèmes fréquents : mauvais chemin vers les chapitres, oubli du tiret devant les noms de fichiers.
+:::
+
+## Saviez-vous que... {.smaller}
+
+::: {.callout-note}
+## Pépites pour aller plus loin
+
+- **Template partials** — Deux fichiers (`typst-show.typ` et `typst-template.typ`) contrôlent la génération du `.typ`. Vous pouvez les remplacer pour personnaliser header, footer, page de titre...
+- **Créer un format partageable** — `quarto create extension format:typst` génère un squelette d'extension prêt à publier sur GitHub
+- **Formats communautaires** — AMS, IEEE, poster, lettre, CV... sur [quarto-ext/typst-templates](https://github.com/quarto-ext/typst-templates)
+:::
+
+::: {.fragment .fade-in}
+{{< fa link >}} Plus de détails sur la page [Ressources](../4-ressources.qmd)
+:::
+
+::: notes
+Slide rapide, 2-3 minutes max. Template partials = le concept le plus avancé du workshop, mais on ne fait que le mentionner ici. Les gens motivés iront creuser. C'est le deuxième fusible à couper si on manque de temps.
 :::

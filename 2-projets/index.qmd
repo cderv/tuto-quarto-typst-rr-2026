@@ -1,12 +1,12 @@
 ---
-title: "Projets Quarto & Typst book"
+title: "Passer à l'échelle : projet et livre"
 format: html
 author: ""
 date: ""
 ---
 
 ::: {.callout-note}
-## ⏱️ ~25 minutes — après la pause
+## ~40 minutes — après la pause
 :::
 
 ## Diapos
@@ -19,37 +19,38 @@ date: ""
 
 ## Points couverts
 
-### Partie A — Travailler en projet (10 min)
+Ce bloc suit le rythme **My turn → Our turn → Your turn**.
 
-Passer d'un document unique à un projet Quarto avec une configuration centralisée.
+### My turn — Concepts clés (~5 min)
 
-- `_quarto.yml` : la colonne vertébrale d'un projet Quarto
-- Déclarer `format: typst` au niveau projet pour tous les documents
-- `_brand.yml` au niveau projet → cohérence automatique sur tous les docs
-- Contenu conditionnel : `.content-visible when-format="typst"` et `.content-hidden when-format="html"`
+- `_quarto.yml` : centraliser `format: typst` et `_brand.yml` pour tout le projet
+- `type: book` : assembler plusieurs `.qmd` en un livre avec TOC, numérotation et cross-refs
+- orange-book : activé automatiquement pour les books Typst (Quarto 1.9)
 
-### Partie B — Le Typst book (15 min)
+### Our turn — Démo live (~10 min)
 
-Assembler plusieurs documents en un livre avec `type: book`.
+On construit ensemble un livre Typst :
 
-- `type: book` : chapitres, TOC globale, références croisées
-- Numérotation par chapitre : figures, équations et callouts reçoivent un préfixe de chapitre
-- Nouveauté Quarto 1.9 : `format: typst` sur un book utilise automatiquement l'extension orange-book
-- `_brand.yml` + book = livre aux couleurs de l'organisation
-- Article layout / Marginalia : figures en marge, légendes en marge, notes de marge
-- `typst-gather` : embarquer les packages Typst pour rendre hors-ligne
+1. Créer `_quarto.yml` avec `type: book`
+2. Organiser en chapitres
+3. Déplacer le `_brand.yml` du Bloc 1 à la racine
+4. Rendre et observer le résultat orange-book
 
 ## Exercice 2
 
 ::: {.callout-tip}
-## Exercice
+## Exercice (~15 min)
 
 Fichier : {{< fa download >}} [exercices/02-projet-book/](#)
 
 1. Créer un `_quarto.yml` avec `project: {type: book}` et `format: typst`
 2. Organiser le rapport en 2-3 chapitres (intro, analyse, conclusion)
 3. Rendre le book et observer l'effet orange-book
-4. (Bonus) Appliquer le `_brand.yml` de l'exercice 1 au projet
+4. **(Bonus)** Appliquer le `_brand.yml` de l'exercice 1 au projet
+:::
+
+::: {.callout-warning appearance="minimal"}
+Pas de `_brand.yml` ? Copiez le fichier fourni dans `exercices/`.
 :::
 
 ::: {.callout-warning collapse="true"}

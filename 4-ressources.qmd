@@ -38,3 +38,122 @@ date: ""
 
 - [quarto-ext/typst-templates](https://github.com/quarto-ext/typst-templates) — poster, letter, ieee, fiction…
 - **orange-book** : intégré à Quarto 1.9 pour les projets book
+- **Marginalia** : article layout avec figures, légendes et notes de marge (`.column-margin`, `.aside`)
+- `typst-gather` : embarquer les packages Typst pour le rendu hors-ligne (`quarto typst gather`)
+
+## Options Typst avancées
+
+Options supplémentaires pour `format: typst` :
+
+- `toc: true` et `number-sections: true` — table des matières et numérotation
+- `mainfont` — police principale du document (polices Google supportées)
+- `linestretch` — interlignage
+- `linkcolor`, `codefont`, `mathfont` — nouvelles options Quarto 1.9
+- `font-paths` — embarquer des polices locales dans le projet
+- `columns: 2` — document en deux colonnes
+- `theorem-appearance` — 4 styles d'encadrés pour théorèmes (`simple`, `fancy`, `clouds`, `rainbow`)
+- Référence complète : [Typst Basics](https://quarto.org/docs/output-formats/typst.html)
+
+## `_brand.yml` — référence complète
+
+Le fichier `_brand.yml` supporte les sections suivantes :
+
+- `meta` — nom de l'organisation, lien
+- `color` — palette de couleurs nommées + couleurs sémantiques (`primary`, `secondary`, `background`, `foreground`)
+- `typography` — `base` (famille + taille), `headings`, `monospace`, polices Google ou locales
+- `logo` — positionnement dans le PDF : `width`, `location` (header/footer), `padding`, `alt`
+- `brand-mode: dark` — inverser background/foreground pour un PDF sombre
+- `quarto use brand user/repo` — partager une brand depuis GitHub
+
+Dans les blocs raw Typst, les variables brand sont accessibles via `brand-color.primary`, `brand-color.secondary`, `brand-logo-images`.
+
+- Référence : [Brand YAML](https://quarto.org/docs/authoring/brand.html)
+- Slides RR 2025 : [cderv.github.io/rr2025-quarto-brand-yml](https://cderv.github.io/rr2025-quarto-brand-yml/)
+
+## Blocs raw Typst
+
+Injectez du code Typst natif dans un document Quarto :
+
+````markdown
+```{=typst}
+#text(fill: rgb("#0055A4"), weight: "bold")[
+  Texte bleu en gras, rendu par Typst
+]
+```
+````
+
+- Le contenu est passé directement au compilateur Typst
+- Invisible dans les autres formats (HTML, DOCX...)
+- Accédez aux variables brand : `brand-color.primary`, `brand-logo-images`
+- Référence : [Typst Basics — Raw Typst](https://quarto.org/docs/output-formats/typst.html)
+
+## Traduction CSS → Typst
+
+Depuis Quarto 1.5, certaines propriétés CSS sont traduites automatiquement :
+
+- `color` → couleur du texte
+- `background-color` → fond
+- `font-weight`, `font-style` → graisse et style
+- Fonctionne sur les spans `[texte]{style="..."}` et les divs `:::{style="..."}`
+
+Les tableaux produits par `gt` (R) ou `Great Tables` (Python) avec du CSS sont rendus correctement dans le PDF Typst.
+
+- Blog post : [Beautiful Tables in Typst](https://quarto.org/docs/blog/posts/2024-07-02-beautiful-tables-in-typst/)
+
+## Template partials — guide
+
+Le pipeline de compilation Typst dans Quarto :
+
+```
+document.qmd → Pandoc + partials → document.typ → Typst → document.pdf
+```
+
+Deux fichiers contrôlent la génération du `.typ` :
+
+- **`typst-show.typ`** — le pont entre Quarto et Typst (reçoit les variables YAML, appelle la fonction template)
+- **`typst-template.typ`** — le layout du document (header, footer, page de titre, polices, couleurs)
+
+Déclarez-les dans le YAML :
+
+```yaml
+format:
+  typst:
+    template-partials:
+      - typst-show.typ
+      - typst-template.typ
+```
+
+Syntaxe Pandoc dans les partials :
+
+| Syntaxe | Rôle | Exemple |
+|---------|------|---------|
+| `$variable$` | Insertion de valeur | `$title$` |
+| `$if(var)$...$endif$` | Condition | `$if(date)$...$endif$` |
+| `$for(var)$...$endfor$` | Boucle | `$for(by-author)$...$endfor$` |
+
+Variables Quarto 1.9 : `$linkcolor$`, `$codefont$`, `$mathfont$`, `$linestretch$`.
+
+**Attention** : Quarto décale les titres d'un niveau. Le `# h1` du `.qmd` devient `heading(level: 2)` dans Typst.
+
+- Référence : [Custom Typst Formats](https://quarto.org/docs/output-formats/typst-custom.html)
+
+## Créer et partager des extensions
+
+- `quarto create extension format:typst` — créer un squelette d'extension Typst
+- `quarto add user/repo` — installer un format depuis GitHub
+- `quarto use brand user/repo` — télécharger une `_brand.yml` depuis un dépôt GitHub
+
+## Accessibilité PDF
+
+```yaml
+format:
+  typst:
+    pdf-standard: ua-1
+```
+
+- Génère un PDF conforme au standard **PDF/UA-1**
+- Les lecteurs d'écran peuvent naviguer dans le document
+- Les images avec `fig-alt` obtiennent un texte alternatif dans le PDF
+- **Limitation** : les Typst books (`type: book`) ne sont pas encore compatibles PDF/UA-1
+
+- Blog post : [PDF Accessibility and Standards](https://quarto.org/docs/blog/posts/2026-03-05-pdf-accessibility-and-standards/)
