@@ -14,8 +14,8 @@ editor: visual
 
 ::: incremental
 - Quarto couvre beaucoup de cas, mais pas tous
-- Besoin d'un rendu Typst tres specifique ? D'une fonction Typst particuliere ?
-- Solution : les **blocs raw Typst** --- votre echappatoire vers Typst natif
+- Besoin d'un rendu Typst très spécifique ? D'une fonction Typst particulière ?
+- Solution : les **blocs raw Typst** --- votre échappatoire vers Typst natif
 :::
 
 ::: notes
@@ -33,20 +33,20 @@ On a vu les options YAML et la brand. Mais parfois on a besoin d'aller plus loin
 ````
 
 ::: incremental
-- Le contenu entre `` ```{=typst} `` et `` ``` `` est passe directement a Typst
+- Le contenu entre `` ```{=typst} `` et `` ``` `` est passé directement à Typst
 - Invisible dans les autres formats (HTML, DOCX...)
-- Ideal pour du formatage avance ou des fonctions Typst
+- Idéal pour du formatage avancé ou des fonctions Typst
 :::
 
 ::: notes
-C'est un mecanisme Pandoc standard : les blocs raw permettent de cibler un format specifique. Ici on cible Typst. Le contenu est injecte tel quel dans le fichier .typ.
+C'est un mécanisme Pandoc standard : les blocs raw permettent de cibler un format spécifique. Ici on cible Typst. Le contenu est injecté tel quel dans le fichier .typ.
 :::
 
-## Acceder aux valeurs brand depuis Typst
+## Accéder aux valeurs brand depuis Typst
 
 Quarto expose les variables `_brand.yml` dans le fichier `.typ` :
 
-```{=typst}
+```{.typ}
 // Couleurs de la brand
 #let primary = brand-color.primary
 #rect(fill: primary, radius: 4pt)[
@@ -58,18 +58,18 @@ Quarto expose les variables `_brand.yml` dans le fichier `.typ` :
 ```
 
 ::: incremental
-- `brand-color.primary`, `brand-color.secondary`... les couleurs definies dans `_brand.yml`
-- `brand-logo-images` pour acceder aux logos
-- Fonctionne uniquement dans `format: typst` avec une `_brand.yml` presente
+- `brand-color.primary`, `brand-color.secondary`... les couleurs définies dans `_brand.yml`
+- `brand-logo-images` pour accéder aux logos
+- Fonctionne uniquement dans `format: typst` avec une `_brand.yml` présente
 :::
 
 ::: notes
-C'est tres pratique pour creer des elements visuels personnalises tout en restant coherent avec la charte graphique definie dans la brand.
+C'est très pratique pour créer des éléments visuels personnalisés tout en restant cohérent avec la charte graphique définie dans la brand.
 :::
 
 ## Traduction CSS → Typst
 
-Depuis Quarto 1.5, certaines proprietes CSS sont traduites automatiquement en Typst :
+Depuis Quarto 1.5, certaines propriétés CSS sont traduites automatiquement en Typst :
 
 ```{.markdown filename="document.qmd"}
 [Texte en rouge]{style="color: red; font-weight: bold;"}
@@ -87,16 +87,16 @@ Bloc avec fond gris et espacement.
 :::
 
 ::: notes
-C'est un mecanisme de commodite : on ecrit du CSS familier et Quarto le traduit en instructions Typst. Ca ne couvre pas tout le CSS, mais les proprietes de base sont la.
+C'est un mécanisme de commodité : on écrit du CSS familier et Quarto le traduit en instructions Typst. Ça ne couvre pas tout le CSS, mais les propriétés de base sont là.
 :::
 
-## Tableaux stylises avec CSS
+## Tableaux stylisés avec CSS
 
 Les packages de tableaux (gt en R, pandas en Python) produisent du HTML avec du CSS :
 
 ::: columns
 ::: {.column width="50%"}
-**Ce qu'on ecrit :**
+**Ce qu'on écrit :**
 
 ```{.r filename="document.qmd"}
 library(gt)
@@ -116,14 +116,14 @@ gt(head(penguins)) |>
 ::: incremental
 - gt produit un tableau HTML + CSS
 - Quarto traduit le CSS en Typst
-- Le PDF contient un tableau stylise
-- Pas de code Typst a ecrire !
+- Le PDF contient un tableau stylisé
+- Pas de code Typst à écrire !
 :::
 :::
 :::
 
 ::: notes
-C'est l'une des fonctionnalites les plus pratiques : on utilise gt ou pandas comme d'habitude, et le rendu PDF est fidele grace a la traduction CSS → Typst.
+C'est l'une des fonctionnalités les plus pratiques : on utilise gt ou pandas comme d'habitude, et le rendu PDF est fidèle grâce à la traduction CSS → Typst.
 :::
 
 # Template partials
@@ -139,13 +139,13 @@ document.pdf
 ```
 
 ::: incremental
-- Pandoc utilise un **template** pour generer le fichier `.typ`
-- Ce template est compose de **partials** : des morceaux reutilisables
+- Pandoc utilise un **template** pour générer le fichier `.typ`
+- Ce template est composé de **partials** : des morceaux réutilisables
 - On peut **remplacer** un partial pour personnaliser le rendu
 :::
 
 ::: notes
-On a vu keep-typ: true dans le bloc 1. Maintenant on va comprendre comment le fichier .typ est genere, et comment on peut influencer cette generation.
+On a vu keep-typ: true dans le bloc 1. Maintenant on va comprendre comment le fichier .typ est généré, et comment on peut influencer cette génération.
 :::
 
 ## Les deux partials principaux
@@ -156,7 +156,7 @@ On a vu keep-typ: true dans le bloc 1. Maintenant on va comprendre comment le fi
 
 Le pont entre Quarto et Typst :
 
-- Recoit les variables YAML
+- Reçoit les variables YAML
 - Appelle la fonction template
 - Passe titre, auteur, date...
 :::
@@ -166,15 +166,15 @@ Le pont entre Quarto et Typst :
 
 Le layout du document :
 
-- Definit header et footer
-- Gere les couleurs, polices
+- Définit header et footer
+- Gère les couleurs, polices
 - Positionne le logo
 - Structure les pages
 :::
 :::
 
 ::: notes
-typst-show.typ est le "glue code" : il recoit les metadonnees du YAML et les passe au template. typst-template.typ definit l'apparence du document. On peut remplacer l'un, l'autre, ou les deux.
+typst-show.typ est le "glue code" : il reçoit les métadonnées du YAML et les passe au template. typst-template.typ définit l'apparence du document. On peut remplacer l'un, l'autre, ou les deux.
 :::
 
 ## `typst-show.typ` : le pont Quarto → Typst {.smaller}
@@ -198,13 +198,13 @@ typst-show.typ est le "glue code" : il recoit les metadonnees du YAML et les pas
 ```
 
 ::: incremental
-- `$title$`, `$date$` → variables Pandoc remplacees par les valeurs YAML
+- `$title$`, `$date$` → variables Pandoc remplacées par les valeurs YAML
 - `$if(...)$` → condition : n'inclure que si la variable existe
-- `$for(...)$` → boucle : repeter pour chaque auteur
+- `$for(...)$` → boucle : répéter pour chaque auteur
 :::
 
 ::: notes
-C'est la syntaxe de template Pandoc, pas du Typst. Ces variables sont remplacees au moment de la generation du .typ. Le resultat est du Typst pur.
+C'est la syntaxe de template Pandoc, pas du Typst. Ces variables sont remplacées au moment de la génération du .typ. Le résultat est du Typst pur.
 :::
 
 ## `typst-template.typ` : le layout {.smaller}
@@ -238,10 +238,10 @@ C'est la syntaxe de template Pandoc, pas du Typst. Ces variables sont remplacees
 ```
 
 ::: notes
-Ceci est du Typst pur. On definit une fonction qui recoit les variables et configure le document. C'est ici qu'on personnalise l'apparence : header, footer, page de titre, polices, couleurs.
+Ceci est du Typst pur. On définit une fonction qui reçoit les variables et configure le document. C'est ici qu'on personnalise l'apparence : header, footer, page de titre, polices, couleurs.
 :::
 
-## Declarer les partials dans le YAML
+## Déclarer les partials dans le YAML
 
 ```{.yaml filename="document.qmd" code-line-numbers="3-6"}
 ---
@@ -254,30 +254,30 @@ format:
 ```
 
 ::: incremental
-- Les fichiers doivent etre dans le meme dossier que le `.qmd` (ou chemin relatif)
-- Quarto utilise **vos** partials a la place des partials par defaut
+- Les fichiers doivent être dans le même dossier que le `.qmd` (ou chemin relatif)
+- Quarto utilise **vos** partials à la place des partials par défaut
 - On peut remplacer un seul des deux fichiers
 :::
 
 ::: notes
-C'est tout ce qu'il faut pour activer des partials personnalises. Quarto detecte automatiquement quel partial remplacer.
+C'est tout ce qu'il faut pour activer des partials personnalisés. Quarto détecte automatiquement quel partial remplacer.
 :::
 
 ## Syntaxe Pandoc dans les partials
 
-| Syntaxe | Role | Exemple |
+| Syntaxe | Rôle | Exemple |
 |---------|------|---------|
 | `$variable$` | Insertion de valeur | `$title$` |
 | `$if(var)$...$endif$` | Condition | `$if(date)$...$endif$` |
 | `$for(var)$...$endfor$` | Boucle | `$for(by-author)$...$endfor$` |
-| `$it.field$` | Acces a un champ | `$it.name.literal$` |
+| `$it.field$` | Accès à un champ | `$it.name.literal$` |
 
 ::: {.fragment .fade-in}
-Ces expressions sont evaluees par **Pandoc** au moment de la generation du `.typ`, pas par Typst.
+Ces expressions sont évaluées par **Pandoc** au moment de la génération du `.typ`, pas par Typst.
 :::
 
 ::: notes
-Bien distinguer les deux etapes : Pandoc remplace les variables, puis Typst compile le resultat. Si une variable n'existe pas et qu'il n'y a pas de $if$, ca genere une erreur.
+Bien distinguer les deux étapes : Pandoc remplace les variables, puis Typst compile le résultat. Si une variable n'existe pas et qu'il n'y a pas de $if$, ça génère une erreur.
 :::
 
 ## Nouvelles variables Quarto 1.9
@@ -303,10 +303,10 @@ format:
 :::
 
 ::: notes
-Avant la 1.9, il fallait gerer ces options manuellement dans les partials. Maintenant Quarto les expose comme variables Pandoc, ce qui simplifie les templates.
+Avant la 1.9, il fallait gérer ces options manuellement dans les partials. Maintenant Quarto les expose comme variables Pandoc, ce qui simplifie les templates.
 :::
 
-## Attention au decalage des titres
+## Attention au décalage des titres
 
 ::: columns
 ::: {.column width="50%"}
@@ -338,25 +338,25 @@ Avant la 1.9, il fallait gerer ces options manuellement dans les partials. Maint
 :::
 
 ::: {.fragment .fade-in}
-Quarto decale les titres d'un niveau dans Typst. Le `h1` du `.qmd` devient un `heading(level: 2)` dans Typst. Pensez-y quand vous stylez les titres dans vos partials !
+Quarto décale les titres d'un niveau dans Typst. Le `h1` du `.qmd` devient un `heading(level: 2)` dans Typst. Pensez-y quand vous stylez les titres dans vos partials !
 :::
 
 ::: notes
-C'est un piege classique. Si vous definissez un style pour heading level 1 dans votre template, il ne s'appliquera pas aux titres # du Markdown. Il faut cibler heading level 2.
+C'est un piège classique. Si vous définissez un style pour heading level 1 dans votre template, il ne s'appliquera pas aux titres # du Markdown. Il faut cibler heading level 2.
 :::
 
 # Extensions et partage
 
-## Creer une extension Typst
+## Créer une extension Typst
 
 ```{.bash filename="Terminal"}
 quarto create extension format:typst
 ```
 
 ::: incremental
-- Genere un squelette d'extension avec `_extensions/` et les partials
-- Contient un fichier `_extension.yml` pour les metadonnees
-- Structure prete a partager sur GitHub
+- Génère un squelette d'extension avec `_extensions/` et les partials
+- Contient un fichier `_extension.yml` pour les métadonnées
+- Structure prête à partager sur GitHub
 :::
 
 ::: {.fragment .fade-in}
@@ -372,7 +372,7 @@ mon-format/
 :::
 
 ::: notes
-C'est la facon recommandee de partager un format Typst personnalise. L'extension encapsule les partials et la configuration dans un package installable.
+C'est la façon recommandée de partager un format Typst personnalisé. L'extension encapsule les partials et la configuration dans un package installable.
 :::
 
 ## Installer et utiliser un format existant
@@ -381,7 +381,7 @@ C'est la facon recommandee de partager un format Typst personnalise. L'extension
 # Installer un format depuis GitHub
 quarto add quarto-ext/typst-templates/ams
 
-# Utiliser le format installe
+# Utiliser le format installé
 quarto render document.qmd --to ams-typst
 ```
 
@@ -395,11 +395,11 @@ format:
 ::: incremental
 - De nombreux formats disponibles : [github.com/quarto-ext/typst-templates](https://github.com/quarto-ext/typst-templates)
 - AMS, IEEE, poster, lettre, CV...
-- Combines avec `_brand.yml` pour la coherence visuelle
+- Combinés avec `_brand.yml` pour la cohérence visuelle
 :::
 
 ::: notes
-La communaute Quarto a deja cree beaucoup de formats Typst. Avant de creer le votre, verifiez s'il en existe un qui correspond a vos besoins.
+La communauté Quarto a déjà créé beaucoup de formats Typst. Avant de créer le vôtre, vérifiez s'il en existe un qui correspond à vos besoins.
 :::
 
 ## Partager une brand via GitHub
@@ -409,14 +409,14 @@ quarto use brand user/repo
 ```
 
 ::: incremental
-- Telecharge le fichier `_brand.yml` depuis un depot GitHub
-- Recupere aussi les polices et logos associes
-- Ideal pour diffuser une charte graphique dans une equipe ou une organisation
+- Télécharge le fichier `_brand.yml` depuis un dépôt GitHub
+- Récupère aussi les polices et logos associés
+- Idéal pour diffuser une charte graphique dans une équipe ou une organisation
 :::
 
 ::: {.fragment .fade-in}
 ::: callout
-Combinez `quarto use brand` avec une extension de format Typst pour un workflow complet : charte graphique **et** mise en page partagees.
+Combinez `quarto use brand` avec une extension de format Typst pour un workflow complet : charte graphique **et** mise en page partagées.
 :::
 :::
 
@@ -424,7 +424,7 @@ Combinez `quarto use brand` avec une extension de format Typst pour un workflow 
 C'est un workflow puissant pour les organisations : on centralise la brand dans un repo, et chaque collaborateur peut l'installer en une commande.
 :::
 
-## Accessibilite PDF {.smaller}
+## Accessibilité PDF {.smaller}
 
 ```{.yaml filename="document.qmd" code-line-numbers="3-4"}
 ---
@@ -435,13 +435,13 @@ format:
 ```
 
 ::: incremental
-- `pdf-standard: ua-1` → genere un PDF conforme au standard **PDF/UA-1**
-- Les lecteurs d'ecran peuvent naviguer dans le document
+- `pdf-standard: ua-1` → génère un PDF conforme au standard **PDF/UA-1**
+- Les lecteurs d'écran peuvent naviguer dans le document
 - Les images avec `fig-alt` obtiennent un texte alternatif dans le PDF
 :::
 
 ```{.markdown filename="document.qmd"}
-![Masse corporelle des manchots](images/penguins-mass.png){fig-alt="Histogramme montrant la distribution de la masse corporelle des manchots par espece."}
+![Masse corporelle des manchots](images/penguins-mass.png){fig-alt="Histogramme montrant la distribution de la masse corporelle des manchots par espèce."}
 ```
 
 ::: {.fragment .fade-in}
@@ -451,7 +451,7 @@ Les **Typst books** (`type: book` avec `format: typst`) ne sont **pas encore com
 :::
 
 ::: notes
-L'accessibilite est un sujet important. PDF/UA-1 garantit que le document est utilisable par les personnes en situation de handicap. Pensez a toujours ajouter fig-alt sur vos images.
+L'accessibilité est un sujet important. PDF/UA-1 garantit que le document est utilisable par les personnes en situation de handicap. Pensez à toujours ajouter fig-alt sur vos images.
 :::
 
 # Exercice
@@ -459,10 +459,10 @@ L'accessibilite est un sujet important. PDF/UA-1 garantit que le document est ut
 ## Exercice (optionnel) {background-color="#FDC538"}
 
 ::: callout
-# A vous !
+# À vous !
 
 1. Copiez les fichiers `typst-show.typ` et `typst-template.typ` fournis dans votre projet
-2. Declarez-les dans le YAML avec `template-partials:`
+2. Déclarez-les dans le YAML avec `template-partials:`
 
     ```yaml
     format:
