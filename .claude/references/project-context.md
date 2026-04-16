@@ -14,21 +14,21 @@ Read this file when working on content, slides, or project configuration.
 ```
 _quarto.yml                 # Project config (website + clean-revealjs format)
 reveal-style.scss           # RevealJS custom theme
-index.qmd                   # Home page
+index.qmd                   # Home page (programme 2 blocs)
 preparatifs.qmd             # Setup instructions
 1-quarto-typst/
   index.qmd                 # Block 1 page (iframe + exercises)
-  1-quarto-typst.qmd        # Block 1 slides
+  1-quarto-typst.qmd        # Block 1 slides (8 slides)
 2-projets/
   index.qmd                 # Block 2 page
-  2-projets.qmd             # Block 2 slides
-3-aller-plus-loin/
-  index.qmd                 # Block 3 page
-  3-aller-plus-loin.qmd     # Block 3 slides
-4-ressources.qmd            # External resources
+  2-projets.qmd             # Block 2 slides (5 slides)
+3-aller-plus-loin/          # ARCHIVED — content disseminated into Blocs 1 & 2
+  index.qmd                 # No longer in navigation
+  3-aller-plus-loin.qmd     # Kept as reference
+4-ressources.qmd            # Resources (enriched with STORE topics + ex-Bloc 3)
 ```
 
-## Content Patterns (from RR 2023)
+## Content Patterns
 
 ### Website pages (`index.qmd`)
 - `format: html` + `author: ""` + `date: ""`
@@ -38,31 +38,32 @@ preparatifs.qmd             # Setup instructions
 ### Slides (`N-name.qmd`)
 - `format: clean-revealjs` (inherits from `_quarto.yml`)
 - `#` = section separator, `##` = slide, never `###`
-- Exercise slide: `{background-color="#FDC538"}` + `{{< countdown 05:00 >}}`
 - Speaker notes: `::: notes`
 - Code: `{.yaml filename="file.yml"}`, `code-line-numbers="2-3"`
+
+### Mode markers (callouts)
+- **Our turn:** `.callout-tip` + `{background-color="#27ae60"}`
+- **Your turn:** `callout` (default) + `{background-color="#FDC538"}` + `{{< countdown 15:00 >}}`
+- **Pépites:** `.callout-note` with "Saviez-vous que..."
 
 ### Exercises
 - All use penguins (palmerpenguins), progressive complexity
 - Distributed as zip files (not in this repo)
+- Exercise 2 includes fallback `_brand.yml` for participants who didn't finish Exercise 1
 
 ## Workshop Content by Block
 
-### Block 1 — Quarto & PDF avec Typst (40 min)
-- **Partie A (15 min):** `format: typst` vs `format: pdf`, basic options, `keep-typ: true`
-- **Partie B (20 min):** `_brand.yml` (color/typography/logo), theorem-appearance, brand dictionaries, brand-mode: dark, `quarto use brand`
-- **Exercise (~5 min):** Convert pdf→typst, add brand, inspect .typ
+### Block 1 — Un PDF pro en quelques minutes (~40 min)
+- **My turn (~7 min):** intro rythme, format:typst, options essentielles, keep-typ:true, _brand.yml — 5 slides
+- **Our turn (~10 min):** add format:typst, options, create brand, keep-typ — 1 callout slide
+- **Your turn (~15 min):** Exercise 1 (convert to typst, create brand, keep-typ) — 1 exercise slide
+- **Pépites (~3 min):** raw Typst, CSS→Typst, pdf-standard:ua-1 — 1 note slide
 
-### Block 2 — Projets & Typst book (25 min)
-- **Partie A (10 min):** `_quarto.yml` project config, brand at project level, conditional content
-- **Partie B (15 min):** `type: book`, orange-book (auto in 1.9), Marginalia, `typst-gather`
-- **Exercise (~5 min):** Create book, apply brand
-
-### Block 3 — Aller plus loin (25 min)
-- **Section 1 (5 min):** Raw Typst blocks, brand variables, CSS→Typst, styled tables
-- **Section 2 (12 min):** Template partials (`typst-show.typ`, `typst-template.typ`), Pandoc syntax, heading level shift
-- **Section 3 (8 min):** Extensions, sharing, PDF accessibility (ua-1)
-- **Exercise (optional, ~5 min):** Add partials, modify footer
+### Block 2 — Passer à l'échelle : projet et livre (~40 min)
+- **My turn (~5 min):** _quarto.yml, type:book + orange-book — 2 slides
+- **Our turn (~10 min):** create book, apply brand, content-visible — 1 callout slide
+- **Your turn (~15 min):** Exercise 2 (create book, apply brand) — 1 exercise slide
+- **Pépites (~3 min):** template partials, extensions, community formats — 1 note slide
 
 ## Key Reference URLs
 
