@@ -18,7 +18,7 @@ Un **projet Quarto** est un dossier avec un fichier `_quarto.yml`.
 - Centralise la configuration pour **tous les documents** du projet
 - Définit le type de projet (`website`, `book`, `manuscript`...)
 - Applique des options de format communes
-- Fini la répétition de YAML dans chaque `.qmd` !
+- Finie la répétition de YAML dans chaque `.qmd` !
 :::
 
 ::: notes
@@ -293,7 +293,7 @@ Utile aussi pour la reproductibilité : on fixe les versions des packages Typst.
 ## Exercice 2 {background-color="#FDC538"}
 
 ::: callout
-# A vous !
+# À vous !
 
 1. Créer un `_quarto.yml` avec `project: {type: book}` et `format: typst`
 2. Organiser le rapport en 2-3 chapitres (intro, analyse, conclusion)
