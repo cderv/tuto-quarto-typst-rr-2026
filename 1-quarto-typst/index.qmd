@@ -1,12 +1,12 @@
 ---
-title: "Quarto & PDF avec Typst"
+title: "Un PDF pro en quelques minutes"
 format: html
 author: ""
 date: ""
 ---
 
 ::: {.callout-note}
-## ⏱️ ~40 minutes — avant la pause
+## ~40 minutes — avant la pause
 :::
 
 ## Diapos
@@ -19,43 +19,35 @@ date: ""
 
 ## Points couverts
 
-### Partie A — De LaTeX à Typst (15 min)
+Ce bloc suit le rythme **My turn → Our turn → Your turn**.
 
-Le problème avec `format: pdf` (LaTeX) et pourquoi `format: typst` est une alternative sans friction.
+### My turn — Concepts clés (~7 min)
 
-- `format: pdf` = LaTeX sous le capot (installation lourde, erreurs cryptiques, lenteur)
-- `format: typst` = intégré dans Quarto, rien à installer, compilation rapide, erreurs lisibles
-- Options de base : `papersize`, `margin`, `mainfont`, `toc`, `number-sections`
-- Nouvelles options Quarto 1.9 : `linkcolor`, `codefont`, `mathfont`, `linestretch`
-- `font-paths` pour utiliser des polices locales
-- `keep-typ: true` pour inspecter le fichier `.typ` intermédiaire et apprendre/débugger
+- `format: typst` : une alternative à LaTeX sans installation, rapide, avec des erreurs lisibles
+- Options essentielles : `papersize`, `margin` (d'autres en démo)
+- `keep-typ: true` : comprendre le pipeline `.qmd` → `.typ` → `.pdf`
+- `_brand.yml` : un seul fichier pour les couleurs, polices et logo de votre organisation
 
-### Partie B — Personnaliser avec `_brand.yml` (20 min)
+### Our turn — Démo live (~10 min)
 
-::: {.callout-note collapse="true"}
-## Rappel
-`_brand.yml` a été présenté aux [Rencontres R 2025](https://cderv.github.io/rr2025-quarto-brand-yml/). Cette section approfondit son utilisation avec Typst.
-:::
+On construit ensemble un PDF Typst stylé :
 
-- Un seul fichier `_brand.yml` pour tous les formats : HTML, RevealJS, Typst
-- Structure : `meta` / `color` / `typography` / `logo`
-- Application automatique sur `format: typst` sans rien changer au `.qmd`
-- Logo dans le PDF : options de positionnement (`width`, `location`, `padding`, `alt`)
-- `theorem-appearance` : 4 styles disponibles (`simple`, `fancy`, `clouds`, `rainbow`) aux couleurs de la brand
-- Accès aux valeurs brand dans Typst : dictionnaires `brand-color`, `brand-logo`, `brand-logo-images`
-- `brand-mode: dark` pour générer des PDFs avec le thème sombre
-- Quarto 1.9 : commande `quarto use brand githubuser/repo` pour partager une brand
+1. Ajouter `format: typst` à un document existant
+2. Personnaliser avec `toc`, `mainfont`, `papersize`...
+3. Créer un `_brand.yml` minimal
+4. Explorer le fichier `.typ` généré avec `keep-typ: true`
 
 ## Exercice 1
 
 ::: {.callout-tip}
-## Exercice
+## Exercice (~15 min)
 
 Fichier : {{< fa download >}} [exercices/01-document-typst/](#)
 
-1. Ouvrir `rapport-penguins.qmd` et changer `format: pdf` en `format: typst`, puis rendre
-2. Ajouter un `_brand.yml` avec 2-3 couleurs et une police Google
-3. Activer `keep-typ: true` et explorer le fichier `.typ` généré
+1. Ouvrir `rapport-penguins.qmd` et ajouter `format: typst`, puis rendre
+2. Personnaliser avec des options : `papersize`, `toc`, `mainfont`...
+3. Créer un `_brand.yml` avec vos couleurs et une police Google
+4. Activer `keep-typ: true` et ouvrir le fichier `.typ` généré
 :::
 
 ::: {.callout-warning collapse="true"}
