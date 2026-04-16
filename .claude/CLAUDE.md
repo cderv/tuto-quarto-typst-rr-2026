@@ -27,3 +27,6 @@ Site Quarto pour un tutoriel de 2h aux Rencontres R 2026 (16 juin, Nantes). Cont
 
 - Détails techniques, URLs, content patterns → `.claude/references/project-context.md`
 - Skill pour créer du contenu → `.claude/skills/workshop-content.md`
+- Skill Quarto authoring (Posit) → `.claude/skills/quarto-authoring.md`
+- Skill alt text pour figures → `.claude/skills/quarto-alt-text.md`
+- Skill brand.yml (Posit) → `.claude/skills/brand-yml.md`
