@@ -149,42 +149,31 @@ exercises/01-document-typst/
   ```markdown
   Les vraies stars de la saga sont les `#highlight(fill: rgb("#FFE81F"))[droïdes]`{=typst} : R2-D2 apparaît dans 7 films, plus que n'importe quel humain.
   ```
-- [ ] Variante `_brand.yml` source `file` à mentionner en pépite (robustesse offline jour J), pas livrée par défaut
+- [x] ~~Variante `_brand.yml` source `file` à mentionner en pépite~~ → **réalisé différemment 2026-05-02** : Plan B complet shippé (`correction/_brand-offline.yml` + `_fonts/` 5 TTFs statiques) + section dédiée dans `preparatifs.qmd` (cf. decision log lignes 31-32)
 - [x] README.md : 4 étapes (`format: typst` → options → `keep-typ` → brand)
 
-### Pause validation — vérifier le format de l'Exo 1 avec CD
+### ~~Pause validation — vérifier le format de l'Exo 1 avec CD~~ — **CADUQUE 2026-05-02**
+
+Cette pause est désormais résolue par les **2 reviews** lancées sur l'état courant (cf. `review.md` à la racine du repo : pédagogique + participant·e). Les retours sont consolidés dans la section « Reste à faire (priorisé) » plus bas.
 
 - [x] Render la correction localement, PDF capturé (98 KB, 2 pages)
-- [ ] Demander à CD si le format starter/correction/README convient avant de dérouler l'Exo 2
+- [x] ~~Demander à CD si le format starter/correction/README convient~~ → **superseded par reviews** (`review.md`, 2026-05-02)
 
-**Observations à plat (render Exo 1 correction) :**
+**Observations à plat (render Exo 1 correction) — ⚠️ partiellement invalidées par re-test env propre :**
 - ✅ TOC + numérotation + cross-refs Table 1 / Figure 1 fonctionnent
 - ✅ `#highlight(fill: rgb("#FFE81F"))[droïdes]` rendu en jaune SW dans le PDF — pépite raw inline opérationnelle
-- ❌ Bug **espacement chiffres dans gt** confirmé en live (« 1 7 5 », « 1 3 5 8 », « I G - 8 8 ») — touche aussi les valeurs numériques, pas seulement les libellés
-- ❌ **Background crème du brand non appliqué** — fond reste blanc malgré `background: sw-cream` dans `_brand.yml`
-- ❌ **Police Inter pas chargée** : warnings Typst `unknown font family: inter` au render. Résolution Google Fonts → Typst non effective dans cet environnement
-- ❌ **Accent cassé dans label ggplot** axe Y : « Masse (kg, <U+00E9>chelle log) » alors que le titre du plot juste au-dessus a ses accents OK. Locale ggplot vs cairo
+- ✅ Bug **espacement chiffres dans gt** : confirmé sur Win/macOS, workaround `opt_table_font("Inter")` appliqué dans la correction (Q2 = (b) tranchée, decision log ligne 30)
+- ⚠️ ~~Background crème du brand non appliqué~~ → **observation périmée** : re-test 2026-05-02 montre que brand colors sont bien lues (`brand-color.background: rgb("#f5f0e1")`) ; à re-vérifier sur le PDF final
+- ⚠️ ~~Police Inter pas chargée (warnings unknown font family)~~ → **observation périmée** : la fausse claim « standalone ne marche pas » est levée (decision log ligne 27). Inter et Orbitron téléchargées correctement dans `.quarto/typst/fonts/` au render
+- ❓ Accent cassé dans label ggplot axe Y : Q4 toujours ouverte (cf. section « Questions ouvertes » consolidée plus bas)
 
-**4 questions ouvertes pour CD avant P3 (à reprendre à la prochaine session si interruption) :**
+**4 questions ouvertes (historique) — état au 2026-05-02 :**
 
-1. **Format starter / correction / README Exo 1** : OK tel quel, ou ajustements (storytelling, ton, structure des étapes du README) ?
-   → ⏳ **EN ATTENTE** : CD doit relire le starter, la correction et le README à tête reposée et donner ses retours à la prochaine session. **Ne pas avancer sur P3 tant que ce point n'est pas tranché.**
-2. **Bug espacement chiffres gt → Typst** : on documente comme « limite actuelle » à mentionner pendant l'atelier, ou on creuse pour un workaround robuste avant le 16 juin ?
-   → ✅ **TRANCHÉ 2026-05-02** : c'est un bug **connu et documenté** (quarto-cli#11683 open, milestone Future ; fix structurel via gt#1500 `as_typst()` open, milestone v0.12.0). **Workaround officiel confirmé** : `gt::opt_table_font(font = "Inter")` ajoute Inter en tête de la liste de fallbacks codée en dur par gt → Typst trouve Inter en premier → plus de switch parasite sur les chiffres. **Stratégie atelier** : appliquer le workaround partout (correction Exo 1 et book Bloc 2) + mentionner en pépite à l'oral. Voir aussi nouvelle pépite « Typst CSS » ci-dessous.
-   → **Contexte CD** : il développe sur **Windows** → le bug se manifeste chez lui car *Segoe UI* (font système Windows par défaut) est dans la liste fallback gt. Sur Linux pur (sandbox), bug invisible car aucun fallback résolu. Sur macOS, bug visible via *Apple Color Emoji*.
-   → **Tests menés sur la sandbox Linux** (Inter installée à la main pour reproduire l'env Windows) :
-     - **Test A** baseline `source: google` sans workaround → warnings Inter pas trouvée + bug latent (sur Windows, bug visible)
-     - **Test B** `source: file` (Inter local) sans workaround → `_brand.yml` source: file ne touche PAS la liste fallback hardcodée par gt → bug toujours latent
-     - **Test C** `source: file` + `opt_table_font("Inter")` → `.typ` montre `("Inter", "system-ui", "Segoe UI", ...)` → Inter en tête → bug évité dès qu'Inter est trouvée par Typst
-   → **Conclusion brand.yml seul ne suffit pas** : il faut le couple **brand pour Inter dispo** + **opt_table_font pour Inter dans le bloc gt**.
-
-3. **Brand non appliqué (background + Inter)** — 3 options :
-   - (a) basculer sur `source: file` avec les `.ttf` Inter/Orbitron commités (~500 KB) — robuste offline
-   - (b) garder `source: google` et accepter le warning (PDF lisible mais sans police custom)
-   - (c) investiguer pourquoi Quarto ne télécharge pas les fonts pour Typst dans ce setup
-   → ⏳ **Partiellement éclairé par Q2** : Quarto >= 1.5 a le mécanisme « brand.yml `source: google` télécharge dans cache local + l'enregistre pour Typst » (cf. https://quarto.org/docs/advanced/typst/brand-yaml.html). Si warning `unknown font family: inter` persiste, cause = font pas dans le cache Quarto OU pas passée en `--font-path` au compilo Typst. Outil de debug : commande `quarto typst fonts` qui liste ce que Typst voit.
-   → **Question résiduelle pour CD** : sur Windows chez toi, est-ce que `source: google` fonctionne (Inter chargée par Typst) ou pas ? Si oui (a) reste optionnel, si non bascule (a) avec TTFs commités.
-4. **Accent cassé label ggplot axe Y** : régler côté setup R des participants (`Sys.setlocale()` dans le chunk setup ?) ou corriger l'environnement de dev ?
+1. ~~Format starter / correction / README Exo 1~~ → ✅ **résolu** par reviews (`review.md`)
+2. **Bug espacement chiffres gt → Typst** : ✅ **TRANCHÉ 2026-05-02** : bug connu (quarto-cli#11683 ; fix structurel gt#1500 `as_typst()` v0.12.0). Workaround officiel `gt::opt_table_font(font = "Inter")` (decision log Q2 = (b)).
+   → **Contexte CD** : développe sur **Windows** → bug visible (Segoe UI dans fallback gt). Sur Linux pur (sandbox), invisible (aucun fallback résolu). Sur macOS, visible via Apple Color Emoji.
+3. ~~Brand non appliqué (background + Inter)~~ → ✅ **résolu 2026-05-02** : la cause supposée (« standalone ne déclenche pas le download fonts ») était une fausse claim. Re-test env propre confirme que `source: google` télécharge Inter+Orbitron correctement (cf. decision log ligne 27).
+4. **Accent cassé label ggplot axe Y** (« Masse (kg, <U+00E9>chelle log) ») : régler via `Sys.setlocale()` dans le chunk setup, ou corriger l'environnement de dev ? → ⏳ **EN ATTENTE** (cf. section « Questions ouvertes » consolidée plus bas).
 
 **Pépite ajoutée au matériel atelier (à intégrer Bloc 1) — « Typst CSS »** :
 - Source : Quarto 1.5 release notes (2024-07-11), doc dédiée https://quarto.org/docs/advanced/typst/typst-css.html
@@ -193,48 +182,75 @@ exercises/01-document-typst/
 - Narratif atelier : « pourquoi gt marche pour Typst alors qu'il sort du HTML ? Parce que Quarto a un compilateur CSS→Typst (depuis 1.5). Limites actuelles documentées (#11683 — letter-spacing parasite sur fallback de fonts, workaround `opt_table_font()`). Solution structurelle en cours côté gt v0.12.0 (`as_typst()` natif). »
 - À placer dans la pépite Bloc 1 (« Saviez-vous que... CSS→Typst »).
 
-**Cause racine identifiée (2026-05-02)** : tous les warnings `unknown font family: inter` venaient du fait que `_brand.yml` était dans un sous-dossier qui **n'est pas un projet Quarto**. Sans `_quarto.yml`, Quarto ne déclenche pas le téléchargement des fonts brand vers `.quarto/typst/fonts/`. Test isolé avec `_quarto.yml type: default` + `source: google` → cache `.quarto/typst/fonts/fonts.gstatic.com/s/inter/v20/...` créé, warnings Inter/Orbitron disparus (seuls restent ceux des fallbacks gt qui sont attendus).
+**~~Cause racine identifiée (2026-05-02)~~ — ⚠️ INVALIDÉE le même jour par re-test env propre.** Voir decision log ligne 27 : `_brand.yml` fonctionne en standalone, la fausse claim a été générée par un état de dev intermédiaire (cache obsolète ou autre).
 
-**Décision Exo 1 vs Exo 2 (2026-05-02, validée CD)** :
-- **Exo 1 = standalone** (`exercises/01-document-typst/correction/`) → **PAS de `_quarto.yml`** (`_quarto.yml` créé pour test puis supprimé). Conséquence : `_brand.yml` ne déclenche pas le download fonts.
-- **Exo 2 = projet Quarto book** (`exercises/02-projet-book/correction/`) → **`_quarto.yml` `type: book`** + `_brand.yml source: google` → fonts téléchargées par Quarto OK + workaround `opt_table_font("Inter")` pour le bug gt.
+**Décision Exo 1 vs Exo 2 (état actuel) :**
+- **Exo 1 = standalone** (`exercises/01-document-typst/correction/`) → pas de `_quarto.yml`. **`_brand.yml source: google` fonctionne nativement** (téléchargement fonts dans `.quarto/typst/fonts/`).
+- **Exo 2 = projet Quarto book** (`exercises/02-projet-book/correction/`) → `_quarto.yml type: book` + `_brand.yml source: google` réutilisé (promu au niveau projet) + workaround `opt_table_font("Inter")` pour le bug gt.
 
-**Question résiduelle pour Exo 1 standalone (à trancher avec CD)** : comment rendre la démo brand pertinente ?
-- (A) Retirer `_brand.yml` de Exo 1, utiliser uniquement YAML qmd (`mainfont`, palette inline). Brand introduit "pour de vrai" en Bloc 2/Exo 2. **Plus cohérent avec l'arc narratif**.
-- (B) Garder `_brand.yml` mais minimal (couleurs seulement, pas de fonts custom). Montre l'intention brand sans les complications.
-- (C) Garder `_brand.yml` complet + `_fonts/` commités + `source: file`. À tester : `source: file` fonctionne-t-il SANS `_quarto.yml` ? (Quarto résout-il les paths relatifs au brand.yml hors projet ?)
-- (D) `font-paths: [_fonts]` dans YAML qmd + `_fonts/` commités. Bypass brand, plus low-level.
+**~~Question résiduelle 4-options A/B/C/D~~ → ✅ TRANCHÉE 2026-05-02 = C-light** (decision log ligne 33) : `_brand.yml source: google` reste dans Exo 1, Plan B offline `source: file` shippé à part (`correction/_brand-offline.yml` + `_fonts/`). Pas de complexité ajoutée au starter.
 
-**État disque actuel (commit `10a4f05`)** :
+**État disque actuel (HEAD) :**
 - `_quarto.yml` racine : `project.render: ["**/*.qmd", "!exercises/"]` + `project.resources: ["exercises/**"]` → website ne rend pas les exos mais copie leurs sources dans `_site/exercises/` pour téléchargement.
-- `exercises/01-document-typst/correction/_brand.yml` : `source: google` (Inter + Orbitron). **Sans `_quarto.yml` à côté → ignoré pour les fonts** dans le contexte website parent. Cas standalone (test `/tmp/exo1_no_project/`) → fonctionne sans `_quarto.yml`.
-- `exercises/01-document-typst/correction/_fonts/` : Inter v4.0 TTFs (~2.1 MB) — gardé pour l'instant, à supprimer si décision A (option « brand uniquement Bloc 2 »).
-- `exercises/01-document-typst/correction/rapport-starwars.qmd` : `opt_table_font(font = "Inter")` ajouté (workaround gt → Typst).
-- Décision narrative : **Exo 1 = standalone (pas de `_quarto.yml`)**, **Exo 2 = projet Quarto book**. Profile Quarto pour les exos (batch render à part) à concevoir plus tard.
+- `exercises/01-document-typst/correction/_brand.yml` : `source: google` (Inter + Orbitron) — **fonctionne en standalone**.
+- `exercises/01-document-typst/correction/_brand-offline.yml` : Plan B `source: file` pointant vers `_fonts/`.
+- `exercises/01-document-typst/correction/_fonts/` : 5 TTFs **statiques** (~1.3 MB) — Inter-Regular/SemiBold/Bold + Orbitron-Regular/Bold. Variable fonts retirées (cassent Typst).
+- `exercises/01-document-typst/correction/rapport-starwars.qmd` : `opt_table_font(font = "Inter")` (workaround gt → Typst).
+- `exercises/01-document-typst/starter/rapport-starwars.qmd` : pas de `opt_table_font` (Q2 = (b), bug visible en live → moment péda).
 
-## Questions de follow-up à trancher (avant refactor Exo 1 + reviews)
+## Questions ouvertes (consolidées au 2026-05-02)
 
-Ces questions doivent être tranchées avant de réorganiser le matériel Bloc 1/Exo 1. Les réponses conditionnent le contenu du refactor et les briefs des reviewers.
+Toutes les autres questions historiques (Q1 séquencement reviews, Q2 `opt_table_font`, 4-options Exo 1, Q3 brand non appliqué, et Q4 ci-après pour partie) ont été tranchées dans le decision log. Restent **deux** questions actives :
 
-**Q1 — Séquencement reviews** :
-- (a) Refactor Exo 1 (retirer brand) **d'abord**, puis lancer les 2 reviews (pédagogique + participant) sur l'état refactoré → reviewers voient un état cohérent
-- (b) Lancer les reviews **maintenant** sur l'état courant + décision documentée → on récupère le feedback avant de toucher au matériel
-- → ⏳ **EN ATTENTE CD**
+**Q3 — Pépite « Typst CSS » (Quarto 1.5+, pipeline gt HTML → Typst native)** : où placer cette pépite ?
+- (a) **Bloc 1** : tôt = mieux, on explique pourquoi gt marche dès qu'on l'utilise dans Exo 1. Cohérent avec « on a une table dans le rapport, voilà comment Quarto la transforme ».
+- (b) **Bloc 2** : avec le brand (qui devient la grosse nouveauté Bloc 2). Permet de regrouper « tout ce qui est CSS-like ».
+- → ⏳ **EN ATTENTE CD** (reco Claude : (a) Bloc 1, en mention orale intégrée à la pépite gt existante plutôt qu'en slide nouvelle, pour éviter la surcharge des 3 pépites Bloc 1 actuelles).
 
-**Q2 — `opt_table_font("Inter")` dans Exo 1 simplifié** :
-Si on retire `_brand.yml` de Exo 1 (option A « brand uniquement Bloc 2 »), faut-il aussi retirer `opt_table_font("Inter")` du `gt()` ?
-- (a) Garder `opt_table_font("Inter")` : Inter est mentionnée comme `mainfont` dans le YAML qmd → le workaround reste cohérent → bug évité chez les participants Windows. Implique qu'Inter doit être dispo (préparatifs.qmd ou installation système).
-- (b) Retirer `opt_table_font("Inter")` : Exo 1 minimaliste, code R intouché. Bug `gt → typst` se manifeste chez participants Windows → on l'utilise comme **moment pédagogique en live** (« regardez le bug, voilà le workaround, on le règle dans la correction »).
-- (c) Retirer `opt_table_font` ET basculer `mainfont` sur une font système universelle (Arial, Helvetica) → pas de bug du tout, mais PDF moins joli pour la démo.
-- → ✅ **TRANCHÉ 2026-05-02 : (b)**. `opt_table_font` reste uniquement dans la correction. Le bug se manifeste live → moment pédagogique. Mention à ajouter en notes presenter Bloc 1.
+**Q4 — Accent cassé label ggplot axe Y** : « Masse (kg, <U+00E9>chelle log) ». Régler côté setup R des participants (`Sys.setlocale()` dans le chunk setup ?) ou corriger l'environnement de dev ?
+- → ⏳ **EN ATTENTE** — à investiguer lors d'une prochaine session avec le render Exo 1 dans l'env propre actuel (gh CLI + rig + R 4.6.0). Possible que le bug ait disparu avec le toolchain à jour.
 
-**Q3 — Pépite « Typst CSS » (Quarto 1.5+, pipeline gt HTML → Typst native)** :
-Cette pépite explique pourquoi `gt` (qui sort uniquement du HTML+CSS) produit des tables Typst natives stylisées. Où la placer ?
-- (a) **Bloc 1** : tôt = mieux, on explique tout de suite pourquoi gt marche dès qu'on l'utilise dans Exo 1. Cohérent avec « on a une table dans le rapport, voilà comment Quarto la transforme ».
-- (b) **Bloc 2** : avec le brand (qui devient la grosse nouveauté Bloc 2). Permet de regrouper « tout ce qui est CSS-like » avec brand.yml.
-- → ⏳ **EN ATTENTE CD**
+## Reste à faire (priorisé)
 
-**Reco Claude** : Q1=(a) refactor d'abord pour donner aux reviewers un état stable ; Q2=(a) garder `opt_table_font` car c'est le « propre » avant la pédagogie « voilà ce qui se passe sans » ; Q3=(a) Bloc 1 tôt, le narratif gagne à expliquer le mécanisme dès qu'on l'utilise.
+### P0 — Validation visuelle du Plan B et des deux corrections (rapide)
+
+- [ ] Render `exercises/01-document-typst/correction/rapport-starwars.qmd` avec l'env actuel (R 4.6.0, packages installés via `pak`) → vérifier visuellement le PDF (background crème, jaune SW sur droïdes, gt sans bug espacement, accent label ggplot)
+- [ ] Render avec `_brand-offline.yml` renommé en `_brand.yml` → confirmer que le PDF Plan B est identique au PDF online
+- [ ] Si l'accent ggplot persiste, trancher Q4 (locale R ou autre)
+
+### P1 — Phase 3 : Exo 2 book (le plus gros morceau)
+
+Cf. arborescence cible dans la section « Phase 3 » plus haut. **Note narrative à propager** : `_brand.yml` n'est plus « déplacé » depuis Bloc 1 → il est **réutilisé/promu au niveau projet** (le starter Exo 2 part SANS `_brand.yml` et l'étape 3 demande de copier celui de Exo 1 à la racine du book).
+
+### P2 — Cluster 3 reviews (issus de `review.md`)
+
+- [ ] **Wrap-up Bloc 2** : ajouter 3 slides (récap fin Bloc 1, next steps + ressources fin Bloc 2, Q&A) — ~5 min, gain pédagogique le plus important.
+- [ ] **Objectifs d'apprentissage SMART** en haut de chaque page de bloc (`1-quarto-typst/index.qmd`, `2-projets/index.qmd`).
+- [ ] **Rééquilibrage timing** : Bloc 1 Our turn 10→12 min, Bloc 2 My turn 5→8 min (marge dispo).
+- [ ] **Lien Exo 2 actuellement 404** dans `2-projets/index.qmd:44` — corriger une fois le matériel Exo 2 livré (P1).
+- [ ] **Trancher Q3** (placement pépite Typst CSS) → si (a) en mention orale, ajouter dans notes presenter de la pépite gt Bloc 1.
+
+### P3 — Phase 4 : scripts de démo `demos/01-bloc1/` + `demos/02-bloc2/`
+
+Cf. section « Phase 4 » plus haut.
+
+### P4 — Phase 5 : enrichissement slides
+
+- [ ] Fragment R `library(brand.yml) + theme_brand_*` dans la slide brand.yml Bloc 1.
+- [ ] Narratif « 3 temps » de la pépite raw Typst (raw inline → soupape format-spécifique → ouverture `quarto-highlight-text` de Mickaël Canouil).
+- [ ] Retirer per-file YAML override déjà acté (à vérifier dans l'état actuel des slides).
+
+### P5 — Phase 6 : render des deux corrections + validation visuelle
+
+Cf. section « Phase 6 ».
+
+### P6 — Pre-workshop logistics
+
+Cf. section « Pre-workshop logistics — TODO » en bas du fichier.
+
+### Reco Claude (post-cleanup)
+
+Démarrer la prochaine session par **P0** (validation visuelle, ~30 min). Si OK, attaquer **P1 Phase 3 Exo 2** (gros morceau, ~2-3h) qui débloquera ensuite les liens cassés (P2 lien 404) et les démos (P3). Le cluster 3 reviews (P2) peut s'intercaler en parallèle de P1 sans conflit.
 
 ### Phase 3 — Exo 2 : book starter + correction avec _quarto.yml + _brand.yml
 
@@ -242,7 +258,7 @@ Arborescence cible (correction) :
 ```
 exercises/02-projet-book/correction/
 ├── _quarto.yml         # type:book + chapters + appendices
-├── _brand.yml          # déplacé depuis Bloc 1
+├── _brand.yml          # réutilisé/promu depuis Bloc 1 (même contenu, niveau projet)
 ├── scripts/
 │   ├── 01-anatomie.R   # tableau gt + figure (figés, sourcés depuis le .qmd)
 │   └── 02-origines.R   # tableau gt + figure (figés)
@@ -333,12 +349,12 @@ exercises/02-projet-book/correction/
 - [ ] Render starter Exo 2 brut (sans `_quarto.yml`) pour confirmer que le starter est cohérent
 - [ ] Slides : `quarto preview` sur Bloc 1 et Bloc 2, vérifier le fragment R + retrait per-file override
 
-### Phase 7 — commit + push branch claude/explore-starwars-dataset-D8a4k
+### Phase 7 — commit + push (branche courante)
 
-- [ ] `git status` + `git diff` final
-- [ ] Commits par phase (P1 déjà commité dans `9e726b6`) : Exo 1, Exo 2, démos, slides
-- [ ] Push `claude/explore-starwars-dataset-D8a4k`
-- [ ] (Sur demande explicite uniquement) ouvrir PR avec récap des 6 phases
+- [ ] `git status` + `git diff` final à la fin de chaque phase
+- [ ] Commits granulaires par sous-phase : Exo 2 starter, Exo 2 correction, démos B1, démos B2, slides B1, slides B2, etc.
+- [ ] Push sur la branche de travail courante (état au 2026-05-02 : `claude/review-main-integration-pNEI1`).
+- [ ] (Sur demande explicite uniquement) ouvrir PR avec récap des phases.
 
 ## Documentation updates — DONE
 
