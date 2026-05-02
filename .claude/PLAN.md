@@ -106,7 +106,7 @@ exercises/01-document-typst/
 └── README.md
 ```
 
-- [ ] Starter `rapport-starwars.qmd` (~1-2 pages) :
+- [x] Starter `rapport-starwars.qmd` (~1-2 pages) :
   - YAML : `format: html`, `execute: { echo: false, warning: false }`
   - Setup chunk : `library(dplyr); library(gt); library(ggplot2); library(ggrepel)`
   - Intro : 3 lignes + question « Qui sont les colosses de la galaxie ? »
@@ -114,8 +114,8 @@ exercises/01-document-typst/
   - 1 figure : scatter `height` × `mass` (log10), Jabba étiqueté avec `ggrepel`, `fig-alt` obligatoire
   - Conclusion : 2 lignes cliffhanger (« on aimerait étendre... » → justifie Bloc 2)
   - Tout en `echo: false`
-- [ ] Correction `rapport-starwars.qmd` : starter + diff = `format: typst`, `papersize: a4`, `margin: { x: 2cm, y: 2.5cm }`, `mainfont: Inter`, `toc: true`, `number-sections: true`, `linestretch: 1.4`, `keep-typ: true`
-- [ ] Correction `_brand.yml` :
+- [x] Correction `rapport-starwars.qmd` : starter + diff = `format: typst`, `papersize: a4`, `margin: { x: 2cm, y: 2.5cm }`, `mainfont: Inter`, `toc: true`, `number-sections: true`, `linestretch: 1.4`, `keep-typ: true`
+- [x] Correction `_brand.yml` :
   ```yaml
   color:
     palette:
@@ -136,17 +136,26 @@ exercises/01-document-typst/
     base: Inter
     headings: Orbitron
   ```
-- [ ] Insérer la pépite raw Typst dans la correction, **inline**, juste après le tableau :
+- [x] Insérer la pépite raw Typst dans la correction, **inline**, juste après le tableau :
   ```markdown
   Les vraies stars de la saga sont les `#highlight(fill: rgb("#FFE81F"))[droïdes]`{=typst} : R2-D2 apparaît dans 7 films, plus que n'importe quel humain.
   ```
 - [ ] Variante `_brand.yml` source `file` à mentionner en pépite (robustesse offline jour J), pas livrée par défaut
-- [ ] README.md : 4 étapes (`format: typst` → options → `keep-typ` → brand), countdown 15-20 min
+- [x] README.md : 4 étapes (`format: typst` → options → `keep-typ` → brand)
 
 ### Pause validation — vérifier le format de l'Exo 1 avec CD
 
-- [ ] STOP avant Phase 3, render la correction localement, capture du PDF
+- [x] Render la correction localement, PDF capturé (98 KB, 2 pages)
 - [ ] Demander à CD si le format starter/correction/README convient avant de dérouler l'Exo 2
+
+**Observations à plat (render Exo 1 correction) :**
+- ✅ TOC + numérotation + cross-refs Table 1 / Figure 1 fonctionnent
+- ✅ `#highlight(fill: rgb("#FFE81F"))[droïdes]` rendu en jaune SW dans le PDF — pépite raw inline opérationnelle
+- ❌ Bug **espacement chiffres dans gt** confirmé en live (« 1 7 5 », « 1 3 5 8 », « I G - 8 8 ») — touche aussi les valeurs numériques, pas seulement les libellés
+- ❌ **Background crème du brand non appliqué** — fond reste blanc malgré `background: sw-cream` dans `_brand.yml`
+- ❌ **Police Inter pas chargée** : warnings Typst `unknown font family: inter` au render. Résolution Google Fonts → Typst non effective dans cet environnement
+- ❌ **Accent cassé dans label ggplot** axe Y : « Masse (kg, <U+00E9>chelle log) » alors que le titre du plot juste au-dessus a ses accents OK. Locale ggplot vs cairo
+- → À discuter avec CD avant P3 : faut-il investiguer ces 4 bugs maintenant, les contourner (ex. fonts source `file` + locale R), ou les laisser comme « pépites limites actuelles » à mentionner pendant l'atelier
 
 ### Phase 3 — Exo 2 : book starter + correction avec _quarto.yml + _brand.yml
 

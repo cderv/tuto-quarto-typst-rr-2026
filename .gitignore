@@ -2,3 +2,6 @@
 /_site/
 **/*.quarto_ipynb
 **/mathjax-config.js
+exercises/**/*.typ
+exercises/**/*_files/
+exercises/**/*.pdf
