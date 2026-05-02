@@ -13,13 +13,7 @@ typography:
       source: google
       weight: [400, 700]
     - family: Inter
-      source: file
-      files:
-        - path: _fonts/Inter-Regular.ttf
-          weight: 400
-        - path: _fonts/Inter-SemiBold.ttf
-          weight: 600
-        - path: _fonts/Inter-Bold.ttf
-          weight: 700
+      source: google
+      weight: [400, 600]
   base: Inter
   headings: Orbitron
