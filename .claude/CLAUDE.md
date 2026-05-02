@@ -17,6 +17,36 @@ Site Quarto pour un tutoriel de 2h aux Rencontres R 2026 (16 juin, Nantes). Cont
 - `quarto preview` / `quarto render` → `_site/`
 - Requiert Quarto 1.9+
 
+## Setup environnement (Claude Code on the web / sandbox vierge)
+
+Quarto est généralement préinstallé. Pour ajouter `gh` CLI, `rig` et R :
+
+```bash
+# 1. gh CLI via apt repo officiel
+curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+  -o /usr/share/keyrings/githubcli-archive-keyring.gpg
+chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" \
+  > /etc/apt/sources.list.d/github-cli.list
+apt update -qq && apt install -y gh
+
+# 2. rig (R Installation Manager) via gh release download
+cd /tmp && gh release download --repo r-lib/rig --pattern "r-rig_*_amd64.deb" --clobber
+apt install -y ./r-rig_*_amd64.deb
+
+# 3. R release courante via rig
+rig add release   # installe R + pak
+
+# 4. Quarto (si manquant) via gh release download
+# gh release download --repo quarto-dev/quarto-cli --pattern "quarto-*-linux-amd64.deb" --clobber
+# apt install -y ./quarto-*-linux-amd64.deb
+```
+
+Tester un rendu Typst end-to-end :
+```bash
+quarto render exercises/01-document-typst/correction/rapport-starwars.qmd
+```
+
 ## Règles critiques
 
 - Pages web : `format: html` dans le YAML (obligatoire, sinon conflit multi-format)
