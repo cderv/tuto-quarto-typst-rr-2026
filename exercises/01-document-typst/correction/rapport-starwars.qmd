@@ -56,7 +56,8 @@ top_mass |>
     mass = "Masse (kg)",
     species = "Espece",
     homeworld = "Planete"
-  )
+  ) |>
+  opt_table_font(font = "Inter")
 ```
 
 Sans surprise, **Jabba the Hutt** écrase tout le monde avec ses 1 358 kg.

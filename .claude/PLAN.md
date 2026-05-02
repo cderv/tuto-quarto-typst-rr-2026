@@ -161,11 +161,36 @@ exercises/01-document-typst/
 1. **Format starter / correction / README Exo 1** : OK tel quel, ou ajustements (storytelling, ton, structure des étapes du README) ?
    → ⏳ **EN ATTENTE** : CD doit relire le starter, la correction et le README à tête reposée et donner ses retours à la prochaine session. **Ne pas avancer sur P3 tant que ce point n'est pas tranché.**
 2. **Bug espacement chiffres gt → Typst** : on documente comme « limite actuelle » à mentionner pendant l'atelier, ou on creuse pour un workaround robuste avant le 16 juin ?
+   → ✅ **TRANCHÉ 2026-05-02** : c'est un bug **connu et documenté** (quarto-cli#11683 open, milestone Future ; fix structurel via gt#1500 `as_typst()` open, milestone v0.12.0). **Workaround officiel confirmé** : `gt::opt_table_font(font = "Inter")` ajoute Inter en tête de la liste de fallbacks codée en dur par gt → Typst trouve Inter en premier → plus de switch parasite sur les chiffres. **Stratégie atelier** : appliquer le workaround partout (correction Exo 1 et book Bloc 2) + mentionner en pépite à l'oral. Voir aussi nouvelle pépite « Typst CSS » ci-dessous.
+   → **Contexte CD** : il développe sur **Windows** → le bug se manifeste chez lui car *Segoe UI* (font système Windows par défaut) est dans la liste fallback gt. Sur Linux pur (sandbox), bug invisible car aucun fallback résolu. Sur macOS, bug visible via *Apple Color Emoji*.
+   → **Tests menés sur la sandbox Linux** (Inter installée à la main pour reproduire l'env Windows) :
+     - **Test A** baseline `source: google` sans workaround → warnings Inter pas trouvée + bug latent (sur Windows, bug visible)
+     - **Test B** `source: file` (Inter local) sans workaround → `_brand.yml` source: file ne touche PAS la liste fallback hardcodée par gt → bug toujours latent
+     - **Test C** `source: file` + `opt_table_font("Inter")` → `.typ` montre `("Inter", "system-ui", "Segoe UI", ...)` → Inter en tête → bug évité dès qu'Inter est trouvée par Typst
+   → **Conclusion brand.yml seul ne suffit pas** : il faut le couple **brand pour Inter dispo** + **opt_table_font pour Inter dans le bloc gt**.
+
 3. **Brand non appliqué (background + Inter)** — 3 options :
    - (a) basculer sur `source: file` avec les `.ttf` Inter/Orbitron commités (~500 KB) — robuste offline
    - (b) garder `source: google` et accepter le warning (PDF lisible mais sans police custom)
    - (c) investiguer pourquoi Quarto ne télécharge pas les fonts pour Typst dans ce setup
+   → ⏳ **Partiellement éclairé par Q2** : Quarto >= 1.5 a le mécanisme « brand.yml `source: google` télécharge dans cache local + l'enregistre pour Typst » (cf. https://quarto.org/docs/advanced/typst/brand-yaml.html). Si warning `unknown font family: inter` persiste, cause = font pas dans le cache Quarto OU pas passée en `--font-path` au compilo Typst. Outil de debug : commande `quarto typst fonts` qui liste ce que Typst voit.
+   → **Question résiduelle pour CD** : sur Windows chez toi, est-ce que `source: google` fonctionne (Inter chargée par Typst) ou pas ? Si oui (a) reste optionnel, si non bascule (a) avec TTFs commités.
 4. **Accent cassé label ggplot axe Y** : régler côté setup R des participants (`Sys.setlocale()` dans le chunk setup ?) ou corriger l'environnement de dev ?
+
+**Pépite ajoutée au matériel atelier (à intégrer Bloc 1) — « Typst CSS »** :
+- Source : Quarto 1.5 release notes (2024-07-11), doc dédiée https://quarto.org/docs/advanced/typst/typst-css.html
+- Mécanisme : Quarto `juice` les tables HTML brutes (inline les CSS via stylesheet) → un filtre post-process traduit chaque attribut HTML+propriété CSS en attribut `typst:property` ou `typst:text:property` → le Typst writer de Pandoc émet du **code Typst natif stylisé**.
+- C'est ÇA qui permet à `gt` (qui sort uniquement du HTML+CSS) de produire des tables Typst natives stylisées — pas de hack, c'est un pipeline officiel.
+- Narratif atelier : « pourquoi gt marche pour Typst alors qu'il sort du HTML ? Parce que Quarto a un compilateur CSS→Typst (depuis 1.5). Limites actuelles documentées (#11683 — letter-spacing parasite sur fallback de fonts, workaround `opt_table_font()`). Solution structurelle en cours côté gt v0.12.0 (`as_typst()` natif). »
+- À placer dans la pépite Bloc 1 (« Saviez-vous que... CSS→Typst »).
+
+**État disque post-Q2 (commit `<en cours>`)** :
+- `exercises/01-document-typst/correction/rapport-starwars.qmd` modifié : `opt_table_font(font = "Inter")` ajouté au bloc gt.
+- `exercises/01-document-typst/correction/_brand.yml` modifié (TEMPORAIRE pour test) : Inter passée en `source: file` avec `files: [_fonts/Inter-Regular.ttf, Inter-SemiBold.ttf, Inter-Bold.ttf]` (poids 400/600/700).
+- `exercises/01-document-typst/correction/_fonts/` ajouté (TEMPORAIRE pour test, ~2.1 MB) : Inter v4.0 TTFs (Regular, SemiBold, Bold, Variable) téléchargés depuis https://github.com/rsms/inter/releases/tag/v4.0.
+- **Décision finale en attente CD** :
+  - Garder `source: file` + `_fonts/` commités (~2.1 MB) pour robustesse offline jour J Nantes ET reproductibilité participants ?
+  - OU revert à `source: google` (Quarto télécharge pour participants) + supprimer `_fonts/` ?
 
 ### Phase 3 — Exo 2 : book starter + correction avec _quarto.yml + _brand.yml
 
