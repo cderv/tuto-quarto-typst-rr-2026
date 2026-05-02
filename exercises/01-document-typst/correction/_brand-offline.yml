@@ -1,0 +1,29 @@
+color:
+  palette:
+    sw-yellow: "#FFE81F"
+    sw-black:  "#0B0B0F"
+    sw-cream:  "#F5F0E1"
+  primary:    sw-yellow
+  foreground: sw-black
+  background: sw-cream
+
+typography:
+  fonts:
+    - family: Inter
+      source: file
+      files:
+        - path: _fonts/Inter-Regular.ttf
+          weight: 400
+        - path: _fonts/Inter-SemiBold.ttf
+          weight: 600
+        - path: _fonts/Inter-Bold.ttf
+          weight: 700
+    - family: Orbitron
+      source: file
+      files:
+        - path: _fonts/Orbitron-Regular.ttf
+          weight: 400
+        - path: _fonts/Orbitron-Bold.ttf
+          weight: 700
+  base: Inter
+  headings: Orbitron
