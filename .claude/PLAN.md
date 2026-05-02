@@ -25,6 +25,7 @@ Event: Rencontres R 2026, 16 juin, Nantes — 2h tutorial
 - 2026-05-02: **Exo 1 = doc standalone (PAS de `_quarto.yml`)**, **Exo 2 = projet Quarto book** (`_quarto.yml type: book`). Cohérent avec narratif Bloc 1 (`.qmd` → PDF) → Bloc 2 (passer à l'échelle projet).
 - 2026-05-02: **Découverte Q2 — `_brand.yml` n'est lu que dans un projet Quarto**. Sans `_quarto.yml`, brand colors ET brand fonts sont ignorées. Conséquence pour Exo 1 standalone : stratégie fonts à trouver (cf. décisions Q2 dans PLAN).
 - 2026-05-02: **Bug `_brand.yml source: bunny` confirmé Quarto 1.9.36 / Typst 0.14.2** : avec un projet Quarto local et `source: bunny`, brand colors lues mais fonts non téléchargées vers `.quarto/typst/fonts/`. Aucun warning d'erreur, fallback silencieux. À comparer : `source: google` même config → fonts téléchargées dans `fonts.gstatic.com/s/inter/v20/...`. **À reporter à l'équipe Quarto** (CD est la bonne personne).
+- 2026-05-02: **Q2 tranchée = (b)** — `opt_table_font("Inter")` UNIQUEMENT dans la correction Exo 1, **PAS dans le starter**. Le bug d'espacement chiffres `gt → Typst` (« 1 7 5 ») se manifeste donc en live chez les participants Windows/macOS pendant l'exo → sert de **moment pédagogique** : « regardez ce qui sort, voici le workaround ». La correction montre le fix propre (`opt_table_font("Inter")`). Mention rapide à intégrer en notes presenter du Bloc 1 pour outiller l'animation. État disque déjà conforme (commit `20bde0c`).
 
 ## Current structure (implemented 2026-04-16)
 
@@ -220,7 +221,7 @@ Si on retire `_brand.yml` de Exo 1 (option A « brand uniquement Bloc 2 »), fau
 - (a) Garder `opt_table_font("Inter")` : Inter est mentionnée comme `mainfont` dans le YAML qmd → le workaround reste cohérent → bug évité chez les participants Windows. Implique qu'Inter doit être dispo (préparatifs.qmd ou installation système).
 - (b) Retirer `opt_table_font("Inter")` : Exo 1 minimaliste, code R intouché. Bug `gt → typst` se manifeste chez participants Windows → on l'utilise comme **moment pédagogique en live** (« regardez le bug, voilà le workaround, on le règle dans la correction »).
 - (c) Retirer `opt_table_font` ET basculer `mainfont` sur une font système universelle (Arial, Helvetica) → pas de bug du tout, mais PDF moins joli pour la démo.
-- → ⏳ **EN ATTENTE CD**
+- → ✅ **TRANCHÉ 2026-05-02 : (b)**. `opt_table_font` reste uniquement dans la correction. Le bug se manifeste live → moment pédagogique. Mention à ajouter en notes presenter Bloc 1.
 
 **Q3 — Pépite « Typst CSS » (Quarto 1.5+, pipeline gt HTML → Typst native)** :
 Cette pépite explique pourquoi `gt` (qui sort uniquement du HTML+CSS) produit des tables Typst natives stylisées. Où la placer ?
