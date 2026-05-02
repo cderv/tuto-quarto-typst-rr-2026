@@ -38,6 +38,10 @@ On construit ensemble un livre Typst :
 
 ## Exercice 2
 
+::: {.callout-note appearance="minimal"}
+L'Exercice 2 est **autonome vis-à-vis de l'Exercice 1** : si vous n'avez pas terminé le Bloc 1, partez directement du dossier `starter/` ci-dessous.
+:::
+
 ::: {.callout-tip}
 ## Exercice (~15 min)
 

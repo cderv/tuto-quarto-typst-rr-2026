@@ -54,9 +54,12 @@ top_mass |>
     name = "Personnage",
     height = "Taille (cm)",
     mass = "Masse (kg)",
+    # libellés sans accent : contournement bug gt → Typst sur les en-têtes
     species = "Espece",
     homeworld = "Planete"
   ) |>
+  # opt_table_font : force Inter en tête de la liste de polices gt
+  # → évite l'espacement parasite des chiffres (« 1 7 5 ») sur Windows/macOS
   opt_table_font(font = "Inter")
 ```
 

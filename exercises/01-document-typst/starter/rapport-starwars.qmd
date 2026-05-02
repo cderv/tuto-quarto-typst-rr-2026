@@ -44,6 +44,7 @@ top_mass |>
     name = "Personnage",
     height = "Taille (cm)",
     mass = "Masse (kg)",
+    # libellés sans accent : contournement bug gt → Typst sur les en-têtes
     species = "Espece",
     homeworld = "Planete"
   )
