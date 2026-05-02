@@ -1,0 +1,19 @@
+color:
+  palette:
+    sw-yellow: "#FFE81F"
+    sw-black:  "#0B0B0F"
+    sw-cream:  "#F5F0E1"
+  primary:    sw-yellow
+  foreground: sw-black
+  background: sw-cream
+
+typography:
+  fonts:
+    - family: Orbitron
+      source: google
+      weight: [400, 700]
+    - family: Inter
+      source: google
+      weight: [400, 600]
+  base: Inter
+  headings: Orbitron
