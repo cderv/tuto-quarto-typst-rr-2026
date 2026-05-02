@@ -1,5 +1,8 @@
 project:
   type: website
+  render:
+    - "**/*.qmd"
+    - "!exercises/"
 
 website:
   title: "PDF sans frictions : Typst dans vos projets Quarto"
