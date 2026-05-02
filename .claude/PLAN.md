@@ -59,19 +59,198 @@ Event: Rencontres R 2026, 16 juin, Nantes — 2h tutorial
 - [x] Standardize callout syntax across decks
 - [x] Fix raw `{=typst}` block in Bloc 3 used for display
 
-## Exercise materials — TODO
+## Exercise materials & live demos — IN PROGRESS (started 2026-05-02)
 
-- [ ] Create `exercises/` folder structure
-- [ ] Create `rapport-penguins.qmd` starter file (Exercise 1)
-- [ ] Create Exercise 2 starter files (book project)
-- [ ] Create `_brand.yml` fallback template for Exercise 2
-- [ ] Bundle as `exercises.zip` for download
-- [ ] Update all `(#)` placeholder links in index pages and preparatifs.qmd
+Workshop fil rouge : dataset `dplyr::starwars` (87 × 14), tableaux `gt` partout, code R figé/livré (les participants ne touchent qu'au YAML, au `_brand.yml` et au `.typ`). Storytelling minimal : **« Qui sont les colosses de la galaxie ? »** — Jabba en outlier de masse, scatter h × m comme figure phare. Punchline finale du book : les vraies stars sont les droïdes (R2-D2 dans 7 films).
 
-## Live demo scripts — TODO
+**Décisions actées (validées par CD le 2026-05-02, cf. decision log) :**
+- Renommage global `penguins` → `starwars` partout (slides, README, preparatifs, PLAN.md, topic-store, project-context, workshop-content)
+- `echo: false` sur les chunks R d'analyse ; `echo: true`/fenced sur les chunks de **démo Quarto/Typst** (ex. pépite `theme_brand_*`)
+- Bloc 2 = book à **2 chapitres réels** (option β) pour rendre orange-book + numérotation Fig 2.1 visibles
+- Pépite raw Typst Bloc 1 = `#highlight()` inline (vs candidats écartés : B `#columns(2)` mention orale uniquement, C `#place(top+right)`)
+- Narratif pépite raw Typst en **3 temps** : raw inline → pivot « soupape format-spécifique » → ouverture extension `quarto-highlight-text` de Mickaël Canouil (mention seulement, bonus communauté FR pour les RR Nantes)
+- Pépite brand côté R = `theme_brand_ggplot2()` + `theme_brand_gt()` en **fragment de slide** Bloc 1 (option a, trace écrite)
+- Per-file YAML override : **retiré** des slides (MENTION → STORE)
+- Pas de `cover-image` (non supporté natif Typst → on n'en parle pas, même en pépite)
 
-- [ ] Write Bloc 1 demo script: add typst, options, create brand, keep-typ
-- [ ] Write Bloc 2 demo script: create book project, apply brand, content-visible
+**Pièges techniques confirmés** (validés sur `/tmp/sw_typst/test.qmd`) :
+- gt → Typst : espace parasite des chiffres (« 1 7 5 ») — workaround = libellés ASCII courts
+- gt `tbl-cap` casse les accents (« <U+00E9> ») mais `tab_header(title=...)` à l'intérieur de gt les accepte → mettre titre dans `tab_header()`
+- `theme_brand_ggplot2()` ne touche que bg/fg, pas les `geom_*` → pour le jaune SW dans les points, extraire via `brand_color_pluck(b, "primary")` et passer à `scale_color_manual()`
+- Dépendances R à mentionner dans `preparatifs.qmd` : `bslib >= 0.9.0`, `brand.yml`, `prismatic` (requis par `theme_brand_ggplot2`)
+- Fonts source : `google` par défaut (réseau OK), variante `file` à mentionner pour robustesse offline jour J Nantes
+
+### Phase 1 — Renommage global penguins → starwars + mise à jour PLAN/topic-store
+
+- [x] Grep des occurrences `penguins`/`palmer` dans `*.qmd`/`*.md`/`*.yml`
+- [x] Renommer dans `preparatifs.qmd` (packages : enlever `palmerpenguins`, ajouter `dplyr`/`gt`/`brand.yml` — penser à ajouter `prismatic` aussi)
+- [x] Renommer dans `1-quarto-typst/1-quarto-typst.qmd` et `1-quarto-typst/index.qmd`
+- [x] Renommer dans `README.md`
+- [x] Renommer dans `.claude/references/workshop-pacing.md`, `topic-store.md`, `project-context.md`
+- [x] Renommer dans `.claude/skills/workshop-content.md`
+- [x] Mettre à jour PLAN.md decision log avec entrées 2026-05-02
+- [ ] Vérifier `2-projets/2-projets.qmd`, `4-ressources.qmd`, `index.qmd` (racine), `_quarto.yml` (racine)
+- [ ] Ajouter `prismatic` aux packages requis dans `preparatifs.qmd`
+- [ ] Grep final pour confirmer plus aucune occurrence
+
+### Phase 2 — Exo 1 : starter rapport-starwars + correction brand + raw highlight
+
+Arborescence cible :
+```
+exercises/01-document-typst/
+├── starter/
+│   └── rapport-starwars.qmd       # format: html, R figé, à transformer
+├── correction/
+│   ├── _brand.yml                 # Star Wars
+│   └── rapport-starwars.qmd       # format: typst + brand + #highlight()
+└── README.md
+```
+
+- [ ] Starter `rapport-starwars.qmd` (~1-2 pages) :
+  - YAML : `format: html`, `execute: { echo: false, warning: false }`
+  - Setup chunk : `library(dplyr); library(gt); library(ggplot2); library(ggrepel)`
+  - Intro : 3 lignes + question « Qui sont les colosses de la galaxie ? »
+  - 1 tableau gt : top 5 par masse — `starwars |> arrange(desc(mass)) |> slice_head(n=5) |> select(name, height, mass, species, homeworld) |> gt() |> tab_header(title="Les colosses de la galaxie", subtitle="Top 5 par masse (kg)") |> fmt_number(columns=mass, decimals=0) |> cols_label(...)` — labels ASCII (workaround bug accents)
+  - 1 figure : scatter `height` × `mass` (log10), Jabba étiqueté avec `ggrepel`, `fig-alt` obligatoire
+  - Conclusion : 2 lignes cliffhanger (« on aimerait étendre... » → justifie Bloc 2)
+  - Tout en `echo: false`
+- [ ] Correction `rapport-starwars.qmd` : starter + diff = `format: typst`, `papersize: a4`, `margin: { x: 2cm, y: 2.5cm }`, `mainfont: Inter`, `toc: true`, `number-sections: true`, `linestretch: 1.4`, `keep-typ: true`
+- [ ] Correction `_brand.yml` :
+  ```yaml
+  color:
+    palette:
+      sw-yellow: "#FFE81F"
+      sw-black:  "#0B0B0F"
+      sw-cream:  "#F5F0E1"
+    primary:    sw-yellow
+    foreground: sw-black
+    background: sw-cream
+  typography:
+    fonts:
+      - family: Orbitron
+        source: google
+        weight: [400, 700]
+      - family: Inter
+        source: google
+        weight: [400, 600]
+    base: Inter
+    headings: Orbitron
+  ```
+- [ ] Insérer la pépite raw Typst dans la correction, **inline**, juste après le tableau :
+  ```markdown
+  Les vraies stars de la saga sont les `#highlight(fill: rgb("#FFE81F"))[droïdes]`{=typst} : R2-D2 apparaît dans 7 films, plus que n'importe quel humain.
+  ```
+- [ ] Variante `_brand.yml` source `file` à mentionner en pépite (robustesse offline jour J), pas livrée par défaut
+- [ ] README.md : 4 étapes (`format: typst` → options → `keep-typ` → brand), countdown 15-20 min
+
+### Pause validation — vérifier le format de l'Exo 1 avec CD
+
+- [ ] STOP avant Phase 3, render la correction localement, capture du PDF
+- [ ] Demander à CD si le format starter/correction/README convient avant de dérouler l'Exo 2
+
+### Phase 3 — Exo 2 : book starter + correction avec _quarto.yml + _brand.yml
+
+Arborescence cible (correction) :
+```
+exercises/02-projet-book/correction/
+├── _quarto.yml         # type:book + chapters + appendices
+├── _brand.yml          # déplacé depuis Bloc 1
+├── scripts/
+│   ├── 01-anatomie.R   # tableau gt + figure (figés, sourcés depuis le .qmd)
+│   └── 02-origines.R   # tableau gt + figure (figés)
+├── index.qmd           # # Préface {.unnumbered}
+├── 01-anatomie.qmd     # = rapport Bloc 1 → Tab 1.1, Fig 1.1, raw #highlight()
+├── 02-origines.qmd     # NOUVEAU contenu R figé → Tab 2.1, Fig 2.1
+├── conclusion.qmd      # cross-refs + .content-visible pagebreak
+└── annexe-donnees.qmd  # listé dans appendices: → A.1
+```
+
+- [ ] `_quarto.yml` :
+  ```yaml
+  project:
+    type: book
+  book:
+    title: "Anatomie d'une saga"
+    subtitle: "Portrait statistique des personnages de Star Wars"
+    author: "Christophe Dervieux"
+    date: "2026-06-16"
+    chapters:
+      - index.qmd
+      - 01-anatomie.qmd
+      - 02-origines.qmd
+      - conclusion.qmd
+    appendices:
+      - annexe-donnees.qmd
+  format: typst
+  ```
+- [ ] `index.qmd` : `# Préface {.unnumbered}` + 5 lignes
+- [ ] `01-anatomie.qmd` : rapport Bloc 1 réutilisé (top masses + scatter) + raw `#highlight()` inline, label `@fig-anatomie-mass`
+- [ ] `02-origines.qmd` : contenu R figé NOUVEAU — 10-15 lignes (`count(homeworld)` + gt top 10, `count(species)` + barplot ggplot col), labels `@tbl-origines-homeworlds`, `@fig-origines-especes`
+- [ ] `conclusion.qmd` : punchline droïdes + 2 cross-refs (`@fig-anatomie-mass`, `@sec-origines`) + bloc `::: {.content-visible when-format="typst"} {{< pagebreak >}} :::`
+- [ ] `annexe-donnees.qmd` : description du dataset (87×14, source dplyr)
+- [ ] Starter book : les 5 `.qmd` déjà découpés mais **sans** `_quarto.yml` ni `_brand.yml`. Tâches participants :
+  1. Créer `_quarto.yml` `type: default` + `format: typst`, render
+  2. Passer en `type: book`, render → orange-book
+  3. Déplacer `_brand.yml` du Bloc 1 à la racine, render
+  4. Bonus : cross-ref dans conclusion
+  5. Bonus 2 : saut de page `.content-visible`
+- [ ] `exercises/02-projet-book/_brand-fallback.yml` pour ceux qui n'ont pas fini Exo 1
+- [ ] README.md exo 2
+
+### Phase 4 — demos/01-bloc1/ + demos/02-bloc2/ scripts pas-à-pas
+
+- [ ] `demos/01-bloc1/README.md` — script de démo Bloc 1 (5 étapes, ~10 min) :
+  1. Remplacer `format: html` par `format: typst`, render
+  2. Ajouter `papersize`, `margin`, `toc`, `mainfont`
+  3. Activer `keep-typ: true`, ouvrir le `.typ` (moment « aha »)
+  4. Créer `_brand.yml` (palette SW + Orbitron + Inter), re-render
+  5. Pépite live : `library(brand.yml); read_brand_yml() |> theme_brand_ggplot2()` → ggplot brandé
+- [ ] `demos/02-bloc2/README.md` — script de démo Bloc 2 (7 étapes, ~10 min) :
+  1. Créer `_quarto.yml` minimal `type: default` + `format: typst`
+  2. Découper rapport en `index.qmd` + `01-anatomie.qmd`
+  3. Ajouter `02-origines.qmd` livré tout fait, l'inclure dans `chapters:`
+  4. Passer `type: default` → `type: book`, render → orange-book + Fig 2.1
+  5. Cross-ref `@fig-anatomie-mass` dans conclusion → *Fig 1.1*
+  6. Saut de page conditionnel `.content-visible when-format="typst"` + `{{< pagebreak >}}`
+  7. Mention `appendices:` + `# Préface {.unnumbered}`
+
+### Phase 5 — slides : pépite R Bloc 1 + retrait per-file override
+
+- [ ] Dans `1-quarto-typst/1-quarto-typst.qmd`, ajouter un fragment incremental sur le slide brand.yml avec :
+  ```r
+  library(brand.yml)
+  b <- read_brand_yml()
+  ggplot(...) + ... + theme_brand_ggplot2(b)   # plot brandé
+  table |> theme_brand_gt(b)                   # gt brandé
+  ```
+  Narratif : « un fichier `_brand.yml`, partout : PDF Typst, HTML preview, ggplot, gt »
+- [ ] Saviez-vous que : `brand_color_pluck(b, "primary")` retourne `"#FFE81F"` → réutilisable dans `scale_color_manual(values=...)` (pas de `scale_color_brand_*` auto pour l'instant)
+- [ ] Retirer le slide/mention « per-file YAML override » dans `2-projets/2-projets.qmd` (MENTION → STORE ; passer en page ressources si besoin)
+- [ ] Mettre à jour la pépite raw Typst Bloc 1 avec le narratif 3 temps : raw inline → pivot « soupape format-spécifique » → ouverture `quarto-highlight-text` de Mickaël Canouil (https://github.com/mcanouil/quarto-highlight-text), mention seulement, renvoi vers pépite extension Bloc 2
+
+### Phase 6 — render des corrections, validation visuelle
+
+- [ ] `quarto render exercises/01-document-typst/correction/` → ouvrir le PDF, vérifier :
+  - Fonts Orbitron (titre) + Inter (corps) chargées
+  - Background crème, jaune SW visible
+  - `#highlight()` jaune sur « droïdes »
+  - Tableau gt rendu (libellés ASCII courts → pas de bug espacement chiffres)
+- [ ] `quarto render exercises/02-projet-book/correction/` → vérifier :
+  - Page de garde orange-book (titre/sous-titre/auteur/date/fond brandé)
+  - Préface non-numérotée
+  - Chapitres 1 et 2 numérotés, Fig 1.1, Fig 2.1, Tab 1.1, Tab 2.1
+  - Cross-refs résolues dans conclusion
+  - Saut de page conditionnel
+  - Annexe A
+- [ ] Render starter Exo 2 brut (sans `_quarto.yml`) pour confirmer que le starter est cohérent
+- [ ] Slides : `quarto preview` sur Bloc 1 et Bloc 2, vérifier le fragment R + retrait per-file override
+
+### Phase 7 — commit + push branch claude/explore-starwars-dataset-D8a4k
+
+- [ ] `git status` + `git diff` final
+- [ ] Commits par phase (P1 déjà commité dans `9e726b6`) : Exo 1, Exo 2, démos, slides
+- [ ] Push `claude/explore-starwars-dataset-D8a4k`
+- [ ] (Sur demande explicite uniquement) ouvrir PR avec récap des 6 phases
 
 ## Documentation updates — DONE
 
