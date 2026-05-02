@@ -15,7 +15,7 @@ Avant le tutoriel, merci de préparer votre environnement de travail.
 - **Packages R** :
 
 ```r
-pkg <- c("rmarkdown", "dplyr", "ggplot2", "ggrepel", "gt", "knitr", "brand.yml")
+pkg <- c("rmarkdown", "quarto", "dplyr", "ggplot2", "ggrepel", "gt", "knitr", "brand.yml", "prismatic")
 install.packages(pkg)
 ```
 
