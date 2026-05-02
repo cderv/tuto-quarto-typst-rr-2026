@@ -21,8 +21,14 @@ install.packages(pkg)
 
 ## Téléchargements
 
-- 📦 [exercices.zip](#) — décompresser sur le bureau
-- 📦 [exercices-correction.zip](#) — ⚠️ ne pas ouvrir avant le tutoriel !
+Les exercices sont versionnés dans le dépôt GitHub du tutoriel.
+
+- 📦 [Télécharger le dépôt en zip](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/archive/refs/heads/main.zip) — décompresser sur le bureau, le matériel est dans `exercises/`
+- 📁 [Parcourir `exercises/` sur GitHub](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises)
+
+::: {.callout-warning appearance="minimal"}
+Les dossiers `correction/` contiennent les solutions complètes — ⚠️ ne les ouvrez pas avant le tutoriel !
+:::
 
 ## Vérification
 

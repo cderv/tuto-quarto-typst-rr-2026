@@ -42,7 +42,7 @@ On construit ensemble un PDF Typst stylé :
 ::: {.callout-tip}
 ## Exercice (~15 min)
 
-Fichier : {{< fa download >}} [exercices/01-document-typst/](#)
+Fichier : {{< fa download >}} [exercises/01-document-typst/starter/](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/starter)
 
 1. Ouvrir `rapport-starwars.qmd` et ajouter `format: typst`, puis rendre
 2. Personnaliser avec des options : `papersize`, `toc`, `mainfont`...
@@ -53,5 +53,5 @@ Fichier : {{< fa download >}} [exercices/01-document-typst/](#)
 ::: {.callout-warning collapse="true"}
 ## Correction
 
-{{< fa download >}} [Voir la correction](#)
+{{< fa download >}} [Voir la correction](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/correction)
 :::
