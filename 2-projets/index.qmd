@@ -41,7 +41,7 @@ On construit ensemble un livre Typst :
 ::: {.callout-tip}
 ## Exercice (~15 min)
 
-Fichier : {{< fa download >}} [exercices/02-projet-book/](#)
+Fichier : {{< fa download >}} [exercises/02-projet-book/starter/](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises/02-projet-book) _(matériel finalisé avant le 16 juin)_
 
 1. Créer un `_quarto.yml` avec `project: {type: book}` et `format: typst`
 2. Organiser le rapport en 2-3 chapitres (intro, analyse, conclusion)
@@ -50,11 +50,11 @@ Fichier : {{< fa download >}} [exercices/02-projet-book/](#)
 :::
 
 ::: {.callout-warning appearance="minimal"}
-Pas de `_brand.yml` ? Copiez le fichier fourni dans `exercices/`.
+Pas de `_brand.yml` ? Copiez le fichier fourni dans `exercises/02-projet-book/`.
 :::
 
 ::: {.callout-warning collapse="true"}
 ## Correction
 
-{{< fa download >}} [Voir la correction](#)
+{{< fa download >}} [Voir la correction](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises/02-projet-book/correction) _(disponible avant le 16 juin)_
 :::
