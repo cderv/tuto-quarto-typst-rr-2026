@@ -15,7 +15,7 @@ Avant le tutoriel, merci de préparer votre environnement de travail.
 - **Packages R** :
 
 ```r
-pkg <- c("rmarkdown", "palmerpenguins", "ggplot2", "knitr")
+pkg <- c("rmarkdown", "dplyr", "ggplot2", "ggrepel", "gt", "knitr", "brand.yml")
 install.packages(pkg)
 ```
 
@@ -30,6 +30,6 @@ Vérifiez que tout fonctionne en exécutant dans R :
 
 ```r
 quarto::quarto_version() # doit afficher 1.9 ou supérieur
-library(palmerpenguins)
-head(penguins)
+library(dplyr)
+head(starwars)
 ```

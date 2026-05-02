@@ -30,7 +30,7 @@ NOT "LaTeX bad, switch to Typst." Instead: "You have a Quarto doc, you want a PD
 | `_brand.yml` basics | Create a minimal brand (2 colors + 1 font), render | The payoff: professional PDF from minimal config |
 | `_brand.yml` auto-application | Change brand, all docs change | Show in demo, no dedicated slide needed |
 
-**Exercise 1:** Open `rapport-penguins.qmd` (HTML doc). Add `format: typst`, render PDF.
+**Exercise 1:** Open `rapport-starwars.qmd` (HTML doc). Add `format: typst`, render PDF.
 Create a `_brand.yml` with colors and font. Enable `keep-typ: true`, inspect the `.typ`.
 
 ### DEMO — Show live, no dedicated exercise

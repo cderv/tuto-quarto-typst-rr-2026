@@ -47,7 +47,7 @@ preparatifs.qmd             # Setup instructions
 - **Pépites:** `.callout-note` with "Saviez-vous que..."
 
 ### Exercises
-- All use penguins (palmerpenguins), progressive complexity
+- All use Star Wars (`dplyr::starwars`), progressive complexity. Tables: `gt` everywhere.
 - Distributed as zip files (not in this repo)
 - Exercise 2 includes fallback `_brand.yml` for participants who didn't finish Exercise 1
 

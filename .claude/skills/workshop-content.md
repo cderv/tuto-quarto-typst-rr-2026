@@ -18,7 +18,7 @@ following the established patterns from RR 2023.
 - **Language:** French
 - **Instructors:** Christophe Dervieux (Posit) & Maëlle Salmon (ROpenSci, Cynkra)
 - **Story arc:** `.qmd` → PDF professionnel → livre → personnalisé/pérennisé
-- **Dataset:** penguins (palmerpenguins) throughout all exercises
+- **Dataset:** Star Wars (`dplyr::starwars`) throughout all exercises. Tables produced with `gt`.
 - **Quarto version:** 1.9+ (Typst 0.14.2, Pandoc 3.8.3)
 
 ## Directory Conventions
@@ -227,9 +227,11 @@ When introducing an exercise in the slides:
 
 ## Exercise File Conventions
 
-- Exercise files use the penguins dataset (palmerpenguins)
+- Exercise files use the Star Wars dataset (`dplyr::starwars`)
+- Tables produced with `gt` (CSS → Typst native translation showcased)
+- R code is **frozen** in the starter files — participants do not modify it; they add Quarto/Typst features around it
 - Progressive complexity: each exercise builds on the previous one
-- Base file: `rapport-penguins.qmd` — a simple report with penguin data analysis
+- Base file: `rapport-starwars.qmd` — a one-page report with one `gt` table + one `ggplot2` figure
 - Exercise instructions as comments in the YAML or as callout blocks
 - Corrections are complete, working versions of the exercises
 
