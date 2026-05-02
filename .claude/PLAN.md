@@ -155,7 +155,16 @@ exercises/01-document-typst/
 - ❌ **Background crème du brand non appliqué** — fond reste blanc malgré `background: sw-cream` dans `_brand.yml`
 - ❌ **Police Inter pas chargée** : warnings Typst `unknown font family: inter` au render. Résolution Google Fonts → Typst non effective dans cet environnement
 - ❌ **Accent cassé dans label ggplot** axe Y : « Masse (kg, <U+00E9>chelle log) » alors que le titre du plot juste au-dessus a ses accents OK. Locale ggplot vs cairo
-- → À discuter avec CD avant P3 : faut-il investiguer ces 4 bugs maintenant, les contourner (ex. fonts source `file` + locale R), ou les laisser comme « pépites limites actuelles » à mentionner pendant l'atelier
+
+**4 questions ouvertes pour CD avant P3 (à reprendre à la prochaine session si interruption) :**
+
+1. **Format starter / correction / README Exo 1** : OK tel quel, ou ajustements (storytelling, ton, structure des étapes du README) ?
+2. **Bug espacement chiffres gt → Typst** : on documente comme « limite actuelle » à mentionner pendant l'atelier, ou on creuse pour un workaround robuste avant le 16 juin ?
+3. **Brand non appliqué (background + Inter)** — 3 options :
+   - (a) basculer sur `source: file` avec les `.ttf` Inter/Orbitron commités (~500 KB) — robuste offline
+   - (b) garder `source: google` et accepter le warning (PDF lisible mais sans police custom)
+   - (c) investiguer pourquoi Quarto ne télécharge pas les fonts pour Typst dans ce setup
+4. **Accent cassé label ggplot axe Y** : régler côté setup R des participants (`Sys.setlocale()` dans le chunk setup ?) ou corriger l'environnement de dev ?
 
 ### Phase 3 — Exo 2 : book starter + correction avec _quarto.yml + _brand.yml
 
