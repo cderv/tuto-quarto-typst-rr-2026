@@ -199,11 +199,36 @@ exercises/01-document-typst/
 - (C) Garder `_brand.yml` complet + `_fonts/` commités + `source: file`. À tester : `source: file` fonctionne-t-il SANS `_quarto.yml` ? (Quarto résout-il les paths relatifs au brand.yml hors projet ?)
 - (D) `font-paths: [_fonts]` dans YAML qmd + `_fonts/` commités. Bypass brand, plus low-level.
 
-**État disque actuel (commit `<en cours>`)** :
-- `exercises/01-document-typst/correction/_brand.yml` : `source: google` (Inter + Orbitron). **Sans `_quarto.yml` à côté → ignoré pour les fonts**.
-- `exercises/01-document-typst/correction/_fonts/` : Inter v4.0 TTFs (~2.1 MB) — gardé pour l'instant en attendant trancher options A/B/C/D.
+**État disque actuel (commit `10a4f05`)** :
+- `_quarto.yml` racine : `project.render: ["**/*.qmd", "!exercises/"]` + `project.resources: ["exercises/**"]` → website ne rend pas les exos mais copie leurs sources dans `_site/exercises/` pour téléchargement.
+- `exercises/01-document-typst/correction/_brand.yml` : `source: google` (Inter + Orbitron). **Sans `_quarto.yml` à côté → ignoré pour les fonts** dans le contexte website parent. Cas standalone (test `/tmp/exo1_no_project/`) → fonctionne sans `_quarto.yml`.
+- `exercises/01-document-typst/correction/_fonts/` : Inter v4.0 TTFs (~2.1 MB) — gardé pour l'instant, à supprimer si décision A (option « brand uniquement Bloc 2 »).
 - `exercises/01-document-typst/correction/rapport-starwars.qmd` : `opt_table_font(font = "Inter")` ajouté (workaround gt → Typst).
-- `_quarto.yml` créé/supprimé pour test isolé Q2 (cf. cause racine ci-dessus).
+- Décision narrative : **Exo 1 = standalone (pas de `_quarto.yml`)**, **Exo 2 = projet Quarto book**. Profile Quarto pour les exos (batch render à part) à concevoir plus tard.
+
+## Questions de follow-up à trancher (avant refactor Exo 1 + reviews)
+
+Ces questions doivent être tranchées avant de réorganiser le matériel Bloc 1/Exo 1. Les réponses conditionnent le contenu du refactor et les briefs des reviewers.
+
+**Q1 — Séquencement reviews** :
+- (a) Refactor Exo 1 (retirer brand) **d'abord**, puis lancer les 2 reviews (pédagogique + participant) sur l'état refactoré → reviewers voient un état cohérent
+- (b) Lancer les reviews **maintenant** sur l'état courant + décision documentée → on récupère le feedback avant de toucher au matériel
+- → ⏳ **EN ATTENTE CD**
+
+**Q2 — `opt_table_font("Inter")` dans Exo 1 simplifié** :
+Si on retire `_brand.yml` de Exo 1 (option A « brand uniquement Bloc 2 »), faut-il aussi retirer `opt_table_font("Inter")` du `gt()` ?
+- (a) Garder `opt_table_font("Inter")` : Inter est mentionnée comme `mainfont` dans le YAML qmd → le workaround reste cohérent → bug évité chez les participants Windows. Implique qu'Inter doit être dispo (préparatifs.qmd ou installation système).
+- (b) Retirer `opt_table_font("Inter")` : Exo 1 minimaliste, code R intouché. Bug `gt → typst` se manifeste chez participants Windows → on l'utilise comme **moment pédagogique en live** (« regardez le bug, voilà le workaround, on le règle dans la correction »).
+- (c) Retirer `opt_table_font` ET basculer `mainfont` sur une font système universelle (Arial, Helvetica) → pas de bug du tout, mais PDF moins joli pour la démo.
+- → ⏳ **EN ATTENTE CD**
+
+**Q3 — Pépite « Typst CSS » (Quarto 1.5+, pipeline gt HTML → Typst native)** :
+Cette pépite explique pourquoi `gt` (qui sort uniquement du HTML+CSS) produit des tables Typst natives stylisées. Où la placer ?
+- (a) **Bloc 1** : tôt = mieux, on explique tout de suite pourquoi gt marche dès qu'on l'utilise dans Exo 1. Cohérent avec « on a une table dans le rapport, voilà comment Quarto la transforme ».
+- (b) **Bloc 2** : avec le brand (qui devient la grosse nouveauté Bloc 2). Permet de regrouper « tout ce qui est CSS-like » avec brand.yml.
+- → ⏳ **EN ATTENTE CD**
+
+**Reco Claude** : Q1=(a) refactor d'abord pour donner aux reviewers un état stable ; Q2=(a) garder `opt_table_font` car c'est le « propre » avant la pédagogie « voilà ce qui se passe sans » ; Q3=(a) Bloc 1 tôt, le narratif gagne à expliquer le mécanisme dès qu'on l'utilise.
 
 ### Phase 3 — Exo 2 : book starter + correction avec _quarto.yml + _brand.yml
 
