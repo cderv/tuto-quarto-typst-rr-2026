@@ -16,7 +16,7 @@ following the established patterns from RR 2023.
 - **Event:** Rencontres R 2026, 16 juin 2026, Nantes Université
 - **Duration:** 2h (1h40 effective content)
 - **Language:** French
-- **Instructors:** Christophe Dervieux (Posit) & Maëlle Salmon (ROpenSci, Cynkra)
+- **Instructors:** Christophe Dervieux (Posit) & Maëlle Salmon (rOpenSci, Cynkra)
 - **Story arc:** `.qmd` → PDF professionnel → livre → personnalisé/pérennisé
 - **Dataset:** Star Wars (`dplyr::starwars`) throughout all exercises. Tables produced with `gt`.
 - **Quarto version:** 1.9+ (Typst 0.14.2, Pandoc 3.8.3)
@@ -73,7 +73,7 @@ format: html
 ---
 title: "Slide Deck Title"
 subtitle: "PDF sans frictions : Typst dans vos projets Quarto"
-institute: "Posit / ROpenSci"
+institute: "Posit / rOpenSci"
 author: "Christophe Dervieux & Maëlle Salmon"
 date: "2026-06-16"
 format: clean-revealjs
