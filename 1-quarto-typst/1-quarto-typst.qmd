@@ -157,6 +157,8 @@ C'est le deuxième moment fort : on passe d'un PDF basique à un PDF aux couleur
 
 ::: notes
 C'est la démo live. Les participants suivent dans leur éditeur. Aller doucement, laisser le temps de taper. Montrer le rendu après chaque étape. Mentionner linkcolor, codefont, mathfont en passant.
+
+**Heads-up bug `gt → Typst`** : si le tableau `gt` rendu montre un espacement parasite des chiffres (« 1 3 5 8 ») — c'est un bug connu (quarto-cli#11683) qui touche Windows/macOS via les fonts fallback de gt. Workaround : `gt::opt_table_font("Inter")` (montré dans la correction). Le mentionner à l'oral comme « limite actuelle, fix structurel en cours côté gt 0.12.0 ».
 :::
 
 ## Exercice 1 {background-color="#FDC538"}
@@ -173,7 +175,7 @@ C'est la démo live. Les participants suivent dans leur éditeur. Aller doucemen
 {{< countdown 15:00 >}}
 
 ::: notes
-15 minutes. Passer dans les rangs pour aider. Les problèmes fréquents : oubli des guillemets sur les couleurs hex dans brand.yml, nom de police Google mal orthographié, indentation YAML.
+15 minutes. Passer dans les rangs pour aider. Les problèmes fréquents : oubli des guillemets sur les couleurs hex dans brand.yml, nom de police Google mal orthographié, indentation YAML, et **espacement parasite des chiffres dans le tableau gt** (bug `gt → Typst` côté Windows/macOS, workaround `gt::opt_table_font("Inter")` visible dans la correction).
 :::
 
 ## Saviez-vous que... {.smaller}
