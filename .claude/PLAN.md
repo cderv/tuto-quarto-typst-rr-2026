@@ -89,9 +89,9 @@ Workshop fil rouge : dataset `dplyr::starwars` (87 × 14), tableaux `gt` partout
 - [x] Renommer dans `.claude/references/workshop-pacing.md`, `topic-store.md`, `project-context.md`
 - [x] Renommer dans `.claude/skills/workshop-content.md`
 - [x] Mettre à jour PLAN.md decision log avec entrées 2026-05-02
-- [ ] Vérifier `2-projets/2-projets.qmd`, `4-ressources.qmd`, `index.qmd` (racine), `_quarto.yml` (racine)
-- [ ] Ajouter `prismatic` aux packages requis dans `preparatifs.qmd`
-- [ ] Grep final pour confirmer plus aucune occurrence
+- [x] Vérifier `2-projets/2-projets.qmd`, `4-ressources.qmd`, `index.qmd` (racine), `_quarto.yml` (racine) — déjà propres, aucune occurrence
+- [x] Ajouter `prismatic` + `quarto` aux packages requis dans `preparatifs.qmd` (`quarto` était utilisé par `quarto::quarto_version()` mais pas installé)
+- [x] Grep final confirmé : seules mentions restantes = decision log et plan PLAN.md (légitimes)
 
 ### Phase 2 — Exo 1 : starter rapport-starwars + correction brand + raw highlight
 
