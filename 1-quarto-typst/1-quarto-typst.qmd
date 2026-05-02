@@ -148,7 +148,7 @@ C'est le deuxième moment fort : on passe d'un PDF basique à un PDF aux couleur
 ::: {.callout-tip}
 ## Faisons ensemble !
 
-1. Ouvrez `rapport-penguins.qmd` dans votre éditeur
+1. Ouvrez `rapport-starwars.qmd` dans votre éditeur
 2. Ajoutez `format: typst` et rendez le document
 3. Ajoutez quelques options (`toc`, `mainfont`, `papersize`...)
 4. Créez un `_brand.yml` avec 2 couleurs et une police Google
@@ -164,7 +164,7 @@ C'est la démo live. Les participants suivent dans leur éditeur. Aller doucemen
 ::: callout
 ## À vous !
 
-1. Ouvrez `rapport-penguins.qmd` et ajoutez `format: typst`, puis rendez
+1. Ouvrez `rapport-starwars.qmd` et ajoutez `format: typst`, puis rendez
 2. Personnalisez avec des options : `papersize`, `toc`, `mainfont`...
 3. Créez un `_brand.yml` avec vos couleurs et une police Google
 4. Activez `keep-typ: true` et ouvrez le fichier `.typ` généré

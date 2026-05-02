@@ -44,7 +44,7 @@ On construit ensemble un PDF Typst stylé :
 
 Fichier : {{< fa download >}} [exercices/01-document-typst/](#)
 
-1. Ouvrir `rapport-penguins.qmd` et ajouter `format: typst`, puis rendre
+1. Ouvrir `rapport-starwars.qmd` et ajouter `format: typst`, puis rendre
 2. Personnaliser avec des options : `papersize`, `toc`, `mainfont`...
 3. Créer un `_brand.yml` avec vos couleurs et une police Google
 4. Activer `keep-typ: true` et ouvrir le fichier `.typ` généré

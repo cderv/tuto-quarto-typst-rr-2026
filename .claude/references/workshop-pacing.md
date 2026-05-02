@@ -36,8 +36,8 @@ Mine's Monash workshop (3h instruction): each 60-min module ≈ 20 min presentat
 ### File organization (Mine's pattern)
 ```
 exercises/              # flat folder, all starter files
-  hello-penguins.qmd
-  rapport-penguins.qmd
+  hello-starwars.qmd
+  rapport-starwars.qmd
 exercises.zip           # bundled for download
 N-module-name/
   index.qmd             # landing page (iframe + exercise download links)

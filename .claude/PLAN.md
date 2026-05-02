@@ -14,6 +14,14 @@ Event: Rencontres R 2026, 16 juin, Nantes — 2h tutorial
 - 2026-04-16: brand.yml moved to Bloc 1 (single presentation, reused in Bloc 2 exercise)
 - 2026-04-16: Exercise timers set to 15:00 / 15:00
 - 2026-04-16: Mode markers use Quarto callouts (callout-tip for Our turn, callout for Your turn, callout-note for pépites)
+- 2026-05-02: Switched dataset from `palmerpenguins` to `dplyr::starwars` — more variety, fun outliers (Jabba mass, Yoda age, R2-D2 in 7 films), still small (87×14)
+- 2026-05-02: All tables in workshop examples use `gt` (showcases Quarto's CSS→Typst translation)
+- 2026-05-02: Storytelling minimal — "Qui sont les colosses de la galaxie ?" — no analytical multi-question arc; the data analysis is a stable backdrop, not a teaching topic
+- 2026-05-02: R code is **frozen** in starter files (chunks invisible via `echo: false`); participants only edit YAML, `_brand.yml`, raw Typst, and project structure. Exception: `echo: true` on the R chunk that demos `theme_brand_*()` helpers (pépite Bloc 1)
+- 2026-05-02: Pépite Bloc 1 raw Typst — chosen example: inline `#highlight(fill: ...)` to colour a word; opens a 1-line mention of the `quarto-highlight-text` extension as the "portable" alternative (no extension creation in this workshop)
+- 2026-05-02: Pépite Bloc 1 brand-from-R — added: `library(brand.yml)` + `theme_brand_ggplot2()` + `theme_brand_gt()` integrated as a fragment in the brand slide
+- 2026-05-02: Bloc 2 book has 2 real chapters (anatomie + origines) + préface (`{.unnumbered}`) + conclusion + appendix (`appendices:`). Cover-image not used (not natively supported for Typst books)
+- 2026-05-02: Per-file YAML override removed from slides (was MENTION → moved to STORE)
 
 ## Current structure (implemented 2026-04-16)
 

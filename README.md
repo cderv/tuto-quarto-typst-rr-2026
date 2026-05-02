@@ -63,7 +63,7 @@ Rappel [RR 2025](https://cderv.github.io/rr2025-quarto-brand-yml/), approfondi p
 
 **Exercice 1 (~5 min)**
 
-1. Convertir `rapport-penguins.qmd` de `format: pdf` vers `format: typst`
+1. Convertir `rapport-starwars.qmd` de `format: pdf` vers `format: typst`
 2. Créer un `_brand.yml` minimal (2-3 couleurs + police Google)
 3. `keep-typ: true` et explorer le `.typ` généré
 
@@ -134,11 +134,11 @@ Rappel [RR 2025](https://cderv.github.io/rr2025-quarto-brand-yml/), approfondi p
 
 ## Exercices
 
-Tous les exercices utilisent le dataset **palmerpenguins**. Complexité progressive :
+Tous les exercices utilisent le dataset **Star Wars** (`dplyr::starwars`, 87 personnages × 14 variables). Complexité progressive :
 
 | Exercice | Fichier | Objectif | Difficulté |
 |----------|---------|----------|:----------:|
-| 1 | `rapport-penguins.qmd` | PDF/Typst + brand.yml + keep-typ | ★ |
+| 1 | `rapport-starwars.qmd` | PDF/Typst + brand.yml + keep-typ | ★ |
 | 2 | Projet book | Multi-chapitres + orange-book | ★★ |
 | 3 | Template partials | Personnalisation header/footer | ★★★ |
 
