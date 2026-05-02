@@ -91,7 +91,7 @@ Démo live. Aller étape par étape. Montrer les cross-refs entre chapitres, la 
 :::
 
 ::: {.callout-warning appearance="minimal"}
-Pas de `_brand.yml` ? Copiez le fichier `_brand.yml` fourni dans le dossier `exercices/`.
+Pas de `_brand.yml` ? Copiez le fichier `_brand.yml` fourni dans le dossier `exercises/02-projet-book/`.
 :::
 
 {{< countdown 15:00 >}}
