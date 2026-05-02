@@ -22,6 +22,9 @@ Event: Rencontres R 2026, 16 juin, Nantes — 2h tutorial
 - 2026-05-02: Pépite Bloc 1 brand-from-R — added: `library(brand.yml)` + `theme_brand_ggplot2()` + `theme_brand_gt()` integrated as a fragment in the brand slide
 - 2026-05-02: Bloc 2 book has 2 real chapters (anatomie + origines) + préface (`{.unnumbered}`) + conclusion + appendix (`appendices:`). Cover-image not used (not natively supported for Typst books)
 - 2026-05-02: Per-file YAML override removed from slides (was MENTION → moved to STORE)
+- 2026-05-02: **Exo 1 = doc standalone (PAS de `_quarto.yml`)**, **Exo 2 = projet Quarto book** (`_quarto.yml type: book`). Cohérent avec narratif Bloc 1 (`.qmd` → PDF) → Bloc 2 (passer à l'échelle projet).
+- 2026-05-02: **Découverte Q2 — `_brand.yml` n'est lu que dans un projet Quarto**. Sans `_quarto.yml`, brand colors ET brand fonts sont ignorées. Conséquence pour Exo 1 standalone : stratégie fonts à trouver (cf. décisions Q2 dans PLAN).
+- 2026-05-02: **Bug `_brand.yml source: bunny` confirmé Quarto 1.9.36 / Typst 0.14.2** : avec un projet Quarto local et `source: bunny`, brand colors lues mais fonts non téléchargées vers `.quarto/typst/fonts/`. Aucun warning d'erreur, fallback silencieux. À comparer : `source: google` même config → fonts téléchargées dans `fonts.gstatic.com/s/inter/v20/...`. **À reporter à l'équipe Quarto** (CD est la bonne personne).
 
 ## Current structure (implemented 2026-04-16)
 
@@ -184,13 +187,23 @@ exercises/01-document-typst/
 - Narratif atelier : « pourquoi gt marche pour Typst alors qu'il sort du HTML ? Parce que Quarto a un compilateur CSS→Typst (depuis 1.5). Limites actuelles documentées (#11683 — letter-spacing parasite sur fallback de fonts, workaround `opt_table_font()`). Solution structurelle en cours côté gt v0.12.0 (`as_typst()` natif). »
 - À placer dans la pépite Bloc 1 (« Saviez-vous que... CSS→Typst »).
 
-**État disque post-Q2 (commit `<en cours>`)** :
-- `exercises/01-document-typst/correction/rapport-starwars.qmd` modifié : `opt_table_font(font = "Inter")` ajouté au bloc gt.
-- `exercises/01-document-typst/correction/_brand.yml` modifié (TEMPORAIRE pour test) : Inter passée en `source: file` avec `files: [_fonts/Inter-Regular.ttf, Inter-SemiBold.ttf, Inter-Bold.ttf]` (poids 400/600/700).
-- `exercises/01-document-typst/correction/_fonts/` ajouté (TEMPORAIRE pour test, ~2.1 MB) : Inter v4.0 TTFs (Regular, SemiBold, Bold, Variable) téléchargés depuis https://github.com/rsms/inter/releases/tag/v4.0.
-- **Décision finale en attente CD** :
-  - Garder `source: file` + `_fonts/` commités (~2.1 MB) pour robustesse offline jour J Nantes ET reproductibilité participants ?
-  - OU revert à `source: google` (Quarto télécharge pour participants) + supprimer `_fonts/` ?
+**Cause racine identifiée (2026-05-02)** : tous les warnings `unknown font family: inter` venaient du fait que `_brand.yml` était dans un sous-dossier qui **n'est pas un projet Quarto**. Sans `_quarto.yml`, Quarto ne déclenche pas le téléchargement des fonts brand vers `.quarto/typst/fonts/`. Test isolé avec `_quarto.yml type: default` + `source: google` → cache `.quarto/typst/fonts/fonts.gstatic.com/s/inter/v20/...` créé, warnings Inter/Orbitron disparus (seuls restent ceux des fallbacks gt qui sont attendus).
+
+**Décision Exo 1 vs Exo 2 (2026-05-02, validée CD)** :
+- **Exo 1 = standalone** (`exercises/01-document-typst/correction/`) → **PAS de `_quarto.yml`** (`_quarto.yml` créé pour test puis supprimé). Conséquence : `_brand.yml` ne déclenche pas le download fonts.
+- **Exo 2 = projet Quarto book** (`exercises/02-projet-book/correction/`) → **`_quarto.yml` `type: book`** + `_brand.yml source: google` → fonts téléchargées par Quarto OK + workaround `opt_table_font("Inter")` pour le bug gt.
+
+**Question résiduelle pour Exo 1 standalone (à trancher avec CD)** : comment rendre la démo brand pertinente ?
+- (A) Retirer `_brand.yml` de Exo 1, utiliser uniquement YAML qmd (`mainfont`, palette inline). Brand introduit "pour de vrai" en Bloc 2/Exo 2. **Plus cohérent avec l'arc narratif**.
+- (B) Garder `_brand.yml` mais minimal (couleurs seulement, pas de fonts custom). Montre l'intention brand sans les complications.
+- (C) Garder `_brand.yml` complet + `_fonts/` commités + `source: file`. À tester : `source: file` fonctionne-t-il SANS `_quarto.yml` ? (Quarto résout-il les paths relatifs au brand.yml hors projet ?)
+- (D) `font-paths: [_fonts]` dans YAML qmd + `_fonts/` commités. Bypass brand, plus low-level.
+
+**État disque actuel (commit `<en cours>`)** :
+- `exercises/01-document-typst/correction/_brand.yml` : `source: google` (Inter + Orbitron). **Sans `_quarto.yml` à côté → ignoré pour les fonts**.
+- `exercises/01-document-typst/correction/_fonts/` : Inter v4.0 TTFs (~2.1 MB) — gardé pour l'instant en attendant trancher options A/B/C/D.
+- `exercises/01-document-typst/correction/rapport-starwars.qmd` : `opt_table_font(font = "Inter")` ajouté (workaround gt → Typst).
+- `_quarto.yml` créé/supprimé pour test isolé Q2 (cf. cause racine ci-dessus).
 
 ### Phase 3 — Exo 2 : book starter + correction avec _quarto.yml + _brand.yml
 
