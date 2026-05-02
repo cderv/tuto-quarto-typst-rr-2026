@@ -159,6 +159,7 @@ exercises/01-document-typst/
 **4 questions ouvertes pour CD avant P3 (à reprendre à la prochaine session si interruption) :**
 
 1. **Format starter / correction / README Exo 1** : OK tel quel, ou ajustements (storytelling, ton, structure des étapes du README) ?
+   → ⏳ **EN ATTENTE** : CD doit relire le starter, la correction et le README à tête reposée et donner ses retours à la prochaine session. **Ne pas avancer sur P3 tant que ce point n'est pas tranché.**
 2. **Bug espacement chiffres gt → Typst** : on documente comme « limite actuelle » à mentionner pendant l'atelier, ou on creuse pour un workaround robuste avant le 16 juin ?
 3. **Brand non appliqué (background + Inter)** — 3 options :
    - (a) basculer sur `source: file` avec les `.ttf` Inter/Orbitron commités (~500 KB) — robuste offline
