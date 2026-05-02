@@ -3,6 +3,8 @@ project:
   render:
     - "**/*.qmd"
     - "!exercises/"
+  resources:
+    - "exercises/**"
 
 website:
   title: "PDF sans frictions : Typst dans vos projets Quarto"
