@@ -373,6 +373,7 @@ exercises/02-projet-book/correction/
 ## References
 
 - Plan de restructuration détaillé: `/root/.claude/plans/wiggly-mixing-giraffe.md`
+- **Plan détaillé Exo 2 (Phase 3) : `.claude/plans/exo2-book.md`** (persistant, copié depuis `/root/.claude/plans/oui-p1-planifions-sp-cialement-sprightly-micali.md` sandbox-local). Reviewed pédagogiquement + techniquement (context7 Quarto). Décisions : 3 core + 2 bonus, `extend: orange-book` explicite, `_brand.yml logo: { images, medium }`, auteur Mon Mothma.
 - Topic store: `.claude/references/topic-store.md`
 - Pacing guidelines: `.claude/references/workshop-pacing.md`
 - Project context: `.claude/references/project-context.md`
