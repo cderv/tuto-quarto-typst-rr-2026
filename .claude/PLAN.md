@@ -220,7 +220,24 @@ Toutes les autres questions historiques (Q1 séquencement reviews, Q2 `opt_table
 
 ### P1 — Phase 3 : Exo 2 book (le plus gros morceau)
 
-Cf. arborescence cible dans la section « Phase 3 » plus haut. **Note narrative à propager** : `_brand.yml` n'est plus « déplacé » depuis Bloc 1 → il est **réutilisé/promu au niveau projet** (le starter Exo 2 part SANS `_brand.yml` et l'étape 3 demande de copier celui de Exo 1 à la racine du book).
+**Plan détaillé prêt** (à reprendre tel quel à la prochaine session) : `.claude/plans/exo2-book.md` — reviewed pédagogiquement + techniquement (context7 Quarto). Décisions actées :
+- **3 core (12 min) + 2 bonus** (cross-ref + pagebreak) — reframé depuis « 5 étapes en 15 min » (timing trop serré)
+- `_quarto.yml` : `extend: orange-book` **explicite** (pas implicite — review tech)
+- `_brand.yml` book : variante avec `logo: { images: { sw-star: { path } }, medium: sw-star }` (syntaxe `images:` documentée pour books — blog Quarto 2026-03-31)
+- Auteur book : **Mon Mothma** (ton sérieux, alternative ludique C-3PO)
+- Conclusion **numérotée** (chap 3, pas `{.unnumbered}`)
+- 5 commits granulaires (squelette → contenu R → cross-refs → starter+READMEs → slides Bloc 2 + notes presenter)
+
+**Progression** :
+- [x] Commit 0 — Persistance plan dans `.claude/plans/exo2-book.md` + référence dans `PLAN.md` (commit `d32e51e`)
+- [ ] Commit 1 — Squelette `02-projet-book/correction/` + render → vérifier (a) orange-book, (b) logo SW visible, (c) numérotation chap 1 OK malgré préface unnumbered
+- [ ] Commit 2 — Contenu R 01-anatomie + 02-origines (porter Bloc 1 + nouveau gt+barplot)
+- [ ] Commit 3 — Cross-refs + content-visible pagebreak + annexe finale
+- [ ] Commit 4 — `starter/` dérivé + `_brand-fallback.yml` + READMEs (racine + safety net `starter/README.md`)
+- [ ] Commit 5 — Slides Bloc 2 (3 core + 2 bonus, notes presenter bug gt + lien 404)
+- [ ] Commit 6 — Cocher items Phase 3 dans PLAN.md + decision log final
+
+**Note narrative à propager** : `_brand.yml` n'est plus « déplacé » depuis Bloc 1 → il est **réutilisé/promu au niveau projet** (le starter Exo 2 part SANS `_brand.yml` et l'étape 3 demande de copier celui de Exo 1 à la racine du book).
 
 ### P2 — Cluster 3 reviews (issus de `review.md`)
 
@@ -250,7 +267,9 @@ Cf. section « Pre-workshop logistics — TODO » en bas du fichier.
 
 ### Reco Claude (post-cleanup)
 
-Démarrer la prochaine session par **P0** (validation visuelle, ~30 min). Si OK, attaquer **P1 Phase 3 Exo 2** (gros morceau, ~2-3h) qui débloquera ensuite les liens cassés (P2 lien 404) et les démos (P3). Le cluster 3 reviews (P2) peut s'intercaler en parallèle de P1 sans conflit.
+**Prochaine session — point d'entrée** : `.claude/plans/exo2-book.md` (plan Exo 2 commit-par-commit, reviewed). Démarrer **directement par Commit 1** (squelette correction + render check). P0 (validation visuelle Exo 1 dans env propre) peut s'intercaler en pré-flight ~30 min, ou être différé si urgence Exo 2.
+
+Une fois P1 livré → débloquer P2 lien 404 + P3 démos. Le cluster 3 reviews (P2) peut s'intercaler en parallèle de P1 sans conflit.
 
 ### Phase 3 — Exo 2 : book starter + correction avec _quarto.yml + _brand.yml
 
