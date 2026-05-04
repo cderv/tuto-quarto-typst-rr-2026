@@ -2,7 +2,7 @@
 
 **Repo cible :** [`quarto-dev/quarto-cli`](https://github.com/quarto-dev/quarto-cli)
 **À ouvrir par :** Christophe (CD)
-**Note interne :** orange-book est livré directement avec `quarto-cli` (subtree dans `src/resources/extensions/quarto-ext/orange-book/`). Le fix se fait donc côté `quarto-cli` en un seul PR — pas besoin de double-tracking via `quarto-ext/orange-book` (existe en tant que repo public mais le code utilisé par les utilisateurs vient du subtree quarto-cli).
+**Note interne :** orange-book est livré directement avec `quarto-cli` — subtree à `src/resources/extension-subtrees/orange-book/_extensions/orange-book/` (path confirmé sur HEAD `quarto-dev/quarto-cli`, cf. directory listing `src/resources/`). Le fix se fait donc côté `quarto-cli` en un seul PR — pas besoin de double-tracking via `quarto-ext/orange-book` (existe en tant que repo public mais le code utilisé par les utilisateurs vient du subtree quarto-cli).
 
 ---
 
@@ -24,9 +24,9 @@ Expected with `lang: fr` :
 ... | Chapitre 1. Anatomie
 ```
 
-## Root cause (orange-book 0.7.1 bundled with Quarto 1.9.36)
+## Root cause (orange-book 0.7.1 bundled with Quarto 1.9.36 — verified against HEAD on `quarto-dev/quarto-cli` `main` via `gh api`)
 
-Subtree `src/resources/extensions/quarto-ext/orange-book/_extensions/orange-book/` :
+Subtree `src/resources/extension-subtrees/orange-book/_extensions/orange-book/` :
 
 - `typst/packages/preview/orange-book/0.7.1/lib.typ:311` — `book(...)` accepts a `supplement-chapter` parameter with default `"Chapter"` (hardcoded English):
 
@@ -94,7 +94,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 ## Suggested fix
 
-Add the missing pipe in `src/resources/extensions/quarto-ext/orange-book/_extensions/orange-book/typst-show.typ`, mirroring the existing `lof-title` / `lot-title` pattern:
+Add the missing pipe in `src/resources/extension-subtrees/orange-book/_extensions/orange-book/typst-show.typ`, mirroring the existing `lof-title` / `lot-title` pattern:
 
 ```diff
 $if(date)$
@@ -140,7 +140,8 @@ Caught while building workshop material for *Rencontres R 2026 — PDF sans fric
 
 ## Notes pour CD avant publication
 
-- **Subtree path à confirmer** : j'ai écrit `src/resources/extensions/quarto-ext/orange-book/` mais je n'ai pas pu vérifier le chemin exact dans le source `quarto-cli` (j'ai juste les fichiers binaires installés sous `/opt/quarto/share/extension-subtrees/orange-book/`). Vérifier dans `quarto-cli/src/resources/extensions/quarto-ext/` avant publication.
+- **Subtree path confirmé** : `src/resources/extension-subtrees/orange-book/_extensions/orange-book/` (vérifié sur HEAD `quarto-dev/quarto-cli` `main` via `gh api repos/quarto-dev/quarto-cli/contents/...` sur `typst-show.typ` et `lib.typ` — pas de subtree sous `src/resources/extensions/quarto-ext/`, le bon parent est `extension-subtrees/`).
+- **Numéros de ligne confirmés sur HEAD** : `lib.typ:311` (book params), `lib.typ:419` (`set heading(supplement: ...)`). Identiques au binaire 1.9.36 installé.
 - **Variable Pandoc** : double-vérifier que `crossref.ch-prefix` (avec point) est bien la variable que Quarto expose au template Typst. Si c'est `crossref-ch-prefix` (avec tiret) dans le contexte du template, ajuster le diff. Le pattern existant pour `lof-title` utilise les deux formes en cascade — c'est ce qui est repris dans le diff.
 - **Couvrir aussi `supplement-part`** ou laisser pour une issue dérivée ? Pas critique pour la correction RR 2026 (pas de parties), mais c'est probablement la même classe de bug — un fix complet serait plus propre.
 - **Backup** : un brouillon parallèle ciblé `quarto-ext/orange-book` a été supprimé après confirmation (CD) que l'extension est livrée directement avec `quarto-cli`. Si jamais la routine release préfère que le PR aille upstream chez `quarto-ext/orange-book` puis re-sync vers le subtree, dis-le et je re-rédige une variante.
