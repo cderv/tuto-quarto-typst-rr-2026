@@ -76,11 +76,11 @@ Le moment wow : zéro configuration supplémentaire. On montre le _quarto.yml, o
 :::
 
 ::: notes
-Démo live, 3 étapes en ~10 min. C'est le pic émotionnel du Bloc 2 : à l'étape 2 le PDF unique avec couverture orange-book apparaît. Étape 3 = confirmation visuelle (le brand de Bloc 1 ressuscite côté book).
+Démo live, 3 étapes en ~10 min. C'est le pic émotionnel du Bloc 2 : à l'étape 2 le PDF unique avec couverture orange-book apparaît. Étape 3 = confirmation visuelle (la charte de Bloc 1 ressuscite côté book).
 
 Montrer pendant la démo : la numérotation automatique Figure 1.1 / Figure 2.1 / Table 1.1 / Table 2.1 (en français Quarto rend « Figure » et « Table » — pas « Fig » / « Tab »), l'apparition du logo SVG sur la couverture, le passage des tableaux gt en Inter (Étape 3).
 
-Mentionner les bonus rapidement à la fin de la démo : cross-refs `@fig-anatomie-mass` / `@sec-origines` et `.content-visible when-format="typst"` + pagebreak. Pas obligés de les démontrer ici — c'est le contenu des bonus B1/B2 du Your turn.
+Mentionner les bonus rapidement à la fin de la démo : références croisées `@fig-anatomie-mass` / `@sec-origines` et `.content-visible when-format="typst"` + pagebreak. Pas obligés de les démontrer ici — c'est le contenu des bonus B1/B2 du Your turn.
 
 Si vous voyez des chiffres mal espacés (« 1 7 5 » au lieu de « 175 ») dans les tableaux à l'étape 3 chez un participant Windows/macOS : c'est normal, bug `gt` → Typst sur fallback de fonts. Le workaround `opt_table_font(font = "Inter")` est appliqué dans la correction (mais pas dans le starter — bug volontairement visible). Pas la peine de s'attarder, mentionner et passer.
 
@@ -111,11 +111,11 @@ Pas de `_brand.yml` ? Copiez `_brand-fallback.yml` (à renommer) et `correction/
 {{< countdown 15:00 >}}
 
 ::: notes
-15 minutes total : 12 min sur les 3 core + 3 min de bonus pour les rapides. Annoncer clairement que les bonus sont pour ceux qui ont fini, pas pour tout le monde — sinon ~50 % du public n'atteindrait pas l'étape 3 (le brand, qui est le wow visuel le plus fort).
+15 minutes total : 12 min sur les 3 core + 3 min de bonus pour les rapides. Annoncer clairement que les bonus sont pour ceux qui ont fini, pas pour tout le monde — sinon ~50 % du public n'atteindrait pas l'étape 3 (la charte, qui est le wow visuel le plus fort).
 
 Le fallback `_brand-fallback.yml` (+ `correction/_logo-sw.svg`) est important : ceux qui n'ont pas fini Bloc 1 peuvent les copier. Passer dans les rangs, repérer ceux qui peinent à l'étape 1 — souvent un underscore manquant.
 
-Pour ceux qui finissent vite : pousser le bonus B1 (cross-refs) en premier — c'est le plus visuel et ça utilise les labels qui sont déjà dans le starter (`tbl-anatomie-mass`, `fig-anatomie-mass`, `#sec-origines`). Le bonus B2 (pagebreak) demande de connaître la syntaxe `.content-visible` — l'avoir montrée à la fin de Our turn aide.
+Pour ceux qui finissent vite : pousser le bonus B1 (références croisées) en premier — c'est le plus visuel et ça utilise les labels qui sont déjà dans le starter (`tbl-anatomie-mass`, `fig-anatomie-mass`, `#sec-origines`). Le bonus B2 (pagebreak) demande de connaître la syntaxe `.content-visible` — l'avoir montrée à la fin de Our turn aide.
 :::
 
 ## Saviez-vous que... {.smaller}
