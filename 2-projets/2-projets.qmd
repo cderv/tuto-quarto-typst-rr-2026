@@ -134,5 +134,47 @@ Pour ceux qui finissent vite : pousser le bonus B1 (références croisées) en p
 :::
 
 ::: notes
-Slide rapide, 2-3 minutes max. Template partials = le concept le plus avancé du workshop, mais on ne fait que le mentionner ici. Les gens motivés iront creuser. C'est le deuxième fusible à couper si on manque de temps.
+Slide rapide, 2-3 minutes max. Template partials = le concept le plus avancé du workshop, mais on ne fait que le mentionner ici. Les gens motivés iront creuser.
+
+Fusible à couper si le timing serre — sauter directement au wrap-up qui suit (3 slides obligatoires, ne pas sauter).
+:::
+
+## Ce que vous savez faire maintenant
+
+::: incremental
+- Produire un PDF pro avec `format: typst`, sans LaTeX
+- Personnaliser couleurs, polices et logo via `_brand.yml`
+- Assembler plusieurs `.qmd` en livre avec `type: book` (orange-book auto)
+- Savoir où chercher pour aller plus loin (partials, formats communautaires)
+:::
+
+::: notes
+**CD parle.** Vous êtes parti·e d'un `.qmd` HTML, vous repartez avec un livre PDF brandé multi-chapitres. Trois lignes de YAML, un fichier de charte, un projet — et c'est tout.
+
+Les 4 bullets miroir les 4 questions posées en intro (cf. `index.qmd:17-20`). Rappel mémoriel : pointer du doigt vers la slide précédente Bloc 1 ou la page d'accueil si besoin.
+:::
+
+## Et maintenant ?
+
+- **Cette semaine** — ouvrez un de vos `.qmd` existants, ajoutez `format: typst`, voyez ce que ça donne
+- **Pour creuser** — la page [Pour aller plus loin](../4-ressources.qmd) (partials, blocs raw Typst, accessibilité PDF/UA-1, helpers `brand.yml` côté R)
+- **Communauté** — [quarto-ext/typst-templates](https://github.com/quarto-ext/typst-templates), [forum Quarto](https://github.com/quarto-dev/quarto/discussions), [Awesome Quarto](https://github.com/mcanouil/awesome-quarto)
+
+::: notes
+**CD parle.** L'objectif de cette semaine n'est pas de tout refaire — juste d'essayer `format: typst` une fois sur un doc existant. Le reste viendra.
+
+**Maëlle peut intervenir 10 sec** sur `theme_brand_ggplot2()` / `theme_brand_gt()` côté R si elle veut signer son passage : « le `_brand.yml` ne sert pas qu'au PDF — vos ggplot et gt peuvent aussi en hériter via les helpers du package `brand.yml` ».
+:::
+
+## Merci ! Questions ?
+
+Merci aux Rencontres R, à l'équipe d'organisation, et à vous.
+
+**Christophe Dervieux** — Posit
+**Maëlle Salmon** — rOpenSci / cynkra
+
+::: notes
+**CD passe la main à Maëlle pour Q&A.** Elle a la fraîcheur de la co-animatrice qui n'a pas porté Bloc 2.
+
+Si pas de question dans les 10 premières secondes, Maëlle relance avec une question stock pré-préparée (à valider avec elle hors-tutoriel) — exemples possibles : « Une question fréquente qu'on entend, c'est : et si je veux du LaTeX et du Typst dans le même projet ? » ou « Comment vous gérez la transition d'une équipe qui a 5 ans de templates LaTeX ? ».
 :::
