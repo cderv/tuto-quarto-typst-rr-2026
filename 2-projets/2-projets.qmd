@@ -32,7 +32,7 @@ Transition naturelle : au Bloc 1 on a stylé un document unique. Maintenant on p
 
 ## `type: book` + orange-book {.smaller}
 
-```{.yaml filename="_quarto.yml"}
+```{.yaml filename="_quarto.yml" code-line-numbers="1-2|4-9|10-11|13"}
 project:
   type: book
 
@@ -63,6 +63,8 @@ Depuis Quarto 1.9, `format: typst` sur un book active automatiquement **orange-b
 
 ::: notes
 Le moment wow : zéro configuration supplémentaire. On montre le _quarto.yml, on rend, et on obtient un livre pro. Orange-book est une extension bundlée dans Quarto 1.9.
+
+Découpage du YAML en 4 fragments via `code-line-numbers` pour étaler le récit : (1) `project.type: book` = on déclare un projet livre ; (2) bloc `book:` avec titre/auteur/chapters = configuration minimale ; (3) `appendices:` = ce qui sort du flux principal et devient « Annexe A » ; (4) `format: typst` = inchangé depuis l'étape 1, c'est `type: book` qui active orange-book. 4 beats = 4 idées, plus digestible que tout d'un coup.
 :::
 
 ## Construisons un livre ensemble {background-color="#27ae60"}
