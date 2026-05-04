@@ -21,7 +21,7 @@ starwars |>
   gt() |>
   tab_header(
     title = "Top 10 des mondes natals",
-    subtitle = "Personnages par planete d'origine"
+    subtitle = "Personnages par planète d'origine"
   ) |>
   cols_label(
     homeworld = "Planete",
