@@ -19,16 +19,16 @@ c'est le point de départ.
 
 | # | Action | Vous devriez voir | Concept |
 |---|---|---|---|
-| 1 | Crée `_quarto.yml` à la racine du starter avec `project: { type: default }` et `format: typst`. Render. | 5 PDF séparés (un par fichier) | Le format est défini une fois pour tout le projet, pas dans chaque `.qmd`. |
-| 2 | Passe `type: book`, ajoute `book: { title, chapters: [...], appendices: [...] }`. Le `format: typst` reste — orange-book s'active automatiquement. Render. | **PDF unique** avec couverture orange-book, TOC, **Figure 1.1 / Figure 2.1 / Table 1.1 / Table 2.1**, numérotation automatique des chapitres. | Le projet `book` assemble les `.qmd` en un livre relié, avec numérotation et navigation cohérentes. |
-| 3 | Copie `_brand.yml` (+ `_logo-sw.svg`) à la racine. Render. | Couverture jaune Star Wars + logo, headings en Orbitron, corps en Inter, tableaux `gt` re-stylés. | Le brand suit le projet — pas besoin de répéter les couleurs/fontes dans chaque chapitre. |
+| 1 | Créez `_quarto.yml` à la racine du starter avec `project: { type: default }` et `format: typst`. Rendez. | 5 PDF séparés (un par fichier) | Le format est défini une fois pour tout le projet, pas dans chaque `.qmd`. |
+| 2 | Passez à `type: book`, ajoutez `book: { title, chapters: [...], appendices: [...] }`. Le `format: typst` reste — orange-book s'active automatiquement. Rendez. | **PDF unique** avec couverture orange-book, TOC, **Figure 1.1 / Figure 2.1 / Table 1.1 / Table 2.1**, numérotation automatique des chapitres. | Le projet `book` assemble les `.qmd` en un livre relié, avec numérotation et navigation cohérentes. |
+| 3 | Copiez `_brand.yml` (+ `_logo-sw.svg`) à la racine. Rendez. | Couverture jaune Star Wars + logo, headings en Orbitron, corps en Inter, tableaux `gt` re-stylés. | Le brand suit le projet — pas besoin de répéter les couleurs/fontes dans chaque chapitre. |
 
 ## 2 bonus (3 min, pour les rapides)
 
 | # | Action | Vous devriez voir | Concept |
 |---|---|---|---|
-| B1 | Dans `conclusion.qmd`, ajoute une phrase qui référence `@fig-anatomie-mass` et `@sec-origines`. | « Comme l'a montré la **Figure 1.1**… » avec lien actif vers la figure et le chapitre 2. | Cross-refs inter-chapitres avec numérotation automatique. |
-| B2 | Toujours dans `conclusion.qmd`, ajoute en fin de fichier :<br>`::: {.content-visible when-format="typst"}`<br>`{{< pagebreak >}}`<br>`:::` | Saut de page entre la conclusion et l'annexe **dans le PDF uniquement** (pas en HTML preview). | Contenu conditionnel par format de sortie. |
+| B1 | Dans `conclusion.qmd`, ajoutez une phrase qui référence `@fig-anatomie-mass` et `@sec-origines`. | « Comme l'a montré la **Figure 1.1**… » avec lien actif vers la figure et le chapitre 2. | Cross-refs inter-chapitres avec numérotation automatique. |
+| B2 | Toujours dans `conclusion.qmd`, ajoutez en fin de fichier :<br>`::: {.content-visible when-format="typst"}`<br>`{{< pagebreak >}}`<br>`:::` | Saut de page entre la conclusion et l'annexe **dans le PDF uniquement** (pas en HTML preview). | Contenu conditionnel par format de sortie. |
 
 ## Pas de `_brand.yml` récupéré du Bloc 1 ?
 
