@@ -12,7 +12,7 @@
 
 ## Bug
 
-In a Quarto book using `format: orange-book-typst`, setting `lang: fr` (or any non-English `lang`) correctly localizes Quarto-managed labels — cross-refs (« la Figure 1.1 », « le Chapitre 2 »), appendix separator (« Annexes ») — but the **running page header** keeps the hardcoded English string:
+In a Quarto book using `format: typst` (which auto-activates the bundled orange-book extension as of 1.9), setting `lang: fr` (or any non-English `lang`) correctly localizes Quarto-managed labels — cross-refs (« la Figure 1.1 », « le Chapitre 2 »), appendix separator (« Annexes ») — but the **running page header** keeps the hardcoded English string:
 
 ```
 ... | Chapter 1. Anatomie
@@ -71,7 +71,7 @@ book:
     - index.qmd
     - 01-chapter.qmd
 
-format: orange-book-typst
+format: typst   # orange-book auto-activated; same bug with explicit `format: orange-book-typst`
 ```
 
 ```markdown
@@ -134,7 +134,7 @@ After this change, `lang: fr` (which is enough to load `_language-fr.yml`) would
 
 ## Optional context
 
-Caught while building workshop material for *Rencontres R 2026 — PDF sans frictions : Typst dans vos projets Quarto* (correction in [cderv/cderv-tuto-quarto-typst-rr-2026](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026), branch `claude/quarto-book-skeleton-qeDNI`, file `exercises/02-projet-book/correction/`). Le tutoriel pousse `format: orange-book-typst` côté book — bug visible pour tout participant francophone avec `lang: fr` correctement set.
+Caught while building workshop material for *Rencontres R 2026 — PDF sans frictions : Typst dans vos projets Quarto* (correction in [cderv/cderv-tuto-quarto-typst-rr-2026](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026), branch `claude/quarto-book-skeleton-qeDNI`, file `exercises/02-projet-book/correction/`). Le tutoriel pousse `format: typst` (auto-activation orange-book) côté book — bug visible pour tout participant francophone avec `lang: fr` correctement set.
 
 ---
 

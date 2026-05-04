@@ -52,7 +52,7 @@ book:
   appendices:
     - annexe-donnees.qmd
 
-format: orange-book-typst   # bug also reproduces with `format: typst`
+format: typst   # orange-book extension auto-activated; same bug with `format: orange-book-typst`
 ```
 
 `_brand.yml`:
@@ -134,7 +134,7 @@ Adding `font-paths` explicitly in the format config makes both paths get passed 
 
 ```yaml
 format:
-  orange-book-typst:
+  typst:
     font-paths:
       - .quarto/typst/fonts
 ```
