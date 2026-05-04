@@ -69,7 +69,7 @@ Dans les blocs raw Typst, les variables liées à la charte sont accessibles via
 
 - Référence : [Brand YAML](https://quarto.org/docs/authoring/brand.html)
 - Slides RR 2025 : [cderv.github.io/rr2025-quarto-brand-yml](https://cderv.github.io/rr2025-quarto-brand-yml/)
-- Helpers R pour propager la charte aux sorties graphiques : [`brand.yml` package](https://posit-dev.github.io/brand-yml/pkg/r/) — `theme_brand_ggplot2()`, `theme_brand_gt()`, `theme_brand_flextable()`, `theme_brand_plotly()`, `theme_brand_thematic()`
+- Fonctions auxiliaires R pour propager la charte aux sorties graphiques : [`brand.yml` package](https://posit-dev.github.io/brand-yml/pkg/r/) — `theme_brand_ggplot2()`, `theme_brand_gt()`, `theme_brand_flextable()`, `theme_brand_plotly()`, `theme_brand_thematic()`
 
 ## Blocs raw Typst
 

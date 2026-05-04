@@ -9,7 +9,11 @@ Pour aller au-delà des options YAML, Typst offre une personnalisation fine via 
 
 ## Points couverts
 
-### 1 — Blocs raw Typst (5 min)
+::: {.callout-note appearance="minimal"}
+Ces sujets sont des **pistes pour aller plus loin après le tutoriel**, pas couverts en séance. Le programme officiel tient en 2 blocs (cf. [page d'accueil](../index.qmd)). Cette page sert de point d'entrée pour les autodidactes.
+:::
+
+### 1 — Blocs raw Typst
 
 Une soupape pour injecter du Typst natif quand Quarto ne suffit pas.
 
@@ -18,7 +22,7 @@ Une soupape pour injecter du Typst natif quand Quarto ne suffit pas.
 - Traduction CSS → Typst : propriétés CSS utilisables sur spans et divs (depuis Quarto 1.5)
 - Tableaux stylisés : les tableaux HTML avec CSS (gt, pandas) sont rendus dans Typst
 
-### 2 — Template partials (12 min)
+### 2 — Template partials
 
 Personnaliser la génération du fichier `.typ` pour contrôler le layout du PDF.
 
@@ -28,7 +32,7 @@ Personnaliser la génération du fichier `.typ` pour contrôler le layout du PDF
 - Déclaration dans le YAML : `template-partials:`
 - Nouvelles variables Quarto 1.9 : `linkcolor`, `codefont`, `mathfont`, `linestretch`
 
-### 3 — Extensions & partage (8 min)
+### 3 — Extensions & partage
 
 Packager et partager des formats Typst personnalisés.
 
