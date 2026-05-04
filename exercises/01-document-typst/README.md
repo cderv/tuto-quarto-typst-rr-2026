@@ -26,8 +26,9 @@ en quatre étapes incrémentales :
    image.
 
 4. **Charte.** Créez un fichier `_brand.yml` à côté du `.qmd` (palette
-   couleurs + une ou deux polices Google). Re-rendez : couleurs et
-   typographies sont appliquées automatiquement à la mise en page PDF.
+   couleurs, une ou deux polices Google, et un logo SVG —
+   cf. `correction/_logo-sw.svg`). Re-rendez : couleurs, typographies
+   et logo sont appliqués automatiquement à la mise en page PDF.
    Pour propager la charte aux figures ggplot et tableaux gt, utilisez
    les helpers du package R `brand.yml` (`theme_brand_ggplot2()`,
    `theme_brand_gt()`) — voir `correction/rapport-starwars.qmd`.
@@ -38,6 +39,8 @@ Le dossier `correction/` contient une version finale possible :
 
 - `correction/rapport-starwars.qmd` — YAML Typst complet + un raw Typst
   inline (`#highlight()`) pour mettre un mot en valeur
-- `correction/_brand.yml` — palette Star Wars + Orbitron / Inter
+- `correction/_brand.yml` — palette Star Wars + Orbitron / Inter + logo
+- `correction/_logo-sw.svg` — étoile jaune Star Wars, placée par Quarto
+  en filigrane de la première page
 
 Comparez votre version au besoin, mais essayez d'abord par vous-même.
