@@ -21,12 +21,12 @@ date: ""
 
 Ce bloc suit le rythme **My turn → Our turn → Your turn**.
 
-### My turn — Concepts clés (~7 min)
+### My turn — À la fin de ce bloc, vous saurez (~7 min)
 
-- `format: typst` : une alternative à LaTeX sans installation, rapide, avec des erreurs lisibles
-- Options essentielles : `papersize`, `margin` (d'autres en démo)
-- `keep-typ: true` : comprendre le pipeline `.qmd` → `.typ` → `.pdf`
-- `_brand.yml` : un seul fichier pour les couleurs, polices et logo de votre organisation
+- Produire un PDF pro avec `format: typst` — alternative à LaTeX sans installation, rapide, erreurs lisibles
+- Régler les options essentielles : `papersize`, `margin` (d'autres en démo)
+- Inspecter le pipeline `.qmd` → `.typ` → `.pdf` via `keep-typ: true`
+- Personnaliser couleurs, polices et logo via un seul fichier `_brand.yml`
 
 ### Our turn — Démo live (~10 min)
 

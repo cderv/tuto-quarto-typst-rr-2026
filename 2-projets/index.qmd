@@ -21,11 +21,11 @@ date: ""
 
 Ce bloc suit le rythme **My turn → Our turn → Your turn**.
 
-### My turn — Concepts clés (~5 min)
+### My turn — À la fin de ce bloc, vous saurez (~5 min)
 
-- `_quarto.yml` : centraliser `format: typst` et `_brand.yml` pour tout le projet
-- `type: book` : assembler plusieurs `.qmd` en un livre avec TOC, numérotation et références croisées
-- orange-book : extension Typst livrée avec Quarto 1.9, activée automatiquement quand `format: typst` rencontre `type: book`
+- Centraliser `format: typst` et `_brand.yml` au niveau projet via `_quarto.yml`
+- Assembler plusieurs `.qmd` en un livre avec `type: book` (TOC, numérotation, références croisées)
+- Identifier l'auto-activation de l'extension orange-book par Quarto 1.9 sur `format: typst` + `type: book`
 
 ### Our turn — Démo live (~10 min)
 
