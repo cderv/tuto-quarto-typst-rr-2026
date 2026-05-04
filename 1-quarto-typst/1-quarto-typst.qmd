@@ -144,6 +144,8 @@ typography:
 C'est le deuxième moment fort : on passe d'un PDF basique à un PDF aux couleurs de son organisation. Rappeler que _brand.yml a été présenté aux RR 2025 pour ceux qui l'ont vu.
 
 **Mention orale ~30 sec pendant la démo Our turn** : le `_brand.yml` ne pilote pas que le PDF. Le package R `brand.yml` fournit des helpers `theme_brand_ggplot2()` et `theme_brand_gt()` qui appliquent la même charte aux figures et tableaux. Visible dans `correction/rapport-starwars.qmd`. On en parle pas plus, c'est dans les Ressources.
+
+**Si quelqu'un demande sur le placement du logo** (« il est en haut à gauche, je peux le mettre ailleurs ? ») : le placement par défaut en `format: typst` est `page(background)` haut-gauche, configurable partiellement via `padding` / `width`. Options additionnelles (`location`, `height`, header/footer placement) discutées en cours côté Quarto upstream — voir la [discussion #13591](https://github.com/orgs/quarto-dev/discussions/13591).
 :::
 
 ## Faisons ensemble ! {background-color="#27ae60"}

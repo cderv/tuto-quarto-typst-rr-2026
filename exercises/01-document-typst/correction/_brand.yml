@@ -17,3 +17,10 @@ typography:
       weight: [400, 600]
   base: Inter
   headings: Orbitron
+
+logo:
+  images:
+    sw-star:
+      path: _logo-sw.svg
+      alt: "Étoile jaune Star Wars"
+  medium: sw-star
