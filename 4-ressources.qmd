@@ -63,9 +63,9 @@ Le fichier `_brand.yml` supporte les sections suivantes :
 - `typography` — `base` (famille + taille), `headings`, `monospace`, polices Google ou locales
 - `logo` — positionnement dans le PDF : `width`, `location` (header/footer), `padding`, `alt`
 - `brand-mode: dark` — inverser background/foreground pour un PDF sombre
-- `quarto use brand user/repo` — partager une brand depuis GitHub
+- `quarto use brand user/repo` — partager une charte depuis GitHub
 
-Dans les blocs raw Typst, les variables brand sont accessibles via `brand-color.primary`, `brand-color.secondary`, `brand-logo-images`.
+Dans les blocs raw Typst, les variables liées à la charte sont accessibles via `brand-color.primary`, `brand-color.secondary`, `brand-logo-images`.
 
 - Référence : [Brand YAML](https://quarto.org/docs/authoring/brand.html)
 - Slides RR 2025 : [cderv.github.io/rr2025-quarto-brand-yml](https://cderv.github.io/rr2025-quarto-brand-yml/)
@@ -84,7 +84,7 @@ Injectez du code Typst natif dans un document Quarto :
 
 - Le contenu est passé directement au compilateur Typst
 - Invisible dans les autres formats (HTML, DOCX...)
-- Accédez aux variables brand : `brand-color.primary`, `brand-logo-images`
+- Accédez aux variables de la charte : `brand-color.primary`, `brand-logo-images`
 - Référence : [Typst Basics — Raw Typst](https://quarto.org/docs/output-formats/typst.html)
 
 ## Traduction CSS → Typst
@@ -132,8 +132,6 @@ Syntaxe Pandoc dans les partials :
 | `$for(var)$...$endfor$` | Boucle | `$for(by-author)$...$endfor$` |
 
 Variables Quarto 1.9 : `$linkcolor$`, `$codefont$`, `$mathfont$`, `$linestretch$`.
-
-**Attention** : Quarto décale les titres d'un niveau. Le `# h1` du `.qmd` devient `heading(level: 2)` dans Typst.
 
 - Référence : [Custom Typst Formats](https://quarto.org/docs/output-formats/typst-custom.html)
 
