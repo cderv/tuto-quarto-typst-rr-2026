@@ -5,8 +5,8 @@
 ## Objectif
 
 Vous partez d'un rapport `rapport-starwars.qmd` qui sort en HTML. Votre
-mission : le transformer en PDF Typst propre et brandé, sans toucher au
-code R.
+mission : le transformer en PDF Typst propre, aux couleurs de votre
+charte, sans toucher au code R.
 
 ## Démarche
 

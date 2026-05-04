@@ -91,6 +91,11 @@ book:
     - annexe-donnees.qmd
 
 format: typst
+
+execute:
+  echo: false
+  warning: false
+  message: false
 ```
 
 `chapters:` reçoit les fichiers numérotés normalement. `appendices:` (parallèle à `chapters:`, pas dedans) reçoit les fichiers qui sortent du flux principal — ils deviennent A, B, C... après tous les chapitres.
