@@ -46,7 +46,7 @@ date: ""
 Options supplémentaires pour `format: typst` :
 
 - `toc: true` et `number-sections: true` — table des matières et numérotation
-- `mainfont` — police principale du document (polices Google supportées)
+- `mainfont` — police principale du document (polices Google prises en charge)
 - `linestretch` — interlignage
 - `linkcolor`, `codefont`, `mathfont` — nouvelles options Quarto 1.9
 - `font-paths` — embarquer des polices locales dans le projet
@@ -56,7 +56,7 @@ Options supplémentaires pour `format: typst` :
 
 ## `_brand.yml` — référence complète
 
-Le fichier `_brand.yml` supporte les sections suivantes :
+Le fichier `_brand.yml` prend en charge les sections suivantes :
 
 - `meta` — nom de l'organisation, lien
 - `color` — palette de couleurs nommées + couleurs sémantiques (`primary`, `secondary`, `background`, `foreground`)
