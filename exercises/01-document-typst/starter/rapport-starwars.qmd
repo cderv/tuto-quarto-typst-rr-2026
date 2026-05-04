@@ -57,7 +57,7 @@ Les autres figures massives restent en dessous de 200 kg.
 
 ```{r}
 #| label: fig-mass
-#| fig-cap: "Taille et masse des personnages — Jabba en outlier (échelle log)"
+#| fig-cap: "Taille et masse des personnages — Jabba en valeur aberrante (échelle log)"
 #| fig-alt: "Nuage de points montrant la masse en fonction de la taille pour les 87 personnages de Star Wars. La masse est en échelle logarithmique. Jabba the Hutt apparaît nettement séparé du nuage principal en haut à droite."
 sw <- starwars |> filter(!is.na(height), !is.na(mass))
 

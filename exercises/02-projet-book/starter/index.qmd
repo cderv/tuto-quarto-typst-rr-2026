@@ -3,7 +3,7 @@
 Ce livre explore le dataset `dplyr::starwars` — 87 personnages, 14 variables —
 pour répondre à une question simple : qui sont les colosses de la galaxie ?
 
-Le fil rouge se déploie en deux chapitres : *Anatomie* (taille, masse, outliers)
+Le fil rouge se déploie en deux chapitres : *Anatomie* (taille, masse, valeurs aberrantes)
 puis *Origines* (mondes natals, espèces). La conclusion réserve une surprise du
 côté des droïdes.
 

@@ -46,7 +46,7 @@ L'Exercice 2 est **autonome vis-à-vis de l'Exercice 1** : si vous n'avez pas te
 
 Fichier : {{< fa download >}} [exercises/02-projet-book/starter/](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises/02-projet-book/starter)
 
-**3 étapes core (12 min) — attendues de tous :**
+**3 étapes principales (12 min) — attendues de tous :**
 
 | # | Action | Vous devriez voir |
 |---|---|---|
@@ -109,7 +109,7 @@ execute:
 ::: {.callout-warning collapse="true"}
 ## Bug `gt` à connaître (étape 3)
 
-Si vous voyez « 1 7 5 » au lieu de « 175 » dans les tableaux après avoir copié `_brand.yml` (typique sur Windows/macOS), c'est un bug connu de `gt` → Typst quand les polices fallback du tableau s'appliquent. **Fix** : ajoutez `|> opt_table_font(font = "Inter")` à la fin de votre pipeline `gt`. Non bloquant — vous pouvez continuer sans.
+Si vous voyez « 1 7 5 » au lieu de « 175 » dans les tableaux après avoir copié `_brand.yml` (typique sur Windows/macOS), c'est un bug connu de `gt` → Typst quand les polices de remplacement du tableau s'appliquent. **Correction** : ajoutez `|> opt_table_font(font = "Inter")` à la fin de votre pipeline `gt`. Non bloquant — vous pouvez continuer sans.
 :::
 
 ::: {.callout-warning appearance="minimal"}
