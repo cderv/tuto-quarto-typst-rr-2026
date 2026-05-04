@@ -1,0 +1,24 @@
+project:
+  type: book
+
+book:
+  title: "Anatomie d'une saga"
+  subtitle: "Portrait statistique des personnages de Star Wars"
+  author: "Mon Mothma"
+  date: "2026-06-16"
+  chapters:
+    - index.qmd
+    - 01-anatomie.qmd
+    - 02-origines.qmd
+    - conclusion.qmd
+  appendices:
+    - annexe-donnees.qmd
+
+format:
+  typst:
+    extend: orange-book
+
+execute:
+  echo: false
+  warning: false
+  message: false
