@@ -6,3 +6,5 @@
 exercises/**/*.typ
 exercises/**/*_files/
 exercises/**/*.pdf
+
+/.quarto/
