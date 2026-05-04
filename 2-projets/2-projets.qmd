@@ -55,7 +55,7 @@ Depuis Quarto 1.9, `format: typst` sur un book active automatiquement **orange-b
 
 ::: incremental
 - Page de couverture générée automatiquement
-- Numérotation par chapitre (Fig 2.1, Eq 3.1...)
+- Numérotation par chapitre (Figure 2.1, Table 2.1...)
 - En-têtes et pieds de page stylisés
 - Intégration `_brand.yml` pour les couleurs et le logo
 :::
@@ -71,14 +71,14 @@ Le moment wow : zéro configuration supplémentaire. On montre le _quarto.yml, o
 ## Faisons ensemble !
 
 1. Créer `_quarto.yml` avec `project: { type: default }` + `format: typst` → 5 PDF séparés
-2. Passer à `type: book` + `format: orange-book-typst` → **PDF unique** avec couverture et TOC
+2. Passer à `type: book` (le `format: typst` reste, orange-book s'active automatiquement) → **PDF unique** avec couverture et TOC
 3. Copier `_brand.yml` (+ `_logo-sw.svg`) à la racine → couverture jaune SW, Orbitron, Inter
 :::
 
 ::: notes
 Démo live, 3 étapes en ~10 min. C'est le pic émotionnel du Bloc 2 : à l'étape 2 le PDF unique avec couverture orange-book apparaît. Étape 3 = confirmation visuelle (le brand de Bloc 1 ressuscite côté book).
 
-Montrer pendant la démo : la numérotation automatique Fig 1.1 / Fig 2.1 / Tab 1.1 / Tab 2.1, l'apparition du logo SVG sur la couverture, le passage des tableaux gt en Inter (Étape 3).
+Montrer pendant la démo : la numérotation automatique Figure 1.1 / Figure 2.1 / Table 1.1 / Table 2.1 (en français Quarto rend « Figure » et « Table » — pas « Fig » / « Tab »), l'apparition du logo SVG sur la couverture, le passage des tableaux gt en Inter (Étape 3).
 
 Mentionner les bonus rapidement à la fin de la démo : cross-refs `@fig-anatomie-mass` / `@sec-origines` et `.content-visible when-format="typst"` + pagebreak. Pas obligés de les démontrer ici — c'est le contenu des bonus B1/B2 du Your turn.
 
@@ -95,7 +95,7 @@ Problèmes fréquents : mauvais chemin vers les chapitres, oubli du tiret devant
 **3 étapes core** (12 min, attendues de tous) :
 
 1. `_quarto.yml` avec `type: default` + `format: typst` → 5 PDF
-2. `type: book` + `format: orange-book-typst` → PDF unique
+2. Passer à `type: book` (format inchangé) → PDF unique
 3. `_brand.yml` (+ `_logo-sw.svg`) à la racine → brand jaune SW
 
 **2 bonus** (3 min, pour les rapides) :
