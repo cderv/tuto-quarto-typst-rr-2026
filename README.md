@@ -4,7 +4,7 @@
 
 **Instructeurs :** Christophe Dervieux (Posit) & Maëlle Salmon (rOpenSci, cynkra)
 
-**Durée :** 2h (1h40 de contenu effectif)
+**Durée :** 2h (1h30 de contenu effectif + Q&A)
 
 **Prérequis :** Quarto 1.9+, R 4.2+, RStudio / VS Code / Positron
 
@@ -15,20 +15,17 @@
 | Horaire | Bloc | Qui présente ? | Durée |
 |---------|------|:--------------:|:-----:|
 | 9h00 | **Bloc 1 — Quarto & PDF avec Typst** | | 40 min |
-| | Partie A — `format: typst` vs `format: pdf` | _à décider_ | 15 min |
-| | Partie B — Personnaliser avec `_brand.yml` | _à décider_ | 20 min |
-| | Exercice 1 | ensemble | 5 min |
+| | Partie A — `format: typst` vs `format: pdf` | _à décider_ | 10 min |
+| | Partie B — Personnaliser avec `_brand.yml` | _à décider_ | 15 min |
+| | Exercice 1 | ensemble | 15 min |
 | 9h40 | _Pause_ | | 10 min |
-| 9h50 | **Bloc 2 — Projets & Typst book** | | 25 min |
-| | Partie A — `_quarto.yml` et contenu conditionnel | _à décider_ | 10 min |
-| | Partie B — `type: book`, orange-book, Marginalia | _à décider_ | 15 min |
-| | Exercice 2 | ensemble | ~5 min |
-| 10h15 | **Bloc 3 — Aller plus loin** | | 25 min |
-| | Section 1 — Blocs raw Typst, CSS → Typst | _à décider_ | 5 min |
-| | Section 2 — Template partials | _à décider_ | 12 min |
-| | Section 3 — Extensions, partage, accessibilité | _à décider_ | 8 min |
-| | Exercice 3 (optionnel) | ensemble | ~5 min |
-| 10h40 | _Fin / Questions_ | | |
+| 9h50 | **Bloc 2 — Projets & Typst book** | | 40 min |
+| | Partie A — `_quarto.yml` et `type: book` | _à décider_ | 10 min |
+| | Partie B — Brand promu, cross-refs, contenu conditionnel | _à décider_ | 15 min |
+| | Exercice 2 | ensemble | 15 min |
+| 10h30 | _Fin / Questions_ | | |
+
+> Le contenu « Aller plus loin » (raw Typst, template partials, extensions) est conservé comme topic store dans [`3-aller-plus-loin/index.qmd`](3-aller-plus-loin/index.qmd) — référencé sans slot dédié dans le programme.
 
 ## Détail des contenus
 
@@ -61,13 +58,13 @@ Rappel [RR 2025](https://cderv.github.io/rr2025-quarto-brand-yml/), approfondi p
 
 > **Question :** est-ce qu'on montre les 4 `theorem-appearance` en screenshot ou en live ? Les screenshots sont plus fiables en temps limité.
 
-**Exercice 1 (~5 min)**
+**Exercice 1 (~15 min)**
 
 1. Convertir `rapport-starwars.qmd` de `format: pdf` vers `format: typst`
 2. Créer un `_brand.yml` minimal (2-3 couleurs + police Google)
 3. `keep-typ: true` et explorer le `.typ` généré
 
-### Bloc 2 — Projets & Typst book (25 min)
+### Bloc 2 — Projets & Typst book (40 min)
 
 **Partie A — Travailler en projet (10 min)**
 
@@ -87,50 +84,20 @@ Rappel [RR 2025](https://cderv.github.io/rr2025-quarto-brand-yml/), approfondi p
 
 > **Question :** on montre Marginalia comme format article séparé ou comme fonctionnalité du book ? Ce sont deux choses différentes, il faut être clair.
 
-**Exercice 2 (~5 min)**
+**Exercice 2 (~15 min)**
 
 1. Créer `_quarto.yml` avec `project: {type: book}` et `format: typst`
 2. Organiser en 2-3 chapitres
 3. Observer l'effet orange-book
 4. (Bonus) Appliquer le `_brand.yml` de l'exercice 1
 
-### Bloc 3 — Aller plus loin (25 min)
+### Aller plus loin (topic store, hors programme)
 
-**Section 1 — Blocs raw Typst (5 min)**
+Le contenu suivant est documenté dans [`3-aller-plus-loin/index.qmd`](3-aller-plus-loin/index.qmd) comme référence pour les participants curieux — il n'a pas de slot dédié dans le programme.
 
-- Syntaxe `` ```{=typst} `` pour injecter du Typst natif
-- Accès aux variables brand depuis un bloc raw
-- Traduction CSS → Typst (spans et divs, depuis Quarto 1.5)
-- Tableaux stylisés : gt/pandas → CSS → Typst
-
-> **Question :** ce bloc est rapide (5 min). Est-ce qu'on le combine avec le début des template partials pour un meilleur flow ?
-
-**Section 2 — Template partials (12 min)**
-
-- Pipeline : Pandoc + partials → `.typ` → PDF
-- `typst-show.typ` (pont Quarto → Typst) et `typst-template.typ` (layout)
-- Syntaxe Pandoc : `$title$`, `$if(...)$`, `$for(...)$`
-- Déclaration YAML : `template-partials:`
-- Variables Quarto 1.9 dans les partials
-- Piège : Quarto décale les titres d'un niveau (h1 → heading level 2)
-
-> **Question :** est-ce qu'on montre un exemple concret de partial modifié en live, ou juste les extraits de code ? La démo live est plus pédagogique mais prend du temps.
-
-**Section 3 — Extensions & partage (8 min)**
-
-- `quarto create extension format:typst`
-- `quarto add user/repo`
-- `quarto use brand user/repo`
-- Formats existants : [quarto-ext/typst-templates](https://github.com/quarto-ext/typst-templates)
-- Accessibilité PDF : `pdf-standard: ua-1`, `fig-alt`
-- Limitation : books pas encore compatibles UA-1
-
-**Exercice 3 (optionnel, ~5 min)**
-
-1. Ajouter les partials fournis (`typst-show.typ`, `typst-template.typ`)
-2. Déclarer avec `template-partials:` dans le YAML
-3. Modifier le footer
-4. (Bonus) Utiliser `linkcolor` dans le partial
+- **Blocs raw Typst** : `` ```{=typst} `` pour injecter du Typst natif, accès aux variables brand, traduction CSS → Typst
+- **Template partials** : `typst-show.typ` (pont Quarto → Typst), `typst-template.typ` (layout), syntaxe Pandoc, variables Quarto 1.9
+- **Extensions & partage** : `quarto create extension format:typst`, `quarto add user/repo`, `quarto use brand user/repo`, accessibilité `pdf-standard: ua-1`
 
 ## Exercices
 
@@ -139,19 +106,16 @@ Tous les exercices utilisent le dataset **Star Wars** (`dplyr::starwars`, 87 per
 | Exercice | Fichier | Objectif | Difficulté |
 |----------|---------|----------|:----------:|
 | 1 | `rapport-starwars.qmd` | PDF/Typst + brand.yml + keep-typ | ★ |
-| 2 | Projet book | Multi-chapitres + orange-book | ★★ |
-| 3 | Template partials | Personnalisation header/footer | ★★★ |
+| 2 | Projet book Star Wars | `_quarto.yml`, `type: book`, brand promu, cross-refs, contenu conditionnel | ★★ |
 
-Les exercices et corrections sont distribués en `.zip` séparés. Ils ne sont pas dans ce repo.
+Les exercices (starter et correction) sont sous `exercises/01-document-typst/` et `exercises/02-projet-book/`.
 
 ## Points à discuter
 
 - [ ] **Répartition des sections** — qui présente quoi ? Alternance ou blocs complets ?
-- [ ] **Démos live vs screenshots** — pour `theorem-appearance`, orange-book, Marginalia ?
-- [ ] **Exercice 3** — le garder optionnel ou le transformer en démo guidée ?
-- [ ] **Timing** — 40+25+25 = 90 min + 10 min pause = 100 min. Est-ce réaliste ?
+- [ ] **Démos live vs screenshots** — pour `theorem-appearance`, orange-book ?
+- [ ] **Timing** — 40+10+40 = 90 min de contenu, fin à 10h30, marge de 30 min pour Q&A ou débordement. Réaliste ?
 - [ ] **Contenu Quarto 1.9** — vérifier que toutes les features citées sont bien stables dans la release finale
-- [ ] **Accessibilité** — mentionner rapidement ou consacrer plus de temps ?
 - [ ] **Transition RR 2025 → RR 2026** — combien de rappels sur `_brand.yml` ? Les participants ne l'ont pas forcément vu en 2025
 
 ## Structure du dépôt
@@ -168,8 +132,7 @@ preparatifs.qmd                # Instructions d'installation
   index.qmd                    # Page Bloc 2
   2-projets.qmd                # Slides Bloc 2
 3-aller-plus-loin/
-  index.qmd                    # Page Bloc 3
-  3-aller-plus-loin.qmd        # Slides Bloc 3
+  index.qmd                    # Topic store complémentaire (pas dans la navbar)
 4-ressources.qmd               # Liens et ressources externes
 _extensions/                   # Extensions Quarto installées
   gadenbuie/countdown/         #   Timer pour exercices
