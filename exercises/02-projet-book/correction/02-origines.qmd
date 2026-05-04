@@ -1,14 +1,65 @@
+---
+title: "Origines"
+---
+
 # Origines {#sec-origines}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua.
+```{r}
+#| label: setup-origines
+library(dplyr)
+library(ggplot2)
+library(gt)
+```
+
+Les colosses du chapitre précédent venaient d'horizons divers. Élargissons :
+**d'où viennent les personnages, et à quelles espèces appartiennent-ils ?**
 
 ## D'où viennent-ils ?
 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-aliquip ex ea commodo consequat.
+```{r}
+#| label: tbl-origines-homeworlds
+starwars |>
+  filter(!is.na(homeworld)) |>
+  count(homeworld, sort = TRUE) |>
+  slice_head(n = 10) |>
+  gt() |>
+  tab_header(
+    title = "Top 10 des mondes natals",
+    subtitle = "Personnages par planete d'origine"
+  ) |>
+  cols_label(
+    homeworld = "Planete",
+    n = "Personnages"
+  ) |>
+  opt_table_font(font = "Inter")
+```
+
+Tatooine domine largement — la planète d'enfance de Luke et Anakin concentre
+une part démesurée du casting. La galaxie de la saga est, statistiquement, un
+village.
 
 ## Espèces dominantes
 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-fugiat nulla pariatur.
+```{r}
+#| label: fig-origines-especes
+#| fig-cap: "Top 8 des espèces les plus représentées dans le casting"
+#| fig-alt: "Diagramme en barres horizontales du nombre de personnages par espèce, restreint aux 8 espèces les plus représentées. Les humains dominent largement, suivis par les droïdes."
+starwars |>
+  filter(!is.na(species)) |>
+  count(species, sort = TRUE) |>
+  slice_head(n = 8) |>
+  ggplot(aes(x = reorder(species, n), y = n)) +
+  geom_col(fill = "#0B0B0F") +
+  coord_flip() +
+  labs(
+    x = NULL,
+    y = "Personnages",
+    title = "Top 8 des especes representees"
+  ) +
+  theme_minimal(base_size = 11)
+```
+
+Les humains dominent — saga « centrée humaine » comme on dit dans la critique.
+Mais juste derrière, les droïdes : R2-D2 et C-3PO ne sont pas seuls, ils ont
+de la compagnie. La punchline du chapitre 1 (« les vraies stars sont les
+droïdes ») commence à prendre du sens.
