@@ -1,5 +1,46 @@
 # Plan — Exo 2 : projet Quarto book Star Wars (P1)
 
+> **🗄️ ARCHIVÉ — implémenté 2026-05-04 + révisé post-review.**
+>
+> Ce plan a été livré (5 commits Phase 3 sur branche `claude/quarto-book-skeleton-qeDNI` :
+> `1b39468` `7b0ac7e` `43c1de8` `3b5273b` `ff2cbd3` `b7f18ab` `7e7ffde`),
+> puis **révisé post-review** (4 reviewers parallèles + 14 commits supplémentaires
+> `aaa4f6b`...`27a0878`). Pour la **version courante** de la spec et les écarts
+> vs ce plan : cf. `PLAN.md` decision log entrée « 2026-05-04 (session
+> post-review) ».
+>
+> **Écarts importants vs spec ci-dessous** (ne pas suivre ce plan littéralement) :
+>
+> 1. **`format: orange-book-typst` → `format: typst`** (décision CD post-review).
+>    Toutes les mentions ci-dessous (lignes 69, 79, 225, 302, 321, 326) sont
+>    obsolètes. Le matériel utilise désormais `format: typst` partout —
+>    orange-book est auto-activé sur `type: book` (`quarto.js:91326-91328`).
+>    Le workaround `font-paths: [.quarto/typst/fonts]` reste, mais sous
+>    `format.typst:` (validé : Orbitron + Inter embedded).
+> 2. **Tableau étape 2 splitté en 2a/2b** (réduction cognitive load) — voir
+>    `2-projets/index.qmd:53-54` et `exercises/02-projet-book/README.md:22-24`.
+> 3. **Vouvoiement** (« Créez », « Passez », « Copiez ») — pas tutoiement
+>    (« Crée », « Passe », « Copie ») comme dans les tableaux ci-dessous.
+> 4. **Vocabulaire FR** : « charte » au lieu de « brand » en prose,
+>    « références croisées » au lieu de « cross-refs », « titres » au lieu de
+>    « headings », « polices » au lieu de « fontes ». Garde les noms de
+>    fichiers/clés YAML/sous-commandes shell en code.
+> 5. **« Figure 1.1 / Table 1.1 »** au lieu de « Fig 1.1 / Tab 1.1 » (en
+>    français, Quarto rend « Figure » et « Table » via `_language-fr.yml`).
+> 6. **Faute `subtitle = "Personnages par planete"`** (ligne 151 ci-dessous)
+>    corrigée en `planète` — le `subtitle` gt n'est pas concerné par le
+>    workaround sans-accent qui ne s'applique qu'à `cols_label`.
+> 7. **Modèle `_quarto.yml` complet ajouté côté participant** (README + page
+>    web) avec convention `appendices:` parallèle à `chapters:` explicitée.
+> 8. **Note bug gt « 1 7 5 »** ajoutée côté participant (était seulement en
+>    notes presenter).
+>
+> Le plan ci-dessous est conservé comme **trace historique de la spec
+> initiale** et de la pensée pédagogique. Pas comme spec opérationnelle
+> courante.
+
+---
+
 ## Context
 
 **Pourquoi.** Le workshop *« PDF sans frictions : Typst dans vos projets Quarto »* (Rencontres R 2026, Nantes, 16 juin, 2 h) suit l'arc `.qmd → PDF pro → livre → personnalisé`. Le Bloc 1 livre un rapport Star Wars standalone branded (Exo 1, livré). Le Bloc 2 doit fournir l'Exo 2 (« passer à l'échelle : projet et livre ») — actuellement **manquant**, ce qui produit un lien 404 dans `2-projets/index.qmd:48` et bloque le support pédagogique des concepts core du Bloc 2 (`_quarto.yml`, `type: book`, orange-book, brand promu, cross-refs, conditional content).

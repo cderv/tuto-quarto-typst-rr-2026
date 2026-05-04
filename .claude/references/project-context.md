@@ -22,9 +22,8 @@ preparatifs.qmd             # Setup instructions
 2-projets/
   index.qmd                 # Block 2 page
   2-projets.qmd             # Block 2 slides (5 slides)
-3-aller-plus-loin/          # ARCHIVED — content disseminated into Blocs 1 & 2
-  index.qmd                 # No longer in navigation
-  3-aller-plus-loin.qmd     # Kept as reference
+3-aller-plus-loin/          # Topic store seulement — slide deck retiré 2026-05-04
+  index.qmd                 # Page « Points couverts » (résumé + exercice 3 optionnel)
 4-ressources.qmd            # Resources (enriched with STORE topics + ex-Bloc 3)
 ```
 
