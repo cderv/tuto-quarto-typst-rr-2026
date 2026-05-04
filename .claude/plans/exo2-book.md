@@ -1,13 +1,15 @@
 # Plan — Exo 2 : projet Quarto book Star Wars (P1)
 
-> **🗄️ ARCHIVÉ — implémenté 2026-05-04 + révisé post-review.**
+> **🗄️ ARCHIVÉ — implémenté 2026-05-04 + révisé post-review × 2.**
 >
 > Ce plan a été livré (5 commits Phase 3 sur branche `claude/quarto-book-skeleton-qeDNI` :
 > `1b39468` `7b0ac7e` `43c1de8` `3b5273b` `ff2cbd3` `b7f18ab` `7e7ffde`),
 > puis **révisé post-review** (4 reviewers parallèles + 14 commits supplémentaires
-> `aaa4f6b`...`27a0878`). Pour la **version courante** de la spec et les écarts
-> vs ce plan : cf. `PLAN.md` decision log entrée « 2026-05-04 (session
-> post-review) ».
+> `aaa4f6b`...`27a0878`), puis re-passé **post-review #2** (18 commits
+> `9b7a27e` → `9856186` squash-mergés sur `main`). Pour la **version courante**
+> de la spec et les écarts vs ce plan : cf. `PLAN.md` decision log entrées
+> « 2026-05-04 (session post-review) » et « 2026-05-04 (session post-review
+> #2) ».
 >
 > **Écarts importants vs spec ci-dessous** (ne pas suivre ce plan littéralement) :
 >
@@ -34,6 +36,31 @@
 >    web) avec convention `appendices:` parallèle à `chapters:` explicitée.
 > 8. **Note bug gt « 1 7 5 »** ajoutée côté participant (était seulement en
 >    notes presenter).
+> 9. **Préface book sans lorem ipsum** (post-review #2, P0 commit `d55526a`) —
+>    `correction/index.qmd:3` + `starter/index.qmd:3` commençaient par « Lorem
+>    ipsum dolor sit amet… » jamais remplacé (visible sur la couverture
+>    orange-book au rendu PDF). Désormais : phrase démarre par « Ce livre
+>    explore le dataset `dplyr::starwars`… ». L'intention plan ligne 154-155
+>    (« 5 lignes prose : (1) le dataset, (2) le fil rouge anatomie/origines,
+>    (3) clin d'œil droïdes ») est désormais respectée.
+> 10. **Workaround `font-paths` aussi côté participant** (post-review #2,
+>     P0 commit `d55526a`) — le plan listait `font-paths: [.quarto/typst/
+>     fonts]` uniquement dans `correction/_quarto.yml`. Le modèle proposé au
+>     participant (`2-projets/index.qmd:78-99` + `02-projet-book/README.md:
+>     31-52`) avait été ajouté en session post-review #1 sans le workaround
+>     (régression `5e2563c` puis `34e8d0f`). Désormais : modèle participant
+>     ↔ correction matchent sous la forme `format.typst.font-paths:
+>     [.quarto/typst/fonts]`.
+> 11. **Logo SW promu en cohérence Bloc 1 ↔ Bloc 2** (post-review #2,
+>     C2 commit `f3760e6`) — le plan ligne 50 décrivait `_logo-sw.svg` comme
+>     « variante book-spécifique » d'Exo 2. La spec a été élargie : le logo
+>     est désormais aussi dans `01-document-typst/correction/_logo-sw.svg`
+>     + bloc `logo:` dans `_brand.yml` Exo 1, conséquence d'un test
+>     empirique au render Exo 1 montrant que Quarto consomme le bloc en
+>     `format: typst` simple via `page(background: align(left+top, …))`.
+>     Renforce le pivot narratif Bloc 1 → Bloc 2 (le participant reconnaît
+>     son logo sur la couverture book à l'étape 3). `_brand-fallback.yml`
+>     déjà aligné.
 >
 > Le plan ci-dessous est conservé comme **trace historique de la spec
 > initiale** et de la pensée pédagogique. Pas comme spec opérationnelle
