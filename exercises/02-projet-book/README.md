@@ -51,6 +51,13 @@ format: typst
 du flux principal — ils deviennent A, B, C... et viennent après tous
 les chapitres dans le PDF.
 
+> ⚠️ **Bug `gt` à connaître (étape 3)** : si vous voyez « 1 7 5 » au lieu de
+> « 175 » dans les tableaux après avoir copié `_brand.yml` (typique sur
+> Windows/macOS), c'est un bug connu de `gt` → Typst quand les polices
+> fallback du tableau s'appliquent. **Fix** : ajoutez `|>
+> opt_table_font(font = "Inter")` à la fin de votre pipeline `gt`. Non
+> bloquant — vous pouvez continuer sans.
+
 ## 2 bonus (3 min, pour les rapides)
 
 | # | Action | Vous devriez voir | Concept |
