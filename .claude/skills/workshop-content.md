@@ -14,8 +14,8 @@ following the established patterns from RR 2023.
 ## Workshop Context
 
 - **Event:** Rencontres R 2026, 16 juin 2026, Nantes Université
-- **Duration:** 2h (1h40 effective content)
-- **Language:** French
+- **Duration:** 2h (1h30 de contenu effectif + Q&A) — programme : Bloc 1 ~40 min + pause 10 min + Bloc 2 ~40 min
+- **Language:** French (vouvoiement uniforme côté participant)
 - **Instructors:** Christophe Dervieux (Posit) & Maëlle Salmon (rOpenSci, Cynkra)
 - **Story arc:** `.qmd` → PDF professionnel → livre → personnalisé/pérennisé
 - **Dataset:** Star Wars (`dplyr::starwars`) throughout all exercises. Tables produced with `gt`.
@@ -31,7 +31,12 @@ N-name/
   images/             # Slide images/screenshots (if needed)
 ```
 
-Exercise and correction files are distributed separately as zip archives.
+Exercises live in `exercises/0X-name/{starter,correction}/`. Le `_quarto.yml`
+racine exclut `!exercises/` du render website mais garde `exercises/**`
+comme `resources:` — téléchargeables via `tree/main/exercises/0X-…/`. Pas
+de `.zip` distribué. Un mini-test pré-tutoriel autonome
+(`exercises/00-test-install/test-install.qmd`) est référencé dans
+`preparatifs.qmd` pour valider la chaîne Typst end-to-end avant le jour J.
 
 ## Website Section Page (`index.qmd`) Template
 
@@ -160,19 +165,18 @@ Content v1
 Content v2 (added)
 ```
 
-**Callout for live demo or exercise:**
-```markdown
-::: callout
-# Faisons ensemble !
-Description of the live demo or exercise.
-:::
-```
+**Mode markers (cf. `.claude/CLAUDE.md`)** :
 
-**Countdown timer for exercises (using [countdown Quarto extension](https://github.com/gadenbuie/countdown)):**
+- **My turn** : slides H2 normales, pas de callout spécial
+- **Our turn** : slide `{background-color="#27ae60"}` + `::: {.callout-tip}` + titre `# Faisons ensemble !`
+- **Your turn** : slide `{background-color="#FDC538"}` + `::: callout` (default) + titre `# À vous !` + `{{< countdown 15:00 >}}`
+- **Pépites** : `::: {.callout-note}` + titre `# Saviez-vous que...`
+
+**Countdown timer pour exercises (extension [countdown](https://github.com/gadenbuie/countdown), pas le package R)** :
 ```markdown
-{{< countdown 05:00 >}}
+{{< countdown 15:00 >}}
 ```
-Install with: `quarto add gadenbuie/countdown`
+Install : `quarto add gadenbuie/countdown`. Convention atelier RR 2026 : `15:00` pour Your turn (Exo 1 et Exo 2).
 
 **Speaker notes:**
 ```markdown
@@ -222,33 +226,86 @@ When introducing an exercise in the slides:
 3. Step three
 :::
 
-{{< countdown 05:00 >}}
+{{< countdown 15:00 >}}
 ```
+
+### Page de bloc — section « À la fin de ce bloc, vous saurez »
+
+En miroir de la slide A du wrap-up, ouvrir chaque page `index.qmd` de
+bloc avec une section **« À la fin de ce bloc, vous saurez (~N min) »**
+(verbes infinitifs, perspective apprenant), pas « Concepts clés » :
+
+```markdown
+### À la fin de ce bloc, vous saurez (~7 min)
+
+- Produire un PDF pro avec `format: typst` — alternative à LaTeX…
+- Régler les options essentielles : `papersize`, `margin`, `mainfont`…
+- Inspecter le pipeline `.qmd` → `.typ` → `.pdf` via `keep-typ: true`
+- Personnaliser couleurs, polices et logo via un seul fichier `_brand.yml`
+```
+
+### Wrap-up de fin de tutoriel (Bloc 2 only)
+
+Le slide deck du dernier bloc se termine sur **3 slides My turn
+terminales** (cf. `2-projets/2-projets.qmd:122-138`) — position absolue
+qui survit même si la pépite « Saviez-vous que… » saute pour timing :
+
+1. `## Ce que vous savez faire maintenant` — `::: incremental` 4 bullets
+   miroir des objectifs « À la fin de ce bloc » des 2 blocs
+2. `## Et maintenant ?` — 3 bullets statiques : « Cette semaine » /
+   « Pour creuser » (lien `4-ressources.qmd`) / « Communauté »
+3. `## Merci ! Questions ?` — signatures `**CD**` + `**Maëlle**` sur 2
+   lignes ; notes presenter avec 2 questions stock pré-préparées pour
+   relancer si silence
 
 ## Exercise File Conventions
 
 - Exercise files use the Star Wars dataset (`dplyr::starwars`)
 - Tables produced with `gt` (CSS → Typst native translation showcased)
-- R code is **frozen** in the starter files — participants do not modify it; they add Quarto/Typst features around it
-- Progressive complexity: each exercise builds on the previous one
-- Base file: `rapport-starwars.qmd` — a one-page report with one `gt` table + one `ggplot2` figure
-- Exercise instructions as comments in the YAML or as callout blocks
-- Corrections are complete, working versions of the exercises
+- R code is **frozen** dans les starters (chunks invisible via `echo:
+  false`) ; participants éditent YAML, `_brand.yml`, raw Typst,
+  structure projet. **Exceptions** : (a) `echo: true` sur le chunk
+  démo `theme_brand_*()` (pépite Bloc 1 mention orale), (b) les
+  helpers `library(brand.yml) + read_brand_yml() + theme_brand_gt() +
+  theme_brand_ggplot2()` sont *présents* dans la correction Exo 1
+  (non dans le starter — promesse README étape 4 : « pour propager la
+  charte aux figures ggplot et tableaux gt, voir correction »)
+- Progressive : Exo 2 réutilise/promeut le `_brand.yml` + logo SW
+  d'Exo 1 au niveau projet ; `_brand-fallback.yml` à la racine d'Exo 2
+  pour ceux n'ayant pas fini Exo 1
+- Base file Bloc 1 : `rapport-starwars.qmd` (1-2 pages, gt + scatter
+  ggplot Jabba labellé). Logo SW (`_logo-sw.svg`) en filigrane
+  couverture côté correction
+- Exercise instructions dans `README.md` racine de chaque exo (3
+  étapes core + 2 bonus pour Exo 2). Corrections = versions
+  complètes rendables
 
-## Content Topics by Bloc
+## Content Topics by Bloc (état au 2026-05-04)
 
-### Bloc 1 — Quarto & PDF avec Typst (40 min)
-- Partie A (15 min): `format: typst` vs `format: pdf`, basic options, `keep-typ: true`
-- Partie B (20 min): `_brand.yml` structure, logo, theorem-appearance, brand dictionaries
-- Exercise (~5 min): Convert pdf→typst, add brand, inspect .typ file
+### Bloc 1 — Un PDF pro en quelques minutes (~40 min)
+- **My turn** (~7 min) : intro rythme, `format: typst`, options
+  essentielles, `keep-typ: true`, `_brand.yml` — 5 slides
+- **Our turn** (~10 min) : démo live add typst / options / brand /
+  keep-typ — 1 callout slide
+- **Your turn** (~15 min) : Exo 1 (`exercises/01-document-typst/`) — 1
+  exercise slide
+- **Pépites** (~3 min) : raw Typst (`#highlight()`), CSS→Typst,
+  `pdf-standard: ua-1` — 1 note slide
 
-### Bloc 2 — Projets Quarto & Typst book (25 min)
-- Partie A (10 min): Project-level config, conditional content
-- Partie B (15 min): `type: book`, orange-book, Marginalia, typst-gather
-- Exercise (~5 min): Create book project, apply brand
+### Bloc 2 — Passer à l'échelle : projet et livre (~40 min)
+- **My turn** (~5 min) : `_quarto.yml`, `type: book` + auto-activation
+  orange-book — 2 slides
+- **Our turn** (~10 min) : démo live create book / apply brand /
+  `.content-visible` — 1 callout slide
+- **Your turn** (~15 min) : Exo 2 (`exercises/02-projet-book/`, 3 core
+  + 2 bonus) — 1 exercise slide
+- **Pépites** (~3 min) : template partials (`typst-show.typ` seul
+  côté orange-book), extensions, formats communauté — 1 note slide
+- **Wrap-up** (~3 min) : 3 slides terminales (cf. ci-dessus)
 
-### Bloc 3 — Aller plus loin avec Typst (25 min)
-- Section 1 (5 min): Raw Typst blocks, CSS→Typst translation, beautiful tables
-- Section 2 (12 min): Template partials, Pandoc syntax, new 1.9 variables
-- Section 3 (8 min): Extensions, sharing, PDF accessibility
-- Exercise (optional, ~5 min): Add template partials, modify footer
+### Bloc 3 « Aller plus loin » — réduit à un topic store
+- Slide deck `3-aller-plus-loin/3-aller-plus-loin.qmd` **supprimé**
+  2026-05-04 (claim h1→h2 faux)
+- Page web `3-aller-plus-loin/index.qmd` conservée comme topic store
+  (résumé « Points couverts »), pas dans la navbar du tutoriel
+- Hors programme — non bloquant pour le 16 juin
