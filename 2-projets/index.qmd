@@ -60,7 +60,15 @@ Fichier : {{< fa download >}} [exercises/02-projet-book/starter/](https://github
 | # | Action | Vous devriez voir |
 |---|---|---|
 | B1 | Dans `conclusion.qmd`, ajoutez une phrase qui référence `@fig-anatomie-mass` et `@sec-origines`. | « Comme l'a montré la **Figure 1.1**… » avec lien actif |
-| B2 | Toujours dans `conclusion.qmd`, ajoutez `::: {.content-visible when-format="typst"}` ... `{{< pagebreak >}}` ... `:::`. | Saut de page entre conclusion et annexe **dans le PDF uniquement** |
+| B2 | Saut de page conditionnel à la fin de `conclusion.qmd` (voir bloc ci-dessous). | Saut de page entre conclusion et annexe **dans le PDF uniquement** |
+
+**B2 — bloc à coller en fin de `conclusion.qmd`** :
+
+````markdown
+::: {.content-visible when-format="typst"}
+{{</* pagebreak */>}}
+:::
+````
 :::
 
 ### Modèle `_quarto.yml` pour l'étape 2

@@ -63,7 +63,15 @@ les chapitres dans le PDF.
 | # | Action | Vous devriez voir | Concept |
 |---|---|---|---|
 | B1 | Dans `conclusion.qmd`, ajoutez une phrase qui référence `@fig-anatomie-mass` et `@sec-origines`. | « Comme l'a montré la **Figure 1.1**… » avec lien actif vers la figure et le chapitre 2. | Cross-refs inter-chapitres avec numérotation automatique. |
-| B2 | Toujours dans `conclusion.qmd`, ajoutez en fin de fichier :<br>`::: {.content-visible when-format="typst"}`<br>`{{< pagebreak >}}`<br>`:::` | Saut de page entre la conclusion et l'annexe **dans le PDF uniquement** (pas en HTML preview). | Contenu conditionnel par format de sortie. |
+| B2 | Saut de page conditionnel à la fin de `conclusion.qmd` (voir bloc ci-dessous). | Saut de page entre la conclusion et l'annexe **dans le PDF uniquement** (pas en HTML preview). | Contenu conditionnel par format de sortie. |
+
+**B2 — bloc à coller en fin de `conclusion.qmd`** :
+
+````markdown
+::: {.content-visible when-format="typst"}
+{{< pagebreak >}}
+:::
+````
 
 ## Pas de `_brand.yml` récupéré du Bloc 1 ?
 
