@@ -20,7 +20,8 @@ c'est le point de départ.
 | # | Action | Vous devriez voir | Concept |
 |---|---|---|---|
 | 1 | Créez `_quarto.yml` à la racine du starter avec `project: { type: default }` et `format: typst`. Rendez. | 5 PDF séparés (un par fichier) | Le format est défini une fois pour tout le projet, pas dans chaque `.qmd`. |
-| 2 | Passez à `type: book`, ajoutez `book: { title, chapters: [...], appendices: [...] }`. Le `format: typst` reste — orange-book s'active automatiquement. Rendez. | **PDF unique** avec couverture orange-book, TOC, **Figure 1.1 / Figure 2.1 / Table 1.1 / Table 2.1**, numérotation automatique des chapitres. | Le projet `book` assemble les `.qmd` en un livre relié, avec numérotation et navigation cohérentes. |
+| 2a | Passez à `type: book` et ajoutez `book: { title, chapters: [...] }`. Le `format: typst` reste — orange-book s'active automatiquement. Rendez. | **PDF unique** avec couverture orange-book, TOC, **Figure 1.1 / Figure 2.1 / Table 1.1 / Table 2.1**, numérotation automatique des chapitres. `annexe-donnees` apparaît comme dernier chapitre numéroté. | Le projet `book` assemble les `.qmd` en un livre relié, avec numérotation et navigation cohérentes. |
+| 2b | Ajoutez `appendices: [annexe-donnees.qmd]` au bloc `book:`. Rendez à nouveau. | `annexe-donnees` bascule en « Annexe A » à la fin du livre, hors numérotation des chapitres. | `appendices:` est parallèle à `chapters:` et sort les fichiers du flux principal de numérotation. |
 | 3 | Copiez `_brand.yml` (+ `_logo-sw.svg`) à la racine. Rendez. | Couverture jaune Star Wars + logo, titres en Orbitron, corps en Inter, tableaux `gt` re-stylés. | La charte suit le projet — pas besoin de répéter les couleurs/polices dans chaque chapitre. |
 
 ### Modèle `_quarto.yml` pour l'étape 2
