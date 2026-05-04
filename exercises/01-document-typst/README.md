@@ -25,7 +25,7 @@ en quatre étapes incrémentales :
    Typst natif : le tableau `gt` y est bien une vraie `table()`, pas une
    image.
 
-4. **Brander.** Créez un fichier `_brand.yml` à côté du `.qmd` (palette
+4. **Charte.** Créez un fichier `_brand.yml` à côté du `.qmd` (palette
    couleurs + une ou deux polices Google). Re-rendez : couleurs, fonds et
    typographies sont appliqués automatiquement, dans le PDF **et** dans
    les figures ggplot/tableaux gt si vous utilisez les helpers du package

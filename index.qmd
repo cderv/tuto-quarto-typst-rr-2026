@@ -14,7 +14,7 @@ date: ""
 
 Ce tutoriel vous apprendra à produire des **documents PDF professionnels** avec Quarto en utilisant **Typst** comme moteur de rendu, sans avoir besoin d'installer LaTeX. Vous découvrirez comment personnaliser vos documents grâce à `_brand.yml` et aux templates Typst, pour obtenir des résultats soignés en quelques minutes.
 
-- Comment remplacer LaTeX par Typst pour des PDF sans friction ?
+- Comment remplacer LaTeX par Typst pour des PDF sans frictions ?
 - Comment personnaliser vos documents avec `_brand.yml` ?
 - Comment créer un livre multi-chapitres avec `type: book` ?
 - Comment aller plus loin avec les template partials et les extensions ?
