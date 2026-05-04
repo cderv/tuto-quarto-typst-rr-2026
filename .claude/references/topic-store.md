@@ -115,7 +115,7 @@ This bloc is the most at risk for time. In the hands-on format, it becomes a
 | Topic | What to show | Notes |
 |-------|-------------|-------|
 | Raw Typst blocks (`{=typst}`) | One example: custom element Quarto can't do | The escape hatch concept |
-| Template partials concept | What `typst-show.typ` and `typst-template.typ` do | Understanding, not memorizing syntax |
+| Template partials concept | What `typst-show.typ` does (and `typst-template.typ` on Quarto's default template; orange-book uses `typst-show.typ` only) | Understanding, not memorizing syntax |
 | Declaring `template-partials:` in YAML | Add partials, render | The "how" |
 
 **Exercise 3 (optional):** Copy provided partials, declare them, modify the footer.
@@ -124,8 +124,7 @@ This bloc is the most at risk for time. In the hands-on format, it becomes a
 
 | Topic | Notes |
 |-------|-------|
-| One partial modification (e.g. footer) | Live edit of `typst-template.typ` |
-| Heading level offset (+1) | Mention while editing partial — common gotcha |
+| One partial modification (e.g. footer) | Live edit of `typst-show.typ` (or `typst-template.typ` on Quarto's default template) |
 | `quarto create extension format:typst` | Show the scaffold, explain purpose |
 
 ### MENTION — One slide or verbal
@@ -147,7 +146,7 @@ This bloc is the most at risk for time. In the hands-on format, it becomes a
 | `quarto use brand` (repeated from Bloc 1) | Already stored |
 | `quarto add` for community templates | Can be on resources page |
 | Detailed `typst-show.typ` code walkthrough | Too deep for 10 min |
-| Detailed `typst-template.typ` code walkthrough | Too deep for 10 min |
+| Detailed `typst-template.typ` code walkthrough (default template only — orange-book has none) | Too deep for 10 min |
 
 ---
 
