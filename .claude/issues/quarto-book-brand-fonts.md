@@ -1,136 +1,136 @@
-# Issue draft — Quarto book + brand fonts: brand cache not passed as `--font-path` to typst
+# Quarto issue draft — book + brand fonts not passed to typst compile
 
-**Repo cible :** [`quarto-dev/quarto-cli`](https://github.com/quarto-dev/quarto-cli)
-**À ouvrir par :** Christophe (CD)
-**Voisinages :** [#13548](https://github.com/quarto-dev/quarto-cli/issues/13548), [#11929](https://github.com/quarto-dev/quarto-cli/issues/11929), [Discussion #7580](https://github.com/quarto-dev/quarto-cli/discussions/7580)
+> **Pour CD** : draft pour `quarto-dev/quarto-cli` issues. Reproduit dans une sandbox Linux propre (Quarto 1.9.36 + Typst 0.14.2 bundled). Logs et inspection de `quarto.js` ci-dessous.
+> Branche workshop où le repro existe : `claude/quarto-book-skeleton-qeDNI` — `exercises/02-projet-book/correction/`. Avant de filer, retirer la ligne `font-paths` pour reproduire (commit pré-workaround : `1b39468`).
 
 ---
 
 ## Title
 
-Typst book: brand fonts downloaded to `.quarto/typst/fonts/` are not passed as `--font-path` to `typst compile`
+`book + format: typst + _brand.yml fonts: source: google` — brand fonts downloaded but not passed as `--font-path` to `typst compile` (orbitron unknown font family warning, headings fall back to serif)
 
-## Bug description
+## Bug
 
-In a Quarto book project (`project.type: book` + `format: orange-book-typst` or `format: typst`) with `_brand.yml` declaring Google fonts, Quarto correctly **downloads** the fonts into `.quarto/typst/fonts/<host>/...` but **does not pass** that directory as `--font-path` to the final `typst compile` invocation.
+When rendering a Quarto **book** (`project.type: book`) to **Typst** with **brand fonts** declared in `_brand.yml` via `source: google`:
 
-Symptoms at render:
-- `warning: unknown font family: <font-family>` emitted by typst
-- `#show heading: set text(font: ("<font-family>",))` falls back to the default Typst font (Libertinus Serif) instead of the brand font
-- The brand styling appears partial — colors apply, but typography does not
+- Quarto **does** download the requested fonts to `.quarto/typst/fonts/fonts.gstatic.com/s/<family>/...` (Inter and Orbitron in the repro, both TTF static)
+- Quarto **does not** pass that directory to `typst compile` via `--font-path`
+- Typst emits `warning: unknown font family: orbitron` (and `: inter` for body if used by template)
+- Headings fall back to the Typst default (Libertinus Serif) instead of the brand `headings` font
 
-The same brand mechanism works for non-book Typst documents.
+## Reproduction
 
-## Reproduction (minimal)
+Minimal book project. No R chunks, no R packages, lipsum content only.
+
+```
+correction/
+├── _quarto.yml
+├── _brand.yml
+├── _logo-sw.svg          # any SVG, irrelevant to the bug
+├── index.qmd             # # Préface {.unnumbered}
+├── 01-anatomie.qmd       # # Anatomie + lipsum
+├── 02-origines.qmd       # # Origines {#sec-origines} + lipsum
+├── conclusion.qmd        # # Conclusion + lipsum
+└── annexe-donnees.qmd    # # Le dataset starwars + lipsum
+```
+
+`_quarto.yml`:
 
 ```yaml
-# _quarto.yml
 project:
   type: book
 
 book:
-  title: "Repro"
+  title: "Anatomie d'une saga"
+  author: "Mon Mothma"
+  date: "2026-06-16"
   chapters:
     - index.qmd
+    - 01-anatomie.qmd
+    - 02-origines.qmd
+    - conclusion.qmd
+  appendices:
+    - annexe-donnees.qmd
 
-format: orange-book-typst
+format: orange-book-typst   # bug also reproduces with `format: typst`
 ```
 
+`_brand.yml`:
+
 ```yaml
-# _brand.yml
+color:
+  palette:
+    sw-yellow: "#FFE81F"
+    sw-black:  "#0B0B0F"
+    sw-cream:  "#F5F0E1"
+  primary:    sw-yellow
+  foreground: sw-black
+  background: sw-cream
+
 typography:
   fonts:
     - family: Orbitron
       source: google
       weight: [400, 700]
+    - family: Inter
+      source: google
+      weight: [400, 600]
+  base: Inter
   headings: Orbitron
 ```
 
-```markdown
-<!-- index.qmd -->
-# Préface {.unnumbered}
+Run:
 
-Body.
+```bash
+quarto render
 ```
 
-Run `quarto render`. Output:
+Render output:
 
 ```
 [typst]: Compiling index.typ to index.pdf...warning: unknown font family: orbitron
-    ┌─ index.typ:NNN:30
+    ┌─ index.typ:448:30
     │
-NNN │ #show heading: set text(font: ("Orbitron",), )
+448 │ #show heading: set text(font: ("Orbitron",), )
     │                               ^^^^^^^^^^^^^
+
+DONE
+Output created: _book/Anatomie-d-une-saga.pdf
 ```
-
-Inspect with `strace -f -e trace=execve` (or check `--font-path` flags any other way):
-
-```
-typst compile … --font-path /opt/quarto/share/formats/typst/fonts <input> <output>
-```
-
-Only the Quarto-bundled font path is passed. Yet:
-
-```
-$ ls .quarto/typst/fonts/fonts.gstatic.com/s/orbitron/v35/
-yMJMMIlzdpvBhQQL_SC3X9yhF25-T1nyGy6BoWg2.ttf
-yMJMMIlzdpvBhQQL_SC3X9yhF25-T1ny_CmBoWg2.ttf
-
-$ typst fonts --ignore-system-fonts --font-path .quarto/typst/fonts
-…
-Orbitron
-```
-
-The font is correctly downloaded and discoverable by typst when the path is provided — Quarto just doesn't provide it.
 
 ## Expected behavior
 
-The brand font cache directory (`.quarto/typst/fonts/` after the `typst-font-cache` migration) should be appended to typst's `--font-path` arguments for **book projects**, the same way it is for standalone documents.
+Brand fonts (Inter, Orbitron) should be available to the Typst compile step. No warning. Headings should render in Orbitron (not the Libertinus Serif fallback).
 
-## Code analysis (Quarto 1.9.36)
+## Actual behavior
 
-The brand integration writes the cache directory into the format metadata (`quarto.js` ~line 129892):
+`quarto typst fonts --ignore-system-fonts --font-path .quarto/typst/fonts/` correctly lists Inter and Orbitron — they **are downloaded**:
 
-```js
-// resolveExtras (gated isTypstOutput)
-const font_cache = migrateProjectScratchPath(brand.projectDir, "typst-font-cache", "typst/fonts");
-// … download fonts to font_cache …
-fontdirs.add(font_cache);
-
-let fontPaths = format14.metadata[kFontPaths] || [];
-// (normalize / resolve absolute paths …)
-fontPaths.push(...fontdirs);
-format14.metadata[kFontPaths] = fontPaths;
+```
+DejaVu Sans Mono
+Inter
+Libertinus Serif
+New Computer Modern
+New Computer Modern Math
+Orbitron
 ```
 
-The single `typstCompile` call site (`quarto.js` ~line 135873) reads back from format metadata:
+But `strace -f -e trace=execve` on the render shows `typst compile` is invoked with only the bundled font path, not the brand cache:
 
-```js
-typstOptions.fontPaths = asArray(format14.metadata?.[kFontPaths]).map(
-  (p) => isAbsolute4(p) ? p : resolve4(inputDir, p)
-);
+```
+execve("/opt/quarto/bin/tools/x86_64/typst",
+  [..., "compile", "--root", "<projectDir>",
+   "--package-cache-path", "<projectDir>/.quarto/typst/packages",
+   "<projectDir>/index.typ",
+   "--font-path", "/opt/quarto/share/formats/typst/fonts",
+   "<projectDir>/index.pdf"], ...)
 ```
 
-And `fontPathsArgs` (~line 104059) concatenates Quarto-bundled + caller-provided:
-
-```js
-function fontPathsArgs(fontPaths) {
-  const fontPathsQuarto = ["--font-path", resourcePath("formats/typst/fonts")];
-  // …
-  if (fontPaths && fontPaths.length > 0) {
-    fontExtrasArgs = fontPaths.map((p) => ["--font-path", p]).flat();
-  }
-  return fontPathsQuarto.concat(fontExtrasArgs);
-}
-```
-
-All the wiring is in place. Empirically in book mode, `format.metadata['font-paths']` is **empty** at the typstCompile call site for the assembled book — the mutation made in `resolveExtras` per chapter does not appear to propagate to the format object passed when the book's combined `index.typ` is compiled.
-
-(Plausible hypothesis to verify: the format object that gets the font-paths mutation is the per-chapter one, while the book-level compile uses a freshly-built format that doesn't carry chapter-level mutations — but this is just a reading hypothesis, not a confirmed mechanism.)
+No `--font-path <projectDir>/.quarto/typst/fonts` is ever appended.
 
 ## Workaround
 
-Declare `font-paths` explicitly in `_quarto.yml`, pointing to the same dir Quarto already populates:
+Adding `font-paths` explicitly in the format config makes both paths get passed (verified via strace):
 
 ```yaml
 format:
@@ -139,33 +139,59 @@ format:
       - .quarto/typst/fonts
 ```
 
-After this change, `strace` confirms both paths are passed:
+Post-workaround `execve` shows:
 
 ```
-… --font-path /opt/quarto/share/formats/typst/fonts \
-  --font-path /<projectDir>/.quarto/typst/fonts …
+... "--font-path", "/opt/quarto/share/formats/typst/fonts",
+    "--font-path", "<projectDir>/.quarto/typst/fonts", ...
 ```
 
-The warning disappears and headings render in the brand font.
+No warning, headings render in Orbitron.
 
-This works because the `font-paths` user-set metadata is properly threaded through to the typstCompile call, but it requires the user to know the internal cache path — defeating the point of brand auto-download.
+## Root cause hypothesis (from `quarto.js` source inspection)
+
+The brand-font integration is wired correctly in `resolveExtras()` (Quarto 1.9.36, `/opt/quarto/bin/quarto.js`):
+
+- **L. 129770**: `const fontdirs = new Set();` initialised
+- **L. 129841-892**: fonts downloaded into `font_cache = migrateProjectScratchPath(brand.projectDir, "typst-font-cache", "typst/fonts")` and `fontdirs.add(font_cache)`
+- **L. 129893-901**: `fontPaths = format.metadata['font-paths'] || []; ...; fontPaths.push(...fontdirs); format.metadata['font-paths'] = fontPaths;`
+
+The single `typstCompile` call site (**L. 135873**) reads `format.metadata['font-paths']` and passes it to `fontPathsArgs()` (**L. 104059**), which concatenates `["--font-path", resourcePath("formats/typst/fonts")]` with the user-supplied paths.
+
+So the chain is correctly wired **per file**. The issue appears in **book mode**: `resolveExtras()` runs and mutates `format.metadata['font-paths']` for individual chapter formats, but the `format` object passed to the final `typstCompile` call (compiling the assembled `index.typ`) is **not the same object** that was mutated, so `format.metadata['font-paths']` is empty at compile time.
+
+Standalone `format: typst` documents (no project, or `type: default`) seem unaffected — needs explicit re-test, but the prior workshop session reported standalone working with `source: google`.
 
 ## Environment
 
-- Quarto **1.9.36**
-- Typst **0.14.2** (bundled)
-- orange-book extension **0.7.1** (bundled)
-- OS: Linux (sandbox), reproduces the same way; not OS-specific (Quarto JS pipeline)
+- OS: Linux (Debian, Claude Code on the web sandbox)
+- Quarto: 1.9.36
+- Typst (bundled): 0.14.2
+- Brand: `_brand.yml typography.fonts.source: google`, fonts Inter (400/600) + Orbitron (400/700)
+- Reproduces with both `format: typst` (auto orange-book) and `format: orange-book-typst` (explicit)
+- Reproduces freshly (no R, no chunks, lipsum only)
 
-## Optional context
+## Related upstream context
 
-Caught while building workshop material for *Rencontres R 2026 — PDF sans frictions : Typst dans vos projets Quarto* (full repro on disk: `exercises/02-projet-book/correction/` in [cderv/cderv-tuto-quarto-typst-rr-2026](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026)). I can produce a smaller standalone repro repo on request.
+- #13548 — Variants fonts from same family with Brand YAML (similar cluster: brand fonts not reaching Typst compile reliably)
+- #11929 — All `brand.typography.fonts` should be made available in websites (different but adjacent: "downloaded but not exposed")
+- Discussion #7580 — Custom fonts with typst (env var vs CLI flag exclusivity)
+- #11278 — Documentation: troubleshooting Typst fonts
+- #12695 — `font-path` resolution relative to project root
+
+## Suggested fix direction
+
+Two angles, not mutually exclusive:
+
+1. **Wire-up fix**: ensure the format object whose `metadata['font-paths']` is mutated by `resolveExtras` is the same object that flows into the book-level `typstCompile` call. If the book pipeline rebuilds or clones the format, propagate the brand `fontdirs` accordingly.
+2. **Belt-and-braces fix in `fontPathsArgs`**: always include the project-level brand cache when it exists. The function already knows about `Deno.env.get("TYPST_FONT_PATHS")` and the bundled path; add a check for a known scratch path under the project dir (`migrateProjectScratchPath(projectDir, "typst-font-cache", "typst/fonts")`).
+
+Happy to test a candidate fix if useful.
 
 ---
 
-## Notes pour CD avant publication
+## Notes pour l'issue (à retirer avant filing)
 
-- Vérifier si le bug se manifeste aussi en **standalone Typst doc** dans cet env (decision log ligne 27 dit que ça marche en standalone Quarto 1.9.36 — donc bug **book-only** probable, à confirmer en testant `exercises/01-document-typst/correction/rapport-starwars.qmd`).
-- Vérifier si `format: typst` (sans extension orange-book) reproduit aussi → si oui, c'est un bug Quarto book pur, pas une interaction avec orange-book.
-- Si tu veux un repro standalone hors workshop : je peux produire un mini-repo en 5 fichiers.
-- Issue title courte alternative : *"Brand fonts downloaded but not added to `--font-path` for typst books"*.
+- Si CD veut un repro encore plus minimal (sans book), tester d'abord en `type: default` + `format: typst` pour confirmer/infirmer si c'est un bug **book-only**. Si non book-only, l'angle root cause change (le bug est plus haut dans `resolveExtras`).
+- L'inspection `quarto.js` ci-dessus est sur le bundle compilé (Deno bundle). Les vrais paths source TS sont dans `quarto-cli/src/...`. Référencer les fichiers source plutôt que les line numbers du bundle dans l'issue finale.
+- Vérifier la branche / version : 1.9.36 est dans la sandbox ; si CD a 1.9.37+ localement, re-confirmer avant d'ouvrir l'issue.
