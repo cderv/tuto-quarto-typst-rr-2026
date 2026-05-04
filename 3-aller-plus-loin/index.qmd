@@ -11,14 +11,6 @@ date: ""
 
 Pour aller au-delà des options YAML, Typst offre une personnalisation fine via des templates et des extensions partageables.
 
-## Diapos
-
-{{< fa tv >}} [Ouvrir les diapos en plein écran](3-aller-plus-loin.html)
-
-```{=html}
-<iframe class="slide-deck" src="3-aller-plus-loin.html" height="420" width="747" style="border: 1px solid #123233;"></iframe>
-```
-
 ## Points couverts
 
 ### 1 — Blocs raw Typst (5 min)
@@ -39,7 +31,6 @@ Personnaliser la génération du fichier `.typ` pour contrôler le layout du PDF
 - Syntaxe Pandoc dans les partials : `$title$`, `$if(by-author)$`, `$for(author)$`
 - Déclaration dans le YAML : `template-partials:`
 - Nouvelles variables Quarto 1.9 : `linkcolor`, `codefont`, `mathfont`, `linestretch`
-- ⚠️ Quarto décale les titres d'un niveau : h1 Quarto = h2 dans Typst
 
 ### 3 — Extensions & partage (8 min)
 
