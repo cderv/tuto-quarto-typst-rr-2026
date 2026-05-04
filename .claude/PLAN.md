@@ -1,5 +1,58 @@
 # Workshop Preparation Plan
 
+## 🎯 État de complétude — 16 juin 2026 (à jour 2026-05-04 post-review)
+
+### ✅ Livré et stable
+
+- **Site web** : page d'accueil, préparatifs, ressources — `quarto render` racine 8/8 OK
+- **Bloc 1** (Quarto + Typst sur 1 doc, ~40 min) — slides + page web (iframe) + Exo 1 starter + correction brandée Star Wars (R chunks `dplyr::starwars`, gt, ggplot, raw `#highlight()`)
+- **Bloc 2** (Projet book + brand, ~40 min) — slides (avec `code-line-numbers` 4 fragments sur le YAML étape 2) + page web (modèle `_quarto.yml` complet + note bug gt + bloc B2 copiable) + Exo 2 starter (5 .qmd) + correction book Star Wars complet + `_brand-fallback.yml` + READMEs
+- **Convention `format: typst` partout** (auto-activation orange-book sur `type: book`) — validé `pdffonts` (Orbitron + Inter embedded) + `strace` (typst lit `.quarto/typst/fonts/` brand cache)
+- **2 drafts d'issues GitHub prêts** dans `.claude/issues/` — `gh search` confirmé absence de doublon (à filer par CD)
+
+### 🟡 Bloc 3 « Aller plus loin » — réduit à un topic store post-review
+
+- Slide deck `3-aller-plus-loin/3-aller-plus-loin.qmd` **supprimé** (claim h1→h2 faux + contenu déjà redistribué dans Bloc 2 et 4-ressources)
+- Page web `3-aller-plus-loin/index.qmd` conservée — résumé « Points couverts » + Exercice 3 optionnel (lien `[#]` placeholder, à compléter ou retirer)
+- Non bloquant pour le 16 juin : le workshop tient en 2 blocs
+
+### 🔴 Restes pour CD avant le 16 juin
+
+**Filing GitHub** :
+- [ ] Ouvrir `.claude/issues/quarto-book-brand-fonts.md` côté `quarto-dev/quarto-cli`
+- [ ] Ouvrir `.claude/issues/quarto-cli-orange-book-supplement-chapter-i18n.md` côté `quarto-dev/quarto-cli`
+
+**Validation visuelle** (impossible en sandbox sans display) :
+- [ ] PDF correction Exo 1 : background crème + jaune SW sur droïdes + gt sans bug espacement + accent label ggplot OK
+- [ ] PDF correction Exo 2 : cover orange-book brandée + Orbitron sur titres + Inter sur corps + Figure 1.1 / Table 1.1 / Annexe A
+- [ ] Slide étape 2 (`2-projets/2-projets.qmd:35`) : revealjs `code-line-numbers="1-2|4-9|10-11|13"` highlight bien les 4 paquets en transition
+- [ ] Callout-warning bug gt (`2-projets/index.qmd:90`) : `collapse=true` rend bien (titre cliquable, contenu replié par défaut)
+- [ ] Slide `_brand.yml` Bloc 1 (`1-quarto-typst.qmd:121`) : forme `fonts:` list + `base:` string rend correctement avec syntax highlight YAML
+
+**Logistique pré-jour J** :
+- [ ] Test fresh install d'un participant : `preparatifs.qmd` instructions sur machine vierge (Linux/macOS/Windows si possible)
+- [ ] Préparer **Posit Cloud workspace de fallback** pour participants avec ennuis d'install
+- [ ] Dry run timing complet bout-à-bout (Bloc 1 ~40 min + Bloc 2 ~40 min, marges incluses)
+- [ ] Pré-render des PDFs corrections en backup screenshots (au cas où projection pose problème)
+- [ ] Sync co-animation avec Maëlle : qui dit quoi quand, transitions inter-blocs
+
+### 🟢 Optionnel (non bloquant pour le 16 juin)
+
+- Phase 4 plan d'origine (`demos/01-bloc1/`, `demos/02-bloc2/` scripts pas-à-pas) — déjà couvert par le « Our turn » live coding du formateur, pas indispensable
+- Phase 5 plan d'origine (pépite R Bloc 1 avec `theme_brand_ggplot2`) — bonus pédagogique si temps
+- Slide démo `_brand.yml` Bloc 1 enrichie d'une mini-capture du PDF Star Wars rendu (ancrage visuel)
+- Lien `[#]` placeholder de l'Exercice 3 dans `3-aller-plus-loin/index.qmd` : compléter (extensions/templates/CV) ou retirer la section
+
+### 📦 Post-mortem (après le 16 juin)
+
+- Récolter feedback participants (formulaire court ?)
+- Backporter les bugs identifiés vers la doc Quarto / extension orange-book si non fixés upstream entre-temps
+- Décider sort du `3-aller-plus-loin/index.qmd` topic store (garder, étoffer en slide deck pour une session future, ou retirer)
+
+---
+
+
+
 Workshop: "PDF sans frictions : Typst dans vos projets Quarto"
 Event: Rencontres R 2026, 16 juin, Nantes — 2h tutorial
 
