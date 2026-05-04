@@ -1,6 +1,6 @@
 # Exercice 2 — De la page au livre
 
-> 4 fichiers `.qmd`, un `_quarto.yml`, et le rapport Bloc 1 devient un livre
+> 5 fichiers `.qmd`, un `_quarto.yml`, et le rapport Bloc 1 devient un livre
 > Quarto avec couverture, TOC, numérotation automatique et brand cohérent.
 
 ## Pré-requis
