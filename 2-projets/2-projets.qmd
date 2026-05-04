@@ -68,15 +68,21 @@ Le moment wow : zéro configuration supplémentaire. On montre le _quarto.yml, o
 ::: {.callout-tip}
 ## Faisons ensemble !
 
-1. Créez un `_quarto.yml` avec `type: book` et `format: typst`
-2. Organisez le rapport en 2-3 chapitres
-3. Déplacez le `_brand.yml` du Bloc 1 à la racine du projet
-4. Rendez le book et observez l'effet orange-book
-5. Ajoutez `.content-visible when-format="typst"` pour un saut de page
+1. Créer `_quarto.yml` avec `project: { type: default }` + `format: typst` → 5 PDF séparés
+2. Passer à `type: book` + `format: orange-book-typst` → **PDF unique** avec couverture et TOC
+3. Copier `_brand.yml` (+ `_logo-sw.svg`) à la racine → couverture jaune SW, Orbitron, Inter
 :::
 
 ::: notes
-Démo live. Aller étape par étape. Montrer les cross-refs entre chapitres, la numérotation automatique Fig 2.1. Montrer un content-visible avec un pagebreak. Si le _brand.yml du Bloc 1 n'est pas prêt, utiliser le fichier fourni dans le zip.
+Démo live, 3 étapes en ~10 min. C'est le pic émotionnel du Bloc 2 : à l'étape 2 le PDF unique avec couverture orange-book apparaît. Étape 3 = confirmation visuelle (le brand de Bloc 1 ressuscite côté book).
+
+Montrer pendant la démo : la numérotation automatique Fig 1.1 / Fig 2.1 / Tab 1.1 / Tab 2.1, l'apparition du logo SVG sur la couverture, le passage des tableaux gt en Inter (Étape 3).
+
+Mentionner les bonus rapidement à la fin de la démo : cross-refs `@fig-anatomie-mass` / `@sec-origines` et `.content-visible when-format="typst"` + pagebreak. Pas obligés de les démontrer ici — c'est le contenu des bonus B1/B2 du Your turn.
+
+Si vous voyez des chiffres mal espacés (« 1 7 5 » au lieu de « 175 ») dans les tableaux à l'étape 3 chez un participant Windows/macOS : c'est normal, bug `gt` → Typst sur fallback de fonts. Le workaround `opt_table_font(font = "Inter")` est appliqué dans la correction (mais pas dans le starter — bug volontairement visible). Pas la peine de s'attarder, mentionner et passer.
+
+Problèmes fréquents : mauvais chemin vers les chapitres, oubli du tiret devant les noms de fichiers dans `chapters:`, oubli de l'underscore dans `_quarto.yml` ou `_brand.yml`.
 :::
 
 ## Exercice 2 {background-color="#FDC538"}
@@ -84,20 +90,30 @@ Démo live. Aller étape par étape. Montrer les cross-refs entre chapitres, la 
 ::: callout
 ## À vous !
 
-1. Créez un `_quarto.yml` avec `project: {type: book}` et `format: typst`
-2. Organisez votre rapport en 2-3 chapitres (intro, analyse, conclusion)
-3. Rendez le book et observez l'effet orange-book
-4. **(Bonus)** Appliquez le `_brand.yml` de l'exercice 1 au projet
+**3 étapes core** (12 min, attendues de tous) :
+
+1. `_quarto.yml` avec `type: default` + `format: typst` → 5 PDF
+2. `type: book` + `format: orange-book-typst` → PDF unique
+3. `_brand.yml` (+ `_logo-sw.svg`) à la racine → brand jaune SW
+
+**2 bonus** (3 min, pour les rapides) :
+
+- B1. Cross-refs `@fig-anatomie-mass` + `@sec-origines` dans `conclusion.qmd`
+- B2. `.content-visible when-format="typst"` + `{{< pagebreak >}}`
 :::
 
 ::: {.callout-warning appearance="minimal"}
-Pas de `_brand.yml` ? Copiez le fichier `_brand.yml` fourni dans le dossier `exercises/02-projet-book/`.
+Pas de `_brand.yml` ? Copiez `_brand-fallback.yml` (à renommer) et `correction/_logo-sw.svg` à la racine. Voir la page Exercice 2.
 :::
 
 {{< countdown 15:00 >}}
 
 ::: notes
-15 minutes. Le fallback est important : ceux qui n'ont pas fini l'exercice 1 peuvent copier le fichier _brand.yml template fourni. Passer dans les rangs. Problèmes fréquents : mauvais chemin vers les chapitres, oubli du tiret devant les noms de fichiers.
+15 minutes total : 12 min sur les 3 core + 3 min de bonus pour les rapides. Annoncer clairement que les bonus sont pour ceux qui ont fini, pas pour tout le monde — sinon ~50 % du public n'atteindrait pas l'étape 3 (le brand, qui est le wow visuel le plus fort).
+
+Le fallback `_brand-fallback.yml` (+ `correction/_logo-sw.svg`) est important : ceux qui n'ont pas fini Bloc 1 peuvent les copier. Passer dans les rangs, repérer ceux qui peinent à l'étape 1 — souvent un underscore manquant.
+
+Pour ceux qui finissent vite : pousser le bonus B1 (cross-refs) en premier — c'est le plus visuel et ça utilise les labels qui sont déjà dans le starter (`tbl-anatomie-mass`, `fig-anatomie-mass`, `#sec-origines`). Le bonus B2 (pagebreak) demande de connaître la syntaxe `.content-visible` — l'avoir montrée à la fin de Our turn aide.
 :::
 
 ## Saviez-vous que... {.smaller}
