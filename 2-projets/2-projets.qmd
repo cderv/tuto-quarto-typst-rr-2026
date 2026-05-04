@@ -123,7 +123,7 @@ Pour ceux qui finissent vite : pousser le bonus B1 (cross-refs) en premier — c
 ::: {.callout-note}
 ## Pépites pour aller plus loin
 
-- **Template partials** — Deux fichiers (`typst-show.typ` et `typst-template.typ`) contrôlent la génération du `.typ`. Vous pouvez les remplacer pour personnaliser header, footer, page de titre...
+- **Template partials** — Le fichier `typst-show.typ` (et son `typst-template.typ` côté template par défaut) contrôle la génération du `.typ`. Vous pouvez le remplacer pour personnaliser header, footer, page de titre... Suffit souvent de toucher `typst-show.typ` seul.
 - **Créer un format partageable** — `quarto create extension format:typst` génère un squelette d'extension prêt à publier sur GitHub
 - **Formats communautaires** — AMS, IEEE, poster, lettre, CV... sur [quarto-ext/typst-templates](https://github.com/quarto-ext/typst-templates)
 :::
