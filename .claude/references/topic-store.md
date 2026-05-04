@@ -40,6 +40,8 @@ Create a `_brand.yml` with colors and font. Enable `keep-typ: true`, inspect the
 | `toc: true`, `number-sections: true` | Quick YAML addition during demo |
 | `linestretch` | One line in demo |
 | Quarto 1.9 options: `linkcolor`, `codefont` | Mention during demo, don't enumerate all |
+| `theme_brand_ggplot2()` + `theme_brand_gt()` | **Now in correction Exo 1** (commit C1 `2fdf8fc`). Pattern additif après `theme_minimal()` ; ordre `theme_brand_gt → opt_table_font` important pour préserver Inter (workaround bug chiffres « 1 7 5 »). Mentioned in `4-ressources.qmd` with link to brand.yml R helpers doc |
+| `_brand.yml` `logo:` (forme `images:` map + `medium:`) | **Now in correction Exo 1 + Exo 2** (commits C2 `f3760e6` + livraison Exo 2). Quarto consomme déjà ce bloc en `format: typst` simple via `page(background: align(left+top, box(image(...))))` — logo en filigrane haut-gauche première page. Renforce le pivot Bloc 1 → Bloc 2 (le participant reconnaît son logo sur la couverture book) |
 
 ### MENTION — One slide or verbal
 
@@ -60,7 +62,7 @@ Create a `_brand.yml` with colors and font. Enable `keep-typ: true`, inspect the
 | Brand dictionaries (`brand-color`, `brand-logo-images`) in Typst | Advanced, needs raw Typst knowledge |
 | `brand-mode: dark` | Novelty feature, not core workflow |
 | `quarto use brand` from GitHub | Team workflow, not individual learning |
-| `logo` placement options (width, location, padding, alt) | Detail overload for a 10-min slide block |
+| `logo` placement options (width, location, padding, alt) | Detail overload for a 10-min slide block — basic `logo:` désormais utilisé en correction (cf. ligne DEMO ci-dessus), mais **placement détaillé** reste STORE. Référence : discussion upstream `quarto-dev/quarto-cli#13591` mentionnée en notes presenter Bloc 1 pour les curieux |
 | Full `_brand.yml` recap table | Reference material |
 
 ---
@@ -91,7 +93,7 @@ Add `_quarto.yml` with `type: book` and `format: typst`. Render. Apply brand.
 
 | Topic | Notes |
 |-------|-------|
-| `_brand.yml` + book = branded cover page | Visible in demo output, point it out |
+| `_brand.yml` + book = branded cover page | Visible in demo output, point it out — couverture orange-book + logo SW (commit C2) + Orbitron sur titres + Inter sur corps (workaround `font-paths: [.quarto/typst/fonts]` requis, présent dans le modèle participant depuis `d55526a`) |
 | Per-file YAML override | "You can still override per file" |
 
 ### STORE — Cut from live, keep as reference
