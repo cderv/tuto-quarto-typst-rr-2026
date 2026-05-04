@@ -25,16 +25,15 @@ Ce bloc suit le rythme **My turn → Our turn → Your turn**.
 
 - `_quarto.yml` : centraliser `format: typst` et `_brand.yml` pour tout le projet
 - `type: book` : assembler plusieurs `.qmd` en un livre avec TOC, numérotation et cross-refs
-- orange-book : activé automatiquement pour les books Typst (Quarto 1.9)
+- orange-book : extension Typst livrée avec Quarto 1.9, activable via `format: orange-book-typst`
 
 ### Our turn — Démo live (~10 min)
 
-On construit ensemble un livre Typst :
+On construit ensemble un livre Typst en 3 étapes :
 
-1. Créer `_quarto.yml` avec `type: book`
-2. Organiser en chapitres
-3. Déplacer le `_brand.yml` du Bloc 1 à la racine
-4. Rendre et observer le résultat orange-book
+1. Créer `_quarto.yml` avec `project: { type: default }` + `format: typst` → 5 PDF séparés
+2. Passer à `type: book` + `format: orange-book-typst` → **PDF unique** avec couverture, TOC, cross-refs numérotés
+3. Copier `_brand.yml` (+ `_logo-sw.svg`) à la racine → couverture jaune Star Wars + Orbitron / Inter
 
 ## Exercice 2
 
@@ -45,20 +44,30 @@ L'Exercice 2 est **autonome vis-à-vis de l'Exercice 1** : si vous n'avez pas te
 ::: {.callout-tip}
 ## Exercice (~15 min)
 
-Fichier : {{< fa download >}} [exercises/02-projet-book/starter/](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises/02-projet-book) _(matériel finalisé avant le 16 juin)_
+Fichier : {{< fa download >}} [exercises/02-projet-book/starter/](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises/02-projet-book/starter)
 
-1. Créer un `_quarto.yml` avec `project: {type: book}` et `format: typst`
-2. Organiser le rapport en 2-3 chapitres (intro, analyse, conclusion)
-3. Rendre le book et observer l'effet orange-book
-4. **(Bonus)** Appliquer le `_brand.yml` de l'exercice 1 au projet
+**3 étapes core (12 min) — attendues de tous :**
+
+| # | Action | Vous devriez voir |
+|---|---|---|
+| 1 | Crée `_quarto.yml` à la racine du starter avec `project: { type: default }` et `format: typst`. Render. | 5 PDF séparés (un par fichier) |
+| 2 | Passe `type: book`, ajoute `book: { title, chapters: [...], appendices: [...] }`, et `format: orange-book-typst`. Render. | **PDF unique** + couverture orange-book + Fig 1.1 / Fig 2.1 / Tab 1.1 / Tab 2.1 + TOC |
+| 3 | Copie `_brand.yml` (+ `_logo-sw.svg`) à la racine. Render. | Couverture jaune Star Wars + logo, headings Orbitron, corps Inter, tableaux `gt` re-stylés |
+
+**2 bonus (3 min, pour les rapides) :**
+
+| # | Action | Vous devriez voir |
+|---|---|---|
+| B1 | Dans `conclusion.qmd`, ajoute une phrase qui référence `@fig-anatomie-mass` et `@sec-origines`. | « Comme l'a montré la **Figure 1.1**… » avec lien actif |
+| B2 | Toujours dans `conclusion.qmd`, ajoute `::: {.content-visible when-format="typst"}` ... `{{< pagebreak >}}` ... `:::`. | Saut de page entre conclusion et annexe **dans le PDF uniquement** |
 :::
 
 ::: {.callout-warning appearance="minimal"}
-Pas de `_brand.yml` ? Copiez le fichier fourni dans `exercises/02-projet-book/`.
+Pas de `_brand.yml` ? Copiez les fichiers fournis : [`exercises/02-projet-book/_brand-fallback.yml`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/_brand-fallback.yml) (à renommer en `_brand.yml`) et [`exercises/02-projet-book/correction/_logo-sw.svg`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/correction/_logo-sw.svg).
 :::
 
 ::: {.callout-warning collapse="true"}
 ## Correction
 
-{{< fa download >}} [Voir la correction](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises/02-projet-book/correction) _(disponible avant le 16 juin)_
+{{< fa download >}} [Voir la correction](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises/02-projet-book/correction)
 :::
