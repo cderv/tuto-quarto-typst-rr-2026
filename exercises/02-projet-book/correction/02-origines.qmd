@@ -1,7 +1,3 @@
----
-title: "Origines"
----
-
 # Origines {#sec-origines}
 
 ```{r}
@@ -34,8 +30,9 @@ starwars |>
   opt_table_font(font = "Inter")
 ```
 
-Tatooine domine largement — la planète d'enfance de Luke et Anakin concentre
-une part démesurée du casting. La galaxie de la saga est, statistiquement, un
+Naboo et Tatooine se partagent le devant : la planète d'Amidala devance d'un
+cheveu celle de Luke et Anakin. À elles deux, elles concentrent près d'un
+quart du casting renseigné — la galaxie de la saga est, statistiquement, un
 village.
 
 ## Espèces dominantes
@@ -54,7 +51,7 @@ starwars |>
   labs(
     x = NULL,
     y = "Personnages",
-    title = "Top 8 des especes representees"
+    title = "Top 8 des espèces représentées"
   ) +
   theme_minimal(base_size = 11)
 ```
