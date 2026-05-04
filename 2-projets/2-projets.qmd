@@ -146,7 +146,7 @@ Fusible à couper si le timing serre — sauter directement au wrap-up qui suit 
 - Inspecter le pipeline `.qmd` → `.typ` → `.pdf` via `keep-typ: true`
 - Personnaliser couleurs, polices et logo via `_brand.yml`
 - Assembler plusieurs `.qmd` en livre avec `type: book` (orange-book auto)
-- Savoir où chercher pour aller plus loin (partials, formats communautaires — couverts en pistes, pas en séance)
+- Savoir où chercher pour aller plus loin (partials, formats communautaires — pistes pour après le tutoriel, pas couverts en séance)
 :::
 
 ::: notes
