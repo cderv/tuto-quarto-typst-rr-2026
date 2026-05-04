@@ -1,0 +1,9 @@
+# Le dataset starwars
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+Le dataset `dplyr::starwars` contient 87 lignes et 14 variables. Source :
+[SWAPI — Star Wars API](https://swapi.dev). Colonnes mobilisées dans ce
+livre : `name`, `height`, `mass`, `species`, `homeworld`.
+
+Quelques NA sont présents et signalés au cas par cas.
