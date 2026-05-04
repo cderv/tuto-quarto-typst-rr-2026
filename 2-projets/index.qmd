@@ -62,6 +62,30 @@ Fichier : {{< fa download >}} [exercises/02-projet-book/starter/](https://github
 | B2 | Toujours dans `conclusion.qmd`, ajoutez `::: {.content-visible when-format="typst"}` ... `{{< pagebreak >}}` ... `:::`. | Saut de page entre conclusion et annexe **dans le PDF uniquement** |
 :::
 
+### Modèle `_quarto.yml` pour l'étape 2
+
+Si vous bloquez sur la syntaxe, voici un patron complet à adapter :
+
+```{.yaml filename="_quarto.yml"}
+project:
+  type: book
+
+book:
+  title: "Anatomie d'une saga"
+  author: "Mon Mothma"
+  chapters:
+    - index.qmd
+    - 01-anatomie.qmd
+    - 02-origines.qmd
+    - conclusion.qmd
+  appendices:
+    - annexe-donnees.qmd
+
+format: typst
+```
+
+`chapters:` reçoit les fichiers numérotés normalement. `appendices:` (parallèle à `chapters:`, pas dedans) reçoit les fichiers qui sortent du flux principal — ils deviennent A, B, C... après tous les chapitres.
+
 ::: {.callout-warning appearance="minimal"}
 Pas de `_brand.yml` ? Copiez les fichiers fournis : [`exercises/02-projet-book/_brand-fallback.yml`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/_brand-fallback.yml) (à renommer en `_brand.yml`) et [`exercises/02-projet-book/correction/_logo-sw.svg`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/correction/_logo-sw.svg).
 :::
