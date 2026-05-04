@@ -1,6 +1,7 @@
 /.quarto/
 /_site/
 **/*.quarto_ipynb
+**/*.rmarkdown
 **/mathjax-config.js
 exercises/**/*.typ
 exercises/**/*_files/
