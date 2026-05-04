@@ -123,9 +123,10 @@ color:
   primary: "#1a5276"
   secondary: "#f39c12"
 typography:
-  base:
-    family: "Noto Sans"
-    source: google
+  fonts:
+    - family: "Noto Sans"
+      source: google
+  base: "Noto Sans"
 ```
 :::
 
