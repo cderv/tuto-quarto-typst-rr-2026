@@ -16,8 +16,7 @@ Ce tutoriel vous apprendra à produire des **documents PDF professionnels** avec
 
 - Comment remplacer LaTeX par Typst pour des PDF sans frictions ?
 - Comment personnaliser vos documents avec `_brand.yml` ?
-- Comment créer un livre multi-chapitres avec `type: book` ?
-- Comment aller plus loin avec les template partials et les extensions ?
+- Comment passer d'un document isolé à un projet Quarto multi-chapitres avec `type: book` ?
 
 ## Se préparer
 
