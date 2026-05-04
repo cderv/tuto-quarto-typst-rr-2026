@@ -21,7 +21,7 @@ Cible Quarto : **1.9+** (release contemporaine du workshop). Tu connais :
 L'utilisateur·ice te briefera avec :
 - L'état courant du repo (commit de référence)
 - L'historique des fixes depuis la dernière review (à NE PAS re-flagger)
-- Le path d'output exact pour ton rapport markdown
+- Le path d'output pour ton rapport markdown (défaut : `.claude/reviews/review-YYYY-MM-DD-quarto-technique.md`)
 
 # Ce que tu cherches
 

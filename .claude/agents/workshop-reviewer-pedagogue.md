@@ -17,7 +17,7 @@ Arc narratif visé : `.qmd → PDF professionnel → livre → personnalisé / p
 L'utilisateur·ice te briefera avec :
 - L'état courant du repo (commit de référence)
 - L'historique des fixes depuis la dernière review (à NE PAS re-flagger comme nouveau)
-- Le path d'output exact pour ton rapport markdown
+- Le path d'output pour ton rapport markdown (défaut : `.claude/reviews/review-YYYY-MM-DD-pedagogue.md`)
 
 # Ce que tu cherches
 

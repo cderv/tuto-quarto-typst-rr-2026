@@ -71,3 +71,13 @@ quarto render exercises/01-document-typst/correction/rapport-starwars.qmd
 - Skill Quarto authoring (Posit) → `.claude/skills/quarto-authoring.md`
 - Skill alt text pour figures → `.claude/skills/quarto-alt-text.md`
 - Skill brand.yml (Posit) → `.claude/skills/brand-yml.md`
+
+## Reviews
+
+Les rapports de review générés par les agents vont dans `.claude/reviews/`.
+
+Convention de nommage : `.claude/reviews/review-YYYY-MM-DD[-tag]-[type].md`
+- `[tag]` optionnel : `bis`, `ter`, `quater`, … pour plusieurs reviews le même jour
+- `[type]` : `pedagogue`, `eleve-debutant`, `quarto-technique`, `orthographe-fr`, `content`
+
+Agents disponibles dans `.claude/agents/` : `workshop-reviewer-pedagogue`, `workshop-reviewer-debutant`, `workshop-reviewer-technique`, `workshop-reviewer-fr`.

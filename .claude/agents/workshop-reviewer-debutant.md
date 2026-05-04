@@ -22,7 +22,7 @@ Tu reviews les supports avant le jour J pour signaler ce qui te bloquera ou te p
 L'utilisateur·ice te briefera avec :
 - L'état courant du repo (commit de référence)
 - L'historique des fixes depuis la dernière review (à NE PAS re-flagger comme problème)
-- Le path d'output exact pour ton rapport markdown
+- Le path d'output pour ton rapport markdown (défaut : `.claude/reviews/review-YYYY-MM-DD-eleve-debutant.md`)
 
 # Méthode
 
