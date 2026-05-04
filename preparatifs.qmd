@@ -40,6 +40,24 @@ library(dplyr)
 head(starwars)
 ```
 
+## Test de la chaîne Typst
+
+La vérification ci-dessus n'exécute que du R. Pour valider que **Quarto + Typst + gt + ggplot** s'enchaînent bien sur votre machine, rendez le mini-fichier de test fourni dans le dépôt :
+
+```bash
+quarto render exercises/00-test-install/test-install.qmd
+```
+
+**Résultat attendu** : un fichier `test-install.pdf` apparaît à côté du `.qmd`, avec un titre accentué, un tableau de 3 lignes et un graphique. Aucune erreur en console.
+
+**Si ça échoue** :
+
+- `Typst executable not found` → Quarto < 1.9, mettez à jour.
+- `unknown font family` → ignorez ce warning, le PDF se génère quand même avec une police de repli (ce test n'utilise pas `_brand.yml`).
+- Accents cassés (« chelle » au lieu de « Échelle ») dans le PDF → problème de locale R (fréquent sur Linux/Docker). Vérifiez avec `Sys.getlocale()` et configurez `LANG=fr_FR.UTF-8`.
+- Réseau bloqué au render → ce test n'utilise pas Google fonts, donc un échec ici n'a rien à voir avec le firewall (cf. Plan B ci-dessous pour la procédure offline du jour du tutoriel).
+- Chiffres espacés dans le tableau (« 1 7 2 » au lieu de « 172 ») → bug cosmétique connu de `gt` → Typst quand les polices de remplacement s'appliquent (typique sur Linux sans Arial). Pas bloquant — la chaîne fonctionne ; le contournement (`opt_table_font(font = "Inter")`) sera vu pendant l'Exercice 1.
+
 ## Plan B — si pas de réseau le jour J
 
 Le tutoriel utilise par défaut `_brand.yml` avec `source: google`, qui télécharge les polices Inter et Orbitron au premier rendu. Si vous n'avez **pas** d'accès réseau le matin du tutoriel :
