@@ -36,6 +36,14 @@ Event: Rencontres R 2026, 16 juin, Nantes — 2h tutorial
   2. **Bug Quarto book brand fonts** — Quarto télécharge bien Inter/Orbitron dans `.quarto/typst/fonts/` (via `resolveExtras` → `fontdirs.add(font_cache)` → `format.metadata['font-paths'].push`, cf. `quarto.js:129892`) mais cette mutation **ne propage pas** au call site `typstCompile` en mode book. Strace confirme : seul `--font-path /opt/quarto/share/formats/typst/fonts` (Font Awesome bundled) est passé à typst, sans le brand cache. Conséquence : warning `unknown font family: orbitron` + headings body en serif fallback. Workaround retenu dans `_quarto.yml` : `format: orange-book-typst: { font-paths: [.quarto/typst/fonts] }` — strace post-fix confirme les 2 paths passés, Orbitron s'applique sur tous les headings du body. **À reporter en issue Quarto upstream** (voisinages connus : #13548, #11929, #7580). CD est la bonne personne.
   3. PDF correction validé visuellement (15 pages) : cover orange-book + logo SW étoile jaune + bandeau jaune + Mon Mothma + Préface en Orbitron + 1.Anatomie/1.1/1.2 en Orbitron avec numéros jaune SW + numérotation chap 1 = 1 (préface unnumbered respectée). Cover titre+auteur restent en serif (template orange-book gère sa propre typo cover, indépendant de `#show heading`) — limite acceptable.
 - 2026-05-04: **Commit 1 livré sur branche `claude/quarto-book-skeleton-qeDNI`** (commits `1b39468` skeleton + `7b0ac7e` workaround font-paths). Plan original mentionnait `claude/add-missing-content-4CdHE` mais cette branche a été mergée → branche actuelle = celle prévue par le harness pour cette session.
+- 2026-05-04: **Commits 2-5 livrés sur même branche** (commits `43c1de8` + `3b5273b` + `ff2cbd3` + `b7f18ab` + `7e7ffde`). Findings cumulés :
+  1. **Convention Quarto book chapitres** : pas de `title:` YAML sur les chapitres — seulement `# H1 {#sec-...}`. Sinon Quarto crée un chapitre fantôme depuis le YAML title et décale la numérotation (« 1 Anatomie » devient « 2 Anatomie »). Découvert au Commit 2 sur `02-origines.qmd`. Convention non documentée explicitement par Quarto mais cohérente avec tous les exemples books de la doc.
+  2. **`lang: fr` partial sur orange-book** : Quarto traduit cross-refs (« la Figure 1.1 », « le Chapitre 2 ») et appendices separator (« Annexes »), mais le **running header** orange-book reste « Chapter 1. Anatomie ». Bug confirmé sur HEAD `quarto-dev/quarto-cli` via `gh api` — `typst-show.typ` ne pipe pas `crossref-ch-prefix` à `supplement-chapter`. Brouillon issue prêt : `.claude/issues/quarto-cli-orange-book-supplement-chapter-i18n.md` (3 commits : `c123634` + `ec2ac1b` + `e6570dc`). Path subtree confirmé : `src/resources/extension-subtrees/orange-book/_extensions/orange-book/`. Numéros lignes confirmés : `lib.typ:311` (book params), `lib.typ:419` (set heading supplement). À ouvrir côté `quarto-dev/quarto-cli` (pas de double-tracking via `quarto-ext/orange-book`).
+  3. **Q4 (accent ggplot) résolue** : `LANG=C.UTF-8 LC_ALL=C.UTF-8` au render suffit (sandbox Linux container minimal). Pas de `Sys.setlocale()` à imposer côté participants.
+  4. **Factuel data confirmé au render** : Naboo (11) > Tatooine (10) en homeworlds (j'avais initialement écrit Tatooine en tête, à reverify), Human top 1 / Droid top 2 espèces, Jabba 1358 kg.
+  5. **3 retraits ciblés starter Commit 4** (idempotents avec spec plan) : `opt_table_font` ×2 (01 et 02 — bug gt visible volontairement à l'étape 3), cross-refs+pagebreak conclusion ×1 (contenu des bonus B1/B2). Labels conservés dans starter (cibles bonus).
+  6. **Slides Bloc 2 reformulées** (Commit 5) : 3 core (12 min) + 2 bonus (3 min, B1/B2). Notes presenter : (a) bug gt « 1 7 5 » Windows/macOS + workaround `opt_table_font`, (b) prioriser B1 (cross-refs, cibles déjà dans starter) avant B2 (pagebreak) pour les rapides. Smoke test render racine 9/9 OK.
+  7. **`gh` CLI dispo dans la sandbox Claude Code on the web** (auth `cderv` via `GH_TOKEN`). Préférable à WebFetch pour tout fetch GitHub — line numbers exacts via `grep -n`, pas d'intermédiaire de conversion HTML→markdown. Mémo pour sessions suivantes.
 
 ## Current structure (implemented 2026-04-16)
 
@@ -212,8 +220,8 @@ Toutes les autres questions historiques (Q1 séquencement reviews, Q2 `opt_table
 - (b) **Bloc 2** : avec le brand (qui devient la grosse nouveauté Bloc 2). Permet de regrouper « tout ce qui est CSS-like ».
 - → ⏳ **EN ATTENTE CD** (reco Claude : (a) Bloc 1, en mention orale intégrée à la pépite gt existante plutôt qu'en slide nouvelle, pour éviter la surcharge des 3 pépites Bloc 1 actuelles).
 
-**Q4 — Accent cassé label ggplot axe Y** : « Masse (kg, <U+00E9>chelle log) ». Régler côté setup R des participants (`Sys.setlocale()` dans le chunk setup ?) ou corriger l'environnement de dev ?
-- → ⏳ **EN ATTENTE** — à investiguer lors d'une prochaine session avec le render Exo 1 dans l'env propre actuel (gh CLI + rig + R 4.6.0). Possible que le bug ait disparu avec le toolchain à jour.
+**Q4 — Accent cassé label ggplot axe Y** : « Masse (kg, <U+00E9>chelle log) ». Régler côté setup R des participants ou corriger l'environnement de dev ?
+- → ✅ **TRANCHÉE 2026-05-04** : régler côté **environnement** via `LANG=C.UTF-8 LC_ALL=C.UTF-8` au render (preflight sandbox + commande de render). Tous les accents passent (axe Y ggplot, table gt, prose). Pas de `Sys.setlocale()` à imposer côté participants. À documenter dans `preparatifs.qmd` comme rappel : Linux container minimal nécessite locale UTF-8 explicite.
 
 ## Reste à faire (priorisé)
 
@@ -235,12 +243,12 @@ Toutes les autres questions historiques (Q1 séquencement reviews, Q2 `opt_table
 
 **Progression** :
 - [x] Commit 0 — Persistance plan dans `.claude/plans/exo2-book.md` + référence dans `PLAN.md` (commit `d32e51e`)
-- [ ] Commit 1 — Squelette `02-projet-book/correction/` + render → vérifier (a) orange-book, (b) logo SW visible, (c) numérotation chap 1 OK malgré préface unnumbered
-- [ ] Commit 2 — Contenu R 01-anatomie + 02-origines (porter Bloc 1 + nouveau gt+barplot)
-- [ ] Commit 3 — Cross-refs + content-visible pagebreak + annexe finale
-- [ ] Commit 4 — `starter/` dérivé + `_brand-fallback.yml` + READMEs (racine + safety net `starter/README.md`)
-- [ ] Commit 5 — Slides Bloc 2 (3 core + 2 bonus, notes presenter bug gt + lien 404)
-- [ ] Commit 6 — Cocher items Phase 3 dans PLAN.md + decision log final
+- [x] Commit 1 — Squelette `02-projet-book/correction/` + workaround font-paths (commits `1b39468` + `7b0ac7e` + `66bda27` correction `extend:` fictif → `format: orange-book-typst`). 3 vérifs render OK : orange-book appliqué, logo SW visible (cover crème + bandeau jaune + Mon Mothma + étoile), numérotation chap 1 = 1 (préface unnumbered respectée).
+- [x] Commit 2 — Contenu R 01-anatomie + 02-origines (commits `43c1de8` + `3b5273b` fix). Porting Bloc 1 + nouveau gt+barplot. **Découverte au render** : YAML `title:` + `# H1` body crée un chapitre fantôme → décale numérotation. Convention Quarto book retenue : **H1 seul, pas de YAML title** sur les chapitres. Factuel data confirmé : Naboo (11) > Tatooine (10), Human top 1 / Droid top 2 espèces, Jabba 1358 kg.
+- [x] Commit 3 — Cross-refs + `.content-visible when-format="typst"` + `{{< pagebreak >}}` + annexe finale + `lang: fr` ajouté à `_quarto.yml` (commit `ff2cbd3`). Render validé : « la Figure 1.1 », « le Chapitre 2 », « Annexes » traduits. **Limite identifiée** : running header orange-book reste « Chapter X. » en anglais — bug confirmé sur HEAD `quarto-dev/quarto-cli` via `gh api` (typst-show.typ ne pipe pas `crossref-ch-prefix` à `supplement-chapter`). Brouillon issue prêt dans `.claude/issues/quarto-cli-orange-book-supplement-chapter-i18n.md` (commits `c123634` + `ec2ac1b` + `e6570dc`).
+- [x] Commit 4 — `starter/` dérivé (5 .qmd, 3 retraits ciblés : `opt_table_font` ×2, cross-refs+pagebreak conclusion ×1) + `_brand-fallback.yml` (copie 1:1) + `README.md` racine Exo 2 (3 core + 2 bonus en tableau) + `starter/README.md` 4 lignes safety net (commit `b7f18ab`). Labels `tbl-anatomie-mass`, `fig-anatomie-mass`, `tbl-origines-homeworlds`, `fig-origines-especes`, ancre `#sec-origines` conservés dans le starter (cibles bonus).
+- [x] Commit 5 — Slides Bloc 2 reformulées (commit `7e7ffde`). `2-projets/index.qmd` : Section Our turn 3 étapes + bloc Exercice en 2 tableaux 3 core / 2 bonus avec colonne « Vous devriez voir ». `2-projets/2-projets.qmd` : slides Faisons ensemble! et À vous! cohérentes 3 core + 2 bonus (B1/B2). **Notes presenter ajoutées** : (a) bug gt « 1 7 5 » Windows/macOS + workaround opt_table_font, (b) prioriser B1 (cross-refs) avant B2 (pagebreak) pour les rapides. Mentions « (matériel finalisé avant le 16 juin) » retirées (matériel livré). Smoke test render racine 9/9 OK.
+- [x] Commit 6 — Cocher items Phase 3 dans PLAN.md + decision log final (ce commit).
 
 **Note narrative à propager** : `_brand.yml` n'est plus « déplacé » depuis Bloc 1 → il est **réutilisé/promu au niveau projet** (le starter Exo 2 part SANS `_brand.yml` et l'étape 3 demande de copier celui de Exo 1 à la racine du book).
 
@@ -249,7 +257,7 @@ Toutes les autres questions historiques (Q1 séquencement reviews, Q2 `opt_table
 - [ ] **Wrap-up Bloc 2** : ajouter 3 slides (récap fin Bloc 1, next steps + ressources fin Bloc 2, Q&A) — ~5 min, gain pédagogique le plus important.
 - [ ] **Objectifs d'apprentissage SMART** en haut de chaque page de bloc (`1-quarto-typst/index.qmd`, `2-projets/index.qmd`).
 - [ ] **Rééquilibrage timing** : Bloc 1 Our turn 10→12 min, Bloc 2 My turn 5→8 min (marge dispo).
-- [ ] **Lien Exo 2 actuellement 404** dans `2-projets/index.qmd:44` — corriger une fois le matériel Exo 2 livré (P1).
+- [x] **Lien Exo 2 actuellement 404** dans `2-projets/index.qmd:44` — résolu 2026-05-04 (matériel livré Commit 4 ; mention « (matériel finalisé avant le 16 juin) » retirée du texte Commit 5). Le lien `tree/main/exercises/02-projet-book/starter/` résoudra naturellement après merge de la branche `claude/quarto-book-skeleton-qeDNI` sur `main`.
 - [ ] **Trancher Q3** (placement pépite Typst CSS) → si (a) en mention orale, ajouter dans notes presenter de la pépite gt Bloc 1.
 
 ### P3 — Phase 4 : scripts de démo `demos/01-bloc1/` + `demos/02-bloc2/`
