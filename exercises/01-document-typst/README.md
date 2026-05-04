@@ -26,12 +26,13 @@ en quatre étapes incrémentales :
    image.
 
 4. **Charte.** Créez un fichier `_brand.yml` à côté du `.qmd` (palette
-   couleurs, une ou deux polices Google, et un logo SVG —
-   cf. `correction/_logo-sw.svg`). Re-rendez : couleurs, typographies
-   et logo sont appliqués automatiquement à la mise en page PDF.
-   Pour propager la charte aux figures ggplot et tableaux gt, utilisez
-   les helpers du package R `brand.yml` (`theme_brand_ggplot2()`,
-   `theme_brand_gt()`) — voir `correction/rapport-starwars.qmd`.
+   couleurs, une ou deux polices Google, et un logo SVG si vous en avez
+   un sous la main). Re-rendez : couleurs, typographies et logo sont
+   appliqués automatiquement à la mise en page PDF. Pour propager la
+   charte aux figures ggplot et tableaux gt, utilisez les helpers du
+   package R `brand.yml` (`theme_brand_ggplot2()`, `theme_brand_gt()`).
+   La correction (`correction/`) fournit un exemple complet avec un
+   logo Star Wars.
 
 ## Solution
 

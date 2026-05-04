@@ -12,8 +12,9 @@
 ## Mise en place
 
 Partez de [`starter/`](starter/) — 5 fichiers `.qmd` sans `_quarto.yml`. Sans
-configuration de projet, `quarto render starter/` produit 5 PDF orphelins :
-c'est le point de départ.
+configuration de projet, `quarto render starter/` produit 5 HTML séparés
+(format par défaut de Quarto) : c'est le point de départ. La première étape
+ajoute `_quarto.yml` avec `format: typst` pour basculer en PDF.
 
 ## 3 étapes principales (12 min)
 
