@@ -1,6 +1,8 @@
 project:
   type: book
 
+lang: fr
+
 book:
   title: "Anatomie d'une saga"
   subtitle: "Portrait statistique des personnages de Star Wars"
