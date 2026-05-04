@@ -37,13 +37,15 @@ project:
   type: book
 
 book:
-  title: "Analyse des manchots"
-  author: "Ada Lovelace"
+  title: "Anatomie d'une saga"
+  author: "Mon Mothma"
   chapters:
     - index.qmd
-    - intro.qmd
-    - analyse.qmd
+    - 01-anatomie.qmd
+    - 02-origines.qmd
     - conclusion.qmd
+  appendices:
+    - annexe-donnees.qmd
 
 format: typst
 ```
