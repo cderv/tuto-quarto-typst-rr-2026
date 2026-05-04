@@ -6,7 +6,10 @@ if [ "${CLAUDE_CODE_REMOTE:-}" != "true" ]; then
   exit 0
 fi
 
-# Run asynchronously so the session starts immediately
+# Wire up the tracked .gitconfig so commits use the correct identity
+git config --local include.path ../.gitconfig
+
+# Run remaining setup asynchronously so the session starts immediately
 echo '{"async": true, "asyncTimeout": 300000}'
 
 # Install Quarto 1.9+ if not already installed
