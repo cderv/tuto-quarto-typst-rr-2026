@@ -16,8 +16,7 @@ Un **projet Quarto** = un dossier avec `_quarto.yml`.
 project:
   type: default
 
-format:
-  typst: default
+format: typst
 ```
 
 ::: incremental
@@ -98,11 +97,11 @@ Problèmes fréquents : mauvais chemin vers les chapitres, oubli du tiret devant
 
 1. `_quarto.yml` avec `type: default` + `format: typst` → 5 PDF
 2. Passer à `type: book` (format inchangé) → PDF unique
-3. `_brand.yml` (+ `_logo-sw.svg`) à la racine → brand jaune SW
+3. `_brand.yml` (+ `_logo-sw.svg`) à la racine → charte jaune SW
 
 **2 bonus** (3 min, pour les rapides) :
 
-- B1. Cross-refs `@fig-anatomie-mass` + `@sec-origines` dans `conclusion.qmd`
+- B1. Références croisées `@fig-anatomie-mass` + `@sec-origines` dans `conclusion.qmd`
 - B2. `.content-visible when-format="typst"` + `{{< pagebreak >}}`
 :::
 

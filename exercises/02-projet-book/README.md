@@ -44,6 +44,11 @@ book:
     - annexe-donnees.qmd
 
 format: typst
+
+execute:
+  echo: false
+  warning: false
+  message: false
 ```
 
 `chapters:` reçoit les fichiers numérotés normalement. `appendices:`
