@@ -1,7 +1,13 @@
 # Conclusion
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua.
+Deux chapitres, deux angles : l'anatomie révèle un nuage compact que **Jabba**
+fait exploser, les origines révèlent une saga concentrée sur quelques planètes
+et largement humaine. Comme l'a montré la @fig-anatomie-mass, la masse est très
+inégalement distribuée ; mais c'est dans le @sec-origines qu'apparaît la vraie
+révélation : derrière l'écrasante majorité humaine, les **droïdes** s'imposent
+en deuxième position. R2-D2 et C-3PO ne sont pas seuls — et ils traversent la
+saga plus longtemps que la plupart de leurs collègues organiques.
 
-Les vraies stars de la saga sont les droïdes : R2-D2 apparaît dans 7 films,
-plus que n'importe quel humain.
+::: {.content-visible when-format="typst"}
+{{< pagebreak >}}
+:::
