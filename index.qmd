@@ -39,7 +39,7 @@ Ce tutoriel vous apprendra à produire des **documents PDF professionnels** avec
 
 ## Instructeurs
 
-**Christophe Dervieux** — Développeur Open-Source, [Posit Software, PBC](https://posit.co/). Contributeur aux projets R Markdown et Quarto.
+**Christophe Dervieux** — développeur open source, [Posit Software, PBC](https://posit.co/). Contributeur aux projets R Markdown et Quarto.
 
 **Maëlle Salmon** — Research Software Engineer, [rOpenSci](https://ropensci.org/) / [cynkra](https://cynkra.com/).
 

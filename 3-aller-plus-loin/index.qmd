@@ -18,7 +18,7 @@ Pour aller au-delà des options YAML, Typst offre une personnalisation fine via 
 L'escape hatch pour injecter du Typst natif quand Quarto ne suffit pas.
 
 - Blocs `` {=typst} `` pour du code Typst brut
-- Accès aux valeurs brand : `brand-color.primary`, `brand-logo-images` depuis un bloc raw
+- Accès aux valeurs de la charte via les variables `brand-color.primary`, `brand-logo-images` depuis un bloc raw
 - Traduction CSS → Typst : propriétés CSS utilisables sur spans et divs (depuis Quarto 1.5)
 - Tableaux stylisés : les tableaux HTML avec CSS (gt, pandas) sont rendus dans Typst
 
@@ -36,9 +36,9 @@ Personnaliser la génération du fichier `.typ` pour contrôler le layout du PDF
 
 Packager et partager des formats Typst personnalisés.
 
-- `quarto create extension format:typst` pour scaffolder une extension
+- `quarto create extension format:typst` pour générer un squelette d'extension
 - `quarto add user/repo` pour installer un format existant
-- `quarto use brand user/repo` pour partager une brand depuis GitHub
+- `quarto use brand user/repo` pour partager une charte depuis GitHub
 - Formats existants : [quarto-ext/typst-templates](https://github.com/quarto-ext/typst-templates)
 - Accessibilité PDF : `pdf-standard: ua-1` pour la conformité PDF/UA-1
 - ⚠️ Les Typst books ne sont pas encore compatibles UA-1
