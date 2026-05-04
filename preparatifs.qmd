@@ -48,7 +48,7 @@ La vérification ci-dessus n'exécute que du R. Pour valider que **Quarto + Typs
 quarto render exercises/00-test-install/test-install.qmd
 ```
 
-**Résultat attendu** : un fichier `test-install.pdf` apparaît à côté du `.qmd`, avec un titre accentué, un tableau de 3 lignes et un graphique. Aucune erreur en console.
+**Résultat attendu** : un fichier `test-install.pdf` apparaît à côté du `.qmd`, avec un titre accentué, un tableau de 3 lignes et un graphique. Aucune **erreur** en console (un avertissement sur la police est normal et documenté ci-dessous).
 
 **Si ça échoue** :
 

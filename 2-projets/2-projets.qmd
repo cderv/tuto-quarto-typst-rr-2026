@@ -143,15 +143,16 @@ Fusible à couper si le timing serre — sauter directement au wrap-up qui suit 
 
 ::: incremental
 - Produire un PDF pro avec `format: typst`, sans LaTeX
+- Inspecter le pipeline `.qmd` → `.typ` → `.pdf` via `keep-typ: true`
 - Personnaliser couleurs, polices et logo via `_brand.yml`
 - Assembler plusieurs `.qmd` en livre avec `type: book` (orange-book auto)
-- Savoir où chercher pour aller plus loin (partials, formats communautaires)
+- Savoir où chercher pour aller plus loin (partials, formats communautaires — couverts en pistes, pas en séance)
 :::
 
 ::: notes
 **CD parle.** Vous êtes parti·e d'un `.qmd` HTML, vous repartez avec un livre PDF brandé multi-chapitres. Trois lignes de YAML, un fichier de charte, un projet — et c'est tout.
 
-Les 4 bullets miroir les 4 questions posées en intro (cf. `index.qmd:17-20`). Rappel mémoriel : pointer du doigt vers la slide précédente Bloc 1 ou la page d'accueil si besoin.
+Les 5 bullets font écho aux 3 questions posées en intro (cf. `index.qmd:17-19`) et aux apprentissages détaillés des 2 pages de bloc (cf. `1-quarto-typst/index.qmd:24-29` + `2-projets/index.qmd:24-28`). Le 5ᵉ bullet (« partials, formats communautaires ») est explicitement annoncé comme piste post-tutoriel — pas une promesse non tenue. Rappel mémoriel : pointer du doigt vers la slide précédente Bloc 1 ou la page d'accueil si besoin.
 :::
 
 ## Et maintenant ?
@@ -170,7 +171,7 @@ Les 4 bullets miroir les 4 questions posées en intro (cf. `index.qmd:17-20`). R
 
 Merci aux Rencontres R, à l'équipe d'organisation, et à vous.
 
-**Christophe Dervieux** — Posit
+**Christophe Dervieux** — Posit\
 **Maëlle Salmon** — rOpenSci / cynkra
 
 ::: notes
