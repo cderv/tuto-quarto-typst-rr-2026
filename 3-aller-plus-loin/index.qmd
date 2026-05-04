@@ -5,10 +5,6 @@ author: ""
 date: ""
 ---
 
-::: {.callout-note}
-## ⏱️ ~25 minutes
-:::
-
 Pour aller au-delà des options YAML, Typst offre une personnalisation fine via des templates et des extensions partageables.
 
 ## Points couverts
@@ -42,22 +38,3 @@ Packager et partager des formats Typst personnalisés.
 - Formats existants : [quarto-ext/typst-templates](https://github.com/quarto-ext/typst-templates)
 - Accessibilité PDF : `pdf-standard: ua-1` pour la conformité PDF/UA-1
 - ⚠️ Les Typst books ne sont pas encore compatibles UA-1
-
-## Exercice 3
-
-::: {.callout-tip}
-## Exercice (optionnel)
-
-Fichier : {{< fa download >}} [exercices/03-templates/](#)
-
-1. Ajouter `typst-show.typ` et `typst-template.typ` fournis au projet
-2. Les déclarer avec `template-partials:` dans le YAML du document
-3. Modifier le footer pour afficher le titre et la date
-4. (Bonus) Changer la couleur des liens avec `linkcolor`
-:::
-
-::: {.callout-warning collapse="true"}
-## Correction
-
-{{< fa download >}} [Voir la correction](#)
-:::
