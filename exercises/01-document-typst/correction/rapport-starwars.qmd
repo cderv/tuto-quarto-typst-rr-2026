@@ -24,6 +24,10 @@ library(dplyr)
 library(ggplot2)
 library(ggrepel)
 library(gt)
+library(brand.yml)
+# Charge _brand.yml du dossier courant → applique la même charte aux figures
+# ggplot et tableaux gt qu'à la mise en page Typst.
+brand <- read_brand_yml()
 ```
 
 # Introduction
@@ -58,6 +62,8 @@ top_mass |>
     species = "Espece",
     homeworld = "Planete"
   ) |>
+  # theme_brand_gt : applique fond + texte de la charte au tableau
+  theme_brand_gt(brand) |>
   # opt_table_font : force Inter en tête de la liste de polices gt
   # → évite l'espacement parasite des chiffres (« 1 7 5 ») sur Windows/macOS
   opt_table_font(font = "Inter")
@@ -88,7 +94,9 @@ ggplot(sw, aes(x = height, y = mass)) +
     y = "Masse (kg, échelle log)",
     title = "Tailles et masses des personnages"
   ) +
-  theme_minimal(base_size = 11)
+  theme_minimal(base_size = 11) +
+  # theme_brand_ggplot2 : applique fond/texte/grille de la charte
+  theme_brand_ggplot2(brand)
 ```
 
 # Conclusion

@@ -15,8 +15,14 @@ Avant le tutoriel, merci de préparer votre environnement de travail.
 - **Packages R** :
 
 ```r
-pkg <- c("rmarkdown", "quarto", "dplyr", "ggplot2", "ggrepel", "gt", "knitr", "scales", "brand.yml", "prismatic")
+# Packages disponibles sur le CRAN
+pkg <- c("rmarkdown", "quarto", "dplyr", "ggplot2", "ggrepel", "gt", "knitr", "scales", "prismatic")
 install.packages(pkg)
+
+# Package brand.yml — pas encore sur le CRAN, à installer depuis GitHub
+# (helpers theme_brand_ggplot2() et theme_brand_gt() utilisés dans la correction Exo 1)
+# install.packages("pak") si besoin
+pak::pak("posit-dev/brand-yml/pkg-r")
 ```
 
 ## Téléchargements
