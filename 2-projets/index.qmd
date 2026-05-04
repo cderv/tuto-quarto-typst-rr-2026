@@ -90,7 +90,13 @@ book:
   appendices:
     - annexe-donnees.qmd
 
-format: typst
+format:
+  typst:
+    # Workaround Quarto book : les polices téléchargées par _brand.yml
+    # (.quarto/typst/fonts/) ne sont pas passées automatiquement à typst
+    # en mode book. À retirer quand le bug upstream est fixé.
+    font-paths:
+      - .quarto/typst/fonts
 
 execute:
   echo: false
