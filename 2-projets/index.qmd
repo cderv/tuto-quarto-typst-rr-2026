@@ -87,6 +87,12 @@ format: typst
 
 `chapters:` reçoit les fichiers numérotés normalement. `appendices:` (parallèle à `chapters:`, pas dedans) reçoit les fichiers qui sortent du flux principal — ils deviennent A, B, C... après tous les chapitres.
 
+::: {.callout-warning collapse="true"}
+## Bug `gt` à connaître (étape 3)
+
+Si vous voyez « 1 7 5 » au lieu de « 175 » dans les tableaux après avoir copié `_brand.yml` (typique sur Windows/macOS), c'est un bug connu de `gt` → Typst quand les polices fallback du tableau s'appliquent. **Fix** : ajoutez `|> opt_table_font(font = "Inter")` à la fin de votre pipeline `gt`. Non bloquant — vous pouvez continuer sans.
+:::
+
 ::: {.callout-warning appearance="minimal"}
 Pas de `_brand.yml` ? Copiez les fichiers fournis : [`exercises/02-projet-book/_brand-fallback.yml`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/_brand-fallback.yml) (à renommer en `_brand.yml`) et [`exercises/02-projet-book/correction/_logo-sw.svg`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/correction/_logo-sw.svg).
 :::
