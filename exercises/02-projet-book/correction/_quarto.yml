@@ -15,8 +15,7 @@ book:
     - annexe-donnees.qmd
 
 format:
-  typst:
-    extend: orange-book
+  orange-book-typst:
     font-paths:
       - .quarto/typst/fonts
 
