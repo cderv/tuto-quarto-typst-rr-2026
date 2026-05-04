@@ -16,5 +16,5 @@ Les colonnes mobilisées dans ce livre sont :
   distinctes)
 
 Les valeurs manquantes (`NA`) sont systématiquement filtrées au cas par cas
-dans les chunks d'analyse — chaque tableau et chaque figure indique le sous-
+dans les blocs de code R — chaque tableau et chaque figure indique le sous-
 ensemble effectivement utilisé.

@@ -53,9 +53,9 @@ quarto render exercises/00-test-install/test-install.qmd
 **Si ça échoue** :
 
 - `Typst executable not found` → Quarto < 1.9, mettez à jour.
-- `unknown font family` → ignorez ce warning, le PDF se génère quand même avec une police de repli (ce test n'utilise pas `_brand.yml`).
+- `unknown font family` → ignorez cet avertissement, le PDF se génère quand même avec une police de repli (ce test n'utilise pas `_brand.yml`).
 - Accents cassés (« chelle » au lieu de « Échelle ») dans le PDF → problème de locale R (fréquent sur Linux/Docker). Vérifiez avec `Sys.getlocale()` et configurez `LANG=fr_FR.UTF-8`.
-- Réseau bloqué au render → ce test n'utilise pas Google fonts, donc un échec ici n'a rien à voir avec le firewall (cf. Plan B ci-dessous pour la procédure offline du jour du tutoriel).
+- Réseau bloqué au rendu → ce test n'utilise pas les polices Google, donc un échec ici n'a rien à voir avec le pare-feu (cf. Plan B ci-dessous pour la procédure hors-ligne du jour du tutoriel).
 - Chiffres espacés dans le tableau (« 1 7 2 » au lieu de « 172 ») → bug cosmétique connu de `gt` → Typst quand les polices de remplacement s'appliquent (typique sur Linux sans Arial). Pas bloquant — la chaîne fonctionne ; le contournement (`opt_table_font(font = "Inter")`) sera vu pendant l'Exercice 1.
 
 ## Plan B — si pas de réseau le jour J
@@ -66,4 +66,4 @@ Le tutoriel utilise par défaut `_brand.yml` avec `source: google`, qui téléch
 2. Copiez-les à côté de votre `rapport-starwars.qmd`.
 3. Renommez `_brand-offline.yml` en `_brand.yml`.
 
-Le rendu Typst utilisera alors les TTFs locaux (`Inter-*.ttf` + `Orbitron-*.ttf`, ~1.3 MB) — aucun téléchargement requis.
+Le rendu Typst utilisera alors les fichiers TTF locaux (`Inter-*.ttf` + `Orbitron-*.ttf`, ~1,3 Mo) — aucun téléchargement requis.
