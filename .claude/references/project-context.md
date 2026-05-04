@@ -15,16 +15,44 @@ Read this file when working on content, slides, or project configuration.
 _quarto.yml                 # Project config (website + clean-revealjs format)
 reveal-style.scss           # RevealJS custom theme
 index.qmd                   # Home page (programme 2 blocs)
-preparatifs.qmd             # Setup instructions
+preparatifs.qmd             # Setup instructions (incl. section « Test de la chaîne Typst »)
 1-quarto-typst/
   index.qmd                 # Block 1 page (iframe + exercises)
-  1-quarto-typst.qmd        # Block 1 slides (8 slides)
+  1-quarto-typst.qmd        # Block 1 slides
 2-projets/
   index.qmd                 # Block 2 page
-  2-projets.qmd             # Block 2 slides (5 slides)
+  2-projets.qmd             # Block 2 slides (incl. wrap-up 3 slides terminales)
 3-aller-plus-loin/          # Topic store seulement — slide deck retiré 2026-05-04
   index.qmd                 # Page « Points couverts » (résumé + exercice 3 optionnel)
 4-ressources.qmd            # Resources (enriched with STORE topics + ex-Bloc 3)
+exercises/
+  00-test-install/
+    test-install.qmd        # Mini-test Typst end-to-end (validation install pré-tutoriel)
+  01-document-typst/
+    starter/
+    correction/             # _brand.yml + _brand-offline.yml + _fonts/ + _logo-sw.svg + rapport-starwars.qmd
+    README.md
+  02-projet-book/
+    starter/                # 5 .qmd, sans _quarto.yml (étape 1 participant)
+    correction/             # _quarto.yml + _brand.yml + _logo-sw.svg + 5 .qmd
+    _brand-fallback.yml     # Copie 1:1 pour participants n'ayant pas fini Exo 1
+    README.md
+review.md                   # Reviews vague 1 archivées
+review-2026-05-04-content.md            # Review post-polish session 2026-05-04
+review-2026-05-04-bis-1-pedagogue.md    # Reviews vague 2 (4 reviewers parallèles)
+review-2026-05-04-bis-2-eleve-debutant.md
+review-2026-05-04-bis-3-quarto-technique.md
+review-2026-05-04-bis-4-orthographe-fr.md
+.claude/
+  PLAN.md                   # Decision log + état complétude
+  CLAUDE.md                 # Project instructions (loaded chaque session)
+  settings.json
+  agents/                   # 4 reviewers workshop persistés (pédagogue, débutant, technique, FR)
+  hooks/
+  issues/                   # 2 drafts d'issues GitHub Quarto (à filer par CD)
+  plans/exo2-book.md        # Plan Phase 3 archivé
+  references/               # project-context.md, topic-store.md, workshop-pacing.md
+  skills/                   # workshop-content, quarto-authoring, quarto-alt-text, brand-yml
 ```
 
 ## Content Patterns
@@ -47,8 +75,10 @@ preparatifs.qmd             # Setup instructions
 
 ### Exercises
 - All use Star Wars (`dplyr::starwars`), progressive complexity. Tables: `gt` everywhere.
-- Distributed as zip files (not in this repo)
+- Téléchargeables via `tree/main/exercises/0X-…/` (le `_quarto.yml` racine exclut `!exercises/` du render website mais garde `exercises/**` comme `resources:`)
+- Exercise 1 correction inclut le logo SW (`_logo-sw.svg`) en filigrane couverture + helpers `theme_brand_ggplot2/gt(brand)` (renforce le pivot narratif Bloc 1 → Bloc 2)
 - Exercise 2 includes fallback `_brand.yml` for participants who didn't finish Exercise 1
+- `00-test-install/test-install.qmd` : mini-test autonome (sans `_brand.yml` pour fiabilité offline) référencé dans `preparatifs.qmd` pour valider la chaîne Typst end-to-end avant le 16 juin
 
 ## Workshop Content by Block
 
