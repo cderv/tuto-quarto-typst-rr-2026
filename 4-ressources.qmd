@@ -39,7 +39,7 @@ date: ""
 - [quarto-ext/typst-templates](https://github.com/quarto-ext/typst-templates) — poster, letter, ieee, fiction…
 - **orange-book** : intégré à Quarto 1.9 pour les projets book
 - **Marginalia** : article layout avec figures, légendes et notes de marge (`.column-margin`, `.aside`)
-- `typst-gather` : embarquer les packages Typst pour le rendu hors-ligne (`quarto typst gather`)
+- `typst-gather` : embarquer les packages Typst pour le rendu hors-ligne (`quarto call typst-gather`)
 
 ## Options Typst avancées
 

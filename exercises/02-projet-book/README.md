@@ -3,19 +3,19 @@
 > 5 fichiers `.qmd`, un `_quarto.yml`, et le rapport Bloc 1 devient un livre
 > Quarto avec couverture, TOC, numérotation automatique et charte cohérente.
 
-## Pré-requis
+## Prérequis
 
 - Quarto 1.9+ (cf. [`preparatifs.qmd`](../../preparatifs.qmd))
 - Packages R installés : `dplyr`, `ggplot2`, `ggrepel`, `gt`, `scales`
 - L'extension `orange-book` (livrée avec Quarto 1.9, pas d'install à faire)
 
-## Setup
+## Mise en place
 
 Partez de [`starter/`](starter/) — 5 fichiers `.qmd` sans `_quarto.yml`. Sans
 configuration de projet, `quarto render starter/` produit 5 PDF orphelins :
 c'est le point de départ.
 
-## 3 étapes core (12 min)
+## 3 étapes principales (12 min)
 
 | # | Action | Vous devriez voir | Concept |
 |---|---|---|---|
@@ -65,7 +65,7 @@ les chapitres dans le PDF.
 > ⚠️ **Bug `gt` à connaître (étape 3)** : si vous voyez « 1 7 5 » au lieu de
 > « 175 » dans les tableaux après avoir copié `_brand.yml` (typique sur
 > Windows/macOS), c'est un bug connu de `gt` → Typst quand les polices
-> fallback du tableau s'appliquent. **Fix** : ajoutez `|>
+> de remplacement du tableau s'appliquent. **Correction** : ajoutez `|>
 > opt_table_font(font = "Inter")` à la fin de votre pipeline `gt`. Non
 > bloquant — vous pouvez continuer sans.
 
@@ -73,7 +73,7 @@ les chapitres dans le PDF.
 
 | # | Action | Vous devriez voir | Concept |
 |---|---|---|---|
-| B1 | Dans `conclusion.qmd`, ajoutez une phrase qui référence `@fig-anatomie-mass` et `@sec-origines`. | « Comme l'a montré la **Figure 1.1**… » avec lien actif vers la figure et le chapitre 2. | Cross-refs inter-chapitres avec numérotation automatique. |
+| B1 | Dans `conclusion.qmd`, ajoutez une phrase qui référence `@fig-anatomie-mass` et `@sec-origines`. | « Comme l'a montré la **Figure 1.1**… » avec lien actif vers la figure et le chapitre 2. | Références croisées inter-chapitres avec numérotation automatique. |
 | B2 | Saut de page conditionnel à la fin de `conclusion.qmd` (voir bloc ci-dessous). | Saut de page entre la conclusion et l'annexe **dans le PDF uniquement** (pas en HTML preview). | Contenu conditionnel par format de sortie. |
 
 **B2 — bloc à coller en fin de `conclusion.qmd`** :
@@ -97,5 +97,5 @@ C'est une copie 1:1 de la charte utilisée dans la correction.
 ## Et après ?
 
 Le dossier [`correction/`](correction/) contient le projet final, charte incluse,
-avec les 3 étapes core ET les 2 bonus appliqués. À comparer avec votre
+avec les 3 étapes principales ET les 2 bonus appliqués. À comparer avec votre
 résultat à la fin de l'exercice.

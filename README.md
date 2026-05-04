@@ -33,7 +33,7 @@
 
 **Partie A — De LaTeX à Typst (15 min)**
 
-Le problème avec `format: pdf` (LaTeX) et pourquoi `format: typst` est une alternative sans friction :
+Le problème avec `format: pdf` (LaTeX) et pourquoi `format: typst` est une alternative sans frictions :
 
 - Comparaison PDF/LaTeX vs PDF/Typst : installation, vitesse, lisibilité des erreurs
 - Options de base : `papersize`, `margin`, `mainfont`, `toc`, `number-sections`

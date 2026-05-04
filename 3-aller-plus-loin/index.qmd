@@ -11,7 +11,7 @@ Pour aller au-delà des options YAML, Typst offre une personnalisation fine via 
 
 ### 1 — Blocs raw Typst (5 min)
 
-L'escape hatch pour injecter du Typst natif quand Quarto ne suffit pas.
+Une soupape pour injecter du Typst natif quand Quarto ne suffit pas.
 
 - Blocs `` {=typst} `` pour du code Typst brut
 - Accès aux valeurs de la charte via les variables `brand-color.primary`, `brand-logo-images` depuis un bloc raw

@@ -93,7 +93,7 @@ Problèmes fréquents : mauvais chemin vers les chapitres, oubli du tiret devant
 ::: callout
 ## À vous !
 
-**3 étapes core** (12 min, attendues de tous) :
+**3 étapes principales** (12 min, attendues de tous) :
 
 1. `_quarto.yml` avec `type: default` + `format: typst` → 5 PDF
 2. Passer à `type: book` (format inchangé) → PDF unique
@@ -102,7 +102,7 @@ Problèmes fréquents : mauvais chemin vers les chapitres, oubli du tiret devant
 **2 bonus** (3 min, pour les rapides) :
 
 - B1. Références croisées `@fig-anatomie-mass` + `@sec-origines` dans `conclusion.qmd`
-- B2. `.content-visible when-format="typst"` + `{{< pagebreak >}}`
+- B2. `.content-visible when-format="typst"` + `{{</* pagebreak */>}}`
 :::
 
 ::: {.callout-warning appearance="minimal"}
