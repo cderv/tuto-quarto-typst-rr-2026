@@ -66,8 +66,9 @@ book:
     - annexe-donnees.qmd
 
 format:
-  typst:
-    extend: orange-book
+  orange-book-typst:
+    font-paths:
+      - .quarto/typst/fonts
 
 execute:
   echo: false
@@ -75,7 +76,11 @@ execute:
   message: false
 ```
 
-`extend: orange-book` **explicite** — la review technique a relevé que l'application auto pour `type: book` + `format: typst` n'est pas formellement documentée. À expliciter pour robustesse (Quarto 1.9+ blog post 2026-03-31). Pas de `keep-typ` (mode production). Pas de `papersize`/`mainfont` per-fichier (orange-book + `_brand.yml` pilotent).
+⚠️ **Correction 2026-05-04** : la clé `extend: orange-book` proposée à l'origine **n'existe pas** dans le schema Quarto (clé fictive ignorée silencieusement). La vraie syntaxe explicite documentée par l'extension orange-book est `format: orange-book-typst` (`/opt/quarto/share/extension-subtrees/orange-book/README.md`). Test empirique : render avec `extend:`, sans `extend:`, et avec `format: orange-book-typst` → **3 PDFs visuellement identiques** (Quarto 1.9 applique aussi orange-book par défaut quand `project.type: book` + `format: typst`). Choix retenu : `format: orange-book-typst` (explicite + correct + cohérent avec doc extension).
+
+`font-paths: [.quarto/typst/fonts]` **est nécessaire** — sans cette ligne, Quarto télécharge bien Inter/Orbitron dans `.quarto/typst/fonts/` mais ne les passe pas comme `--font-path` à `typst compile` en mode book. Symptôme pré-fix : warning `unknown font family: orbitron` + headings body en serif fallback. Avec `font-paths`, strace confirme les 2 paths (Quarto bundled + brand cache) → Orbitron s'applique sur tous les headings (Préface, 1.Anatomie, 1.1, 1.2, etc.). Cover reste en serif (template orange-book gère sa propre typo cover, indépendant de `#show heading`). À reporter en issue Quarto upstream (voisinage : #13548).
+
+Pas de `keep-typ` (mode production). Pas de `papersize`/`mainfont` per-fichier (orange-book + `_brand.yml` pilotent).
 
 ### `correction/_brand.yml` (variante book avec logo)
 
@@ -217,7 +222,7 @@ Cadrage explicite (review pédagogique : 5 étapes en 15 min trop serré, ~50 % 
 | # | Action | Wow visuel | Concept |
 |---|---|---|---|
 | 1 | Crée `_quarto.yml` `type: default` + `format: typst`, render | 4 PDF séparés | config projet, format une seule fois |
-| 2 | Passe à `type: book` (+ `extend: orange-book`), render | **PDF unique + couverture orange-book + Fig 1.1, Fig 2.1, Tab 1.1, Tab 2.1 + TOC** | LA fenêtre orange-book |
+| 2 | Passe à `type: book` (+ `format: orange-book-typst`), render | **PDF unique + couverture orange-book + Fig 1.1, Fig 2.1, Tab 1.1, Tab 2.1 + TOC** | LA fenêtre orange-book |
 | 3 | Copie `_brand.yml` (+ `_logo-sw.svg`) à racine, render | Couverture jaune SW + logo, headings Orbitron, corps Inter, gt re-stylé (bug espacement apparaît si starter sans `opt_table_font`) | brand suit le projet |
 
 **Bonus (3 min, pour les rapides) :**
@@ -294,7 +299,7 @@ Vérification factuelle data (pendant render) :
 | Risque | Mitigation |
 |---|---|
 | `_brand.yml logo:` syntaxe `images:` non supportée par orange-book Typst | **Tester au commit 1** (point critique #1 review tech). Syntaxe `logo: { images: { name: { path } }, medium: name }` documentée pour books (blog 2026-03-31) mais effet sur couverture orange-book non confirmé en doc. Fallback : retirer entièrement `logo:`, mentionner en pépite notes presenter |
-| `extend: orange-book` auto vs explicite | Plan choisit l'**explicite** (review tech #11) pour éviter qu'un défaut futur change le rendu. Sécurité même si auto applicable |
+| ~~`extend: orange-book` auto vs explicite~~ ⚠️ clé fictive | **Corrigé 2026-05-04** : utiliser `format: orange-book-typst` (vraie syntaxe doc extension). Auto-application orange-book pour `type: book` + `format: typst` confirmée empiriquement, mais explicite reste préférable pour robustesse (review tech #11) |
 | Bug gt → Typst (« 1 7 5 ») | `opt_table_font("Inter")` dans correction. Bug **volontairement visible** dans starter étape 3 (moment péda). Pré-briefer en notes presenter Bloc 2 « Our turn » |
 | Timing 5 étapes en 15 min trop serré | **Reframé en 3 core (12 min) + 2 bonus** dans plan + slides. Bonus annoncés comme « extra time », pas comme étapes obligatoires |
 | Réseau Nantes pour `source: google` | **Pas de duplication `_fonts/`** dans Exo 2. Mention `preparatifs.qmd` : « préchargez en testant Exo 1 chez vous ». Risque résiduel acceptable (quelques centaines de KB) |
@@ -313,12 +318,12 @@ Tous sur la branche `claude/add-missing-content-4CdHE`.
    
    Note : le path `/root/.claude/plans/` est local à la sandbox Claude Code on the web ; pour pérennité git, copier le plan dans le repo (ex. `.claude/plans/exo2-book.md`) lors du commit 0. Permet de récupérer le plan si la session expire avant la fin de l'exécution.
 
-1. **Squelette correction sans contenu R** — créer `02-projet-book/correction/` avec `_quarto.yml` (`extend: orange-book` explicite), `_brand.yml` (avec `logo: { images, medium }`), `_logo-sw.svg`, 5 `.qmd` aux YAML headers + H1 corrects + textes lipsum. Render → **3 vérifs critiques** : (a) orange-book appliqué (couverture, TOC stylisé), (b) logo SW visible sur la couverture, (c) numérotation `01-anatomie` = chapitre **1** (pas 2) malgré préface unnumbered. **Si (b) échoue : retirer `logo:` du brand, mentionner en pépite.**
+1. **Squelette correction sans contenu R** — créer `02-projet-book/correction/` avec `_quarto.yml` (`format: orange-book-typst` + `font-paths: [.quarto/typst/fonts]`), `_brand.yml` (avec `logo: { images, medium }`), `_logo-sw.svg`, 5 `.qmd` aux YAML headers + H1 corrects + textes lipsum. Render → **3 vérifs critiques** : (a) orange-book appliqué (couverture, TOC stylisé), (b) logo SW visible sur la couverture, (c) numérotation `01-anatomie` = chapitre **1** (pas 2) malgré préface unnumbered. **Si (b) échoue : retirer `logo:` du brand, mentionner en pépite.**
 2. **Contenu R 01-anatomie + 02-origines** — porter le code Bloc 1 + ajouter `02-origines.qmd` (gt + barplot). Render → vérifier figures, tableaux, vérification factuelle homeworlds/species (Tatooine top, Human + Droid top espèces).
 3. **Cross-refs + content-visible + annexe finale** — ajouter dans conclusion les 2 cross-refs et le bloc pagebreak ; finaliser annexe. Render → vérifier liens actifs et saut de page Typst-only.
 4. **Starter dérivé + fallback brand + READMEs** — dupliquer correction → starter, retirer ce qui doit l'être (cf. spec). Créer `_brand-fallback.yml` (copie 1:1), `README.md` racine Exo 2, **et `starter/README.md`** (4 lignes safety net). Pas de render attendu.
 5. **Mise à jour slides Bloc 2 (3 core + 2 bonus) + notes presenter + fix lien 404** — réécrire bloc Exercice de `2-projets/index.qmd` (3 core + 2 bonus, brand étape 3) ; ajuster `2-projets/2-projets.qmd` slide « Your turn » ; **ajouter notes presenter** sur (a) le bug gt à anticiper, (b) le lien Exo 2 actualisé après Our turn ; vérifier que le lien 404 résout. `quarto render` racine pour smoke test final.
-6. **PLAN.md** — cocher les items Phase 3 réalisés, mettre à jour decision log avec choix CD du 2026-05-03 (3 core + 2 bonus, brand variant logo syntaxe `images:`, `extend: orange-book` explicite, conclusion numérotée, auteur Mon Mothma).
+6. **PLAN.md** — cocher les items Phase 3 réalisés, mettre à jour decision log avec choix CD du 2026-05-03 (3 core + 2 bonus, brand variant logo syntaxe `images:`, `format: orange-book-typst` (vraie syntaxe vs `extend:` initial fictif), conclusion numérotée, auteur Mon Mothma).
 
 Push à la fin sur `claude/add-missing-content-4CdHE` (`git push -u origin claude/add-missing-content-4CdHE`). **Pas de PR** sauf demande explicite.
 

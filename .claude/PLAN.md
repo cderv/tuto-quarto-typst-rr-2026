@@ -31,6 +31,11 @@ Event: Rencontres R 2026, 16 juin, Nantes — 2h tutorial
 - 2026-05-02: **Test `source: file` confirmé OK** (env propre, standalone) avec **TTFs statiques** (Inter-Regular/SemiBold/Bold + Orbitron-Regular/Bold récupérés depuis le cache `.quarto/typst/fonts/` après un render `source: google`). Aucun warning, `.typ` propre. ⚠️ **Variable fonts (Inter[wght].ttf, Orbitron[wght].ttf) → Typst émet `warning: variable fonts are not currently supported`** : utiliser exclusivement des TTFs statiques pour `source: file`. `InterVariable.ttf` retiré du repo en conséquence (non référencé, source de warnings).
 - 2026-05-02: **Décision stratégie fonts atelier** : `source: google` par défaut partout (correction Exo 1, Exo 2, démos), avec un **Plan B `source: file` shippé** dans `exercises/01-document-typst/correction/_brand-offline.yml` + `_fonts/` (5 TTFs statiques, ~1.3 MB). Couvre le risque réseau jour J Nantes (cf. review pédago). Bunny mentionné en pépite ou notes presenter comme limite actuelle Quarto, **pas utilisé** pour le rendu.
 - 2026-05-02: **4-options Exo 1 tranchées = C-light** — `_brand.yml source: google` reste **dans Exo 1** (puisque la fausse limite « standalone ne marche pas » est levée). Cohérent avec le narratif Bloc 1 « doc → PDF stylé en un fichier ». Plan B offline fourni à part dans `correction/_brand-offline.yml` + `_fonts/`. Pas de nouvelle complexité dans le starter ; participants créent leur propre `_brand.yml` à l'étape 3 de l'exo (consigne actuelle inchangée).
+- 2026-05-04: **Commit 1 Exo 2 livré** (skeleton `02-projet-book/correction/`). Deux corrections importantes vs plan initial :
+  1. **`extend: orange-book` est une clé fictive** — n'existe pas dans le schema Quarto, ignorée silencieusement. La vraie syntaxe documentée par l'extension orange-book (`/opt/quarto/share/extension-subtrees/orange-book/_extensions/orange-book/_extension.yml` + README) est **`format: orange-book-typst`**. Test empirique : 3 PDFs visuellement identiques avec/sans `extend:` ou avec `format: orange-book-typst` (Quarto 1.9 applique aussi orange-book par défaut quand `project.type: book` + `format: typst`). Choix final : `format: orange-book-typst` (explicite + correct).
+  2. **Bug Quarto book brand fonts** — Quarto télécharge bien Inter/Orbitron dans `.quarto/typst/fonts/` (via `resolveExtras` → `fontdirs.add(font_cache)` → `format.metadata['font-paths'].push`, cf. `quarto.js:129892`) mais cette mutation **ne propage pas** au call site `typstCompile` en mode book. Strace confirme : seul `--font-path /opt/quarto/share/formats/typst/fonts` (Font Awesome bundled) est passé à typst, sans le brand cache. Conséquence : warning `unknown font family: orbitron` + headings body en serif fallback. Workaround retenu dans `_quarto.yml` : `format: orange-book-typst: { font-paths: [.quarto/typst/fonts] }` — strace post-fix confirme les 2 paths passés, Orbitron s'applique sur tous les headings du body. **À reporter en issue Quarto upstream** (voisinages connus : #13548, #11929, #7580). CD est la bonne personne.
+  3. PDF correction validé visuellement (15 pages) : cover orange-book + logo SW étoile jaune + bandeau jaune + Mon Mothma + Préface en Orbitron + 1.Anatomie/1.1/1.2 en Orbitron avec numéros jaune SW + numérotation chap 1 = 1 (préface unnumbered respectée). Cover titre+auteur restent en serif (template orange-book gère sa propre typo cover, indépendant de `#show heading`) — limite acceptable.
+- 2026-05-04: **Commit 1 livré sur branche `claude/quarto-book-skeleton-qeDNI`** (commits `1b39468` skeleton + `7b0ac7e` workaround font-paths). Plan original mentionnait `claude/add-missing-content-4CdHE` mais cette branche a été mergée → branche actuelle = celle prévue par le harness pour cette session.
 
 ## Current structure (implemented 2026-04-16)
 
@@ -222,7 +227,7 @@ Toutes les autres questions historiques (Q1 séquencement reviews, Q2 `opt_table
 
 **Plan détaillé prêt** (à reprendre tel quel à la prochaine session) : `.claude/plans/exo2-book.md` — reviewed pédagogiquement + techniquement (context7 Quarto). Décisions actées :
 - **3 core (12 min) + 2 bonus** (cross-ref + pagebreak) — reframé depuis « 5 étapes en 15 min » (timing trop serré)
-- `_quarto.yml` : `extend: orange-book` **explicite** (pas implicite — review tech)
+- `_quarto.yml` : `format: orange-book-typst` **explicite** (vraie syntaxe doc extension — `extend: orange-book` initialement proposé est fictif, ignoré silencieusement) + `font-paths: [.quarto/typst/fonts]` (workaround bug brand fonts non passées en book)
 - `_brand.yml` book : variante avec `logo: { images: { sw-star: { path } }, medium: sw-star }` (syntaxe `images:` documentée pour books — blog Quarto 2026-03-31)
 - Auteur book : **Mon Mothma** (ton sérieux, alternative ludique C-3PO)
 - Conclusion **numérotée** (chap 3, pas `{.unnumbered}`)
@@ -392,7 +397,7 @@ exercises/02-projet-book/correction/
 ## References
 
 - Plan de restructuration détaillé: `/root/.claude/plans/wiggly-mixing-giraffe.md`
-- **Plan détaillé Exo 2 (Phase 3) : `.claude/plans/exo2-book.md`** (persistant, copié depuis `/root/.claude/plans/oui-p1-planifions-sp-cialement-sprightly-micali.md` sandbox-local). Reviewed pédagogiquement + techniquement (context7 Quarto). Décisions : 3 core + 2 bonus, `extend: orange-book` explicite, `_brand.yml logo: { images, medium }`, auteur Mon Mothma.
+- **Plan détaillé Exo 2 (Phase 3) : `.claude/plans/exo2-book.md`** (persistant, copié depuis `/root/.claude/plans/oui-p1-planifions-sp-cialement-sprightly-micali.md` sandbox-local). Reviewed pédagogiquement + techniquement (context7 Quarto). Décisions : 3 core + 2 bonus, `format: orange-book-typst` explicite (corrigé depuis `extend: orange-book` fictif initial), `_brand.yml logo: { images, medium }`, auteur Mon Mothma.
 - Topic store: `.claude/references/topic-store.md`
 - Pacing guidelines: `.claude/references/workshop-pacing.md`
 - Project context: `.claude/references/project-context.md`
