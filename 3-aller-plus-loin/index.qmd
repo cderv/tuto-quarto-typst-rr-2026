@@ -13,21 +13,21 @@ Pour aller au-delà des options YAML, Typst offre une personnalisation fine via 
 Ces sujets sont des **pistes pour aller plus loin après le tutoriel**, pas couverts en séance. Le programme officiel tient en 2 blocs (cf. [page d'accueil](../index.qmd)). Cette page sert de point d'entrée pour les autodidactes.
 :::
 
-### 1 — Blocs raw Typst
+### 1 — Blocs Typst "Raw"
 
-Une soupape pour injecter du Typst natif quand Quarto ne suffit pas.
+Un moyen pour injecter du Typst natif quand Quarto ne suffit pas.
 
-- Blocs `` {=typst} `` pour du code Typst brut
-- Accès aux valeurs de la charte via les variables `brand-color.primary`, `brand-logo-images` depuis un bloc raw
-- Traduction CSS → Typst : propriétés CSS utilisables sur spans et divs (depuis Quarto 1.5)
-- Tableaux stylisés : les tableaux HTML avec CSS (gt, pandas) sont rendus dans Typst
+- Blocs `{=typst}` pour du code Typst brut
+- Accès aux valeurs de la charte via les variables `brand-color.primary`, `brand-logo-images` depuis un bloc "raw"
+- Traduction CSS → Typst : propriétés CSS utilisables sur "spans" et "divs" (depuis Quarto 1.5)
+- Tableaux stylisés : les tableaux HTML avec CSS (`gt`, `pandas`) sont rendus dans Typst
 
-### 2 — Template partials
+### 2 — Template "partials"
 
-Personnaliser la génération du fichier `.typ` pour contrôler le layout du PDF.
+Personnaliser la génération du fichier `.typ` pour contrôler le "layout" du PDF.
 
 - `typst-show.typ` : pont Quarto → Typst, passage des variables YAML
-- `typst-template.typ` : layout du document (header, footer, couleurs, logo)
+- `typst-template.typ` : "layout" du document (en-tête, pieds de page, couleurs, logo)
 - Syntaxe Pandoc dans les partials : `$title$`, `$if(by-author)$`, `$for(author)$`
 - Déclaration dans le YAML : `template-partials:`
 - Nouvelles variables Quarto 1.9 : `linkcolor`, `codefont`, `mathfont`, `linestretch`
@@ -41,4 +41,4 @@ Packager et partager des formats Typst personnalisés.
 - `quarto use brand user/repo` pour partager une charte depuis GitHub
 - Formats existants : [quarto-ext/typst-templates](https://github.com/quarto-ext/typst-templates)
 - Accessibilité PDF : `pdf-standard: ua-1` pour la conformité PDF/UA-1
-- ⚠️ Les Typst books ne sont pas encore compatibles UA-1
+  - ⚠️ Les Typst 'books' ne sont pas encore compatibles UA-1
