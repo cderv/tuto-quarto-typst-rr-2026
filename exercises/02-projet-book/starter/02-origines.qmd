@@ -55,7 +55,37 @@ starwars |>
   theme_minimal(base_size = 11)
 ```
 
-Les humains dominent — saga « centrée humaine » comme on dit dans la critique.
-Mais juste derrière, les droïdes : R2-D2 et C-3PO ne sont pas seuls, ils ont
-de la compagnie. La chute du chapitre 1 (« les vraies stars sont les
-droïdes ») commence à prendre du sens.
+Les humains dominent — saga « centrée humaine » comme on dit dans la
+critique. Mais juste derrière, les droïdes : R2-D2 et C-3PO ne sont pas
+seuls, ils ont de la compagnie. Reste à comparer leur **présence à
+l'écran**.
+
+## Présence dans la saga
+
+```{r}
+#| label: tbl-origines-films
+films_par_perso <- starwars |>
+  mutate(n_films = lengths(films)) |>
+  arrange(desc(n_films), name) |>
+  select(name, species, n_films)
+
+top_humain <- films_par_perso |> filter(species == "Human") |> slice(1)
+
+films_par_perso |>
+  slice_head(n = 8) |>
+  gt() |>
+  tab_header(
+    title = "Les piliers de la saga",
+    subtitle = "Top 8 des personnages par nombre de films"
+  ) |>
+  cols_label(
+    name = "Personnage",
+    species = "Espece",
+    n_films = "Films"
+  )
+```
+
+**R2-D2** mène avec `r films_par_perso$n_films[1]` films, plus que
+n'importe quel humain — `r top_humain$name`, le plus présent, plafonne
+à `r top_humain$n_films`. C-3PO suit de près. La chute du chapitre
+*Anatomie* tombe : les droïdes sont bien les vraies stars de la saga.

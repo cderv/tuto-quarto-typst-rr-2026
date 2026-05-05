@@ -5,8 +5,9 @@ fait exploser, les origines révèlent une saga concentrée sur quelques planèt
 et largement humaine. Comme l'a montré la @fig-anatomie-mass, la masse est très
 inégalement distribuée ; mais c'est dans le @sec-origines qu'apparaît la vraie
 révélation : derrière l'écrasante majorité humaine, les **droïdes** s'imposent
-en deuxième position. R2-D2 et C-3PO ne sont pas seuls — et ils traversent la
-saga plus longtemps que la plupart de leurs collègues organiques.
+en deuxième position. R2-D2 et C-3PO ne sont pas seuls — et comme le montre
+@tbl-origines-films, ils traversent la saga plus longtemps que la plupart
+de leurs collègues organiques.
 
 ::: {.content-visible when-format="typst"}
 {{< pagebreak >}}
