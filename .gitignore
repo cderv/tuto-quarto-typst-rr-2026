@@ -1,5 +1,5 @@
 **/.quarto/
-/_site/
+/_site*/
 **/*.quarto_ipynb
 **/*.rmarkdown
 **/mathjax-config.js
