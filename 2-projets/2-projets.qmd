@@ -88,9 +88,9 @@ Si vous voyez des chiffres mal espacés (« 1 7 5 » au lieu de « 175 ») dans 
 Problèmes fréquents : mauvais chemin vers les chapitres, oubli du tiret devant les noms de fichiers dans `chapters:`, oubli de l'underscore dans `_quarto.yml` ou `_brand.yml`.
 :::
 
-## Exercice 2
+## Exercice 2 {.wide-list}
 
-::: callout-note
+::: callout-warning
 ## À vous !
 
 **3 étapes principales** (12 min, attendues de tous) :
@@ -139,7 +139,7 @@ Slide rapide, 2-3 minutes max. Template partials = le concept le plus avancé du
 Fusible à couper si le timing serre — sauter directement au wrap-up qui suit (3 slides obligatoires, ne pas sauter).
 :::
 
-## Ce que vous savez faire maintenant
+## Ce que vous savez faire maintenant {.wide-list}
 
 ::: incremental
 - Produire un PDF pro avec `format: typst`, sans LaTeX
@@ -161,7 +161,7 @@ Les 5 bullets font écho aux 3 questions posées en intro (cf. `index.qmd:17-19`
 - **Pour creuser** — la page [Pour aller plus loin](../4-ressources.qmd) (partials, blocs raw Typst, accessibilité PDF/UA-1, helpers `brand.yml` côté R)
 - **Communauté** — [quarto-ext/typst-templates](https://github.com/quarto-ext/typst-templates), [forum Quarto](https://github.com/quarto-dev/quarto/discussions), [Awesome Quarto](https://github.com/mcanouil/awesome-quarto)
 
-## Merci ! Questions ?
+## Merci ! Questions ? {.center}
 
 Merci aux Rencontres R, à l'équipe d'organisation, et à vous.
 

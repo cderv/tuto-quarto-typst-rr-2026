@@ -61,10 +61,11 @@ quarto render exercises/01-document-typst/correction/rapport-starwars.qmd
 ## Conventions slides (My turn / Our turn / Your turn)
 
 - **My turn** : slides normales, pas de callout spécial
-- **Our turn** : callout `.callout-tip` avec titre "Faisons ensemble !"
-- **Your turn** : callout par défaut avec titre "À vous !" + countdown
-- **Pépites** : callout `.callout-note` avec titre "Saviez-vous que..."
-- Background couleur : `{background-color="#27ae60"}` pour Our turn, `{background-color="#FDC538"}` pour Your turn
+- **Our turn** : callout `.callout-tip` avec titre "Faisons ensemble !" (vert)
+- **Your turn** : callout `.callout-warning` avec titre "À vous !" + countdown (jaune)
+- **Pépites** : callout `.callout-note` avec titre "Saviez-vous que..." (bleu)
+
+Différenciation visuelle = type de callout (pas `{background-color=...}` sur les slides — trop flashy). Couleurs ajustées via variables SASS dans `reveal-style.scss` : `$callout-color-tip: #27ae60`, `$callout-color-warning: #FDC538`, note par défaut bleu.
 
 ## Références
 
