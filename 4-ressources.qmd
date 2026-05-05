@@ -37,9 +37,9 @@ date: ""
 ## Formats Typst existants
 
 - [quarto-ext/typst-templates](https://github.com/quarto-ext/typst-templates) — poster, letter, ieee, fiction…
-- **orange-book** : intégré à Quarto 1.9 pour les projets book
-- **Marginalia** : article layout avec figures, légendes et notes de marge (`.column-margin`, `.aside`)
-- `typst-gather` : embarquer les packages Typst pour le rendu hors-ligne (`quarto call typst-gather`)
+- [**orange-book**](https://typst.app/universe/package/orange-book/) : intégré à Quarto 1.9 pour les projets book
+- [**Marginalia** ](https://typst.app/universe/package/marginalia/): article layout avec figures, légendes et notes de marge (`.column-margin`, `.aside`)
+- `typst-gather` (<https://github.com/quarto-dev/typst-gather>): embarquer les packages Typst pour le rendu hors-ligne (`quarto call typst-gather`): <https://quarto.org/docs/advanced/typst/typst-gather.html>
 
 ## Options Typst avancées
 
@@ -75,7 +75,7 @@ Dans les blocs raw Typst, les variables liées à la charte sont accessibles via
 
 Injectez du code Typst natif dans un document Quarto :
 
-````markdown
+```` markdown
 ```{=typst}
 #text(fill: rgb("#0055A4"), weight: "bold")[
   Texte bleu en gras, rendu par Typst
@@ -105,7 +105,7 @@ Les tableaux produits par `gt` (R) ou `Great Tables` (Python) avec du CSS sont r
 
 Le pipeline de compilation Typst dans Quarto :
 
-```
+```         
 document.qmd → Pandoc + partials → document.typ → Typst → document.pdf
 ```
 
@@ -116,7 +116,7 @@ Deux fichiers contrôlent la génération du `.typ` :
 
 Déclarez-les dans le YAML :
 
-```yaml
+``` yaml
 format:
   typst:
     template-partials:
@@ -126,11 +126,11 @@ format:
 
 Syntaxe Pandoc dans les partials :
 
-| Syntaxe | Rôle | Exemple |
-|---------|------|---------|
-| `$variable$` | Insertion de valeur | `$title$` |
-| `$if(var)$...$endif$` | Condition | `$if(date)$...$endif$` |
-| `$for(var)$...$endfor$` | Boucle | `$for(by-author)$...$endfor$` |
+| Syntaxe                 | Rôle                | Exemple                       |
+|-------------------------|---------------------|-------------------------------|
+| `$variable$`            | Insertion de valeur | `$title$`                     |
+| `$if(var)$...$endif$`   | Condition           | `$if(date)$...$endif$`        |
+| `$for(var)$...$endfor$` | Boucle              | `$for(by-author)$...$endfor$` |
 
 Variables Quarto 1.9 : `$linkcolor$`, `$codefont$`, `$mathfont$`, `$linestretch$`.
 
@@ -144,15 +144,18 @@ Variables Quarto 1.9 : `$linkcolor$`, `$codefont$`, `$mathfont$`, `$linestretch$
 
 ## Accessibilité PDF
 
-```yaml
+``` yaml
 format:
   typst:
     pdf-standard: ua-1
 ```
 
 - Génère un PDF conforme au standard **PDF/UA-1**
+
 - Les lecteurs d'écran peuvent naviguer dans le document
+
 - Les images avec `fig-alt` obtiennent un texte alternatif dans le PDF
+
 - **Limitation** : les Typst books (`type: book`) ne sont pas encore compatibles PDF/UA-1
 
 - Blog post : [PDF Accessibility and Standards](https://quarto.org/docs/blog/posts/2026-03-05-pdf-accessibility-and-standards/)
