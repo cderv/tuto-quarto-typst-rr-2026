@@ -1,0 +1,13 @@
+project:
+  render:
+    - index.qmd
+    - preparatifs.qmd
+  output-dir: _site-pretuto
+
+website:
+  sidebar:
+    contents:
+      - href: index.qmd
+        text: Accueil
+      - href: preparatifs.qmd
+        text: Préparatifs

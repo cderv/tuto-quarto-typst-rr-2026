@@ -1,30 +1,39 @@
 project:
   type: website
-  render:
-    - "**/*.qmd"
-    - "!exercises/"
   resources:
     - "exercises/**"
 
 website:
   title: "PDF sans frictions : Typst dans vos projets Quarto"
+  description: "Tutoriel Quarto+Typst de 2h aux Rencontres R 2026 — PDF sans frictions"
+  page-navigation: true
+
+  open-graph: true
+  twitter-card:
+    creator: "@chrisderv"
+
   repo-url: https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026
   repo-actions: [edit, issue]
-  page-footer: "CC BY 4.0 · Christophe Dervieux & Maëlle Salmon · Rencontres R 2026"
-  navbar:
-    left:
-      - href: index.qmd
-        text: Accueil
-      - href: preparatifs.qmd
-        text: Préparatifs
-      - href: 1-quarto-typst/index.qmd
-        text: "Bloc 1 — PDF avec Typst"
-      - href: 2-projets/index.qmd
-        text: "Bloc 2 — Projets & book"
-      - href: 4-ressources.qmd
-        text: Ressources
+
+  sidebar:
+    background: "#FDC538"
+    align: center
+    tools:
+      - icon: github
+        href: https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026
+        text: "Dépôt GitHub"
+    style: docked
+    search: true
+    collapse-level: 2
+
+  page-footer:
+    left: "&copy; CC BY 4.0 · Christophe Dervieux & Maëlle Salmon · Rencontres R 2026"
+    right: "Site construit avec [Quarto](https://quarto.org/)."
+    background: "#FDC538"
 
 lang: fr
+author: "Christophe Dervieux & Maëlle Salmon"
+date: "2026-06-16"
 
 format:
   html:
@@ -40,4 +49,11 @@ format:
     chalkboard: true
     footer: "[🔗 cderv.github.io/cderv-tuto-quarto-typst-rr-2026](https://cderv.github.io/cderv-tuto-quarto-typst-rr-2026)"
 
+execute:
+  freeze: auto
+
 editor: visual
+
+profile:
+  group:
+    - [tuto, pretuto]

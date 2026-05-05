@@ -1,0 +1,21 @@
+project:
+  render:
+    - "**/*.qmd"
+    - "!exercises/"
+
+website:
+  sidebar:
+    contents:
+      - href: index.qmd
+        text: Accueil
+      - href: preparatifs.qmd
+        text: Préparatifs
+      - text: ---
+      - href: 1-quarto-typst/index.qmd
+        text: "Bloc 1 — PDF avec Typst"
+      - href: 2-projets/index.qmd
+        text: "Bloc 2 — Projets & book"
+      - href: 3-aller-plus-loin/index.qmd
+        text: "Pour aller plus loin..."
+      - href: 4-ressources.qmd
+        text: Ressources
