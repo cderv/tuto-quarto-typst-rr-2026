@@ -10,6 +10,12 @@ $presentation-heading-color: #2568B0;
 $link-color: #c78d22;
 $perso-highlight-color: #69a1b4;
 $hover-color: lighten($link-color, 10%);
+
+// Callout colors per role (My/Our/Your turn convention)
+$callout-color-tip: #27ae60;     // Our turn — "Faisons ensemble !"
+$callout-color-warning: #FDC538; // Your turn — "À vous !" + countdown
+// $callout-color-note default (blue) — Pépites "Saviez-vous que..."
+
 $code-block-font-size: 0.7em;
 $presentation-h2-font-size: 1.4em !default;
 $presentation-font-size-root: 36px !default;
