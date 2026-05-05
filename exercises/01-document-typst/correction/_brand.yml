@@ -9,6 +9,11 @@ color:
 
 typography:
   fonts:
+    - family: "Star Jedi"
+      source: file
+      files:
+        - path: _fonts/StarJedi-DGRW.ttf
+          weight: 400
     - family: Orbitron
       source: google
       weight: [400, 700]
@@ -17,6 +22,7 @@ typography:
       weight: [400, 600]
   base: Inter
   headings: Orbitron
+  title: "Star Jedi"
 
 logo:
   images:

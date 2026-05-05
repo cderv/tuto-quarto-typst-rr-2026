@@ -23,6 +23,14 @@ format:
     # typst en mode book. À retirer quand le bug upstream est fixé.
     font-paths:
       - .quarto/typst/fonts
+    # Logo personnalisé : sans cette section, Quarto place le logo
+    # `_brand.yml` à 1.5in width / 0.75in padding par défaut, ce qui
+    # chevauche les titres dès la 2e page.
+    logo:
+      path: sw-star
+      location: left-top
+      width: 0.6in
+      padding: 0.4in
 
 execute:
   echo: false
