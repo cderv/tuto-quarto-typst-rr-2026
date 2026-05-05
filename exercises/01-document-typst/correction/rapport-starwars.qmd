@@ -66,7 +66,7 @@ top_mass |>
   opt_table_font(font = "Inter")
 ```
 
-Sans surprise, **Jabba the Hutt** écrase tout le monde avec ses 1 358 kg. Mais les vraies stars de la saga sont les `#highlight(fill: rgb("#FFE81F"))[droïdes]`{=typst} : R2-D2 apparaît dans 7 films, plus que n'importe quel humain.
+Sans surprise, **Jabba the Hutt** écrase tout le monde avec ses `r format(top_mass$mass[1], big.mark = " ")` kg. Mais les vraies stars de la saga sont les `#highlight(fill: rgb("#FFE81F"))[droïdes]`{=typst} : R2-D2 apparaît dans plus de films que n'importe quel humain.
 
 # Taille vs masse
 
