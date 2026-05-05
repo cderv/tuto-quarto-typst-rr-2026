@@ -10,31 +10,31 @@ editor: visual
 
 ## Le rythme du tutoriel
 
-::: columns
-::: {.column width="33%"}
+::::::::: columns
+:::: {.column width="33%"}
 ::: {.callout-note appearance="minimal"}
 ## My turn
 
 Quelques slides pour poser les concepts clés.
 :::
-:::
+::::
 
-::: {.column width="33%"}
+:::: {.column width="33%"}
 ::: {.callout-tip appearance="minimal"}
 ## Our turn
 
 Démo live — vous suivez dans votre éditeur.
 :::
-:::
+::::
 
-::: {.column width="33%"}
+:::: {.column width="33%"}
 ::: {.callout appearance="minimal"}
 ## Your turn
 
 Exercice en autonomie avec chronomètre.
 :::
-:::
-:::
+::::
+:::::::::
 
 ::: notes
 Expliquer le rythme dès le début. Chaque bloc suit ce cycle. L'idée c'est de passer un maximum de temps les mains dans le code, pas à regarder des slides.
@@ -44,7 +44,7 @@ Expliquer le rythme dès le début. Chaque bloc suit ce cycle. L'idée c'est de 
 
 Vous avez un document Quarto et vous voulez un PDF ?
 
-```{.yaml filename="rapport.qmd"}
+``` {.yaml filename="rapport.qmd"}
 ---
 title: "Mon rapport"
 format: typst
@@ -64,7 +64,7 @@ Le point d'entrée : une seule ligne de YAML. Pas besoin de convaincre les gens 
 
 ## Les options essentielles
 
-```{.yaml filename="rapport.qmd" code-line-numbers="3-5"}
+``` {.yaml filename="rapport.qmd" code-line-numbers="3-5"}
 ---
 format:
   typst:
@@ -85,13 +85,14 @@ Ne pas tout montrer ici. Juste papersize et margin pour que les gens voient la s
 
 ## `keep-typ: true` — comprendre les coulisses
 
-```
-rapport.qmd  →  rapport.typ  →  rapport.pdf
-              Pandoc            Typst
+```{mermaid}
+%%| echo: false
+flowchart LR
+  A[rapport.qmd] -->|Pandoc| B[rapport.typ] -->|Typst| C[rapport.pdf]
 ```
 
 ::: {.fragment .fade-in}
-```{.yaml filename="rapport.qmd" code-line-numbers="4"}
+``` {.yaml filename="rapport.qmd" code-line-numbers="4"}
 ---
 format:
   typst:
@@ -116,9 +117,9 @@ Moment pédagogique clé. Le pipeline démystifie la magie : Quarto n'est pas un
 
 Un seul fichier YAML pour définir l'identité visuelle de vos documents :
 
-::: columns
-::: {.column width="55%"}
-```{.yaml filename="_brand.yml"}
+:::::: columns
+::: {.column width="45%"}
+``` {.yaml filename="_brand.yml"}
 color:
   primary: "#1a5276"
   secondary: "#f39c12"
@@ -130,36 +131,44 @@ typography:
 ```
 :::
 
-::: {.column width="45%"}
+::: {.column width="5%"}
+:::
+
+:::: {.column width="45%"}
 ::: incremental
 - Placez `_brand.yml` à côté de votre `.qmd`
 - Quarto l'applique **automatiquement**
 - Couleurs, polices, logo...
 - Fonctionne avec HTML, Typst, RevealJS...
 :::
-:::
+::::
+::::::
+
+::: {.center}
+![](brand-yml-tall-color.svg){width="20%"} 
+<https://posit-dev.github.io/brand-yml/>
 :::
 
 ::: notes
-C'est le deuxième moment fort : on passe d'un PDF basique à un PDF aux couleurs de son organisation. Rappeler que _brand.yml a été présenté aux RR 2025 pour ceux qui l'ont vu.
+C'est le deuxième moment fort : on passe d'un PDF basique à un PDF aux couleurs de son organisation. Rappeler que \_brand.yml a été présenté aux RR 2025 pour ceux qui l'ont vu.
 
-**Mention orale ~30 sec pendant la démo Our turn** : le `_brand.yml` ne pilote pas que le PDF. Le package R `brand.yml` fournit des helpers `theme_brand_ggplot2()` et `theme_brand_gt()` qui appliquent la même charte aux figures et tableaux. Visible dans `correction/rapport-starwars.qmd`. On en parle pas plus, c'est dans les Ressources.
+**Mention orale \~30 sec pendant la démo Our turn** : le `_brand.yml` ne pilote pas que le PDF. Le package R `brand.yml` fournit des helpers `theme_brand_ggplot2()` et `theme_brand_gt()` qui appliquent la même charte aux figures et tableaux. Visible dans `correction/rapport-starwars.qmd`. On en parle pas plus, c'est dans les Ressources.
 
-**Maëlle peut prendre la main 30 sec ici** sur les helpers R `theme_brand_*()` (signature naturelle de son passage Bloc 1, le matériel correction Exo 1 + Ressources existe déjà — c'est le moment opportun pour donner à Maëlle un temps de parole avant le Q&A final).
+Parler des helpers R `theme_brand_*()`.
 
 **Si quelqu'un demande sur le placement du logo** (« il est en haut à gauche, je peux le mettre ailleurs ? ») : le placement par défaut en `format: typst` est `page(background)` haut-gauche, configurable partiellement via `padding` / `width`. Options additionnelles (`location`, `height`, header/footer placement) discutées en cours côté Quarto upstream — voir la [discussion #13591](https://github.com/orgs/quarto-dev/discussions/13591).
 :::
 
-## Faisons ensemble ! {background-color="#27ae60"}
-
-::: {.callout-tip}
 ## Faisons ensemble !
 
-1. Ouvrez `rapport-starwars.qmd` dans votre éditeur
-2. Ajoutez `format: typst` et rendez le document
-3. Ajoutez quelques options (`toc`, `mainfont`, `papersize`...)
-4. Créez un `_brand.yml` avec 2 couleurs et une police Google
-5. Activez `keep-typ: true` et explorez le fichier `.typ` généré
+::: callout-tip
+## Faisons ensemble !
+
+1.  Ouvrez `rapport-starwars.qmd` dans votre éditeur
+2.  Ajoutez `format: typst` et rendez le document
+3.  Ajoutez quelques options (`toc`, `mainfont`, `papersize`...)
+4.  Créez un `_brand.yml` avec 2 couleurs et une police Google
+5.  Activez `keep-typ: true` et explorez le fichier `.typ` généré
 :::
 
 ::: notes
@@ -168,15 +177,15 @@ C'est la démo live. Les participants suivent dans leur éditeur. Aller doucemen
 **Heads-up bug `gt → Typst`** : si le tableau `gt` rendu montre un espacement parasite des chiffres (« 1 3 5 8 ») — c'est un bug connu (quarto-cli#11683) qui touche Windows/macOS via les fonts fallback de gt. Workaround : `gt::opt_table_font("Inter")` (montré dans la correction). Le mentionner à l'oral comme « limite actuelle, fix structurel en cours côté gt 0.12.0 ».
 :::
 
-## Exercice 1 {background-color="#FDC538"}
+## Exercice 1
 
-::: callout
+::: {.callout-note}
 ## À vous !
 
-1. Ouvrez `rapport-starwars.qmd` et ajoutez `format: typst`, puis rendez
-2. Personnalisez avec des options : `papersize`, `toc`, `mainfont`...
-3. Créez un `_brand.yml` avec vos couleurs et une police Google
-4. Activez `keep-typ: true` et ouvrez le fichier `.typ` généré
+1.  Ouvrez `rapport-starwars.qmd` et ajoutez `format: typst`, puis rendez
+2.  Personnalisez avec des options : `papersize`, `toc`, `mainfont`...
+3.  Créez un `_brand.yml` avec vos couleurs et une police Google
+4.  Activez `keep-typ: true` et ouvrez le fichier `.typ` généré
 :::
 
 {{< countdown 15:00 >}}
@@ -185,12 +194,12 @@ C'est la démo live. Les participants suivent dans leur éditeur. Aller doucemen
 15 minutes. Passer dans les rangs pour aider. Les problèmes fréquents : oubli des guillemets sur les couleurs hex dans brand.yml, nom de police Google mal orthographié, indentation YAML, et **espacement parasite des chiffres dans le tableau gt** (bug `gt → Typst` côté Windows/macOS, workaround `gt::opt_table_font("Inter")` visible dans la correction).
 :::
 
-## Saviez-vous que... {.smaller}
+## Saviez-vous que...
 
-::: {.callout-note}
+::: callout-note
 ## Pépites pour aller plus loin
 
-- **Blocs raw Typst** — Besoin de Typst natif ? Utilisez `` ```{=typst} `` pour injecter du code Typst directement dans votre `.qmd`
+- **Blocs raw Typst** — Besoin de Typst natif ? Utilisez ```` ```{=typst} ```` pour injecter du code Typst directement dans votre `.qmd`
 - **Vos tableaux fonctionnent** — Les tableaux `gt` (R) et `Great Tables` (Python) avec du CSS sont traduits automatiquement en Typst par Quarto
 - **PDF accessible en une ligne** — Ajoutez `pdf-standard: ua-1` dans le YAML pour un PDF conforme au standard d'accessibilité PDF/UA-1
 :::

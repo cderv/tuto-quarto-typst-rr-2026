@@ -5,8 +5,8 @@ author: ""
 date: ""
 ---
 
-::: {.callout-note}
-## ~40 minutes — avant la pause
+::: callout-note
+## \~40 minutes — avant la pause
 :::
 
 ## Diapos
@@ -21,33 +21,33 @@ date: ""
 
 Ce bloc suit le rythme **My turn → Our turn → Your turn**.
 
-### My turn — À la fin de ce bloc, vous saurez (~7 min)
+### My turn — À la fin de ce bloc, vous saurez
 
 - Produire un PDF pro avec `format: typst` — alternative à LaTeX sans installation, rapide, erreurs lisibles
 - Régler les options essentielles : `papersize`, `margin` (d'autres en démo)
 - Inspecter le pipeline `.qmd` → `.typ` → `.pdf` via `keep-typ: true`
 - Personnaliser couleurs, polices et logo via un seul fichier `_brand.yml`
 
-### Our turn — Démo live (~10 min)
+### Our turn — Démo live
 
 On construit ensemble un PDF Typst stylé :
 
-1. Ajouter `format: typst` à un document existant
-2. Personnaliser avec `toc`, `mainfont`, `papersize`...
-3. Créer un `_brand.yml` minimal
-4. Explorer le fichier `.typ` généré avec `keep-typ: true`
+1.  Ajouter `format: typst` à un document existant
+2.  Personnaliser avec `toc`, `mainfont`, `papersize`...
+3.  Créer un `_brand.yml` minimal
+4.  Explorer le fichier `.typ` généré avec `keep-typ: true`
 
 ## Exercice 1
 
-::: {.callout-tip}
-## Exercice (~15 min)
+::: callout-tip
+## Exercice
 
 Fichier : {{< fa download >}} [exercises/01-document-typst/starter/](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/starter)
 
-1. Ouvrir `rapport-starwars.qmd` et ajouter `format: typst`, puis rendre
-2. Personnaliser avec des options : `papersize`, `toc`, `mainfont`...
-3. Créer un `_brand.yml` avec vos couleurs et une police Google
-4. Activer `keep-typ: true` et ouvrir le fichier `.typ` généré
+1.  Ouvrir `rapport-starwars.qmd` et ajouter `format: typst`, puis rendre
+2.  Personnaliser avec des options : `papersize`, `toc`, `mainfont`...
+3.  Créer un `_brand.yml` avec vos couleurs et une police Google
+4.  Activer `keep-typ: true` et ouvrir le fichier `.typ` généré
 :::
 
 ::: {.callout-warning collapse="true"}

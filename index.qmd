@@ -1,9 +1,9 @@
 ---
 title: "PDF sans frictions : Typst dans vos projets Quarto"
-subtitle: "Tutoriel 2 — Rencontres R 2026"
+subtitle: "Tutoriel — Rencontres R 2026"
 format: html
-author: ""
-date: ""
+author: "Christophe Dervieux"
+date: "16-06-2026"
 ---
 
 ::: when-where
@@ -25,15 +25,15 @@ Ce tutoriel vous apprendra à produire des **documents PDF professionnels** avec
 ## Programme
 
 ::: programme
-- {{< fa file-pdf >}} [Bloc 1 — Un PDF pro en quelques minutes](1-quarto-typst/index.qmd) (40 min)
+- {{< fa file-pdf >}} [Bloc 1 — Un PDF pro en quelques minutes](1-quarto-typst/index.qmd)
 
   `format: typst`, options essentielles, `keep-typ: true`, `_brand.yml`
 
-- _☕ Pause (10 min)_
+- *☕ Pause*
 
-- {{< fa folder >}} [Bloc 2 — Passer à l'échelle : projet et livre](2-projets/index.qmd) (40 min)
+- {{< fa folder >}} [Bloc 2 — Passer à l'échelle : projet et livre](2-projets/index.qmd)
 
-  `_quarto.yml`, `type: book`, orange-book, `_brand.yml` au niveau projet
+  `_quarto.yml`, `type: book`, `_brand.yml` au niveau projet
 :::
 
 ## Instructeurs
