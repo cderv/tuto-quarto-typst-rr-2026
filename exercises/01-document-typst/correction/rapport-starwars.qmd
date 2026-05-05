@@ -12,6 +12,11 @@ format:
     number-sections: true
     linestretch: 1.4
     keep-typ: true
+    logo:
+      path: sw-star
+      location: left-top
+      width: 0.6in
+      padding: 0.4in
 execute:
   echo: false
   warning: false

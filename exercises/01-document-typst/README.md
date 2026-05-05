@@ -33,17 +33,31 @@ en quatre étapes incrémentales :
    appliqués automatiquement à la mise en page PDF. Pour propager la
    charte aux figures ggplot et tableaux gt, utilisez les helpers du
    package R `brand.yml` (`theme_brand_ggplot2()`, `theme_brand_gt()`).
-   La correction (`correction/`) fournit un exemple complet avec un
-   logo Star Wars.
+
+5. **Police locale sur le titre.** Le dossier `starter/_fonts/` contient
+   un fichier `StarJedi-DGRW.ttf` (police décorative fan-made, licence
+   freeware). Référencez-le dans `_brand.yml` via `source: file` et
+   appliquez-le uniquement au titre du rapport (`typography.title`).
+   Re-rendez : « Anatomie d'une saga » s'affiche en lettres Star Jedi,
+   le reste du document garde Inter (corps) et Orbitron (titres de
+   section).
+
+La correction (`correction/`) fournit un exemple complet avec un logo
+Star Wars et une police locale Star Jedi sur le titre.
 
 ## Solution
 
 Le dossier `correction/` contient une version finale possible :
 
-- `correction/rapport-starwars.qmd` — YAML Typst complet + un raw Typst
-  inline (`#highlight()`) pour mettre un mot en valeur
-- `correction/_brand.yml` — palette Star Wars + Orbitron / Inter + logo
+- `correction/rapport-starwars.qmd` — YAML Typst complet (incl. `logo:`
+  sous `format.typst` pour redimensionner et placer le logo) + un raw
+  Typst inline (`#highlight()`) pour mettre un mot en valeur
+- `correction/_brand.yml` — palette Star Wars + Inter (Google) +
+  Orbitron (Google) + Star Jedi (locale, sur le titre uniquement) + logo
+- `correction/_brand-offline.yml` — variante 100 % offline (toutes les
+  polices en `source: file`), Plan B en cas de réseau capricieux
+- `correction/_fonts/` — TTFs statiques Inter, Orbitron, Star Jedi
 - `correction/_logo-sw.svg` — étoile jaune Star Wars, placée par Quarto
-  en filigrane de la première page
+  en filigrane haut-gauche de chaque page
 
 Comparez votre version au besoin, mais essayez d'abord par vous-même.
