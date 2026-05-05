@@ -12,7 +12,7 @@ editor: visual
 
 Un **projet Quarto** = un dossier avec `_quarto.yml`.
 
-```{.yaml filename="_quarto.yml"}
+``` {.yaml filename="_quarto.yml"}
 project:
   type: default
 
@@ -26,12 +26,12 @@ format: typst
 :::
 
 ::: notes
-Transition naturelle : au Bloc 1 on a stylé un document unique. Maintenant on passe à l'échelle. Le _brand.yml créé dans l'exercice 1 va être réutilisé ici — on le déplace juste à la racine.
+Transition naturelle : au Bloc 1 on a stylé un document unique. Maintenant on passe à l'échelle. Le `_brand.yml` créé dans l'exercice 1 va être réutilisé ici — on le déplace juste à la racine.
 :::
 
-## `type: book` + orange-book {.smaller}
+## `type: book` {.smaller}
 
-```{.yaml filename="_quarto.yml" code-line-numbers="1-2|4-9|10-11|13"}
+``` {.yaml filename="_quarto.yml" code-line-numbers="1-2|4-9|10-11|13"}
 project:
   type: book
 
@@ -49,8 +49,8 @@ book:
 format: typst
 ```
 
-::: {.fragment .fade-in}
-Depuis Quarto 1.9, `format: typst` sur un book active automatiquement **orange-book** :
+:::: {.fragment .fade-in}
+Depuis Quarto 1.9, `format: typst` sur un book active automatiquement [**orange-book**](https://typst.app/universe/package/orange-book):
 
 ::: incremental
 - Page de couverture générée automatiquement
@@ -58,26 +58,26 @@ Depuis Quarto 1.9, `format: typst` sur un book active automatiquement **orange-b
 - En-têtes et pieds de page stylisés
 - Intégration `_brand.yml` pour les couleurs et le logo
 :::
-:::
+::::
 
 ::: notes
-Le moment wow : zéro configuration supplémentaire. On montre le _quarto.yml, on rend, et on obtient un livre pro. Orange-book est une extension bundlée dans Quarto 1.9.
+Le moment wow : zéro configuration supplémentaire. On montre le \_quarto.yml, on rend, et on obtient un livre pro. Orange-book est une extension bundlée dans Quarto 1.9.
 
 Découpage du YAML en 4 fragments via `code-line-numbers` pour étaler le récit : (1) `project.type: book` = on déclare un projet livre ; (2) bloc `book:` avec titre/auteur/chapters = configuration minimale ; (3) `appendices:` = ce qui sort du flux principal et devient « Annexe A » ; (4) `format: typst` = inchangé depuis l'étape 1, c'est `type: book` qui active orange-book. 4 beats = 4 idées, plus digestible que tout d'un coup.
 :::
 
-## Construisons un livre ensemble {background-color="#27ae60"}
+## Construisons un livre ensemble
 
-::: {.callout-tip}
+::: callout-tip
 ## Faisons ensemble !
 
-1. Créer `_quarto.yml` avec `project: { type: default }` + `format: typst` → 5 PDF séparés
-2. Passer à `type: book` (le `format: typst` reste, orange-book s'active automatiquement) → **PDF unique** avec couverture et TOC
-3. Copier `_brand.yml` (+ `_logo-sw.svg`) à la racine → couverture jaune SW, Orbitron, Inter
+1.  Créer `_quarto.yml` avec `project: { type: default }` + `format: typst` → 5 PDF séparés
+2.  Passer à `type: book` (le `format: typst` reste, orange-book s'active automatiquement) → **PDF unique** avec couverture et TOC
+3.  Copier `_brand.yml` (+ `_logo-sw.svg`) à la racine → couverture jaune SW, Orbitron, Inter
 :::
 
 ::: notes
-Démo live, 3 étapes en ~10 min. C'est le pic émotionnel du Bloc 2 : à l'étape 2 le PDF unique avec couverture orange-book apparaît. Étape 3 = confirmation visuelle (la charte de Bloc 1 ressuscite côté book).
+Démo live, 3 étapes en \~10 min. à l'étape 2 le PDF unique avec couverture orange-book apparaît. Étape 3 = confirmation visuelle (la charte de Bloc 1 ressuscite côté book).
 
 Montrer pendant la démo : la numérotation automatique Figure 1.1 / Figure 2.1 / Table 1.1 / Table 2.1 (en français Quarto rend « Figure » et « Table » — pas « Fig » / « Tab »), l'apparition du logo SVG sur la couverture, le passage des tableaux gt en Inter (Étape 3).
 
@@ -88,16 +88,16 @@ Si vous voyez des chiffres mal espacés (« 1 7 5 » au lieu de « 175 ») dans 
 Problèmes fréquents : mauvais chemin vers les chapitres, oubli du tiret devant les noms de fichiers dans `chapters:`, oubli de l'underscore dans `_quarto.yml` ou `_brand.yml`.
 :::
 
-## Exercice 2 {background-color="#FDC538"}
+## Exercice 2
 
-::: callout
+::: callout-note
 ## À vous !
 
 **3 étapes principales** (12 min, attendues de tous) :
 
-1. `_quarto.yml` avec `type: default` + `format: typst` → 5 PDF
-2. Passer à `type: book` (format inchangé) → PDF unique
-3. `_brand.yml` (+ `_logo-sw.svg`) à la racine → charte jaune SW
+1.  `_quarto.yml` avec `type: default` + `format: typst` → 5 PDF
+2.  Passer à `type: book` (format inchangé) → PDF unique
+3.  `_brand.yml` (+ `_logo-sw.svg`) à la racine → charte jaune SW
 
 **2 bonus** (3 min, pour les rapides) :
 
@@ -112,16 +112,16 @@ Pas de `_brand.yml` ? Copiez `_brand-fallback.yml` (à renommer) et `correction/
 {{< countdown 15:00 >}}
 
 ::: notes
-15 minutes total : 12 min sur les 3 core + 3 min de bonus pour les rapides. Annoncer clairement que les bonus sont pour ceux qui ont fini, pas pour tout le monde — sinon ~50 % du public n'atteindrait pas l'étape 3 (la charte, qui est le wow visuel le plus fort).
+15 minutes total : 12 min sur les 3 core + 3 min de bonus pour les rapides. Annoncer clairement que les bonus sont pour ceux qui ont fini, pas pour tout le monde
 
 Le fallback `_brand-fallback.yml` (+ `correction/_logo-sw.svg`) est important : ceux qui n'ont pas fini Bloc 1 peuvent les copier. Passer dans les rangs, repérer ceux qui peinent à l'étape 1 — souvent un underscore manquant.
 
 Pour ceux qui finissent vite : pousser le bonus B1 (références croisées) en premier — c'est le plus visuel et ça utilise les labels qui sont déjà dans le starter (`tbl-anatomie-mass`, `fig-anatomie-mass`, `#sec-origines`). Le bonus B2 (pagebreak) demande de connaître la syntaxe `.content-visible` — l'avoir montrée à la fin de Our turn aide.
 :::
 
-## Saviez-vous que... {.smaller}
+## Saviez-vous que...
 
-::: {.callout-note}
+::: callout-note
 ## Pépites pour aller plus loin
 
 - **Template partials** — Le fichier `typst-show.typ` (et son `typst-template.typ` côté template par défaut) contrôle la génération du `.typ`. Vous pouvez le remplacer pour personnaliser header, footer, page de titre... Suffit souvent de toucher `typst-show.typ` seul.
@@ -145,7 +145,7 @@ Fusible à couper si le timing serre — sauter directement au wrap-up qui suit 
 - Produire un PDF pro avec `format: typst`, sans LaTeX
 - Inspecter le pipeline `.qmd` → `.typ` → `.pdf` via `keep-typ: true`
 - Personnaliser couleurs, polices et logo via `_brand.yml`
-- Assembler plusieurs `.qmd` en livre avec `type: book` (orange-book auto)
+- Assembler plusieurs `.qmd` en livre avec `type: book`
 - Savoir où chercher pour aller plus loin (partials, formats communautaires — pistes pour après le tutoriel, pas couverts en séance)
 :::
 
@@ -161,21 +161,9 @@ Les 5 bullets font écho aux 3 questions posées en intro (cf. `index.qmd:17-19`
 - **Pour creuser** — la page [Pour aller plus loin](../4-ressources.qmd) (partials, blocs raw Typst, accessibilité PDF/UA-1, helpers `brand.yml` côté R)
 - **Communauté** — [quarto-ext/typst-templates](https://github.com/quarto-ext/typst-templates), [forum Quarto](https://github.com/quarto-dev/quarto/discussions), [Awesome Quarto](https://github.com/mcanouil/awesome-quarto)
 
-::: notes
-**CD parle.** L'objectif de cette semaine n'est pas de tout refaire — juste d'essayer `format: typst` une fois sur un doc existant. Le reste viendra.
-
-**Maëlle peut intervenir 10 sec** sur `theme_brand_ggplot2()` / `theme_brand_gt()` côté R si elle veut signer son passage : « le `_brand.yml` ne sert pas qu'au PDF — vos ggplot et gt peuvent aussi en hériter via les helpers du package `brand.yml` ».
-:::
-
 ## Merci ! Questions ?
 
 Merci aux Rencontres R, à l'équipe d'organisation, et à vous.
 
 **Christophe Dervieux** — Posit\
 **Maëlle Salmon** — rOpenSci / cynkra
-
-::: notes
-**CD passe la main à Maëlle pour Q&A.** Elle a la fraîcheur de la co-animatrice qui n'a pas porté Bloc 2.
-
-Si pas de question dans les 10 premières secondes, Maëlle relance avec une question stock pré-préparée (à valider avec elle hors-tutoriel) — exemples possibles : « Une question fréquente qu'on entend, c'est : et si je veux du LaTeX et du Typst dans le même projet ? » ou « Comment vous gérez la transition d'une équipe qui a 5 ans de templates LaTeX ? ».
-:::
