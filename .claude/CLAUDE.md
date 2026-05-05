@@ -14,8 +14,11 @@ Site Quarto pour un tutoriel de 2h aux Rencontres R 2026 (16 juin, Nantes). Cont
 
 ## Build
 
-- `quarto preview` / `quarto render` → `_site/`
+- `quarto preview` / `quarto render` → `_site/` (profile `tuto` actif par défaut)
+- `quarto render --profile pretuto` → `_site-pretuto/` (version réduite : accueil + préparatifs uniquement, pour partage avant le workshop)
 - Requiert Quarto 1.9+
+
+Les profiles `tuto` (complet) et `pretuto` (préparatifs only) sont définis dans `_quarto-tuto.yml` / `_quarto-pretuto.yml`. Group déclaré dans `_quarto.yml` — premier item (`tuto`) = défaut.
 
 ## Setup environnement (Claude Code on the web / sandbox vierge)
 
@@ -52,7 +55,7 @@ quarto render exercises/01-document-typst/correction/rapport-starwars.qmd
 - Pages web : `format: html` dans le YAML (obligatoire, sinon conflit multi-format)
 - Slides : `format: clean-revealjs` (hérite config de `_quarto.yml`)
 - Countdown : `{{< countdown 15:00 >}}` (extension Quarto, pas le package R)
-- Toujours `author: ""` et `date: ""` sur les pages web (pas les slides)
+- Pages web internes : `author: ""` + `date: ""` pour override les valeurs projet de `_quarto.yml` (sinon affichage non voulu). Slides ont déjà leur YAML auteur/date explicite.
 - Toujours `fig-alt` sur les images
 
 ## Conventions slides (My turn / Our turn / Your turn)
