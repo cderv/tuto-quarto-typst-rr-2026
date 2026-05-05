@@ -1,0 +1,85 @@
+---
+title: "Anatomie d'une saga"
+subtitle: "Qui sont les colosses de la galaxie ?"
+format: html
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+library(dplyr)
+library(ggplot2)
+library(ggrepel)
+library(gt)
+```
+
+## Introduction
+
+Le dataset `dplyr::starwars` recense 87 personnages de la saga Star Wars, avec
+14 variables (taille, masse, espèce, planète d'origine, films...). Dans ce
+court rapport, on regarde une question simple : **qui sont les colosses de la
+galaxie ?**
+
+## Top 5 des personnages les plus massifs
+
+```{r}
+#| label: tbl-mass
+top_mass <- starwars |>
+  filter(!is.na(mass)) |>
+  arrange(desc(mass)) |>
+  slice_head(n = 5) |>
+  select(name, height, mass, species, homeworld)
+
+top_mass |>
+  gt() |>
+  tab_header(
+    title = "Les colosses de la galaxie",
+    subtitle = "Top 5 par masse (kg)"
+  ) |>
+  fmt_number(columns = mass, decimals = 0, sep_mark = " ") |>
+  cols_label(
+    name = "Personnage",
+    height = "Taille (cm)",
+    mass = "Masse (kg)",
+    # libellés sans accent : contournement bug gt → Typst sur les en-têtes
+    species = "Espece",
+    homeworld = "Planete"
+  )
+```
+
+Sans surprise, **Jabba the Hutt** écrase tout le monde avec ses 1 358 kg.
+Les autres figures massives restent en dessous de 200 kg.
+
+## Taille vs masse
+
+```{r}
+#| label: fig-mass
+#| fig-cap: "Taille et masse des personnages — Jabba en valeur aberrante (échelle log)"
+#| fig-alt: "Nuage de points montrant la masse en fonction de la taille pour les 87 personnages de Star Wars. La masse est en échelle logarithmique. Jabba the Hutt apparaît nettement séparé du nuage principal en haut à droite."
+sw <- starwars |> filter(!is.na(height), !is.na(mass))
+
+ggplot(sw, aes(x = height, y = mass)) +
+  geom_point(alpha = 0.6, size = 2) +
+  geom_text_repel(
+    data = sw |> filter(mass > 200 | name == "Yoda"),
+    aes(label = name),
+    size = 3, min.segment.length = 0
+  ) +
+  scale_y_log10(labels = scales::label_number(big.mark = " ")) +
+  labs(
+    x = "Taille (cm)",
+    y = "Masse (kg, échelle log)",
+    title = "Tailles et masses des personnages"
+  ) +
+  theme_minimal(base_size = 11)
+```
+
+## Conclusion
+
+Une seule question, deux visualisations, un PDF lisible : Star Wars est un
+terrain de jeu compact mais riche. Pour aller plus loin (origines des
+personnages, présence dans la saga...), il faudrait étendre ce rapport en
+**livre** — c'est l'objet du Bloc 2 de ce tutoriel.

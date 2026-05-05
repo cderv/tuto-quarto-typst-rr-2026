@@ -1,0 +1,484 @@
+[
+  {
+    "objectID": "preparatifs.html",
+    "href": "preparatifs.html",
+    "title": "Préparatifs",
+    "section": "",
+    "text": "Avant le tutoriel, merci de préparer votre environnement de travail.",
+    "crumbs": [
+      "Préparatifs"
+    ]
+  },
+  {
+    "objectID": "preparatifs.html#installation",
+    "href": "preparatifs.html#installation",
+    "title": "Préparatifs",
+    "section": "Installation",
+    "text": "Installation\n\nQuarto 1.9 ou supérieur : https://quarto.org/docs/get-started\nDernier R 4 : https://cran.r-project.org ou avec rig.\nRStudio (dernière version) ou VS Code / Positron\nPackages R :\n\npkg &lt;- c(\"rmarkdown\", \"quarto\", \"dplyr\", \"ggplot2\", \"ggrepel\", \"gt\", \"knitr\", \"scales\", \"brand.yml\", \"prismatic\", \"htmltools\")\ninstall.packages(pkg)\n# ou pak \npak::pkg_install(pkg)",
+    "crumbs": [
+      "Préparatifs"
+    ]
+  },
+  {
+    "objectID": "preparatifs.html#téléchargements",
+    "href": "preparatifs.html#téléchargements",
+    "title": "Préparatifs",
+    "section": "Téléchargements",
+    "text": "Téléchargements\nLes exercices sont versionnés dans le dépôt GitHub du tutoriel.\n\n📦 Télécharger le dépôt en zip — décompresser sur le bureau, le matériel est dans exercises/\n📁 Parcourir exercises/ sur GitHub\n\n\n\n\n\n\n\nLes dossiers correction/ contiennent les solutions complètes — ⚠️ ne les ouvrez pas avant le tutoriel !",
+    "crumbs": [
+      "Préparatifs"
+    ]
+  },
+  {
+    "objectID": "preparatifs.html#vérification",
+    "href": "preparatifs.html#vérification",
+    "title": "Préparatifs",
+    "section": "Vérification",
+    "text": "Vérification\nVérifiez que tout fonctionne en exécutant dans R :\nquarto::quarto_version() # doit afficher 1.9 ou supérieur\nlibrary(dplyr)\nhead(starwars)",
+    "crumbs": [
+      "Préparatifs"
+    ]
+  },
+  {
+    "objectID": "preparatifs.html#test-de-la-chaîne-typst",
+    "href": "preparatifs.html#test-de-la-chaîne-typst",
+    "title": "Préparatifs",
+    "section": "Test de la chaîne Typst",
+    "text": "Test de la chaîne Typst\nLa vérification ci-dessus n’exécute que du R. Pour valider que Quarto + Typst + gt + ggplot s’enchaînent bien sur votre machine, rendez le mini-fichier de test fourni dans le dépôt :\nquarto render exercises/00-test-install/test-install.qmd\nRésultat attendu : un fichier test-install.pdf apparaît à côté du .qmd, avec un titre accentué, un tableau de 3 lignes et un graphique. Aucune erreur en console (un avertissement sur la police est normal et documenté ci-dessous).\nSi ça échoue :\n\nTypst executable not found → Quarto &lt; 1.9, mettez à jour.\nunknown font family → ignorez cet avertissement, le PDF se génère quand même avec une police de repli (ce test n’utilise pas _brand.yml). Suivi sur Github",
+    "crumbs": [
+      "Préparatifs"
+    ]
+  },
+  {
+    "objectID": "preparatifs.html#plan-b-si-pas-de-réseau-le-jour-j",
+    "href": "preparatifs.html#plan-b-si-pas-de-réseau-le-jour-j",
+    "title": "Préparatifs",
+    "section": "Plan B — si pas de réseau le jour J",
+    "text": "Plan B — si pas de réseau le jour J\nLe tutoriel utilise par défaut _brand.yml avec source: google, qui télécharge les polices Inter et Orbitron au premier rendu. Si vous n’avez pas d’accès réseau le matin du tutoriel :\n\nRécupérez les fichiers _brand-offline.yml et _fonts/ depuis le dossier exercises/01-document-typst/correction/.\nCopiez-les à côté de votre rapport-starwars.qmd.\nRenommez _brand-offline.yml en _brand.yml.\n\nLe rendu Typst utilisera alors les fichiers TTF locaux (Inter-*.ttf + Orbitron-*.ttf, ~1,3 Mo) — aucun téléchargement requis.",
+    "crumbs": [
+      "Préparatifs"
+    ]
+  },
+  {
+    "objectID": "4-ressources.html",
+    "href": "4-ressources.html",
+    "title": "Pour aller plus loin",
+    "section": "",
+    "text": "Typst Basics\nBrand YAML\nCustom Typst Formats\nChangelog Quarto 1.9",
+    "crumbs": [
+      "Ressources"
+    ]
+  },
+  {
+    "objectID": "4-ressources.html#documentation-officielle-quarto",
+    "href": "4-ressources.html#documentation-officielle-quarto",
+    "title": "Pour aller plus loin",
+    "section": "",
+    "text": "Typst Basics\nBrand YAML\nCustom Typst Formats\nChangelog Quarto 1.9",
+    "crumbs": [
+      "Ressources"
+    ]
+  },
+  {
+    "objectID": "4-ressources.html#apprendre-typst",
+    "href": "4-ressources.html#apprendre-typst",
+    "title": "Pour aller plus loin",
+    "section": "Apprendre Typst",
+    "text": "Apprendre Typst\n\nTypst in Production — crash course + section Quarto + section R\nTutoriel officiel Typst",
+    "crumbs": [
+      "Ressources"
+    ]
+  },
+  {
+    "objectID": "4-ressources.html#articles-de-blog-quarto",
+    "href": "4-ressources.html#articles-de-blog-quarto",
+    "title": "Pour aller plus loin",
+    "section": "Articles de blog Quarto",
+    "text": "Articles de blog Quarto\n\nBeautiful Tables in Typst — styliser les tableaux HTML/CSS dans Typst\nPDF Accessibility and Standards — conformité PDF/UA-1 avec Typst\nTypst Books, Article Layout, and typst-gather — nouveautés Quarto 1.9",
+    "crumbs": [
+      "Ressources"
+    ]
+  },
+  {
+    "objectID": "4-ressources.html#aller-plus-loin-avec-quarto",
+    "href": "4-ressources.html#aller-plus-loin-avec-quarto",
+    "title": "Pour aller plus loin",
+    "section": "Aller plus loin avec Quarto",
+    "text": "Aller plus loin avec Quarto\n\nMastering Quarto CLI (Mickaël Canouil) — sessions 4 & 5\nAwesome Quarto\nSlides _brand.yml — Rencontres R 2025 (Christophe Dervieux)",
+    "crumbs": [
+      "Ressources"
+    ]
+  },
+  {
+    "objectID": "4-ressources.html#typst-depuis-r",
+    "href": "4-ressources.html#typst-depuis-r",
+    "title": "Pour aller plus loin",
+    "section": "Typst depuis R",
+    "text": "Typst depuis R\n\ntynding — bindings R pour compiler du Typst\nr2typ — générer du code Typst depuis R",
+    "crumbs": [
+      "Ressources"
+    ]
+  },
+  {
+    "objectID": "4-ressources.html#formats-typst-existants",
+    "href": "4-ressources.html#formats-typst-existants",
+    "title": "Pour aller plus loin",
+    "section": "Formats Typst existants",
+    "text": "Formats Typst existants\n\nquarto-ext/typst-templates — poster, letter, ieee, fiction…\norange-book : intégré à Quarto 1.9 pour les projets book\nMarginalia: article layout avec figures, légendes et notes de marge (.column-margin, .aside)\ntypst-gather (https://github.com/quarto-dev/typst-gather): embarquer les packages Typst pour le rendu hors-ligne (quarto call typst-gather): https://quarto.org/docs/advanced/typst/typst-gather.html",
+    "crumbs": [
+      "Ressources"
+    ]
+  },
+  {
+    "objectID": "4-ressources.html#options-typst-avancées",
+    "href": "4-ressources.html#options-typst-avancées",
+    "title": "Pour aller plus loin",
+    "section": "Options Typst avancées",
+    "text": "Options Typst avancées\nOptions supplémentaires pour format: typst :\n\ntoc: true et number-sections: true — table des matières et numérotation\nmainfont — police principale du document (polices Google prises en charge)\nlinestretch — interlignage\nlinkcolor, codefont, mathfont — nouvelles options Quarto 1.9\nfont-paths — embarquer des polices locales dans le projet\ncolumns: 2 — document en deux colonnes\ntheorem-appearance — 4 styles d’encadrés pour théorèmes (simple, fancy, clouds, rainbow)\nRéférence complète : Typst Basics",
+    "crumbs": [
+      "Ressources"
+    ]
+  },
+  {
+    "objectID": "4-ressources.html#brand.yml-référence-complète",
+    "href": "4-ressources.html#brand.yml-référence-complète",
+    "title": "Pour aller plus loin",
+    "section": "_brand.yml — référence complète",
+    "text": "_brand.yml — référence complète\nLe fichier _brand.yml prend en charge les sections suivantes :\n\nmeta — nom de l’organisation, lien\ncolor — palette de couleurs nommées + couleurs sémantiques (primary, secondary, background, foreground)\ntypography — base (famille + taille), headings, monospace, polices Google ou locales\nlogo — positionnement dans le PDF : width, location (header/footer), padding, alt\nbrand-mode: dark — inverser background/foreground pour un PDF sombre\nquarto use brand user/repo — partager une charte depuis GitHub\n\nDans les blocs raw Typst, les variables liées à la charte sont accessibles via brand-color.primary, brand-color.secondary, brand-logo-images.\n\nRéférence : Brand YAML\nSlides RR 2025 : cderv.github.io/rr2025-quarto-brand-yml\nHelpers R pour propager la charte aux sorties graphiques : brand.yml package — theme_brand_ggplot2(), theme_brand_gt(), theme_brand_flextable(), theme_brand_plotly(), theme_brand_thematic()",
+    "crumbs": [
+      "Ressources"
+    ]
+  },
+  {
+    "objectID": "4-ressources.html#blocs-raw-typst",
+    "href": "4-ressources.html#blocs-raw-typst",
+    "title": "Pour aller plus loin",
+    "section": "Blocs raw Typst",
+    "text": "Blocs raw Typst\nInjectez du code Typst natif dans un document Quarto :\n```{=typst}\n#text(fill: rgb(\"#0055A4\"), weight: \"bold\")[\n  Texte bleu en gras, rendu par Typst\n]\n```\n\nLe contenu est passé directement au compilateur Typst\nInvisible dans les autres formats (HTML, DOCX…)\nAccédez aux variables de la charte : brand-color.primary, brand-logo-images\nRéférence : Typst Basics — Raw Typst",
+    "crumbs": [
+      "Ressources"
+    ]
+  },
+  {
+    "objectID": "4-ressources.html#traduction-css-typst",
+    "href": "4-ressources.html#traduction-css-typst",
+    "title": "Pour aller plus loin",
+    "section": "Traduction CSS → Typst",
+    "text": "Traduction CSS → Typst\nDepuis Quarto 1.5, certaines propriétés CSS sont traduites automatiquement :\n\ncolor → couleur du texte\nbackground-color → fond\nfont-weight, font-style → graisse et style\nFonctionne sur les spans [texte]{style=\"...\"} et les divs :::{style=\"...\"}\n\nLes tableaux produits par gt (R) ou Great Tables (Python) avec du CSS sont rendus correctement dans le PDF Typst.\n\nBlog post : Beautiful Tables in Typst",
+    "crumbs": [
+      "Ressources"
+    ]
+  },
+  {
+    "objectID": "4-ressources.html#template-partials-guide",
+    "href": "4-ressources.html#template-partials-guide",
+    "title": "Pour aller plus loin",
+    "section": "Template partials — guide",
+    "text": "Template partials — guide\nLe pipeline de compilation Typst dans Quarto :\ndocument.qmd → Pandoc + partials → document.typ → Typst → document.pdf\nDeux fichiers contrôlent la génération du .typ :\n\ntypst-show.typ — le pont entre Quarto et Typst (reçoit les variables YAML, appelle la fonction template)\ntypst-template.typ — le layout du document (header, footer, page de titre, polices, couleurs)\n\nDéclarez-les dans le YAML :\nformat:\n  typst:\n    template-partials:\n      - typst-show.typ\n      - typst-template.typ\nSyntaxe Pandoc dans les partials :\n\n\n\n\n\n\n\n\nSyntaxe\nRôle\nExemple\n\n\n\n\n$variable$\nInsertion de valeur\n$title$\n\n\n$if(var)$...$endif$\nCondition\n$if(date)$...$endif$\n\n\n$for(var)$...$endfor$\nBoucle\n$for(by-author)$...$endfor$\n\n\n\nVariables Quarto 1.9 : $linkcolor$, $codefont$, $mathfont$, $linestretch$.\n\nRéférence : Custom Typst Formats",
+    "crumbs": [
+      "Ressources"
+    ]
+  },
+  {
+    "objectID": "4-ressources.html#créer-et-partager-des-extensions",
+    "href": "4-ressources.html#créer-et-partager-des-extensions",
+    "title": "Pour aller plus loin",
+    "section": "Créer et partager des extensions",
+    "text": "Créer et partager des extensions\n\nquarto create extension format:typst — créer un squelette d’extension Typst\nquarto add user/repo — installer un format depuis GitHub\nquarto use brand user/repo — télécharger une _brand.yml depuis un dépôt GitHub",
+    "crumbs": [
+      "Ressources"
+    ]
+  },
+  {
+    "objectID": "4-ressources.html#accessibilité-pdf",
+    "href": "4-ressources.html#accessibilité-pdf",
+    "title": "Pour aller plus loin",
+    "section": "Accessibilité PDF",
+    "text": "Accessibilité PDF\nformat:\n  typst:\n    pdf-standard: ua-1\n\nGénère un PDF conforme au standard PDF/UA-1\nLes lecteurs d’écran peuvent naviguer dans le document\nLes images avec fig-alt obtiennent un texte alternatif dans le PDF\nLimitation : les Typst books (type: book) ne sont pas encore compatibles PDF/UA-1\nBlog post : PDF Accessibility and Standards",
+    "crumbs": [
+      "Ressources"
+    ]
+  },
+  {
+    "objectID": "2-projets/index.html",
+    "href": "2-projets/index.html",
+    "title": "Passer à l’échelle : projet et livre",
+    "section": "",
+    "text": "Note~40 minutes — après la pause",
+    "crumbs": [
+      "Bloc 2 — Projets & book"
+    ]
+  },
+  {
+    "objectID": "2-projets/index.html#diapos",
+    "href": "2-projets/index.html#diapos",
+    "title": "Passer à l’échelle : projet et livre",
+    "section": "Diapos",
+    "text": "Diapos\n Ouvrir les diapos en plein écran",
+    "crumbs": [
+      "Bloc 2 — Projets & book"
+    ]
+  },
+  {
+    "objectID": "2-projets/index.html#points-couverts",
+    "href": "2-projets/index.html#points-couverts",
+    "title": "Passer à l’échelle : projet et livre",
+    "section": "Points couverts",
+    "text": "Points couverts\nCe bloc suit le rythme My turn → Our turn → Your turn.\n\nMy turn — À la fin de ce bloc, vous saurez\n\nCentraliser format: typst et _brand.yml au niveau projet via _quarto.yml\nAssembler plusieurs .qmd en un livre avec type: book (TOC, numérotation, références croisées)\nReconnaître que format: typst + type: book active automatiquement l’extension orange-book (Quarto 1.9)\n\n\n\nOur turn — Démo live\nOn construit ensemble un livre Typst en 3 étapes :\n\nCréer _quarto.yml avec project: { type: default } + format: typst → 5 PDF séparés\nPasser à type: book (le format: typst reste, orange-book s’active automatiquement) → PDF unique avec couverture, TOC, références croisées numérotées\nCopier _brand.yml (+ _logo-sw.svg) à la racine → couverture jaune Star Wars + Orbitron / Inter",
+    "crumbs": [
+      "Bloc 2 — Projets & book"
+    ]
+  },
+  {
+    "objectID": "2-projets/index.html#exercice-2",
+    "href": "2-projets/index.html#exercice-2",
+    "title": "Passer à l’échelle : projet et livre",
+    "section": "Exercice 2",
+    "text": "Exercice 2\n\n\n\n\n\n\nL’Exercice 2 est autonome vis-à-vis de l’Exercice 1 : si vous n’avez pas terminé le Bloc 1, partez directement du dossier starter/ ci-dessous.\n\n\n\n\n\n\n\n\n\nAstuceExercice\n\n\n\nFichier :  exercises/02-projet-book/starter/\n3 étapes principales (12 min) — attendues de tous :\n\n\n\n\n\n\n\n\n#\nAction\nVous devriez voir\n\n\n\n\n1\nCréez _quarto.yml à la racine du starter avec project: { type: default } et format: typst.\n5 PDF séparés (un par fichier)\n\n\n2a\nPassez à type: book et ajoutez book: { title, chapters: [...] }. Le format: typst reste — orange-book s’active automatiquement.\nPDF unique + couverture orange-book + Figure 1.1 / Figure 2.1 / Table 1.1 / Table 2.1 + TOC. annexe-donnees apparaît comme dernier chapitre numéroté.\n\n\n2b\nAjoutez appendices: [annexe-donnees.qmd] au bloc book:.\nannexe-donnees bascule en « Annexe A » à la fin du livre, hors numérotation des chapitres.\n\n\n3\nCopiez _brand.yml (+ _logo-sw.svg) à la racine.\nCouverture jaune Star Wars + logo, titres Orbitron, corps Inter, tableaux gt re-stylés\n\n\n\n2 bonus :\n\n\n\n\n\n\n\n\n#\nAction\nVous devriez voir\n\n\n\n\nB1\nDans conclusion.qmd, ajoutez une phrase qui référence @fig-anatomie-mass et @sec-origines.\n« Comme l’a montré la Figure 1.1… » avec lien actif\n\n\nB2\nSaut de page conditionnel à la fin de conclusion.qmd (voir bloc ci-dessous).\nSaut de page entre conclusion et annexe dans le PDF uniquement\n\n\n\nB2 — bloc à coller en fin de conclusion.qmd :\n::: {.content-visible when-format=\"typst\"}\n{{&lt; pagebreak &gt;}}\n:::\n\n\n\nModèle _quarto.yml pour l’étape 2\nSi vous bloquez sur la syntaxe, voici un patron complet à adapter :\n\n\n_quarto.yml\n\nproject:\n  type: book\n\nbook:\n  title: \"Anatomie d'une saga\"\n  author: \"Mon Mothma\"\n  chapters:\n    - index.qmd\n    - 01-anatomie.qmd\n    - 02-origines.qmd\n    - conclusion.qmd\n  appendices:\n    - annexe-donnees.qmd\n\nformat:\n  typst:\n    # Workaround Quarto book : les polices téléchargées par _brand.yml\n    # (.quarto/typst/fonts/) ne sont pas passées automatiquement à typst\n    # en mode book. À retirer quand le bug upstream est fixé.\n    font-paths:\n      - .quarto/typst/fonts\n\nexecute:\n  echo: false\n  warning: false\n  message: false\n\nchapters: reçoit les fichiers numérotés normalement. appendices: (parallèle à chapters:, pas dedans) reçoit les fichiers qui sortent du flux principal — ils deviennent A, B, C… après tous les chapitres.\n\n\n\n\n\n\nAvertissementBug gt à connaître (étape 3)\n\n\n\n\n\nSi vous voyez « 1 7 5 » au lieu de « 175 » dans les tableaux après avoir copié _brand.yml (typique sur Windows/macOS), c’est un bug connu de gt → Typst quand les polices de remplacement du tableau s’appliquent. Correction : ajoutez |&gt; opt_table_font(font = \"Inter\") à la fin de votre pipeline gt. Non bloquant — vous pouvez continuer sans.\n\n\n\n\n\n\n\n\n\nPas de _brand.yml ? Copiez les fichiers fournis : exercises/02-projet-book/_brand-fallback.yml (à renommer en _brand.yml) et exercises/02-projet-book/correction/_logo-sw.svg.\n\n\n\n\n\n\n\n\n\nAvertissementCorrection\n\n\n\n\n\n Voir la correction",
+    "crumbs": [
+      "Bloc 2 — Projets & book"
+    ]
+  },
+  {
+    "objectID": "1-quarto-typst/index.html",
+    "href": "1-quarto-typst/index.html",
+    "title": "Un PDF pro en quelques minutes",
+    "section": "",
+    "text": "Note~40 minutes — avant la pause",
+    "crumbs": [
+      "Bloc 1 — PDF avec Typst"
+    ]
+  },
+  {
+    "objectID": "1-quarto-typst/index.html#diapos",
+    "href": "1-quarto-typst/index.html#diapos",
+    "title": "Un PDF pro en quelques minutes",
+    "section": "Diapos",
+    "text": "Diapos\n Ouvrir les diapos en plein écran",
+    "crumbs": [
+      "Bloc 1 — PDF avec Typst"
+    ]
+  },
+  {
+    "objectID": "1-quarto-typst/index.html#points-couverts",
+    "href": "1-quarto-typst/index.html#points-couverts",
+    "title": "Un PDF pro en quelques minutes",
+    "section": "Points couverts",
+    "text": "Points couverts\nCe bloc suit le rythme My turn → Our turn → Your turn.\n\nMy turn — À la fin de ce bloc, vous saurez\n\nProduire un PDF pro avec format: typst — alternative à LaTeX sans installation, rapide, erreurs lisibles\nRégler les options essentielles : papersize, margin (d’autres en démo)\nInspecter le pipeline .qmd → .typ → .pdf via keep-typ: true\nPersonnaliser couleurs, polices et logo via un seul fichier _brand.yml\n\n\n\nOur turn — Démo live\nOn construit ensemble un PDF Typst stylé :\n\nAjouter format: typst à un document existant\nPersonnaliser avec toc, mainfont, papersize…\nCréer un _brand.yml minimal\nExplorer le fichier .typ généré avec keep-typ: true",
+    "crumbs": [
+      "Bloc 1 — PDF avec Typst"
+    ]
+  },
+  {
+    "objectID": "1-quarto-typst/index.html#exercice-1",
+    "href": "1-quarto-typst/index.html#exercice-1",
+    "title": "Un PDF pro en quelques minutes",
+    "section": "Exercice 1",
+    "text": "Exercice 1\n\n\n\n\n\n\nAstuceExercice\n\n\n\nFichier :  exercises/01-document-typst/starter/\n\nOuvrir rapport-starwars.qmd et ajouter format: typst, puis rendre\nPersonnaliser avec des options : papersize, toc, mainfont…\nCréer un _brand.yml avec vos couleurs et une police Google\nActiver keep-typ: true et ouvrir le fichier .typ généré\n\n\n\n\n\n\n\n\n\nAvertissementCorrection\n\n\n\n\n\n Voir la correction",
+    "crumbs": [
+      "Bloc 1 — PDF avec Typst"
+    ]
+  },
+  {
+    "objectID": "1-quarto-typst/1-quarto-typst.html#le-rythme-du-tutoriel",
+    "href": "1-quarto-typst/1-quarto-typst.html#le-rythme-du-tutoriel",
+    "title": "Quarto & PDF avec Typst",
+    "section": "Le rythme du tutoriel",
+    "text": "Le rythme du tutoriel\n\n\n\n\n\nMy turn\n\n\nQuelques slides pour poser les concepts clés.\n\n\n\n\n\n\n\nOur turn\n\n\nDémo live — vous suivez dans votre éditeur.\n\n\n\n\n\n\n\nYour turn\n\n\nExercice en autonomie avec chronomètre.\n\n\n\n\n\nExpliquer le rythme dès le début. Chaque bloc suit ce cycle. L’idée c’est de passer un maximum de temps les mains dans le code, pas à regarder des slides."
+  },
+  {
+    "objectID": "1-quarto-typst/1-quarto-typst.html#format-typst-un-pdf-sans-latex",
+    "href": "1-quarto-typst/1-quarto-typst.html#format-typst-un-pdf-sans-latex",
+    "title": "Quarto & PDF avec Typst",
+    "section": "format: typst — un PDF sans LaTeX",
+    "text": "format: typst — un PDF sans LaTeX\nVous avez un document Quarto et vous voulez un PDF ?\n\n\nrapport.qmd\n\n---\ntitle: \"Mon rapport\"\nformat: typst\n---\n\n\nRien à installer — Typst est intégré à Quarto depuis la version 1.5\nRapide — compilation en quelques secondes, pas plusieurs minutes\nErreurs lisibles — fini les messages LaTeX cryptiques\nLéger — pas de distribution TeX de 1 Go à gérer\n\n\nLe point d’entrée : une seule ligne de YAML. Pas besoin de convaincre les gens que LaTeX est mauvais — montrer directement que Typst est simple."
+  },
+  {
+    "objectID": "1-quarto-typst/1-quarto-typst.html#les-options-essentielles",
+    "href": "1-quarto-typst/1-quarto-typst.html#les-options-essentielles",
+    "title": "Quarto & PDF avec Typst",
+    "section": "Les options essentielles",
+    "text": "Les options essentielles\n\n\nrapport.qmd\n\n---\nformat:\n  typst:\n    papersize: a4\n    margin:\n      x: 2.5cm\n      y: 2.5cm\n---\n\n\nD’autres options existent (toc, mainfont, number-sections, linestretch…) — on les verra en démo.\n\n\nNe pas tout montrer ici. Juste papersize et margin pour que les gens voient la structure YAML. Le reste sera manipulé en live."
+  },
+  {
+    "objectID": "1-quarto-typst/1-quarto-typst.html#keep-typ-true-comprendre-les-coulisses",
+    "href": "1-quarto-typst/1-quarto-typst.html#keep-typ-true-comprendre-les-coulisses",
+    "title": "Quarto & PDF avec Typst",
+    "section": "keep-typ: true — comprendre les coulisses",
+    "text": "keep-typ: true — comprendre les coulisses\n\n\n\n\n\nflowchart LR\n  A[rapport.qmd] --&gt;|Pandoc| B[rapport.typ] --&gt;|Typst| C[rapport.pdf]\n\n\n\n\n\n\n\n\n\nrapport.qmd\n\n---\nformat:\n  typst:\n    keep-typ: true\n---\n\n\n\nLe fichier .typ intermédiaire vous permet de :\n\nComprendre ce que Quarto génère pour Typst\nDéboguer un rendu inattendu\nApprendre la syntaxe Typst progressivement\n\n\n\nMoment pédagogique clé. Le pipeline démystifie la magie : Quarto n’est pas une boîte noire, on peut voir ce qui se passe entre le .qmd et le .pdf."
+  },
+  {
+    "objectID": "1-quarto-typst/1-quarto-typst.html#brand.yml-un-doc-stylé-en-un-fichier",
+    "href": "1-quarto-typst/1-quarto-typst.html#brand.yml-un-doc-stylé-en-un-fichier",
+    "title": "Quarto & PDF avec Typst",
+    "section": "_brand.yml — un doc stylé en un fichier",
+    "text": "_brand.yml — un doc stylé en un fichier\nUn seul fichier YAML pour définir l’identité visuelle de vos documents :\n\n\n\n\n_brand.yml\n\ncolor:\n  primary: \"#1a5276\"\n  secondary: \"#f39c12\"\ntypography:\n  fonts:\n    - family: \"Noto Sans\"\n      source: google\n  base: \"Noto Sans\"\n\n\n\n\n\nPlacez _brand.yml à côté de votre .qmd\nQuarto l’applique automatiquement\nCouleurs, polices, logo…\nFonctionne avec HTML, Typst, RevealJS…\n\n\n\n https://posit-dev.github.io/brand-yml/\n\n\nC’est le deuxième moment fort : on passe d’un PDF basique à un PDF aux couleurs de son organisation. Rappeler que _brand.yml a été présenté aux RR 2025 pour ceux qui l’ont vu.\nMention orale ~30 sec pendant la démo Our turn : le _brand.yml ne pilote pas que le PDF. Le package R brand.yml fournit des helpers theme_brand_ggplot2() et theme_brand_gt() qui appliquent la même charte aux figures et tableaux. Visible dans correction/rapport-starwars.qmd. On en parle pas plus, c’est dans les Ressources.\nParler des helpers R theme_brand_*().\nSi quelqu’un demande sur le placement du logo (« il est en haut à gauche, je peux le mettre ailleurs ? ») : le placement par défaut en format: typst est page(background) haut-gauche, configurable partiellement via padding / width. Options additionnelles (location, height, header/footer placement) discutées en cours côté Quarto upstream — voir la discussion #13591."
+  },
+  {
+    "objectID": "1-quarto-typst/1-quarto-typst.html#faisons-ensemble",
+    "href": "1-quarto-typst/1-quarto-typst.html#faisons-ensemble",
+    "title": "Quarto & PDF avec Typst",
+    "section": "Faisons ensemble !",
+    "text": "Faisons ensemble !\n\n\n\n\n\n\nFaisons ensemble !\n\n\n\nOuvrez rapport-starwars.qmd dans votre éditeur\nAjoutez format: typst et rendez le document\nAjoutez quelques options (toc, mainfont, papersize…)\nCréez un _brand.yml avec 2 couleurs et une police Google\nActivez keep-typ: true et explorez le fichier .typ généré\n\n\n\n\n\nC’est la démo live. Les participants suivent dans leur éditeur. Aller doucement, laisser le temps de taper. Montrer le rendu après chaque étape. Mentionner linkcolor, codefont, mathfont en passant.\nHeads-up bug gt → Typst : si le tableau gt rendu montre un espacement parasite des chiffres (« 1 3 5 8 ») — c’est un bug connu (quarto-cli#11683) qui touche Windows/macOS via les fonts fallback de gt. Workaround : gt::opt_table_font(\"Inter\") (montré dans la correction). Le mentionner à l’oral comme « limite actuelle, fix structurel en cours côté gt 0.12.0 »."
+  },
+  {
+    "objectID": "1-quarto-typst/1-quarto-typst.html#exercice-1",
+    "href": "1-quarto-typst/1-quarto-typst.html#exercice-1",
+    "title": "Quarto & PDF avec Typst",
+    "section": "Exercice 1",
+    "text": "Exercice 1\n\n\n\n\n\n\nÀ vous !\n\n\n\nOuvrez rapport-starwars.qmd et ajoutez format: typst, puis rendez\nPersonnalisez avec des options : papersize, toc, mainfont…\nCréez un _brand.yml avec vos couleurs et une police Google\nActivez keep-typ: true et ouvrez le fichier .typ généré\n\n\n\n\n\n \n\n15 minutes. Passer dans les rangs pour aider. Les problèmes fréquents : oubli des guillemets sur les couleurs hex dans brand.yml, nom de police Google mal orthographié, indentation YAML, et espacement parasite des chiffres dans le tableau gt (bug gt → Typst côté Windows/macOS, workaround gt::opt_table_font(\"Inter\") visible dans la correction)."
+  },
+  {
+    "objectID": "1-quarto-typst/1-quarto-typst.html#saviez-vous-que",
+    "href": "1-quarto-typst/1-quarto-typst.html#saviez-vous-que",
+    "title": "Quarto & PDF avec Typst",
+    "section": "Saviez-vous que…",
+    "text": "Saviez-vous que…\n\n\n\n\n\n\nPépites pour aller plus loin\n\n\n\nBlocs raw Typst — Besoin de Typst natif ? Utilisez ```{=typst} pour injecter du code Typst directement dans votre .qmd\nVos tableaux fonctionnent — Les tableaux gt (R) et Great Tables (Python) avec du CSS sont traduits automatiquement en Typst par Quarto\nPDF accessible en une ligne — Ajoutez pdf-standard: ua-1 dans le YAML pour un PDF conforme au standard d’accessibilité PDF/UA-1\n\n\n\n\n\n Plus de détails sur la page Ressources\n\n\nSlide rapide, 2-3 minutes max. L’objectif est juste de planter des graines. Les gens curieux iront voir la page Ressources. Cette slide est le premier fusible à couper si on manque de temps."
+  },
+  {
+    "objectID": "2-projets/2-projets.html#quarto.yml-centraliser-la-config",
+    "href": "2-projets/2-projets.html#quarto.yml-centraliser-la-config",
+    "title": "Projets Quarto & Typst book",
+    "section": "_quarto.yml — centraliser la config",
+    "text": "_quarto.yml — centraliser la config\nUn projet Quarto = un dossier avec _quarto.yml.\n\n\n_quarto.yml\n\nproject:\n  type: default\n\nformat: typst\n\n\nTous les .qmd du projet produisent un PDF via Typst automatiquement\nVotre _brand.yml à la racine s’applique à tout le projet\nFinie la répétition de YAML dans chaque fichier !\n\n\nTransition naturelle : au Bloc 1 on a stylé un document unique. Maintenant on passe à l’échelle. Le _brand.yml créé dans l’exercice 1 va être réutilisé ici — on le déplace juste à la racine."
+  },
+  {
+    "objectID": "2-projets/2-projets.html#type-book",
+    "href": "2-projets/2-projets.html#type-book",
+    "title": "Projets Quarto & Typst book",
+    "section": "type: book",
+    "text": "type: book\n\n\n_quarto.yml\n\nproject:\n  type: book\n\nbook:\n  title: \"Anatomie d'une saga\"\n  author: \"Mon Mothma\"\n  chapters:\n    - index.qmd\n    - 01-anatomie.qmd\n    - 02-origines.qmd\n    - conclusion.qmd\n  appendices:\n    - annexe-donnees.qmd\n\nformat: typst\n\n\nDepuis Quarto 1.9, format: typst sur un book active automatiquement orange-book:\n\nPage de couverture générée automatiquement\nNumérotation par chapitre (Figure 2.1, Table 2.1…)\nEn-têtes et pieds de page stylisés\nIntégration _brand.yml pour les couleurs et le logo\n\n\n\nLe moment wow : zéro configuration supplémentaire. On montre le _quarto.yml, on rend, et on obtient un livre pro. Orange-book est une extension bundlée dans Quarto 1.9.\nDécoupage du YAML en 4 fragments via code-line-numbers pour étaler le récit : (1) project.type: book = on déclare un projet livre ; (2) bloc book: avec titre/auteur/chapters = configuration minimale ; (3) appendices: = ce qui sort du flux principal et devient « Annexe A » ; (4) format: typst = inchangé depuis l’étape 1, c’est type: book qui active orange-book. 4 beats = 4 idées, plus digestible que tout d’un coup."
+  },
+  {
+    "objectID": "2-projets/2-projets.html#construisons-un-livre-ensemble",
+    "href": "2-projets/2-projets.html#construisons-un-livre-ensemble",
+    "title": "Projets Quarto & Typst book",
+    "section": "Construisons un livre ensemble",
+    "text": "Construisons un livre ensemble\n\n\n\n\n\n\nFaisons ensemble !\n\n\n\nCréer _quarto.yml avec project: { type: default } + format: typst → 5 PDF séparés\nPasser à type: book (le format: typst reste, orange-book s’active automatiquement) → PDF unique avec couverture et TOC\nCopier _brand.yml (+ _logo-sw.svg) à la racine → couverture jaune SW, Orbitron, Inter\n\n\n\n\n\nDémo live, 3 étapes en ~10 min. à l’étape 2 le PDF unique avec couverture orange-book apparaît. Étape 3 = confirmation visuelle (la charte de Bloc 1 ressuscite côté book).\nMontrer pendant la démo : la numérotation automatique Figure 1.1 / Figure 2.1 / Table 1.1 / Table 2.1 (en français Quarto rend « Figure » et « Table » — pas « Fig » / « Tab »), l’apparition du logo SVG sur la couverture, le passage des tableaux gt en Inter (Étape 3).\nMentionner les bonus rapidement à la fin de la démo : références croisées @fig-anatomie-mass / @sec-origines et .content-visible when-format=\"typst\" + pagebreak. Pas obligés de les démontrer ici — c’est le contenu des bonus B1/B2 du Your turn.\nSi vous voyez des chiffres mal espacés (« 1 7 5 » au lieu de « 175 ») dans les tableaux à l’étape 3 chez un participant Windows/macOS : c’est normal, bug gt → Typst sur fallback de fonts. Le workaround opt_table_font(font = \"Inter\") est appliqué dans la correction (mais pas dans le starter — bug volontairement visible). Pas la peine de s’attarder, mentionner et passer.\nProblèmes fréquents : mauvais chemin vers les chapitres, oubli du tiret devant les noms de fichiers dans chapters:, oubli de l’underscore dans _quarto.yml ou _brand.yml."
+  },
+  {
+    "objectID": "2-projets/2-projets.html#exercice-2",
+    "href": "2-projets/2-projets.html#exercice-2",
+    "title": "Projets Quarto & Typst book",
+    "section": "Exercice 2",
+    "text": "Exercice 2\n\n\n\n\n\n\nÀ vous !\n\n\n3 étapes principales (12 min, attendues de tous) :\n\n_quarto.yml avec type: default + format: typst → 5 PDF\nPasser à type: book (format inchangé) → PDF unique\n_brand.yml (+ _logo-sw.svg) à la racine → charte jaune SW\n\n2 bonus (3 min, pour les rapides) :\n\nB1. Références croisées @fig-anatomie-mass + @sec-origines dans conclusion.qmd\nB2. .content-visible when-format=\"typst\" + {{&lt; pagebreak &gt;}}\n\n\n\n\n\n\n\nPas de _brand.yml ? Copiez _brand-fallback.yml (à renommer) et correction/_logo-sw.svg à la racine. Voir la page Exercice 2.\n\n\n\n\n \n\n15 minutes total : 12 min sur les 3 core + 3 min de bonus pour les rapides. Annoncer clairement que les bonus sont pour ceux qui ont fini, pas pour tout le monde\nLe fallback _brand-fallback.yml (+ correction/_logo-sw.svg) est important : ceux qui n’ont pas fini Bloc 1 peuvent les copier. Passer dans les rangs, repérer ceux qui peinent à l’étape 1 — souvent un underscore manquant.\nPour ceux qui finissent vite : pousser le bonus B1 (références croisées) en premier — c’est le plus visuel et ça utilise les labels qui sont déjà dans le starter (tbl-anatomie-mass, fig-anatomie-mass, #sec-origines). Le bonus B2 (pagebreak) demande de connaître la syntaxe .content-visible — l’avoir montrée à la fin de Our turn aide."
+  },
+  {
+    "objectID": "2-projets/2-projets.html#saviez-vous-que",
+    "href": "2-projets/2-projets.html#saviez-vous-que",
+    "title": "Projets Quarto & Typst book",
+    "section": "Saviez-vous que…",
+    "text": "Saviez-vous que…\n\n\n\n\n\n\nPépites pour aller plus loin\n\n\n\nTemplate partials — Le fichier typst-show.typ (et son typst-template.typ côté template par défaut) contrôle la génération du .typ. Vous pouvez le remplacer pour personnaliser header, footer, page de titre… Suffit souvent de toucher typst-show.typ seul.\nCréer un format partageable — quarto create extension format:typst génère un squelette d’extension prêt à publier sur GitHub\nFormats communautaires — AMS, IEEE, poster, lettre, CV… sur quarto-ext/typst-templates\n\n\n\n\n\n Plus de détails sur la page Ressources\n\n\nSlide rapide, 2-3 minutes max. Template partials = le concept le plus avancé du workshop, mais on ne fait que le mentionner ici. Les gens motivés iront creuser.\nFusible à couper si le timing serre — sauter directement au wrap-up qui suit (3 slides obligatoires, ne pas sauter)."
+  },
+  {
+    "objectID": "2-projets/2-projets.html#ce-que-vous-savez-faire-maintenant",
+    "href": "2-projets/2-projets.html#ce-que-vous-savez-faire-maintenant",
+    "title": "Projets Quarto & Typst book",
+    "section": "Ce que vous savez faire maintenant",
+    "text": "Ce que vous savez faire maintenant\n\nProduire un PDF pro avec format: typst, sans LaTeX\nInspecter le pipeline .qmd → .typ → .pdf via keep-typ: true\nPersonnaliser couleurs, polices et logo via _brand.yml\nAssembler plusieurs .qmd en livre avec type: book\nSavoir où chercher pour aller plus loin (partials, formats communautaires — pistes pour après le tutoriel, pas couverts en séance)\n\n\nCD parle. Vous êtes parti·e d’un .qmd HTML, vous repartez avec un livre PDF brandé multi-chapitres. Trois lignes de YAML, un fichier de charte, un projet — et c’est tout.\nLes 5 bullets font écho aux 3 questions posées en intro (cf. index.qmd:17-19) et aux apprentissages détaillés des 2 pages de bloc (cf. 1-quarto-typst/index.qmd:24-29 + 2-projets/index.qmd:24-28). Le 5ᵉ bullet (« partials, formats communautaires ») est explicitement annoncé comme piste post-tutoriel — pas une promesse non tenue. Rappel mémoriel : pointer du doigt vers la slide précédente Bloc 1 ou la page d’accueil si besoin."
+  },
+  {
+    "objectID": "2-projets/2-projets.html#et-maintenant",
+    "href": "2-projets/2-projets.html#et-maintenant",
+    "title": "Projets Quarto & Typst book",
+    "section": "Et maintenant ?",
+    "text": "Et maintenant ?\n\nCette semaine — ouvrez un de vos .qmd existants, ajoutez format: typst, voyez ce que ça donne\nPour creuser — la page Pour aller plus loin (partials, blocs raw Typst, accessibilité PDF/UA-1, helpers brand.yml côté R)\nCommunauté — quarto-ext/typst-templates, forum Quarto, Awesome Quarto"
+  },
+  {
+    "objectID": "2-projets/2-projets.html#merci-questions",
+    "href": "2-projets/2-projets.html#merci-questions",
+    "title": "Projets Quarto & Typst book",
+    "section": "Merci ! Questions ?",
+    "text": "Merci ! Questions ?\nMerci aux Rencontres R, à l’équipe d’organisation, et à vous.\nChristophe Dervieux — Posit\nMaëlle Salmon — rOpenSci / cynkra"
+  },
+  {
+    "objectID": "3-aller-plus-loin/index.html",
+    "href": "3-aller-plus-loin/index.html",
+    "title": "Aller plus loin avec Typst",
+    "section": "",
+    "text": "Pour aller au-delà des options YAML, Typst offre une personnalisation fine via des templates et des extensions partageables.",
+    "crumbs": [
+      "Pour aller plus loin..."
+    ]
+  },
+  {
+    "objectID": "3-aller-plus-loin/index.html#points-couverts",
+    "href": "3-aller-plus-loin/index.html#points-couverts",
+    "title": "Aller plus loin avec Typst",
+    "section": "Points couverts",
+    "text": "Points couverts\n\n\n\n\n\n\nCes sujets sont des pistes pour aller plus loin après le tutoriel, pas couverts en séance. Le programme officiel tient en 2 blocs (cf. page d’accueil). Cette page sert de point d’entrée pour les autodidactes.\n\n\n\n\n1 — Blocs Typst “Raw”\nUn moyen pour injecter du Typst natif quand Quarto ne suffit pas.\n\nBlocs {=typst} pour du code Typst brut\nAccès aux valeurs de la charte via les variables brand-color.primary, brand-logo-images depuis un bloc “raw”\nTraduction CSS → Typst : propriétés CSS utilisables sur “spans” et “divs” (depuis Quarto 1.5)\nTableaux stylisés : les tableaux HTML avec CSS (gt, pandas) sont rendus dans Typst\n\n\n\n2 — Template “partials”\nPersonnaliser la génération du fichier .typ pour contrôler le “layout” du PDF.\n\ntypst-show.typ : pont Quarto → Typst, passage des variables YAML\ntypst-template.typ : “layout” du document (en-tête, pieds de page, couleurs, logo)\nSyntaxe Pandoc dans les partials : $title$, $if(by-author)$, $for(author)$\nDéclaration dans le YAML : template-partials:\nNouvelles variables Quarto 1.9 : linkcolor, codefont, mathfont, linestretch\n\n\n\n3 — Extensions & partage\nPackager et partager des formats Typst personnalisés.\n\nquarto create extension format:typst pour générer un squelette d’extension\nquarto add user/repo pour installer un format existant\nquarto use brand user/repo pour partager une charte depuis GitHub\nFormats existants : quarto-ext/typst-templates\nAccessibilité PDF : pdf-standard: ua-1 pour la conformité PDF/UA-1\n\n⚠️ Les Typst ‘books’ ne sont pas encore compatibles UA-1",
+    "crumbs": [
+      "Pour aller plus loin..."
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "PDF sans frictions : Typst dans vos projets Quarto",
+    "section": "",
+    "text": "🗓️ Mardi 16 juin 2026 · 🕙 9h – 11h · 🏢 Nantes Université, Campus Lombarderie",
+    "crumbs": [
+      "Accueil"
+    ]
+  },
+  {
+    "objectID": "index.html#à-propos",
+    "href": "index.html#à-propos",
+    "title": "PDF sans frictions : Typst dans vos projets Quarto",
+    "section": "À propos",
+    "text": "À propos\nCe tutoriel vous apprendra à produire des documents PDF professionnels avec Quarto en utilisant Typst comme moteur de rendu, sans avoir besoin d’installer LaTeX. Vous découvrirez comment personnaliser vos documents grâce à _brand.yml et aux templates Typst, pour obtenir des résultats soignés en quelques minutes.\n\nComment remplacer LaTeX par Typst pour des PDF sans frictions ?\nComment personnaliser vos documents avec _brand.yml ?\nComment passer d’un document isolé à un projet Quarto multi-chapitres avec type: book ?",
+    "crumbs": [
+      "Accueil"
+    ]
+  },
+  {
+    "objectID": "index.html#se-préparer",
+    "href": "index.html#se-préparer",
+    "title": "PDF sans frictions : Typst dans vos projets Quarto",
+    "section": "Se préparer",
+    "text": "Se préparer\n Instructions préalables pour être prêt·e le jour J et pouvoir suivre les exercices.",
+    "crumbs": [
+      "Accueil"
+    ]
+  },
+  {
+    "objectID": "index.html#programme",
+    "href": "index.html#programme",
+    "title": "PDF sans frictions : Typst dans vos projets Quarto",
+    "section": "Programme",
+    "text": "Programme\n\n\n Bloc 1 — Un PDF pro en quelques minutes\nformat: typst, options essentielles, keep-typ: true, _brand.yml\n☕ Pause\n Bloc 2 — Passer à l’échelle : projet et livre\n_quarto.yml, type: book, _brand.yml au niveau projet",
+    "crumbs": [
+      "Accueil"
+    ]
+  },
+  {
+    "objectID": "index.html#instructeurs",
+    "href": "index.html#instructeurs",
+    "title": "PDF sans frictions : Typst dans vos projets Quarto",
+    "section": "Instructeurs",
+    "text": "Instructeurs\nChristophe Dervieux — développeur open source, Posit Software, PBC. Contributeur aux projets R Markdown et Quarto.\nMaëlle Salmon — Research Software Engineer, rOpenSci / cynkra.",
+    "crumbs": [
+      "Accueil"
+    ]
+  },
+  {
+    "objectID": "index.html#ressources",
+    "href": "index.html#ressources",
+    "title": "PDF sans frictions : Typst dans vos projets Quarto",
+    "section": "Ressources",
+    "text": "Ressources\n Liens et ressources pour aller plus loin après le tutoriel.",
+    "crumbs": [
+      "Accueil"
+    ]
+  },
+  {
+    "objectID": "index.html#licence",
+    "href": "index.html#licence",
+    "title": "PDF sans frictions : Typst dans vos projets Quarto",
+    "section": "Licence",
+    "text": "Licence\n\n\n\nCC BY 4.0\n\n\nCe contenu est mis à disposition sous licence Creative Commons Attribution 4.0 International (CC BY 4.0).",
+    "crumbs": [
+      "Accueil"
+    ]
+  }
+]

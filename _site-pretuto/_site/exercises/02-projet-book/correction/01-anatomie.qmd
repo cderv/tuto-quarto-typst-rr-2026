@@ -1,0 +1,68 @@
+# Anatomie
+
+```{r}
+#| label: setup-anatomie
+library(dplyr)
+library(ggplot2)
+library(ggrepel)
+library(gt)
+```
+
+Le dataset `dplyr::starwars` recense 87 personnages de la saga, avec 14 variables
+(taille, masse, espèce, planète d'origine, films...). Dans ce chapitre, on
+attaque par le plus visible : **qui sont les colosses de la galaxie ?**
+
+## Top 5 des personnages les plus massifs
+
+```{r}
+#| label: tbl-anatomie-mass
+top_mass <- starwars |>
+  filter(!is.na(mass)) |>
+  arrange(desc(mass)) |>
+  slice_head(n = 5) |>
+  select(name, height, mass, species, homeworld)
+
+top_mass |>
+  gt() |>
+  tab_header(
+    title = "Les colosses de la galaxie",
+    subtitle = "Top 5 par masse (kg)"
+  ) |>
+  fmt_number(columns = mass, decimals = 0, sep_mark = " ") |>
+  cols_label(
+    name = "Personnage",
+    height = "Taille (cm)",
+    mass = "Masse (kg)",
+    species = "Espece",
+    homeworld = "Planete"
+  ) |>
+  opt_table_font(font = "Inter")
+```
+
+Sans surprise, **Jabba the Hutt** écrase tout le monde avec ses 1 358 kg.
+Mais les vraies stars de la saga sont les `#highlight(fill: rgb("#FFE81F"))[droïdes]`{=typst} :
+R2-D2 apparaît dans 7 films, plus que n'importe quel humain.
+
+## Taille vs masse
+
+```{r}
+#| label: fig-anatomie-mass
+#| fig-cap: "Taille et masse des personnages — Jabba en valeur aberrante (échelle log)"
+#| fig-alt: "Nuage de points montrant la masse en fonction de la taille pour les 87 personnages de Star Wars. La masse est en échelle logarithmique. Jabba the Hutt apparaît nettement séparé du nuage principal en haut à droite."
+sw <- starwars |> filter(!is.na(height), !is.na(mass))
+
+ggplot(sw, aes(x = height, y = mass)) +
+  geom_point(alpha = 0.6, size = 2) +
+  geom_text_repel(
+    data = sw |> filter(mass > 200 | name == "Yoda"),
+    aes(label = name),
+    size = 3, min.segment.length = 0
+  ) +
+  scale_y_log10(labels = scales::label_number(big.mark = " ")) +
+  labs(
+    x = "Taille (cm)",
+    y = "Masse (kg, échelle log)",
+    title = "Tailles et masses des personnages"
+  ) +
+  theme_minimal(base_size = 11)
+```

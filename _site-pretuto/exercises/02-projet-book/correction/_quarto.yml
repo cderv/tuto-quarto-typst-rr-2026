@@ -1,0 +1,30 @@
+project:
+  type: book
+
+lang: fr
+
+book:
+  title: "Anatomie d'une saga"
+  subtitle: "Portrait statistique des personnages de Star Wars"
+  author: "Mon Mothma"
+  date: "2026-06-16"
+  chapters:
+    - index.qmd
+    - 01-anatomie.qmd
+    - 02-origines.qmd
+    - conclusion.qmd
+  appendices:
+    - annexe-donnees.qmd
+
+format:
+  typst:
+    # Workaround Quarto book : les polices téléchargées par _brand.yml
+    # (.quarto/typst/fonts/) ne sont pas passées automatiquement à
+    # typst en mode book. À retirer quand le bug upstream est fixé.
+    font-paths:
+      - .quarto/typst/fonts
+
+execute:
+  echo: false
+  warning: false
+  message: false
