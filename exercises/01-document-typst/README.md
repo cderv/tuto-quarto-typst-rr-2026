@@ -34,16 +34,17 @@ en quatre étapes incrémentales :
    charte aux figures ggplot et tableaux gt, utilisez les helpers du
    package R `brand.yml` (`theme_brand_ggplot2()`, `theme_brand_gt()`).
 
-5. **Police locale sur le titre.** Le dossier `starter/_fonts/` contient
-   un fichier `StarJedi-DGRW.ttf` (police décorative fan-made, licence
-   freeware). Référencez-le dans `_brand.yml` via `source: file` et
-   appliquez-le uniquement au titre du rapport (`typography.title`).
-   Re-rendez : « Anatomie d'une saga » s'affiche en lettres Star Jedi,
-   le reste du document garde Inter (corps) et Orbitron (titres de
-   section).
+5. **Police locale sur les titres.** Le dossier `starter/_fonts/`
+   contient un fichier `Starjedi.ttf` (police décorative fan-made
+   Boba Fonts, archive originale, licence freeware). Référencez-le
+   dans `_brand.yml` via `source: file` et appliquez-le sur les titres
+   de section (`typography.headings`). Re-rendez : tous les titres
+   (`# Introduction`, `# Top 5 des personnages les plus massifs`, etc.)
+   s'affichent en lettres Star Jedi décoratives, le corps du document
+   garde Inter.
 
 La correction (`correction/`) fournit un exemple complet avec un logo
-Star Wars et une police locale Star Jedi sur le titre.
+Star Wars et la police locale Star Jedi sur les titres de section.
 
 ## Solution
 
@@ -52,11 +53,13 @@ Le dossier `correction/` contient une version finale possible :
 - `correction/rapport-starwars.qmd` — YAML Typst complet (incl. `logo:`
   sous `format.typst` pour redimensionner et placer le logo) + un raw
   Typst inline (`#highlight()`) pour mettre un mot en valeur
-- `correction/_brand.yml` — palette Star Wars + Inter (Google) +
-  Orbitron (Google) + Star Jedi (locale, sur le titre uniquement) + logo
-- `correction/_brand-offline.yml` — variante 100 % offline (toutes les
-  polices en `source: file`), Plan B en cas de réseau capricieux
-- `correction/_fonts/` — TTFs statiques Inter, Orbitron, Star Jedi
+- `correction/_brand.yml` — palette Star Wars + Inter (Google, corps)
+  + Star Jedi (locale, titres) + logo
+- `correction/_brand-offline.yml` — variante 100 % offline (Inter +
+  Star Jedi, toutes en `source: file`), Plan B en cas de réseau
+  capricieux
+- `correction/_fonts/` — TTFs statiques Inter (3 graisses) +
+  Star Jedi (Starjedi.ttf, archive originale Boba Fonts)
 - `correction/_logo-sw.svg` — étoile jaune Star Wars, placée par Quarto
   en filigrane haut-gauche de chaque page
 

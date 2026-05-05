@@ -1,6 +1,6 @@
-Police : Star Jedi (StarJedi-DGRW.ttf)
+Police : Star Jedi (Starjedi.ttf)
 Licence : Freeware
-Source  : https://www.fontspace.com/star-jedi-font-f9641
+Source  : Archive originale Boba Fonts https://www.dafont.com/star-jedi.font
 Auteur  : Boba Fonts
 
 Police décorative fan-made, distribuable gratuitement.

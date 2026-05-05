@@ -208,8 +208,8 @@ Parler des helpers R `theme_brand_*()`.
 1.  Ouvrez `rapport-starwars.qmd` dans votre éditeur
 2.  Ajoutez `format: typst` et rendez le document
 3.  Ajoutez quelques options (`toc`, `mainfont`, `papersize`...)
-4.  Créez un `_brand.yml` avec 2 couleurs et une police Google
-5.  Ajoutez la police locale Star Jedi (TTF dans `_fonts/`) sur le titre via `source: file`
+4.  Créez un `_brand.yml` avec 2 couleurs et une police Google sur le corps
+5.  Ajoutez la police locale Star Jedi (TTF dans `_fonts/`) sur les titres de section via `source: file`
 6.  Activez `keep-typ: true` et explorez le fichier `.typ` généré
 :::
 
@@ -218,7 +218,7 @@ C'est la démo live. Les participants suivent dans leur éditeur. Aller doucemen
 
 **Heads-up bug `gt → Typst`** : si le tableau `gt` rendu montre un espacement parasite des chiffres (« 1 3 5 8 ») — c'est un bug connu (quarto-cli#11683) qui touche Windows/macOS via les fonts fallback de gt. Workaround : `gt::opt_table_font("Inter")` (montré dans la correction). Le mentionner à l'oral comme « limite actuelle, fix structurel en cours côté gt 0.12.0 ».
 
-**Étape 5 (police locale Star Jedi)** : `StarJedi-DGRW.ttf` est déjà dans `starter/_fonts/` (police décorative fan-made, licence freeware via [FontSpace](https://www.fontspace.com/star-jedi-font-f9641)). Au moment de la démo, montrer la syntaxe `source: file` à côté de `source: google` dans le même `_brand.yml` — l'idée à transmettre : « tout type de source coexiste, vous mixez selon vos contraintes ». Expliquer le pourquoi de `typography.title:` (cible le titre principal uniquement, garde Orbitron sur les titres de section pour la lisibilité). Plan B 100 % offline disponible dans `_brand-offline.yml` (toutes les polices en `source: file`) pour les sessions sans réseau.
+**Étape 5 (police locale Star Jedi)** : `Starjedi.ttf` est déjà dans `starter/_fonts/` (police décorative fan-made Boba Fonts, archive originale, licence freeware ; les variantes repackagées sur [FontSpace](https://www.fontspace.com/star-jedi-font-f9641) — DGRW / Hollow / Rounded — échouent au subsetting Typst, on retient la TTF originale). Au moment de la démo, montrer la syntaxe `source: file` à côté de `source: google` dans le même `_brand.yml` — l'idée à transmettre : « tout type de source coexiste, vous mixez selon vos contraintes ». Le brand devient Inter (corps, Google) + Star Jedi (titres, locale) — effet visuel immédiat sur chaque titre de section. Plan B 100 % offline disponible dans `_brand-offline.yml` (Inter + Star Jedi, toutes les polices en `source: file`) pour les sessions sans réseau.
 :::
 
 ## Exercice 1 {.wide-list}
@@ -228,8 +228,8 @@ C'est la démo live. Les participants suivent dans leur éditeur. Aller doucemen
 
 1.  Ouvrez `rapport-starwars.qmd` et ajoutez `format: typst`, puis rendez
 2.  Personnalisez avec des options : `papersize`, `toc`, `mainfont`...
-3.  Créez un `_brand.yml` avec vos couleurs et une police Google
-4.  Ajoutez la police locale Star Jedi (`_fonts/StarJedi-DGRW.ttf`, `source: file`) sur le titre
+3.  Créez un `_brand.yml` avec vos couleurs et une police Google sur le corps (`base:`)
+4.  Ajoutez la police locale Star Jedi (`_fonts/Starjedi.ttf`, `source: file`) sur les titres (`headings:`)
 5.  Activez `keep-typ: true` et ouvrez le fichier `.typ` généré
 :::
 
@@ -238,7 +238,7 @@ C'est la démo live. Les participants suivent dans leur éditeur. Aller doucemen
 ::: notes
 15 minutes. Passer dans les rangs pour aider. Les problèmes fréquents : oubli des guillemets sur les couleurs hex dans brand.yml, nom de police Google mal orthographié, indentation YAML, et **espacement parasite des chiffres dans le tableau gt** (bug `gt → Typst` côté Windows/macOS, workaround `gt::opt_table_font("Inter")` visible dans la correction).
 
-**Étape 4 (Star Jedi)** : pour les participants bloqués sur la syntaxe `source: file` + `files:`, montrer rapidement le bloc dans `correction/_brand.yml` au tableau. Ne pas paniquer si certains zappent l'étape — le rendu reste correct sans (titre en Orbitron). C'est l'étape la plus « visuelle » de l'exo : le titre passe en lettres décoratives Star Jedi, effet immédiat.
+**Étape 4 (Star Jedi)** : pour les participants bloqués sur la syntaxe `source: file` + `files:`, montrer rapidement le bloc dans `correction/_brand.yml` au tableau. Ne pas paniquer si certains zappent l'étape — le rendu reste correct sans (titres en police Google par défaut). C'est l'étape la plus « visuelle » de l'exo : tous les titres de section passent en lettres décoratives Star Jedi, effet immédiat. Si lisibilité dégradée sur « Top 5 des personnages les plus massifs » en Star Jedi : c'est attendu, choix décoratif assumé.
 :::
 
 ## Saviez-vous que...

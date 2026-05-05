@@ -12,17 +12,13 @@ typography:
     - family: "Star Jedi"
       source: file
       files:
-        - path: _fonts/StarJedi-DGRW.ttf
+        - path: _fonts/Starjedi.ttf
           weight: 400
-    - family: Orbitron
-      source: google
-      weight: [400, 700]
     - family: Inter
       source: google
       weight: [400, 600]
   base: Inter
-  headings: Orbitron
-  title: "Star Jedi"
+  headings: "Star Jedi"
 
 logo:
   images:

@@ -48,8 +48,8 @@ Fichier : {{< fa download >}} [exercises/01-document-typst/starter/](https://git
 
 1.  Ouvrir `rapport-starwars.qmd` et ajouter `format: typst`, puis rendre
 2.  Personnaliser avec des options : `papersize`, `toc`, `mainfont`...
-3.  Créer un `_brand.yml` avec vos couleurs et une police Google
-4.  Ajouter la police locale Star Jedi (`_fonts/StarJedi-DGRW.ttf`, `source: file`) sur le titre
+3.  Créer un `_brand.yml` avec vos couleurs et une police Google sur le corps
+4.  Ajouter la police locale Star Jedi (`_fonts/Starjedi.ttf`, `source: file`) sur les titres
 5.  Activer `keep-typ: true` et ouvrir le fichier `.typ` généré
 :::
 
