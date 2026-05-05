@@ -18,11 +18,15 @@ book:
 
 format:
   typst:
-    # Workaround Quarto book : les polices téléchargées par _brand.yml
-    # (.quarto/typst/fonts/) ne sont pas passées automatiquement à
-    # typst en mode book. À retirer quand le bug upstream est fixé.
+    # Workaround Quarto book : les polices résolues par _brand.yml ne
+    # sont pas passées automatiquement à typst en mode book. À retirer
+    # quand le bug upstream est fixé.
+    # - .quarto/typst/fonts : cache des polices Google (Inter)
+    # - _fonts              : polices locales référencées par
+    #                         `source: file` (Star Jedi)
     font-paths:
       - .quarto/typst/fonts
+      - _fonts
     # Logo personnalisé : sans cette section, Quarto place le logo
     # `_brand.yml` à 1.5in width / 0.75in padding par défaut, ce qui
     # chevauche les titres dès la 2e page.
