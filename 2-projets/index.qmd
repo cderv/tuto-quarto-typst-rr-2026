@@ -49,7 +49,7 @@ Fichier : {{< fa download >}} [exercises/02-projet-book/starter/](https://github
 **3 étapes principales (12 min) — attendues de tous :**
 
 | \# | Action | Vous devriez voir |
-|-------|--------------------------------------------|------------------------------------------|
+|--------------|------------------------------|----------------------------|
 | 1 | Créez `_quarto.yml` à la racine du starter avec `project: { type: default }` et `format: typst`. | 5 PDF séparés (un par fichier) |
 | 2a | Passez à `type: book` et ajoutez `book: { title, chapters: [...] }`. Le `format: typst` reste — orange-book s'active automatiquement. | **PDF unique** + couverture orange-book + Figure 1.1 / Figure 2.1 / Table 1.1 / Table 2.1 + TOC. `annexe-donnees` apparaît comme dernier chapitre numéroté. |
 | 2b | Ajoutez `appendices: [annexe-donnees.qmd]` au bloc `book:`. | `annexe-donnees` bascule en « Annexe A » à la fin du livre, hors numérotation des chapitres. |
@@ -58,7 +58,7 @@ Fichier : {{< fa download >}} [exercises/02-projet-book/starter/](https://github
 **2 bonus :**
 
 | \# | Action | Vous devriez voir |
-|-------|--------------------------------------------|----------------------------------------------------|
+|--------------|--------------------------|--------------------------------|
 | B1 | Dans `conclusion.qmd`, ajoutez une phrase qui référence `@fig-anatomie-mass` et `@sec-origines`. | « Comme l'a montré la **Figure 1.1**… » avec lien actif |
 | B2 | Saut de page conditionnel à la fin de `conclusion.qmd` (voir bloc ci-dessous). | Saut de page entre conclusion et annexe **dans le PDF uniquement** |
 
