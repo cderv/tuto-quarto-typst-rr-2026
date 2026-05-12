@@ -158,7 +158,7 @@ Moment pédagogique clé. Le pipeline démystifie la magie : Quarto n'est pas un
 
 Un seul fichier YAML pour définir l'identité visuelle de vos documents :
 
-:::::: columns
+::::::: columns
 ::: {.column width="45%"}
 ``` {.yaml filename="_brand.yml"}
 color:
@@ -183,11 +183,10 @@ typography:
 - Fonctionne avec HTML, Typst, RevealJS...
 :::
 ::::
-::::::
+:::::::
 
-::: {.center}
-![](brand-yml-tall-color.svg){width="20%"} 
-<https://posit-dev.github.io/brand-yml/>
+::: center
+![](brand-yml-tall-color.svg){width="20%"} <https://posit-dev.github.io/brand-yml/>
 :::
 
 ::: notes
@@ -223,7 +222,7 @@ C'est la démo live. Les participants suivent dans leur éditeur. Aller doucemen
 
 ## Exercice 1 {.wide-list}
 
-::: {.callout-warning}
+::: callout-warning
 ## À vous !
 
 1.  Ouvrez `rapport-starwars.qmd` et ajoutez `format: typst`, puis rendez
