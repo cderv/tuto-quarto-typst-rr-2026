@@ -42,25 +42,23 @@ Expliquer le rythme dès le début. Chaque bloc suit ce cycle. L'idée c'est de 
 
 ## C'est quoi Typst ? *(option A — concepts)*
 
-[Typst](https://typst.app/) — un langage de composition typographique moderne, pensé comme alternative à LaTeX.
+[Typst](https://typst.app/) — un système de composition pour produire des PDFs. Dans la chaîne Quarto, il joue le même rôle que LaTeX.
 
 ::: incremental
-- **Syntaxe sobre** — proche du Markdown pour les choses simples
-- **Compilation rapide** — quelques secondes, pas plusieurs minutes
-- **Caché par défaut dans Quarto** — vous écrivez du Markdown, Quarto traduit en Typst pour vous
+- **Un autre moteur pour produire des PDFs** — il prend la place de LaTeX entre votre `.qmd` et votre `.pdf`
+- **Embarqué dans Quarto** depuis la version 1.5 — rien à installer en plus
+- **Pas besoin de l'apprendre pour démarrer** — Quarto traduit votre Markdown en Typst à votre place
 :::
 
 ::: notes
 **Option A à choisir avec l'option B (slide suivante) — supprimer celle qui ne convient pas.**
 
-Situer Typst comme langage avant d'enchaîner sur `format: typst`. Insister sur le 3e point : "vous n'avez rien à apprendre côté Typst pour démarrer". Le `keep-typ: true` 2 slides plus loin permettra à ceux qui veulent de regarder sous le capot.
-
-Pour celles et ceux qui viennent de pagedown, signaler la ressource côté Apprendre Typst dans `4-ressources.qmd`.
+Trois messages : (1) Typst occupe la même place que LaTeX dans le pipeline, (2) c'est déjà là dans Quarto, (3) la syntaxe Typst n'est pas un prérequis. Le `keep-typ: true` 2 slides plus loin permettra à celles et ceux qui veulent de regarder sous le capot.
 :::
 
 ## C'est quoi Typst ? *(option B — visuel)*
 
-[Typst](https://typst.app/) — un langage de composition typographique moderne. Avec Quarto, vous écrivez du **Markdown**, Quarto traduit en **Typst** pour vous.
+[Typst](https://typst.app/) joue le même rôle que LaTeX : produire un PDF. Avec Quarto, vous restez côté Markdown — la traduction vers Typst se fait toute seule.
 
 :::::: columns
 ::: {.column width="48%"}
