@@ -45,8 +45,8 @@ Expliquer le rythme dès le début. Chaque bloc suit ce cycle. L'idée c'est de 
 [Typst](https://typst.app/) — un langage de composition typographique moderne, pensé comme alternative à LaTeX.
 
 ::: incremental
-- **Conçu pour les humains** — syntaxe lisible, messages d'erreur clairs
-- **Rapide** — compilation en quelques secondes, pas en minutes
+- **Syntaxe sobre** — proche du Markdown pour les choses simples
+- **Compilation rapide** — quelques secondes, pas plusieurs minutes
 - **Caché par défaut dans Quarto** — vous écrivez du Markdown, Quarto traduit en Typst pour vous
 :::
 
@@ -55,7 +55,7 @@ Expliquer le rythme dès le début. Chaque bloc suit ce cycle. L'idée c'est de 
 
 Situer Typst comme langage avant d'enchaîner sur `format: typst`. Insister sur le 3e point : "vous n'avez rien à apprendre côté Typst pour démarrer". Le `keep-typ: true` 2 slides plus loin permettra à ceux qui veulent de regarder sous le capot.
 
-Inspiration : [y-sunflower, *Migrating from pagedown to Typst*](https://www.ysunflower.com/blog/migrating-from-pagedown-to-typst) (~16× plus rapide que pagedown).
+Pour celles et ceux qui viennent de pagedown, signaler la ressource côté Apprendre Typst dans `4-ressources.qmd`.
 :::
 
 ## C'est quoi Typst ? *(option B — visuel)*
@@ -98,7 +98,7 @@ Envie de voir le Typst généré ? On y arrive avec `keep-typ: true`.
 
 Slide visuelle : le but n'est pas d'enseigner Typst, c'est de rassurer. "Tu écris du Markdown, t'as pas besoin d'apprendre Typst pour démarrer." Le snippet Typst sert juste à montrer que ça ressemble à du Markdown — `=` au lieu de `#`, `*gras*` au lieu de `**gras**`.
 
-Teaser pour `keep-typ: true` qui arrive 2 slides plus loin. Référence : [y-sunflower, *Migrating from pagedown to Typst*](https://www.ysunflower.com/blog/migrating-from-pagedown-to-typst).
+Teaser pour `keep-typ: true` qui arrive 2 slides plus loin.
 :::
 
 ## `format: typst` — un PDF sans LaTeX
