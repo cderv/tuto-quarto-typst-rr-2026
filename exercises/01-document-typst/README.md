@@ -21,9 +21,11 @@ en quatre étapes incrémentales :
    `linestretch: 1.4`. Re-rendez et observez la différence.
 
 3. **Inspecter le `.typ` intermédiaire.** Activez `keep-typ: true`,
-   re-rendez, ouvrez le fichier `.typ` généré à côté du PDF. C'est du
-   Typst natif : le tableau `gt` y est bien une vraie `table()`, pas une
-   image.
+   re-rendez, ouvrez le fichier `.typ` généré à côté du PDF. Vous y
+   retrouverez les équivalents Typst des éléments Markdown (`=`,
+   `#strong[...]`, `#link(...)[...]`) vus en slide, plus des fonctions
+   Typst dédiées comme `#table()` pour le tableau `gt` — qui est ici
+   une vraie table, pas une image.
 
 4. **Charte.** Créez un fichier `_brand.yml` à côté du `.qmd` (palette
    couleurs, une ou deux polices Google, et un logo SVG si vous en avez
