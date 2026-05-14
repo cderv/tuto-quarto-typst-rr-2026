@@ -40,6 +40,67 @@ Exercice en autonomie avec chronomètre.
 Expliquer le rythme dès le début. Chaque bloc suit ce cycle. L'idée c'est de passer un maximum de temps les mains dans le code, pas à regarder des slides.
 :::
 
+## C'est quoi Typst ? *(option A — concepts)*
+
+[Typst](https://typst.app/) — un langage de composition typographique moderne, pensé comme alternative à LaTeX.
+
+::: incremental
+- **Conçu pour les humains** — syntaxe lisible, messages d'erreur clairs
+- **Rapide** — compilation en quelques secondes, pas en minutes
+- **Caché par défaut dans Quarto** — vous écrivez du Markdown, Quarto traduit en Typst pour vous
+:::
+
+::: notes
+**Option A à choisir avec l'option B (slide suivante) — supprimer celle qui ne convient pas.**
+
+Situer Typst comme langage avant d'enchaîner sur `format: typst`. Insister sur le 3e point : "vous n'avez rien à apprendre côté Typst pour démarrer". Le `keep-typ: true` 2 slides plus loin permettra à ceux qui veulent de regarder sous le capot.
+
+Inspiration : [y-sunflower, *Migrating from pagedown to Typst*](https://www.ysunflower.com/blog/migrating-from-pagedown-to-typst) (~16× plus rapide que pagedown).
+:::
+
+## C'est quoi Typst ? *(option B — visuel)*
+
+[Typst](https://typst.app/) — un langage de composition typographique moderne. Avec Quarto, vous écrivez du **Markdown**, Quarto traduit en **Typst** pour vous.
+
+:::::: columns
+::: {.column width="48%"}
+Ce que **vous écrivez** (Markdown) :
+
+``` markdown
+# Mon rapport
+
+Un mot **en gras**
+et un [lien](https://example.org).
+```
+:::
+
+::: {.column width="4%"}
+:::
+
+::: {.column width="48%"}
+Ce que **Quarto génère** (Typst) :
+
+``` typ
+= Mon rapport
+
+Un mot *en gras*
+et un #link("https://example.org")[lien].
+```
+:::
+::::::
+
+::: {.fragment .fade-in}
+Envie de voir le Typst généré ? On y arrive avec `keep-typ: true`.
+:::
+
+::: notes
+**Option B à choisir avec l'option A (slide précédente) — supprimer celle qui ne convient pas.**
+
+Slide visuelle : le but n'est pas d'enseigner Typst, c'est de rassurer. "Tu écris du Markdown, t'as pas besoin d'apprendre Typst pour démarrer." Le snippet Typst sert juste à montrer que ça ressemble à du Markdown — `=` au lieu de `#`, `*gras*` au lieu de `**gras**`.
+
+Teaser pour `keep-typ: true` qui arrive 2 slides plus loin. Référence : [y-sunflower, *Migrating from pagedown to Typst*](https://www.ysunflower.com/blog/migrating-from-pagedown-to-typst).
+:::
+
 ## `format: typst` — un PDF sans LaTeX
 
 Vous avez un document Quarto et vous voulez un PDF ?

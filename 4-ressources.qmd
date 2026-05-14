@@ -33,6 +33,7 @@ date: ""
 
 - [tynding](https://github.com/kpolimis/tynding) — bindings R pour compiler du Typst
 - [r2typ](https://github.com/y-sunflower/r2typ) — générer du code Typst depuis R
+- [Migrating from pagedown to Typst](https://www.ysunflower.com/blog/migrating-from-pagedown-to-typst) (y-sunflower) — retour d'expérience d'une migration, ~16× plus rapide que pagedown
 
 ## Formats Typst existants
 
