@@ -40,6 +40,47 @@ Exercice en autonomie avec chronomètre.
 Expliquer le rythme dès le début. Chaque bloc suit ce cycle. L'idée c'est de passer un maximum de temps les mains dans le code, pas à regarder des slides.
 :::
 
+## C'est quoi Typst ?
+
+[Typst](https://typst.app/) joue le même rôle que LaTeX : produire un PDF. Avec Quarto, vous restez côté Markdown — la traduction vers Typst est automatique.
+
+:::::: columns
+::: {.column width="48%"}
+Ce que **vous écrivez** (Markdown) :
+
+``` markdown
+# Mon rapport
+
+Un mot **en gras**
+et un [lien](https://example.org).
+```
+:::
+
+::: {.column width="4%"}
+:::
+
+::: {.column width="48%"}
+Ce que **Quarto génère** (Typst) :
+
+``` typ
+= Mon rapport
+
+Un mot #strong[en gras]
+et un #link("https://example.org")[lien].
+```
+:::
+::::::
+
+::: {.fragment .fade-in}
+On y jettera un œil ensemble avec `keep-typ: true` — juste pour démystifier.
+:::
+
+::: notes
+Slide visuelle : le but n'est pas d'enseigner Typst, c'est de rassurer. "Tu écris du Markdown, t'as pas besoin d'apprendre Typst pour démarrer." Le snippet Typst montre la traduction concrète — `=` pour le titre, `#strong[...]` pour le gras, `#link(...)[...]` pour les liens.
+
+Contrat oral : on ouvrira ensemble le `.typ` 2 slides plus loin (`keep-typ: true`) — pas une option facultative. Le participant est prévenu, pas de surprise à l'Exo 1 étape 3.
+:::
+
 ## `format: typst` — un PDF sans LaTeX
 
 Vous avez un document Quarto et vous voulez un PDF ?
