@@ -336,6 +336,8 @@ Toutes les autres questions historiques (Q1 séquencement reviews, Q2 `opt_table
 
 **Note narrative à propager** : `_brand.yml` n'est plus « déplacé » depuis Bloc 1 → il est **réutilisé/promu au niveau projet** (le starter Exo 2 part SANS `_brand.yml` et l'étape 3 demande de copier celui de Exo 1 à la racine du book).
 
+**Transition workaround → fix upstream (2026-05-18)** : bug brand fonts en book corrigé par [quarto-dev/quarto-cli#14517](https://github.com/quarto-dev/quarto-cli/pull/14517) (mergé `main` 2026-05-15, fix à partir de la pre-release `v1.10.4`). Matériel adapté : `preparatifs.qmd` recommande la pre-release ; bloc `font-paths` sorti du modèle `_quarto.yml` participant (README Exo 2 + `2-projets/index.qmd`) et déplacé dans un callout dépliable « Polices brand pas chargées (Quarto < v1.10.4) » ; conservé en config active dans `correction/_quarto.yml` (défensif, anodin sur version fixée). TODO avant 16 juin : remplacer `v1.10.4+` par le numéro de pre-release réel dès publication.
+
 ### P2 — Cluster 3 reviews (issus de `review.md`)
 
 - [ ] **Wrap-up Bloc 2** : ajouter 3 slides (récap fin Bloc 1, next steps + ressources fin Bloc 2, Q&A) — ~5 min, gain pédagogique le plus important.

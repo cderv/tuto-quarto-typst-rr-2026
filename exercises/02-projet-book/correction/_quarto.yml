@@ -18,12 +18,12 @@ book:
 
 format:
   typst:
-    # Workaround Quarto book : les polices résolues par _brand.yml ne
-    # sont pas passées automatiquement à typst en mode book. À retirer
-    # quand le bug upstream est fixé.
+    # Workaround Quarto book + _brand.yml (bug corrigé par
+    # quarto-dev/quarto-cli#14517, fix incluse à partir de v1.10.4).
+    # Conservé ici pour que la correction fonctionne aussi sur Quarto
+    # 1.9.x et 1.10.0–1.10.3. Inoffensif sur version fixée.
     # - .quarto/typst/fonts : cache des polices Google (Inter)
-    # - _fonts              : polices locales référencées par
-    #                         `source: file` (Star Jedi)
+    # - _fonts              : polices locales `source: file` (Star Jedi)
     font-paths:
       - .quarto/typst/fonts
       - _fonts

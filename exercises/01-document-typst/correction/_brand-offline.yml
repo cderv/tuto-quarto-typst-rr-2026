@@ -1,9 +1,10 @@
 color:
   palette:
-    sw-yellow: "#FFE81F"
-    sw-black:  "#0B0B0F"
-    sw-cream:  "#F5F0E1"
-  primary:    sw-yellow
+    imperial-red: "#BC1E22"
+    sw-black:     "#0B0B0F"
+    sw-cream:     "#F5F0E1"
+    sw-yellow:    "#FFE81F"
+  primary:    imperial-red
   foreground: sw-black
   background: sw-cream
 
