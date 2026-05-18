@@ -92,14 +92,6 @@ book:
 
 format:
   typst:
-    # Workaround Quarto book : les polices résolues par _brand.yml ne
-    # sont pas passées automatiquement à typst en mode book. À retirer
-    # quand le bug upstream est fixé.
-    # - .quarto/typst/fonts : cache des polices Google (Inter)
-    # - _fonts              : polices locales `source: file` (Star Jedi)
-    font-paths:
-      - .quarto/typst/fonts
-      - _fonts
     # Logo personnalisé : sans cette section, Quarto place le logo
     # `_brand.yml` à 1.5in width / 0.75in padding par défaut, ce qui
     # chevauche les titres dès la 2e page.
@@ -118,6 +110,24 @@ execute:
 `chapters:` reçoit les fichiers numérotés normalement. `appendices:` (parallèle à `chapters:`, pas dedans) reçoit les fichiers qui sortent du flux principal — ils deviennent A, B, C... après tous les chapitres.
 
 ::: {.callout-warning collapse="true"}
+## Polices brand pas chargées (Quarto < v1.10.4)
+
+Sur **Quarto stable `1.9.x`** ou **pre-release `1.10.0` à `1.10.3`**, les polices déclarées dans `_brand.yml` ne sont pas passées automatiquement à Typst en mode `book` (titres en serif au lieu de Star Jedi, warning `unknown font family: ...` à la compilation). Bug corrigé par [quarto-dev/quarto-cli#14517](https://github.com/quarto-dev/quarto-cli/pull/14517), fix livré à partir de la pre-release `v1.10.4`.
+
+Si vous êtes sur une version concernée, ajoutez ce bloc dans `format.typst` de votre `_quarto.yml` :
+
+``` yaml
+format:
+  typst:
+    font-paths:
+      - .quarto/typst/fonts   # cache des polices Google (Inter)
+      - _fonts                # polices locales `source: file` (Star Jedi)
+```
+
+Sur Quarto `v1.10.4+`, ce bloc est inutile (anodin mais redondant).
+:::
+
+::: {.callout-warning collapse="true"}
 ## Bug `gt` à connaître (étape 3)
 
 Si vous voyez « 1 7 5 » au lieu de « 175 » dans les tableaux après avoir copié `_brand.yml` (typique sur Windows/macOS), c'est un bug connu de `gt` → Typst quand les polices de remplacement du tableau s'appliquent. **Correction** : ajoutez `|> opt_table_font(font = "Inter")` à la fin de votre pipeline `gt`. Non bloquant — vous pouvez continuer sans.
@@ -125,6 +135,18 @@ Si vous voyez « 1 7 5 » au lieu de « 175 » dans les tableaux après avoir co
 
 ::: {.callout-warning appearance="minimal"}
 Pas de `_brand.yml` ? Copiez les fichiers fournis : [`exercises/02-projet-book/_brand-fallback.yml`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/_brand-fallback.yml) (à renommer en `_brand.yml`) et [`exercises/02-projet-book/correction/_logo-sw.svg`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/correction/_logo-sw.svg).
+:::
+
+::: {.callout-tip collapse="true"}
+## Bonus 3 — Changer de palette Star Wars
+
+La correction propose 3 variantes de `_brand.yml` clés en main : Empire / Sith (rouge), Jedi / R2-D2 (bleu), Mandalorien (crimson). Pour swapper sans renommer de fichier, ajoutez dans `_quarto.yml` :
+
+``` yaml
+brand: _brand-jedi.yml
+```
+
+Détails et explication du choix de couleur (pourquoi pas le jaune SW iconique en `primary`) dans le [README de l'exercice](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/README.md#bonus-3--changer-de-palette-star-wars).
 :::
 
 ::: {.callout-warning collapse="true"}

@@ -1,10 +1,10 @@
 color:
   palette:
-    imperial-red: "#BC1E22"
-    sw-black:     "#0B0B0F"
-    sw-cream:     "#F5F0E1"
-    sw-yellow:    "#FFE81F"
-  primary:    imperial-red
+    mando-crimson: "#C83444"
+    sw-black:      "#0B0B0F"
+    sw-cream:      "#F5F0E1"
+    sw-yellow:     "#FFE81F"
+  primary:    mando-crimson
   foreground: sw-black
   background: sw-cream
 

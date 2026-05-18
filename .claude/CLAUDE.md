@@ -16,7 +16,7 @@ Site Quarto pour un tutoriel de 2h aux Rencontres R 2026 (16 juin, Nantes). Cont
 
 - `quarto preview` / `quarto render` → `_site/` (profile `tuto` actif par défaut)
 - `quarto render --profile pretuto` → `_site-pretuto/` (version réduite : accueil + préparatifs uniquement, pour partage avant le workshop)
-- Requiert Quarto 1.9+
+- Plancher : Quarto 1.9+ ; **pre-release `v1.10.4+` recommandée** depuis le 2026-05-18 (fix brand fonts book [quarto-dev/quarto-cli#14517](https://github.com/quarto-dev/quarto-cli/pull/14517)). Sur Quarto < `v1.10.4`, l'exercice 2 doit appliquer le workaround `font-paths` documenté dans le callout des supports.
 
 Les profiles `tuto` (complet) et `pretuto` (préparatifs only) sont définis dans `_quarto-tuto.yml` / `_quarto-pretuto.yml`. Group déclaré dans `_quarto.yml` — premier item (`tuto`) = défaut.
 

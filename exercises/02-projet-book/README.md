@@ -46,14 +46,6 @@ book:
 
 format:
   typst:
-    # Workaround Quarto book : les polices résolues par _brand.yml ne
-    # sont pas passées automatiquement à typst en mode book. À retirer
-    # quand le bug upstream est fixé.
-    # - .quarto/typst/fonts : cache des polices Google (Inter)
-    # - _fonts              : polices locales `source: file` (Star Jedi)
-    font-paths:
-      - .quarto/typst/fonts
-      - _fonts
     # Logo personnalisé : sans cette section, Quarto place le logo
     # `_brand.yml` à 1.5in width / 0.75in padding par défaut, ce qui
     # chevauche les titres dès la 2e page.
@@ -73,6 +65,30 @@ execute:
 (parallèle à `chapters:`, pas dedans) reçoit les fichiers qui sortent
 du flux principal — ils deviennent A, B, C... et viennent après tous
 les chapitres dans le PDF.
+
+::: {.callout-warning collapse="true"}
+## Polices brand pas chargées (Quarto < v1.10.4)
+
+Sur **Quarto stable `1.9.x`** ou **pre-release `1.10.0` à `1.10.3`**, les
+polices déclarées dans `_brand.yml` ne sont pas passées automatiquement à
+Typst en mode `book` (titres en serif au lieu de Star Jedi, warning
+`unknown font family: ...` à la compilation). Bug corrigé par
+[quarto-dev/quarto-cli#14517](https://github.com/quarto-dev/quarto-cli/pull/14517),
+fix livré à partir de la pre-release `v1.10.4`.
+
+Si vous êtes sur une version concernée, ajoutez ce bloc dans `format.typst`
+de votre `_quarto.yml` :
+
+```yaml
+format:
+  typst:
+    font-paths:
+      - .quarto/typst/fonts   # cache des polices Google (Inter)
+      - _fonts                # polices locales `source: file` (Star Jedi)
+```
+
+Sur Quarto `v1.10.4+`, ce bloc est inutile (anodin mais redondant).
+:::
 
 > ⚠️ **Bug `gt` à connaître (étape 3)** : si vous voyez « 1 7 5 » au lieu de
 > « 175 » dans les tableaux après avoir copié `_brand.yml` (typique sur
@@ -105,6 +121,38 @@ l'étape 3 :
 - [`correction/_logo-sw.svg`](correction/_logo-sw.svg) → copier sous le même nom
 
 C'est une copie 1:1 de la charte utilisée dans la correction.
+
+## Bonus 3 — Changer de palette Star Wars
+
+La correction propose 3 variantes de `_brand.yml` clés en main, toutes dans
+[`correction/`](correction/) :
+
+| Fichier | Identité | Couleur primaire |
+|---|---|---|
+| [`_brand-empire.yml`](correction/_brand-empire.yml) (= défaut) | Empire / Sith | Imperial Red `#BC1E22` |
+| [`_brand-jedi.yml`](correction/_brand-jedi.yml) | Jedi / R2-D2 | R2-D2 Blue `#2A5A97` |
+| [`_brand-mando.yml`](correction/_brand-mando.yml) | Mandalorien | Mando Crimson `#C83444` |
+
+Pour changer de palette sans renommer de fichiers, déclarez la variante
+choisie dans `_quarto.yml` :
+
+```yaml
+brand: _brand-jedi.yml
+```
+
+Quarto utilise cette charte au lieu du `_brand.yml` par défaut. Le logo
+SW et les polices Star Jedi / Inter restent identiques entre les
+variantes — seule la couleur primaire (couverture, titres, TOC, liens)
+change.
+
+> ℹ️ **Pourquoi pas le jaune SW iconique `#FFE81F` comme `primary` ?**
+> L'extension `orange-book` (auto-activée en `format: typst` + `type:
+> book`) utilise `brand-color.primary` à la fois pour la teinte de
+> couverture **et** pour le texte de la TOC / des titres / des liens.
+> Un jaune saturé sur fond cream devient illisible. Les 3 variantes
+> ci-dessus choisissent un `primary` sombre adapté au corps de texte ;
+> le jaune SW reste disponible dans la palette si vous voulez
+> l'utiliser ailleurs (graphiques, blocs custom).
 
 ## Et après ?
 

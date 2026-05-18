@@ -93,7 +93,7 @@ Add `_quarto.yml` with `type: book` and `format: typst`. Render. Apply brand.
 
 | Topic | Notes |
 |-------|-------|
-| `_brand.yml` + book = branded cover page | Visible in demo output, point it out — couverture orange-book + logo SW (commit C2) + Orbitron sur titres + Inter sur corps (workaround `font-paths: [.quarto/typst/fonts]` requis, présent dans le modèle participant depuis `d55526a`) |
+| `_brand.yml` + book = branded cover page | Visible in demo output, point it out — couverture orange-book + logo SW (commit C2) + Orbitron sur titres + Inter sur corps. Bug brand fonts en book corrigé upstream par [quarto-dev/quarto-cli#14517](https://github.com/quarto-dev/quarto-cli/pull/14517) (fix livré à partir de la pre-release `v1.10.4`) — workaround `font-paths: [.quarto/typst/fonts, _fonts]` désormais dans un callout dépliable côté participant + conservé en config défensive dans `correction/_quarto.yml` |
 | Per-file YAML override | "You can still override per file" |
 
 ### STORE — Cut from live, keep as reference

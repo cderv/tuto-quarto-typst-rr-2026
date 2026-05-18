@@ -1,5 +1,7 @@
 # Quarto issue draft — book + brand fonts not passed to typst compile
 
+> **Statut (2026-05-18) — RÉSOLU UPSTREAM** : corrigé par [quarto-dev/quarto-cli#14517](https://github.com/quarto-dev/quarto-cli/pull/14517) mergé sur `main` le 2026-05-15. Fix livré à partir de la pre-release `v1.10.4` (à publier). Stable `v1.9.37` et pre-releases `v1.10.0`–`v1.10.3` toujours buggées. Côté workshop : workaround sorti du modèle `_quarto.yml` participant et déplacé dans un callout dépliable « Quarto < `v1.10.4` » dans `exercises/02-projet-book/README.md` et `2-projets/index.qmd` ; conservé en config active dans `exercises/02-projet-book/correction/_quarto.yml` (défensif).
+
 > **Pour CD** : draft pour `quarto-dev/quarto-cli` issues. Reproduit dans une sandbox Linux propre (Quarto 1.9.36 + Typst 0.14.2 bundled). Logs et inspection de `quarto.js` ci-dessous.
 > Branche workshop où le repro existe : `claude/quarto-book-skeleton-qeDNI` — `exercises/02-projet-book/correction/`. Avant de filer, retirer la ligne `font-paths` pour reproduire (commit pré-workaround : `1b39468`).
 
@@ -18,7 +20,7 @@ When rendering a Quarto **book** (`project.type: book`) to **Typst** with **bran
 - Typst emits `warning: unknown font family: orbitron` (and `: inter` for body if used by template)
 - Headings fall back to the Typst default (Libertinus Serif) instead of the brand `headings` font
 
-## Reproduction
+## Reproductiongit push
 
 Minimal book project. No R chunks, no R packages, lipsum content only.
 
