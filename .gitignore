@@ -8,3 +8,5 @@ exercises/**/*_files/
 exercises/**/*.pdf
 
 /.quarto/
+
+/.luarc.json
