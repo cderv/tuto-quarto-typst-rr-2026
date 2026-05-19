@@ -225,19 +225,19 @@ C'est la démo live. Les participants suivent dans leur éditeur. Aller doucemen
 ::: callout-warning
 ## À vous !
 
-1.  Ouvrez `rapport-starwars.qmd` et ajoutez `format: typst`, puis rendez
-2.  Personnalisez avec des options : `papersize`, `toc`, `mainfont`...
-3.  Créez un `_brand.yml` avec vos couleurs et une police Google sur le corps (`base:`)
-4.  Ajoutez la police locale Star Jedi (`_fonts/Starjedi.ttf`, `source: file`) sur les titres (`headings:`)
-5.  Activez `keep-typ: true` et ouvrez le fichier `.typ` généré
+🎯 Transformer un `.qmd` HTML en PDF Typst stylé via `_brand.yml`.
+
+⏱ **12 minutes** — page boussole projetée à côté.
+
+📖 Consigne complète : [`1-quarto-typst/index.html`](index.qmd)
 :::
 
-{{< countdown 15:00 >}}
-
 ::: notes
-15 minutes. Passer dans les rangs pour aider. Les problèmes fréquents : oubli des guillemets sur les couleurs hex dans brand.yml, nom de police Google mal orthographié, indentation YAML, et **espacement parasite des chiffres dans le tableau gt** (bug `gt → Typst` côté Windows/macOS, workaround `gt::opt_table_font("Inter")` visible dans la correction).
+12 minutes. Ouvrir la page boussole `1-quarto-typst/boussole.html` dans un onglet à projeter à côté (countdown autonome). Passer dans les rangs pour aider les bloqués.
 
-**Étape 4 (Star Jedi)** : pour les participants bloqués sur la syntaxe `source: file` + `files:`, montrer rapidement le bloc dans `correction/_brand.yml` au tableau. Ne pas paniquer si certains zappent l'étape — le rendu reste correct sans (titres en police Google par défaut). C'est l'étape la plus « visuelle » de l'exo : tous les titres de section passent en lettres décoratives Star Jedi, effet immédiat. Si lisibilité dégradée sur « Top 5 des personnages les plus massifs » en Star Jedi : c'est attendu, choix décoratif assumé.
+Les problèmes fréquents : oubli des guillemets sur les couleurs hex dans brand.yml, nom de police Google mal orthographié, indentation YAML, et **espacement parasite des chiffres dans le tableau gt** (bug `gt → Typst` côté Windows/macOS, workaround `gt::opt_table_font("Inter")` visible dans la correction).
+
+**Étape 4 (Star Jedi)** : pour les participants bloqués sur la syntaxe `source: file` + `files:`, montrer rapidement le bloc dans `correction/_brand.yml` au tableau. Ne pas paniquer si certains zappent l'étape — le rendu reste correct sans (titres en police Google par défaut). C'est l'étape la plus « visuelle » de l'exo : tous les titres de section passent en lettres décoratives Star Jedi, effet immédiat.
 
 **Cue rapide pour les participants qui finissent vite** : leur dire « ouvrez `correction/rapport-starwars.qmd` et regardez les 3 derniers blocs `tab_style()` du tableau gt — les couleurs viennent de votre `_brand.yml` via `brand_color_pluck()` ». Ancre le message de la pépite "Une charte, partout" sur du code concret.
 :::
