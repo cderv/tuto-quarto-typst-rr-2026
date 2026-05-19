@@ -5,6 +5,8 @@
 library(dplyr)
 library(ggplot2)
 library(gt)
+library(brand.yml)
+brand <- read_brand_yml()
 ```
 
 Les colosses du chapitre précédent venaient d'horizons divers. Élargissons :
@@ -27,7 +29,33 @@ starwars |>
     homeworld = "Planete",
     n = "Personnages"
   ) |>
-  opt_table_font(font = "Inter")
+  theme_brand_gt(brand) |>
+  opt_table_font(font = "Inter") |>
+  tab_style(
+    style = list(
+      cell_fill(color = brand_color_pluck(brand, "sw_yellow")),
+      cell_text(weight = "bold",
+                color  = brand_color_pluck(brand, "foreground"))
+    ),
+    locations = cells_title()
+  ) |>
+  tab_style(
+    style = list(
+      cell_fill(color = brand_color_pluck(brand, "foreground")),
+      cell_text(color  = brand_color_pluck(brand, "background"),
+                weight = "bold")
+    ),
+    locations = cells_column_labels()
+  ) |>
+  # Ligne 1 (Naboo) : highlight de la planète la plus représentée
+  tab_style(
+    style = list(
+      cell_fill(color = brand_color_pluck(brand, "primary")),
+      cell_text(color  = brand_color_pluck(brand, "background"),
+                weight = "bold")
+    ),
+    locations = cells_body(rows = 1)
+  )
 ```
 
 Naboo et Tatooine se partagent le devant : la planète d'Amidala devance d'un
@@ -46,14 +74,16 @@ starwars |>
   count(species, sort = TRUE) |>
   slice_head(n = 8) |>
   ggplot(aes(x = reorder(species, n), y = n)) +
-  geom_col(fill = "#0B0B0F") +
+  # Barres en couleur primary du _brand.yml — suit un palette swap éventuel
+  geom_col(fill = brand_color_pluck(brand, "primary")) +
   coord_flip() +
   labs(
     x = NULL,
     y = "Personnages",
     title = "Top 8 des espèces représentées"
   ) +
-  theme_minimal(base_size = 11)
+  theme_minimal(base_size = 11) +
+  theme_brand_ggplot2(brand)
 ```
 
 Les humains dominent — saga « centrée humaine » comme on dit dans la
@@ -84,7 +114,33 @@ films_par_perso |>
     species = "Espece",
     n_films = "Films"
   ) |>
-  opt_table_font(font = "Inter")
+  theme_brand_gt(brand) |>
+  opt_table_font(font = "Inter") |>
+  tab_style(
+    style = list(
+      cell_fill(color = brand_color_pluck(brand, "sw_yellow")),
+      cell_text(weight = "bold",
+                color  = brand_color_pluck(brand, "foreground"))
+    ),
+    locations = cells_title()
+  ) |>
+  tab_style(
+    style = list(
+      cell_fill(color = brand_color_pluck(brand, "foreground")),
+      cell_text(color  = brand_color_pluck(brand, "background"),
+                weight = "bold")
+    ),
+    locations = cells_column_labels()
+  ) |>
+  # Ligne 1 (R2-D2) : highlight du personnage le plus présent
+  tab_style(
+    style = list(
+      cell_fill(color = brand_color_pluck(brand, "primary")),
+      cell_text(color  = brand_color_pluck(brand, "background"),
+                weight = "bold")
+    ),
+    locations = cells_body(rows = 1)
+  )
 ```
 
 **R2-D2** mène avec `r films_par_perso$n_films[1]` films, plus que

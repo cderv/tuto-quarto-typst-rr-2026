@@ -95,5 +95,7 @@ ggplot(sw, aes(x = height, y = mass)) +
     y = "Masse (kg, échelle log)",
     title = "Tailles et masses des personnages"
   ) +
-  theme_minimal(base_size = 11)
+  theme_minimal(base_size = 11) +
+  # Reprend fond/texte/grille du _brand.yml — comme la cover Typst
+  theme_brand_ggplot2(brand)
 ```
