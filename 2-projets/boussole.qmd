@@ -1,0 +1,38 @@
+---
+title: "🧭 Boussole — Exercice 2"
+subtitle: "Du document au livre PDF Typst brandé"
+format: html
+author: ""
+date: ""
+toc: false
+sidebar: false
+---
+
+::: {.callout-warning appearance="simple"}
+⏱ {{< countdown 12:00 start_immediately=true >}}
+:::
+
+## 🎯 Objectif
+
+Transformer 5 `.qmd` en un livre PDF Typst brandé via `_quarto.yml` + `_brand.yml`.
+
+## 📋 Étapes
+
+1. `_quarto.yml` avec `type: default` + `format: typst`
+2. Passer à `type: book` (orange-book s'active auto)
+3. Copier `_brand.yml` (+ logo + `_fonts/`) à la racine
+
+**Bonus** (pour les rapides) :
+
+- B1. Cross-refs `@fig-anatomie-mass` + `@sec-origines`
+- B2. Pagebreak conditionnel `content-visible when-format="typst"`
+
+## 🆘 Si vous bloquez
+
+1. Relire l'objectif + le "Vous devriez voir" de l'étape
+2. Sur la [page Exercice 2](index.qmd), ouvrir le collapse **💡 Indices doc** sous le tableau
+3. Ouvrir [`exercises/02-projet-book/correction/`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises/02-projet-book/correction)
+
+## 📖 Consigne complète
+
+[Page Exercice 2](index.qmd) — tableau, indices doc, modèle `_quarto.yml`, deep dives B3/B4, correction.
