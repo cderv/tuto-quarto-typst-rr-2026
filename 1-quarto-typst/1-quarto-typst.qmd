@@ -229,7 +229,7 @@ C'est la démo live. Les participants suivent dans leur éditeur. Aller doucemen
 
 ⏱ **12 minutes** — page boussole projetée à côté.
 
-📖 Consigne complète : [`1-quarto-typst/index.html`](index.qmd)
+📖 Consigne complète : [Page Exercice 1](index.qmd)
 :::
 
 ::: notes
