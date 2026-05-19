@@ -6,6 +6,9 @@ library(dplyr)
 library(ggplot2)
 library(ggrepel)
 library(gt)
+library(brand.yml)
+# Charge le _brand.yml du projet (racine du livre) → mêmes couleurs depuis R
+brand <- read_brand_yml()
 ```
 
 Le dataset `dplyr::starwars` recense 87 personnages de la saga, avec 14 variables
@@ -36,7 +39,35 @@ top_mass |>
     species = "Espece",
     homeworld = "Planete"
   ) |>
-  opt_table_font(font = "Inter")
+  theme_brand_gt(brand) |>
+  opt_table_font(font = "Inter") |>
+  # Bandeau titre : couleur secondaire de la charte (= sw_yellow ici)
+  tab_style(
+    style = list(
+      cell_fill(color = brand_color_pluck(brand, "sw_yellow")),
+      cell_text(weight = "bold",
+                color  = brand_color_pluck(brand, "foreground"))
+    ),
+    locations = cells_title()
+  ) |>
+  # En-têtes colonnes : foreground + background inversés
+  tab_style(
+    style = list(
+      cell_fill(color = brand_color_pluck(brand, "foreground")),
+      cell_text(color  = brand_color_pluck(brand, "background"),
+                weight = "bold")
+    ),
+    locations = cells_column_labels()
+  ) |>
+  # Ligne 1 (Jabba) : couleur primary de la charte (suit la palette swap)
+  tab_style(
+    style = list(
+      cell_fill(color = brand_color_pluck(brand, "primary")),
+      cell_text(color  = brand_color_pluck(brand, "background"),
+                weight = "bold")
+    ),
+    locations = cells_body(rows = 1)
+  )
 ```
 
 Sans surprise, **Jabba the Hutt** écrase tout le monde avec ses `r format(top_mass$mass[1], big.mark = " ")` kg.
