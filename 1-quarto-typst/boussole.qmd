@@ -9,7 +9,7 @@ sidebar: false
 ---
 
 ::: {.callout-warning appearance="simple"}
-## ⏱ {{< countdown 12:00 >}}
+⏱ {{< countdown 12:00 start_immediately=true >}}
 :::
 
 ## 🎯 Objectif
@@ -27,8 +27,8 @@ Transformer un rapport `.qmd` HTML en PDF Typst stylé via `_brand.yml`.
 ## 🆘 Si vous bloquez
 
 1. Relire l'objectif + le "Vous devriez voir" de l'étape
-2. Ouvrir le collapse **💡 Indices doc** sous le tableau
-3. Ouvrir `exercises/01-document-typst/correction/`
+2. Sur la [page Exercice 1](index.qmd), ouvrir le collapse **💡 Indices doc** sous le tableau
+3. Ouvrir [`exercises/01-document-typst/correction/`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/correction)
 
 ## 📖 Consigne complète
 
