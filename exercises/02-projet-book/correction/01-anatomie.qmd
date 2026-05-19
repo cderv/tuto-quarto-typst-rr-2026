@@ -90,7 +90,7 @@ sw <- starwars |>
 remarquables <- sw |> filter(categorie == "Cas remarquables")
 
 ggplot(sw, aes(x = height, y = mass, color = categorie)) +
-  geom_point(alpha = 0.7, size = 2) +
+  geom_point(alpha = 0.4, size = 2) +
   geom_text_repel(
     data = remarquables,
     aes(label = name),
