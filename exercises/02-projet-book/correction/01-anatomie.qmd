@@ -82,6 +82,8 @@ R2-D2 apparaît dans plus de films que n'importe quel humain — on y revient au
 #| fig-alt: "Nuage de points montrant la masse en fonction de la taille pour les 87 personnages de Star Wars. La masse est en échelle logarithmique. Deux cas remarquables sont colorés en rouge impérial et annotés : Jabba the Hutt en haut à droite, et Yoda en bas à gauche."
 sw <- starwars |>
   filter(!is.na(height), !is.na(mass)) |>
+  # `categorie` ne sert qu'à mapper la couleur dans aes(color = categorie).
+  # Les chaînes ci-dessous DOIVENT correspondre aux noms dans scale_color_manual.
   mutate(categorie = if_else(mass > 200 | name == "Yoda",
                              "Cas remarquables", "Autres"))
 
