@@ -1,0 +1,27 @@
+# Exercice 1 — Starter
+
+> Quick-ref opérationnel. La consigne complète est sur le site :
+> [Bloc 1 — PDF avec Typst](https://cderv.github.io/cderv-tuto-quarto-typst-rr-2026/1-quarto-typst/).
+
+## Contenu du dossier
+
+| Fichier | Rôle |
+|---|---|
+| `rapport-starwars.qmd` | **Fichier à éditer** — point de départ HTML, à transformer en PDF Typst |
+| `_fonts/Starjedi.ttf` | Police locale (étape 4) |
+
+## Rendu
+
+Depuis ce dossier :
+
+```bash
+quarto render rapport-starwars.qmd
+```
+
+Sortie initiale : `rapport-starwars.html` (format par défaut).
+Après ajout de `format: typst` : `rapport-starwars.pdf`.
+
+## Bloqué ?
+
+Cf. l'escalier d'autonomie sur le site (page exo) ou la
+[`correction/`](../correction/) en dernier recours.
