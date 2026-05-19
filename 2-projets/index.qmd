@@ -209,6 +209,8 @@ ggplot(...) +
 
 Vous devriez voir : bandeau titre jaune SW + en-têtes noir/crème + ligne 1 rouge impérial dans tous les tableaux, et fond crème + axes noirs sur les graphiques.
 
+![Aperçu du tableau « Les colosses de la galaxie » dans la correction : bandeau titre jaune SW (Star Jedi) au-dessus, sous-titre jaune également, en-têtes de colonnes en noir SW sur fond crème, ligne 1 (Jabba Desilijic Tiure) sur fond rouge impérial avec texte crème en gras, lignes suivantes en crème/noir.](2-gt.png){fig-alt="Tableau gt « Les colosses de la galaxie » rendu en PDF Typst avec le styling brand : bandeau titre jaune Star Wars, en-têtes noir SW, ligne Jabba surlignée en rouge impérial."}
+
 ::: callout-note
 ## Piège silencieux à connaître
 
