@@ -68,7 +68,34 @@ top_mass |>
   theme_brand_gt(brand) |>
   # opt_table_font : force Inter en tête de la liste de polices gt
   # → évite l'espacement parasite des chiffres (« 1 7 5 ») sur Windows/macOS
-  opt_table_font(font = "Inter")
+  opt_table_font(font = "Inter") |>
+  # Bandeau titre : jaune SW + texte noir gras
+  tab_style(
+    style = list(
+      cell_fill(color = brand_color_pluck(brand, "sw_yellow")),
+      cell_text(weight = "bold",
+                color  = brand_color_pluck(brand, "foreground"))
+    ),
+    locations = cells_title()
+  ) |>
+  # En-têtes colonnes : noir SW + texte crème gras
+  tab_style(
+    style = list(
+      cell_fill(color = brand_color_pluck(brand, "foreground")),
+      cell_text(color  = brand_color_pluck(brand, "background"),
+                weight = "bold")
+    ),
+    locations = cells_column_labels()
+  ) |>
+  # Ligne 1 (Jabba) : rouge impérial + texte crème gras
+  tab_style(
+    style = list(
+      cell_fill(color = brand_color_pluck(brand, "primary")),
+      cell_text(color  = brand_color_pluck(brand, "background"),
+                weight = "bold")
+    ),
+    locations = cells_body(rows = 1)
+  )
 ```
 
 Sans surprise, **Jabba the Hutt** écrase tout le monde avec ses `r format(top_mass$mass[1], big.mark = " ")` kg. Mais les vraies stars de la saga sont les `#highlight(fill: rgb("#FFE81F"))[droïdes]`{=typst} : R2-D2 apparaît dans plus de films que n'importe quel humain.
