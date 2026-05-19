@@ -137,6 +137,10 @@ Si vous voyez « 1 7 5 » au lieu de « 175 » dans les tableaux après avoir co
 Pas de `_brand.yml` ? Copiez les fichiers fournis : [`exercises/02-projet-book/_brand-fallback.yml`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/_brand-fallback.yml) (à renommer en `_brand.yml`) et [`exercises/02-projet-book/correction/_logo-sw.svg`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/correction/_logo-sw.svg).
 :::
 
+::: callout-note
+**Les Bonus 3 et 4 ci-dessous sont des « deep dives »** — à explorer après l'atelier si vous manquez de temps en séance.
+:::
+
 ::: {.callout-tip collapse="true"}
 ## Bonus 3 — Changer de palette Star Wars
 
