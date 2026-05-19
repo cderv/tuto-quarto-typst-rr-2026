@@ -93,26 +93,17 @@ Problèmes fréquents : mauvais chemin vers les chapitres, oubli du tiret devant
 ::: callout-warning
 ## À vous !
 
-**3 étapes principales** (12 min, attendues de tous) :
+🎯 Transformer 5 `.qmd` en livre PDF Typst brandé.
 
-1.  `_quarto.yml` avec `type: default` + `format: typst` → 5 PDF
-2.  Passer à `type: book` (format inchangé) → PDF unique
-3.  `_brand.yml` (+ `_logo-sw.svg`) à la racine → charte jaune SW
+⏱ **12 minutes** — page boussole projetée à côté.
 
-**2 bonus** (3 min, pour les rapides) :
+📖 Consigne complète : [Page Exercice 2](index.qmd)
 
-- B1. Références croisées `@fig-anatomie-mass` + `@sec-origines` dans `conclusion.qmd`
-- B2. `.content-visible when-format="typst"` + `{{</* pagebreak */>}}`
+> Pas de `_brand.yml` ? `_brand-fallback.yml` + `_logo-sw.svg` dispo dans le dossier exo.
 :::
-
-::: {.callout-warning appearance="minimal"}
-Pas de `_brand.yml` ? Copiez `_brand-fallback.yml` (à renommer) et `correction/_logo-sw.svg` à la racine. Voir la page Exercice 2.
-:::
-
-{{< countdown 15:00 >}}
 
 ::: notes
-15 minutes total : 12 min sur les 3 core + 3 min de bonus pour les rapides. Annoncer clairement que les bonus sont pour ceux qui ont fini, pas pour tout le monde
+12 min sur les 3 core + 3 min de bonus pour les rapides. Ouvrir la page boussole `2-projets/boussole.html` dans un onglet à projeter à côté (countdown autonome, démarre au chargement).
 
 Le fallback `_brand-fallback.yml` (+ `correction/_logo-sw.svg`) est important : ceux qui n'ont pas fini Bloc 1 peuvent les copier. Passer dans les rangs, repérer ceux qui peinent à l'étape 1 — souvent un underscore manquant.
 
