@@ -149,6 +149,63 @@ brand: _brand-jedi.yml
 Détails et explication du choix de couleur (pourquoi pas le jaune SW iconique en `primary`) dans le [README de l'exercice](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/README.md#bonus-3--changer-de-palette-star-wars).
 :::
 
+::: {.callout-tip collapse="true"}
+## Bonus 4 — Styler le tableau Colosses avec votre `_brand.yml`
+
+Le package R [`brand.yml`](https://posit-dev.github.io/brand-yml/pkg/r/) permet de lire votre charte depuis R. Couplé aux helpers `gt::tab_style()`, vous appliquez vos couleurs Star Wars au tableau sans dupliquer aucun hex.
+
+Dans `01-anatomie.qmd`, ajoutez `library(brand.yml)` au `setup-anatomie` puis chargez la charte :
+
+``` r
+brand <- read_brand_yml()
+```
+
+Et ajoutez à la fin de votre pipeline `gt` ces trois `tab_style()` :
+
+``` r
+top_mass |>
+  gt() |>
+  ... |>
+  theme_brand_gt(brand) |>
+  opt_table_font(font = "Inter") |>
+  tab_style(
+    style = list(
+      cell_fill(color = brand_color_pluck(brand, "sw_yellow")),
+      cell_text(weight = "bold",
+                color  = brand_color_pluck(brand, "foreground"))
+    ),
+    locations = cells_title()
+  ) |>
+  tab_style(
+    style = list(
+      cell_fill(color = brand_color_pluck(brand, "foreground")),
+      cell_text(color  = brand_color_pluck(brand, "background"),
+                weight = "bold")
+    ),
+    locations = cells_column_labels()
+  ) |>
+  tab_style(
+    style = list(
+      cell_fill(color = brand_color_pluck(brand, "primary")),
+      cell_text(color  = brand_color_pluck(brand, "background"),
+                weight = "bold")
+    ),
+    locations = cells_body(rows = 1)
+  )
+```
+
+Vous devriez voir le bandeau titre en jaune SW, les en-têtes inversés noir/crème, et la ligne Jabba en rouge impérial.
+
+**Combo avec Bonus 3** : si vous swappez le `_brand.yml`, la ligne Jabba suit la nouvelle couleur `primary` automatiquement — la charte pilote le PDF *et* le tableau R depuis un seul fichier.
+
+::: callout-note
+## Piège silencieux à connaître
+
+`brand.yml` normalise les clés palette `tiret-séparé` en `tiret_souligné` au read. Donc dans votre code R : `brand_color_pluck(brand, "sw_yellow")` (pas `"sw-yellow"`). En cas de typo, la fonction renvoie la chaîne d'entrée verbatim sans erreur — votre styling disparaît silencieusement du PDF.
+:::
+
+:::
+
 ::: {.callout-warning collapse="true"}
 ## Correction
 
