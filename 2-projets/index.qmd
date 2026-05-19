@@ -154,6 +154,8 @@ Détails et explication du choix de couleur (pourquoi pas le jaune SW iconique e
 
 Le package R [`brand.yml`](https://posit-dev.github.io/brand-yml/pkg/r/) lit votre charte depuis R. Couplé à `gt::tab_style()` et `theme_brand_ggplot2()`, vous appliquez vos couleurs Star Wars à tous les tableaux et graphiques du livre sans dupliquer aucun hex.
 
+**L'effet wow** : combinez ce bonus avec le Bonus 3 (swap palette). Une seule ligne YAML modifiée fait suivre les lignes 1 des tableaux, les barres du graphique espèces, et les annotations Jabba/Yoda du nuage taille-masse — la charte pilote le PDF *et* tous les outputs R depuis un seul fichier.
+
 **Étape 1 — Setup.** Dans le chunk `setup-*` de chaque chapitre, ajoutez :
 
 ``` r
@@ -161,7 +163,7 @@ library(brand.yml)
 brand <- read_brand_yml()
 ```
 
-**Étape 2 — Tableaux `gt`.** À la fin de chaque pipeline `gt`, ajoutez le bloc suivant (utilisable tel quel sur les 3 tableaux du livre — `01-anatomie.qmd` + `02-origines.qmd`) :
+**Étape 2 — Tableaux `gt`.** Les 3 `tab_style()` ci-dessous appliquent le même pattern (couleur → emplacement) : bandeau titre, en-têtes colonnes, ligne 1. Utilisable tel quel sur les 3 tableaux du livre (`01-anatomie.qmd` + `02-origines.qmd`) :
 
 ``` r
 ... |>
@@ -193,7 +195,9 @@ brand <- read_brand_yml()
   )
 ```
 
-**Étape 3 — Graphiques `ggplot2`.** Ajoutez `theme_brand_ggplot2(brand)` à la fin de chaque pipeline `ggplot()`. Remplacez les couleurs en dur par `brand_color_pluck(brand, "primary")` (utile pour le `geom_col` des espèces dans `02-origines.qmd`) :
+**Étape 3 — Graphiques `ggplot2`.** Ajoutez `theme_brand_ggplot2(brand)` à la fin de chaque pipeline `ggplot()`. Remplacez les couleurs en dur par `brand_color_pluck(brand, "primary")` (utile pour le `geom_col` des espèces dans `02-origines.qmd`).
+
+Pour une **légende à deux couleurs** (ex. Cas remarquables / Autres dans `01-anatomie.qmd`), le même principe s'applique via `scale_color_manual(values = c(...))` — voir la correction.
 
 ``` r
 ggplot(...) +
@@ -204,8 +208,6 @@ ggplot(...) +
 ```
 
 Vous devriez voir : bandeau titre jaune SW + en-têtes noir/crème + ligne 1 rouge impérial dans tous les tableaux, et fond crème + axes noirs sur les graphiques.
-
-**Combo avec Bonus 3** : swappez le `_brand.yml` — les lignes 1 des tableaux et les barres du graphique espèces suivent automatiquement la nouvelle couleur `primary`. La charte pilote le PDF *et* tous les outputs R depuis un seul fichier.
 
 ::: callout-note
 ## Piège silencieux à connaître
