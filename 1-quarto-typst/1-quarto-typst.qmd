@@ -238,6 +238,8 @@ C'est la démo live. Les participants suivent dans leur éditeur. Aller doucemen
 15 minutes. Passer dans les rangs pour aider. Les problèmes fréquents : oubli des guillemets sur les couleurs hex dans brand.yml, nom de police Google mal orthographié, indentation YAML, et **espacement parasite des chiffres dans le tableau gt** (bug `gt → Typst` côté Windows/macOS, workaround `gt::opt_table_font("Inter")` visible dans la correction).
 
 **Étape 4 (Star Jedi)** : pour les participants bloqués sur la syntaxe `source: file` + `files:`, montrer rapidement le bloc dans `correction/_brand.yml` au tableau. Ne pas paniquer si certains zappent l'étape — le rendu reste correct sans (titres en police Google par défaut). C'est l'étape la plus « visuelle » de l'exo : tous les titres de section passent en lettres décoratives Star Jedi, effet immédiat. Si lisibilité dégradée sur « Top 5 des personnages les plus massifs » en Star Jedi : c'est attendu, choix décoratif assumé.
+
+**Cue rapide pour les participants qui finissent vite** : leur dire « ouvrez `correction/rapport-starwars.qmd` et regardez les 3 derniers blocs `tab_style()` du tableau gt — les couleurs viennent de votre `_brand.yml` via `brand_color_pluck()` ». Ancre le message de la pépite "Une charte, partout" sur du code concret.
 :::
 
 ## Saviez-vous que...
@@ -247,6 +249,7 @@ C'est la démo live. Les participants suivent dans leur éditeur. Aller doucemen
 
 - **Blocs raw Typst** — Besoin de Typst natif ? Utilisez ```` ```{=typst} ```` pour injecter du code Typst directement dans votre `.qmd`
 - **Vos tableaux fonctionnent** — Les tableaux `gt` (R) et `Great Tables` (Python) avec du CSS sont traduits automatiquement en Typst par Quarto
+- **Une charte, partout** — Lisez `_brand.yml` depuis R via `brand_color_pluck(brand, "ma_couleur")` : les couleurs de votre PDF, de vos graphes `ggplot` et de vos tableaux `gt` viennent du même fichier
 - **PDF accessible en une ligne** — Ajoutez `pdf-standard: ua-1` dans le YAML pour un PDF conforme au standard d'accessibilité PDF/UA-1
 :::
 
