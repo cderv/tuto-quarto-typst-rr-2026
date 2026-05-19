@@ -78,24 +78,34 @@ R2-D2 apparaît dans plus de films que n'importe quel humain — on y revient au
 
 ```{r}
 #| label: fig-anatomie-mass
-#| fig-cap: "Taille et masse des personnages — Jabba en valeur aberrante (échelle log)"
-#| fig-alt: "Nuage de points montrant la masse en fonction de la taille pour les 87 personnages de Star Wars. La masse est en échelle logarithmique. Jabba the Hutt apparaît nettement séparé du nuage principal en haut à droite."
-sw <- starwars |> filter(!is.na(height), !is.na(mass))
+#| fig-cap: "Taille et masse des personnages — Jabba et Yoda mis en évidence (échelle log)"
+#| fig-alt: "Nuage de points montrant la masse en fonction de la taille pour les 87 personnages de Star Wars. La masse est en échelle logarithmique. Deux cas remarquables sont colorés en rouge impérial et annotés : Jabba the Hutt en haut à droite, et Yoda en bas à gauche."
+sw <- starwars |>
+  filter(!is.na(height), !is.na(mass)) |>
+  mutate(categorie = if_else(mass > 200 | name == "Yoda",
+                             "Cas remarquables", "Autres"))
 
-ggplot(sw, aes(x = height, y = mass)) +
-  geom_point(alpha = 0.6, size = 2) +
+remarquables <- sw |> filter(categorie == "Cas remarquables")
+
+ggplot(sw, aes(x = height, y = mass, color = categorie)) +
+  geom_point(alpha = 0.7, size = 2) +
   geom_text_repel(
-    data = sw |> filter(mass > 200 | name == "Yoda"),
+    data = remarquables,
     aes(label = name),
-    size = 3, min.segment.length = 0
+    size = 3, min.segment.length = 0,
+    show.legend = FALSE
   ) +
+  scale_color_manual(values = c(
+    "Autres"           = brand_color_pluck(brand, "foreground"),
+    "Cas remarquables" = brand_color_pluck(brand, "primary")
+  )) +
   scale_y_log10(labels = scales::label_number(big.mark = " ")) +
   labs(
     x = "Taille (cm)",
     y = "Masse (kg, échelle log)",
-    title = "Tailles et masses des personnages"
+    title = "Tailles et masses des personnages",
+    color = NULL
   ) +
   theme_minimal(base_size = 11) +
-  # Reprend fond/texte/grille du _brand.yml — comme la cover Typst
   theme_brand_ggplot2(brand)
 ```
