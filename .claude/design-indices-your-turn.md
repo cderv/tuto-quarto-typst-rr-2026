@@ -1,6 +1,7 @@
 # Design — Indices / liens doc dans les Your Turn
 
-> **Statut :** brouillon ouvert. À retravailler en session dédiée.
+> **Statut :** **SUPERSEDED** par `.claude/design-your-turn-refonte.md` (2026-05-19).
+> Conservé pour historique (inventaire docs lignes 49-67 toujours utile, repris dans le nouveau design).
 > **Origine :** échange Chris 2026-05-19, suite scope brand R complet (commits 7ccc43d → 6a62267).
 
 ## Idée
