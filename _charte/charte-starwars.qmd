@@ -1,0 +1,112 @@
+---
+title: ""
+format:
+  typst:
+    papersize: a4
+    margin:
+      x: 1.5cm
+      y: 1.5cm
+    font-paths:
+      - _fonts
+    section-numbering: ""
+    toc: false
+---
+
+```{=typst}
+#grid(
+  columns: (5cm, 1fr),
+  column-gutter: 0.3cm,
+  [],
+  [
+    #text(weight: "bold", size: 22pt, fill: rgb("#BC1E22"), font: "Inter")[CHARTE GRAPHIQUE]
+    #v(0.05cm)
+    #text(size: 11pt, font: "Inter")[*Saga Star Wars* — brand guidelines pour l'atelier RR 2026]
+  ],
+)
+
+#v(0.4cm)
+#line(length: 100%, stroke: 0.5pt + rgb("#0B0B0F"))
+#v(0.1cm)
+```
+
+## Palette
+
+```{=typst}
+#let swatch(name, hex) = box(width: 4.2cm)[
+  #rect(fill: rgb(hex), width: 100%, height: 1.4cm, radius: 2pt, stroke: 0.3pt + rgb("#0B0B0F"))
+  #v(-0.2cm)
+  #text(size: 9pt, font: "Inter")[
+    #raw(name) \
+    #raw(hex)
+  ]
+]
+
+#grid(
+  columns: (1fr, 1fr, 1fr, 1fr),
+  column-gutter: 0.3cm,
+  swatch("imperial-red", "#BC1E22"),
+  swatch("sw-black", "#0B0B0F"),
+  swatch("sw-cream", "#F5F0E1"),
+  swatch("sw-yellow", "#FFE81F"),
+)
+```
+
+**Assignments** &nbsp;·&nbsp; `primary: imperial-red` &nbsp;·&nbsp; `foreground: sw-black` &nbsp;·&nbsp; `background: sw-cream`
+
+*Note : `sw-yellow` reste dans la palette (utile pour accents ponctuels) — mais pas en `primary` (contraste trop faible sur fond crème).*
+
+## Typographie
+
+```{=typst}
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 0.8cm,
+  [
+    #text(font: "Star Jedi", size: 18pt, fill: rgb("#BC1E22"))[THE SAGA AWAKENS]
+    #v(0.2cm)
+    #text(size: 10pt, font: "Inter")[
+      *Star Jedi* — locale \
+      Fichier : `_fonts/Starjedi.ttf` \
+      Usage : `typography.headings`
+    ]
+  ],
+  [
+    #text(font: "Inter", size: 13pt)[
+      Anatomie d'une saga : qui sont les colosses de la galaxie ? Le dataset `dplyr::starwars` recense 87 personnages.
+    ]
+    #v(0.2cm)
+    #text(size: 10pt, font: "Inter")[
+      *Inter* — Google Fonts \
+      Source : `google` (poids 400, 600) \
+      Usage : `typography.base`
+    ]
+  ],
+)
+```
+
+## Logo
+
+```{=typst}
+#grid(
+  columns: (3cm, 1fr),
+  column-gutter: 0.8cm,
+  align(center + horizon)[#image("_logo-sw.svg", width: 2.5cm)],
+  [
+    #v(0.3cm)
+    #text(size: 10pt, font: "Inter")[
+      Fichier : `_logo-sw.svg` (étoile jaune, contour noir) \
+      Alt-text : `"Étoile jaune Star Wars"` \
+      Usage : `logo.images.sw-star` → `logo.medium`
+    ]
+  ],
+)
+```
+
+```{=typst}
+#v(1fr)
+#line(length: 100%, stroke: 0.3pt + rgb("#0B0B0F"))
+#v(0.1cm)
+#text(size: 8pt, font: "Inter", style: "italic")[
+  Ce document est lui-même un PDF Typst rendu via #raw("_brand.yml"). À vous de jouer : transcrivez cette charte en YAML, puis rendez votre rapport.
+]
+```

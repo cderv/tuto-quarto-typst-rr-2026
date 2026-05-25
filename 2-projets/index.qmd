@@ -55,7 +55,7 @@ Fichier : {{< fa download >}} [exercises/02-projet-book/starter/](https://github
 | 1 | Créer `_quarto.yml` à la racine du starter avec `project: { type: default }` et `format: typst`. | 5 PDF séparés (un par fichier). |
 | 2a | Passer à `type: book` et ajouter `book: { title, chapters: [...] }`. Le `format: typst` reste — orange-book s'active automatiquement. | **PDF unique** + couverture orange-book + Figure 1.1 / Figure 2.1 / Table 1.1 / Table 2.1 + TOC. `annexe-donnees` apparaît comme dernier chapitre numéroté. |
 | 2b | Ajouter `appendices: [annexe-donnees.qmd]` au bloc `book:`. | `annexe-donnees` bascule en « Annexe A » à la fin du livre, hors numérotation des chapitres. |
-| 3 | Copier `_brand.yml` (+ `_logo-sw.svg` + `_fonts/`) à la racine. | Couverture jaune Star Wars + logo, titres Star Jedi, corps Inter, tableaux `gt` re-stylés. |
+| 3 | Copier `_brand.yml` (+ `_logo-sw.svg` + `_fonts/`) à la racine. Sans `_brand.yml` du Bloc 1 ? Le starter contient `charte-starwars.pdf` (référence visuelle) et le repo fournit [`_brand-fallback.yml`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/_brand-fallback.yml) à transcrire/renommer. | Couverture jaune Star Wars + logo, titres Star Jedi, corps Inter, tableaux `gt` re-stylés. |
 
 **+ 2 bonus (3 min, pour les rapides) :**
 
