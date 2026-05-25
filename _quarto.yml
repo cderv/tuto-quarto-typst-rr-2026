@@ -2,6 +2,7 @@ project:
   type: website
   resources:
     - "exercises/**"
+    - "_charte/charte-starwars.pdf"
 
 website:
   title: "PDF sans frictions : Typst dans vos projets Quarto"
