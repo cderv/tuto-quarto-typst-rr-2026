@@ -9,11 +9,14 @@ Avant le tutoriel, merci de préparer votre environnement de travail.
 
 ## Installation
 
-- **Quarto** :
-    - **Recommandé** : [pre-release `v1.10.4` ou supérieure](https://quarto.org/docs/download/prerelease.html) — contient la correction du bug brand fonts + livre Typst ([quarto-dev/quarto-cli#14517](https://github.com/quarto-dev/quarto-cli/pull/14517)).
-    - **Plancher** : [stable `1.9` ou supérieure](https://quarto.org/docs/get-started) — fonctionnera, mais le workshop signalera un workaround à appliquer à l'étape brand de l'exercice 2.
 - **Dernier R 4** : <https://cran.r-project.org> ou avec [rig](https://github.com/r-lib/rig).
 - **RStudio** (dernière version) ou **VS Code** / **Positron**
+- **Quarto** :
+  - **Recommandé** : [pre-release `v1.10.4` ou supérieure](https://quarto.org/docs/download/prerelease.html) — contient des corrections de bugs.
+  - **Plancher** : [stable `1.9` ou supérieure](https://quarto.org/docs/get-started) — fonctionnera, mais le workshop signalera un workaround à appliquer à l'étape de l'exercice 2. 
+  
+  **RStudio** inclut Quarto donc rien de plus à installer.
+
 - **Packages R** :
 
 ``` r
