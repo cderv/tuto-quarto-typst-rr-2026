@@ -52,8 +52,6 @@ format:
 execute:
   freeze: auto
 
-editor: visual
-
 profile:
   group:
     - [tuto, pretuto]
