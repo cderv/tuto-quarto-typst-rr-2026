@@ -1,0 +1,3 @@
+project:
+  type: default
+  post-render: _post-render.R
