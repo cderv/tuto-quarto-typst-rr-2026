@@ -5,7 +5,6 @@ institute: "Posit / rOpenSci"
 author: "Christophe Dervieux & Maëlle Salmon"
 date: "2026-06-16"
 format: clean-revealjs
-editor: visual
 ---
 
 ## Le rythme du tutoriel
