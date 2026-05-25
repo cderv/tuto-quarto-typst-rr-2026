@@ -8,8 +8,9 @@
 | Fichier | Rôle |
 |---|---|
 | `rapport-starwars.qmd` | **Fichier à éditer** — point de départ HTML, à transformer en PDF Typst |
+| `charte-starwars.pdf` | **Charte graphique** à transcrire en `_brand.yml` (étapes 3-4) |
 | `_fonts/Starjedi.ttf` | Police locale (étape 4) |
-| _(pas de `_brand.yml`)_ | **À créer aux étapes 3-4** |
+| _(pas de `_brand.yml`)_ | **À créer aux étapes 3-4** d'après la charte |
 
 ### Rendu
 

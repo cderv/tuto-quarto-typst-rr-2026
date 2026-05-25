@@ -12,8 +12,9 @@
 | `02-origines.qmd` | Chapitre 2 (à garder) |
 | `conclusion.qmd` | Conclusion (à garder) |
 | `annexe-donnees.qmd` | Sera basculé en annexe à l'étape 2b |
+| `charte-starwars.pdf` | **Charte graphique** Star Wars (référence visuelle pour l'étape 3) |
 | _(pas de `_quarto.yml`)_ | **À créer à l'étape 1** |
-| _(pas de `_brand.yml`)_ | **À copier à l'étape 3** |
+| _(pas de `_brand.yml`)_ | **À copier à l'étape 3** (ou transcrire d'après la charte) |
 
 ### Rendu
 
