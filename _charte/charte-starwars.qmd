@@ -10,11 +10,16 @@ format:
       - _fonts
     section-numbering: ""
     toc: false
+    logo:
+      path: sw-star
+      location: left-top
+      width: 0.6in
+      padding: 0.4in
 ---
 
 ```{=typst}
 #grid(
-  columns: (5cm, 1fr),
+  columns: (2.8cm, 1fr),
   column-gutter: 0.3cm,
   [],
   [
