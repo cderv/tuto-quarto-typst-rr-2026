@@ -11,18 +11,16 @@ Ce dossier contient le source du **PDF de charte graphique** distribué dans les
 | `_logo-sw.svg` | Logo étoile jaune |
 | `_fonts/Starjedi.ttf` | Police titres (locale) |
 
-## Pipeline (manuel)
+## Pipeline
 
 Après modification :
 
 ```bash
 cd _charte
-quarto render charte-starwars.qmd
-cp charte-starwars.pdf ../exercises/01-document-typst/starter/
-cp charte-starwars.pdf ../exercises/02-projet-book/starter/
+quarto render
 ```
 
-Le PDF généré est committé dans les deux `starter/` pour que les participant·e·s l'aient sans avoir à le rendre.
+Le script `_post-render.R` (déclaré dans `_quarto.yml` via `post-render`) copie automatiquement le PDF rendu vers les deux `starter/`. Le PDF est committé dans les deux dossiers pour que les participant·e·s l'aient sans avoir à le rendre.
 
 ## Choix de design
 
