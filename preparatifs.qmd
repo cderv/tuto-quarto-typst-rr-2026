@@ -47,6 +47,8 @@ library(dplyr)
 head(starwars)
 ```
 
+Si la version de quarto n'est pas celle attendue, alors utilisez `quarto::quarto_binary_sitrep(debug = TRUE)` pour aider à diagnostiquer.
+
 ## Test de la chaîne Typst
 
 La vérification ci-dessus n'exécute que du R. Pour valider que **Quarto + Typst + gt + ggplot** s'enchaînent bien sur votre machine, rendez le mini-fichier de test fourni dans le dépôt :
