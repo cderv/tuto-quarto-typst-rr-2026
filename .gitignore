@@ -6,6 +6,7 @@
 exercises/**/*.typ
 exercises/**/*_files/
 exercises/**/*.pdf
+!exercises/**/charte-starwars.pdf
 
 /.quarto/
 

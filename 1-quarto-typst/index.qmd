@@ -48,14 +48,16 @@ On construit ensemble un PDF Typst stylé :
 
 Fichier : {{< fa download >}} [exercises/01-document-typst/starter/](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/starter)
 
+📄 **Charte fournie :** `charte-starwars.pdf` (dans le starter) — palette, polices, logo et assignments à transcrire en YAML.
+
 **4 étapes principales (12 min) — attendues de tous :**
 
 | \# | Action | Vous devriez voir |
 |----|---------------------------------------|-----------------------------------------|
 | 1 | Ouvrir `rapport-starwars.qmd`, ajouter `format: typst`, rendre. | PDF généré à la place du HTML, polices et marges par défaut Typst. |
 | 2 | Personnaliser avec des options : `papersize`, `toc`, `mainfont`... | TOC en tête, marges/format adaptés, police corps modifiée. |
-| 3 | Créer `_brand.yml` avec `color: { primary: "#…" }` (+ `secondary` au choix) et une police Google sous `typography.fonts` puis `typography.base`. | Couleurs `primary`/`secondary` visibles (titres, liens), police corps Google appliquée. |
-| 4 | Ajouter la police locale Star Jedi (`_fonts/Starjedi.ttf`, `source: file`) sur `typography.headings`. | Titres de section en lettres décoratives Star Jedi. |
+| 3 | Créer `_brand.yml` en transcrivant la **charte Star Wars** fournie (`charte-starwars.pdf` dans le starter) : palette + assignments + police Google sous `typography.fonts` puis `typography.base`. | Couleurs palette visibles (titres, liens), police corps Google appliquée, logo en haut-gauche. |
+| 4 | Ajouter la police locale Star Jedi (`_fonts/Starjedi.ttf`, `source: file`) sur `typography.headings` — cf. section Typographie de la charte. | Titres de section en lettres décoratives Star Jedi. |
 
 **+ Bonus inspection (si temps restant) :**
 

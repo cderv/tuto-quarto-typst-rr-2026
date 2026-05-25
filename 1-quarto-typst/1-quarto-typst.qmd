@@ -206,7 +206,7 @@ Parler des helpers R `theme_brand_*()`.
 1.  Ouvrez `rapport-starwars.qmd` dans votre éditeur
 2.  Ajoutez `format: typst` et rendez le document
 3.  Ajoutez quelques options (`toc`, `mainfont`, `papersize`...)
-4.  Créez un `_brand.yml` avec 2 couleurs et une police Google sur le corps
+4.  Créez un `_brand.yml` en suivant la **charte Star Wars** (`charte-starwars.pdf` du starter) : palette + police Google sur le corps
 5.  Ajoutez la police locale Star Jedi (TTF dans `_fonts/`) sur les titres de section via `source: file`
 6.  Activez `keep-typ: true` et explorez le fichier `.typ` généré
 :::
@@ -225,6 +225,8 @@ C'est la démo live. Les participants suivent dans leur éditeur. Aller doucemen
 ## À vous !
 
 🎯 Transformer un `.qmd` HTML en PDF Typst stylé via `_brand.yml`.
+
+📄 **Charte fournie** : `charte-starwars.pdf` dans le starter (palette + polices + logo + assignments).
 
 ⏱ **12 minutes** — page boussole projetée à côté.
 
