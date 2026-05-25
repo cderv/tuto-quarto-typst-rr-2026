@@ -50,8 +50,8 @@ Fichier : {{< fa download >}} [exercises/01-document-typst/starter/](https://git
 
 **4 étapes principales (12 min) — attendues de tous :**
 
-| # | Action | Vous devriez voir |
-|---|--------|-------------------|
+| \# | Action | Vous devriez voir |
+|----|---------------------------------------|-----------------------------------------|
 | 1 | Ouvrir `rapport-starwars.qmd`, ajouter `format: typst`, rendre. | PDF généré à la place du HTML, polices et marges par défaut Typst. |
 | 2 | Personnaliser avec des options : `papersize`, `toc`, `mainfont`... | TOC en tête, marges/format adaptés, police corps modifiée. |
 | 3 | Créer `_brand.yml` avec `color: { primary: "#…" }` (+ `secondary` au choix) et une police Google sous `typography.fonts` puis `typography.base`. | Couleurs `primary`/`secondary` visibles (titres, liens), police corps Google appliquée. |
@@ -59,10 +59,9 @@ Fichier : {{< fa download >}} [exercises/01-document-typst/starter/](https://git
 
 **+ Bonus inspection (si temps restant) :**
 
-| # | Action | Vous devriez voir |
-|---|--------|-------------------|
+| \# | Action | Vous devriez voir |
+|----|-----------------------------|-----------------------------------------|
 | B1 | Activer `keep-typ: true`, ouvrir le `.typ` généré. | Fichier `.typ` à côté du PDF, syntaxe Typst lisible (`= titre`, `#strong[...]`, etc.). |
-
 :::
 
 ::: {.callout-tip collapse="true"}
@@ -72,15 +71,15 @@ Fichier : {{< fa download >}} [exercises/01-document-typst/starter/](https://git
 - **Étape 2** ([options Typst](https://quarto.org/docs/output-formats/typst.html#format-options)) — section "Format Options". Référence complète : [reference/formats/typst](https://quarto.org/docs/reference/formats/typst.html).
 - **Étape 3** ([`_brand.yml`](https://quarto.org/docs/authoring/brand.html)) — sections "Color" et "Typography" ; spec complète sur [brand-yml](https://posit-dev.github.io/brand-yml/).
 - **Étape 4** ([typography](https://posit-dev.github.io/brand-yml/brand/typography.html)) — chercher `source: file`.
-- **Bonus B1** ([`keep-typ`](https://quarto.org/docs/output-formats/typst.html)) — chercher "keep-typ" dans la page.
+- **Bonus B1** ([`keep-typ`](https://quarto.org/docs/output-formats/typst.html?q=keep-typ)) — Pour voir le fichier `.typ`
 :::
 
 ::: callout-caution
-## 🆘 Si vous bloquez après ~5 min sur une étape
+## 🆘 Si vous bloquez après \~5 min sur une étape
 
-1. Relisez l'objectif + le "Vous devriez voir" de l'étape.
-2. Ouvrez le collapse **💡 Indices doc** ci-dessus.
-3. Ouvrez [`exercises/01-document-typst/correction/`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/correction) (filet final).
+1.  Relisez l'objectif + le "Vous devriez voir" de l'étape.
+2.  Ouvrez le collapse **💡 Indices doc** ci-dessus.
+3.  Ouvrez [`exercises/01-document-typst/correction/`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/correction) (filet final).
 :::
 
 ### Quick-ref starter
