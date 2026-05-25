@@ -27,13 +27,9 @@ Ce tutoriel vous apprendra à produire des **documents PDF professionnels** avec
 ::: programme
 - {{< fa file-pdf >}} [Bloc 1 — Un PDF pro en quelques minutes](1-quarto-typst/index.qmd)
 
-  `format: typst`, options essentielles, `keep-typ: true`, `_brand.yml`
-
 - *☕ Pause*
 
 - {{< fa folder >}} [Bloc 2 — Passer à l'échelle : projet et livre](2-projets/index.qmd)
-
-  `_quarto.yml`, `type: book`, `_brand.yml` au niveau projet
 :::
 
 ## Instructeurs
