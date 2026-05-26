@@ -2,7 +2,7 @@
 
 ## Qui suis-je
 
-Christophe Dervieux, ingénieur open-source à Posit (R Markdown, Quarto). Co-animation avec Maëlle Salmon (rOpenSci). Je pilote le programme, Maëlle donne du feedback.
+Christophe Dervieux, ingénieur open-source à Posit (R Markdown, Quarto). Maëlle Salmon (rOpenSci / cynkra) co-conçoit le contenu et **aide en salle pendant les exercices** (passe dans les rangs, pas d'animation au tableau). CD pilote le programme et toute l'animation.
 
 ## Le projet
 

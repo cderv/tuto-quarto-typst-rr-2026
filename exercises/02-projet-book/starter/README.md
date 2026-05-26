@@ -31,8 +31,8 @@ Après les 3 étapes : un livre PDF Typst unique, stylé.
 
 Copiez à la racine du projet :
 
-- [`_brand-fallback.yml`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/_brand-fallback.yml) → renommer en `_brand.yml`
-- [`correction/_logo-sw.svg`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/correction/_logo-sw.svg)
+- [`_brand-starter.yml`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/_brand-starter.yml) → renommer en `_brand.yml`
+- [`_logo-sw.svg`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/_logo-sw.svg)
 
 ### Bloqué ?
 

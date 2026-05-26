@@ -133,9 +133,14 @@ quarto render
 
 **À dire** :
 
-> "Le saut est planté : `project → book` active orange-book et fait apparaître la structure livre. À vous maintenant : basculer `annexe-donnees` en annexe (champ `appendices`), copier votre `_brand.yml` du Bloc 1 (ou `_brand-fallback.yml`) pour réveiller la charte Star Wars au niveau projet, et les bonus si vous avez le temps. 12 minutes."
+> "Le saut est planté : `project → book` active orange-book et fait apparaître la structure livre. À vous maintenant : basculer `annexe-donnees` en annexe (champ `appendices`), copier votre `_brand.yml` du Bloc 1 (ou `_brand-starter.yml`) pour réveiller la charte Star Wars au niveau projet, et les bonus si vous avez le temps. 12 minutes."
 
 **Action écran** : passer à la slide "Exercice 2 — À vous !" + ouvrir `2-projets/boussole.html` sur écran secondaire (countdown).
+
+**Rôles pendant les 12 min de Your turn** :
+
+- **Maëlle** passe dans les rangs et dépanne en 1:1 (pièges anticipés ci-dessous = aide-mémoire pour elle aussi).
+- **CD** reste disponible au tableau pour rebondir sur les questions communes (le saut conceptuel `type: book`, `appendices` vs `chapters`).
 
 ---
 

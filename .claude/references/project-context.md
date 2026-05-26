@@ -35,7 +35,7 @@ exercises/
   02-projet-book/
     starter/                # 5 .qmd, sans _quarto.yml (étape 1 participant)
     correction/             # _quarto.yml + _brand.yml + _logo-sw.svg + 5 .qmd
-    _brand-fallback.yml     # Copie 1:1 pour participants n'ayant pas fini Exo 1
+    _brand-starter.yml     # Copie 1:1 pour participants n'ayant pas fini Exo 1
     README.md
 review.md                   # Reviews vague 1 archivées
 review-2026-05-04-content.md            # Review post-polish session 2026-05-04

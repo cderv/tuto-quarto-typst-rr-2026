@@ -262,7 +262,7 @@ color:
 :::
 
 ::: notes
-12 minutes. Ouvrir la page boussole `1-quarto-typst/boussole.html` dans un onglet à projeter à côté (countdown autonome). Passer dans les rangs pour aider les bloqué·e·s.
+12 minutes. Ouvrir la page boussole `1-quarto-typst/boussole.html` dans un onglet à projeter à côté (countdown autonome). Maëlle passe dans les rangs pour aider les bloqué·e·s ; CD reste disponible au tableau pour rebondir sur les questions communes.
 
 Les problèmes fréquents : oubli des guillemets sur les couleurs hex dans brand.yml, nom de police Google mal orthographié, indentation YAML, et **espacement parasite des chiffres dans le tableau gt** (bug `gt → Typst` côté Windows/macOS, workaround `gt::opt_table_font("Inter")` visible dans la correction).
 

@@ -271,7 +271,7 @@ qui survit même si la pépite « Saviez-vous que… » saute pour timing :
   (non dans le starter — promesse README étape 4 : « pour propager la
   charte aux figures ggplot et tableaux gt, voir correction »)
 - Progressive : Exo 2 réutilise/promeut le `_brand.yml` + logo SW
-  d'Exo 1 au niveau projet ; `_brand-fallback.yml` à la racine d'Exo 2
+  d'Exo 1 au niveau projet ; `_brand-starter.yml` à la racine d'Exo 2
   pour ceux n'ayant pas fini Exo 1
 - Base file Bloc 1 : `rapport-starwars.qmd` (1-2 pages, gt + scatter
   ggplot Jabba labellé). Logo SW (`_logo-sw.svg`) en filigrane

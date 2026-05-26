@@ -22,8 +22,8 @@ Sur le site : [Bloc 2 — Projets & book](https://cderv.github.io/cderv-tuto-qua
 
 Pas grave. Copiez ces 2 fichiers à la racine de votre projet :
 
-- [`_brand-fallback.yml`](_brand-fallback.yml) → renommer en `_brand.yml`
-- [`correction/_logo-sw.svg`](correction/_logo-sw.svg) → copier sous le même nom
+- [`_brand-starter.yml`](_brand-starter.yml) → renommer en `_brand.yml`
+- [`_logo-sw.svg`](_logo-sw.svg) → copier sous le même nom dans votre projet
 
 C'est une copie 1:1 de la charte utilisée dans la correction.
 
