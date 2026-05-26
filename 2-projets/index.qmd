@@ -138,7 +138,7 @@ execute:
 `chapters:` reçoit les fichiers numérotés normalement. `appendices:` (parallèle à `chapters:`, pas dedans) reçoit les fichiers qui sortent du flux principal — ils deviennent A, B, C... après tous les chapitres.
 
 ::: {.callout-warning collapse="true"}
-## Polices brand pas chargées (Quarto < v1.10.4)
+## Polices de la charte non chargées (Quarto < v1.10.4)
 
 Sur **Quarto stable `1.9.x`** ou **pre-release `1.10.0` à `1.10.3`**, les polices déclarées dans `_brand.yml` ne sont pas passées automatiquement à Typst en mode `book` (titres en serif au lieu de Star Jedi, warning `unknown font family: ...` à la compilation). Bug corrigé par [quarto-dev/quarto-cli#14517](https://github.com/quarto-dev/quarto-cli/pull/14517), fix livré à partir de la pre-release `v1.10.4`.
 
@@ -186,7 +186,7 @@ Détails et explication du choix de couleur (pourquoi pas le jaune SW iconique e
 
 Le package R [`brand.yml`](https://posit-dev.github.io/brand-yml/pkg/r/) lit votre charte depuis R. Couplé à `gt::tab_style()` et `theme_brand_ggplot2()`, vous appliquez vos couleurs Star Wars à tous les tableaux et graphiques du livre sans dupliquer aucun hex.
 
-**L'effet wow** : combinez ce bonus avec le Bonus 3 (swap palette). Une seule ligne YAML modifiée fait suivre les lignes 1 des tableaux, les barres du graphique espèces, et les annotations Jabba/Yoda du nuage taille-masse — la charte pilote le PDF *et* tous les outputs R depuis un seul fichier.
+**L'effet spectaculaire** : combinez ce bonus avec le Bonus 3 (changement de palette). Une seule ligne YAML modifiée fait suivre les lignes 1 des tableaux, les barres du graphique espèces, et les annotations Jabba/Yoda du nuage taille-masse — la charte pilote le PDF *et* toutes les sorties R depuis un seul fichier.
 
 **Étape 1 — Mise en place.** Dans le bloc `setup-*` de chaque chapitre, ajoutez :
 
