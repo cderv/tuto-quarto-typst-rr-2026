@@ -13,14 +13,14 @@ Avant le tutoriel, merci de préparer votre environnement de travail.
 - **RStudio** (dernière version) ou **VS Code** / **Positron**
 - **Quarto** :
   - **Recommandé** : [pre-release `v1.10.4` ou supérieure](https://quarto.org/docs/download/prerelease.html) — contient des corrections de bugs.
-  - **Plancher** : [stable `1.9` ou supérieure](https://quarto.org/docs/get-started) — fonctionnera, mais le workshop signalera un workaround à appliquer à l'étape de l'exercice 2. 
+  - **Plancher** : [stable `1.9` ou supérieure](https://quarto.org/docs/get-started) — fonctionnera, mais le tutoriel signalera un contournement à appliquer à l'étape concernée de l'exercice 2.
   
   **RStudio** inclut Quarto donc rien de plus à installer.
 
 - **Packages R** :
 
 ``` r
-pkg <- c("quarto", "dplyr", "ggplot2", "ggrepel", "gt", "brand.yml", "prismatic")
+pkg <- c("quarto", "dplyr", "ggplot2", "ggrepel", "gt", "scales", "brand.yml", "prismatic")
 install.packages(pkg)
 # ou pak 
 pak::pkg_install(pkg)
@@ -42,12 +42,12 @@ Les dossiers `correction/` contiennent les solutions complètes — ⚠️ ne le
 Vérifiez que tout fonctionne en exécutant dans R :
 
 ``` r
-quarto::quarto_version() # 1.9.37 mini, 1.10.x prerelease recommandée
+quarto::quarto_version() # 1.9.37 minimum, 1.10.x pre-release recommandée
 library(dplyr)
 head(starwars)
 ```
 
-Si la version de quarto n'est pas celle attendue, alors utilisez `quarto::quarto_binary_sitrep(debug = TRUE)` pour aider à diagnostiquer.
+Si la version de quarto n'est pas celle attendue, utilisez `quarto::quarto_binary_sitrep(debug = TRUE)` pour aider à diagnostiquer.
 
 ## Test de la chaîne Typst
 
@@ -62,14 +62,23 @@ quarto render exercises/00-test-install/test-install.qmd
 **Si ça échoue** :
 
 - `Typst executable not found` → Quarto \< 1.9, mettez à jour.
-- `unknown font family` → ignorez cet avertissement, le PDF se génère quand même avec une police de repli (ce test n'utilise pas `_brand.yml`). Suivi sur [Github](https://github.com/quarto-dev/quarto-cli/issues/11683)
+- `unknown font family` → ignorez cet avertissement, le PDF se génère quand même avec une police de repli (ce test n'utilise pas `_brand.yml`). Suivi sur [GitHub](https://github.com/quarto-dev/quarto-cli/issues/11683)
 
 ## Plan B — si pas de réseau le jour J
 
-Le tutoriel utilise par défaut `_brand.yml` avec `source: google` pour Inter (corps), qui télécharge la police au premier rendu. Star Jedi (titres) est livrée en local dans `_fonts/`. Si vous n'avez **pas** d'accès réseau le matin du tutoriel :
+Le tutoriel utilise par défaut `_brand.yml` avec `source: google` pour Inter (corps), qui télécharge la police au premier rendu. Star Jedi (titres) est livrée en local dans `_fonts/`. Si vous n'avez **pas** d'accès réseau le matin du tutoriel, un `_brand-offline.yml` avec Inter en `source: file` est fourni pour **chaque exercice** :
 
-1.  Récupérez les fichiers `_brand-offline.yml` et `_fonts/` depuis le dossier [`exercises/01-document-typst/correction/`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/correction).
-2.  Copiez-les à côté de votre `rapport-starwars.qmd`.
+**Exercice 1** :
+
+1.  Récupérez `_brand-offline.yml` et le dossier `_fonts/` depuis [`exercises/01-document-typst/correction/`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/correction).
+2.  Copiez-les à côté de votre `rapport-starwars.qmd` (dans `starter/`).
 3.  Renommez `_brand-offline.yml` en `_brand.yml`.
+
+**Exercice 2** :
+
+1.  Récupérez `_brand-offline.yml` et les 3 fichiers `_fonts/Inter-*.ttf` depuis [`exercises/02-projet-book/`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises/02-projet-book) (à la racine de l'exercice, à côté de `_brand-fallback.yml`).
+2.  Copiez-les à la racine de votre projet livre (`starter/` — `Starjedi.ttf` y est déjà dans `_fonts/`, complétez avec les Inter).
+3.  Renommez `_brand-offline.yml` en `_brand.yml`.
+4.  Récupérez aussi [`correction/_logo-sw.svg`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/correction/_logo-sw.svg) si ce n'est pas déjà fait (cf. README starter).
 
 Le rendu Typst utilisera alors les fichiers TTF locaux (`Inter-*.ttf` + `Starjedi.ttf`, \~1 Mo) — aucun téléchargement requis.

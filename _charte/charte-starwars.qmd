@@ -25,7 +25,7 @@ format:
   [
     #text(weight: "bold", size: 22pt, fill: rgb("#BC1E22"), font: "Inter")[CHARTE GRAPHIQUE]
     #v(0.05cm)
-    #text(size: 11pt, font: "Inter")[*Saga Star Wars* — brand guidelines pour l'atelier RR 2026]
+    #text(size: 11pt, font: "Inter")[*Saga Star Wars* — charte graphique pour l'atelier RR 2026]
   ],
 )
 
@@ -56,9 +56,9 @@ format:
 )
 ```
 
-**Assignments** &nbsp;·&nbsp; `primary: imperial-red` &nbsp;·&nbsp; `foreground: sw-black` &nbsp;·&nbsp; `background: sw-cream`
+**Affectations** &nbsp;·&nbsp; `primary: imperial-red` &nbsp;·&nbsp; `foreground: sw-black` &nbsp;·&nbsp; `background: sw-cream`
 
-*Note : `sw-yellow` reste dans la palette (utile pour accents ponctuels) — mais pas en `primary` (contraste trop faible sur fond crème).*
+*Affectations = rôles sémantiques associés à un nom de la palette. `sw-yellow` reste dans la palette (utile pour accents ponctuels) — mais pas en `primary` (contraste trop faible sur fond crème).*
 
 ## Typographie
 
@@ -112,6 +112,6 @@ format:
 #line(length: 100%, stroke: 0.3pt + rgb("#0B0B0F"))
 #v(0.1cm)
 #text(size: 8pt, font: "Inter", style: "italic")[
-  Ce document est lui-même un PDF Typst rendu via #raw("_brand.yml"). À vous de jouer : transcrivez cette charte en YAML, puis rendez votre rapport.
+  Ce document est lui-même un PDF Typst rendu via #raw("_brand.yml"). Utilisée en Bloc 1 (à transcrire) et Bloc 2 (référence visuelle). À vous de jouer : transcrivez cette charte en YAML, puis rendez votre rapport.
 ]
 ```

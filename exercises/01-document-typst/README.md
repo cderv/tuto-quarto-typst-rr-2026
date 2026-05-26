@@ -1,6 +1,6 @@
 # Exercice 1 — Un PDF pro avec `format: typst`
 
-**Durée :** 15 minutes &nbsp;·&nbsp; **Bloc 1**
+**Durée :** 12 minutes &nbsp;·&nbsp; **Bloc 1**
 
 ## Mise en place
 
@@ -13,8 +13,9 @@ Sur le site : [Bloc 1 — PDF avec Typst](https://cderv.github.io/cderv-tuto-qua
 ## Et après ?
 
 Le dossier [`correction/`](correction/) contient un exemple complet avec
-un logo Star Wars, la palette Empire et la police locale Star Jedi sur les
-titres de section. À comparer avec votre résultat à la fin de l'exercice.
+un logo Star Wars, la palette Star Wars (rouge impérial, crème, noir) et la police
+locale Star Jedi sur les titres de section. À comparer avec votre résultat à la
+fin de l'exercice.
 
 La correction propose aussi une variante 100 % offline (`_brand-offline.yml`),
 Plan B en cas de réseau capricieux.
