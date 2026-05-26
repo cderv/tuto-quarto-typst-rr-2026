@@ -66,10 +66,19 @@ quarto render exercises/00-test-install/test-install.qmd
 
 ## Plan B — si pas de réseau le jour J
 
-Le tutoriel utilise par défaut `_brand.yml` avec `source: google` pour Inter (corps), qui télécharge la police au premier rendu. Star Jedi (titres) est livrée en local dans `_fonts/`. Si vous n'avez **pas** d'accès réseau le matin du tutoriel :
+Le tutoriel utilise par défaut `_brand.yml` avec `source: google` pour Inter (corps), qui télécharge la police au premier rendu. Star Jedi (titres) est livrée en local dans `_fonts/`. Si vous n'avez **pas** d'accès réseau le matin du tutoriel, un `_brand-offline.yml` avec Inter en `source: file` est fourni pour **chaque exercice** :
 
-1.  Récupérez les fichiers `_brand-offline.yml` et `_fonts/` depuis le dossier [`exercises/01-document-typst/correction/`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/correction).
-2.  Copiez-les à côté de votre `rapport-starwars.qmd`.
+**Exercice 1** :
+
+1.  Récupérez `_brand-offline.yml` et le dossier `_fonts/` depuis [`exercises/01-document-typst/correction/`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/correction).
+2.  Copiez-les à côté de votre `rapport-starwars.qmd` (dans `starter/`).
 3.  Renommez `_brand-offline.yml` en `_brand.yml`.
+
+**Exercice 2** :
+
+1.  Récupérez `_brand-offline.yml` et les 3 fichiers `_fonts/Inter-*.ttf` depuis [`exercises/02-projet-book/`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises/02-projet-book) (à la racine de l'exercice, à côté de `_brand-fallback.yml`).
+2.  Copiez-les à la racine de votre projet livre (`starter/` — `Starjedi.ttf` y est déjà dans `_fonts/`, complétez avec les Inter).
+3.  Renommez `_brand-offline.yml` en `_brand.yml`.
+4.  Récupérez aussi [`correction/_logo-sw.svg`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/correction/_logo-sw.svg) si ce n'est pas déjà fait (cf. README starter).
 
 Le rendu Typst utilisera alors les fichiers TTF locaux (`Inter-*.ttf` + `Starjedi.ttf`, \~1 Mo) — aucun téléchargement requis.
