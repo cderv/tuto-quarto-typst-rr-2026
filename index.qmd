@@ -32,6 +32,14 @@ Ce tutoriel vous apprendra à produire des **documents PDF professionnels** avec
 - {{< fa folder >}} [Bloc 2 — Passer à l'échelle : projet et livre](2-projets/index.qmd)
 :::
 
+## Vous arrivez en cours ?
+
+Pas de panique — le matériel est conçu pour rattraper rapidement :
+
+- 📦 Récupérez les starters dans le zip du dépôt (cf. [Préparatifs](preparatifs.qmd)) ou directement sur GitHub : [`exercises/`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises).
+- 🧭 La boussole du bloc en cours vous donne objectif, étapes et countdown : [Boussole Bloc 1](1-quarto-typst/boussole.qmd) · [Boussole Bloc 2](2-projets/boussole.qmd).
+- Le **Bloc 2 est autonome** vis-à-vis du Bloc 1 : si vous arrivez après la pause, démarrez directement depuis le starter d'Exercice 2.
+
 ## Instructeurs
 
 **Christophe Dervieux** — développeur open source, [Posit Software, PBC](https://posit.co/). Contributeur aux projets R Markdown et Quarto.
