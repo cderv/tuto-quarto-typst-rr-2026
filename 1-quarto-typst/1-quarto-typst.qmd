@@ -43,8 +43,7 @@ Expliquer le rythme dès le début. Chaque bloc suit ce cycle. L'idée c'est de 
 
 [Typst](https://typst.app/) joue le même rôle que LaTeX : produire un PDF. Avec Quarto, vous restez côté Markdown — la traduction vers Typst est automatique.
 
-:::::: columns
-::: {.column width="48%"}
+::: {.fragment}
 Ce que **vous écrivez** (Markdown) :
 
 ``` markdown
@@ -55,10 +54,7 @@ et un [lien](https://example.org).
 ```
 :::
 
-::: {.column width="4%"}
-:::
-
-::: {.column width="48%"}
+::: {.fragment}
 Ce que **Quarto génère** (Typst) :
 
 ``` typ
@@ -68,16 +64,13 @@ Un mot #strong[en gras]
 et un #link("https://example.org")[lien].
 ```
 :::
-::::::
-
-::: {.fragment .fade-in}
-On y jettera un œil ensemble avec `keep-typ: true` — juste pour démystifier.
-:::
 
 ::: notes
 Slide visuelle : le but n'est pas d'enseigner Typst, c'est de rassurer. "Tu écris du Markdown, t'as pas besoin d'apprendre Typst pour démarrer." Le snippet Typst montre la traduction concrète — `=` pour le titre, `#strong[...]` pour le gras, `#link(...)[...]` pour les liens.
 
 Contrat oral : on ouvrira ensemble le `.typ` 2 slides plus loin (`keep-typ: true`) — pas une option facultative. Le participant est prévenu, pas de surprise à l'Exo 1 étape 3.
+
+On y jettera un œil ensemble avec `keep-typ: true` — juste pour démystifier.
 :::
 
 ## `format: typst` — un PDF sans LaTeX
@@ -102,12 +95,13 @@ format: typst
 Le point d'entrée : une seule ligne de YAML. Pas besoin de convaincre les gens que LaTeX est mauvais — montrer directement que Typst est simple.
 :::
 
-## Les options essentielles
+## Les options de formats
 
 ``` {.yaml filename="rapport.qmd" code-line-numbers="3-5"}
 ---
 format:
   typst:
+    toc: true
     papersize: a4
     margin:
       x: 2.5cm
@@ -116,7 +110,7 @@ format:
 ```
 
 ::: {.fragment .fade-in}
-D'autres options existent (`toc`, `mainfont`, `number-sections`, `linestretch`...) — on les verra en démo.
+D'autres options existent (`mainfont`, `number-sections`, `linestretch`...) — on les verra en démo.
 :::
 
 ::: notes
@@ -125,11 +119,10 @@ Ne pas tout montrer ici. Juste papersize et margin pour que les gens voient la s
 
 ## `keep-typ: true` — comprendre les coulisses
 
-```{mermaid}
-%%| echo: false
-flowchart LR
-  A[rapport.qmd] -->|Pandoc| B[rapport.typ] -->|Typst| C[rapport.pdf]
-```
+![](quarto_typst_pipeline.svg){width="100%"}
+
+
+## `keep-typ: true` — comprendre les coulisses
 
 ::: {.fragment .fade-in}
 ``` {.yaml filename="rapport.qmd" code-line-numbers="4"}
@@ -208,9 +201,9 @@ Parler des helpers R `theme_brand_*()`.
 ::: {.column width="45%"}
 ::: incremental
 - Une **vraie charte** à transcrire
-- Palette nommée + **assignments** (`primary`, `foreground`, `background`)
-- Inter (Google) + Star Jedi (locale)
-- Ce PDF est lui-même rendu par Quarto+Typst+`_brand.yml` — vous allez en faire un cousin
+- Palette nommée + affectations (`primary`, `foreground`, `background`)
+- Polices: Inter (Google) + Star Jedi (locale)
+- Ce PDF est lui-même rendu par Quarto + Typst + `_brand.yml` — vous allez faire pareil
 :::
 :::
 ::::::
@@ -228,22 +221,30 @@ Le terme « assignments » de la charte = mapping `primary` / `foreground` / `ba
 ::: callout-tip
 ## Faisons ensemble !
 
-1.  Ouvrez `rapport-starwars.qmd` dans votre éditeur
-2.  Ajoutez `format: typst` et rendez le document
-3.  Ajoutez quelques options (`toc`, `mainfont`, `papersize`...)
-4.  Créez un `_brand.yml` en suivant la **charte Star Wars** (`charte-starwars.pdf` du starter) : palette + police Google sur le corps
-5.  Ajoutez la police locale Star Jedi (TTF dans `_fonts/`) sur les titres de section via `source: file`
-6.  **Bonus** : activez `keep-typ: true` et explorez le fichier `.typ` généré
+Démo minimale — on plante la **boucle** `_brand.yml` → render → PDF stylé.
+
+1.  Ouvrez `rapport-starwars.qmd`, passez `format: html` → `format: typst`, rendez → PDF brut
+2.  Créez `_brand.yml` avec **une seule couleur** + assignation `primary`, re-rendez → titres et liens colorés
+
+→ À vous ensuite pour la charte complète (palette + assignments + polices).
 :::
 
 ::: notes
-C'est la démo live. Les participants suivent dans leur éditeur. Aller doucement, laisser le temps de taper. Montrer le rendu après chaque étape. Mentionner linkcolor, codefont, mathfont en passant.
+C'est la démo live, **format ultra-court** : 5-6 minutes max. Pas-à-pas détaillé (snippets prêts à copier, ressources à ouvrir, pièges anticipés) dans `_speaker/demo-bloc1-our-turn.qmd`.
 
-**Avant d'attaquer le YAML** : projeter `_charte/charte-starwars.pdf` à côté de l'éditeur (ou ré-afficher la slide « Voici la charte ») — l'apprenant·e voit cible + transcription en parallèle pendant les étapes 3-5.
+**Pourquoi minimal** : Our turn plante la boucle (édit YAML → render → effet visible), Your turn transcrit la charte SW complète. Si Our turn fait tout, Your turn = répétition.
 
-**Heads-up bug `gt → Typst`** : si le tableau `gt` rendu montre un espacement parasite des chiffres (« 1 3 5 8 ») — c'est un bug connu (quarto-cli#11683) qui touche Windows/macOS via les fonts fallback de gt. Workaround : `gt::opt_table_font("Inter")` (montré dans la correction). Le mentionner à l'oral comme « limite actuelle, fix structurel en cours côté gt 0.12.0 ».
+**Avant la démo** : projeter `_charte/charte-starwars.pdf` à côté de l'éditeur — apprenant·e voit cible (charte) pendant qu'on prend une seule couleur en exemple.
 
-**Étape 5 (police locale Star Jedi)** : `Starjedi.ttf` est déjà dans `starter/_fonts/` (police décorative fan-made Boba Fonts, archive originale, licence freeware ; les variantes repackagées sur [FontSpace](https://www.fontspace.com/star-jedi-font-f9641) — DGRW / Hollow / Rounded — échouent au subsetting Typst, on retient la TTF originale). Au moment de la démo, montrer la syntaxe `source: file` à côté de `source: google` dans le même `_brand.yml` — l'idée à transmettre : « tout type de source coexiste, vous mixez selon vos contraintes ». Le brand devient Inter (corps, Google) + Star Jedi (titres, locale) — effet visuel immédiat sur chaque titre de section. Plan B 100 % offline disponible dans `_brand-offline.yml` (Inter + Star Jedi, toutes les polices en `source: file`) pour les sessions sans réseau.
+**Snippet à coller en étape 2** (charge mentale zéro pendant la démo) :
+```yaml
+color:
+  palette:
+    imperial-red: "#BC1E22"
+  primary: imperial-red
+```
+
+**Transition vers Your turn** : « vous avez vu la boucle, à vous avec la charte complète — 4 couleurs au lieu d'1, assignments `foreground` + `background`, Google sur le corps, Star Jedi sur les titres. 12 min. »
 :::
 
 ## Exercice 1 {.wide-list}

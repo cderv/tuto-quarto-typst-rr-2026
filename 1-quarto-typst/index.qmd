@@ -31,13 +31,12 @@ Ce bloc suit le rythme **My turn → Our turn → Your turn**.
 
 ### Our turn — Démo live
 
-On construit ensemble un PDF Typst stylé :
+Démo minimale (5-6 min) pour planter la boucle `_brand.yml` → render → PDF stylé :
 
-1.  Ajouter `format: typst` à un document existant
-2.  Personnaliser avec `toc`, `mainfont`, `papersize`...
-3.  Créer un `_brand.yml` minimal (couleurs + police Google)
-4.  Mixer une police locale (`source: file`) avec une Google dans le même `_brand.yml`
-5.  Explorer le fichier `.typ` généré avec `keep-typ: true`
+1.  Passer `format: html` → `format: typst` et rendre
+2.  Créer `_brand.yml` avec **une couleur** + `primary`, re-rendre → titres et liens colorés
+
+Le reste (charte complète, polices, logo, `keep-typ`) = Exercice 1.
 
 ## Exercice 1
 
@@ -56,7 +55,7 @@ Fichier : {{< fa download >}} [exercises/01-document-typst/starter/](https://git
 |----|---------------------------------------|-----------------------------------------|
 | 1 | Ouvrir `rapport-starwars.qmd`, ajouter `format: typst`, rendre. | PDF généré à la place du HTML, polices et marges par défaut Typst. |
 | 2 | Personnaliser avec des options : `papersize`, `toc`, `mainfont`... | TOC en tête, marges/format adaptés, police corps modifiée. |
-| 3 | Créer `_brand.yml` en transcrivant la **charte Star Wars** fournie (`charte-starwars.pdf` dans le starter) : palette + assignments + police Google sous `typography.fonts` puis `typography.base`. | Couleurs palette visibles (titres, liens), police corps Google appliquée, logo en haut-gauche. |
+| 3 | Créer `_brand.yml` en transcrivant la **charte Star Wars** fournie ([`charte-starwars.pdf`](/_charte/charte-starwars.pdf) dans le starter) : palette + assignments + police Google sous `typography.fonts` puis `typography.base`. | Couleurs palette visibles (titres, liens), police corps Google appliquée, logo en haut-gauche. |
 | 4 | Ajouter la police locale Star Jedi (`_fonts/Starjedi.ttf`, `source: file`) sur `typography.headings` — cf. section Typographie de la charte. | Titres de section en lettres décoratives Star Jedi. |
 
 **+ Bonus inspection (si temps restant) :**
