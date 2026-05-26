@@ -195,7 +195,7 @@ Parler des helpers R `theme_brand_*()`.
 
 :::::: columns
 ::: {.column width="55%"}
-![](charte-starwars.png){fig-alt="Page A4 de la charte graphique Star Wars : logo étoile jaune en haut-gauche, titre 'CHARTE GRAPHIQUE' en rouge impérial gras, sous-titre Saga Star Wars, 4 swatches de palette (rouge impérial, noir SW, crème, jaune SW) avec hex codes, sections Typographie (Star Jedi locale, Inter Google) et Logo, footer méta."}
+![](charte-starwars.png){fig-alt="Page A4 de la charte graphique Star Wars : logo étoile jaune en haut-gauche, titre 'CHARTE GRAPHIQUE' en rouge impérial gras, sous-titre Saga Star Wars, 4 échantillons de couleur (rouge impérial, noir SW, crème, jaune SW) avec codes hexadécimaux, sections Typographie (Star Jedi locale, Inter Google) et Logo, pied de page méta."}
 :::
 
 ::: {.column width="45%"}

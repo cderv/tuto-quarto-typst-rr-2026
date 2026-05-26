@@ -42,7 +42,7 @@ Les dossiers `correction/` contiennent les solutions complètes — ⚠️ ne le
 Vérifiez que tout fonctionne en exécutant dans R :
 
 ``` r
-quarto::quarto_version() # 1.9.37 minimum, 1.10.x pre-release recommandée
+quarto::quarto_version() # >= 1.9 minimum, 1.10.4+ pre-release recommandée
 library(dplyr)
 head(starwars)
 ```

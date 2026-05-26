@@ -16,7 +16,7 @@ Partez de [`starter/`](starter/) — voir le [README starter](starter/README.md)
 
 ## Consigne complète
 
-Sur le site : [Bloc 2 — Projets & book](https://cderv.github.io/cderv-tuto-quarto-typst-rr-2026/2-projets/) — étapes, indices doc, modèle `_quarto.yml`, deep dives B3/B4, escalier d'autonomie, correction.
+Sur le site : [Bloc 2 — Projets & book](https://cderv.github.io/cderv-tuto-quarto-typst-rr-2026/2-projets/) — étapes, indices doc, modèle `_quarto.yml`, approfondissements B3/B4, escalier d'autonomie, correction.
 
 ## Pas de `_brand.yml` récupéré du Bloc 1 ?
 

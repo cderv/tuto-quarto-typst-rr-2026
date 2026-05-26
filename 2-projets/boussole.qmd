@@ -36,4 +36,4 @@ Transformer 5 `.qmd` en un livre PDF Typst stylé via `_quarto.yml` + `_brand.ym
 
 ## 📖 Consigne complète
 
-[Page Exercice 2](index.qmd) — tableau, indices doc, modèle `_quarto.yml`, deep dives B3/B4, correction.
+[Page Exercice 2](index.qmd) — tableau, indices doc, modèle `_quarto.yml`, approfondissements B3/B4, correction.
