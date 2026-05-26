@@ -70,21 +70,47 @@ Découpage du YAML en 4 fragments via `code-line-numbers` pour étaler le récit
 ::: callout-tip
 ## Faisons ensemble !
 
-1.  Créer `_quarto.yml` avec `project: { type: default }` + `format: typst` → 5 PDF séparés
-2.  Passer à `type: book` (le `format: typst` reste, orange-book s'active automatiquement) → **PDF unique** avec couverture et TOC
-3.  Copier `_brand.yml` (depuis Bloc 1 ou `_brand-fallback.yml`) + `_logo-sw.svg` + `_fonts/` à la racine → couverture jaune SW, Star Jedi (locale), Inter (Google)
+On crée un `_quarto.yml`, puis on le bascule en livre.
+
+1.  Créer `_quarto.yml` avec `project: { type: default }` + `format: typst` → render → 5 PDF séparés
+2.  Passer `type: default` → `type: book` + bloc `book: { title, chapters }` → render → **PDF unique** avec couverture orange-book + TOC
+
+→ À vous ensuite pour `appendices`, `_brand.yml` au niveau projet et bonus.
 :::
 
 ::: notes
-Démo live, 3 étapes en \~10 min. À l'étape 2 le PDF unique avec couverture orange-book apparaît. Étape 3 = confirmation visuelle (la charte de Bloc 1 ressuscite côté book).
+Démo live **ultra-courte** : 5-6 minutes. Pas-à-pas détaillé (snippets prêts à coller, ressources, pièges) dans `_speaker/demo-bloc2-our-turn.qmd`.
 
-Montrer pendant la démo : la numérotation automatique Figure 1.1 / Figure 2.1 / Table 1.1 / Table 2.1 (en français Quarto rend « Figure » et « Table » — pas « Fig » / « Tab »), l'apparition du logo SVG sur la couverture, le passage des tableaux gt en Inter (Étape 3).
+**Pourquoi minimal** : Our turn montre comment `_quarto.yml` + `type: book` produit un livre PDF unique. `appendices`, copie de `_brand.yml` et bonus restent dans Your turn — éviter la redondance Bloc 1.
 
-Mentionner les bonus rapidement à la fin de la démo : références croisées `@fig-anatomie-mass` / `@sec-origines` et `.content-visible when-format="typst"` + pagebreak. Pas obligés de les démontrer ici — c'est le contenu des bonus B1/B2 du Your turn.
+**Effet visuel** à l'étape 2 : on passe de 5 PDF séparés à 1 PDF unique avec couverture + TOC + numérotation auto (Figure 1.1, Table 2.1...) sans rien d'autre que `type: book`. C'est orange-book qui s'active sur `format: typst` + `type: book`.
 
-Si vous voyez des chiffres mal espacés (« 1 7 5 » au lieu de « 175 ») dans les tableaux à l'étape 3 chez un participant Windows/macOS : c'est normal, bug `gt` → Typst sur fallback de fonts. Le workaround `opt_table_font(font = "Inter")` est appliqué dans la correction (mais pas dans le starter — bug volontairement visible). Pas la peine de s'attarder, mentionner et passer.
+**Snippet étape 1 à coller** :
+```yaml
+project:
+  type: default
 
-Problèmes fréquents : mauvais chemin vers les chapitres, oubli du tiret devant les noms de fichiers dans `chapters:`, oubli de l'underscore dans `_quarto.yml` ou `_brand.yml`.
+format: typst
+```
+
+**Snippet étape 2 à coller** (remplace l'étape 1 complète) :
+```yaml
+project:
+  type: book
+
+book:
+  title: "Anatomie d'une saga"
+  author: "Mon Mothma"
+  chapters:
+    - index.qmd
+    - 01-anatomie.qmd
+    - 02-origines.qmd
+    - conclusion.qmd
+
+format: typst
+```
+
+**Transition vers Your turn** : « le saut est planté. À vous d'ajouter `appendices`, votre `_brand.yml` du Bloc 1 (ou `_brand-fallback.yml`), et les bonus cross-refs + pagebreak. 12 min. »
 :::
 
 ## Exercice 2 {.wide-list}
@@ -108,13 +134,13 @@ Problèmes fréquents : mauvais chemin vers les chapitres, oubli du tiret devant
 
 Le fallback `_brand-fallback.yml` (+ `correction/_logo-sw.svg`) est important : ceux qui n'ont pas fini Bloc 1 peuvent les copier. Passer dans les rangs, repérer ceux qui peinent à l'étape 1 — souvent un underscore manquant.
 
-Pour ceux qui finissent vite : pousser le bonus B1 (références croisées) en premier — c'est le plus visuel et ça utilise les labels qui sont déjà dans le starter (`tbl-anatomie-mass`, `fig-anatomie-mass`, `#sec-origines`). Le bonus B2 (pagebreak) demande de connaître la syntaxe `.content-visible` — l'avoir montrée à la fin de Our turn aide.
+Pour ceux qui finissent vite : pousser le bonus B1 (références croisées) en premier — c'est le plus visuel et ça utilise les labels qui sont déjà dans le starter (`tbl-anatomie-mass`, `fig-anatomie-mass`, `#sec-origines`). Le bonus B2 (pagebreak) demande la syntaxe `.content-visible when-format="typst"` + `{{< pagebreak >}}` — le bloc complet à coller est sur la page Exercice 2.
 :::
 
 ## Saviez-vous que...
 
 ::: callout-note
-## Pépites pour aller plus loin
+## Saviez-vous que...
 
 - **Template partials** — Le fichier `typst-show.typ` (et son `typst-template.typ` côté template par défaut) contrôle la génération du `.typ`. Vous pouvez le remplacer pour personnaliser header, footer, page de titre... Suffit souvent de toucher `typst-show.typ` seul.
 - **Créer un format partageable** — `quarto create extension format:typst` génère un squelette d'extension prêt à publier sur GitHub

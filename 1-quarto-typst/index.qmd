@@ -31,7 +31,7 @@ Ce bloc suit le rythme **My turn → Our turn → Your turn**.
 
 ### Our turn — Démo live
 
-Démo minimale (5-6 min) pour planter la boucle `_brand.yml` → render → PDF stylé :
+En 5-6 min, on passe le doc en `format: typst`, puis on lui applique une couleur via `_brand.yml` :
 
 1.  Passer `format: html` → `format: typst` et rendre
 2.  Créer `_brand.yml` avec **une couleur** + `primary`, re-rendre → titres et liens colorés
@@ -47,7 +47,7 @@ Le reste (charte complète, polices, logo, `keep-typ`) = Exercice 1.
 
 Fichier : {{< fa download >}} [exercises/01-document-typst/starter/](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/starter)
 
-📄 **Charte fournie :** `charte-starwars.pdf` (dans le starter) — palette, polices, logo et assignments à transcrire en YAML.
+📄 **Charte fournie :** `charte-starwars.pdf` (dans le starter) — palette, polices, logo et affectations (`primary` / `foreground` / `background`) à transcrire en YAML.
 
 **4 étapes principales (12 min) — attendues de tous :**
 
@@ -55,7 +55,7 @@ Fichier : {{< fa download >}} [exercises/01-document-typst/starter/](https://git
 |----|---------------------------------------|-----------------------------------------|
 | 1 | Ouvrir `rapport-starwars.qmd`, ajouter `format: typst`, rendre. | PDF généré à la place du HTML, polices et marges par défaut Typst. |
 | 2 | Personnaliser avec des options : `papersize`, `toc`, `mainfont`... | TOC en tête, marges/format adaptés, police corps modifiée. |
-| 3 | Créer `_brand.yml` en transcrivant la **charte Star Wars** fournie ([`charte-starwars.pdf`](/_charte/charte-starwars.pdf) dans le starter) : palette + assignments + police Google sous `typography.fonts` puis `typography.base`. | Couleurs palette visibles (titres, liens), police corps Google appliquée, logo en haut-gauche. |
+| 3 | Créer `_brand.yml` en transcrivant la **charte Star Wars** fournie ([`charte-starwars.pdf`](/_charte/charte-starwars.pdf) dans le starter) : palette + affectations (`primary` / `foreground` / `background`) + police Google sous `typography.fonts` puis `typography.base`. | Couleurs palette visibles (titres, liens), police corps Google appliquée, logo en haut-gauche. |
 | 4 | Ajouter la police locale Star Jedi (`_fonts/Starjedi.ttf`, `source: file`) sur `typography.headings` — cf. section Typographie de la charte. | Titres de section en lettres décoratives Star Jedi. |
 
 **+ Bonus inspection (si temps restant) :**
