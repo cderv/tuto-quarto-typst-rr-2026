@@ -25,7 +25,7 @@ quarto render
 ```
 
 Sortie initiale (sans `_quarto.yml`) : 5 fichiers HTML séparés.
-Après les 3 étapes : un livre PDF Typst unique, brandé.
+Après les 3 étapes : un livre PDF Typst unique, stylé.
 
 ### Pas de `_brand.yml` du Bloc 1 ?
 

@@ -44,7 +44,7 @@ L'Exercice 2 est **autonome vis-à-vis de l'Exercice 1** : si vous n'avez pas te
 ::: callout-tip
 ## À vous !
 
-🎯 **Objectif :** transformer 5 `.qmd` en un livre PDF Typst brandé via `_quarto.yml` + `_brand.yml`.
+🎯 **Objectif :** transformer 5 `.qmd` en un livre PDF Typst stylé via `_quarto.yml` + `_brand.yml`.
 
 Fichier : {{< fa download >}} [exercises/02-projet-book/starter/](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises/02-projet-book/starter)
 
@@ -163,7 +163,7 @@ Pas de `_brand.yml` ? Copiez les fichiers fournis : [`exercises/02-projet-book/_
 :::
 
 ::: callout-note
-**Les Bonus 3 et 4 ci-dessous sont des « deep dives »** — à explorer après l'atelier si vous manquez de temps en séance.
+**Les Bonus 3 et 4 ci-dessous sont des approfondissements** — à explorer après l'atelier si vous manquez de temps en séance.
 :::
 
 ::: {.callout-tip collapse="true"}
@@ -185,7 +185,7 @@ Le package R [`brand.yml`](https://posit-dev.github.io/brand-yml/pkg/r/) lit vot
 
 **L'effet wow** : combinez ce bonus avec le Bonus 3 (swap palette). Une seule ligne YAML modifiée fait suivre les lignes 1 des tableaux, les barres du graphique espèces, et les annotations Jabba/Yoda du nuage taille-masse — la charte pilote le PDF *et* tous les outputs R depuis un seul fichier.
 
-**Étape 1 — Setup.** Dans le chunk `setup-*` de chaque chapitre, ajoutez :
+**Étape 1 — Mise en place.** Dans le bloc `setup-*` de chaque chapitre, ajoutez :
 
 ``` r
 library(brand.yml)

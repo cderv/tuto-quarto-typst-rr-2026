@@ -1,6 +1,6 @@
 ---
 title: "🧭 Boussole — Exercice 2"
-subtitle: "Du document au livre PDF Typst brandé"
+subtitle: "Du document au livre PDF Typst stylé"
 format: html
 author: ""
 date: ""
@@ -14,7 +14,7 @@ sidebar: false
 
 ## 🎯 Objectif
 
-Transformer 5 `.qmd` en un livre PDF Typst brandé via `_quarto.yml` + `_brand.yml`.
+Transformer 5 `.qmd` en un livre PDF Typst stylé via `_quarto.yml` + `_brand.yml`.
 
 ## 📋 Étapes
 
