@@ -29,11 +29,12 @@ Ce bloc suit le rythme **My turn → Our turn → Your turn**.
 
 ### Our turn — Démo live
 
-On construit ensemble un livre Typst en 3 étapes :
+En 5-6 min, on crée un `_quarto.yml` puis on bascule le projet en livre :
 
 1.  Créer `_quarto.yml` avec `project: { type: default }` + `format: typst` → 5 PDF séparés
-2.  Passer à `type: book` (le `format: typst` reste, orange-book s'active automatiquement) → **PDF unique** avec couverture, TOC, références croisées numérotées
-3.  Copier `_brand.yml` (+ `_logo-sw.svg` + `_fonts/`) à la racine → couverture jaune Star Wars + Star Jedi (locale) / Inter (Google)
+2.  Passer à `type: book` + bloc `book: { title, chapters }` → **PDF unique** avec couverture orange-book, TOC, numérotation par chapitre
+
+Le reste (`appendices`, `_brand.yml` projet, cross-refs, pagebreak) = Exercice 2.
 
 ## Exercice 2
 
@@ -98,9 +99,9 @@ Fichier : {{< fa download >}} [exercises/02-projet-book/starter/](https://github
 
 {{< include ../exercises/02-projet-book/starter/README.md >}}
 
-### Modèle `_quarto.yml` pour l'étape 2
+### Modèle `_quarto.yml` pour les étapes 2a + 2b
 
-Si vous bloquez sur la syntaxe, voici un patron complet à adapter :
+Si vous bloquez sur la syntaxe, voici un patron complet à adapter (état final après 2a **et** 2b — pour 2a seul, omettez le bloc `appendices:`) :
 
 ``` {.yaml filename="_quarto.yml"}
 project:
@@ -114,7 +115,7 @@ book:
     - 01-anatomie.qmd
     - 02-origines.qmd
     - conclusion.qmd
-  appendices:
+  appendices:           # ← ajouté à l'étape 2b
     - annexe-donnees.qmd
 
 format:

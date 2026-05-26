@@ -1,0 +1,196 @@
+---
+title: "Démo Our turn — Bloc 2 (projet + book)"
+subtitle: "Pas-à-pas écran + snippets à coller"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    code-copy: true
+    code-overflow: wrap
+author: ""
+date: ""
+---
+
+::: callout-important
+## Objectif de la démo
+
+Montrer la transformation `_quarto.yml` minimal → `type: book` → PDF unique avec couverture, en 5-6 min.
+Démo couvre étapes 1 et 2 (création projet + bascule en book).
+Le reste (`appendices`, `_brand.yml` projet, bonus cross-refs + pagebreak) = Your turn.
+:::
+
+## Avant de commencer (setup)
+
+### Fichiers / fenêtres à ouvrir
+
+- [ ] Éditeur dans `exercises/02-projet-book/starter/`
+- [ ] Terminal dans ce même dossier
+- [ ] Lecteur PDF prêt
+- [ ] Slide "Faisons ensemble" affichée sur écran secondaire / split
+
+### Ressources web à avoir sous la main
+
+- Projets Quarto : <https://quarto.org/docs/projects/quarto-projects.html>
+- Quarto books : <https://quarto.org/docs/books/>
+- Book structure : <https://quarto.org/docs/books/book-structure.html>
+- Orange-book package : <https://typst.app/universe/package/orange-book>
+
+### Vérification éclair
+
+```bash
+quarto --version    # >= 1.9 (1.10.4+ recommandé pour brand fonts en book)
+ls                  # confirme : 5 .qmd + charte, PAS de _quarto.yml
+```
+
+---
+
+## Étape 1 — `_quarto.yml` minimal (project + format) (2 min)
+
+**Action écran** : montrer rapidement `ls` → 5 `.qmd` + charte, **pas** de `_quarto.yml`.
+
+**Render avant** (pour montrer le baseline) :
+
+```bash
+quarto render
+```
+
+**À montrer** : 5 fichiers HTML séparés générés. Pas de PDF, pas de cohésion.
+
+**Action écran** : créer `_quarto.yml` à la racine.
+
+```yaml
+project:
+  type: default
+
+format: typst
+```
+
+**À dire pendant qu'on tape** :
+- "`project.type: default` = on déclare un projet Quarto, basique"
+- "`format: typst` au niveau projet = chaque `.qmd` rendra en PDF Typst, plus besoin de répéter dans chaque YAML"
+
+**Render** :
+
+```bash
+quarto render
+```
+
+**À montrer** :
+- 5 PDF séparés cette fois (un par `.qmd`)
+- Ouvrir 1-2 pour confirmer
+
+**À dire** :
+- "On a un projet, mais c'est encore 5 documents indépendants. Le pas suivant : les assembler en livre."
+
+---
+
+## Étape 2 — `type: book` (le moment wow) (2-3 min)
+
+**Action écran** : éditer `_quarto.yml`, remplacer `type: default` par `type: book` et ajouter le bloc `book:`.
+
+```yaml
+project:
+  type: book
+
+book:
+  title: "Anatomie d'une saga"
+  author: "Mon Mothma"
+  chapters:
+    - index.qmd
+    - 01-anatomie.qmd
+    - 02-origines.qmd
+    - conclusion.qmd
+
+format: typst
+```
+
+**À dire pendant qu'on tape** :
+- "`type: book` change tout"
+- "Le `format: typst` reste — pas besoin de le toucher"
+- "Quarto 1.9 active automatiquement **orange-book** quand il voit `typst` + `book`"
+- Pointer `chapters` : "ordre des fichiers = ordre dans le livre. Préface, chapitres, conclusion. Pas besoin de numéro dans le nom de fichier — c'est l'ordre qui compte."
+- **Note** : on garde `annexe-donnees.qmd` HORS de la liste pour le moment — Your turn ajoutera `appendices` à part.
+
+**Render** :
+
+```bash
+quarto render
+```
+
+**À montrer** sur le PDF unique :
+- Page de couverture orange-book (titre + auteur)
+- TOC automatique
+- Numérotation par chapitre : Figure 1.1, Figure 2.1, Table 1.1...
+- Note : `annexe-donnees` apparaît comme **dernier chapitre numéroté** (pas encore en annexe)
+
+**À dire** :
+- "Une ligne (`type: book`) + 8 lignes (`book:` block) → PDF unique professionnel"
+- "Pas un mot d'orange-book, pas de template — c'est intégré"
+
+---
+
+## Transition vers Your turn (~30 sec)
+
+**À dire** :
+
+> "Le saut est planté : `project → book` active orange-book et fait apparaître la structure livre. À vous maintenant : basculer `annexe-donnees` en annexe (champ `appendices`), copier votre `_brand.yml` du Bloc 1 (ou `_brand-fallback.yml`) pour réveiller la charte Star Wars au niveau projet, et les bonus si vous avez le temps. 12 minutes."
+
+**Action écran** : passer à la slide "Exercice 2 — À vous !" + ouvrir `2-projets/boussole.html` sur écran secondaire (countdown).
+
+---
+
+## Pièges à anticiper (questions probables)
+
+### "Quarto trouve pas mes chapitres"
+
+→ Vérifier `chapters:` : tiret devant chaque fichier (liste YAML), pas de quotes nécessaires sur les noms, chemin relatif au `_quarto.yml`.
+
+### "Pourquoi `annexe-donnees` est un chapitre numéroté ?"
+
+→ Normal pour la démo : on n'a pas mis `appendices` exprès, c'est Your turn étape 2b. Le bouton « Annexe A » apparaîtra quand les apprenants ajouteront le champ.
+
+### "Mon PDF est en anglais (Figure → Fig)"
+
+→ Vérifier `lang: fr` dans `_quarto.yml` racine projet (ou venant de `_quarto.yml` du site). Sinon ajouter à la main.
+
+### "C'est quoi orange-book ?"
+
+→ Extension Typst (package universe) packagée par Quarto 1.9+. Pas un template Quarto à installer — c'est livré avec. Montrer URL en passant : <https://typst.app/universe/package/orange-book>.
+
+### "Et `_brand.yml` ?"
+
+→ "Excellente question, c'est exactement ce que vous allez faire dans 30 secondes". Pas de spoil.
+
+### "Pourquoi `@sec-origines` apparaît tel quel dans le PDF de l'étape 1 ?"
+
+→ Normal et attendu. `01-anatomie.qmd` contient une référence croisée vers `@sec-origines` (chapitre 2). À l'étape 1 (`type: default`), chaque `.qmd` rend en PDF isolé donc la référence ne résout pas — Quarto émet un warning et laisse `@sec-origines` littéral. À l'étape 2 (`type: book`), tous les chapitres se résolvent ensemble et la référence devient cliquable.
+
+---
+
+## Checklist finale avant de quitter Our turn
+
+- [ ] `_quarto.yml` étape 1 (`type: default`) visible et rendu en 5 PDF
+- [ ] `_quarto.yml` étape 2 (`type: book`) visible et rendu en PDF unique
+- [ ] PDF unique ouvert sur écran (couverture + TOC visibles)
+- [ ] Pas mentionné `appendices` (Your turn)
+- [ ] Pas copié `_brand.yml` (Your turn)
+- [ ] Slide Exercice 2 + boussole prêtes
+
+---
+
+## Fallbacks si ça plante
+
+| Problème | Plan B |
+|---|---|
+| Render étape 1 échoue | Skip render baseline, attaquer direct `type: default` |
+| Render étape 2 échoue (warning fonts) | Ignorer warnings, montrer PDF même si polices manquent — Your turn corrigera avec `_brand.yml` |
+| Apparition Inter/Star Jedi visible en étape 2 (selon ce qui traîne dans `.quarto/`) | Tant mieux : commente « le brand de Bloc 1 est encore là », anticipe Your turn |
+| Quarto trop vieux (`< 1.9`) | Orange-book ne s'active pas → fallback HTML book. Mentionner et expliquer requirement 1.9+ |
+
+---
+
+## Notes pour itérations futures
+
+- Si 5 min trop court : ajouter un sous-coup à l'étape 2 — pointer la numérotation Figure 1.1 dans le PDF unique pour ancrer "numérotation auto par chapitre"
+- Si 5 min trop long : couper le render baseline à l'étape 1 (juste `ls` + commentaire oral "5 docs séparés sans projet")
+- Considérer montrer `quarto preview` à la fin de Our turn pour préparer Your turn (les apprenants peuvent travailler avec preview live)
