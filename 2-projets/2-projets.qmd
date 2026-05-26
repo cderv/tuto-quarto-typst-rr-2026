@@ -72,7 +72,7 @@ Découpage du YAML en 4 fragments via `code-line-numbers` pour étaler le récit
 
 1.  Créer `_quarto.yml` avec `project: { type: default }` + `format: typst` → 5 PDF séparés
 2.  Passer à `type: book` (le `format: typst` reste, orange-book s'active automatiquement) → **PDF unique** avec couverture et TOC
-3.  Copier `_brand.yml` (+ `_logo-sw.svg` + `_fonts/`) à la racine → couverture jaune SW, Star Jedi (locale), Inter (Google)
+3.  Copier `_brand.yml` (depuis Bloc 1 ou `_brand-fallback.yml`) + `_logo-sw.svg` + `_fonts/` à la racine → couverture jaune SW, Star Jedi (locale), Inter (Google)
 :::
 
 ::: notes
@@ -93,6 +93,8 @@ Problèmes fréquents : mauvais chemin vers les chapitres, oubli du tiret devant
 ## À vous !
 
 🎯 Transformer 5 `.qmd` en livre PDF Typst stylé.
+
+📄 **Charte** : `charte-starwars.pdf` dans le starter (même charte qu'au Bloc 1, référence visuelle).
 
 ⏱ **12 minutes** — page boussole projetée à côté.
 
