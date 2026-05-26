@@ -113,6 +113,11 @@ quarto render rapport-starwars.qmd
 
 **Action écran** : passer à la slide "Exercice 1 — À vous !" + ouvrir `1-quarto-typst/boussole.html` sur écran secondaire (countdown).
 
+**Rôles pendant les 12 min de Your turn** :
+
+- **Maëlle** passe dans les rangs et dépanne en 1:1 (pièges anticipés ci-dessous = aide-mémoire pour elle aussi).
+- **CD** reste disponible au tableau pour rebondir sur les questions communes et signaler les bugs connus à l'oral (espacement gt, indentation YAML).
+
 ---
 
 ## Pièges à anticiper (questions probables)

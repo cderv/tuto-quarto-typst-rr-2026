@@ -110,7 +110,7 @@ book:
 format: typst
 ```
 
-**Transition vers Your turn** : « le saut est planté. À vous d'ajouter `appendices`, votre `_brand.yml` du Bloc 1 (ou `_brand-fallback.yml`), et les bonus cross-refs + pagebreak. 12 min. »
+**Transition vers Your turn** : « le saut est planté. À vous d'ajouter `appendices`, votre `_brand.yml` du Bloc 1 (ou `_brand-starter.yml`), et les bonus cross-refs + pagebreak. 12 min. »
 :::
 
 ## Exercice 2 {.wide-list}
@@ -126,13 +126,13 @@ format: typst
 
 📖 Consigne complète : [Page Exercice 2](index.qmd)
 
-> Pas de `_brand.yml` ? `_brand-fallback.yml` + `_logo-sw.svg` dispo dans le dossier exo.
+> Pas de `_brand.yml` ? `_brand-starter.yml` + `_logo-sw.svg` dispo dans le dossier exo.
 :::
 
 ::: notes
 12 min sur les 3 core + 3 min de bonus pour les rapides. Ouvrir la page boussole `2-projets/boussole.html` dans un onglet à projeter à côté (countdown autonome, démarre au chargement).
 
-Le fallback `_brand-fallback.yml` (+ `correction/_logo-sw.svg`) est important : ceux qui n'ont pas fini Bloc 1 peuvent les copier. Passer dans les rangs, repérer ceux qui peinent à l'étape 1 — souvent un underscore manquant.
+Le starter `_brand-starter.yml` (+ `_logo-sw.svg` à la racine de l'exo) est important : ceux qui n'ont pas fini Bloc 1 peuvent les copier. Maëlle passe dans les rangs et repère ceux qui peinent à l'étape 1 — souvent un underscore manquant.
 
 Pour ceux qui finissent vite : pousser le bonus B1 (références croisées) en premier — c'est le plus visuel et ça utilise les labels qui sont déjà dans le starter (`tbl-anatomie-mass`, `fig-anatomie-mass`, `#sec-origines`). Le bonus B2 (pagebreak) demande la syntaxe `.content-visible when-format="typst"` + `{{< pagebreak >}}` — le bloc complet à coller est sur la page Exercice 2.
 :::

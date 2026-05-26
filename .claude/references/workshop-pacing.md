@@ -28,7 +28,7 @@ Mine's Monash workshop (3h instruction): each 60-min module ≈ 20 min presentat
 - Exercises are **short and focused** (5-10 min each with countdown), not comprehensive
 - Each exercise ships its own `correction/` folder (référence pédagogique post-Your turn) — pas un secret. Le « Our turn » live coding reste la traversée principale.
 - Exercises servis via le website : `_quarto.yml` racine exclut `!exercises/` du render mais garde `exercises/**` comme `resources:`. Téléchargeables via `tree/main/exercises/0X-…/` (pas de `.zip` distribué).
-- **Progressive**: later exercises build on earlier ones (l'Exo 2 réutilise/promeut le `_brand.yml` + logo SW de l'Exo 1 au niveau projet ; pour les participants n'ayant pas fini, `_brand-fallback.yml` à la racine d'Exo 2)
+- **Progressive**: later exercises build on earlier ones (l'Exo 2 réutilise/promeut le `_brand.yml` + logo SW de l'Exo 1 au niveau projet ; pour les participants n'ayant pas fini, `_brand-starter.yml` à la racine d'Exo 2)
 - Exercise files are minimal: working code but bare structure — participants add the new concepts
 - **Mini-test pré-tutoriel** : `exercises/00-test-install/test-install.qmd` (sans `_brand.yml` pour fiabilité offline) référencé dans `preparatifs.qmd` pour valider la chaîne Typst end-to-end avant le jour J
 
@@ -45,7 +45,7 @@ exercises/              # nested per exo (starter + correction)
   02-projet-book/
     starter/            # 5 .qmd, sans _quarto.yml
     correction/         # _quarto.yml + _brand.yml + _logo-sw.svg + 5 .qmd
-    _brand-fallback.yml # pour participants n'ayant pas fini Exo 1
+    _brand-starter.yml # pour participants n'ayant pas fini Exo 1
 N-module-name/
   index.qmd             # landing page (iframe + exercise download links)
   N-module-name.qmd     # RevealJS slides (short!)
