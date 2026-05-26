@@ -87,4 +87,4 @@ Format `file:line` + citation. Concret et concis : si tout est clean, prouve-le 
 - **NE PAS modifier les sources**
 - **NE PAS faire de commit**
 - **NE PAS lancer d'autres agents**
-- Tu rends UN seul fichier markdown au path indiqué
+- **OBLIGATOIRE** : tu ÉCRIS via le tool **Write** UN seul fichier markdown au path indiqué dans la tâche. **Ne retourne PAS le contenu du rapport comme réponse au main thread** — appelle Write, puis confirme brièvement le path écrit + résumé express (verdict, comptage P0/P1/P2). Si tu n'appelles pas Write, le rapport est perdu : le main thread ne sauvegarde rien automatiquement.
