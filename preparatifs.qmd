@@ -13,14 +13,14 @@ Avant le tutoriel, merci de préparer votre environnement de travail.
 - **RStudio** (dernière version) ou **VS Code** / **Positron**
 - **Quarto** :
   - **Recommandé** : [pre-release `v1.10.4` ou supérieure](https://quarto.org/docs/download/prerelease.html) — contient des corrections de bugs.
-  - **Plancher** : [stable `1.9` ou supérieure](https://quarto.org/docs/get-started) — fonctionnera, mais le workshop signalera un workaround à appliquer à l'étape de l'exercice 2. 
+  - **Plancher** : [stable `1.9` ou supérieure](https://quarto.org/docs/get-started) — fonctionnera, mais le tutoriel signalera un contournement à appliquer à l'étape concernée de l'exercice 2.
   
   **RStudio** inclut Quarto donc rien de plus à installer.
 
 - **Packages R** :
 
 ``` r
-pkg <- c("quarto", "dplyr", "ggplot2", "ggrepel", "gt", "brand.yml", "prismatic")
+pkg <- c("quarto", "dplyr", "ggplot2", "ggrepel", "gt", "scales", "brand.yml")
 install.packages(pkg)
 # ou pak 
 pak::pkg_install(pkg)
@@ -42,12 +42,12 @@ Les dossiers `correction/` contiennent les solutions complètes — ⚠️ ne le
 Vérifiez que tout fonctionne en exécutant dans R :
 
 ``` r
-quarto::quarto_version() # 1.9.37 mini, 1.10.x prerelease recommandée
+quarto::quarto_version() # 1.9.37 minimum, 1.10.x pre-release recommandée
 library(dplyr)
 head(starwars)
 ```
 
-Si la version de quarto n'est pas celle attendue, alors utilisez `quarto::quarto_binary_sitrep(debug = TRUE)` pour aider à diagnostiquer.
+Si la version de quarto n'est pas celle attendue, utilisez `quarto::quarto_binary_sitrep(debug = TRUE)` pour aider à diagnostiquer.
 
 ## Test de la chaîne Typst
 
@@ -62,7 +62,7 @@ quarto render exercises/00-test-install/test-install.qmd
 **Si ça échoue** :
 
 - `Typst executable not found` → Quarto \< 1.9, mettez à jour.
-- `unknown font family` → ignorez cet avertissement, le PDF se génère quand même avec une police de repli (ce test n'utilise pas `_brand.yml`). Suivi sur [Github](https://github.com/quarto-dev/quarto-cli/issues/11683)
+- `unknown font family` → ignorez cet avertissement, le PDF se génère quand même avec une police de repli (ce test n'utilise pas `_brand.yml`). Suivi sur [GitHub](https://github.com/quarto-dev/quarto-cli/issues/11683)
 
 ## Plan B — si pas de réseau le jour J
 

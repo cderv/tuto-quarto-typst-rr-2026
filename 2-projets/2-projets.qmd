@@ -5,7 +5,6 @@ institute: "Posit / rOpenSci"
 author: "Christophe Dervieux & Maëlle Salmon"
 date: "2026-06-16"
 format: clean-revealjs
-editor: visual
 ---
 
 ## `_quarto.yml` — centraliser la config
@@ -77,7 +76,7 @@ Découpage du YAML en 4 fragments via `code-line-numbers` pour étaler le récit
 :::
 
 ::: notes
-Démo live, 3 étapes en \~10 min. à l'étape 2 le PDF unique avec couverture orange-book apparaît. Étape 3 = confirmation visuelle (la charte de Bloc 1 ressuscite côté book).
+Démo live, 3 étapes en \~10 min. À l'étape 2 le PDF unique avec couverture orange-book apparaît. Étape 3 = confirmation visuelle (la charte de Bloc 1 ressuscite côté book).
 
 Montrer pendant la démo : la numérotation automatique Figure 1.1 / Figure 2.1 / Table 1.1 / Table 2.1 (en français Quarto rend « Figure » et « Table » — pas « Fig » / « Tab »), l'apparition du logo SVG sur la couverture, le passage des tableaux gt en Inter (Étape 3).
 
@@ -93,7 +92,7 @@ Problèmes fréquents : mauvais chemin vers les chapitres, oubli du tiret devant
 ::: callout-warning
 ## À vous !
 
-🎯 Transformer 5 `.qmd` en livre PDF Typst brandé.
+🎯 Transformer 5 `.qmd` en livre PDF Typst stylé.
 
 ⏱ **12 minutes** — page boussole projetée à côté.
 
@@ -141,7 +140,7 @@ Fusible à couper si le timing serre — sauter directement au wrap-up qui suit 
 :::
 
 ::: notes
-**CD parle.** Vous êtes parti·e d'un `.qmd` HTML, vous repartez avec un livre PDF brandé multi-chapitres. Trois lignes de YAML, un fichier de charte, un projet — et c'est tout.
+**CD parle.** Vous êtes parti·e d'un `.qmd` HTML, vous repartez avec un livre PDF stylé multi-chapitres. Trois lignes de YAML, un fichier de charte, un projet — et c'est tout.
 
 Les 5 bullets font écho aux 3 questions posées en intro (cf. `index.qmd:17-19`) et aux apprentissages détaillés des 2 pages de bloc (cf. `1-quarto-typst/index.qmd:24-29` + `2-projets/index.qmd:24-28`). Le 5ᵉ bullet (« partials, formats communautaires ») est explicitement annoncé comme piste post-tutoriel — pas une promesse non tenue. Rappel mémoriel : pointer du doigt vers la slide précédente Bloc 1 ou la page d'accueil si besoin.
 :::
