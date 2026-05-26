@@ -208,7 +208,7 @@ Parler des helpers R `theme_brand_*()`.
 3.  Ajoutez quelques options (`toc`, `mainfont`, `papersize`...)
 4.  Créez un `_brand.yml` en suivant la **charte Star Wars** (`charte-starwars.pdf` du starter) : palette + police Google sur le corps
 5.  Ajoutez la police locale Star Jedi (TTF dans `_fonts/`) sur les titres de section via `source: file`
-6.  Activez `keep-typ: true` et explorez le fichier `.typ` généré
+6.  **Bonus** : activez `keep-typ: true` et explorez le fichier `.typ` généré
 :::
 
 ::: notes
