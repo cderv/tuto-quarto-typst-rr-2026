@@ -19,8 +19,9 @@ Transformer 5 `.qmd` en un livre PDF Typst stylé via `_quarto.yml` + `_brand.ym
 ## 📋 Étapes
 
 1. `_quarto.yml` avec `type: default` + `format: typst`
-2. Passer à `type: book` (orange-book s'active auto)
-3. Copier `_brand.yml` (+ logo + `_fonts/`) à la racine
+2a. Passer à `type: book` + `chapters:` (orange-book s'active auto)
+2b. Ajouter `appendices: [annexe-donnees.qmd]` → bascule en « Annexe A »
+3. Copier `_brand.yml` (+ logo + `_fonts/`) à la racine + bloc `format.typst.logo` custom (sinon chevauchement titres p. 2+)
 
 **Bonus** (pour les rapides) :
 

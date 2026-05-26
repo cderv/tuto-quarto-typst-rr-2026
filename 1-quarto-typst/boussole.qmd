@@ -16,13 +16,18 @@ sidebar: false
 
 Transformer un rapport `.qmd` HTML en PDF Typst stylé via `_brand.yml`.
 
+📄 Charte fournie : `charte-starwars.pdf` dans le starter.
+
 ## 📋 Étapes
 
 1. Ajouter `format: typst` et rendre
 2. Régler les options (`papersize`, `toc`, `mainfont`)
 3. Créer `_brand.yml` (couleurs + police Google)
 4. Ajouter Star Jedi en police locale (`source: file`)
-5. Activer `keep-typ: true` et ouvrir le `.typ`
+
+**Bonus** (pour les rapides) :
+
+- B1. Activer `keep-typ: true` et ouvrir le `.typ`
 
 ## 🆘 Si vous bloquez
 
