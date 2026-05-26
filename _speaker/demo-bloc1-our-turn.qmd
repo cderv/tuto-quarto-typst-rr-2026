@@ -1,0 +1,162 @@
+---
+title: "Démo Our turn — Bloc 1 (Quarto + Typst)"
+subtitle: "Pas-à-pas écran + snippets à coller"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    code-copy: true
+    code-overflow: wrap
+author: ""
+date: ""
+---
+
+::: callout-important
+## Objectif de la démo
+
+Faire voir **la boucle `_brand.yml` → render → PDF stylé** en 5-6 minutes.
+**On n'applique qu'UNE couleur** : le reste (palette complète, assignments, Google font, Star Jedi, logo) = Your turn.
+:::
+
+## Avant de commencer (setup)
+
+### Fichiers / fenêtres à ouvrir
+
+- [ ] Éditeur : `exercises/01-document-typst/starter/rapport-starwars.qmd`
+- [ ] Terminal dans `exercises/01-document-typst/starter/`
+- [ ] Lecteur PDF prêt (sera ouvert après premier render)
+- [ ] Projeter en parallèle : `_charte/charte-starwars.pdf` (référence palette)
+- [ ] Slide "Faisons ensemble" affichée sur écran secondaire / split
+
+### Ressources web à avoir sous la main
+
+- Doc Typst format : <https://quarto.org/docs/output-formats/typst.html>
+- Doc `_brand.yml` Quarto : <https://quarto.org/docs/authoring/brand.html>
+- Spec brand-yml : <https://posit-dev.github.io/brand-yml/>
+
+### Vérification éclair
+
+```bash
+quarto --version    # >= 1.9, idéalement 1.10.4+
+```
+
+---
+
+## Étape 1 — `format: typst` (1 min)
+
+**Action écran** : dans le YAML de `rapport-starwars.qmd`, remplacer `format: html` par `format: typst`.
+
+```yaml
+---
+title: "Anatomie d'une saga"
+subtitle: "Qui sont les colosses de la galaxie ?"
+format: typst
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+```
+
+**Render** :
+
+```bash
+quarto render rapport-starwars.qmd
+```
+
+**À montrer** : `rapport-starwars.pdf` à côté du `.qmd`. Ouvrir le PDF.
+
+**À dire** :
+- "Une ligne. PDF généré. Pas d'install LaTeX."
+- Montrer rapidement : police par défaut Typst, marges par défaut, pas de couleur.
+
+---
+
+## Étape 2 — `_brand.yml` minimal (1 couleur) (2-3 min)
+
+**Action écran** : créer `_brand.yml` dans le même dossier que `rapport-starwars.qmd`.
+
+```yaml
+color:
+  palette:
+    imperial-red: "#BC1E22"
+  primary: imperial-red
+```
+
+**À dire pendant qu'on tape** :
+- "`palette` = on nomme nos couleurs"
+- "`primary` = on assigne le rôle « couleur principale » à un nom de la palette"
+- Pointer la charte projetée : "j'ai pris le rouge impérial de la charte, juste pour montrer la boucle"
+
+**Render** :
+
+```bash
+quarto render rapport-starwars.qmd
+```
+
+**À montrer** sur le PDF :
+- Titres en rouge impérial
+- Liens en rouge impérial
+- Rien d'autre changé (police corps, marges = défaut)
+
+**À dire** :
+- "Une couleur définie, deux endroits où elle apparaît. Pas de CSS, pas de LaTeX template."
+- "Et c'est exactement ce que vous allez faire — en version complète — dans 30 secondes."
+
+---
+
+## Transition vers Your turn (~30 sec)
+
+**À dire** :
+
+> "Vous avez vu la boucle : `format: typst` → render, puis `_brand.yml` → render. À vous maintenant, avec la charte Star Wars complète : 4 couleurs au lieu d'1, assignments `foreground` + `background`, police Google sur le corps, et police locale Star Jedi sur les titres. 12 minutes, page boussole projetée."
+
+**Action écran** : passer à la slide "Exercice 1 — À vous !" + ouvrir `1-quarto-typst/boussole.html` sur écran secondaire (countdown).
+
+---
+
+## Pièges à anticiper (questions probables)
+
+### "Pourquoi mon hex code ne marche pas ?"
+
+→ Guillemets obligatoires : `imperial-red: "#BC1E22"` (sans guillemets, `#` lu comme commentaire YAML).
+
+### "Quarto trouve pas `_brand.yml` ?"
+
+→ Doit être dans le **même dossier** que le `.qmd` (ou racine projet). Vérifier `ls`.
+
+### "Pourquoi le titre du document est rouge mais pas le sous-titre ?"
+
+→ Normal. `primary` cible les titres `=` (sections) + liens. Le titre frontmatter et le sous-titre sont des éléments distincts.
+
+### "Y a-t-il un live preview ?"
+
+→ `quarto preview rapport-starwars.qmd` ouvre un viewer auto-refresh. **Mais éviter pendant la démo** : préférer render manuel, plus lisible pour le public.
+
+---
+
+## Checklist finale avant de quitter Our turn
+
+- [ ] `format: typst` rendu visible dans YAML édité
+- [ ] PDF d'étape 1 affiché (avant brand)
+- [ ] `_brand.yml` créé et visible à l'écran
+- [ ] PDF d'étape 2 affiché (titres rouges)
+- [ ] Charte SW toujours projetée (transition vers Your turn)
+- [ ] Slide Exercice 1 + boussole prêtes
+
+---
+
+## Fallbacks si ça plante
+
+| Problème | Plan B |
+|---|---|
+| Quarto render échoue (réseau Google fonts) | Démo offline : pas de police, juste palette → la couleur suffit pour la démo |
+| Quarto trop vieux | Skip étape 2, demo seulement `format: typst` ; expliquer que `_brand.yml` requiert 1.9+ |
+| Projecteur lâche | Lire le code à voix haute, demander aux apprenant·e·s d'ouvrir `correction/` |
+
+---
+
+## Notes pour itérations futures
+
+- Si 5 min trop court : ajouter `papersize: a5` après étape 2 pour montrer override d'une option Typst standard
+- Si 5 min trop long : couper l'étape 2, juste `format: typst` + commentaire oral "on va faire `_brand.yml` ensemble dans Your turn"
