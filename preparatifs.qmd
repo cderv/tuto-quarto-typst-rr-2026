@@ -7,6 +7,30 @@ date: ""
 
 Avant le tutoriel, merci de préparer votre environnement de travail.
 
+::: {.callout-tip}
+## Raccourci recommandé : le paquet `tutotypst`
+
+Un petit paquet R compagnon installe **tous les prérequis R** d'un coup, vérifie
+votre environnement et pose les exercices :
+
+``` r
+# 1. Installer le paquet (tire automatiquement tous les paquets du tutoriel)
+install.packages("tutotypst",
+  repos = c("https://cderv.r-universe.dev", "https://cloud.r-project.org"))
+
+# 2. Vérifier que tout est prêt (R, Quarto, Typst, paquets, rendu de test)
+tutotypst::verifier_installation()
+
+# 3. Installer les exercices dans un dossier local
+tutotypst::installer_exercices()
+```
+
+Quarto (et RStudio) doivent être installés **avant** : le paquet les
+**diagnostique** mais ne peut pas les installer à votre place. La suite de cette
+page reste le **chemin manuel** de référence, si vous préférez ou en cas de
+souci avec le paquet.
+:::
+
 ## Installation
 
 - **Dernier R 4** : <https://cran.r-project.org> ou avec [rig](https://github.com/r-lib/rig).
