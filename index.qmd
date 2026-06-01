@@ -3,7 +3,7 @@ title: "PDF sans frictions : Typst dans vos projets Quarto"
 subtitle: "Tutoriel — Rencontres R 2026"
 format: html
 author: "Christophe Dervieux"
-date: "16-06-2026"
+date: "2026-06-16"
 ---
 
 ::: when-where
