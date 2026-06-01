@@ -1,6 +1,10 @@
 # Lot 2 — aides brand.yml / polices.
 # Les éditions de fichiers sont CIBLÉES (insertion/remplacement de lignes), jamais
-# un round-trip yaml::write_yaml qui détruirait commentaires et ordre.
+# un round-trip yaml::write_yaml / yaml12::format_yaml qui détruirait commentaires
+# et ordre (vérifié : yaml12 0.1.0 perd les commentaires en round-trip).
+# Choix TRANSITOIRE : à migrer vers un parcours structuré yaml12 préservant les
+# commentaires quand l'issue posit-dev/r-yaml12#5 (read_yaml(preserve_all=TRUE))
+# sera livrée -> https://github.com/posit-dev/r-yaml12/issues/5
 # Lecture/écriture en UTF-8 via xfun (robuste quelle que soit la locale).
 
 #' Basculer un exercice en mode hors-ligne (polices Inter locales)
