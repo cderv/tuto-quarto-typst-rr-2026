@@ -128,3 +128,30 @@ test_that("reinitialiser_exercice() refuse d'écraser sans force en non-interact
   installer_exercices(d, quels = "01")
   expect_error(reinitialiser_exercice("01", dossier = d, force = FALSE), "force")
 })
+
+# --- verifier_r : branche « R trop ancien » (mock getRversion) ------------------
+test_that("verifier_r() échoue pour un R trop ancien", {
+  local_mocked_bindings(getRversion = function() numeric_version("4.0.0"), .package = "base")
+  expect_false(verifier_r())
+})
+
+# --- verifier_rendu : branche « aucun PDF produit » (mock quarto_render) ---------
+test_that("verifier_rendu() signale l'absence de PDF", {
+  skip_if_no_quarto()
+  local_mocked_bindings(quarto_render = function(...) invisible(), .package = "quarto")
+  expect_false(verifier_rendu(tester_rendu = TRUE))
+})
+
+# --- ouvrir_correction : refus et confirmation interactive ----------------------
+test_that("ouvrir_correction() s'annule si l'utilisateur refuse", {
+  rlang::local_interactive(TRUE)
+  local_mocked_bindings(menu = function(...) 2L, .package = "utils")
+  expect_null(ouvrir_correction("01"))
+})
+
+test_that("ouvrir_correction() ouvre l'URL une fois confirmée", {
+  rlang::local_interactive(TRUE)
+  local_mocked_bindings(menu = function(...) 1L, .package = "utils")
+  local_mocked_bindings(browseURL = function(...) invisible(), .package = "utils")
+  expect_match(ouvrir_correction("01"), "correction$")
+})
