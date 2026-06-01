@@ -38,9 +38,21 @@ reference:
   contents:
   - installer_exercices
   - reinitialiser_exercice
+  - ouvrir_exercices
   - lister_exercices
+- title: Polices & charte
+  desc: >
+    Mode hors-ligne, contournement font-paths et validation de `_brand.yml`.
+  contents:
+  - basculer_offline
+  - appliquer_polices_locales
+  - valider_brand
+  - polices_typst
 - title: Dépannage
   desc: >
-    Décoder les erreurs de rendu Quarto / Typst.
+    Décoder les erreurs et inspecter la chaîne Typst.
   contents:
   - diagnostiquer_rendu
+  - diagnostic_typst
+  - inspecter_typ
+  - nettoyer_cache

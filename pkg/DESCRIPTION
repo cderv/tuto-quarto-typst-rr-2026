@@ -26,7 +26,8 @@ Imports:
     quarto,
     rlang,
     scales,
-    withr
+    withr,
+    yaml
 Suggests:
     pkgdown,
     rstudioapi,

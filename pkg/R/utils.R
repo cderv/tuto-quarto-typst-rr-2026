@@ -27,6 +27,13 @@
   "02-projet-book" = "Un livre Typst personnalisé avec une charte (`_brand.yml`)."
 )
 
+# Polices Inter embarquées (mode hors-ligne) : fichier -> graisse
+.inter_offline <- c(
+  "Inter-Regular.ttf" = 400,
+  "Inter-SemiBold.ttf" = 600,
+  "Inter-Bold.ttf" = 700
+)
+
 # Dossier des exercices embarqués dans le paquet (inst/exercices)
 .dossier_exercices_paquet <- function() {
   chemin <- system.file("exercices", package = "tutotypst")
@@ -36,6 +43,26 @@
     )
   }
   chemin
+}
+
+# Dossier des polices hors-ligne embarquées (inst/offline/_fonts)
+.dossier_offline_paquet <- function() {
+  system.file("offline", "_fonts", package = "tutotypst")
+}
+
+# Ouvre un fichier dans l'IDE / l'éditeur si possible (best-effort, silencieux)
+.ouvrir_fichier <- function(chemin) {
+  if (rlang::is_installed("rstudioapi") &&
+    rstudioapi::isAvailable() &&
+    rstudioapi::hasFun("navigateToFile")) {
+    try(rstudioapi::navigateToFile(chemin), silent = TRUE)
+    return(invisible(TRUE))
+  }
+  if (rlang::is_interactive()) {
+    try(utils::file.edit(chemin), silent = TRUE)
+    return(invisible(TRUE))
+  }
+  invisible(FALSE)
 }
 
 # Nom de dossier d'un exercice à partir d'un code court ("00" / "01" / "02")
