@@ -17,6 +17,9 @@ on:
       - "pkg/inst/exercices/**"
       - "pkg/data-raw/sync-exercices.R"
 
+permissions:
+  contents: read
+
 jobs:
   check-sync:
     runs-on: ubuntu-latest

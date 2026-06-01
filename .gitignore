@@ -14,6 +14,7 @@ exercises/**/*.pdf
 pkg/inst/exercices/**/*.typ
 pkg/inst/exercices/**/*.html
 pkg/inst/exercices/**/*_files/
+pkg/inst/exercices/**/_book/
 pkg/inst/exercices/**/*.pdf
 !pkg/inst/exercices/**/charte-starwars.pdf
 # Sortie pkgdown (générée, publiée via resources — cf. étape D)

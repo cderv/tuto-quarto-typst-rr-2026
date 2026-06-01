@@ -37,6 +37,8 @@ is_artifact <- function(paths) {
     grepl("(^|/)_book(/|$)", paths) |
     grepl("_files(/|$)", paths) |
     grepl("\\.typ$", paths) |
+    grepl("(^|/)\\.DS_Store$", paths) |
+    grepl("(^|/)\\.gitignore$", paths) |
     # tout PDF rendu, sauf la charte de référence (versionnée)
     (grepl("\\.pdf$", paths) & !grepl("charte-starwars\\.pdf$", paths))
 }
