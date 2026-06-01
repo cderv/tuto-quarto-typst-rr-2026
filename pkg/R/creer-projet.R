@@ -96,7 +96,9 @@ creer_projet_typst <- function(dest,
       "title: \"Mon rapport\"",
       "author: \"Votre nom\"",
       "date: today",
-      "format: typst",
+      "format:",
+      "  typst:",
+      "    papersize: a4",
       "---",
       "",
       "## Introduction",
@@ -178,6 +180,7 @@ basculer_charte <- function(variante = c("empire", "jedi", "mando"),
   if (!file.exists(src)) {
     cli::cli_abort("Variante {.val {variante}} introuvable dans le paquet.")
   }
+  cli::cli_alert_info("Astuce : cette fonction est pensée pour {.strong après} l'exercice 2.")
   projet <- normalizePath(projet, winslash = "/", mustWork = FALSE)
   brand <- file.path(projet, "_brand.yml")
   if (file.exists(brand)) {
@@ -203,7 +206,10 @@ comparer_chartes <- function() {
   brands_dir <- system.file("templates", "brands", package = "tutotypst")
   variantes <- c("empire", "jedi", "mando")
   couleurs <- vapply(variantes, function(v) {
-    raw <- yaml::read_yaml(file.path(brands_dir, paste0("_brand-", v, ".yml")))
+    raw <- yaml::read_yaml(
+      file.path(brands_dir, paste0("_brand-", v, ".yml")),
+      fileEncoding = "UTF-8"
+    )
     raw$color$palette[[raw$color$primary]]
   }, character(1))
 

@@ -9,12 +9,16 @@ on:
     paths:
       - "exercises/**"
       - "pkg/inst/exercices/**"
+      - "pkg/inst/templates/**"
+      - "pkg/inst/offline/**"
       - "pkg/data-raw/sync-exercices.R"
   push:
     branches: [main]
     paths:
       - "exercises/**"
       - "pkg/inst/exercices/**"
+      - "pkg/inst/templates/**"
+      - "pkg/inst/offline/**"
       - "pkg/data-raw/sync-exercices.R"
 
 permissions:
@@ -30,14 +34,15 @@ jobs:
         with:
           use-public-rspm: true
 
-      - name: Régénérer pkg/inst/exercices depuis exercises/
+      - name: Régénérer pkg/inst depuis exercises/
         run: Rscript pkg/data-raw/sync-exercices.R
 
-      - name: Vérifier que pkg/inst/exercices est à jour
+      - name: Vérifier que pkg/inst est à jour
         run: |
-          if [ -n "$(git status --porcelain pkg/inst/exercices)" ]; then
-            echo "::error::pkg/inst/exercices n'est pas synchronisé avec exercises/. Lancez 'just pkg-sync' puis committez."
-            git --no-pager diff -- pkg/inst/exercices
+          cibles="pkg/inst/exercices pkg/inst/templates pkg/inst/offline"
+          if [ -n "$(git status --porcelain $cibles)" ]; then
+            echo "::error::pkg/inst n'est pas synchronisé avec exercises/. Lancez 'just pkg-sync' puis committez."
+            git --no-pager diff -- $cibles
             exit 1
           fi
-          echo "pkg/inst/exercices est synchronisé."
+          echo "pkg/inst est synchronisé."
