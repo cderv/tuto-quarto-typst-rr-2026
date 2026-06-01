@@ -109,6 +109,9 @@ polices_typst <- function(projet = NULL) {
 #' un **document** simple (l'exercice 1) ; pour un livre, le comportement est
 #' moins prévisible.
 #'
+#' À utiliser **après** avoir produit votre propre PDF : c'est un outil pour
+#' comprendre la couche Typst, pas un raccourci vers la solution de l'exercice.
+#'
 #' @param qmd Chemin du fichier `.qmd` à rendre.
 #' @param ouvrir Logique. Ouvrir le `.typ` produit dans l'éditeur ? Par défaut
 #'   `TRUE`.

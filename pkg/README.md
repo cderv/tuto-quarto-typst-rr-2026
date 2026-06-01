@@ -30,6 +30,9 @@ Plan B (si l'univers ne répond pas) :
 pak::pak("github::cderv/cderv-tuto-quarto-typst-rr-2026/pkg")
 ```
 
+> **À installer d'abord** : **Quarto** et **RStudio**. Le paquet les *vérifie*
+> mais ne peut pas les installer à votre place.
+
 ## Utilisation
 
 ```r
@@ -45,6 +48,16 @@ tutoquartotypst::par_ou_commencer()
 
 > Le paquet est un **raccourci** pour préparer le tutoriel. La page
 > « Préparatifs » du site reste la référence et le chemin manuel de secours.
+
+## Et après ?
+
+Le paquet va au-delà de la préparation :
+
+- **Pendant** : dépannage et confort (`diagnostiquer_rendu()`, `basculer_hors_ligne()`
+  sans réseau, `valider_brand()`, `nettoyer_cache()`…).
+- **Après le tutoriel** : réutilisez Quarto + Typst chez vous avec
+  `creer_projet_typst()`, et explorez les variantes de charte
+  (`basculer_charte()`, `comparer_chartes()`).
 
 ## Licence
 
