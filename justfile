@@ -28,6 +28,11 @@ exo-typst:
 exo-book:
     quarto render exercises/02-projet-book/correction/
 
+# Régénère pkg/inst/exercices/ depuis la source de vérité exercises/
+[group('build')]
+pkg-sync:
+    Rscript pkg/data-raw/sync-exercices.R
+
 [group('build')]
 site:
     quarto render

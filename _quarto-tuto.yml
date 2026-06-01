@@ -2,6 +2,9 @@ project:
   render:
     - "**/*.qmd"
     - "!exercises/"
+    # Exclut le paquet R : pkg/inst/exercices/**/*.qmd (dont test-install.qmd en
+    # format: typst) sinon conflit multi-format avec le site HTML.
+    - "!pkg/"
 
 website:
   sidebar:
