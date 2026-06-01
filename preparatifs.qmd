@@ -7,6 +7,34 @@ date: ""
 
 Avant le tutoriel, merci de préparer votre environnement de travail.
 
+::: {.callout-tip}
+## Raccourci recommandé : le paquet `tutoquartotypst`
+
+**À installer d'abord** : **Quarto** et **RStudio** (voir la section
+*Installation* juste en dessous). Le paquet les **vérifie** mais ne peut pas les
+installer à votre place.
+
+Ensuite, le paquet R compagnon installe **tous les paquets R** du tutoriel,
+vérifie votre environnement et pose les exercices :
+
+``` r
+# 1. Installer le paquet (installe automatiquement tous les paquets du tutoriel)
+install.packages("tutoquartotypst",
+  repos = c("https://cderv.r-universe.dev", "https://cloud.r-project.org"))
+
+# 2. Vérifier que tout est prêt (R, Quarto, Typst, paquets, un rendu de test)
+tutoquartotypst::verifier_installation()
+
+# 3. Installer les exercices dans un dossier local
+tutoquartotypst::installer_exercices()
+```
+
+Si `verifier_installation()` affiche tout en vert, vous êtes prêt·e : les
+sections ci-dessous deviennent **facultatives** (elles détaillent le même chemin
+**à la main**). **Si l'installation via r-universe échoue** (réseau, pare-feu
+d'entreprise…), suivez simplement le chemin manuel ci-dessous.
+:::
+
 ## Installation
 
 - **Dernier R 4** : <https://cran.r-project.org> ou avec [rig](https://github.com/r-lib/rig).
@@ -17,7 +45,7 @@ Avant le tutoriel, merci de préparer votre environnement de travail.
   
   **RStudio** inclut Quarto donc rien de plus à installer.
 
-- **Packages R** :
+- **Paquets R** :
 
 ``` r
 pkg <- c("quarto", "dplyr", "ggplot2", "ggrepel", "gt", "scales", "brand.yml", "prismatic")
@@ -64,7 +92,7 @@ quarto render exercises/00-test-install/test-install.qmd
 - `Typst executable not found` → Quarto \< 1.9, mettez à jour.
 - `unknown font family` → ignorez cet avertissement, le PDF se génère quand même avec une police de repli (ce test n'utilise pas `_brand.yml`). Suivi sur [GitHub](https://github.com/quarto-dev/quarto-cli/issues/11683)
 
-## Plan B — si pas de réseau le jour J
+## Plan B — polices sans réseau le jour J
 
 Le tutoriel utilise par défaut `_brand.yml` avec `source: google` pour Inter (corps), qui télécharge la police au premier rendu. Star Jedi (titres) est livrée en local dans `_fonts/`. Si vous n'avez **pas** d'accès réseau le matin du tutoriel, un `_brand-offline.yml` avec Inter en `source: file` est fourni pour **chaque exercice** :
 

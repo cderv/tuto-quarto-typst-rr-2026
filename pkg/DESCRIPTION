@@ -1,0 +1,41 @@
+Package: tutoquartotypst
+Title: Paquet Compagnon du Tutoriel Quarto + Typst (Rencontres R 2026)
+Version: 0.0.0.9000
+Authors@R:
+    person("Christophe", "Dervieux", , "christophe.dervieux@gmail.com",
+           role = c("aut", "cre"))
+Description: Fonctions utilitaires pour preparer et suivre le tutoriel
+    "PDF sans frictions : Typst dans vos projets Quarto" (Rencontres R
+    2026). Le paquet verifie l'environnement (R, Quarto, Typst, paquets),
+    installe localement les exercices et aide au rendu Typst. Installer le
+    paquet tire automatiquement tous les prerequis du tutoriel.
+License: MIT + file LICENSE
+URL: https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026,
+    https://connect.posit.cloud/cderv/content/019df82c-7202-2165-28ea-7f9ca734ad26/package
+BugReports: https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/issues
+Depends:
+    R (>= 4.1)
+Imports:
+    brand.yml,
+    cli,
+    dplyr,
+    ggplot2,
+    ggrepel,
+    gt,
+    prismatic,
+    quarto,
+    rlang,
+    scales,
+    withr,
+    xfun,
+    yaml
+Suggests:
+    pkgdown,
+    rstudioapi,
+    testthat (>= 3.0.0)
+SystemRequirements: Quarto (>= 1.9.0), Typst (bundled with Quarto)
+Config/testthat/edition: 3
+Config/roxygen2/markdown: TRUE
+Config/roxygen2/version: 8.0.0
+Encoding: UTF-8
+Language: fr

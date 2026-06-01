@@ -7,7 +7,7 @@ default:
 # === build ===
 
 [group('build')]
-all: charte exos site
+all: charte exos pkg-sync pkg-site site
 
 [group('build')]
 [parallel]
@@ -27,6 +27,21 @@ exo-typst:
 [group('build')]
 exo-book:
     quarto render exercises/02-projet-book/correction/
+
+# Régénère pkg/inst/ depuis la source de vérité exercises/
+[group('build')]
+pkg-sync:
+    Rscript pkg/data-raw/sync-exercices.R
+
+# Vérifie que pkg/inst/ est à jour (régénère + échoue si diff) — comme la CI
+[group('dev')]
+pkg-sync-check:
+    Rscript pkg/data-raw/sync-exercices.R --check
+
+# Construit le site pkgdown du paquet dans package/ (publié via resources)
+[group('build')]
+pkg-site:
+    Rscript -e "pkgdown::build_site('pkg')"
 
 [group('build')]
 site:

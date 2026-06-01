@@ -1,4 +1,6 @@
 project:
+  # Liste explicite (pas de glob) => pas besoin de "!pkg/" comme dans tuto :
+  # impossible d'attraper pkg/. Ne pas remettre "**/*.qmd" sans rajouter "!pkg/".
   render:
     - index.qmd
     - preparatifs.qmd
