@@ -55,7 +55,7 @@ basculer_hors_ligne <- function(projet = ".", retour = FALSE) {
   # Validation SÉMANTIQUE (par parsing) avant toute édition : on n'agit que si la
   # charte a exactement UNE police `source: google` et que c'est Inter. Sinon on
   # guide, sans rien modifier (évite d'éditer la mauvaise police / une forme tordue).
-  raw <- tryCatch(yaml::read_yaml(brand, fileEncoding = "UTF-8"), error = function(e) NULL)
+  raw <- tryCatch(yaml::read_yaml(brand, fileEncoding = "UTF-8", eval.expr = FALSE), error = function(e) NULL)
   fonts <- if (!is.null(raw)) raw$typography$fonts %||% list() else list()
   est_google <- vapply(fonts, function(f) identical(f$source, "google"), logical(1))
   familles_google <- vapply(fonts[est_google], function(f) f$family %||% NA_character_, character(1))
@@ -105,7 +105,7 @@ basculer_hors_ligne <- function(projet = ".", retour = FALSE) {
   # YAML ou n'a pas pris (Inter pas en source: file), on restaure et on guide.
   valide <- tryCatch(
     {
-      v <- yaml::read_yaml(brand, fileEncoding = "UTF-8")
+      v <- yaml::read_yaml(brand, fileEncoding = "UTF-8", eval.expr = FALSE)
       fonts <- v$typography$fonts %||% list()
       any(vapply(fonts, function(f) {
         identical(f$family, "Inter") && identical(f$source, "file")
@@ -196,7 +196,7 @@ appliquer_polices_locales <- function(projet = ".") {
   # Filet de sécurité : on relit le résultat. Si l'insertion a cassé le YAML ou
   # mal niché `font-paths`, on restaure et on donne les lignes à ajouter à la main.
   valide <- tryCatch(
-    !is.null(yaml::read_yaml(qfile, fileEncoding = "UTF-8")$format$typst[["font-paths"]]),
+    !is.null(yaml::read_yaml(qfile, fileEncoding = "UTF-8", eval.expr = FALSE)$format$typst[["font-paths"]]),
     error = function(e) FALSE
   )
   if (!valide) {
@@ -245,7 +245,7 @@ valider_brand <- function(chemin = "_brand.yml") {
       FALSE
     }
   )
-  raw <- tryCatch(yaml::read_yaml(chemin, fileEncoding = "UTF-8"), error = function(e) NULL)
+  raw <- tryCatch(yaml::read_yaml(chemin, fileEncoding = "UTF-8", eval.expr = FALSE), error = function(e) NULL)
   if (is.null(raw)) {
     cli::cli_alert_danger("YAML illisible.")
     return(invisible(FALSE))
