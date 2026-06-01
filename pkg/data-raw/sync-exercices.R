@@ -11,6 +11,12 @@
 #
 # Lancer depuis la racine du repo :  Rscript pkg/data-raw/sync-exercices.R
 # ou via :                           just pkg-sync
+#
+# Mode vérification (régénère PUIS échoue si le résultat diffère du commit) :
+#   Rscript pkg/data-raw/sync-exercices.R --check   (ou : just pkg-sync-check)
+# C'est exactement ce que lance la CI (.github/workflows/pkg-inst-sync.yml).
+
+check_mode <- "--check" %in% commandArgs(trailingOnly = TRUE)
 
 # --- localiser la racine du repo (dossier contenant exercises/ ET pkg/) -----------
 find_repo_root <- function(start = getwd()) {
@@ -101,3 +107,19 @@ for (f in c("Inter-Regular.ttf", "Inter-SemiBold.ttf", "Inter-Bold.ttf")) {
   ))
 }
 message("Sync assets paquet : 3 variantes de charte + 3 polices Inter.")
+
+# --- mode --check : échoue si la copie générée diffère de ce qui est committé ------
+if (check_mode) {
+  cibles <- c("pkg/inst/exercices", "pkg/inst/templates", "pkg/inst/offline")
+  etat <- system2("git", c("-C", root, "status", "--porcelain", "--", cibles),
+                  stdout = TRUE)
+  if (length(etat) > 0) {
+    message(
+      "\n[ECHEC] pkg/inst n'est pas synchronise avec exercises/.\n",
+      "Lancez 'just pkg-sync' (ou ce script sans --check) puis committez.\n"
+    )
+    system2("git", c("-C", root, "--no-pager", "diff", "--", cibles))
+    quit(status = 1L)
+  }
+  message("[OK] pkg/inst est synchronise.")
+}
