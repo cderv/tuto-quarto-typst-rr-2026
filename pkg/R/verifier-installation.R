@@ -50,7 +50,7 @@ verifier_installation <- function(tester_rendu = TRUE) {
     )
     cli::cli_alert_info("Le jour J, pensez à ouvrir RStudio (récent).")
     cli::cli_alert_info(
-      "Prochaine étape : installez les exercices avec {.run tutotypst::installer_exercices()}."
+      "Prochaine étape : installez les exercices avec {.run tutoquartotypst::installer_exercices()}."
     )
   } else {
     cli::cli_alert_warning(

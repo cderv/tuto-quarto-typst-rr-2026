@@ -23,7 +23,7 @@ test_that("lister_exercices() : sortie stable", {
 test_that("exporter_diagnostic() : structure stable (valeurs masquées)", {
   local_reproducible_output()
   scrub <- function(x) {
-    x <- sub("(Diagnostic tutotypst).*", "\\1 <date>", x)
+    x <- sub("(Diagnostic tutoquartotypst).*", "\\1 <date>", x)
     x <- sub("(^R +:).*", "\\1 <R>", x)
     x <- sub("(^OS +:).*", "\\1 <OS>", x)
     x <- sub("(^Quarto +:).*", "\\1 <quarto>", x)

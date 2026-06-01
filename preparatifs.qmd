@@ -8,7 +8,7 @@ date: ""
 Avant le tutoriel, merci de préparer votre environnement de travail.
 
 ::: {.callout-tip}
-## Raccourci recommandé : le paquet `tutotypst`
+## Raccourci recommandé : le paquet `tutoquartotypst`
 
 **À installer d'abord** : **Quarto** et **RStudio** (voir la section
 *Installation* juste en dessous). Le paquet les **vérifie** mais ne peut pas les
@@ -19,14 +19,14 @@ vérifie votre environnement et pose les exercices :
 
 ``` r
 # 1. Installer le paquet (installe automatiquement tous les paquets du tutoriel)
-install.packages("tutotypst",
+install.packages("tutoquartotypst",
   repos = c("https://cderv.r-universe.dev", "https://cloud.r-project.org"))
 
 # 2. Vérifier que tout est prêt (R, Quarto, Typst, paquets, un rendu de test)
-tutotypst::verifier_installation()
+tutoquartotypst::verifier_installation()
 
 # 3. Installer les exercices dans un dossier local
-tutotypst::installer_exercices()
+tutoquartotypst::installer_exercices()
 ```
 
 Si `verifier_installation()` affiche tout en vert, vous êtes prêt·e : les

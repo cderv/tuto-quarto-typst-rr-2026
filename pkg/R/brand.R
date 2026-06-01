@@ -127,7 +127,7 @@ basculer_hors_ligne <- function(projet = ".", retour = FALSE) {
 
   cli::cli_alert_success("Mode hors-ligne activé : Inter en local dans {.path _fonts/}.")
   cli::cli_alert_info("Sauvegarde de votre charte : {.path {bak}}")
-  cli::cli_alert_info("Revenir en ligne : {.run tutotypst::basculer_hors_ligne(retour = TRUE)}.")
+  cli::cli_alert_info("Revenir en ligne : {.run tutoquartotypst::basculer_hors_ligne(retour = TRUE)}.")
   invisible(brand)
 }
 

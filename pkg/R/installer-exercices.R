@@ -61,10 +61,10 @@ installer_exercices <- function(dest = "exercices-typst",
     "N'ouvrez pas les dossiers {.path correction/} (en ligne) avant le tutoriel."
   )
   cli::cli_alert_info(
-    "Sans réseau le jour J ? {.run tutotypst::basculer_hors_ligne()} passe un exercice en polices locales."
+    "Sans réseau le jour J ? {.run tutoquartotypst::basculer_hors_ligne()} passe un exercice en polices locales."
   )
   cli::cli_alert_info(
-    "Vous avez cassé un fichier ? {.run tutotypst::reinitialiser_exercice()} le restaure."
+    "Vous avez cassé un fichier ? {.run tutoquartotypst::reinitialiser_exercice()} le restaure."
   )
 
   .ouvrir_dossier(dest_abs)

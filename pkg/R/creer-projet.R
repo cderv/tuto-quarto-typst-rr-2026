@@ -164,7 +164,7 @@ basculer_charte <- function(variante = c("empire", "jedi", "mando"),
                             projet = ".") {
   variante <- match.arg(variante)
   src <- file.path(
-    system.file("templates", "brands", package = "tutotypst"),
+    system.file("templates", "brands", package = "tutoquartotypst"),
     paste0("_brand-", variante, ".yml")
   )
   if (!file.exists(src)) {
@@ -193,7 +193,7 @@ basculer_charte <- function(variante = c("empire", "jedi", "mando"),
 #' @examples
 #' comparer_chartes()
 comparer_chartes <- function() {
-  brands_dir <- system.file("templates", "brands", package = "tutotypst")
+  brands_dir <- system.file("templates", "brands", package = "tutoquartotypst")
   variantes <- c("empire", "jedi", "mando")
   couleurs <- vapply(variantes, function(v) {
     raw <- .lire_yaml(file.path(brands_dir, paste0("_brand-", v, ".yml")))

@@ -1,6 +1,6 @@
 <!-- README.md is generated; edit this file directly for now. -->
 
-# tutotypst
+# tutoquartotypst
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -18,7 +18,7 @@ Depuis r-universe (recommandé, binaires sans compilation) :
 
 ```r
 install.packages(
-  "tutotypst",
+  "tutoquartotypst",
   repos = c("https://cderv.r-universe.dev", "https://cloud.r-project.org")
 )
 ```
@@ -34,13 +34,13 @@ pak::pak("github::cderv/cderv-tuto-quarto-typst-rr-2026/pkg")
 
 ```r
 # 1. Vérifier que tout est en place (R, Quarto, Typst, paquets, rendu de test)
-tutotypst::verifier_installation()
+tutoquartotypst::verifier_installation()
 
 # 2. Installer les exercices dans un dossier de votre choix
-tutotypst::installer_exercices()
+tutoquartotypst::installer_exercices()
 
 # En cas de doute, une boussole indique la prochaine étape :
-tutotypst::par_ou_commencer()
+tutoquartotypst::par_ou_commencer()
 ```
 
 > Le paquet est un **raccourci** pour préparer le tutoriel. La page
@@ -48,4 +48,4 @@ tutotypst::par_ou_commencer()
 
 ## Licence
 
-MIT © tutotypst authors
+MIT © tutoquartotypst authors

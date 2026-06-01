@@ -29,10 +29,12 @@
 
 # Lecture YAML « fidèle » centralisée :
 #  - YAML 1.2 : yes/no/on/off restent des CHAÎNES (évite le « Norway problem »
-#    de YAML 1.1 ; true/false restent logiques). Inspiré de l'esprit des handlers
-#    de quarto-r (qui, eux, agissent à l'écriture).
+#    de YAML 1.1 ; true/false restent logiques).
 #  - eval.expr = FALSE : un tag `!expr` n'exécute jamais de code R.
 #  - UTF-8 quelle que soit la locale.
+# Côté ÉCRITURE, le pendant serait `yaml::verbatim_logical()` (force as.yaml à
+# émettre true/false plutôt que yes/no) — inutile ici : la charte générée par
+# .brand_generique() ne contient aucune valeur logique.
 .handlers_yaml_fidele <- list(
   `bool#yes` = function(x) if (identical(x, "true")) TRUE else x,
   `bool#no` = function(x) if (identical(x, "false")) FALSE else x
@@ -55,7 +57,7 @@
 
 # Dossier des exercices embarqués dans le paquet (inst/exercices)
 .dossier_exercices_paquet <- function() {
-  chemin <- system.file("exercices", package = "tutotypst")
+  chemin <- system.file("exercices", package = "tutoquartotypst")
   if (!nzchar(chemin)) {
     cli::cli_abort(
       "Exercices introuvables dans le paquet. Réinstallation nécessaire ?"
@@ -66,7 +68,7 @@
 
 # Dossier des polices hors-ligne embarquées (inst/offline/_fonts)
 .dossier_offline_paquet <- function() {
-  system.file("offline", "_fonts", package = "tutotypst")
+  system.file("offline", "_fonts", package = "tutoquartotypst")
 }
 
 # Ouvre un fichier dans l'IDE / l'éditeur si possible (best-effort, silencieux)

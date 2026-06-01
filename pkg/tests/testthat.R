@@ -1,4 +1,4 @@
 library(testthat)
-library(tutotypst)
+library(tutoquartotypst)
 
-test_check("tutotypst")
+test_check("tutoquartotypst")
