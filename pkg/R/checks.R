@@ -78,6 +78,7 @@ verifier_paquets <- function() {
     paste0('"', manquants, '"', collapse = ", ")
   )
   cli::cli_alert_info("Installez-les : {.code {code}}")
+  cli::cli_alert_info("Puis relancez {.run tutotypst::verifier_installation()}.")
   FALSE
 }
 
@@ -110,11 +111,10 @@ verifier_rendu <- function(tester_rendu = TRUE) {
     }),
     error = function(e) e
   )
-  pdf <- list.files(tmp, pattern = "\\.pdf$", full.names = TRUE)
-
-  if (length(pdf) >= 1) {
+  # On vérifie précisément le PDF attendu (pas n'importe quel .pdf intermédiaire).
+  if (file.exists(file.path(tmp, "test-install.pdf"))) {
     cli::cli_alert_success(
-      "Rendu de test réussi : PDF produit (chaîne R -> Quarto -> Typst -> gt -> ggplot OK)."
+      "Rendu de test réussi : PDF produit (chaîne R → Quarto → Typst → gt → ggplot OK)."
     )
     return(TRUE)
   }

@@ -5,13 +5,14 @@
 \title{Réinitialiser un exercice à son état de départ}
 \usage{
 reinitialiser_exercice(
-  quel = c("01", "02"),
+  quel = c("01", "02", "00"),
   dossier = "exercices-typst",
   force = FALSE
 )
 }
 \arguments{
-\item{quel}{Quel exercice réinitialiser : \code{"01"} (défaut) ou \code{"02"}.}
+\item{quel}{Quel exercice réinitialiser : \code{"01"} (défaut), \code{"02"} ou \code{"00"}
+(le test d'installation).}
 
 \item{dossier}{Dossier où les exercices ont été installés (le \code{dest} de
 \code{\link[=installer_exercices]{installer_exercices()}}). Par défaut \code{"exercices-typst"}.}

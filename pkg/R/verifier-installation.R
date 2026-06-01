@@ -34,28 +34,27 @@ verifier_installation <- function(tester_rendu = TRUE) {
   }
 
   cli::cli_h2("Bilan")
-  etat <- function(x) if (isTRUE(x)) "v" else if (isTRUE(is.na(x))) "-" else "x"
-  cli::cli_bullets(c(
-    "{etat(ok_r)} R",
-    "{etat(ok_q)} Quarto",
-    "{etat(ok_p)} Paquets R",
-    "{etat(ok_rendu)} Rendu PDF de test"
-  ))
+  # Les noms du vecteur pilotent le symbole cli : v = succès (✓), x = échec (✗),
+  # ! = avertissement / non testé (⚠).
+  marque <- function(x) if (isTRUE(x)) "v" else if (isTRUE(is.na(x))) "!" else "x"
+  bilan <- c("R", "Quarto", "Paquets R", "Rendu PDF de test")
+  names(bilan) <- vapply(list(ok_r, ok_q, ok_p, ok_rendu), marque, character(1))
+  cli::cli_bullets(bilan)
 
   tout_ok <- isTRUE(ok_r) && isTRUE(ok_q) && isTRUE(ok_p) &&
     (isTRUE(is.na(ok_rendu)) || isTRUE(ok_rendu))
 
   if (tout_ok) {
     cli::cli_alert_success(
-      "Tout est prêt : .qmd -> PDF pro -> livre. Rendez-vous le 16 juin !"
+      "Tout est prêt : .qmd → PDF pro → livre → à personnaliser. Rendez-vous le 16 juin !"
     )
-    cli::cli_alert_info("Pensez à avoir RStudio (récent) ouvert.")
+    cli::cli_alert_info("Le jour J, pensez à ouvrir RStudio (récent).")
     cli::cli_alert_info(
       "Prochaine étape : installez les exercices avec {.run tutotypst::installer_exercices()}."
     )
   } else {
     cli::cli_alert_warning(
-      "Quelques points sont à corriger (voir les lignes {.strong x} ci-dessus)."
+      "Quelques points sont à corriger (lignes marquées ✗ ci-dessus)."
     )
   }
 
