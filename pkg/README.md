@@ -25,7 +25,7 @@ install.packages(
 )
 ```
 
-Plan B (si l'univers ne répond pas) :
+Plan B (si l'univers ne répond pas) — une fois le paquet sur la branche `main` :
 
 ```r
 # install.packages("pak")
