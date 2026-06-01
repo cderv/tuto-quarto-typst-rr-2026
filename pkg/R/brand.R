@@ -197,7 +197,7 @@ valider_brand <- function(chemin = "_brand.yml") {
       FALSE
     }
   )
-  raw <- tryCatch(yaml::read_yaml(chemin), error = function(e) NULL)
+  raw <- tryCatch(yaml::read_yaml(chemin, fileEncoding = "UTF-8"), error = function(e) NULL)
   if (is.null(raw)) {
     cli::cli_alert_danger("YAML illisible.")
     return(invisible(FALSE))

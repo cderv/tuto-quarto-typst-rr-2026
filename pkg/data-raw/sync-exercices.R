@@ -77,5 +77,27 @@ for (exo in exos) {
   message(sprintf("  %s/starter : %d fichiers", exo, n))
 }
 
-message(sprintf("\nSync terminée : %d fichiers dans %s", total,
+message(sprintf("\nSync exercices : %d fichiers dans %s", total,
                 sub(paste0(root, "/"), "", dest, fixed = TRUE)))
+
+# --- assets du paquet (lot 2/3) : variantes de charte + polices Inter ----------
+# Maintenus alignés sur exercises/ (garde-fou CI). Voir .github/workflows.
+brands_dest <- file.path(root, "pkg", "inst", "templates", "brands")
+dir.create(brands_dest, recursive = TRUE, showWarnings = FALSE)
+for (v in c("empire", "jedi", "mando")) {
+  invisible(file.copy(
+    file.path(src, "02-projet-book", "correction", paste0("_brand-", v, ".yml")),
+    file.path(brands_dest, paste0("_brand-", v, ".yml")),
+    overwrite = TRUE, copy.mode = FALSE
+  ))
+}
+offline_dest <- file.path(root, "pkg", "inst", "offline", "_fonts")
+dir.create(offline_dest, recursive = TRUE, showWarnings = FALSE)
+for (f in c("Inter-Regular.ttf", "Inter-SemiBold.ttf", "Inter-Bold.ttf")) {
+  invisible(file.copy(
+    file.path(src, "01-document-typst", "correction", "_fonts", f),
+    file.path(offline_dest, f),
+    overwrite = TRUE, copy.mode = FALSE
+  ))
+}
+message("Sync assets paquet : 3 variantes de charte + 3 polices Inter.")

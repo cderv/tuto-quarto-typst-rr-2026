@@ -3,7 +3,9 @@ test_that("creer_projet_typst() crée un document", {
   p <- creer_projet_typst(file.path(d, "doc"))
   expect_true(file.exists(file.path(p, "rapport.qmd")))
   expect_true(file.exists(file.path(p, "_brand.yml")))
-  expect_match(paste(readLines(file.path(p, "rapport.qmd")), collapse = "\n"), "format: typst")
+  contenu <- paste(readLines(file.path(p, "rapport.qmd")), collapse = "\n")
+  expect_match(contenu, "typst")
+  expect_match(contenu, "papersize: a4")
 })
 
 test_that("creer_projet_typst() crée un livre", {
