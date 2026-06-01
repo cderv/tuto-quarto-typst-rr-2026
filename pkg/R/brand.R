@@ -1,13 +1,7 @@
 # Lot 2 — aides brand.yml / polices.
 # Les éditions de fichiers sont CIBLÉES (insertion/remplacement de lignes), jamais
 # un round-trip yaml::write_yaml qui détruirait commentaires et ordre.
-
-# Écrit des lignes en UTF-8 quelle que soit la locale.
-.ecrire_lignes_utf8 <- function(lignes, chemin) {
-  con <- file(chemin, open = "w", encoding = "UTF-8")
-  on.exit(close(con))
-  writeLines(lignes, con)
-}
+# Lecture/écriture en UTF-8 via xfun (robuste quelle que soit la locale).
 
 #' Basculer un exercice en mode hors-ligne (polices Inter locales)
 #'
@@ -51,7 +45,7 @@ basculer_hors_ligne <- function(projet = ".", retour = FALSE) {
     ))
   }
 
-  lignes <- readLines(brand, warn = FALSE, encoding = "UTF-8")
+  lignes <- xfun::read_utf8(brand)
   idx <- grep("^\\s*source:\\s*google\\s*$", lignes)
   if (length(idx) == 0) {
     cli::cli_alert_warning("Aucune police `source: google` trouvée dans `_brand.yml`.")
@@ -92,7 +86,7 @@ basculer_hors_ligne <- function(projet = ".", retour = FALSE) {
     fin <- i + 1
   }
   apres <- if (fin < length(lignes)) lignes[(fin + 1):length(lignes)] else character(0)
-  .ecrire_lignes_utf8(c(lignes[seq_len(i - 1)], bloc, apres), brand)
+  xfun::write_utf8(c(lignes[seq_len(i - 1)], bloc, apres), brand)
 
   cli::cli_alert_success("Mode hors-ligne activé : Inter en local dans {.path _fonts/}.")
   cli::cli_alert_info("Sauvegarde de votre charte : {.path {bak}}")
@@ -134,7 +128,7 @@ appliquer_polices_locales <- function(projet = ".") {
       "i" = "Cette manipulation concerne le projet livre (exercice 2)."
     ))
   }
-  lignes <- readLines(qfile, warn = FALSE, encoding = "UTF-8")
+  lignes <- xfun::read_utf8(qfile)
   if (any(grepl("font-paths", lignes))) {
     cli::cli_alert_info("`font-paths` est déjà présent dans `_quarto.yml`. Rien à faire.")
     return(invisible(FALSE))
@@ -159,7 +153,7 @@ appliquer_polices_locales <- function(projet = ".") {
     paste0(indent, "    - _fonts")
   )
   file.copy(qfile, paste0(qfile, ".avant-fontpaths"), overwrite = TRUE)
-  .ecrire_lignes_utf8(append(lignes, bloc, after = i), qfile)
+  xfun::write_utf8(append(lignes, bloc, after = i), qfile)
   cli::cli_alert_success("`font-paths` ajouté à `_quarto.yml` (contournement Quarto < {reco}).")
   cli::cli_alert_info("Sauvegarde : {.path {basename(qfile)}.avant-fontpaths}")
   invisible(TRUE)

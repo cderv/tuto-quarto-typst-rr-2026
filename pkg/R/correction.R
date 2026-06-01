@@ -69,7 +69,7 @@ exporter_diagnostic <- function(fichier = "diagnostic-tutotypst.txt") {
     "Paquets requis :",
     paste0("  - ", names(presents), " : ", presents)
   )
-  .ecrire_lignes_utf8(lignes, fichier)
+  xfun::write_utf8(lignes, fichier)
   chemin <- normalizePath(fichier, winslash = "/", mustWork = FALSE)
   cli::cli_alert_success("Diagnostic écrit : {.path {chemin}}")
   cli::cli_alert_info("Joignez ce fichier si vous demandez de l'aide.")
