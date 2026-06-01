@@ -1,0 +1,3 @@
+Police Inter — SIL Open Font License 1.1 (OFL).
+Copyright (c) The Inter Project Authors (https://github.com/rsms/inter).
+Redistribuée ici pour le mode hors-ligne du tutoriel (basculer_offline()).
