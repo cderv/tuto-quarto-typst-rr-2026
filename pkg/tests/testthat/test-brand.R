@@ -49,23 +49,23 @@ test_that("valider_brand() repère une référence cassée et un fichier manquan
   expect_false(valider_brand(brand))
 })
 
-test_that("basculer_offline() bascule Inter en local puis restaure", {
+test_that("basculer_hors_ligne() bascule Inter en local puis restaure", {
   d <- withr::local_tempdir()
   .brand_online(d)
   brand <- file.path(d, "_brand.yml")
 
-  basculer_offline(d)
+  basculer_hors_ligne(d)
   contenu <- readLines(brand, warn = FALSE)
   expect_true(any(grepl("_fonts/Inter-Regular.ttf", contenu)))
   expect_false(any(grepl("source:\\s*google", contenu)))
   expect_true(file.exists(file.path(d, "_fonts", "Inter-Regular.ttf")))
-  expect_true(file.exists(file.path(d, "_brand.yml.avant-offline")))
+  expect_true(file.exists(file.path(d, "_brand.yml.avant-hors-ligne")))
   # la palette/les couleurs sont préservées (garde : on ne touche pas au reste)
   expect_true(any(grepl("primary: rouge", contenu)))
 
-  basculer_offline(d, retour = TRUE)
+  basculer_hors_ligne(d, retour = TRUE)
   expect_true(any(grepl("source: google", readLines(brand, warn = FALSE))))
-  expect_false(file.exists(file.path(d, "_brand.yml.avant-offline")))
+  expect_false(file.exists(file.path(d, "_brand.yml.avant-hors-ligne")))
 })
 
 test_that("appliquer_polices_locales() ajoute font-paths puis est idempotent", {

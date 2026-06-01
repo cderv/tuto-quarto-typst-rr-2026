@@ -44,7 +44,7 @@ reference:
   desc: >
     Mode hors-ligne, contournement font-paths et validation de `_brand.yml`.
   contents:
-  - basculer_offline
+  - basculer_hors_ligne
   - appliquer_polices_locales
   - valider_brand
   - polices_typst
