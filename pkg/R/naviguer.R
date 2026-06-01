@@ -61,8 +61,9 @@ par_ou_commencer <- function(dossier = "exercices-typst") {
   }
 
   cli::cli_alert_success("Tout est en place, exercices installés dans {.path {dossier}}.")
+  readme <- file.path(dossier, "01-document-typst", "starter", "README.md")
   depart <- file.path(dossier, "01-document-typst", "starter", "rapport-starwars.qmd")
-  cli::cli_alert_info("Ouvrez {.path {depart}} pour démarrer.")
+  cli::cli_alert_info("Lisez la consigne ({.path {readme}}), puis ouvrez {.path {depart}}.")
   cli::cli_alert_info("Vue d'ensemble : {.run tutoquartotypst::lister_exercices()}.")
   invisible("demarrer")
 }

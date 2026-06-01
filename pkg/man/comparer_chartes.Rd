@@ -11,7 +11,7 @@ Invisiblement, un vecteur nommé des couleurs principales.
 }
 \description{
 Affiche la couleur principale (\code{primary}) de chaque variante de charte, avec
-un aperçu coloré (si votre console le supporte).
+un aperçu coloré (si votre console le permet).
 }
 \examples{
 comparer_chartes()

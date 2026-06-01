@@ -21,6 +21,10 @@ Rend un \code{.qmd} \code{format: typst} en conservant le \code{.typ} intermédi
 un \strong{document} simple (l'exercice 1) ; pour un livre, le comportement est
 moins prévisible.
 }
+\details{
+À utiliser \strong{après} avoir produit votre propre PDF : c'est un outil pour
+comprendre la couche Typst, pas un raccourci vers la solution de l'exercice.
+}
 \examples{
 \dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 inspecter_typ("rapport-starwars.qmd")

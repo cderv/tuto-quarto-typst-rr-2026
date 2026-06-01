@@ -185,7 +185,7 @@ basculer_charte <- function(variante = c("empire", "jedi", "mando"),
 #' Comparer les couleurs des variantes de charte
 #'
 #' Affiche la couleur principale (`primary`) de chaque variante de charte, avec
-#' un aperçu coloré (si votre console le supporte).
+#' un aperçu coloré (si votre console le permet).
 #'
 #' @return Invisiblement, un vecteur nommé des couleurs principales.
 #' @export
