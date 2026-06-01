@@ -27,16 +27,16 @@
 #' @export
 #'
 #' @examplesIf interactive()
-#' basculer_offline()
-#' basculer_offline(retour = TRUE)
-basculer_offline <- function(projet = ".", retour = FALSE) {
+#' basculer_hors_ligne()
+#' basculer_hors_ligne(retour = TRUE)
+basculer_hors_ligne <- function(projet = ".", retour = FALSE) {
   projet <- normalizePath(projet, winslash = "/", mustWork = FALSE)
   brand <- file.path(projet, "_brand.yml")
-  bak <- file.path(projet, "_brand.yml.avant-offline")
+  bak <- file.path(projet, "_brand.yml.avant-hors-ligne")
 
   if (isTRUE(retour)) {
     if (!file.exists(bak)) {
-      cli::cli_abort("Aucune sauvegarde {.path _brand.yml.avant-offline} à restaurer.")
+      cli::cli_abort("Aucune sauvegarde {.path _brand.yml.avant-hors-ligne} à restaurer.")
     }
     file.copy(bak, brand, overwrite = TRUE)
     file.remove(bak)
@@ -57,6 +57,11 @@ basculer_offline <- function(projet = ".", retour = FALSE) {
     cli::cli_alert_warning("Aucune police `source: google` trouvée dans `_brand.yml`.")
     cli::cli_alert_info("Vous êtes peut-être déjà hors-ligne. Rien n'a été modifié.")
     return(invisible(NULL))
+  }
+  if (length(idx) > 1) {
+    cli::cli_alert_warning(
+      "Plusieurs polices `source: google` détectées : seule Inter est embarquée, les autres resteront en ligne."
+    )
   }
 
   # Déployer les TTF Inter embarqués
@@ -91,7 +96,7 @@ basculer_offline <- function(projet = ".", retour = FALSE) {
 
   cli::cli_alert_success("Mode hors-ligne activé : Inter en local dans {.path _fonts/}.")
   cli::cli_alert_info("Sauvegarde de votre charte : {.path {bak}}")
-  cli::cli_alert_info("Revenir en ligne : {.run tutotypst::basculer_offline(retour = TRUE)}.")
+  cli::cli_alert_info("Revenir en ligne : {.run tutotypst::basculer_hors_ligne(retour = TRUE)}.")
   invisible(brand)
 }
 
@@ -199,7 +204,16 @@ valider_brand <- function(chemin = "_brand.yml") {
   }
 
   probs <- character(0)
-  est_couleur <- function(x) is.character(x) && length(x) == 1 && grepl("^#", x)
+  # Valeur traitée comme une couleur littérale (et non une clé de palette) :
+  # hex (#…), fonctions CSS (rgb()/hsl()), ou nom de couleur CSS courant.
+  noms_css <- c(
+    "black", "white", "red", "green", "blue", "yellow", "orange", "purple",
+    "gray", "grey", "cyan", "magenta", "transparent"
+  )
+  est_couleur <- function(x) {
+    is.character(x) && length(x) == 1 &&
+      (grepl("^#", x) || grepl("\\(", x) || tolower(x) %in% noms_css)
+  }
 
   # Couleurs : primary/foreground/background -> clé de palette (si bareword)
   palette <- names(raw$color$palette %||% list())
@@ -250,5 +264,8 @@ valider_brand <- function(chemin = "_brand.yml") {
     return(invisible(TRUE))
   }
   for (p in probs) cli::cli_alert_danger(p)
+  if (length(probs) == 0 && !schema_ok) {
+    cli::cli_alert_danger("Charte invalide (voir l'erreur de schéma ci-dessus).")
+  }
   invisible(FALSE)
 }
