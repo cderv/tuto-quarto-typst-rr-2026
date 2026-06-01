@@ -4,6 +4,7 @@
 **/*.rmarkdown
 **/mathjax-config.js
 exercises/**/*.typ
+exercises/**/*.html
 exercises/**/*_files/
 exercises/**/*.pdf
 !exercises/**/charte-starwars.pdf
