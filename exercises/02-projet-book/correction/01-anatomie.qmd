@@ -11,7 +11,7 @@ library(brand.yml)
 brand <- read_brand_yml()
 ```
 
-Le dataset `dplyr::starwars` recense 87 personnages de la saga, avec 14 variables
+Le jeu de données `dplyr::starwars` recense 87 personnages de la saga, avec 14 variables
 (taille, masse, espèce, planète d'origine, films...). Dans ce chapitre, on
 attaque par le plus visible : **qui sont les colosses de la galaxie ?**
 

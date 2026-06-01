@@ -77,7 +77,7 @@ format:
   ],
   [
     #text(font: "Inter", size: 13pt)[
-      Anatomie d'une saga : qui sont les colosses de la galaxie ? Le dataset `dplyr::starwars` recense 87 personnages.
+      Anatomie d'une saga : qui sont les colosses de la galaxie ? Le jeu de données `dplyr::starwars` recense 87 personnages.
     ]
     #v(0.2cm)
     #text(size: 10pt, font: "Inter")[

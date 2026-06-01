@@ -101,7 +101,7 @@ Le contenu suivant est documenté dans [`3-aller-plus-loin/index.qmd`](3-aller-p
 
 ## Exercices
 
-Tous les exercices utilisent le dataset **Star Wars** (`dplyr::starwars`, 87 personnages × 14 variables). Complexité progressive :
+Tous les exercices utilisent le jeu de données **Star Wars** (`dplyr::starwars`, 87 personnages × 14 variables). Complexité progressive :
 
 | Exercice | Fichier | Objectif | Difficulté |
 |----------|---------|----------|:----------:|
