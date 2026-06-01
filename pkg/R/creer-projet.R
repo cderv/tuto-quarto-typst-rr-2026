@@ -197,7 +197,10 @@ comparer_chartes <- function() {
   variantes <- c("empire", "jedi", "mando")
   couleurs <- vapply(variantes, function(v) {
     raw <- .lire_yaml(file.path(brands_dir, paste0("_brand-", v, ".yml")))
-    raw$color$palette[[raw$color$primary]]
+    prim <- raw$color$primary
+    # `primary` est en général une clé de palette ; si c'est une couleur
+    # littérale (hex…), on l'affiche telle quelle.
+    raw$color$palette[[prim]] %||% prim
   }, character(1))
 
   cli::cli_h2("Couleurs principales des variantes")
