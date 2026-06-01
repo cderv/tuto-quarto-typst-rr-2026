@@ -49,10 +49,14 @@ installer_exercices <- function(dest = "exercices-typst",
   cli::cli_text("Contenu :")
   cli::cli_ul()
   for (exo in exos) {
-    cli::cli_li("{.strong {exo}} - {intentions[[exo]]}")
+    cli::cli_li("{.strong {exo}} : {intentions[[exo]]}")
   }
   cli::cli_end()
 
+  if ("01-document-typst" %in% exos) {
+    depart <- file.path(dest_abs, "01-document-typst", "starter", "rapport-starwars.qmd")
+    cli::cli_alert_info("Pour démarrer, ouvrez {.path {depart}}.")
+  }
   cli::cli_alert_warning(
     "N'ouvrez pas les dossiers {.path correction/} (en ligne) avant le tutoriel."
   )
@@ -73,7 +77,8 @@ installer_exercices <- function(dest = "exercices-typst",
 #' paquet) lorsque vous avez cassé vos fichiers. Votre dossier actuel est
 #' **sauvegardé** (jamais supprimé) avant d'être remplacé.
 #'
-#' @param quel Quel exercice réinitialiser : `"01"` (défaut) ou `"02"`.
+#' @param quel Quel exercice réinitialiser : `"01"` (défaut), `"02"` ou `"00"`
+#'   (le test d'installation).
 #' @param dossier Dossier où les exercices ont été installés (le `dest` de
 #'   [installer_exercices()]). Par défaut `"exercices-typst"`.
 #' @param force Logique. Réinitialiser sans confirmation interactive ? Par
@@ -85,7 +90,7 @@ installer_exercices <- function(dest = "exercices-typst",
 #'
 #' @examplesIf interactive()
 #' reinitialiser_exercice("01")
-reinitialiser_exercice <- function(quel = c("01", "02"),
+reinitialiser_exercice <- function(quel = c("01", "02", "00"),
                                    dossier = "exercices-typst",
                                    force = FALSE) {
   quel <- match.arg(quel)
@@ -93,6 +98,7 @@ reinitialiser_exercice <- function(quel = c("01", "02"),
   src <- file.path(.dossier_exercices_paquet(), exo)
   cible <- file.path(normalizePath(dossier, winslash = "/", mustWork = FALSE), exo)
 
+  sauvegarde <- NULL
   if (dir.exists(cible)) {
     confirme <- .confirmer(
       sprintf("Réinitialiser l'exercice %s ? Votre dossier sera d'abord sauvegardé.", exo),
@@ -110,6 +116,12 @@ reinitialiser_exercice <- function(quel = c("01", "02"),
     }
     horodatage <- format(Sys.time(), "%Y%m%d-%H%M%S")
     sauvegarde <- paste0(cible, "-sauvegarde-", horodatage)
+    # Suffixe unique si une sauvegarde du même horodatage existe déjà.
+    n <- 1L
+    while (file.exists(sauvegarde)) {
+      sauvegarde <- paste0(cible, "-sauvegarde-", horodatage, "-", n)
+      n <- n + 1L
+    }
     file.rename(cible, sauvegarde)
     cli::cli_alert_info("Ancien dossier sauvegardé : {.path {sauvegarde}}")
   }
@@ -119,5 +131,8 @@ reinitialiser_exercice <- function(quel = c("01", "02"),
   cli::cli_alert_success(
     "Exercice {exo} réinitialisé à l'état de départ : {.path {cible}}"
   )
+  if (!is.null(sauvegarde)) {
+    cli::cli_alert_info("Votre travail précédent reste dans {.path {sauvegarde}}.")
+  }
   invisible(cible)
 }

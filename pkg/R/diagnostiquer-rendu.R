@@ -1,13 +1,19 @@
 # Lexique d'erreurs de rendu fréquentes -> traduction FR + action.
 # Réutilise les messages déjà rédigés dans `preparatifs.qmd`.
+#   motif   : regex de détection (interne, jamais affiché brut)
+#   desc    : description lisible du cas (affichée)
+#   gravite : "benin" (PDF quand même produit) ou "bloquant"
+#   message : action à mener
 .lexique_rendu <- list(
   list(
     motif = "Typst executable not found",
+    desc = "Typst introuvable",
     gravite = "bloquant",
     message = "Quarto < 1.9 (Typst absent). Mettez Quarto à jour (>= 1.9)."
   ),
   list(
     motif = "unknown font family",
+    desc = "Police inconnue",
     gravite = "benin",
     message = paste(
       "Avertissement de police : normal pour le test (il n'utilise pas _brand.yml).",
@@ -16,13 +22,15 @@
   ),
   list(
     motif = "(file not found|could not find file).*(_brand|\\.ya?ml)",
+    desc = "Fichier _brand.yml introuvable",
     gravite = "bloquant",
-    message = "Fichier _brand.yml introuvable : vérifiez qu'il est à côté de votre .qmd."
+    message = "Vérifiez que _brand.yml est bien à côté de votre .qmd."
   ),
   list(
-    motif = "unexpected|did not find expected|mapping values are not allowed",
+    motif = "did not find expected|mapping values are not allowed",
+    desc = "Erreur de syntaxe YAML",
     gravite = "bloquant",
-    message = "Erreur de syntaxe YAML (en-tête --- ou _quarto.yml) : vérifiez l'indentation."
+    message = "Vérifiez l'indentation de l'en-tête --- ou de _quarto.yml."
   )
 )
 
@@ -51,11 +59,11 @@ diagnostiquer_rendu <- function(texte = NULL) {
     cli::cli_ul()
     for (e in lexique) {
       etiquette <- if (e$gravite == "benin") "bénin" else "bloquant"
-      cli::cli_li("{.code {e$motif}} ({etiquette}) : {e$message}")
+      cli::cli_li("{.strong {e$desc}} ({etiquette}) : {e$message}")
     }
     cli::cli_end()
     cli::cli_alert_info(
-      "Passez le texte de votre erreur : {.code diagnostiquer_rendu(\"...\")}."
+      "Passez le texte de votre erreur (entre guillemets simples) : {.code diagnostiquer_rendu('...')}."
     )
     return(invisible(NULL))
   }
@@ -66,15 +74,21 @@ diagnostiquer_rendu <- function(texte = NULL) {
     if (grepl(e$motif, texte, ignore.case = TRUE, perl = TRUE)) {
       gravites <- c(gravites, e$gravite)
       if (e$gravite == "benin") {
-        cli::cli_alert_success(e$message)
+        cli::cli_alert_success("{e$desc} : {e$message}")
       } else {
-        cli::cli_alert_danger(e$message)
+        cli::cli_alert_danger("{e$desc} : {e$message}")
       }
     }
   }
+
   if (length(gravites) == 0) {
     cli::cli_alert_warning(
       "Erreur non reconnue. Diagnostic global : {.run tutotypst::verifier_installation()}."
+    )
+  } else if ("bloquant" %in% gravites) {
+    # Si un cas bloquant et un cas bénin coexistent, on lève l'ambiguïté.
+    cli::cli_alert_info(
+      "Traitez d'abord le ou les points bloquants ci-dessus ; les avertissements bénins peuvent être ignorés."
     )
   }
   invisible(gravites)

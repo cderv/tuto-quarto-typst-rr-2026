@@ -13,11 +13,11 @@ lister_exercices <- function() {
   cli::cli_h2("Exercices du tutoriel")
   cli::cli_ul()
   for (exo in names(intentions)) {
-    cli::cli_li("{.strong {exo}} - {intentions[[exo]]}")
+    cli::cli_li("{.strong {exo}} : {intentions[[exo]]}")
   }
   cli::cli_end()
   cli::cli_alert_info(
-    "Rappel : n'ouvrez pas les dossiers {.path correction/} avant le tutoriel."
+    "Rappel : n'ouvrez pas les dossiers {.path correction/} (en ligne) avant le tutoriel."
   )
   invisible(names(intentions))
 }

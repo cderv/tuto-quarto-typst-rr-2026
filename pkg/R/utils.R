@@ -1,7 +1,10 @@
 # Helpers internes et constantes partagées --------------------------------------
 #
-# SOURCE DE VÉRITÉ des seuils : alignés sur `preparatifs.qmd` du site.
-# (R 4 récent ; Quarto >= 1.9 plancher, >= 1.10.4 recommandé.)
+# SOURCE DE VÉRITÉ des seuils : doivent rester alignés sur `preparatifs.qmd`
+# (section « Installation ») du site. Si vous changez un seuil ici, mettez à jour
+# `preparatifs.qmd` (et inversement).
+#   - R : « Dernier R 4 » côté site ; plancher effectif 4.1 (requis par brand.yml).
+#   - Quarto : >= 1.9 plancher, >= 1.10.4 recommandé (pre-release).
 
 # Seuils de version
 .seuil_r <- numeric_version("4.1.0")
