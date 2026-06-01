@@ -20,6 +20,27 @@ Site Quarto pour un tutoriel de 2h aux Rencontres R 2026 (16 juin, Nantes). Cont
 
 Les profiles `tuto` (complet) et `pretuto` (préparatifs only) sont définis dans `_quarto-tuto.yml` / `_quarto-pretuto.yml`. Group déclaré dans `_quarto.yml` — premier item (`tuto`) = défaut.
 
+### `justfile` = orchestrateur réel du build (IMPORTANT)
+
+`quarto render` seul **ne suffit pas** : c'est seulement la recette `site`, et le profil `tuto` **exclut les exercices** (`_quarto-tuto.yml` → `render: - "!exercises/"`). Le build complet passe par `just` :
+
+- `just all` = `charte` + `exos` + `site` (le build de référence, ce que fait aussi `just publish`)
+- `just exos` rend les **corrections** : `exo-typst` (`exercises/01-.../correction/rapport-starwars.qmd` → PDF Typst) et `exo-book` (`exercises/02-.../correction/` → `_book/`). **Aucune recette ne rend les `starter/`.**
+- `just charte` rend `_charte/charte-starwars.qmd` ; son `_charte/_post-render.R` copie le `charte-starwars.pdf` dans les deux `starter/`.
+- `just site` / `just site-pretuto` = `quarto render [--profile pretuto]`
+- `just preview`, `just audit` (liens), `just publish` → Posit Connect Cloud
+
+### Comment les exercices arrivent en ligne
+
+`_quarto.yml` déclare `resources: - "exercises/**"` → l'arbre `exercises/` est **copié tel quel dans `_site/`** par le render `site`, y compris les artefacts produits juste avant par `just exos`. Donc : **les corrections (PDF, `_book/`) sont publiées en ligne bien qu'elles soient gitignorées.** `.gitignore` n'empêche pas la publication — Quarto copie depuis le disque, pas depuis git.
+
+Conséquence pour `.gitignore` : `exercises/**/*.{typ,pdf,_files,html}` + `*_files/` sont des **artefacts de rendu ignorés de git mais publiés via `resources`** après un `just all`. Seule exception versionnée : `!exercises/**/charte-starwars.pdf` (committé pour que les participants l'aient sans rien rendre).
+
+### Starters vs corrections
+
+- `starter/rapport-starwars.qmd` est volontairement `format: html` : c'est l'état « avant » de l'exo 1, que le participant convertit en `format: typst` (étape 1 du tableau d'exercice). **Aucune recette `just` ne le rend** — il n'est pas publié rendu, sauf à ajouter une recette dédiée. Ne pas s'étonner d'un `.html` qui traîne : c'est un render manuel local, à supprimer (couvert par le `.gitignore`).
+- Les liens vers les exercices dans les pages du site pointent vers **GitHub** (`tree/main/exercises/...`), pas vers la copie `_site/exercises/...`.
+
 ## Setup environnement (Claude Code on the web / sandbox vierge)
 
 Quarto est généralement préinstallé. Pour ajouter `gh` CLI, `rig` et R :
