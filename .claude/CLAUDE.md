@@ -41,6 +41,29 @@ Conséquence pour `.gitignore` : `exercises/**/*.{typ,pdf,_files,html}` + `*_fil
 - `starter/rapport-starwars.qmd` est volontairement `format: html` : c'est l'état « avant » de l'exo 1, que le participant convertit en `format: typst` (étape 1 du tableau d'exercice). **Aucune recette `just` ne le rend** — il n'est pas publié rendu, sauf à ajouter une recette dédiée. Ne pas s'étonner d'un `.html` qui traîne : c'est un render manuel local, à supprimer (couvert par le `.gitignore`).
 - Les liens vers les exercices dans les pages du site pointent vers **GitHub** (`tree/main/exercises/...`), pas vers la copie `_site/exercises/...`.
 
+### Paquet R compagnon `tutotypst` (dans `pkg/`)
+
+Paquet R qui installe les prérequis, vérifie l'environnement et pose les exercices. Vit dans le **sous-dossier `pkg/`** (publié sur r-universe via le champ `subdir`). **Hors CRAN** : on garde 0 ERROR à `R CMD check`, mais le WARNING non-ASCII (accents FR) et la NOTE « Imports non utilisés » (tous les prérequis sont en `Imports` à dessein) sont **assumés**.
+
+- **Fonctions (lot 1)** : `verifier_installation()`, `installer_exercices()`, `reinitialiser_exercice()`, `lister_exercices()`, `par_ou_commencer()`, `diagnostiquer_rendu()`. API + messages `cli` en français. Seuils de version centralisés dans `pkg/R/utils.R`, **à garder alignés avec `preparatifs.qmd`**.
+- **`pkg/inst/exercices/` = COPIE générée** des starters (par `pkg/data-raw/sync-exercices.R`). Source de vérité = `exercises/` (renommage `exercises/`→`exercices/` assumé). Régénérer avec `just pkg-sync` ; un job CI (`.github/workflows/pkg-inst-sync.yml`) échoue si la copie diverge. Les starters sont **committés** (r-universe build par `git clone`).
+- **Site pkgdown** : `just pkg-site` génère `package/` (à la racine, gitignoré), publié sous `/package` via `resources: package/**` dans `_quarto.yml`. Lien dans la sidebar tuto. `pkg/_pkgdown.yml` porte l'`url` (sous-chemin) — à garder synchro avec `URL:` de `DESCRIPTION` et l'ID de `_publish.yml`.
+- **Recettes `just`** : `pkg-sync`, `pkg-site` ; `just all = charte exos pkg-sync pkg-site site`. `pkg-site` exige Pandoc (fourni par Quarto/RStudio ; en sandbox : `export RSTUDIO_PANDOC=/opt/quarto/bin/tools/x86_64`).
+- **Exclusion render** : `"!pkg/"` dans `_quarto-tuto.yml` (sinon conflit multi-format avec `pkg/inst/.../test-install.qmd` en `format: typst`). `pretuto` est sûr par liste explicite.
+
+#### Publication r-universe (action manuelle côté compte `cderv`)
+
+1. Créer le repo GitHub `cderv/cderv.r-universe.dev` avec un `packages.json` :
+   ```json
+   [{ "package": "tutotypst",
+      "url": "https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026",
+      "subdir": "pkg" }]
+   ```
+2. Installer la **GitHub App r-universe** sur le compte `cderv`.
+3. Les participants installent ensuite via `install.packages("tutotypst", repos = c("https://cderv.r-universe.dev", "https://cloud.r-project.org"))`.
+
+Dév local sans r-universe : `pak::pak("local::./pkg")` ou `R CMD INSTALL pkg`.
+
 ## Setup environnement (Claude Code on the web / sandbox vierge)
 
 Quarto est généralement préinstallé. Pour ajouter `gh` CLI, `rig` et R :

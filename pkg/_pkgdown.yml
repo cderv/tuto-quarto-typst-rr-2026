@@ -5,8 +5,11 @@
 # sous le sous-chemin `/package` du site du tutoriel.
 #
 # `url` DOIT inclure ce sous-chemin : pkgdown génère alors des liens absolus
-# (navbar, CSS/JS, page 404, recherche) qui restent corrects une fois le site
-# servi sous /package. Si l'URL de déploiement change, mettez-la à jour ici.
+# (navbar, page 404, recherche) qui restent corrects une fois le site servi sous
+# /package. L'ID de contenu vient de `_publish.yml`. Si l'URL de déploiement
+# change, mettez-la à jour À DEUX ENDROITS : ici ET dans le champ `URL:` de
+# `pkg/DESCRIPTION` (sinon pkgdown signale « URLs not ok »), puis relancez
+# `just pkg-site`.
 url: https://connect.posit.cloud/cderv/content/019df82c-7202-2165-28ea-7f9ca734ad26/package
 
 destination: ../package
