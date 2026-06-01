@@ -22,3 +22,6 @@ website:
         text: "Pour aller plus loin..."
       - href: 4-ressources.qmd
         text: Ressources
+      - text: ---
+      - href: package/index.html
+        text: "Documentation du paquet R"

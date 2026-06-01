@@ -7,7 +7,7 @@ default:
 # === build ===
 
 [group('build')]
-all: charte exos site
+all: charte exos pkg-sync pkg-site site
 
 [group('build')]
 [parallel]
@@ -32,6 +32,11 @@ exo-book:
 [group('build')]
 pkg-sync:
     Rscript pkg/data-raw/sync-exercices.R
+
+# Construit le site pkgdown du paquet dans package/ (publié via resources)
+[group('build')]
+pkg-site:
+    Rscript -e "pkgdown::build_site('pkg')"
 
 [group('build')]
 site:
