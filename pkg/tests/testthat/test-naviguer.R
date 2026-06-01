@@ -27,3 +27,17 @@ test_that("diagnostiquer_rendu() repère un Typst absent comme bloquant", {
     "bloquant"
   )
 })
+
+test_that("diagnostiquer_rendu() repère un _brand.yml introuvable", {
+  expect_identical(
+    diagnostiquer_rendu("Error: file not found: _brand.yml"),
+    "bloquant"
+  )
+})
+
+test_that("diagnostiquer_rendu() repère une erreur de syntaxe YAML", {
+  expect_identical(
+    diagnostiquer_rendu("yaml parse error: did not find expected key"),
+    "bloquant"
+  )
+})

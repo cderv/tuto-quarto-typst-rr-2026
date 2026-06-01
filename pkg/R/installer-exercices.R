@@ -29,7 +29,7 @@ installer_exercices <- function(dest = "exercices-typst",
     "02" = "02-projet-book"
   )
 
-  dest_abs <- normalizePath(dest, winslash = "/", mustWork = FALSE)
+  dest_abs <- xfun::normalize_path(dest)
   if (dir.exists(dest_abs) && length(list.files(dest_abs)) > 0 && !isTRUE(force)) {
     cli::cli_abort(c(
       "Le dossier {.path {dest_abs}} existe déjà et n'est pas vide.",
@@ -96,7 +96,7 @@ reinitialiser_exercice <- function(quel = c("01", "02", "00"),
   quel <- match.arg(quel)
   exo <- .exo_dossier(quel)
   src <- file.path(.dossier_exercices_paquet(), exo)
-  cible <- file.path(normalizePath(dossier, winslash = "/", mustWork = FALSE), exo)
+  cible <- file.path(xfun::normalize_path(dossier), exo)
 
   sauvegarde <- NULL
   if (dir.exists(cible)) {

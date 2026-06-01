@@ -1,42 +1,32 @@
 # Lot 3 — pérennité : réutiliser Quarto + Typst après le tutoriel.
 
 # Charte générique (non Star Wars) à adapter. `offline = TRUE` -> Inter en local.
+# Génération (et non édition d'un fichier commenté existant) -> on utilise as.yaml ;
+# les commentaires pédagogiques sont ajoutés en tête.
 .brand_generique <- function(offline = FALSE) {
   inter <- if (offline) {
-    c(
-      "    - family: Inter",
-      "      source: file",
-      "      files:",
-      "        - path: _fonts/Inter-Regular.ttf",
-      "          weight: 400",
-      "        - path: _fonts/Inter-SemiBold.ttf",
-      "          weight: 600",
-      "        - path: _fonts/Inter-Bold.ttf",
-      "          weight: 700"
+    list(
+      family = "Inter", source = "file",
+      files = list(
+        list(path = "_fonts/Inter-Regular.ttf", weight = 400L),
+        list(path = "_fonts/Inter-SemiBold.ttf", weight = 600L),
+        list(path = "_fonts/Inter-Bold.ttf", weight = 700L)
+      )
     )
   } else {
-    c(
-      "    - family: Inter",
-      "      source: google",
-      "      weight: [400, 600]"
-    )
+    list(family = "Inter", source = "google", weight = c(400L, 600L))
   }
+  brand <- list(
+    color = list(
+      palette = list(principale = "#2C3E50", accent = "#18BC9C"),
+      primary = "principale", foreground = "#222222", background = "#FFFFFF"
+    ),
+    typography = list(fonts = list(inter), base = "Inter", headings = "Inter")
+  )
   c(
     "# Charte (brand.yml) — adaptez couleurs et polices à votre projet.",
     "# Doc : https://posit-dev.github.io/brand-yml/",
-    "color:",
-    "  palette:",
-    "    principale: \"#2C3E50\"",
-    "    accent:     \"#18BC9C\"",
-    "  primary:    principale",
-    "  foreground: \"#222222\"",
-    "  background: \"#FFFFFF\"",
-    "",
-    "typography:",
-    "  fonts:",
-    inter,
-    "  base: Inter",
-    "  headings: Inter"
+    sub("\n$", "", yaml::as.yaml(brand))
   )
 }
 
@@ -65,7 +55,7 @@ creer_projet_typst <- function(dest,
                                brand = TRUE,
                                offline = FALSE) {
   type <- match.arg(type)
-  dest_abs <- normalizePath(dest, winslash = "/", mustWork = FALSE)
+  dest_abs <- xfun::normalize_path(dest)
   if (dir.exists(dest_abs) && length(list.files(dest_abs)) > 0) {
     cli::cli_abort("Le dossier {.path {dest_abs}} existe déjà et n'est pas vide.")
   }
@@ -181,7 +171,7 @@ basculer_charte <- function(variante = c("empire", "jedi", "mando"),
     cli::cli_abort("Variante {.val {variante}} introuvable dans le paquet.")
   }
   cli::cli_alert_info("Astuce : cette fonction est pensée pour {.strong après} l'exercice 2.")
-  projet <- normalizePath(projet, winslash = "/", mustWork = FALSE)
+  projet <- xfun::normalize_path(projet)
   brand <- file.path(projet, "_brand.yml")
   if (file.exists(brand)) {
     file.copy(brand, paste0(brand, ".avant-", variante), overwrite = TRUE)

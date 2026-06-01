@@ -51,9 +51,11 @@ test_that("ouvrir_correction() renvoie l'URL en ligne", {
   expect_match(url, "02-projet-book/correction$")
 })
 
-test_that("exporter_diagnostic() écrit un fichier", {
+test_that("exporter_diagnostic() affiche le diagnostic et peut l'écrire", {
   d <- withr::local_tempdir()
-  f <- exporter_diagnostic(file.path(d, "diag.txt"))
-  expect_true(file.exists(f))
+  f <- file.path(d, "diag.txt")
+  lignes <- exporter_diagnostic(f)
+  expect_match(paste(lignes, collapse = "\n"), "Diagnostic tutotypst")
+  expect_true(file.exists(f)) # écriture optionnelle quand `fichier` est fourni
   expect_match(paste(readLines(f), collapse = "\n"), "Diagnostic tutotypst")
 })
