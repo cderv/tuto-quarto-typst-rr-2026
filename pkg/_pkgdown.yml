@@ -1,4 +1,4 @@
-# Site pkgdown du paquet tutotypst.
+# Site pkgdown du paquet tutoquartotypst.
 #
 # Le HTML est généré dans `package/` à la racine du repo (hors pkg/), puis publié
 # par le site Quarto via `resources: package/**` (cf. _quarto.yml). Il est servi

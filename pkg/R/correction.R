@@ -60,7 +60,7 @@ exporter_diagnostic <- function(fichier = NULL) {
   if (is.null(os)) os <- Sys.info()[["sysname"]]
 
   lignes <- c(
-    paste("Diagnostic tutotypst —", format(Sys.time())),
+    paste("Diagnostic tutoquartotypst —", format(Sys.time())),
     "",
     paste("R      :", R.version.string),
     paste("OS     :", os),

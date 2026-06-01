@@ -41,7 +41,7 @@ Conséquence pour `.gitignore` : `exercises/**/*.{typ,pdf,_files,html}` + `*_fil
 - `starter/rapport-starwars.qmd` est volontairement `format: html` : c'est l'état « avant » de l'exo 1, que le participant convertit en `format: typst` (étape 1 du tableau d'exercice). **Aucune recette `just` ne le rend** — il n'est pas publié rendu, sauf à ajouter une recette dédiée. Ne pas s'étonner d'un `.html` qui traîne : c'est un render manuel local, à supprimer (couvert par le `.gitignore`).
 - Les liens vers les exercices dans les pages du site pointent vers **GitHub** (`tree/main/exercises/...`), pas vers la copie `_site/exercises/...`.
 
-### Paquet R compagnon `tutotypst` (dans `pkg/`)
+### Paquet R compagnon `tutoquartotypst` (dans `pkg/`)
 
 Paquet R qui installe les prérequis, vérifie l'environnement et pose les exercices. Vit dans le **sous-dossier `pkg/`** (publié sur r-universe via le champ `subdir`). **Hors CRAN** : on garde 0 ERROR à `R CMD check`, mais le WARNING non-ASCII (accents FR) et la NOTE « Imports non utilisés » (tous les prérequis sont en `Imports` à dessein) sont **assumés**.
 
@@ -55,12 +55,12 @@ Paquet R qui installe les prérequis, vérifie l'environnement et pose les exerc
 
 1. Créer le repo GitHub `cderv/cderv.r-universe.dev` avec un `packages.json` :
    ```json
-   [{ "package": "tutotypst",
+   [{ "package": "tutoquartotypst",
       "url": "https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026",
       "subdir": "pkg" }]
    ```
 2. Installer la **GitHub App r-universe** sur le compte `cderv`.
-3. Les participants installent ensuite via `install.packages("tutotypst", repos = c("https://cderv.r-universe.dev", "https://cloud.r-project.org"))`.
+3. Les participants installent ensuite via `install.packages("tutoquartotypst", repos = c("https://cderv.r-universe.dev", "https://cloud.r-project.org"))`.
 
 Dév local sans r-universe : `pak::pak("local::./pkg")` ou `R CMD INSTALL pkg`.
 

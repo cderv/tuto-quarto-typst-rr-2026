@@ -1,6 +1,6 @@
 # MIT License
 
-Copyright (c) 2026 tutotypst authors
+Copyright (c) 2026 tutoquartotypst authors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

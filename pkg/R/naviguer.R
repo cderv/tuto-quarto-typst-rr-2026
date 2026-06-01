@@ -47,7 +47,7 @@ par_ou_commencer <- function(dossier = "exercices-typst") {
   if (!quarto_ok || !paquets_ok) {
     cli::cli_alert_warning("Votre environnement n'est pas encore complet.")
     cli::cli_alert_info(
-      "Lancez {.run tutotypst::verifier_installation()} pour le diagnostic."
+      "Lancez {.run tutoquartotypst::verifier_installation()} pour le diagnostic."
     )
     return(invisible("verifier"))
   }
@@ -55,7 +55,7 @@ par_ou_commencer <- function(dossier = "exercices-typst") {
   if (!exos_installes) {
     cli::cli_alert_success("Environnement prêt.")
     cli::cli_alert_info(
-      "Prochaine étape : {.run tutotypst::installer_exercices()}."
+      "Prochaine étape : {.run tutoquartotypst::installer_exercices()}."
     )
     return(invisible("installer"))
   }
@@ -63,6 +63,6 @@ par_ou_commencer <- function(dossier = "exercices-typst") {
   cli::cli_alert_success("Tout est en place, exercices installés dans {.path {dossier}}.")
   depart <- file.path(dossier, "01-document-typst", "starter", "rapport-starwars.qmd")
   cli::cli_alert_info("Ouvrez {.path {depart}} pour démarrer.")
-  cli::cli_alert_info("Vue d'ensemble : {.run tutotypst::lister_exercices()}.")
+  cli::cli_alert_info("Vue d'ensemble : {.run tutoquartotypst::lister_exercices()}.")
   invisible("demarrer")
 }

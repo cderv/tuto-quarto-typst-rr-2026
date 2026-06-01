@@ -208,7 +208,7 @@ ouvrir_exercices <- function(dossier = "exercices-typst") {
   if (!dir.exists(chemin)) {
     cli::cli_abort(c(
       "Dossier {.path {chemin}} introuvable.",
-      "i" = "Installez d'abord les exercices : {.run tutotypst::installer_exercices()}."
+      "i" = "Installez d'abord les exercices : {.run tutoquartotypst::installer_exercices()}."
     ))
   }
   cli::cli_alert_info("Vos exercices : {.path {chemin}}")

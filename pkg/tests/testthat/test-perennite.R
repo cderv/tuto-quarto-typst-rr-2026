@@ -55,7 +55,7 @@ test_that("exporter_diagnostic() affiche le diagnostic et peut l'écrire", {
   d <- withr::local_tempdir()
   f <- file.path(d, "diag.txt")
   lignes <- exporter_diagnostic(f)
-  expect_match(paste(lignes, collapse = "\n"), "Diagnostic tutotypst")
+  expect_match(paste(lignes, collapse = "\n"), "Diagnostic tutoquartotypst")
   expect_true(file.exists(f)) # écriture optionnelle quand `fichier` est fourni
-  expect_match(paste(readLines(f), collapse = "\n"), "Diagnostic tutotypst")
+  expect_match(paste(readLines(f), collapse = "\n"), "Diagnostic tutoquartotypst")
 })

@@ -1,7 +1,7 @@
 # Régénère pkg/inst/exercices/ depuis la SOURCE DE VÉRITÉ : exercises/ (racine du repo).
 #
 # IMPORTANT — renommage assumé : `exercises/` (repo, anglais) -> `inst/exercices/`
-# (paquet, français). `system.file("exercices", package = "tutotypst")` doit matcher
+# (paquet, français). `system.file("exercices", package = "tutoquartotypst")` doit matcher
 # le dossier généré ici. Ne « corrigez » pas l'un sans l'autre.
 #
 # On ne copie QUE les `starter/` (état « avant » des exercices) + le test d'install.

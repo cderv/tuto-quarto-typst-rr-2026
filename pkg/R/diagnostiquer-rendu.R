@@ -83,7 +83,7 @@ diagnostiquer_rendu <- function(texte = NULL) {
 
   if (length(gravites) == 0) {
     cli::cli_alert_warning(
-      "Erreur non reconnue. Diagnostic global : {.run tutotypst::verifier_installation()}."
+      "Erreur non reconnue. Diagnostic global : {.run tutoquartotypst::verifier_installation()}."
     )
   } else if ("bloquant" %in% gravites) {
     # Si un cas bloquant et un cas bénin coexistent, on lève l'ambiguïté.

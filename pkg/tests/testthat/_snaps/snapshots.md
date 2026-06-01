@@ -43,7 +43,7 @@
     Code
       exporter_diagnostic()
     Output
-      Diagnostic tutotypst <date>
+      Diagnostic tutoquartotypst <date>
       
       R      : <R>
       OS     : <OS>
@@ -83,5 +83,5 @@
       ! Rendu PDF de test
       v Tout est prêt : .qmd → PDF pro → livre → à personnaliser. Rendez-vous le 16 juin !
       i Le jour J, pensez à ouvrir RStudio (récent).
-      i Prochaine étape : installez les exercices avec `tutotypst::installer_exercices()`.
+      i Prochaine étape : installez les exercices avec `tutoquartotypst::installer_exercices()`.
 

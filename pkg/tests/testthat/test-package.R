@@ -1,5 +1,5 @@
 test_that("le paquet expose son nom", {
-  expect_true(nzchar(utils::packageDescription("tutotypst")$Package))
+  expect_true(nzchar(utils::packageDescription("tutoquartotypst")$Package))
 })
 
 test_that("les exercices sont embarqués dans le paquet", {

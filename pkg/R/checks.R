@@ -78,7 +78,7 @@ verifier_paquets <- function() {
     paste0('"', manquants, '"', collapse = ", ")
   )
   cli::cli_alert_info("Installez-les : {.code {code}}")
-  cli::cli_alert_info("Puis relancez {.run tutotypst::verifier_installation()}.")
+  cli::cli_alert_info("Puis relancez {.run tutoquartotypst::verifier_installation()}.")
   FALSE
 }
 
@@ -99,7 +99,7 @@ verifier_rendu <- function(tester_rendu = TRUE) {
     cli::cli_alert_warning("Fichier de test introuvable dans le paquet : rendu sauté.")
     return(NA)
   }
-  tmp <- tempfile("tutotypst-test-")
+  tmp <- tempfile("tutoquartotypst-test-")
   dir.create(tmp)
   on.exit(unlink(tmp, recursive = TRUE), add = TRUE)
   file.copy(qmd, file.path(tmp, "test-install.qmd"), copy.mode = FALSE)
@@ -122,6 +122,6 @@ verifier_rendu <- function(tester_rendu = TRUE) {
   if (inherits(res, "error")) {
     cli::cli_alert_info("Détail : {conditionMessage(res)}")
   }
-  cli::cli_alert_info("Pour décoder l'erreur : {.run tutotypst::diagnostiquer_rendu()}.")
+  cli::cli_alert_info("Pour décoder l'erreur : {.run tutoquartotypst::diagnostiquer_rendu()}.")
   FALSE
 }

@@ -1,6 +1,6 @@
-# Publier `tutotypst` sur r-universe — guide pas-à-pas
+# Publier `tutoquartotypst` sur r-universe — guide pas-à-pas
 
-Objectif : rendre `install.packages("tutotypst", repos = c("https://cderv.r-universe.dev", ...))`
+Objectif : rendre `install.packages("tutoquartotypst", repos = c("https://cderv.r-universe.dev", ...))`
 fonctionnel pour les participants. Le paquet vit dans le sous-dossier `pkg/` de ce
 repo ; r-universe le build via le champ `subdir`.
 
@@ -24,7 +24,7 @@ déjà prêt ici : [`pkg/dev/packages.json`](packages.json). Copier-coller :
 ```json
 [
   {
-    "package": "tutotypst",
+    "package": "tutoquartotypst",
     "url": "https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026",
     "subdir": "pkg"
   }
@@ -38,7 +38,7 @@ Commit + push sur la branche par défaut.
 > gh repo create cderv/cderv.r-universe.dev --public --clone
 > cd cderv.r-universe.dev
 > cp /chemin/vers/pkg/dev/packages.json .
-> git add packages.json && git commit -m "Add tutotypst" && git push
+> git add packages.json && git commit -m "Add tutoquartotypst" && git push
 > ```
 
 ## 2. Installer l'app GitHub r-universe
@@ -54,7 +54,7 @@ source est mis à jour.
 ## 3. Attendre et vérifier le build
 
 - Tableau de bord : <https://cderv.r-universe.dev/builds>
-- Page du paquet : <https://cderv.r-universe.dev/tutotypst>
+- Page du paquet : <https://cderv.r-universe.dev/tutoquartotypst>
 
 Le premier build prend quelques dizaines de minutes (compilation des binaires
 Linux/Windows/macOS). r-universe installe automatiquement les dépendances
@@ -72,10 +72,10 @@ Sur une machine (ou un conteneur) avec R, sans le paquet installé :
 
 ```r
 install.packages(
-  "tutotypst",
+  "tutoquartotypst",
   repos = c("https://cderv.r-universe.dev", "https://cloud.r-project.org")
 )
-tutotypst::verifier_installation()
+tutoquartotypst::verifier_installation()
 ```
 
 C'est la commande exacte déjà présente dans `preparatifs.qmd`.
