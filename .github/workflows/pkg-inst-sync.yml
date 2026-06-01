@@ -34,15 +34,8 @@ jobs:
         with:
           use-public-rspm: true
 
-      - name: Régénérer pkg/inst depuis exercises/
-        run: Rscript pkg/data-raw/sync-exercices.R
-
+      # Même commande qu'en local (`just pkg-sync-check`) : régénère pkg/inst/
+      # puis échoue si le résultat diffère de ce qui est committé. Source unique
+      # de la logique = le script R (pas besoin d'installer `just` sur le runner).
       - name: Vérifier que pkg/inst est à jour
-        run: |
-          cibles="pkg/inst/exercices pkg/inst/templates pkg/inst/offline"
-          if [ -n "$(git status --porcelain $cibles)" ]; then
-            echo "::error::pkg/inst n'est pas synchronisé avec exercises/. Lancez 'just pkg-sync' puis committez."
-            git --no-pager diff -- $cibles
-            exit 1
-          fi
-          echo "pkg/inst est synchronisé."
+        run: Rscript pkg/data-raw/sync-exercices.R --check
