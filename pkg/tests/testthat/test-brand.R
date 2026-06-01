@@ -97,6 +97,12 @@ test_that("basculer_hors_ligne() refuse une charte dont la police google n'est p
   expect_identical(xfun::read_utf8(brand), avant) # inchangé
 })
 
+test_that("basculer_hors_ligne(retour = TRUE) échoue sans sauvegarde", {
+  d <- withr::local_tempdir()
+  .brand_online(d)
+  expect_error(basculer_hors_ligne(d, retour = TRUE), "restaurer")
+})
+
 test_that("appliquer_polices_locales() ajoute font-paths puis est idempotent", {
   skip_if_not(
     {
