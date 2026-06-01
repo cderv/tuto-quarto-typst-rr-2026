@@ -10,7 +10,8 @@ Description: Fonctions utilitaires pour preparer et suivre le tutoriel
     installe localement les exercices et aide au rendu Typst. Installer le
     paquet tire automatiquement tous les prerequis du tutoriel.
 License: MIT + file LICENSE
-URL: https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026
+URL: https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026,
+    https://connect.posit.cloud/cderv/content/019df82c-7202-2165-28ea-7f9ca734ad26/package
 BugReports: https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/issues
 Depends:
     R (>= 4.1)

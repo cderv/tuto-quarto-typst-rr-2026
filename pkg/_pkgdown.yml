@@ -1,0 +1,43 @@
+# Site pkgdown du paquet tutotypst.
+#
+# Le HTML est généré dans `package/` à la racine du repo (hors pkg/), puis publié
+# par le site Quarto via `resources: package/**` (cf. _quarto.yml). Il est servi
+# sous le sous-chemin `/package` du site du tutoriel.
+#
+# `url` DOIT inclure ce sous-chemin : pkgdown génère alors des liens absolus
+# (navbar, CSS/JS, page 404, recherche) qui restent corrects une fois le site
+# servi sous /package. Si l'URL de déploiement change, mettez-la à jour ici.
+url: https://connect.posit.cloud/cderv/content/019df82c-7202-2165-28ea-7f9ca734ad26/package
+
+destination: ../package
+
+template:
+  bootstrap: 5
+  light-switch: true
+
+lang: fr
+
+navbar:
+  structure:
+    left: [reference]
+    right: [search, github]
+
+reference:
+- title: Vérification & installation
+  desc: >
+    Préparer et contrôler son environnement avant le tutoriel.
+  contents:
+  - verifier_installation
+  - par_ou_commencer
+- title: Pendant l'exercice
+  desc: >
+    Installer, réinitialiser et s'orienter dans les exercices.
+  contents:
+  - installer_exercices
+  - reinitialiser_exercice
+  - lister_exercices
+- title: Dépannage
+  desc: >
+    Décoder les erreurs de rendu Quarto / Typst.
+  contents:
+  - diagnostiquer_rendu
