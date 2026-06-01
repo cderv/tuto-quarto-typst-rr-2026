@@ -27,6 +27,7 @@ Imports:
     rlang,
     scales,
     withr,
+    xfun,
     yaml
 Suggests:
     pkgdown,

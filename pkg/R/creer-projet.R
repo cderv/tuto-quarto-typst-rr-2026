@@ -71,7 +71,7 @@ creer_projet_typst <- function(dest,
   }
   dir.create(dest_abs, recursive = TRUE, showWarnings = FALSE)
 
-  ecrire <- function(nom, lignes) .ecrire_lignes_utf8(lignes, file.path(dest_abs, nom))
+  ecrire <- function(nom, lignes) xfun::write_utf8(lignes, file.path(dest_abs, nom))
 
   recent <- {
     v <- tryCatch(quarto::quarto_version(), error = function(e) NA)
