@@ -55,16 +55,16 @@ test_that("basculer_hors_ligne() bascule Inter en local puis restaure", {
   brand <- file.path(d, "_brand.yml")
 
   basculer_hors_ligne(d)
-  contenu <- readLines(brand, warn = FALSE)
-  expect_true(any(grepl("_fonts/Inter-Regular.ttf", contenu)))
-  expect_false(any(grepl("source:\\s*google", contenu)))
+  contenu <- paste(readLines(brand, warn = FALSE), collapse = "\n")
+  expect_match(contenu, "_fonts/Inter-Regular.ttf")
+  expect_no_match(contenu, "source:\\s*google")
   expect_true(file.exists(file.path(d, "_fonts", "Inter-Regular.ttf")))
   expect_true(file.exists(file.path(d, "_brand.yml.avant-hors-ligne")))
   # la palette/les couleurs sont préservées (garde : on ne touche pas au reste)
-  expect_true(any(grepl("primary: rouge", contenu)))
+  expect_match(contenu, "primary: rouge")
 
   basculer_hors_ligne(d, retour = TRUE)
-  expect_true(any(grepl("source: google", readLines(brand, warn = FALSE))))
+  expect_match(paste(readLines(brand, warn = FALSE), collapse = "\n"), "source: google")
   expect_false(file.exists(file.path(d, "_brand.yml.avant-hors-ligne")))
 })
 
@@ -104,21 +104,15 @@ test_that("basculer_hors_ligne(retour = TRUE) échoue sans sauvegarde", {
 })
 
 test_that("appliquer_polices_locales() ajoute font-paths puis est idempotent", {
-  skip_if_not(
-    {
-      v <- tryCatch(quarto::quarto_version(), error = function(e) NA)
-      !is.na(v) && v < numeric_version("1.10.4")
-    },
-    "Quarto >= 1.10.4 (contournement inutile)"
-  )
+  skip_if_quarto_recent()
   d <- withr::local_tempdir()
   qfile <- file.path(d, "_quarto.yml")
-  con <- file(qfile, open = "w", encoding = "UTF-8")
-  writeLines(c("project:", "  type: book", "format:", "  typst:", "    papersize: a4"), con)
-  close(con)
+  xfun::write_utf8(
+    c("project:", "  type: book", "format:", "  typst:", "    papersize: a4"), qfile
+  )
 
   expect_true(appliquer_polices_locales(d))
-  expect_true(any(grepl("font-paths", readLines(qfile, warn = FALSE))))
+  expect_match(paste(readLines(qfile, warn = FALSE), collapse = "\n"), "font-paths")
   expect_true(file.exists(paste0(qfile, ".avant-fontpaths")))
   # deuxième appel : idempotent
   expect_false(appliquer_polices_locales(d))
