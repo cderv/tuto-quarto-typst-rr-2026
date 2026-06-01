@@ -8,6 +8,14 @@ test_that("installer_exercices() copie les starters", {
   expect_true(file.exists(file.path(chemin, "00-test-install", "test-install.qmd")))
 })
 
+test_that("installer_exercices() utilise le dossier par défaut dans le cwd", {
+  # withr::local_dir : se place dans un dossier temporaire et restaure le cwd
+  # à la fin du test (permet de tester le défaut dest = "exercices-typst").
+  withr::local_dir(withr::local_tempdir())
+  installer_exercices(quels = "01")
+  expect_true(dir.exists(file.path("exercices-typst", "01-document-typst")))
+})
+
 test_that("le starter du livre reste à l'état « avant »", {
   dest <- withr::local_tempdir()
   chemin <- installer_exercices(dest, quels = "02", force = TRUE)
