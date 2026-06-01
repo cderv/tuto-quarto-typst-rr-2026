@@ -22,30 +22,21 @@ test_that("ouvrir_exercices() exige un dossier existant", {
 })
 
 test_that("polices_typst() liste des familles", {
-  skip_if_not(
-    !is.null(tryCatch(quarto::quarto_path(), error = function(e) NULL)),
-    "Quarto absent"
-  )
+  skip_if_no_quarto()
   familles <- polices_typst()
   expect_type(familles, "character")
   expect_gt(length(familles), 0)
 })
 
 test_that("diagnostic_typst() renvoie une liste", {
-  skip_if_not(
-    !is.null(tryCatch(quarto::quarto_path(), error = function(e) NULL)),
-    "Quarto absent"
-  )
+  skip_if_no_quarto()
   info <- diagnostic_typst(withr::local_tempdir())
   expect_type(info, "list")
   expect_true("quarto" %in% names(info))
 })
 
 test_that("inspecter_typ() produit un .typ", {
-  skip_if_not(
-    !is.null(tryCatch(quarto::quarto_path(), error = function(e) NULL)),
-    "Quarto absent"
-  )
+  skip_if_no_quarto()
   d <- withr::local_tempdir()
   qmd <- file.path(d, "test-install.qmd")
   file.copy(

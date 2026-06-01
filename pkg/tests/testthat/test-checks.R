@@ -13,9 +13,6 @@ test_that("verifier_rendu(FALSE) ne fait aucun rendu", {
 })
 
 test_that("verifier_quarto() renvoie un logique", {
-  skip_if_not(
-    !is.null(tryCatch(quarto::quarto_path(), error = function(e) NULL)),
-    "Quarto absent"
-  )
+  skip_if_no_quarto()
   expect_type(verifier_quarto(), "logical")
 })
