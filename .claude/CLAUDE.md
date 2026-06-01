@@ -50,36 +50,6 @@ Paquet R qui installe les prérequis, vérifie l'environnement et pose les exerc
 - **Build / site** : `just all = charte exos pkg-sync pkg-site site`. `pkg-site` génère le site pkgdown dans `package/` (gitignoré), publié sous `/package` via `resources: package/**` ; un seul article (`vignettes/articles/`, hors tarball) — **pas** d'article install/exos (doublonnerait le site). Exclusion render **obligatoire** : `"!pkg/"` dans `_quarto-tuto.yml` (conflit multi-format). `pkg-site` exige Pandoc + `ragg` (sandbox : `RSTUDIO_PANDOC=/opt/quarto/bin/tools/x86_64`, `apt install -y libwebpmux3`).
 - **Procédures détaillées (progressive disclosure)** : publication r-universe → `pkg/dev/PUBLICATION-r-universe.md` (`packages.json` prêt dans `pkg/dev/`) ; tests manuels RStudio → `pkg/dev/TESTS-MANUELS.md`. Dév local : `pak::pak("local::./pkg")`.
 
-## Setup environnement (Claude Code on the web / sandbox vierge)
-
-Quarto est généralement préinstallé. Pour ajouter `gh` CLI, `rig` et R :
-
-```bash
-# 1. gh CLI via apt repo officiel
-curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg \
-  -o /usr/share/keyrings/githubcli-archive-keyring.gpg
-chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" \
-  > /etc/apt/sources.list.d/github-cli.list
-apt update -qq && apt install -y gh
-
-# 2. rig (R Installation Manager) via gh release download
-cd /tmp && gh release download --repo r-lib/rig --pattern "r-rig_*_amd64.deb" --clobber
-apt install -y ./r-rig_*_amd64.deb
-
-# 3. R release courante via rig
-rig add release   # installe R + pak
-
-# 4. Quarto (si manquant) via gh release download
-# gh release download --repo quarto-dev/quarto-cli --pattern "quarto-*-linux-amd64.deb" --clobber
-# apt install -y ./quarto-*-linux-amd64.deb
-```
-
-Tester un rendu Typst end-to-end :
-```bash
-quarto render exercises/01-document-typst/correction/rapport-starwars.qmd
-```
-
 ## Règles critiques
 
 - Pages web : `format: html` dans le YAML (obligatoire, sinon conflit multi-format)
@@ -100,6 +70,7 @@ Différenciation visuelle = type de callout (pas `{background-color=...}` sur le
 ## Références
 
 - Plan de travail → `.claude/PLAN.md`
+- Setup sandbox vierge (gh/rig/R, pkgdown) → `.claude/references/sandbox-setup.md`
 - Détails techniques, URLs, content patterns → `.claude/references/project-context.md`
 - Skill pour créer du contenu → `.claude/skills/workshop-content.md`
 - Skill Quarto authoring (Posit) → `.claude/skills/quarto-authoring.md`
