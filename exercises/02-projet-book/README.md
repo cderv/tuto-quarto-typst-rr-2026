@@ -27,6 +27,27 @@ Pas grave. Copiez ces 2 fichiers à la racine de votre projet :
 
 C'est une copie 1:1 de la charte utilisée dans la correction.
 
+## Bonus 3 — Changer de palette Star Wars
+
+Trois variantes de `_brand.yml` clés en main dans [`correction/`](correction/) :
+
+- [`_brand-empire.yml`](correction/_brand-empire.yml) — Empire / Sith, rouge impérial (identique à la charte par défaut)
+- [`_brand-jedi.yml`](correction/_brand-jedi.yml) — Jedi / R2-D2, bleu
+- [`_brand-mando.yml`](correction/_brand-mando.yml) — Mandalorien, crimson
+
+Pour en activer une sans renommer de fichier, pointez `brand:` vers elle dans `_quarto.yml` :
+
+```yaml
+brand: _brand-jedi.yml
+```
+
+**Pourquoi pas le jaune Star Wars iconique en `primary` ?** L'extension `orange-book`
+réutilise la couleur `primary` à la fois pour l'accent de couverture **et** pour le
+texte du corps (titres, table des matières). Un jaune vif (`#FFE81F`) en `primary`
+donnerait un texte illisible sur le fond crème. On garde donc `imperial-red` (sombre,
+lisible) en `primary` — le jaune reste présent ailleurs (surlignages, tableaux `gt`)
+via la clé de palette `sw-yellow`.
+
 ## Et après ?
 
 Le dossier [`correction/`](correction/) contient le projet final, charte incluse,

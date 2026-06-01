@@ -41,10 +41,10 @@ Le reste (`appendices`, `_brand.yml` projet, cross-refs, pagebreak) = Exercice 2
 ::: {.callout-note appearance="minimal"}
 L'Exercice 2 est **indépendant de l'Exercice 1** : si vous n'avez pas terminé le Bloc 1, partez directement du dossier `starter/` ci-dessous.
 
-📄 La **charte Star Wars** reste votre référence visuelle (même `charte-starwars.pdf` qu'au Bloc 1, fourni dans le starter) — vous ne la retranscrivez pas ici, vous appliquez le `_brand.yml` que vous avez déjà (ou le fallback) à un projet livre.
+📄 La **charte Star Wars** reste votre référence visuelle (même `charte-starwars.pdf` qu'au Bloc 1, fourni dans le starter) — vous ne la retranscrivez pas ici, vous appliquez le `_brand.yml` que vous avez déjà (ou celui de secours) à un projet livre.
 :::
 
-::: callout-tip
+::: callout-warning
 ## À vous !
 
 🎯 **Objectif :** transformer 5 `.qmd` en un livre PDF Typst stylé via `_quarto.yml` + `_brand.yml`.
@@ -55,7 +55,7 @@ Fichier : {{< fa download >}} [exercises/02-projet-book/starter/](https://github
 
 | # | Action | Vous devriez voir |
 |---|--------|-------------------|
-| 1 | Créer `_quarto.yml` à la racine du starter avec `project: { type: default }` et `format: typst`. | 5 PDF séparés (un par fichier). |
+| 1 | Créer `_quarto.yml` à la racine du starter avec `project: { type: default }` et `format: typst`. | 5 PDF séparés (un par fichier). Une référence croisée non résolue (`?@sec-origines`) + un *warning* à la compilation : **normal** à ce stade, ça se résout en mode livre à l'étape 2a. |
 | 2a | Passer à `type: book` et ajouter `book: { title, chapters: [...] }`. Le `format: typst` reste — orange-book s'active automatiquement. | **PDF unique** + couverture orange-book + Figure 1.1 / Figure 2.1 / Table 1.1 / Table 2.1 + TOC. `annexe-donnees` apparaît comme dernier chapitre numéroté. |
 | 2b | Ajouter `appendices: [annexe-donnees.qmd]` au bloc `book:`. | `annexe-donnees` bascule en « Annexe A » à la fin du livre, hors numérotation des chapitres. |
 | 3 | Copier `_brand.yml` (+ `_logo-sw.svg` + `_fonts/`) à la racine. Si vous avez fini Bloc 1 → reprenez votre `_brand.yml`. Sinon → renommez [`_brand-starter.yml`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/_brand-starter.yml) en `_brand.yml`. (Le `charte-starwars.pdf` du starter reste votre référence visuelle.) | Couverture jaune Star Wars + logo, titres Star Jedi, corps Inter, tableaux `gt` re-stylés. |
@@ -172,7 +172,7 @@ Pas de `_brand.yml` ? Copiez les fichiers fournis à la racine du dossier exo : 
 ::: {.callout-tip collapse="true"}
 ## Bonus 3 — Changer de palette Star Wars
 
-La correction propose 3 variantes de `_brand.yml` clés en main : Empire / Sith (rouge), Jedi / R2-D2 (bleu), Mandalorien (crimson). Pour swapper sans renommer de fichier, ajoutez dans `_quarto.yml` :
+La correction propose 3 variantes de `_brand.yml` clés en main : Empire / Sith (rouge), Jedi / R2-D2 (bleu), Mandalorien (crimson). Pour permuter sans renommer de fichier, ajoutez dans `_quarto.yml` :
 
 ``` yaml
 brand: _brand-jedi.yml
@@ -195,7 +195,7 @@ library(brand.yml)
 brand <- read_brand_yml()
 ```
 
-**Étape 2 — Tableaux `gt`.** Les 3 `tab_style()` ci-dessous appliquent le même pattern (couleur → emplacement) : bandeau titre, en-têtes colonnes, ligne 1. Utilisable tel quel sur les 3 tableaux du livre (`01-anatomie.qmd` + `02-origines.qmd`) :
+**Étape 2 — Tableaux `gt`.** Les 3 `tab_style()` ci-dessous appliquent le même schéma (couleur → emplacement) : bandeau titre, en-têtes colonnes, ligne 1. Utilisable tel quel sur les 3 tableaux du livre (`01-anatomie.qmd` + `02-origines.qmd`) :
 
 ``` r
 ... |>
@@ -241,12 +241,12 @@ ggplot(...) +
 
 Vous devriez voir : bandeau titre jaune SW + en-têtes noir/crème + ligne 1 rouge impérial dans tous les tableaux, et fond crème + axes noirs sur les graphiques.
 
-![Aperçu du tableau « Les colosses de la galaxie » dans la correction : bandeau titre jaune SW (Star Jedi) au-dessus, sous-titre jaune également, en-têtes de colonnes en noir SW sur fond crème, ligne 1 (Jabba Desilijic Tiure) sur fond rouge impérial avec texte crème en gras, lignes suivantes en crème/noir.](2-gt.png){fig-alt="Tableau gt « Les colosses de la galaxie » rendu en PDF Typst avec le styling brand : bandeau titre jaune Star Wars, en-têtes noir SW, ligne Jabba surlignée en rouge impérial."}
+![Aperçu du tableau « Les colosses de la galaxie » dans la correction : bandeau titre jaune SW (Star Jedi) au-dessus, sous-titre jaune également, en-têtes de colonnes en noir SW sur fond crème, ligne 1 (Jabba Desilijic Tiure) sur fond rouge impérial avec texte crème en gras, lignes suivantes en crème/noir.](2-gt.png){fig-alt="Tableau gt « Les colosses de la galaxie » rendu en PDF Typst avec la mise en forme issue de `_brand.yml` : bandeau titre jaune Star Wars, en-têtes noir SW, ligne Jabba surlignée en rouge impérial."}
 
 ::: callout-note
 ## Piège silencieux à connaître
 
-`brand.yml` normalise les clés palette `tiret-séparé` en `tiret_souligné` au read. Donc dans votre code R : `brand_color_pluck(brand, "sw_yellow")` (pas `"sw-yellow"`). En cas de typo, la fonction renvoie la chaîne d'entrée verbatim sans erreur — votre styling disparaît silencieusement du PDF.
+`brand.yml` normalise les clés palette `tiret-séparé` en `tiret_souligné` au read. Donc dans votre code R : `brand_color_pluck(brand, "sw_yellow")` (pas `"sw-yellow"`). En cas d'erreur de saisie, la fonction renvoie la chaîne d'entrée telle quelle sans lever d'erreur — votre mise en forme disparaît silencieusement du PDF.
 :::
 
 :::
