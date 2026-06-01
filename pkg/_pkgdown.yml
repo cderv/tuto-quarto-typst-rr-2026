@@ -56,3 +56,12 @@ reference:
   - diagnostic_typst
   - inspecter_typ
   - nettoyer_cache
+  - exporter_diagnostic
+- title: Pérennité & après le tutoriel
+  desc: >
+    Réutiliser Quarto + Typst chez vous, explorer les variantes de charte.
+  contents:
+  - creer_projet_typst
+  - basculer_charte
+  - comparer_chartes
+  - ouvrir_correction
