@@ -1,0 +1,43 @@
+name: pkg-check
+
+# Vérifie le paquet R (R CMD check + tests testthat). Volontairement NON
+# CRAN-strict : on n'échoue que sur ERROR — le WARNING non-ASCII (accents FR) et
+# la NOTE « Imports non utilisés » sont assumés (cf. .claude/CLAUDE.md).
+# Mono-OS (le paquet est un compagnon de tutoriel, pas un paquet CRAN multi-plateforme).
+
+on:
+  push:
+    branches: [main]
+    paths: ["pkg/**", ".github/workflows/pkg-check.yml"]
+  pull_request:
+    paths: ["pkg/**", ".github/workflows/pkg-check.yml"]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      # Quarto présent => les tests de rendu Typst s'exécutent (sinon skippés).
+      - uses: quarto-dev/quarto-actions/setup@v2
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          working-directory: pkg
+          extra-packages: any::rcmdcheck
+
+      - uses: r-lib/actions/check-r-package@v2
+        with:
+          working-directory: pkg
+          error-on: '"error"'
+          args: 'c("--no-manual")'
+          upload-snapshots: true

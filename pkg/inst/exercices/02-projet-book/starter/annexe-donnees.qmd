@@ -1,0 +1,20 @@
+# Le jeu de données starwars
+
+Toutes les analyses de ce livre s'appuient sur le jeu de données `dplyr::starwars`,
+livré avec le package R [`{dplyr}`](https://dplyr.tidyverse.org/). Il recense
+**87 personnages** de la saga, décrits par **14 variables**. Les données
+proviennent à l'origine de [SWAPI — Star Wars API](https://swapi.dev/),
+intégrées et nettoyées par l'équipe `{dplyr}`.
+
+Les colonnes mobilisées dans ce livre sont :
+
+- `name` — nom du personnage
+- `height` — taille en centimètres (6 valeurs manquantes)
+- `mass` — masse en kilogrammes (28 valeurs manquantes)
+- `species` — espèce (4 valeurs manquantes, 37 espèces distinctes)
+- `homeworld` — planète d'origine (10 valeurs manquantes, 48 planètes
+  distinctes)
+
+Les valeurs manquantes (`NA`) sont systématiquement filtrées au cas par cas
+dans les blocs de code R — chaque tableau et chaque figure indique le sous-
+ensemble effectivement utilisé.

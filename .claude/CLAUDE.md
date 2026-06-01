@@ -41,35 +41,14 @@ Conséquence pour `.gitignore` : `exercises/**/*.{typ,pdf,_files,html}` + `*_fil
 - `starter/rapport-starwars.qmd` est volontairement `format: html` : c'est l'état « avant » de l'exo 1, que le participant convertit en `format: typst` (étape 1 du tableau d'exercice). **Aucune recette `just` ne le rend** — il n'est pas publié rendu, sauf à ajouter une recette dédiée. Ne pas s'étonner d'un `.html` qui traîne : c'est un render manuel local, à supprimer (couvert par le `.gitignore`).
 - Les liens vers les exercices dans les pages du site pointent vers **GitHub** (`tree/main/exercises/...`), pas vers la copie `_site/exercises/...`.
 
-## Setup environnement (Claude Code on the web / sandbox vierge)
+### Paquet R compagnon `tutoquartotypst` (dans `pkg/`)
 
-Quarto est généralement préinstallé. Pour ajouter `gh` CLI, `rig` et R :
+Paquet R qui installe les prérequis, vérifie l'environnement et pose les exercices (publié sur r-universe via `subdir: pkg`). **Hors CRAN** : cible `R CMD check` = 0 ERROR ; le WARNING non-ASCII (accents FR) et la NOTE « Imports non utilisés » (prérequis en `Imports` à dessein) sont **assumés**.
 
-```bash
-# 1. gh CLI via apt repo officiel
-curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg \
-  -o /usr/share/keyrings/githubcli-archive-keyring.gpg
-chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" \
-  > /etc/apt/sources.list.d/github-cli.list
-apt update -qq && apt install -y gh
-
-# 2. rig (R Installation Manager) via gh release download
-cd /tmp && gh release download --repo r-lib/rig --pattern "r-rig_*_amd64.deb" --clobber
-apt install -y ./r-rig_*_amd64.deb
-
-# 3. R release courante via rig
-rig add release   # installe R + pak
-
-# 4. Quarto (si manquant) via gh release download
-# gh release download --repo quarto-dev/quarto-cli --pattern "quarto-*-linux-amd64.deb" --clobber
-# apt install -y ./quarto-*-linux-amd64.deb
-```
-
-Tester un rendu Typst end-to-end :
-```bash
-quarto render exercises/01-document-typst/correction/rapport-starwars.qmd
-```
+- **19 fonctions** (messages `cli` FR) en 3 lots — *préparation*, *santé chaîne Typst & confort*, *pérennité* ; regroupement dans `pkg/_pkgdown.yml`. Seuils de version dans `pkg/R/utils.R`, **à garder alignés avec `preparatifs.qmd`**. YAML : lecture via `.lire_yaml()`, éditions **textuelles ciblées** (préservent les commentaires) + rollback.
+- **`pkg/inst/` = COPIE générée** depuis `exercises/` (starters + `templates/brands/` + `offline/_fonts/`) par `pkg/data-raw/sync-exercices.R` ; renommage `exercises/`→`exercices/` **assumé**. Régénérer : `just pkg-sync` ; vérifier : `just pkg-sync-check` (même garde-fou en CI, `pkg-inst-sync.yml`). **Committé** (r-universe build par `git clone`).
+- **Build / site** : `just all = charte exos pkg-sync pkg-site site`. `pkg-site` génère le site pkgdown dans `package/` (gitignoré), publié sous `/package` via `resources: package/**` ; un seul article (`vignettes/articles/`, hors tarball) — **pas** d'article install/exos (doublonnerait le site). Exclusion render **obligatoire** : `"!pkg/"` dans `_quarto-tuto.yml` (conflit multi-format). `pkg-site` exige Pandoc + `ragg` (sandbox : `RSTUDIO_PANDOC=/opt/quarto/bin/tools/x86_64`, `apt install -y libwebpmux3`).
+- **Procédures détaillées (progressive disclosure)** : publication r-universe → `pkg/dev/PUBLICATION-r-universe.md` (`packages.json` prêt dans `pkg/dev/`) ; tests manuels RStudio → `pkg/dev/TESTS-MANUELS.md`. Dév local : `pak::pak("local::./pkg")`.
 
 ## Règles critiques
 
@@ -91,6 +70,7 @@ Différenciation visuelle = type de callout (pas `{background-color=...}` sur le
 ## Références
 
 - Plan de travail → `.claude/PLAN.md`
+- Setup sandbox vierge (gh/rig/R, pkgdown) → `.claude/references/sandbox-setup.md`
 - Détails techniques, URLs, content patterns → `.claude/references/project-context.md`
 - Skill pour créer du contenu → `.claude/skills/workshop-content.md`
 - Skill Quarto authoring (Posit) → `.claude/skills/quarto-authoring.md`
