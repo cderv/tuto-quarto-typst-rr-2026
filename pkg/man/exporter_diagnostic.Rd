@@ -4,20 +4,19 @@
 \alias{exporter_diagnostic}
 \title{Exporter un diagnostic d'installation dans un fichier}
 \usage{
-exporter_diagnostic(fichier = "diagnostic-tutotypst.txt")
+exporter_diagnostic(fichier = NULL)
 }
 \arguments{
-\item{fichier}{Chemin du fichier à écrire. Défaut \code{"diagnostic-tutotypst.txt"}.}
+\item{fichier}{Chemin d'un fichier où écrire \strong{aussi} le diagnostic. Par
+défaut \code{NULL} : affichage console uniquement (rien à ouvrir).}
 }
 \value{
-Invisiblement, le chemin du fichier écrit.
+Invisiblement, les lignes du diagnostic.
 }
 \description{
-Écrit un résumé de votre environnement (R, Quarto, paquets) dans un fichier
-texte, à joindre si vous demandez de l'aide avant le tutoriel.
+Affiche un résumé de votre environnement (R, Quarto, paquets) dans la console,
+à copier-coller si vous demandez de l'aide. Peut aussi l'écrire dans un fichier.
 }
 \examples{
-\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 exporter_diagnostic()
-\dontshow{\}) # examplesIf}
 }

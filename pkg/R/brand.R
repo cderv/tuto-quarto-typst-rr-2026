@@ -28,7 +28,7 @@
 #' basculer_hors_ligne()
 #' basculer_hors_ligne(retour = TRUE)
 basculer_hors_ligne <- function(projet = ".", retour = FALSE) {
-  projet <- normalizePath(projet, winslash = "/", mustWork = FALSE)
+  projet <- xfun::normalize_path(projet)
   brand <- file.path(projet, "_brand.yml")
   bak <- file.path(projet, "_brand.yml.avant-hors-ligne")
 
@@ -148,7 +148,7 @@ basculer_hors_ligne <- function(projet = ".", retour = FALSE) {
 #' appliquer_polices_locales()
 appliquer_polices_locales <- function(projet = ".") {
   reco <- as.character(.quarto_reco)
-  projet <- normalizePath(projet, winslash = "/", mustWork = FALSE)
+  projet <- xfun::normalize_path(projet)
 
   qversion <- tryCatch(quarto::quarto_version(), error = function(e) NA)
   if (length(qversion) == 1 && !is.na(qversion) && qversion >= .quarto_reco) {
@@ -230,7 +230,7 @@ valider_brand <- function(chemin = "_brand.yml") {
   if (!file.exists(chemin)) {
     cli::cli_abort("Fichier {.path {chemin}} introuvable.")
   }
-  chemin <- normalizePath(chemin, winslash = "/", mustWork = TRUE)
+  chemin <- xfun::normalize_path(chemin, must_work = TRUE)
   base_dir <- dirname(chemin)
 
   cli::cli_h2("Validation de {.path {basename(chemin)}}")

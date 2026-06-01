@@ -38,17 +38,18 @@ ouvrir_correction <- function(quel = c("01", "02"), je_confirme = FALSE) {
 
 #' Exporter un diagnostic d'installation dans un fichier
 #'
-#' Écrit un résumé de votre environnement (R, Quarto, paquets) dans un fichier
-#' texte, à joindre si vous demandez de l'aide avant le tutoriel.
+#' Affiche un résumé de votre environnement (R, Quarto, paquets) dans la console,
+#' à copier-coller si vous demandez de l'aide. Peut aussi l'écrire dans un fichier.
 #'
-#' @param fichier Chemin du fichier à écrire. Défaut `"diagnostic-tutotypst.txt"`.
+#' @param fichier Chemin d'un fichier où écrire **aussi** le diagnostic. Par
+#'   défaut `NULL` : affichage console uniquement (rien à ouvrir).
 #'
-#' @return Invisiblement, le chemin du fichier écrit.
+#' @return Invisiblement, les lignes du diagnostic.
 #' @export
 #'
-#' @examplesIf interactive()
+#' @examples
 #' exporter_diagnostic()
-exporter_diagnostic <- function(fichier = "diagnostic-tutotypst.txt") {
+exporter_diagnostic <- function(fichier = NULL) {
   qpath <- tryCatch(quarto::quarto_path(), error = function(e) NA_character_)
   qver <- tryCatch(as.character(quarto::quarto_version()), error = function(e) NA_character_)
   presents <- vapply(.paquets_requis, function(p) {
@@ -69,9 +70,13 @@ exporter_diagnostic <- function(fichier = "diagnostic-tutotypst.txt") {
     "Paquets requis :",
     paste0("  - ", names(presents), " : ", presents)
   )
-  xfun::write_utf8(lignes, fichier)
-  chemin <- normalizePath(fichier, winslash = "/", mustWork = FALSE)
-  cli::cli_alert_success("Diagnostic écrit : {.path {chemin}}")
-  cli::cli_alert_info("Joignez ce fichier si vous demandez de l'aide.")
-  invisible(chemin)
+  # Affichage console : copier-coller direct, sans ouvrir de fichier.
+  cat(lignes, sep = "\n")
+  cat("\n")
+  if (!is.null(fichier)) {
+    xfun::write_utf8(lignes, fichier)
+    cli::cli_alert_success("Diagnostic aussi écrit : {.path {xfun::normalize_path(fichier)}}")
+  }
+  cli::cli_alert_info("Copiez-collez le texte ci-dessus pour demander de l'aide.")
+  invisible(lignes)
 }

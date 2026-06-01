@@ -29,7 +29,7 @@ diagnostic_typst <- function(projet = ".") {
     error = function(e) NA_character_
   )
   reco <- as.character(.quarto_reco)
-  cache <- file.path(normalizePath(projet, mustWork = FALSE), ".quarto", "typst", "fonts")
+  cache <- file.path(xfun::normalize_path(projet), ".quarto", "typst", "fonts")
   cache_ok <- dir.exists(cache)
   besoin_fontpaths <- !is.na(qversion) && qversion < .quarto_reco
   etat_cache <- if (cache_ok) "présent" else "absent"
@@ -75,7 +75,7 @@ polices_typst <- function(projet = NULL) {
   }
   args <- c("typst", "fonts")
   if (!is.null(projet)) {
-    fdir <- file.path(normalizePath(projet, mustWork = FALSE), "_fonts")
+    fdir <- file.path(xfun::normalize_path(projet), "_fonts")
     if (dir.exists(fdir)) args <- c(args, "--font-path", fdir)
   }
   familles <- tryCatch(
@@ -122,7 +122,7 @@ inspecter_typ <- function(qmd, ouvrir = TRUE) {
   if (!file.exists(qmd)) {
     cli::cli_abort("Fichier {.path {qmd}} introuvable.")
   }
-  qmd <- normalizePath(qmd, winslash = "/", mustWork = TRUE)
+  qmd <- xfun::normalize_path(qmd, must_work = TRUE)
   dossier <- dirname(qmd)
   base <- tools::file_path_sans_ext(basename(qmd))
 
@@ -161,7 +161,7 @@ inspecter_typ <- function(qmd, ouvrir = TRUE) {
 #' @examplesIf interactive()
 #' nettoyer_cache()
 nettoyer_cache <- function(projet = ".", polices = FALSE) {
-  projet <- normalizePath(projet, winslash = "/", mustWork = FALSE)
+  projet <- xfun::normalize_path(projet)
   cibles <- character(0)
   bk <- file.path(projet, "_book")
   if (dir.exists(bk)) cibles <- c(cibles, bk)
@@ -204,7 +204,7 @@ nettoyer_cache <- function(projet = ".", polices = FALSE) {
 #' @examplesIf interactive()
 #' ouvrir_exercices()
 ouvrir_exercices <- function(dossier = "exercices-typst") {
-  chemin <- normalizePath(dossier, winslash = "/", mustWork = FALSE)
+  chemin <- xfun::normalize_path(dossier)
   if (!dir.exists(chemin)) {
     cli::cli_abort(c(
       "Dossier {.path {chemin}} introuvable.",
