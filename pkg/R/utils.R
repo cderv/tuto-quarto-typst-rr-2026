@@ -27,6 +27,25 @@
   "02-projet-book" = "Un livre Typst personnalisé avec une charte (`_brand.yml`)."
 )
 
+# Lecture YAML « fidèle » centralisée :
+#  - YAML 1.2 : yes/no/on/off restent des CHAÎNES (évite le « Norway problem »
+#    de YAML 1.1 ; true/false restent logiques). Inspiré de l'esprit des handlers
+#    de quarto-r (qui, eux, agissent à l'écriture).
+#  - eval.expr = FALSE : un tag `!expr` n'exécute jamais de code R.
+#  - UTF-8 quelle que soit la locale.
+.handlers_yaml_fidele <- list(
+  `bool#yes` = function(x) if (identical(x, "true")) TRUE else x,
+  `bool#no` = function(x) if (identical(x, "false")) FALSE else x
+)
+.lire_yaml <- function(chemin) {
+  yaml::read_yaml(
+    chemin,
+    fileEncoding = "UTF-8",
+    eval.expr = FALSE,
+    handlers = .handlers_yaml_fidele
+  )
+}
+
 # Polices Inter embarquées (mode hors-ligne) : fichier -> graisse
 .inter_offline <- c(
   "Inter-Regular.ttf" = 400,

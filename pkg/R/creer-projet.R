@@ -206,10 +206,7 @@ comparer_chartes <- function() {
   brands_dir <- system.file("templates", "brands", package = "tutotypst")
   variantes <- c("empire", "jedi", "mando")
   couleurs <- vapply(variantes, function(v) {
-    raw <- yaml::read_yaml(
-      file.path(brands_dir, paste0("_brand-", v, ".yml")),
-      fileEncoding = "UTF-8", eval.expr = FALSE
-    )
+    raw <- .lire_yaml(file.path(brands_dir, paste0("_brand-", v, ".yml")))
     raw$color$palette[[raw$color$primary]]
   }, character(1))
 
