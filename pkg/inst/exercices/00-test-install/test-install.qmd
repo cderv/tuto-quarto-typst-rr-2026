@@ -1,0 +1,46 @@
+---
+title: "Test d'installation"
+subtitle: "Validation de la chaîne Quarto + Typst + R + gt + ggplot"
+format: typst
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+library(dplyr)
+library(ggplot2)
+library(gt)
+```
+
+# Tableau (gt → Typst)
+
+```{r}
+#| label: tbl-test
+head(starwars, 3) |>
+  select(name, height, mass, species) |>
+  gt() |>
+  opt_table_font(font = "Arial")
+```
+
+# Graphique (ggplot → Typst)
+
+```{r}
+#| label: fig-test
+#| fig-alt: "Nuage de points test — taille vs masse en échelle log"
+ggplot(starwars, aes(x = height, y = mass)) +
+  geom_point(alpha = 0.6, na.rm = TRUE) +
+  scale_y_log10() +
+  labs(
+    title = "Échelle log : test des accents",
+    x = "Taille (cm)",
+    y = "Masse (kg)"
+  ) +
+  theme_minimal()
+```
+
+# Conclusion
+
+Si vous voyez un PDF avec un **titre accentué**, un **tableau de 3 lignes** et un **graphique**, votre chaîne fonctionne — vous êtes prêt·e pour le tutoriel.
