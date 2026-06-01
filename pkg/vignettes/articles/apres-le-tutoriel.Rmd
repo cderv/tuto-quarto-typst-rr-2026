@@ -1,0 +1,84 @@
+---
+title: "Réutiliser Quarto + Typst après le tutoriel"
+description: >
+  Le tutoriel fini, comment réutiliser ce que vous avez appris pour vos propres
+  documents et livres Typst — avec l'aide du paquet `tutoquartotypst`.
+---
+
+```{r setup, include = FALSE}
+# Article de démonstration : on montre le code sans l'exécuter (effets de bord :
+# création de dossiers, rendus). À recopier dans votre console.
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+Le 16 juin est passé, vous avez fait le tutoriel **« PDF sans frictions : Typst
+dans vos projets Quarto »** — et maintenant vous voulez réutiliser tout ça pour
+*vos* documents. Le paquet `tutoquartotypst`, au-delà de la préparation du
+tutoriel, embarque quelques fonctions pour ça.
+
+> Pour (ré)apprendre les notions, le **site du tutoriel** reste la référence.
+> Cet article ne fait qu'orchestrer les fonctions « pérennité » du paquet.
+
+## Démarrer un nouveau projet
+
+`creer_projet_typst()` génère un squelette prêt à rendre (`quarto render`), avec
+une charte `_brand.yml` à adapter — **générique**, pas le thème Star Wars du tuto.
+
+```{r}
+library(tutoquartotypst)
+
+# Un document simple
+creer_projet_typst("mon-rapport")
+
+# Un livre multi-chapitres
+creer_projet_typst("mon-livre", type = "livre")
+
+# Avec les polices Inter en local (utile sans réseau)
+creer_projet_typst("rapport-hors-ligne", offline = TRUE)
+```
+
+Sur Quarto < 1.10.4, le contournement `font-paths` est ajouté automatiquement aux
+projets livre.
+
+## Adapter et valider la charte
+
+Éditez le `_brand.yml` généré (couleurs, polices), puis vérifiez sa cohérence
+(références croisées, fichiers de polices présents) :
+
+```{r}
+valider_brand("_brand.yml")
+```
+
+## Une marque, plusieurs déclinaisons
+
+La « pépite » du tutoriel : un même projet change d'identité en changeant
+simplement de charte. Les variantes Star Wars sont fournies pour expérimenter :
+
+```{r}
+comparer_chartes()        # aperçu des couleurs principales
+basculer_charte("jedi")   # applique la variante (sauvegarde l'ancienne)
+```
+
+## Travailler sans réseau
+
+Si les polices Google ne peuvent pas être téléchargées, basculez un projet en
+polices locales (et revenez en ligne ensuite) :
+
+```{r}
+basculer_hors_ligne()              # déploie Inter en local + ajuste _brand.yml
+basculer_hors_ligne(retour = TRUE) # restaure la charte d'origine
+```
+
+## Dépanner un rendu
+
+```{r}
+diagnostic_typst()                 # versions Quarto/Typst, cache de polices
+diagnostiquer_rendu("collez ici votre message d'erreur")
+inspecter_typ("mon-rapport.qmd")   # voir le .typ intermédiaire produit
+```
+
+## Pour aller plus loin
+
+- La page **« Pour aller plus loin »** du site du tutoriel (documentation Typst,
+  `_brand.yml`, blocs raw Typst, extensions…).
+- La [référence des fonctions](../reference/index.html) du paquet.

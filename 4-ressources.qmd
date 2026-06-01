@@ -5,6 +5,16 @@ author: ""
 date: ""
 ---
 
+## Le paquet compagnon `tutoquartotypst`
+
+Le paquet R qui a servi à préparer le tutoriel vous suit **après** le 16 juin :
+
+- `creer_projet_typst()` — démarrer un nouveau document ou livre Typst prêt à rendre
+- `basculer_charte()` / `comparer_chartes()` — rejouer la pépite « une marque, plusieurs déclinaisons »
+- `basculer_hors_ligne()`, `valider_brand()`, `diagnostiquer_rendu()` — confort et dépannage
+
+→ Guide [**« Réutiliser Quarto + Typst après le tutoriel »**](package/articles/apres-le-tutoriel.html) et [documentation du paquet](package/index.html).
+
 ## Documentation officielle Quarto
 
 - [Typst Basics](https://quarto.org/docs/output-formats/typst.html)
