@@ -208,7 +208,7 @@ comparer_chartes <- function() {
   couleurs <- vapply(variantes, function(v) {
     raw <- yaml::read_yaml(
       file.path(brands_dir, paste0("_brand-", v, ".yml")),
-      fileEncoding = "UTF-8"
+      fileEncoding = "UTF-8", eval.expr = FALSE
     )
     raw$color$palette[[raw$color$primary]]
   }, character(1))
