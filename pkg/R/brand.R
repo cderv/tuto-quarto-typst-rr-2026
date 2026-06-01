@@ -51,15 +51,24 @@ basculer_hors_ligne <- function(projet = ".", retour = FALSE) {
 
   lignes <- xfun::read_utf8(brand)
   idx <- grep("^\\s*source:\\s*google\\s*$", lignes)
-  if (length(idx) == 0) {
-    cli::cli_alert_warning("Aucune police `source: google` trouvée dans `_brand.yml`.")
-    cli::cli_alert_info("Vous êtes peut-être déjà hors-ligne. Rien n'a été modifié.")
-    return(invisible(NULL))
-  }
-  if (length(idx) > 1) {
-    cli::cli_alert_warning(
-      "Plusieurs polices `source: google` détectées : seule Inter est embarquée, les autres resteront en ligne."
+
+  # Validation SÉMANTIQUE (par parsing) avant toute édition : on n'agit que si la
+  # charte a exactement UNE police `source: google` et que c'est Inter. Sinon on
+  # guide, sans rien modifier (évite d'éditer la mauvaise police / une forme tordue).
+  raw <- tryCatch(yaml::read_yaml(brand, fileEncoding = "UTF-8"), error = function(e) NULL)
+  fonts <- if (!is.null(raw)) raw$typography$fonts %||% list() else list()
+  est_google <- vapply(fonts, function(f) identical(f$source, "google"), logical(1))
+  familles_google <- vapply(fonts[est_google], function(f) f$family %||% NA_character_, character(1))
+  attendu <- !is.null(raw) && length(idx) == 1 &&
+    sum(est_google) == 1 && identical(unname(familles_google), "Inter")
+
+  if (!attendu) {
+    cli::cli_alert_warning("Structure de `_brand.yml` inattendue pour la bascule automatique.")
+    cli::cli_alert_info(
+      "Attendu : une seule police `source: google` (Inter). Rien n'a été modifié."
     )
+    cli::cli_alert_info("Vous êtes peut-être déjà hors-ligne, ou la charte diffère du modèle.")
+    return(invisible(NULL))
   }
 
   # Déployer les TTF Inter embarqués
@@ -91,6 +100,30 @@ basculer_hors_ligne <- function(projet = ".", retour = FALSE) {
   }
   apres <- if (fin < length(lignes)) lignes[(fin + 1):length(lignes)] else character(0)
   xfun::write_utf8(c(lignes[seq_len(i - 1)], bloc, apres), brand)
+
+  # Filet de sécurité : on relit le résultat. Si l'édition textuelle a cassé le
+  # YAML ou n'a pas pris (Inter pas en source: file), on restaure et on guide.
+  valide <- tryCatch(
+    {
+      v <- yaml::read_yaml(brand, fileEncoding = "UTF-8")
+      fonts <- v$typography$fonts %||% list()
+      any(vapply(fonts, function(f) {
+        identical(f$family, "Inter") && identical(f$source, "file")
+      }, logical(1)))
+    },
+    error = function(e) FALSE
+  )
+  if (!valide) {
+    file.copy(bak, brand, overwrite = TRUE)
+    file.remove(bak)
+    cli::cli_alert_danger(
+      "Édition automatique impossible sur ce `_brand.yml` : il a été restauré tel quel."
+    )
+    cli::cli_alert_info(
+      "Passez Inter en `source: file` à la main (polices déjà copiées dans {.path _fonts/})."
+    )
+    return(invisible(NULL))
+  }
 
   cli::cli_alert_success("Mode hors-ligne activé : Inter en local dans {.path _fonts/}.")
   cli::cli_alert_info("Sauvegarde de votre charte : {.path {bak}}")
@@ -156,8 +189,25 @@ appliquer_polices_locales <- function(projet = ".") {
     paste0(indent, "    - .quarto/typst/fonts"),
     paste0(indent, "    - _fonts")
   )
-  file.copy(qfile, paste0(qfile, ".avant-fontpaths"), overwrite = TRUE)
+  bak <- paste0(qfile, ".avant-fontpaths")
+  file.copy(qfile, bak, overwrite = TRUE)
   xfun::write_utf8(append(lignes, bloc, after = i), qfile)
+
+  # Filet de sécurité : on relit le résultat. Si l'insertion a cassé le YAML ou
+  # mal niché `font-paths`, on restaure et on donne les lignes à ajouter à la main.
+  valide <- tryCatch(
+    !is.null(yaml::read_yaml(qfile, fileEncoding = "UTF-8")$format$typst[["font-paths"]]),
+    error = function(e) FALSE
+  )
+  if (!valide) {
+    file.copy(bak, qfile, overwrite = TRUE)
+    file.remove(bak)
+    cli::cli_alert_danger("Édition automatique impossible : `_quarto.yml` a été restauré tel quel.")
+    cli::cli_text("Ajoutez ceci à la main sous `format: typst:` :")
+    cli::cli_code(c("    font-paths:", "      - .quarto/typst/fonts", "      - _fonts"))
+    return(invisible(FALSE))
+  }
+
   cli::cli_alert_success("`font-paths` ajouté à `_quarto.yml` (contournement Quarto < {reco}).")
   cli::cli_alert_info("Sauvegarde : {.path {basename(qfile)}.avant-fontpaths}")
   invisible(TRUE)

@@ -68,6 +68,35 @@ test_that("basculer_hors_ligne() bascule Inter en local puis restaure", {
   expect_false(file.exists(file.path(d, "_brand.yml.avant-hors-ligne")))
 })
 
+test_that("basculer_hors_ligne() ne touche rien si pas de source: google", {
+  d <- withr::local_tempdir()
+  .brand_online(d)
+  brand <- file.path(d, "_brand.yml")
+  # on passe Inter en file -> plus aucune source: google
+  basculer_hors_ligne(d)
+  avant <- xfun::read_utf8(brand)
+  # second appel : structure inattendue (déjà hors-ligne) -> no-op
+  expect_null(basculer_hors_ligne(d))
+  expect_identical(xfun::read_utf8(brand), avant)
+})
+
+test_that("basculer_hors_ligne() refuse une charte dont la police google n'est pas Inter", {
+  d <- withr::local_tempdir()
+  dir.create(file.path(d, "_fonts"))
+  brand <- file.path(d, "_brand.yml")
+  xfun::write_utf8(c(
+    "typography:",
+    "  fonts:",
+    "    - family: Autre",
+    "      source: google",
+    "      weight: [400]",
+    "  base: Autre"
+  ), brand)
+  avant <- xfun::read_utf8(brand)
+  expect_null(basculer_hors_ligne(d))
+  expect_identical(xfun::read_utf8(brand), avant) # inchangé
+})
+
 test_that("appliquer_polices_locales() ajoute font-paths puis est idempotent", {
   skip_if_not(
     {
