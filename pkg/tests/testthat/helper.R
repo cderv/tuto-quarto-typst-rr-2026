@@ -7,3 +7,13 @@ skip_if_no_quarto <- function() {
     "Quarto introuvable"
   )
 }
+
+# Saute le test si Quarto est assez récent (>= seuil recommandé) : utile pour les
+# tests du contournement `font-paths`, sans objet sur Quarto récent.
+skip_if_quarto_recent <- function() {
+  v <- tryCatch(quarto::quarto_version(), error = function(e) NA)
+  testthat::skip_if(
+    length(v) == 1 && !is.na(v) && v >= .quarto_reco,
+    "Quarto >= seuil recommandé (contournement font-paths inutile)"
+  )
+}
