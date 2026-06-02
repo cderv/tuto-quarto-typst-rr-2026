@@ -53,6 +53,14 @@ site-pretuto:
 
 # === dev ===
 
+# Supprime tous les artefacts de rendu (sites, cache, corrections exercices, pkgdown)
+[group('dev')]
+clean:
+    Remove-Item -Recurse -Force -ErrorAction SilentlyContinue _site, _site-pretuto, .quarto, package
+    Remove-Item -Force -ErrorAction SilentlyContinue _charte/charte-starwars.pdf
+    Get-ChildItem exercises -Recurse -File -Include "*.typ","*.pdf","*.html" | Where-Object Name -ne "charte-starwars.pdf" | Remove-Item -Force -ErrorAction SilentlyContinue
+    Get-ChildItem exercises -Recurse -Directory | Where-Object { $_.Name -eq "_book" -or $_.Name -like "*_files" } | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
+
 [group('dev')]
 preview:
     quarto preview
@@ -68,7 +76,19 @@ audit:
 publish: all
     quarto publish posit-connect-cloud
 
+# Publier sans rebuilder (si just all déjà fait)
+[group('publish')]
+[confirm("Publier sur Posit Connect Cloud ?")]
+publish-only:
+    quarto publish posit-connect-cloud
+
 [group('publish')]
 [confirm("Publier version pretuto ?")]
 publish-pretuto: charte exos site-pretuto
+    quarto publish posit-connect-cloud --profile pretuto
+
+# Publier pretuto sans rebuilder (si déjà buildé)
+[group('publish')]
+[confirm("Publier version pretuto ?")]
+publish-pretuto-only:
     quarto publish posit-connect-cloud --profile pretuto
