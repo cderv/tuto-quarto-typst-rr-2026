@@ -6,7 +6,44 @@ library(dplyr)
 library(ggplot2)
 library(gt)
 library(brand.yml)
+library(prismatic)
 brand <- read_brand_yml()
+pal <- function(x) brand_color_pluck(brand, x)
+teinte <- function(x, f) substr(as.character(clr_darken(pal(x), f)), 1, 7)
+
+# Habillage charte commun à tous les tableaux gt du livre : police Inter,
+# bandeau titre jaune SW, en-têtes noir/crème, striping crème, filets imperial-red.
+styliser_brand <- function(t) {
+  t |>
+    theme_brand_gt(brand) |>
+    opt_table_font(font = "Inter") |>
+    opt_row_striping() |>
+    tab_style(style = list(cell_fill(color = pal("sw_yellow")),
+                           cell_text(weight = "bold", color = pal("foreground"))),
+              locations = cells_title(groups = "title")) |>
+    tab_style(style = list(cell_fill(color = pal("foreground")),
+                           cell_text(color = pal("background"), weight = "bold")),
+              locations = cells_column_labels()) |>
+    tab_options(
+      row.striping.background_color     = teinte("background", 0.06),
+      table_body.hlines.color           = teinte("background", 0.12),
+      table.border.top.color            = pal("primary"),
+      table.border.top.width            = px(2),
+      table.border.bottom.color         = pal("primary"),
+      table.border.bottom.width         = px(2),
+      column_labels.border.bottom.color = pal("primary"),
+      column_labels.border.bottom.width = px(2),
+      heading.align                     = "left"
+    )
+}
+
+# Dégradé « heatmap » aux couleurs de la charte (crème → jaune → rouge) sur
+# une colonne numérique bien répartie.
+colorer_metrique <- function(t, col) {
+  t |> data_color(columns = {{ col }},
+                  palette = c(pal("background"), pal("sw_yellow"), pal("primary")),
+                  apply_to = "fill")
+}
 ```
 
 Les colosses du chapitre précédent venaient d'horizons divers. Élargissons :
@@ -29,33 +66,9 @@ starwars |>
     homeworld = "Planete",
     n = "Personnages"
   ) |>
-  theme_brand_gt(brand) |>
-  opt_table_font(font = "Inter") |>
-  tab_style(
-    style = list(
-      cell_fill(color = brand_color_pluck(brand, "sw_yellow")),
-      cell_text(weight = "bold",
-                color  = brand_color_pluck(brand, "foreground"))
-    ),
-    locations = cells_title()
-  ) |>
-  tab_style(
-    style = list(
-      cell_fill(color = brand_color_pluck(brand, "foreground")),
-      cell_text(color  = brand_color_pluck(brand, "background"),
-                weight = "bold")
-    ),
-    locations = cells_column_labels()
-  ) |>
-  # Ligne 1 (Naboo) : highlight de la planète la plus représentée
-  tab_style(
-    style = list(
-      cell_fill(color = brand_color_pluck(brand, "primary")),
-      cell_text(color  = brand_color_pluck(brand, "background"),
-                weight = "bold")
-    ),
-    locations = cells_body(rows = 1)
-  )
+  styliser_brand() |>
+  # Comptages bien répartis → dégradé charte (Naboo/Tatooine ressortent en rouge)
+  colorer_metrique(n)
 ```
 
 Naboo et Tatooine se partagent le devant : la planète d'Amidala devance d'un
@@ -114,33 +127,9 @@ films_par_perso |>
     species = "Espece",
     n_films = "Films"
   ) |>
-  theme_brand_gt(brand) |>
-  opt_table_font(font = "Inter") |>
-  tab_style(
-    style = list(
-      cell_fill(color = brand_color_pluck(brand, "sw_yellow")),
-      cell_text(weight = "bold",
-                color  = brand_color_pluck(brand, "foreground"))
-    ),
-    locations = cells_title()
-  ) |>
-  tab_style(
-    style = list(
-      cell_fill(color = brand_color_pluck(brand, "foreground")),
-      cell_text(color  = brand_color_pluck(brand, "background"),
-                weight = "bold")
-    ),
-    locations = cells_column_labels()
-  ) |>
-  # Ligne 1 (R2-D2) : highlight du personnage le plus présent
-  tab_style(
-    style = list(
-      cell_fill(color = brand_color_pluck(brand, "primary")),
-      cell_text(color  = brand_color_pluck(brand, "background"),
-                weight = "bold")
-    ),
-    locations = cells_body(rows = 1)
-  )
+  styliser_brand() |>
+  # Nombre de films (1–7) bien réparti → dégradé charte (R2-D2 ressort en rouge)
+  colorer_metrique(n_films)
 ```
 
 **R2-D2** mène avec `r films_par_perso$n_films[1]` films, plus que

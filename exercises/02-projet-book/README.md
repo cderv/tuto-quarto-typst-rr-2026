@@ -7,7 +7,7 @@
 
 - Quarto 1.9+ (cf. [`preparatifs.qmd`](../../preparatifs.qmd))
 - Packages R installés : `dplyr`, `ggplot2`, `ggrepel`, `gt`, `scales`
-- Pour le Bonus 4 (optionnel, brand styling avancé) : `brand.yml` (cf. [`preparatifs.qmd`](../../preparatifs.qmd))
+- Pour le Bonus 4 (optionnel, brand styling avancé) : `brand.yml` + `prismatic` (cf. [`preparatifs.qmd`](../../preparatifs.qmd))
 - L'extension `orange-book` (livrée avec Quarto 1.9, pas d'install à faire)
 
 ## Mise en place
