@@ -126,6 +126,8 @@ format:
     # Logo personnalisé : sans cette section, Quarto place le logo
     # `_brand.yml` à 1.5in width / 0.75in padding par défaut, ce qui
     # chevauche les titres dès la 2e page.
+    # NB : `sw-star` est défini par `_brand.yml` (étape 3) — avant, ce
+    #      bloc est sans effet (logo absent, aucune erreur).
     logo:
       path: sw-star
       location: left-top
