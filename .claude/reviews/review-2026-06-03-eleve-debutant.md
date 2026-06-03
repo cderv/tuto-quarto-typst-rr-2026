@@ -14,26 +14,26 @@ puis **(C) ce qui marche bien**.
 
 ## (A) Défauts & incohérences du support
 
-### A1. 🔴 Le « raccourci recommandé » des préparatifs échoue : `tutoquartotypst` n'est pas sur r-universe
-`preparatifs.qmd` met en avant, comme **premier geste** et chemin conseillé :
+### A1. ⚪️ `tutoquartotypst` pas encore sur r-universe — **état attendu, pas un défaut**
+> **Mise à jour 2026-06-03 (CD) :** la publication r-universe est **volontairement la
+> dernière étape**, prévue **quand le dépôt deviendra public**. Ce n'est donc **pas un
+> bug** et il n'y a **rien à corriger** pour l'instant. Constat conservé ici pour mémoire
+> (penser à publier avant de diffuser la page `pretuto`).
+
+Constat brut du parcours : `preparatifs.qmd` propose comme premier geste
 
 ```r
 install.packages("tutoquartotypst",
   repos = c("https://cderv.r-universe.dev", "https://cloud.r-project.org"))
 ```
 
-→ **`package 'tutoquartotypst' is not available`**. Vérifié : `cderv.r-universe.dev`
-existe (sert `pandoc`) mais **ne contient pas** `tutoquartotypst`
-(`/api/packages/tutoquartotypst` → *not found*). Le paquet n'est pas (encore) publié.
+→ aujourd'hui **`package 'tutoquartotypst' is not available`** (l'org `cderv.r-universe.dev`
+existe et sert `pandoc`, mais le paquet n'y est pas encore — dépôt privé). Le repli manuel
+documenté juste en dessous fonctionne (j'ai installé tous les prérequis par ce chemin, et
+le paquet en local via `R CMD INSTALL pkg/`).
 
-C'est la version `pretuto` qui est partagée **avant** l'atelier : un·e participant·e
-qui prépare son poste tombe sur un échec dès la première commande. Le texte prévoit le
-repli manuel (« si l'installation via r-universe échoue… ») mais présente quand même
-r-universe comme le chemin nominal.
-
-**Action :** publier le paquet sur r-universe (cf. `pkg/dev/PUBLICATION-r-universe.md`)
-**avant** de diffuser la page pretuto, ou requalifier le bloc en « bientôt
-disponible / sinon chemin manuel » tant que ce n'est pas publié.
+**Rappel pré-diffusion :** publier sur r-universe (cf. `pkg/dev/PUBLICATION-r-universe.md`)
+**avant** de partager la page `pretuto` publiquement.
 
 *Note connexe :* une fois publié, sur **Linux** la commande compile depuis les sources
 (r-universe ne fournit pas de binaires Linux, et `cloud.r-project.org` non plus). Les
@@ -176,9 +176,10 @@ UTF-8, polices système) ne les rencontrera pas, ou de façon atténuée.
 ---
 
 ## Priorités suggérées
-1. **A1** (publier `tutoquartotypst` sur r-universe) — bloque la prépa avant l'atelier.
-2. **A2** (annexe-donnees qui disparaît) et **A3** (`lang: fr` manquant dans le modèle) —
-   incohérences instructions ↔ correction, visibles en séance.
-3. **A4 / A6 / A7** — « Vous devriez voir » qui sur-promettent (titres colorés, tableaux
+1. **A2** (annexe-donnees qui disparaît à l'étape 2a) et **A3** (`lang: fr` manquant dans
+   le modèle `_quarto.yml`) — incohérences instructions ↔ correction, visibles en séance.
+2. **A4 / A6 / A7** — « Vous devriez voir » qui sur-promettent (titres colorés, tableaux
    re-stylés, couverture jaune) ; risquent de faire douter les participant·e·s.
-4. **A5 / A8 / A9** — finitions FR/confort.
+3. **A5 / A8 / A9** — finitions FR/confort.
+4. **A1** — *aucune action immédiate* : publication r-universe volontairement reportée à
+   l'ouverture publique du dépôt. Simple rappel : le faire **avant** de diffuser `pretuto`.
