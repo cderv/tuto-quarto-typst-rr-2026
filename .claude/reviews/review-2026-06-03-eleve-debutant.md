@@ -90,9 +90,10 @@ colorés par la palette, ce qui n'arrive pas.
 Nuance importante : en **mode book** (exo 2, orange-book), `primary` colore bien l'accent
 des titres et la couverture — d'où une confusion possible entre les deux exos.
 
-**Action :** reformuler l'attendu de l'étape 3 exo 1, p. ex. « **liens** colorés en
-imperial-red, **fond** crème, **logo** en haut-gauche » (sans promettre de titres
-colorés), et éventuellement préciser que la couleur des titres arrive avec le book.
+**✅ Corrigé (fix #3, 2026-06-03)** : « Vous devriez voir » de l'étape 3 reformulé —
+« liens colorés en imperial-red, fond crème, Inter en corps, logo en haut-gauche ; les
+titres restent en `foreground` noir, la couleur `primary` sur les titres arrive avec le
+livre au Bloc 2 ».
 
 ### A5. 🟠 Exo 1 : « TABLE OF CONTENTS » en anglais (pas de `lang: fr`)
 Ni le starter, ni la **correction** de l'exo 1, ni les instructions ne posent `lang: fr`.
