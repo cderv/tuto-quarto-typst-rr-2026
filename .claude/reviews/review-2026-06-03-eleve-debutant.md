@@ -111,8 +111,9 @@ ligne Jabba rouge) et gardent l'espacement « 1 7 5 ». Le re-style est l'objet 
 **Bonus 4** (`theme_brand_gt()` / `theme_brand_ggplot2()`), explicitement « approfondissement
 après l'atelier ».
 
-**Action :** retirer « tableaux `gt` re-stylés » de l'attendu de l'étape 3 (le garder
-pour le Bonus 4), ou préciser « les tableaux restent bruts à ce stade — voir Bonus 4 ».
+**✅ Corrigé (fix #4, 2026-06-03)** : « tableaux `gt` re-stylés » retiré de l'attendu de
+l'étape 3, remplacé par « les tableaux `gt` restent bruts à ce stade — leur mise aux
+couleurs de la charte est l'objet du Bonus 4 ».
 
 ### A7. 🟡 Exo 2, étape 3 : « Couverture **jaune** Star Wars » — la bande est en fait rouge/rose
 La bande de couverture orange-book utilise `primary` = **imperial-red** → elle est
@@ -120,8 +121,8 @@ La bande de couverture orange-book utilise `primary` = **imperial-red** → elle
 explique précisément ce choix (le jaune en `primary` serait illisible). Le « Vous devriez
 voir » de l'étape 3 (« Couverture **jaune** ») contredit donc le design réel.
 
-**Action :** reformuler en « Couverture aux couleurs Star Wars (bande imperial-red + logo
-étoile jaune) ».
+**✅ Corrigé (fix #4, 2026-06-03)** : même cellule que A6 — « Couverture **jaune** » →
+« Couverture aux couleurs Star Wars (bande imperial-red + logo étoile jaune) ».
 
 ### A8. 🟡 Exo 2, étape 2a : le modèle contient déjà `logo: path: sw-star` alors que `_brand.yml` arrive à l'étape 3
 À l'étape 2a, le modèle `_quarto.yml` référence `logo: path: sw-star`, mais l'image
