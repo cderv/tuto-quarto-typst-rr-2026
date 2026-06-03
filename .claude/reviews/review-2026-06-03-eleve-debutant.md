@@ -67,8 +67,18 @@ Le bonus B1 illustre la cross-ref avec « Figure 1.1 » (identique FR/EN), ce qu
 le problème**. Un·e participant·e qui compare son livre à la correction verra une
 différence inexpliquée.
 
-**Action :** ajouter `lang: fr` au modèle `_quarto.yml` du site (et mentionner son rôle),
-pour aligner instructions et correction.
+**✅ Corrigé (fix #2, 2026-06-03)** : `lang: fr` ajouté au modèle `_quarto.yml` du site
++ à l'exo 1 (correction + étape 2). Vérifié : TOC → « Table des matières », réf croisée
+inline → « Chapitre 2 », annexe → « Annexes ». Sortie de l'étudiant·e désormais **à parité
+avec la correction**.
+
+> **Limite résiduelle (hors périmètre, amont) :** le **titre de chapitre** reste
+> « **Chapter N. …** » (ex. « Chapter 2. Origines »). C'est l'extension **orange-book** qui
+> code `supplement-chapter: "Chapter"` en dur et ne le dérive pas de `lang` ; le pont
+> Quarto→orange-book (`typst-show.typ`) transmet `lang` mais **pas** `supplement-chapter`.
+> **La correction officielle a le même comportement** (elle a déjà `lang: fr` et affiche
+> tout de même « Chapter 1/2 »). Ce n'est donc pas régressé par le fix — ce serait un
+> correctif **upstream** (orange-book / Quarto) ou un override raw Typst, non traité ici.
 
 ### A4. 🟠 Exo 1, étape 3 : « Couleurs palette visibles (**titres**, liens) » — faux pour un doc simple
 Dans un document `format: typst` **simple**, `primary: imperial-red` ne colore **pas**
@@ -89,7 +99,8 @@ Ni le starter, ni la **correction** de l'exo 1, ni les instructions ne posent `l
 Le `toc: true` produit donc « **TABLE OF CONTENTS** » dans un rapport entièrement en
 français (vérifié sur la correction). Même famille de problème que A3.
 
-**Action :** ajouter `lang: fr` à la correction exo 1 et le suggérer à l'étape 2.
+**✅ Corrigé (fix #2, 2026-06-03)** : `lang: fr` ajouté à la correction exo 1 et suggéré à
+l'étape 2. Vérifié : « Table des matières » au rendu.
 
 ### A6. 🟠 Exo 2, étape 3 : « tableaux `gt` re-stylés » — n'arrive PAS en copiant `_brand.yml`
 Le « Vous devriez voir » de l'étape 3 promet « *tableaux `gt` re-stylés* ». Or copier
