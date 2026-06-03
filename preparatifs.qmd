@@ -85,12 +85,12 @@ La vérification ci-dessus n'exécute que du R. Pour valider que **Quarto + Typs
 quarto render exercises/00-test-install/test-install.qmd
 ```
 
-**Résultat attendu** : un fichier `test-install.pdf` apparaît à côté du `.qmd`, avec un titre accentué, un tableau de 3 lignes et un graphique. Aucune **erreur** en console (un avertissement sur la police est normal et documenté ci-dessous).
+**Résultat attendu** : un fichier `test-install.pdf` apparaît à côté du `.qmd`, avec un titre accentué, un tableau de 3 lignes et un graphique. Aucune **erreur** en console — en revanche **plusieurs avertissements** `unknown font family` sont normaux et documentés ci-dessous. Tant que vous voyez `Output created`, c'est bon.
 
 **Si ça échoue** :
 
 - `Typst executable not found` → Quarto \< 1.9, mettez à jour.
-- `unknown font family` → ignorez cet avertissement, le PDF se génère quand même avec une police de repli (ce test n'utilise pas `_brand.yml`). Suivi sur [GitHub](https://github.com/quarto-dev/quarto-cli/issues/11683)
+- `unknown font family` (souvent **plusieurs** : `sans-serif`, `segoe ui`, `roboto`…) → ignorez-les, le PDF se génère quand même avec une police de repli (ce test n'utilise pas `_brand.yml`). Ces avertissements sont **cosmétiques** : Typst signale chaque police absente d'un stack CSS, là où le navigateur les ignore en silence — pas de moyen de les masquer pour l'instant. Suivi sur [quarto-cli#12556](https://github.com/quarto-dev/quarto-cli/issues/12556). *(À ne pas confondre avec le bug d'affichage « 1 7 5 » dans les tableaux, [quarto-cli#11683](https://github.com/quarto-dev/quarto-cli/issues/11683), corrigé par `gt::opt_table_font()`.)*
 
 ## Plan B — polices sans réseau le jour J
 

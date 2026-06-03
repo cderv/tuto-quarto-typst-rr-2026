@@ -139,8 +139,24 @@ Le test d'installation produit une **avalanche** de `unknown font family:` (sans
 segoe ui, apple color emoji, roboto, helvetica…), pas « un » avertissement. Un·e
 débutant·e peut s'alarmer de ce mur de warnings alors que le PDF est correct.
 
-**Action :** reformuler « **des** avertissements `unknown font family` sont normaux (la
-police demandée est remplacée) — tant que vous voyez `Output created`, c'est bon ».
+**✅ Corrigé (fix #6, 2026-06-03)** : prép reformulée au pluriel (« plusieurs
+avertissements normaux — tant que vous voyez `Output created`, c'est bon »).
+
+**Recherche issue + workaround (demande CD)** : deux issues quarto-cli distinctes,
+**toutes deux ouvertes** au 2026-06 :
+- **[quarto-cli#12556](https://github.com/quarto-dev/quarto-cli/issues/12556)** — *la
+  verbosité du warning* `unknown font family` lui-même. Typst (≥ 0.12) alerte pour chaque
+  police absente d'un stack CSS, là où le navigateur les ignore en silence. **Aucun
+  workaround de suppression côté config** ; piste mainteneur : filtrer les polices
+  indisponibles lors de la traduction CSS→Typst. → warnings **cosmétiques, à ignorer**.
+- **[quarto-cli#11683](https://github.com/quarto-dev/quarto-cli/issues/11683)** — le *bug
+  de rendu* « 1 7 5 » (changement de police sur chaînes alphanumériques dans `gt`).
+  **Workaround = `gt::opt_table_font(font = "Inter")`** (déjà appliqué dans les corrections
+  et documenté au Bonus 4).
+
+Le lien de la prép pointait vers #11683 (le bug de rendu) pour parler du *warning* → corrigé
+vers #12556 (le bon ticket), avec mention de #11683 pour le « 1 7 5 ». **Pas de workaround
+disponible pour faire taire les warnings** ; seul le bug de rendu a un remède.
 
 ---
 
