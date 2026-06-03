@@ -31,9 +31,40 @@ library(ggplot2)
 library(ggrepel)
 library(gt)
 library(brand.yml)
+library(prismatic)
 # Charge _brand.yml du dossier courant → applique la même charte aux figures
 # ggplot et tableaux gt qu'à la mise en page Typst.
 brand <- read_brand_yml()
+pal <- function(x) brand_color_pluck(brand, x)
+# Teintes crème dérivées de la charte (striping + filets), sans hex magique :
+teinte <- function(x, f) substr(as.character(clr_darken(pal(x), f)), 1, 7)
+
+# Habillage charte commun à tous les tableaux gt : police Inter, bandeau titre
+# jaune SW, en-têtes noir/crème, striping crème, filets imperial-red.
+styliser_brand <- function(t) {
+  t |>
+    theme_brand_gt(brand) |>
+    # opt_table_font : Inter en tête → évite l'espacement parasite « 1 7 5 »
+    opt_table_font(font = "Inter") |>
+    opt_row_striping() |>
+    tab_style(style = list(cell_fill(color = pal("sw_yellow")),
+                           cell_text(weight = "bold", color = pal("foreground"))),
+              locations = cells_title(groups = "title")) |>
+    tab_style(style = list(cell_fill(color = pal("foreground")),
+                           cell_text(color = pal("background"), weight = "bold")),
+              locations = cells_column_labels()) |>
+    tab_options(
+      row.striping.background_color     = teinte("background", 0.06),
+      table_body.hlines.color           = teinte("background", 0.12),
+      table.border.top.color            = pal("primary"),
+      table.border.top.width            = px(2),
+      table.border.bottom.color         = pal("primary"),
+      table.border.bottom.width         = px(2),
+      column_labels.border.bottom.color = pal("primary"),
+      column_labels.border.bottom.width = px(2),
+      heading.align                     = "left"
+    )
+}
 ```
 
 # Introduction
@@ -66,34 +97,14 @@ top_mass |>
     homeworld = "Planete"
   ) |>
   # theme_brand_gt : applique fond + texte de la charte au tableau
-  theme_brand_gt(brand) |>
-  # opt_table_font : force Inter en tête de la liste de polices gt
-  # → évite l'espacement parasite des chiffres (« 1 7 5 ») sur Windows/macOS
-  opt_table_font(font = "Inter") |>
-  # Bandeau titre : jaune SW + texte noir gras
+  # Habillage charte commun (police, bandeau, en-têtes, striping, filets)
+  styliser_brand() |>
+  # Ligne 1 (Jabba) : rouge impérial — ici l'outlier EST l'histoire,
+  # on le met en avant plutôt qu'un dégradé (écrasé par sa valeur extrême).
   tab_style(
     style = list(
-      cell_fill(color = brand_color_pluck(brand, "sw_yellow")),
-      cell_text(weight = "bold",
-                color  = brand_color_pluck(brand, "foreground"))
-    ),
-    locations = cells_title()
-  ) |>
-  # En-têtes colonnes : noir SW + texte crème gras
-  tab_style(
-    style = list(
-      cell_fill(color = brand_color_pluck(brand, "foreground")),
-      cell_text(color  = brand_color_pluck(brand, "background"),
-                weight = "bold")
-    ),
-    locations = cells_column_labels()
-  ) |>
-  # Ligne 1 (Jabba) : rouge impérial + texte crème gras
-  tab_style(
-    style = list(
-      cell_fill(color = brand_color_pluck(brand, "primary")),
-      cell_text(color  = brand_color_pluck(brand, "background"),
-                weight = "bold")
+      cell_fill(color = pal("primary")),
+      cell_text(color = pal("background"), weight = "bold")
     ),
     locations = cells_body(rows = 1)
   )
