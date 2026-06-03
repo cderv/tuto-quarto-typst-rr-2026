@@ -130,8 +130,9 @@ voir » de l'étape 3 (« Couverture **jaune** ») contredit donc le design rée
 erreur** (Quarto ignore silencieusement le logo absent). Mais le logo annoncé n'apparaît
 pas avant l'étape 3, ce qui peut dérouter qui scrute le résultat.
 
-**Action :** soit retirer le bloc `logo:` du modèle jusqu'à l'étape 3, soit ajouter une
-note « le logo n'apparaîtra qu'après l'étape 3 (besoin de `_brand.yml`) ».
+**✅ Corrigé (fix #5, 2026-06-03)** : commentaire ajouté dans le bloc `logo:` du modèle —
+« `sw-star` est défini par `_brand.yml` (étape 3) ; avant, ce bloc est sans effet (logo
+absent, aucune erreur) ».
 
 ### A9. 🟡 Préparatifs : « un avertissement sur la police est normal » → en réalité ~6-10 avertissements
 Le test d'installation produit une **avalanche** de `unknown font family:` (sans-serif,
