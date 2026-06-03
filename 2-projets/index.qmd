@@ -107,6 +107,8 @@ Si vous bloquez sur la syntaxe, voici un patron complet à adapter. À l'**étap
 project:
   type: book
 
+lang: fr          # ← labels en français : « Chapitre », « Table des matières »
+
 book:
   title: "Anatomie d'une saga"
   author: "Mon Mothma"
