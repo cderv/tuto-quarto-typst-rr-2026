@@ -2,6 +2,7 @@
 
 ```{r}
 #| label: setup-anatomie
+# --- Bonus 4 (optionnel) appliqué : brand styling des tableaux gt + ggplot ---
 library(dplyr)
 library(ggplot2)
 library(ggrepel)
@@ -11,6 +12,7 @@ library(prismatic)
 # Charge le _brand.yml du projet (racine du livre) → mêmes couleurs depuis R
 brand <- read_brand_yml()
 pal <- function(x) brand_color_pluck(brand, x)
+# clr_darken renvoie un hex à canal alpha (#RRGGBBAA) → substr(., 1, 7) = #RRGGBB
 teinte <- function(x, f) substr(as.character(clr_darken(pal(x), f)), 1, 7)
 
 # Habillage charte commun à tous les tableaux gt du livre : police Inter,
