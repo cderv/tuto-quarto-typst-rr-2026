@@ -8,6 +8,9 @@ format: clean-revealjs
 engine: markdown
 filters:
   - typst-render
+typst-render:
+  # Packages Typst vendorisés (fletcher/cetz/oxifmt) → build offline et reproductible
+  package-path: /_typst-packages
 ---
 
 ## `_quarto.yml` — tout régler au même endroit
