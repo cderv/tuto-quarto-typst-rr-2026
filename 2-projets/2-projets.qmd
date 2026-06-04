@@ -122,7 +122,9 @@ format: typst
 
 📄 **Charte** : `charte-starwars.pdf` dans le starter (même charte qu'au Bloc 1, référence visuelle).
 
-⏱ **12 minutes** — page boussole projetée à côté.
+⏱ **12 minutes** — chrono + étapes projetés à l'écran.
+
+🧭 [Ouvrir la boussole](boussole.html){target="_blank" preview-link="false"}
 
 📖 Consigne complète : [Page Exercice 2](index.qmd)
 
@@ -130,7 +132,7 @@ format: typst
 :::
 
 ::: notes
-12 min sur les 3 core + 3 min de bonus pour les rapides. Ouvrir la page boussole `2-projets/boussole.html` dans un onglet à projeter à côté (countdown autonome, démarre au chargement).
+12 min sur les 3 core + 3 min de bonus pour les rapides. Ouvrir la page boussole — [`2-projets/boussole.html`](boussole.html){target="_blank" preview-link="false"} — dans un onglet à projeter à côté (countdown autonome, démarre au chargement).
 
 Le starter `_brand-starter.yml` (+ `_logo-sw.svg` à la racine de l'exo) est important : ceux qui n'ont pas fini Bloc 1 peuvent les copier. Maëlle passe dans les rangs et repère ceux qui peinent à l'étape 1 — souvent un underscore manquant.
 
