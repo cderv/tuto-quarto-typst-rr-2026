@@ -5,6 +5,14 @@ institute: "Posit / rOpenSci"
 author: "Christophe Dervieux & Maëlle Salmon"
 date: "2026-06-16"
 format: clean-revealjs
+engine: markdown
+filters:
+  - typst-render
+typst-render:
+  # Packages Typst vendorisés (fletcher/cetz/oxifmt) → build offline et reproductible
+  package-path: /_typst-packages
+  # SVG dans un dossier publié (pas le cache .quarto/, sinon images cassées en ligne)
+  output-directory: typst-figures
 ---
 
 ## `_quarto.yml` — tout régler au même endroit
@@ -30,6 +38,8 @@ Transition naturelle : au Bloc 1 on a stylé un document unique. Maintenant on p
 
 ## `type: book` {.smaller}
 
+::::: columns
+:::: {.column width="44%"}
 ``` {.yaml filename="_quarto.yml" code-line-numbers="1-2|4-9|10-11|13"}
 project:
   type: book
@@ -47,17 +57,41 @@ book:
 
 format: typst
 ```
+::::
 
-:::: {.fragment .fade-in}
-Depuis Quarto 1.9, `format: typst` sur un book active automatiquement [**orange-book**](https://typst.app/universe/package/orange-book):
+:::: {.column width="56%"}
+::: {.fragment .fade-in}
+Depuis Quarto 1.9, `format: typst` sur un book active [**orange-book**](https://typst.app/universe/package/orange-book) :
+:::
 
-::: incremental
-- Page de couverture générée automatiquement
-- Numérotation par chapitre (Figure 2.1, Table 2.1...)
-- En-têtes et pieds de page stylisés
-- Intégration `_brand.yml` pour les couleurs et le logo
+::: {.fragment .fade-in}
+```{typst}
+//| alt: "Schéma de fusion : cinq fichiers .qmd (index, 01-anatomie, 02-origines, conclusion, annexe-donnees) reliés par des flèches portant la mention type: book vers un livre PDF unique « Anatomie d'une saga » offrant couverture, TOC, numérotation par chapitre et en-têtes & pieds."
+#import "@preview/fletcher:0.5.5" as fletcher: diagram, node, edge
+
+#let blue = rgb("#2568B0")
+#let gold = rgb("#c78d22")
+#let ink  = rgb("#1a1a1a")
+#let sans = ("Inter", "Helvetica Neue", "Arial", "Liberation Sans", "DejaVu Sans")
+#let mono = ("Inter Mono", "Liberation Mono", "DejaVu Sans Mono")
+#set text(font: sans, size: 13pt, fill: ink)
+
+#let files = ("index.qmd", "01-anatomie.qmd", "02-origines.qmd", "conclusion.qmd", "annexe-donnees.qmd")
+
+#diagram(
+  spacing: (32mm, 7mm),
+  ..files.enumerate().map(((i, f)) => node((0, i), text(font: mono, size: 11pt)[#f], stroke: 0.8pt + gray.darken(20%), fill: white, corner-radius: 3pt, inset: 7pt)),
+  ..files.enumerate().map(((i, f)) => edge((0, i), (1, 2), "->", stroke: 0.9pt + gold, label: if i == 0 { text(fill: blue, weight: "bold", size: 12pt)[`type: book`] } else { none }, label-pos: 0.5)),
+  node((1, 2), align(center)[
+    #text(fill: white, weight: "bold", size: 13pt)[Anatomie d'une saga]
+    #v(3pt)
+    #box(width: 42mm)[#align(center)[#text(fill: white.transparentize(8%), size: 9.5pt)[Couverture · TOC · numérotation par chapitre · en-têtes & pieds]]]
+  ], fill: blue, stroke: none, corner-radius: 5pt, inset: 12pt),
+)
+```
 :::
 ::::
+:::::
 
 ::: notes
 Le moment wow : zéro configuration supplémentaire. On montre le \_quarto.yml, on rend, et on obtient un livre pro. Orange-book est une extension bundlée dans Quarto 1.9.
