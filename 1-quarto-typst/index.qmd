@@ -25,7 +25,7 @@ Ce bloc suit le rythme **My turn → Our turn → Your turn**.
 
 - Produire un PDF pro avec `format: typst` — alternative à LaTeX sans installation, rapide, erreurs lisibles
 - Régler les options essentielles : `papersize`, `margin` (d'autres en démo)
-- Voir les coulisses du rendu (`.qmd` → `.typ` → `.pdf`) avec `keep-typ: true`
+- Voir ce qui se passe entre le `.qmd` et le `.pdf`, avec `keep-typ: true`
 - Personnaliser couleurs, polices et logo via un seul fichier `_brand.yml`
 - Mixer polices Google et polices locales (`source: file`) dans la même charte
 
