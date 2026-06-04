@@ -1,6 +1,6 @@
 # Lot 3 — accès aux corrections (après l'effort) et export de diagnostic.
 
-.url_repo <- "https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026"
+.url_repo <- "https://github.com/cderv/tuto-quarto-typst-rr-2026"
 
 #' Ouvrir la correction d'un exercice (en ligne)
 #'

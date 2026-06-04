@@ -4,7 +4,7 @@
 
 <!-- badges: start -->
 [![r-universe](https://cderv.r-universe.dev/badges/tutoquartotypst)](https://cderv.r-universe.dev/tutoquartotypst)
-[![pkg-check](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/actions/workflows/pkg-check.yml/badge.svg)](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/actions/workflows/pkg-check.yml)
+[![pkg-check](https://github.com/cderv/tuto-quarto-typst-rr-2026/actions/workflows/pkg-check.yml/badge.svg)](https://github.com/cderv/tuto-quarto-typst-rr-2026/actions/workflows/pkg-check.yml)
 <!-- badges: end -->
 
 Paquet compagnon du tutoriel **« PDF sans frictions : Typst dans vos projets

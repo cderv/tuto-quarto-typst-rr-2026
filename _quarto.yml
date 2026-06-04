@@ -16,7 +16,7 @@ website:
   twitter-card:
     creator: "@chrisderv"
 
-  repo-url: https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026
+  repo-url: https://github.com/cderv/tuto-quarto-typst-rr-2026
   repo-actions: [edit, issue]
 
   sidebar:
@@ -24,7 +24,7 @@ website:
     align: center
     tools:
       - icon: github
-        href: https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026
+        href: https://github.com/cderv/tuto-quarto-typst-rr-2026
         text: "Dépôt GitHub"
     style: docked
     search: true
