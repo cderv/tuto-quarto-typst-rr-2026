@@ -3,6 +3,8 @@
 **/*.quarto_ipynb
 **/*.rmarkdown
 **/mathjax-config.js
+# SVG générés par typst-render pour les slides (ignorés de git, publiés via disque après render)
+**/typst-figures/
 exercises/**/*.typ
 exercises/**/*.html
 exercises/**/*_files/
