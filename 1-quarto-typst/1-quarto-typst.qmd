@@ -256,13 +256,15 @@ color:
 
 📄 **Charte fournie** : `charte-starwars.pdf` dans le starter (palette + polices + logo + rôles).
 
-⏱ **12 minutes** — page boussole projetée à côté.
+⏱ **12 minutes** — chrono + étapes projetés à l'écran.
+
+🧭 [Ouvrir la boussole](boussole.html){target="_blank" preview-link="false"}
 
 📖 Consigne complète : [Page Exercice 1](index.qmd)
 :::
 
 ::: notes
-12 minutes. Ouvrir la page boussole `1-quarto-typst/boussole.html` dans un onglet à projeter à côté (countdown autonome). Maëlle passe dans les rangs pour aider les bloqué·e·s ; CD reste disponible au tableau pour rebondir sur les questions communes.
+12 minutes. Ouvrir la page boussole — [`1-quarto-typst/boussole.html`](boussole.html){target="_blank" preview-link="false"} — dans un onglet à projeter à côté (countdown autonome, démarre au chargement). Maëlle passe dans les rangs pour aider les bloqué·e·s ; CD reste disponible au tableau pour rebondir sur les questions communes.
 
 Les problèmes fréquents : oubli des guillemets sur les couleurs hex dans brand.yml, nom de police Google mal orthographié, indentation YAML, et **espacement parasite des chiffres dans le tableau gt** (bug `gt → Typst` côté Windows/macOS, workaround `gt::opt_table_font("Inter")` visible dans la correction).
 
