@@ -49,7 +49,7 @@ L'Exercice 2 est **indépendant de l'Exercice 1** : si vous n'avez pas terminé 
 
 🎯 **Objectif :** transformer 5 `.qmd` en un livre PDF Typst stylé via `_quarto.yml` + `_brand.yml`.
 
-Fichier : {{< fa download >}} [exercises/02-projet-book/starter/](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises/02-projet-book/starter)
+Fichier : {{< fa download >}} [exercises/02-projet-book/starter/](https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises/02-projet-book/starter)
 
 **3 étapes principales (12 min) — attendues de tous :**
 
@@ -58,7 +58,7 @@ Fichier : {{< fa download >}} [exercises/02-projet-book/starter/](https://github
 | 1 | Créer `_quarto.yml` à la racine du starter avec `project: { type: default }` et `format: typst`. | 5 PDF séparés (un par fichier). Une référence croisée non résolue (`?@sec-origines`) + un *warning* à la compilation : **normal** à ce stade, ça se résout en mode livre à l'étape 2a. |
 | 2a | Passer à `type: book` et ajouter `book: { title, chapters: [...] }`. Le `format: typst` reste — orange-book s'active automatiquement. | **PDF unique** + couverture orange-book + Figure 1.1 / Figure 2.1 / Table 1.1 / Table 2.1 + TOC. `annexe-donnees` apparaît comme dernier chapitre numéroté. |
 | 2b | Ajouter `appendices: [annexe-donnees.qmd]` au bloc `book:`. | `annexe-donnees` bascule en « Annexe A » à la fin du livre, hors numérotation des chapitres. |
-| 3 | Copier `_brand.yml` (+ `_logo-sw.svg` + `_fonts/`) à la racine. Si vous avez fini Bloc 1 → reprenez votre `_brand.yml`. Sinon → renommez [`_brand-starter.yml`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/_brand-starter.yml) en `_brand.yml`. (Le `charte-starwars.pdf` du starter reste votre référence visuelle.) | Couverture aux couleurs Star Wars (bande imperial-red + logo étoile jaune), titres Star Jedi, corps Inter. (Les tableaux `gt` restent bruts à ce stade — leur mise aux couleurs de la charte est l'objet du Bonus 4.) |
+| 3 | Copier `_brand.yml` (+ `_logo-sw.svg` + `_fonts/`) à la racine. Si vous avez fini Bloc 1 → reprenez votre `_brand.yml`. Sinon → renommez [`_brand-starter.yml`](https://github.com/cderv/tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/_brand-starter.yml) en `_brand.yml`. (Le `charte-starwars.pdf` du starter reste votre référence visuelle.) | Couverture aux couleurs Star Wars (bande imperial-red + logo étoile jaune), titres Star Jedi, corps Inter. (Les tableaux `gt` restent bruts à ce stade — leur mise aux couleurs de la charte est l'objet du Bonus 4.) |
 
 **+ 2 bonus (3 min, pour les rapides) :**
 
@@ -92,7 +92,7 @@ Fichier : {{< fa download >}} [exercises/02-projet-book/starter/](https://github
 
 1. Relisez l'objectif + le "Vous devriez voir" de l'étape.
 2. Ouvrez le collapse **💡 Indices doc** ci-dessus.
-3. Ouvrez [`exercises/02-projet-book/correction/`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises/02-projet-book/correction) (filet final).
+3. Ouvrez [`exercises/02-projet-book/correction/`](https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises/02-projet-book/correction) (filet final).
 :::
 
 ### Mémo rapide starter
@@ -167,7 +167,7 @@ Si vous voyez « 1 7 5 » au lieu de « 175 » dans les tableaux après avoir co
 :::
 
 ::: {.callout-warning appearance="minimal"}
-Pas de `_brand.yml` ? Copiez les fichiers fournis à la racine du dossier exo : [`exercises/02-projet-book/_brand-starter.yml`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/_brand-starter.yml) (à renommer en `_brand.yml`) et [`exercises/02-projet-book/_logo-sw.svg`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/_logo-sw.svg).
+Pas de `_brand.yml` ? Copiez les fichiers fournis à la racine du dossier exo : [`exercises/02-projet-book/_brand-starter.yml`](https://github.com/cderv/tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/_brand-starter.yml) (à renommer en `_brand.yml`) et [`exercises/02-projet-book/_logo-sw.svg`](https://github.com/cderv/tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/_logo-sw.svg).
 :::
 
 ::: callout-note
@@ -183,7 +183,7 @@ La correction propose 3 variantes de `_brand.yml` clés en main : Empire / Sith 
 brand: _brand-jedi.yml
 ```
 
-Détails et explication du choix de couleur (pourquoi pas le jaune SW iconique en `primary`) dans le [README de l'exercice](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/README.md#bonus-3--changer-de-palette-star-wars).
+Détails et explication du choix de couleur (pourquoi pas le jaune SW iconique en `primary`) dans le [README de l'exercice](https://github.com/cderv/tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/README.md#bonus-3--changer-de-palette-star-wars).
 :::
 
 ::: {.callout-tip collapse="true"}
@@ -281,5 +281,5 @@ Vous devriez voir : bandeau titre jaune SW + en-têtes noir/crème + **striping 
 ::: {.callout-warning collapse="true"}
 ## Correction
 
-{{< fa download >}} [Voir la correction](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises/02-projet-book/correction)
+{{< fa download >}} [Voir la correction](https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises/02-projet-book/correction)
 :::
