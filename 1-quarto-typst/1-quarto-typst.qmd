@@ -5,6 +5,14 @@ institute: "Posit / rOpenSci"
 author: "Christophe Dervieux & Maëlle Salmon"
 date: "2026-06-16"
 format: clean-revealjs
+engine: markdown
+filters:
+  - typst-render
+typst-render:
+  # Packages Typst vendorisés (fletcher/cetz/oxifmt) → build offline et reproductible
+  package-path: /_typst-packages
+  # SVG dans un dossier publié (pas le cache .quarto/, sinon images cassées en ligne)
+  output-directory: typst-figures
 ---
 
 ## Le rythme du tutoriel
@@ -119,7 +127,7 @@ Ne pas tout montrer ici. Juste papersize et margin pour que les gens voient la s
 
 ## `keep-typ: true` — comprendre les coulisses
 
-![](quarto_typst_pipeline.svg){width="100%"}
+![](quarto_typst_pipeline.svg){width="100%" fig-alt="Pipeline en trois étapes : rapport.qmd (source) → Pandoc → rapport.typ (intermédiaire, gardé grâce à keep-typ) → Typst → rapport.pdf (sortie)."}
 
 
 ## `keep-typ: true` — comprendre les coulisses
@@ -177,9 +185,36 @@ typography:
 ::::
 :::::::
 
-::: center
-![](brand-yml-tall-color.svg){width="20%"} <https://posit-dev.github.io/brand-yml/>
+:::: {.fragment .fade-in}
+::: {.center style="width:60%; margin:0 auto;"}
+```{typst}
+//| alt: "Schéma en étoile : au centre, le fichier _brand.yml ; des flèches partent vers cinq sorties qu'il stylise — PDF (Typst), Page web (HTML), Slides (RevealJS), Graphe ggplot2 et Tableau gt."
+#import "@preview/fletcher:0.5.5" as fletcher: diagram, node, edge
+
+#let blue = rgb("#2568B0")
+#let gold = rgb("#c78d22")
+#let ink  = rgb("#1a1a1a")
+#let sans = ("Inter", "Helvetica Neue", "Arial", "Liberation Sans", "DejaVu Sans")
+#let mono = ("Inter Mono", "Liberation Mono", "DejaVu Sans Mono")
+#set text(font: sans, size: 13pt, fill: ink)
+
+#let spokes = (
+  ((0, -1.25),  "PDF (Typst)"),
+  ((1.5, -0.4), "Page web (HTML)"),
+  ((0.95, 1.2), "Tableau gt"),
+  ((-0.95, 1.2),"Graphe ggplot2"),
+  ((-1.5, -0.4),"Slides (RevealJS)"),
+)
+
+#diagram(
+  spacing: (34mm, 22mm),
+  ..spokes.map(((pos, lbl)) => edge((0,0), pos, "->", stroke: 1pt + gold.darken(5%))),
+  ..spokes.map(((pos, lbl)) => node(pos, lbl, stroke: 0.8pt + blue, fill: blue.lighten(92%), corner-radius: 3pt, inset: 8pt)),
+  node((0,0), text(font: mono, size: 13pt, fill: white, weight: "bold")[\_brand.yml], fill: gold.darken(5%), stroke: none, corner-radius: 4pt, inset: 11pt),
+)
+```
 :::
+::::
 
 ::: notes
 C'est le deuxième moment fort : on passe d'un PDF basique à un PDF aux couleurs de son organisation. Rappeler que \_brand.yml a été présenté aux RR 2025 pour ceux qui l'ont vu.
