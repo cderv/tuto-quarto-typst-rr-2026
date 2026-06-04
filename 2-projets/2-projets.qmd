@@ -177,7 +177,7 @@ Les 5 bullets font écho aux 3 questions posées en intro (cf. `index.qmd:17-19`
 
 - **Cette semaine** — ouvrez un de vos `.qmd` existants, ajoutez `format: typst`, voyez ce que ça donne
 - **Pour creuser** — la page [Pour aller plus loin](../4-ressources.qmd) (partials, blocs raw Typst, accessibilité PDF/UA-1, helpers `brand.yml` côté R)
-- **Communauté** — [quarto-ext/typst-templates](https://github.com/quarto-ext/typst-templates), [forum Quarto](https://github.com/quarto-dev/quarto/discussions), [Awesome Quarto](https://github.com/mcanouil/awesome-quarto)
+- **Communauté** — [quarto-ext/typst-templates](https://github.com/quarto-ext/typst-templates), [forum Quarto](https://github.com/quarto-dev/quarto-cli/discussions), [Awesome Quarto](https://github.com/mcanouil/awesome-quarto)
 
 ## Merci ! Questions ? {.center}
 
