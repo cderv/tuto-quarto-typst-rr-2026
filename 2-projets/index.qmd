@@ -101,7 +101,7 @@ Fichier : {{< fa download >}} [exercises/02-projet-book/starter/](https://github
 
 ### Modèle `_quarto.yml` pour les étapes 2a + 2b
 
-Si vous bloquez sur la syntaxe, voici un patron complet à adapter. À l'**étape 2a**, `annexe-donnees.qmd` est le dernier item de `chapters:` (dernier chapitre numéroté). À l'**étape 2b**, déplacez-le sous `appendices:` (décommentez le bloc) — il bascule alors en « Annexe A » :
+Si vous bloquez sur la syntaxe, voici un exemple complet à adapter. À l'**étape 2a**, `annexe-donnees.qmd` est le dernier item de `chapters:` (dernier chapitre numéroté). À l'**étape 2b**, déplacez-le sous `appendices:` (décommentez le bloc) — il bascule alors en « Annexe A » :
 
 ``` {.yaml filename="_quarto.yml"}
 project:
