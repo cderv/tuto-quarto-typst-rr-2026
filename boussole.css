@@ -1,0 +1,129 @@
+/* ==========================================================================
+   Boussole projetée — panneau plein écran pour les Your turn
+   --------------------------------------------------------------------------
+   Référencé depuis 1-quarto-typst/boussole.qmd et 2-projets/boussole.qmd via
+   `css: /boussole.css`. Avec `page-layout: custom` + `sidebar: false`, la page
+   n'a ni sidebar ni grille de contenu : ce fichier la transforme en un panneau
+   edge-to-edge, tenant en un seul écran (cible projection ~16:9 / 1080p), sans
+   scroll. Objectif : surface de projection à côté des slides pendant les 12 min.
+   ========================================================================== */
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+/* On masque le bloc-titre Quarto par défaut : on rend notre propre header
+   compact dans le corps (cf. `.boussole-header`) pour garder le contrôle de la
+   hauteur. Le `title:` du YAML reste utile pour l'onglet du navigateur. */
+#title-block-header {
+  display: none;
+}
+
+/* Habillage de site superflu sur un panneau de projection : footer, actions
+   « Modifier cette page », formats alternatifs. On les masque pour une surface
+   nette et pour garantir que tout tient sans scroll. */
+.footer,
+footer.footer,
+.quarto-other-formats,
+.quarto-alternate-formats {
+  display: none !important;
+}
+
+/* Le panneau lui-même. Avec `page-layout: custom`, le contenu (header masqué +
+   nos divs) est directement dans `#quarto-content` : pas de `<main>`. On le
+   transforme en panneau pleine hauteur, edge-to-edge, en colonne, avec un
+   padding en unités viewport pour s'adapter à la résolution du projecteur. */
+#quarto-content.page-layout-custom {
+  box-sizing: border-box;
+  max-width: none !important;
+  width: 100%;
+  margin: 0 !important;
+  min-height: 100vh;
+  padding: 2.5vh 3.5vw;
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  font-size: clamp(1rem, 1.6vw, 1.6rem);
+  line-height: 1.35;
+}
+
+/* -------- Header : titre à gauche, chrono à droite, sur une seule ligne ----- */
+.boussole-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2vw;
+  flex-wrap: wrap;
+  border-bottom: 3px solid #FDC538;
+  padding-bottom: 1.5vh;
+}
+
+.boussole-header .boussole-title {
+  margin: 0;
+  font-size: clamp(1.4rem, 2.6vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.boussole-header .boussole-title .boussole-sub {
+  display: block;
+  font-size: 0.55em;
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+/* Le chrono inline (class="inline") : gros, sans marge parasite. */
+.boussole-header .countdown.inline {
+  margin: 0 !important;
+  flex: 0 0 auto;
+}
+
+/* -------- Corps : deux colonnes pour exploiter la largeur 16:9 ------------- */
+.boussole-grid {
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5vw 4vw;
+  align-content: start;
+}
+
+.boussole-grid h2 {
+  font-size: clamp(1.1rem, 1.7vw, 1.7rem);
+  margin: 0 0 0.4em;
+  border: none;
+  padding: 0;
+}
+
+.boussole-grid h2:not(:first-child) {
+  margin-top: 1.2vh;
+}
+
+.boussole-grid ol,
+.boussole-grid ul {
+  margin: 0;
+  padding-left: 1.4em;
+}
+
+.boussole-grid li {
+  margin-bottom: 0.35em;
+}
+
+.boussole-grid li::marker {
+  font-weight: 700;
+}
+
+.boussole-grid code {
+  font-size: 0.92em;
+}
+
+/* Sur écran étroit (aperçu local hors projection) : une seule colonne. */
+@media (max-width: 900px) {
+  .boussole-grid {
+    grid-template-columns: 1fr;
+  }
+  #quarto-content.page-layout-custom {
+    min-height: auto;
+  }
+}

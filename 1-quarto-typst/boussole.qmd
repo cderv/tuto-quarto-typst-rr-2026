@@ -1,17 +1,23 @@
 ---
 title: "🧭 Boussole — Exercice 1"
-subtitle: "PDF stylé avec Typst + _brand.yml"
 format: html
+page-layout: custom
+css: /boussole.css
 author: ""
 date: ""
 toc: false
 sidebar: false
 ---
 
-::: {.callout-warning appearance="simple"}
-⏱ {{< countdown 12:00 start_immediately=true >}}
+::: {.boussole-header}
+[🧭 Exercice 1 [PDF stylé avec Typst + _brand.yml]{.boussole-sub}]{.boussole-title}
+
+{{< countdown 12:00 id="timer-boussole-1" class="inline" font_size="3.4rem" start_immediately=true >}}
 :::
 
+::: {.boussole-grid}
+
+::: {.boussole-col}
 ## 🎯 Objectif
 
 Transformer un rapport `.qmd` HTML en PDF Typst stylé via `_brand.yml`.
@@ -28,13 +34,18 @@ Transformer un rapport `.qmd` HTML en PDF Typst stylé via `_brand.yml`.
 **Bonus** (pour les rapides) :
 
 - B1. Activer `keep-typ: true` et ouvrir le `.typ`
+:::
 
+::: {.boussole-col}
 ## 🆘 Si vous bloquez
 
-1. Relire l'objectif + le "Vous devriez voir" de l'étape
+1. Relire l'objectif + le « Vous devriez voir » de l'étape
 2. Sur la [page Exercice 1](index.qmd), ouvrir le collapse **💡 Indices doc** sous le tableau
 3. Ouvrir [`exercises/01-document-typst/correction/`](https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/correction)
 
 ## 📖 Consigne complète
 
 [Page Exercice 1](index.qmd) — tableau, indices doc, correction.
+:::
+
+:::
