@@ -1,171 +1,72 @@
 # PDF sans frictions : Typst dans vos projets Quarto
 
-> Tutoriel 2 — [Rencontres R 2026](https://rr2026.sciencesconf.org/), 16 juin 2026, Nantes Université
+> Tutoriel aux [Rencontres R 2026](https://rr2026.sciencesconf.org/) — mardi 16 juin 2026, Nantes Université (10h–12h).
 
-**Instructeurs :** Christophe Dervieux (Posit) & Maëlle Salmon (rOpenSci, cynkra)
-
-**Durée :** 2h (1h30 de contenu effectif + Q&A)
-
-**Prérequis :** Quarto 1.9+, R 4.2+, RStudio / VS Code / Positron
+Produire des **documents PDF professionnels** avec Quarto en utilisant **Typst** (à la place de LaTeX) pour fabriquer le PDF, sans rien installer. Personnalisation avec `_brand.yml` et templates Typst, puis passage du document isolé au **livre** multi-chapitres.
 
 **Arc narratif :** `.qmd` → PDF professionnel → livre → personnalisé / pérennisé
 
+- **Instructeurs :** Christophe Dervieux ([Posit](https://posit.co/)) & Maëlle Salmon ([rOpenSci](https://ropensci.org/) / [cynkra](https://cynkra.com/))
+- **Durée :** 2h (~1h30 de contenu + pause + Q&A au fil)
+- **Prérequis :** Quarto 1.9+, R 4.2+, RStudio / VS Code / Positron — voir [`preparatifs.qmd`](preparatifs.qmd)
+
+🔗 **Site du tutoriel :** <https://connect.posit.cloud/cderv/content/019df82c-7202-2165-28ea-7f9ca734ad26>
+
 ## Programme
 
-Créneau **10h–12h** (pause et Q&A inclus). Le Q&A se fait **au fil de la séance** (questions individuelles → Maëlle en 1:1 ; questions collectives → aux débriefs), pas en bloc final. Déroulé détaillé de pilotage dans [`_speaker/pilotage.qmd`](_speaker/pilotage.qmd).
+| | Bloc | Durée |
+|---|------|:-----:|
+| 1 | [**Un PDF pro en quelques minutes**](1-quarto-typst/index.qmd) — `format: typst`, options, `keep-typ`, `_brand.yml` | ~40 min |
+| | _☕ Pause_ | 10 min |
+| 2 | [**Passer du document au livre**](2-projets/index.qmd) — projet Quarto, `type: book`, brand au niveau projet | ~40 min |
 
-| Horaire | Segment | Qui | Durée |
-|---------|---------|:---:|:-----:|
-| 10h00 | Accueil + cadrage + vérif install | CD | 11 min |
-| 10h11 | **Bloc 1 — Quarto & PDF avec Typst** | | ~39 min |
-| | My turn — `format: typst`, options, `keep-typ`, `_brand.yml` | CD | 13 min |
-| | Our turn — démo `_brand.yml` (1 couleur) | CD | 7 min |
-| | Your turn — Exercice 1 (countdown 12:00) | CD tableau / Maëlle salle | 12 min |
-| | Débrief + pépite | CD | 7 min |
-| 10h50 | _Pause_ | | 10 min |
-| 11h00 | **Bloc 2 — Projets & Typst book** | | ~36 min |
-| | My turn — `_quarto.yml`, `type: book` | CD | 10 min |
-| | Our turn — démo book | CD | 7 min |
-| | Your turn — Exercice 2 (countdown 12:00) | CD tableau / Maëlle salle | 12 min |
-| | Débrief + pépite | CD | 7 min |
-| 11h36 | Wrap-up + ressources + Q&A final | CD | 12 min |
-| 11h48 | _Buffer / dépannage 1:1 / fin anticipée_ | | 12 min |
+Chaque bloc suit le rythme **My turn → Our turn → Your turn**. Une [boussole](1-quarto-typst/boussole.qmd) (objectif + étapes + countdown) accompagne chaque exercice. Le bloc 2 est **autonome** : on peut le suivre sans avoir fait le bloc 1.
 
-> Le contenu « Aller plus loin » (raw Typst, template partials, extensions) est conservé comme topic store dans [`3-aller-plus-loin/index.qmd`](3-aller-plus-loin/index.qmd) — référencé sans slot dédié dans le programme.
-
-## Détail des contenus
-
-### Bloc 1 — Quarto & PDF avec Typst (40 min)
-
-**Partie A — De LaTeX à Typst (15 min)**
-
-Le problème avec `format: pdf` (LaTeX) et pourquoi `format: typst` est une alternative sans frictions :
-
-- Comparaison PDF/LaTeX vs PDF/Typst : installation, vitesse, lisibilité des erreurs
-- Options de base : `papersize`, `margin`, `mainfont`, `toc`, `number-sections`
-- Nouvelles options Quarto 1.9 : `linkcolor`, `codefont`, `mathfont`, `linestretch`, `font-paths`
-- `keep-typ: true` pour inspecter le fichier `.typ` intermédiaire
-- _Demo live :_ pipeline `.qmd` → `.typ` → `.pdf`
-
-> **Question pour Maëlle :** on fait la démo côte à côte (`.qmd` vs `.typ` généré) ou on montre d'abord le résultat PDF puis on remonte au source ?
-
-**Partie B — Personnaliser avec `_brand.yml` (20 min)**
-
-Rappel [RR 2025](https://cderv.github.io/rr2025-quarto-brand-yml/), approfondi pour Typst :
-
-- Structure `_brand.yml` : `meta` / `color` / `typography` / `logo`
-- Application automatique sur `format: typst`
-- Palette de couleurs nommées, polices Google
-- Logo : positionnement (`width`, `location`, `padding`, `alt`)
-- `theorem-appearance` : 4 styles (`simple`, `fancy`, `clouds`, `rainbow`)
-- Dictionnaires brand dans Typst : `brand-color`, `brand-logo`, `brand-logo-images`
-- `brand-mode: dark`
-- `quarto use brand user/repo` (Quarto 1.9)
-
-> **Question :** est-ce qu'on montre les 4 `theorem-appearance` en screenshot ou en live ? Les screenshots sont plus fiables en temps limité.
-
-**Exercice 1 (~12 min)**
-
-1. Convertir `rapport-starwars.qmd` de `format: pdf` vers `format: typst`
-2. Créer un `_brand.yml` minimal (2-3 couleurs + police Google)
-3. `keep-typ: true` et explorer le `.typ` généré
-
-### Bloc 2 — Projets & Typst book (40 min)
-
-**Partie A — Travailler en projet (10 min)**
-
-- `_quarto.yml` comme config centralisée : `format: typst` au niveau projet
-- `_brand.yml` au niveau projet → cohérence automatique
-- Contenu conditionnel : `.content-visible when-format="typst"` / `.content-hidden when-format="html"`
-
-> **Question :** ajouter un exemple concret de contenu conditionnel ? Par ex. un saut de page en PDF mais pas en HTML ?
-
-**Partie B — Le Typst book (15 min)**
-
-- `type: book` : chapitres, TOC globale, références croisées, numérotation par chapitre
-- Quarto 1.9 : orange-book activé automatiquement pour `format: typst` sur un book
-- `_brand.yml` + book = livre aux couleurs de l'organisation
-- Marginalia : `.column-margin`, `cap-location: margin`, `.aside`
-- `typst-gather` pour embarquer les packages Typst et rendre hors-ligne
-
-> **Question :** on montre Marginalia comme format article séparé ou comme fonctionnalité du book ? Ce sont deux choses différentes, il faut être clair.
-
-**Exercice 2 (~12 min)**
-
-1. Créer `_quarto.yml` avec `project: {type: book}` et `format: typst`
-2. Organiser en 2-3 chapitres
-3. Observer l'effet orange-book
-4. (Bonus) Appliquer le `_brand.yml` de l'exercice 1
-
-### Aller plus loin (topic store, hors programme)
-
-Le contenu suivant est documenté dans [`3-aller-plus-loin/index.qmd`](3-aller-plus-loin/index.qmd) comme référence pour les participants curieux — il n'a pas de slot dédié dans le programme.
-
-- **Blocs raw Typst** : `` ```{=typst} `` pour injecter du Typst natif, accès aux variables brand, traduction CSS → Typst
-- **Template partials** : `typst-show.typ` (pont Quarto → Typst), `typst-template.typ` (layout), syntaxe Pandoc, variables Quarto 1.9
-- **Extensions & partage** : `quarto create extension format:typst`, `quarto add user/repo`, `quarto use brand user/repo`, accessibilité `pdf-standard: ua-1`
+Le contenu « [Aller plus loin](3-aller-plus-loin/index.qmd) » (raw Typst, template partials, extensions) est une référence pour les curieux, sans créneau dédié.
 
 ## Exercices
 
-Tous les exercices utilisent le jeu de données **Star Wars** (`dplyr::starwars`, 87 personnages × 14 variables). Complexité progressive :
+Tous les exercices utilisent le jeu de données **Star Wars** (`dplyr::starwars`, 87 personnages × 14 variables), en complexité progressive :
 
-| Exercice | Fichier | Objectif | Difficulté |
-|----------|---------|----------|:----------:|
-| 1 | `rapport-starwars.qmd` | PDF/Typst + brand.yml + keep-typ | ★ |
-| 2 | Projet book Star Wars | `_quarto.yml`, `type: book`, brand promu, cross-refs, contenu conditionnel | ★★ |
+| Exercice | Objectif | Difficulté |
+|----------|----------|:----------:|
+| 1 — [`01-document-typst/`](exercises/01-document-typst/) | `format: typst` + `_brand.yml` + `keep-typ` | ★ |
+| 2 — [`02-projet-book/`](exercises/02-projet-book/) | projet `type: book`, brand promu au projet, cross-refs | ★★ |
 
-Les exercices (starter et correction) sont sous `exercises/01-document-typst/` et `exercises/02-projet-book/`.
+Chaque exercice fournit un `starter/` (état de départ) et une `correction/`.
 
-## Points à discuter
+## Construire le site
 
-- [ ] **Répartition des sections** — qui présente quoi ? Alternance ou blocs complets ?
-- [ ] **Démos live vs screenshots** — pour `theorem-appearance`, orange-book ?
-- [ ] **Timing** — créneau 10h–12h : ~87 min animé + 10 min pause + 12 min buffer, Q&A au fil. Réaliste ? (dry-run chronométré recommandé)
-- [ ] **Contenu Quarto 1.9** — vérifier que toutes les features citées sont bien stables dans la release finale
-- [ ] **Transition RR 2025 → RR 2026** — combien de rappels sur `_brand.yml` ? Les participants ne l'ont pas forcément vu en 2025
+Le build complet est orchestré par [`just`](https://github.com/casey/just) — `quarto render` seul ne suffit pas (il ne rend ni la charte ni les corrections d'exercices) :
+
+```bash
+just all        # charte + exercices + paquet R + site (build de référence)
+just preview    # ou : quarto preview
+```
+
+Nécessite Quarto 1.9+ (pré-release `v1.10.4+` recommandée). Voir les recettes dans le `justfile`.
 
 ## Structure du dépôt
 
 ```
-_quarto.yml                    # Config projet (website + clean-revealjs)
-reveal-style.scss              # Thème slides (Atkinson Hyperlegible, couleurs)
-index.qmd                      # Page d'accueil (programme, bios)
-preparatifs.qmd                # Instructions d'installation
-1-quarto-typst/
-  index.qmd                    # Page Bloc 1 (iframe slides + exercices)
-  1-quarto-typst.qmd           # Slides Bloc 1 (RevealJS)
-2-projets/
-  index.qmd                    # Page Bloc 2
-  2-projets.qmd                # Slides Bloc 2
-3-aller-plus-loin/
-  index.qmd                    # Topic store complémentaire (pas dans la navbar)
-4-ressources.qmd               # Liens et ressources externes
-_extensions/                   # Extensions Quarto installées
-  gadenbuie/countdown/         #   Timer pour exercices
-  grantmcdermott/clean/        #   clean-revealjs format
-  quarto-ext/fontawesome/      #   Icônes Font Awesome
+index.qmd               # Page d'accueil (programme, bios)
+preparatifs.qmd         # Instructions d'installation (participants)
+1-quarto-typst/         # Bloc 1 — page + slides + boussole
+2-projets/              # Bloc 2 — page + slides + boussole
+3-aller-plus-loin/      # Topic store complémentaire
+4-ressources.qmd        # Liens et ressources externes
+exercises/              # Starters + corrections des exercices
+pkg/                    # Paquet R compagnon tutoquartotypst
+_charte/                # Charte Star Wars (référence palette/typo)
+_speaker/               # Docs d'animation (pilotage, démos, notes) — interne
 ```
-
-## Développement
-
-```bash
-# Prévisualiser le site
-quarto preview
-
-# Rendre le site complet
-quarto render
-
-# Sortie dans _site/
-```
-
-Nécessite Quarto 1.9+.
 
 ## Contexte
 
-- **Antécédent :** suit la structure du [tutoriel RR 2023](https://github.com/cderv/tuto-quarto-rr-2023) (même format website + slides embarquées)
-- **Lien :** prolonge la [présentation `_brand.yml` RR 2025](https://cderv.github.io/rr2025-quarto-brand-yml/)
-- **Focus :** angle Quarto+Typst (pas Typst standalone)
+- Suit la structure du [tutoriel RR 2023](https://github.com/cderv/tuto-quarto-rr-2023) (website + slides embarquées).
+- Prolonge la [présentation `_brand.yml` RR 2025](https://cderv.github.io/rr2025-quarto-brand-yml/).
+- Focus **Quarto + Typst** (pas Typst standalone).
 
 ## Licence
 
-CC BY 4.0 — Christophe Dervieux & Maëlle Salmon
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — Christophe Dervieux & Maëlle Salmon.
