@@ -13,6 +13,7 @@
 | `conclusion.qmd` | Conclusion (à garder) |
 | `annexe-donnees.qmd` | Sera basculé en annexe à l'étape 2b |
 | `charte-starwars.pdf` | **Charte graphique** Star Wars (référence visuelle pour l'étape 3) |
+| `exercice-02.Rproj` | Projet RStudio — **double-cliquez-le** pour ouvrir l'exercice (répertoire de travail correct) |
 | _(pas de `_quarto.yml`)_ | **À créer à l'étape 1** |
 | _(pas de `_brand.yml`)_ | **À copier à l'étape 3** (ou traduire d'après la charte) |
 

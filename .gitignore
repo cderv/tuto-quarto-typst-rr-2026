@@ -24,3 +24,6 @@ pkg/docs/
 /.quarto/
 
 /.luarc.json
+
+# État runtime par-utilisateur de RStudio (les .Rproj eux-mêmes sont versionnés)
+**/.Rproj.user/
