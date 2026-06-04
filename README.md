@@ -12,18 +12,24 @@
 
 ## Programme
 
-| Horaire | Bloc | Qui présente ? | Durée |
-|---------|------|:--------------:|:-----:|
-| 9h00 | **Bloc 1 — Quarto & PDF avec Typst** | | 40 min |
-| | Partie A — `format: typst` vs `format: pdf` | _à décider_ | 10 min |
-| | Partie B — Personnaliser avec `_brand.yml` | _à décider_ | 15 min |
-| | Exercice 1 | ensemble | 15 min |
-| 9h40 | _Pause_ | | 10 min |
-| 9h50 | **Bloc 2 — Projets & Typst book** | | 40 min |
-| | Partie A — `_quarto.yml` et `type: book` | _à décider_ | 10 min |
-| | Partie B — Brand promu, cross-refs, contenu conditionnel | _à décider_ | 15 min |
-| | Exercice 2 | ensemble | 15 min |
-| 10h30 | _Fin / Questions_ | | |
+Créneau **10h–12h** (pause et Q&A inclus). Le Q&A se fait **au fil de la séance** (questions individuelles → Maëlle en 1:1 ; questions collectives → aux débriefs), pas en bloc final. Déroulé détaillé de pilotage dans [`_speaker/pilotage.qmd`](_speaker/pilotage.qmd).
+
+| Horaire | Segment | Qui | Durée |
+|---------|---------|:---:|:-----:|
+| 10h00 | Accueil + cadrage + vérif install | CD | 11 min |
+| 10h11 | **Bloc 1 — Quarto & PDF avec Typst** | | ~39 min |
+| | My turn — `format: typst`, options, `keep-typ`, `_brand.yml` | CD | 13 min |
+| | Our turn — démo `_brand.yml` (1 couleur) | CD | 7 min |
+| | Your turn — Exercice 1 (countdown 12:00) | CD tableau / Maëlle salle | 12 min |
+| | Débrief + pépite | CD | 7 min |
+| 10h50 | _Pause_ | | 10 min |
+| 11h00 | **Bloc 2 — Projets & Typst book** | | ~36 min |
+| | My turn — `_quarto.yml`, `type: book` | CD | 10 min |
+| | Our turn — démo book | CD | 7 min |
+| | Your turn — Exercice 2 (countdown 12:00) | CD tableau / Maëlle salle | 12 min |
+| | Débrief + pépite | CD | 7 min |
+| 11h36 | Wrap-up + ressources + Q&A final | CD | 12 min |
+| 11h48 | _Buffer / dépannage 1:1 / fin anticipée_ | | 12 min |
 
 > Le contenu « Aller plus loin » (raw Typst, template partials, extensions) est conservé comme topic store dans [`3-aller-plus-loin/index.qmd`](3-aller-plus-loin/index.qmd) — référencé sans slot dédié dans le programme.
 
@@ -58,7 +64,7 @@ Rappel [RR 2025](https://cderv.github.io/rr2025-quarto-brand-yml/), approfondi p
 
 > **Question :** est-ce qu'on montre les 4 `theorem-appearance` en screenshot ou en live ? Les screenshots sont plus fiables en temps limité.
 
-**Exercice 1 (~15 min)**
+**Exercice 1 (~12 min)**
 
 1. Convertir `rapport-starwars.qmd` de `format: pdf` vers `format: typst`
 2. Créer un `_brand.yml` minimal (2-3 couleurs + police Google)
@@ -84,7 +90,7 @@ Rappel [RR 2025](https://cderv.github.io/rr2025-quarto-brand-yml/), approfondi p
 
 > **Question :** on montre Marginalia comme format article séparé ou comme fonctionnalité du book ? Ce sont deux choses différentes, il faut être clair.
 
-**Exercice 2 (~15 min)**
+**Exercice 2 (~12 min)**
 
 1. Créer `_quarto.yml` avec `project: {type: book}` et `format: typst`
 2. Organiser en 2-3 chapitres
@@ -114,7 +120,7 @@ Les exercices (starter et correction) sont sous `exercises/01-document-typst/` e
 
 - [ ] **Répartition des sections** — qui présente quoi ? Alternance ou blocs complets ?
 - [ ] **Démos live vs screenshots** — pour `theorem-appearance`, orange-book ?
-- [ ] **Timing** — 40+10+40 = 90 min de contenu, fin à 10h30, marge de 30 min pour Q&A ou débordement. Réaliste ?
+- [ ] **Timing** — créneau 10h–12h : ~87 min animé + 10 min pause + 12 min buffer, Q&A au fil. Réaliste ? (dry-run chronométré recommandé)
 - [ ] **Contenu Quarto 1.9** — vérifier que toutes les features citées sont bien stables dans la release finale
 - [ ] **Transition RR 2025 → RR 2026** — combien de rappels sur `_brand.yml` ? Les participants ne l'ont pas forcément vu en 2025
 
