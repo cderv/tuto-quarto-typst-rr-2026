@@ -8,7 +8,7 @@ Partez de [`starter/`](starter/) — voir le [README starter](starter/README.md)
 
 ## Consigne complète
 
-Sur le site : [Bloc 1 — PDF avec Typst](https://cderv.github.io/cderv-tuto-quarto-typst-rr-2026/1-quarto-typst/) — étapes, indices doc, escalier d'autonomie, correction.
+Sur le site : [Bloc 1 — PDF avec Typst](https://cderv.github.io/cderv-tuto-quarto-typst-rr-2026/1-quarto-typst/) — étapes, indices doc, bloc « Si vous bloquez », correction.
 
 ## Et après ?
 

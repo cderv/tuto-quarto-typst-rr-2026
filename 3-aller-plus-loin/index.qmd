@@ -5,7 +5,7 @@ author: ""
 date: ""
 ---
 
-Pour aller au-delà des options YAML, Typst offre une personnalisation fine via des templates et des extensions partageables.
+Pour aller au-delà des options YAML, Typst vous laisse personnaliser en détail, avec des templates et des extensions à partager.
 
 ## Points couverts
 

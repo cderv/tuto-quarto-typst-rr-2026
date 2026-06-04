@@ -200,8 +200,8 @@ Parler des helpers R `theme_brand_*()`.
 
 ::: {.column width="45%"}
 ::: incremental
-- Une **vraie charte** à transcrire
-- Palette nommée + affectations (`primary`, `foreground`, `background`)
+- Une **vraie charte** à traduire
+- Palette nommée + rôles (`primary`, `foreground`, `background`)
 - Polices: Inter (Google) + Star Jedi (locale)
 - Ce PDF est lui-même rendu par Quarto + Typst + `_brand.yml` — vous allez faire pareil
 :::
@@ -213,7 +213,7 @@ Slide-pont entre le concept générique (`_brand.yml`) et la démo concrète. Le
 
 Méta-cohérence pédagogique à expliciter à l'oral : « ce PDF que vous tenez n'est pas qu'une spec, c'est un exemple rendu — son logo, ses titres en Star Jedi, sa palette viennent d'un `_brand.yml` identique à celui que vous allez écrire ».
 
-Le terme « affectations » dans nos supports correspond aux « assignments » de la charte (terme anglais conservé dans la spec `_brand.yml`) = mapping `primary` / `foreground` / `background` → noms de palette. Le préciser oralement (la charte n'a pas la place de l'expliquer).
+Le terme « rôles » dans nos supports correspond aux « assignments » de la charte (terme anglais conservé dans la spec `_brand.yml`) = mapping `primary` / `foreground` / `background` → noms de palette. Le préciser oralement (la charte n'a pas la place de l'expliquer).
 :::
 
 ## Faisons ensemble !
@@ -224,15 +224,15 @@ Le terme « affectations » dans nos supports correspond aux « assignments » d
 On passe le doc en PDF Typst, puis on lui applique une couleur via `_brand.yml`.
 
 1.  Ouvrez `rapport-starwars.qmd`, passez `format: html` → `format: typst`, rendez → PDF brut
-2.  Créez `_brand.yml` avec **une seule couleur** + assignation `primary`, re-rendez → titres et liens colorés
+2.  Créez `_brand.yml` avec **une seule couleur** + rôle `primary`, re-rendez → titres et liens colorés
 
-→ À vous ensuite pour la charte complète (palette + affectations + polices).
+→ À vous ensuite pour la charte complète (palette + rôles + polices).
 :::
 
 ::: notes
 C'est la démo live, **format ultra-court** : 5-6 minutes max. Pas-à-pas détaillé (snippets prêts à copier, ressources à ouvrir, pièges anticipés) dans `_speaker/demo-bloc1-our-turn.qmd`.
 
-**Pourquoi minimal** : Our turn montre l'effet d'une édition YAML sur le PDF rendu (une couleur suffit), Your turn transcrit la charte SW complète. Si Our turn fait tout, Your turn = répétition.
+**Pourquoi minimal** : Our turn montre l'effet d'une édition YAML sur le PDF rendu (une couleur suffit), Your turn traduit la charte SW complète. Si Our turn fait tout, Your turn = répétition.
 
 **Avant la démo** : projeter `_charte/charte-starwars.pdf` à côté de l'éditeur — apprenant·e voit cible (charte) pendant qu'on prend une seule couleur en exemple.
 
@@ -244,7 +244,7 @@ color:
   primary: imperial-red
 ```
 
-**Transition vers Your turn** : « vous avez vu la boucle, à vous avec la charte complète — 4 couleurs au lieu d'1, affectations `foreground` + `background`, Google sur le corps, Star Jedi sur les titres. 12 min. »
+**Transition vers Your turn** : « vous avez vu la boucle, à vous avec la charte complète — 4 couleurs au lieu d'1, rôles `foreground` + `background`, Google sur le corps, Star Jedi sur les titres. 12 min. »
 :::
 
 ## Exercice 1 {.wide-list}
@@ -254,7 +254,7 @@ color:
 
 🎯 Transformer un `.qmd` HTML en PDF Typst stylé via `_brand.yml`.
 
-📄 **Charte fournie** : `charte-starwars.pdf` dans le starter (palette + polices + logo + affectations).
+📄 **Charte fournie** : `charte-starwars.pdf` dans le starter (palette + polices + logo + rôles).
 
 ⏱ **12 minutes** — page boussole projetée à côté.
 

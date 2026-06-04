@@ -90,7 +90,7 @@ quarto render exercises/00-test-install/test-install.qmd
 **Si ça échoue** :
 
 - `Typst executable not found` → Quarto \< 1.9, mettez à jour.
-- `unknown font family` (souvent **plusieurs** : `sans-serif`, `segoe ui`, `roboto`…) → ignorez-les, le PDF se génère quand même avec une police de repli (ce test n'utilise pas `_brand.yml`). Ces avertissements sont **cosmétiques** : Typst signale chaque police absente d'un stack CSS, là où le navigateur les ignore en silence — pas de moyen de les masquer pour l'instant. Suivi sur [quarto-cli#12556](https://github.com/quarto-dev/quarto-cli/issues/12556). *(À ne pas confondre avec le bug d'affichage « 1 7 5 » dans les tableaux, [quarto-cli#11683](https://github.com/quarto-dev/quarto-cli/issues/11683), corrigé par `gt::opt_table_font()`.)*
+- `unknown font family` (souvent **plusieurs** : `sans-serif`, `segoe ui`, `roboto`…) → ignorez-les, le PDF se génère quand même avec une police de repli (ce test n'utilise pas `_brand.yml`). Ces avertissements sont **purement visuels** (sans conséquence) : Typst signale chaque police absente de la liste de polices, là où le navigateur les ignore en silence — pas de moyen de les masquer pour l'instant. Suivi sur [quarto-cli#12556](https://github.com/quarto-dev/quarto-cli/issues/12556). *(À ne pas confondre avec le bug d'affichage « 1 7 5 » dans les tableaux, [quarto-cli#11683](https://github.com/quarto-dev/quarto-cli/issues/11683), corrigé par `gt::opt_table_font()`.)*
 
 ## Plan B — polices sans réseau le jour J
 

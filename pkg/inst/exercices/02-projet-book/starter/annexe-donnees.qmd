@@ -6,7 +6,7 @@ livré avec le package R [`{dplyr}`](https://dplyr.tidyverse.org/). Il recense
 proviennent à l'origine de [SWAPI — Star Wars API](https://swapi.dev/),
 intégrées et nettoyées par l'équipe `{dplyr}`.
 
-Les colonnes mobilisées dans ce livre sont :
+Les colonnes utilisées dans ce livre sont :
 
 - `name` — nom du personnage
 - `height` — taille en centimètres (6 valeurs manquantes)
@@ -15,6 +15,6 @@ Les colonnes mobilisées dans ce livre sont :
 - `homeworld` — planète d'origine (10 valeurs manquantes, 48 planètes
   distinctes)
 
-Les valeurs manquantes (`NA`) sont systématiquement filtrées au cas par cas
-dans les blocs de code R — chaque tableau et chaque figure indique le sous-
-ensemble effectivement utilisé.
+Les valeurs manquantes (`NA`) sont retirées au coup par coup
+dans chaque bloc de code R — chaque tableau et chaque figure indique le sous-
+ensemble réellement utilisé.
