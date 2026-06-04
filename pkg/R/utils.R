@@ -66,24 +66,24 @@
   chemin
 }
 
-# Contenu d'un fichier .Rproj minimal (mêmes options que usethis::use_rstudio()).
-# Permet le double-clic -> RStudio ouvre le dossier comme projet (wd correct,
-# session isolée). Inerte pour VS Code.
+# Contenu d'un fichier .Rproj (sortie exacte de usethis::use_rstudio() avec ses
+# défauts : reformat = TRUE, line_ending = "posix", projet non-paquet). Permet le
+# double-clic -> RStudio ouvre le dossier comme projet (wd correct, session
+# propre). Inerte pour VS Code.
 .contenu_rproj <- function() {
   c(
     "Version: 1.0",
     "",
-    "RestoreWorkspace: Default",
-    "SaveWorkspace: Default",
+    "RestoreWorkspace: No",
+    "SaveWorkspace: No",
     "AlwaysSaveHistory: Default",
     "",
     "EnableCodeIndexing: Yes",
-    "UseSpacesForTab: Yes",
-    "NumSpacesForTab: 2",
     "Encoding: UTF-8",
     "",
-    "RnwWeave: Sweave",
-    "LaTeX: pdfLaTeX"
+    "AutoAppendNewline: Yes",
+    "StripTrailingWhitespace: Yes",
+    "LineEndingConversion: Posix"
   )
 }
 
