@@ -66,6 +66,27 @@
   chemin
 }
 
+# Contenu d'un fichier .Rproj minimal (mêmes options que usethis::use_rstudio()).
+# Permet le double-clic -> RStudio ouvre le dossier comme projet (wd correct,
+# session isolée). Inerte pour VS Code.
+.contenu_rproj <- function() {
+  c(
+    "Version: 1.0",
+    "",
+    "RestoreWorkspace: Default",
+    "SaveWorkspace: Default",
+    "AlwaysSaveHistory: Default",
+    "",
+    "EnableCodeIndexing: Yes",
+    "UseSpacesForTab: Yes",
+    "NumSpacesForTab: 2",
+    "Encoding: UTF-8",
+    "",
+    "RnwWeave: Sweave",
+    "LaTeX: pdfLaTeX"
+  )
+}
+
 # Dossier des polices hors-ligne embarquées (inst/offline/_fonts)
 .dossier_offline_paquet <- function() {
   system.file("offline", "_fonts", package = "tutoquartotypst")

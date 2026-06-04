@@ -57,6 +57,9 @@ installer_exercices <- function(dest = "exercices-typst",
     depart <- file.path(dest_abs, "01-document-typst", "starter", "rapport-starwars.qmd")
     cli::cli_alert_info("Pour démarrer, ouvrez {.path {depart}}.")
   }
+  cli::cli_alert_info(
+    "Astuce RStudio : double-cliquez le fichier {.path .Rproj} d'un dossier {.path starter/} pour ouvrir l'exercice comme projet (répertoire de travail correct)."
+  )
   cli::cli_alert_warning(
     "N'ouvrez pas les dossiers {.path correction/} (en ligne) avant le tutoriel."
   )
