@@ -1,6 +1,6 @@
 ## Exercice 2 — Starter
 
-> Quick-ref opérationnel. La consigne complète est sur le site :
+> Mémo rapide. La consigne complète est sur le site :
 > [Bloc 2 — Projets & book](https://cderv.github.io/cderv-tuto-quarto-typst-rr-2026/2-projets/).
 
 ### Contenu du dossier
@@ -14,7 +14,7 @@
 | `annexe-donnees.qmd` | Sera basculé en annexe à l'étape 2b |
 | `charte-starwars.pdf` | **Charte graphique** Star Wars (référence visuelle pour l'étape 3) |
 | _(pas de `_quarto.yml`)_ | **À créer à l'étape 1** |
-| _(pas de `_brand.yml`)_ | **À copier à l'étape 3** (ou transcrire d'après la charte) |
+| _(pas de `_brand.yml`)_ | **À copier à l'étape 3** (ou traduire d'après la charte) |
 
 ### Rendu
 
@@ -36,5 +36,5 @@ Copiez à la racine du projet :
 
 ### Bloqué ?
 
-Cf. l'escalier d'autonomie sur le site (page exo) ou la
+Cf. le bloc « Si vous bloquez » sur le site (page exo) ou la
 [`correction/`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises/02-projet-book/correction) en dernier recours.

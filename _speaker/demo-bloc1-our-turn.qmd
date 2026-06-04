@@ -15,7 +15,7 @@ date: ""
 ## Objectif de la démo
 
 Faire voir l'effet `_brand.yml` sur le PDF en 5-6 min : on passe le doc en `format: typst`, puis on lui ajoute une couleur via `_brand.yml`.
-**On n'applique qu'UNE couleur** : le reste (palette complète, affectations, police Google, Star Jedi, logo) = Your turn.
+**On n'applique qu'UNE couleur** : le reste (palette complète, rôles, police Google, Star Jedi, logo) = Your turn.
 :::
 
 ## Avant de commencer (setup)
@@ -109,7 +109,7 @@ quarto render rapport-starwars.qmd
 
 **À dire** :
 
-> "Vous avez vu la boucle : `format: typst` → render, puis `_brand.yml` → render. À vous maintenant, avec la charte Star Wars complète : 4 couleurs au lieu d'1, affectations `foreground` + `background`, police Google sur le corps, et police locale Star Jedi sur les titres. 12 minutes, page boussole projetée."
+> "Vous avez vu la boucle : `format: typst` → render, puis `_brand.yml` → render. À vous maintenant, avec la charte Star Wars complète : 4 couleurs au lieu d'1, rôles `foreground` + `background`, police Google sur le corps, et police locale Star Jedi sur les titres. 12 minutes, page boussole projetée."
 
 **Action écran** : passer à la slide "Exercice 1 — À vous !" + ouvrir `1-quarto-typst/boussole.html` sur écran secondaire (countdown).
 

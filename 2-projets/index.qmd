@@ -1,5 +1,5 @@
 ---
-title: "Passer à l'échelle : projet et livre"
+title: "Passer du document au livre"
 format: html
 author: ""
 date: ""
@@ -23,7 +23,7 @@ Ce bloc suit le rythme **My turn → Our turn → Your turn**.
 
 ### My turn — À la fin de ce bloc, vous saurez
 
-- Centraliser `format: typst` et `_brand.yml` au niveau projet via `_quarto.yml`
+- Régler `format: typst` et `_brand.yml` une seule fois pour tout le projet, dans `_quarto.yml`
 - Assembler plusieurs `.qmd` en un livre avec `type: book` (TOC, numérotation, références croisées)
 - Reconnaître que `format: typst` + `type: book` active automatiquement l'extension orange-book (Quarto 1.9)
 
@@ -41,7 +41,7 @@ Le reste (`appendices`, `_brand.yml` projet, cross-refs, pagebreak) = Exercice 2
 ::: {.callout-note appearance="minimal"}
 L'Exercice 2 est **indépendant de l'Exercice 1** : si vous n'avez pas terminé le Bloc 1, partez directement du dossier `starter/` ci-dessous.
 
-📄 La **charte Star Wars** reste votre référence visuelle (même `charte-starwars.pdf` qu'au Bloc 1, fourni dans le starter) — vous ne la retranscrivez pas ici, vous appliquez le `_brand.yml` que vous avez déjà (ou celui de secours) à un projet livre.
+📄 La **charte Star Wars** reste votre référence visuelle (même `charte-starwars.pdf` qu'au Bloc 1, fourni dans le starter) — vous ne la retraduisez pas ici, vous appliquez le `_brand.yml` que vous avez déjà (ou celui de secours) à un projet livre.
 :::
 
 ::: callout-warning
@@ -95,7 +95,7 @@ Fichier : {{< fa download >}} [exercises/02-projet-book/starter/](https://github
 3. Ouvrez [`exercises/02-projet-book/correction/`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises/02-projet-book/correction) (filet final).
 :::
 
-### Quick-ref starter
+### Mémo rapide starter
 
 {{< include ../exercises/02-projet-book/starter/README.md >}}
 
@@ -171,7 +171,7 @@ Pas de `_brand.yml` ? Copiez les fichiers fournis à la racine du dossier exo : 
 :::
 
 ::: callout-note
-**Les Bonus 3 et 4 ci-dessous sont des approfondissements** — à explorer après l'atelier si vous manquez de temps en séance.
+**Les Bonus 3 et 4 ci-dessous, c'est pour aller plus loin** — à explorer après l'atelier si vous manquez de temps en séance.
 :::
 
 ::: {.callout-tip collapse="true"}
@@ -191,7 +191,7 @@ Détails et explication du choix de couleur (pourquoi pas le jaune SW iconique e
 
 Le package R [`brand.yml`](https://posit-dev.github.io/brand-yml/pkg/r/) lit votre charte depuis R et fournit les helpers `read_brand_yml()`, `brand_color_pluck()`, `theme_brand_gt()` et `theme_brand_ggplot2()`. Couplés à `gt::tab_style()`, ils appliquent vos couleurs Star Wars à tous les tableaux et graphiques du livre sans dupliquer aucun hex.
 
-**L'effet spectaculaire** : combinez ce bonus avec le Bonus 3 (changement de palette). Une seule ligne YAML modifiée fait suivre les lignes 1 des tableaux, les barres du graphique espèces, et les annotations Jabba/Yoda du nuage taille-masse — la charte pilote le PDF *et* toutes les sorties R depuis un seul fichier.
+**Le moment « waouh »** : combinez ce bonus avec le Bonus 3 (changement de palette). Une seule ligne YAML modifiée fait suivre les lignes 1 des tableaux, les barres du graphique espèces, et les annotations Jabba/Yoda du nuage taille-masse — la charte pilote le PDF *et* toutes les sorties R depuis un seul fichier.
 
 **Étape 1 — Mise en place.** Ce bonus suppose les packages `brand.yml` et `prismatic` **installés** (cf. [Préparatifs](../preparatifs.qmd)) — sinon `library(prismatic)` échoue et tout le chapitre cesse de se rendre. Dans le bloc `setup-*` de chaque chapitre, ajoutez :
 
@@ -232,7 +232,7 @@ styliser_brand <- function(t) {
 # usage : votre_table |> gt() |> tab_header(...) |> cols_label(...) |> styliser_brand()
 ```
 
-**Étape 2b — Mettre la métrique en valeur.** Deux stratégies selon la donnée :
+**Étape 2b — Faire ressortir le chiffre clé.** Deux stratégies selon la donnée :
 
 - **Colonne bien répartie** (comptages : `n` des mondes natals, `n_films` des piliers) → un **dégradé `data_color()`** crème → jaune → rouge transforme la colonne en mini-heatmap (Naboo/R2-D2 ressortent) :
 
@@ -266,7 +266,7 @@ ggplot(...) +
   theme_brand_ggplot2(brand)
 ```
 
-Vous devriez voir : bandeau titre jaune SW + en-têtes noir/crème + **striping crème + filets imperial-red** dans tous les tableaux ; la métrique en **dégradé** (mondes natals, films) ou en **ligne-1 rouge** (masses) ; et fond crème + axes noirs sur les graphiques.
+Vous devriez voir : bandeau titre jaune SW + en-têtes noir/crème + **striping crème + filets imperial-red** dans tous les tableaux ; le chiffre clé en **dégradé** (mondes natals, films) ou en **ligne-1 rouge** (masses) ; et fond crème + axes noirs sur les graphiques.
 
 ![Aperçu du tableau « Les colosses de la galaxie » dans la correction : bandeau titre jaune SW, en-têtes de colonnes en noir SW (texte crème), ligne 1 (Jabba Desilijic Tiure) en rouge impérial avec texte crème gras, lignes suivantes en striping crème, le tout encadré de filets imperial-red.](2-gt.png){fig-alt="Tableau gt « Les colosses de la galaxie » rendu en PDF Typst avec la mise en forme issue de `_brand.yml` : bandeau titre jaune Star Wars, en-têtes noir SW sur texte crème, ligne Jabba surlignée en rouge impérial, lignes alternées en striping crème, filets imperial-red autour du tableau."}
 
