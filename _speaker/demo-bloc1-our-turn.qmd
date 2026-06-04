@@ -155,7 +155,7 @@ quarto render rapport-starwars.qmd
 
 | Problème | Plan B |
 |---|---|
-| Quarto render échoue (réseau Google fonts) | Démo offline : pas de police, juste palette → la couleur suffit pour la démo |
+| Quarto render échoue (réseau Google fonts) | Basculer sur `correction/_brand-offline.yml` (palette sans police Google) → la couleur suffit pour la démo |
 | Quarto trop vieux | Skip étape 2, demo seulement `format: typst` ; expliquer que `_brand.yml` requiert 1.9+ |
 | Projecteur lâche | Lire le code à voix haute, demander aux apprenant·e·s d'ouvrir `correction/` |
 

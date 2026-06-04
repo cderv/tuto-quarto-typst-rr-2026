@@ -133,7 +133,13 @@ quarto render
 
 **À dire** :
 
-> "Le saut est planté : `project → book` active orange-book et fait apparaître la structure livre. À vous maintenant : basculer `annexe-donnees` en annexe (champ `appendices`), copier votre `_brand.yml` du Bloc 1 (ou `_brand-starter.yml`) pour réveiller la charte Star Wars au niveau projet, et les bonus si vous avez le temps. 12 minutes."
+> "Le saut est planté : `project → book` active orange-book et fait apparaître la structure livre. À vous maintenant : basculer `annexe-donnees` en annexe (champ `appendices`), copier votre `_brand.yml` du Bloc 1 (ou le `_brand-starter.yml` fourni) pour réveiller la charte Star Wars au niveau projet, et les bonus si vous avez le temps. 12 minutes."
+
+::: callout-tip
+## Où sont `_brand-starter.yml` et `_logo-sw.svg` ?
+
+À la **racine de l'exo** (`exercises/02-projet-book/`), **pas** dans `starter/`. Si tu dépannes en salle, pense à remonter d'un cran depuis le dossier `starter/` ouvert dans l'éditeur (le `starter/README.md` pointe vers ces fichiers à la racine).
+:::
 
 **Action écran** : passer à la slide "Exercice 2 — À vous !" + ouvrir `2-projets/boussole.html` sur écran secondaire (countdown).
 
