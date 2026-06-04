@@ -26,6 +26,7 @@ execute:
 
 ```{r}
 #| label: setup
+# --- Brand styling des tableaux gt + figures ggplot via _brand.yml ---
 library(dplyr)
 library(ggplot2)
 library(ggrepel)
@@ -36,7 +37,8 @@ library(prismatic)
 # ggplot et tableaux gt qu'à la mise en page Typst.
 brand <- read_brand_yml()
 pal <- function(x) brand_color_pluck(brand, x)
-# Teintes crème dérivées de la charte (striping + filets), sans hex magique :
+# Teintes crème dérivées de la palette (striping + filets) ; clr_darken renvoie
+# un hex à canal alpha (#RRGGBBAA) → on tronque à #RRGGBB avec substr(., 1, 7).
 teinte <- function(x, f) substr(as.character(clr_darken(pal(x), f)), 1, 7)
 
 # Habillage charte commun à tous les tableaux gt : police Inter, bandeau titre
