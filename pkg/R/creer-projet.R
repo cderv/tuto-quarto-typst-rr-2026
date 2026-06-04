@@ -63,6 +63,9 @@ creer_projet_typst <- function(dest,
 
   ecrire <- function(nom, lignes) xfun::write_utf8(lignes, file.path(dest_abs, nom))
 
+  # Projet RStudio : double-clic -> bon répertoire de travail, session isolée.
+  ecrire(paste0(basename(dest_abs), ".Rproj"), .contenu_rproj())
+
   recent <- {
     v <- tryCatch(quarto::quarto_version(), error = function(e) NA)
     length(v) == 1 && !is.na(v) && v >= .quarto_reco

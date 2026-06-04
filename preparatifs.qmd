@@ -88,6 +88,8 @@ Les exercices sont versionnés dans le dépôt GitHub du tutoriel.
 - 📦 [Télécharger le dépôt en zip](https://github.com/cderv/tuto-quarto-typst-rr-2026/archive/refs/heads/main.zip) — décompresser sur le bureau, le matériel est dans `exercises/`
 - 📁 [Parcourir `exercises/` sur GitHub](https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises)
 
+Chaque dossier `starter/` contient un fichier `.Rproj` : **double-cliquez-le** pour ouvrir l'exercice comme projet RStudio (le répertoire de travail est alors correct pour `quarto render`).
+
 ::: {.callout-warning appearance="minimal"}
 Les dossiers `correction/` contiennent les solutions complètes — ⚠️ ne les ouvrez pas avant le tutoriel !
 :::
