@@ -56,8 +56,8 @@ site-pretuto:
 # Supprime tous les artefacts de rendu (sites, cache, corrections exercices, pkgdown)
 [group('dev')]
 clean:
-    Remove-Item -Recurse -Force -ErrorAction SilentlyContinue _site, _site-pretuto, .quarto, package
-    Remove-Item -Force -ErrorAction SilentlyContinue _charte/charte-starwars.pdf
+    '_site', '_site-pretuto', '.quarto', 'package' | Where-Object { Test-Path $_ } | Remove-Item -Recurse -Force
+    if (Test-Path '_charte/charte-starwars.pdf') { Remove-Item -Force '_charte/charte-starwars.pdf' }
     Get-ChildItem exercises -Recurse -File -Include "*.typ","*.pdf","*.html" | Where-Object Name -ne "charte-starwars.pdf" | Remove-Item -Force -ErrorAction SilentlyContinue
     Get-ChildItem exercises -Recurse -Directory | Where-Object { $_.Name -eq "_book" -or $_.Name -like "*_files" } | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
 
