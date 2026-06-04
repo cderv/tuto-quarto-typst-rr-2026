@@ -25,7 +25,7 @@ déjà prêt ici : [`pkg/dev/packages.json`](packages.json). Copier-coller :
 [
   {
     "package": "tutoquartotypst",
-    "url": "https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026",
+    "url": "https://github.com/cderv/tuto-quarto-typst-rr-2026",
     "subdir": "pkg"
   }
 ]

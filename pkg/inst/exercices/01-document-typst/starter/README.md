@@ -26,4 +26,4 @@ Après ajout de `format: typst` : `rapport-starwars.pdf`.
 ### Bloqué ?
 
 Cf. le bloc « Si vous bloquez » sur le site (page exo) ou la
-[`correction/`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/correction) en dernier recours.
+[`correction/`](https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/correction) en dernier recours.

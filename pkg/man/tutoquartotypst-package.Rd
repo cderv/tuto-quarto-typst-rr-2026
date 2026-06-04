@@ -11,9 +11,9 @@ Fonctions utilitaires pour preparer et suivre le tutoriel "PDF sans frictions : 
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026}
+  \item \url{https://github.com/cderv/tuto-quarto-typst-rr-2026}
   \item \url{https://connect.posit.cloud/cderv/content/019df82c-7202-2165-28ea-7f9ca734ad26/package}
-  \item Report bugs at \url{https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/issues}
+  \item Report bugs at \url{https://github.com/cderv/tuto-quarto-typst-rr-2026/issues}
 }
 
 }
