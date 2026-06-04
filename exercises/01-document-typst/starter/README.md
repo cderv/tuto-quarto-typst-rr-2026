@@ -1,6 +1,6 @@
 ## Exercice 1 — Starter
 
-> Quick-ref opérationnel. La consigne complète est sur le site :
+> Mémo rapide. La consigne complète est sur le site :
 > [Bloc 1 — PDF avec Typst](https://cderv.github.io/cderv-tuto-quarto-typst-rr-2026/1-quarto-typst/).
 
 ### Contenu du dossier
@@ -8,7 +8,7 @@
 | Fichier | Rôle |
 |---|---|
 | `rapport-starwars.qmd` | **Fichier à éditer** — point de départ HTML, à transformer en PDF Typst |
-| `charte-starwars.pdf` | **Charte graphique** à transcrire en `_brand.yml` (étapes 3-4) |
+| `charte-starwars.pdf` | **Charte graphique** à traduire en `_brand.yml` (étapes 3-4) |
 | `_fonts/Starjedi.ttf` | Police locale (étape 4) |
 | _(pas de `_brand.yml`)_ | **À créer aux étapes 3-4** d'après la charte |
 
@@ -25,5 +25,5 @@ Après ajout de `format: typst` : `rapport-starwars.pdf`.
 
 ### Bloqué ?
 
-Cf. l'escalier d'autonomie sur le site (page exo) ou la
+Cf. le bloc « Si vous bloquez » sur le site (page exo) ou la
 [`correction/`](https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/correction) en dernier recours.

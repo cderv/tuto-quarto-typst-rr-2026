@@ -7,7 +7,7 @@ date: "2026-06-16"
 format: clean-revealjs
 ---
 
-## `_quarto.yml` — centraliser la config
+## `_quarto.yml` — tout régler au même endroit
 
 Un **projet Quarto** = un dossier avec `_quarto.yml`.
 
@@ -161,7 +161,7 @@ Fusible à couper si le timing serre — sauter directement au wrap-up qui suit 
 
 ::: incremental
 - Produire un PDF pro avec `format: typst`, sans LaTeX
-- Inspecter le pipeline `.qmd` → `.typ` → `.pdf` via `keep-typ: true`
+- Voir les coulisses du rendu (`.qmd` → `.typ` → `.pdf`) avec `keep-typ: true`
 - Personnaliser couleurs, polices (Google ou locales `source: file`) et logo via `_brand.yml`
 - Assembler plusieurs `.qmd` en livre avec `type: book`
 - Savoir où chercher pour aller plus loin (partials, formats communautaires — pistes pour après le tutoriel, pas couverts en séance)

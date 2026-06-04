@@ -1,6 +1,6 @@
 # Charte graphique Star Wars — source
 
-Ce dossier contient le source du **PDF de charte graphique** distribué dans les starters des Exercices 1 et 2 pour guider la transcription en `_brand.yml`.
+Ce dossier contient le source du **PDF de charte graphique** distribué dans les starters des Exercices 1 et 2 pour guider la traduction en `_brand.yml`.
 
 ## Fichiers
 

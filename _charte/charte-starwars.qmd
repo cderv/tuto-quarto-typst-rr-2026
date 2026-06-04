@@ -112,6 +112,6 @@ format:
 #line(length: 100%, stroke: 0.3pt + rgb("#0B0B0F"))
 #v(0.1cm)
 #text(size: 8pt, font: "Inter", style: "italic")[
-  Ce document est lui-même un PDF Typst rendu via #raw("_brand.yml"). Utilisée en Bloc 1 (à transcrire) et Bloc 2 (référence visuelle). À vous de jouer : transcrivez cette charte en YAML, puis rendez votre rapport.
+  Ce document est lui-même un PDF Typst rendu via #raw("_brand.yml"). Utilisée en Bloc 1 (à traduire) et Bloc 2 (référence visuelle). À vous de jouer : traduisez cette charte en YAML, puis rendez votre rapport.
 ]
 ```
