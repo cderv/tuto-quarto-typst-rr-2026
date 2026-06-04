@@ -133,7 +133,7 @@ quarto render
 
 **À dire** :
 
-> "Le saut est planté : `project → book` active orange-book et fait apparaître la structure livre. À vous maintenant : basculer `annexe-donnees` en annexe (champ `appendices`), copier votre `_brand.yml` du Bloc 1 (ou le `_brand-starter.yml` fourni) pour réveiller la charte Star Wars au niveau projet, et les bonus si vous avez le temps. 12 minutes."
+> "La transformation est faite : `project → book` active orange-book et fait apparaître la structure livre. À vous maintenant : basculer `annexe-donnees` en annexe (champ `appendices`), copier votre `_brand.yml` du Bloc 1 (ou le `_brand-starter.yml` fourni) pour réveiller la charte Star Wars au niveau projet, et les bonus si vous avez le temps. 12 minutes."
 
 ::: callout-tip
 ## Où sont `_brand-starter.yml` et `_logo-sw.svg` ?
