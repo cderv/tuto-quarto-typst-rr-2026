@@ -51,7 +51,7 @@ format:
     theme: [default, reveal-style.scss]
     transition: fade
     chalkboard: true
-    footer: "[🔗 cderv.github.io/cderv-tuto-quarto-typst-rr-2026](https://cderv.github.io/cderv-tuto-quarto-typst-rr-2026)"
+    footer: "[🔗 cderv.github.io/tuto-quarto-typst-rr-2026](https://cderv.github.io/tuto-quarto-typst-rr-2026)"
 
 execute:
   freeze: auto
