@@ -7,7 +7,7 @@ date: ""
 
 Avant le tutoriel, merci de préparer votre environnement de travail.
 
-::: {.callout-tip}
+:::: {.callout-tip}
 ## Raccourci recommandé : le paquet `tutoquartotypst`
 
 **À installer d'abord** : **Quarto** et **RStudio** (voir la section
@@ -29,11 +29,38 @@ tutoquartotypst::verifier_installation()
 tutoquartotypst::installer_exercices()
 ```
 
-Si `verifier_installation()` affiche tout en vert, vous êtes prêt·e : les
-sections ci-dessous deviennent **facultatives** (elles détaillent le même chemin
+Si `verifier_installation()` affiche tout en vert, vous êtes prêt·e 
+
+::: {.callout-note collapse="true"}
+
+## Exemple quand tout est ok
+
+```r
+> tutoquartotypst::verifier_installation()
+
+── Vérification de votre installation ────────────────────────────────────────────────────────────────────────────────────────────
+✔ R 4.6.0 : version compatible (>= 4.1.0).
+✔ Quarto 1.10.7 : version recommandée.
+✔ Paquets R : les 8 prérequis sont installés.
+✔ Rendu de test réussi : PDF produit (chaîne R → Quarto → Typst → gt → ggplot OK).
+
+── Bilan ──
+
+✔ R
+✔ Quarto
+✔ Paquets R
+✔ Rendu PDF de test
+✔ Tout est prêt : .qmd → PDF pro → livre → à personnaliser. Rendez-vous le 16 juin !
+ℹ Le jour J, pensez à ouvrir RStudio (récent).
+ℹ Prochaine étape : installez les exercices avec tutoquartotypst::installer_exercices().
+```
+:::
+
+Les sections ci-dessous deviennent **facultatives** (elles détaillent le même chemin
 **à la main**). **Si l'installation via r-universe échoue** (réseau, pare-feu
 d'entreprise…), suivez simplement le chemin manuel ci-dessous.
-:::
+
+::::
 
 ## Installation
 
