@@ -1,0 +1,166 @@
+---
+title: "Pilotage de séance — déroulé, progression, vigilance"
+subtitle: "Doc-chapeau animateur · à avoir sous les yeux le jour J"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    code-copy: true
+    code-overflow: wrap
+author: ""
+date: ""
+---
+
+::: callout-important
+## À quoi sert ce doc
+
+Vue **bout-à-bout des 2h** pour piloter la séance : chronogramme minuté, colonne vertébrale pédagogique, points de vigilance de groupe. Les deux **zooms démo** (`demo-bloc1-our-turn.qmd`, `demo-bloc2-our-turn.qmd`) restent les pas-à-pas écran appelés depuis ce doc aux bons créneaux.
+
+**Rôles** :
+
+- **CD** anime le groupe au tableau (rythme, dédramatisation, narration de l'arc, Q&A collectif).
+- **Maëlle** dépanne en 1:1 dans les rangs (bugs individuels), surtout pendant les Your turn. Les **pièges techniques** sont dans les deux zooms démo — c'est son aide-mémoire.
+
+**Liens utiles** : [Démo bloc 1](demo-bloc1-our-turn.qmd) · [Démo bloc 2](demo-bloc2-our-turn.qmd) · [Boussole bloc 1](../1-quarto-typst/boussole.qmd) · [Boussole bloc 2](../2-projets/boussole.qmd) · [Préparatifs (participants)](../preparatifs.qmd)
+:::
+
+::: callout-warning
+## Deux paramètres figés (ne pas re-débattre le jour J)
+
+- **Créneau réel : 10h–12h** (pause + Q&A inclus dans le créneau). ⚠️ Pas 9h–11h.
+- **Durée des Your turn : 12:00** (countdown des boussoles et slides). `PLAN.md` mentionne 15:00 dans son journal — **obsolète**, les fichiers réels font foi.
+:::
+
+---
+
+## 1. Chronogramme de pilotage (10h00–12h00)
+
+| Heure | Durée | Segment | Qui | À l'écran | Q&A |
+|---|---|---|---|---|---|
+| 10h00 | 8 min | Accueil + cadrage + vérif install | CD | slide titre | — |
+| 10h08 | 3 min | Slide rythme My/Our/Your | CD | deck bloc 1 | — |
+| 10h11 | 13 min | **My turn** bloc 1 (Typst → format → options → keep-typ → brand → charte) | CD | deck | au fil |
+| 10h24 | 7 min | **Our turn** bloc 1 → [démo](demo-bloc1-our-turn.qmd) | CD | éditeur + PDF | — |
+| 10h31 | 12 min | **Your turn** Exo 1 (countdown 12:00) | Maëlle salle / CD tableau | boussole bloc 1 | 1:1 Maëlle |
+| 10h43 | 7 min | Débrief Exo 1 + pépite | CD | deck | **collectif** |
+| 10h50 | 10 min | ☕ **Pause** | — | — | — |
+| 11h00 | 10 min | Reprise post-pause + **My turn** bloc 2 | CD | deck bloc 2 | au fil |
+| 11h10 | 7 min | **Our turn** bloc 2 → [démo](demo-bloc2-our-turn.qmd) | CD | éditeur + PDF | — |
+| 11h17 | 12 min | **Your turn** Exo 2 (countdown 12:00) | Maëlle / CD | boussole bloc 2 | 1:1 Maëlle |
+| 11h29 | 7 min | Débrief Exo 2 + pépite | CD | deck | **collectif** |
+| 11h36 | 12 min | Wrap-up (3 slides) + ressources | CD | deck | **final** |
+| 11h48 | 12 min | **Buffer contingence** (fin anticipée / 1:1) | CD + Maëlle | — | filet |
+
+**Lecture du budget** : ~87 min animé + 10 min pause + ~12 min de buffer. Le buffer final est un **filet anti-dépassement**, pas un créneau Q&A : s'il n'est pas consommé, fin anticipée ou dépannage 1:1.
+
+### Q&A : un principe transverse, pas un segment
+
+Les questions se traitent **au fil de la séance**, à chaque étape :
+
+- **Question individuelle / bug perso** → Maëlle, en 1:1, à tout moment (surtout pendant les Your turn).
+- **Question collective / concept** → CD la capte au vol et la traite au **débrief** suivant. Les débriefs (10h43, 11h29) et le wrap-up (11h36) sont les checkpoints Q&A collectifs.
+
+### Ordre de coupe des fusibles (si un bloc déborde *avant* la pause)
+
+1. **Pépites « Saviez-vous que… »** — premiers fusibles, coupables sans dommage.
+2. **Options bonus des démos** (ex. `papersize` bloc 1) — sauter le supplément, garder le cœur.
+3. **Bonus Exo 2** (cross-refs + pagebreak) — déjà optionnels pour les participants.
+
+❌ **Wrap-up jamais coupé** : c'est lui qui boucle l'arc et donne les ressources de suite.
+
+### Critères « on avance / on ralentit »
+
+| Phase | On peut avancer si… | On ralentit / on refait si… |
+|---|---|---|
+| Our turn (démo) | le PDF coloré (bloc 1) / le PDF book (bloc 2) est à l'écran | la démo plante → bascule fallback **sans s'arrêter** (cf. tableaux des zooms démo) |
+| Your turn | ~60–70 % ont atteint l'étape 3 | la majorité est bloquée à l'étape 1 → regrouper 1 min au tableau, prolonger un peu le countdown |
+| Transitions | l'arc narratif est verbalisé (voir §3) | — |
+
+---
+
+## 2. Carte de progression pédagogique
+
+L'arc du tutoriel : **`.qmd` → PDF pro → livre → personnalisé/pérennisé**. Quatre bascules conceptuelles à faire vivre — c'est la colonne vertébrale, pas une option.
+
+| # | Bascule (« moment wow ») | Phrase-clé à dire | Filet si non acquis |
+|---|---|---|---|
+| **B1** | `format: typst` — Markdown → PDF en **une ligne** | « Une ligne. PDF généré. Pas d'install LaTeX. » | montrer le PDF de l'étape 1 de la démo — le résultat parle de lui-même |
+| **B2** | `keep-typ` — la magie n'est **pas une boîte noire** | « Vous pouvez ouvrir le `.typ` intermédiaire et voir ce que Quarto génère. » | facultatif à la compréhension fine ; ne pas s'attarder si le groupe décroche |
+| **B3** | `_brand.yml` — un PDF **aux couleurs de mon orga** | « Une couleur définie, deux endroits où elle apparaît. Pas de CSS, pas de template. » | la démo Our turn (1 couleur) suffit à planter l'idée ; la charte complète est du Your turn |
+| **B4** | `type: book` — 5 docs isolés → **1 livre pro** | « Une ligne + un bloc `book:` → couverture, TOC, numérotation par chapitre. Intégré, pas de template. » | si fonts manquent, montrer le PDF même imparfait — le **wow** est la structure, pas la police |
+
+Objectifs détaillés par bloc : déjà côté participants dans `1-quarto-typst/index.qmd` et `2-projets/index.qmd` (sections « À la fin de ce bloc, vous saurez »). Ce tableau en est la **version pilotage** (les bascules à provoquer, pas l'état d'arrivée).
+
+---
+
+## 3. Points de vigilance pédagogiques (pilotage du groupe)
+
+Distinct des **pièges techniques** (bugs de syntaxe, dans les zooms démo → usage Maëlle). Ici, ce que **CD** surveille pour le groupe.
+
+### ⚠️ Pic de charge cognitive — étapes 3-4 de l'Exo 1 (juste avant la pause)
+
+La traduction de la charte complète (palette + 3 rôles + police Google + police locale `source: file`) est le **sommet de charge de tout le tutoriel**, et il tombe juste avant la pause.
+
+- **Dédramatiser à voix haute** : « Pas de panique si vous n'atteignez pas l'étape 4 — l'essentiel est la boucle `_brand.yml` → render. »
+- Ne pas attendre que 100 % finissent : dès que la majorité a la couleur, on débriefe.
+- C'est le moment où Maëlle est la plus sollicitée en 1:1.
+
+### ⚠️ Couture de l'arc Exo 1 → Exo 2 (maillon faible narratif)
+
+L'Exo 2 est **volontairement autonome** (un `_brand-starter.yml` de secours existe à la racine `exercises/02-projet-book/`). Robuste techniquement, **mais l'arc `.qmd → livre` ne tient plus que par ta parole** :
+
+- À l'entrée du bloc 2, verbaliser : **« Vous réutilisez votre `_brand.yml` d'avant la pause — on ne repart pas de zéro, on monte d'un cran. »**
+- Sans cette phrase, le bloc 2 ressemble à un exercice déconnecté et l'arc se casse.
+
+### ⚠️ Reprise post-pause (décrochage + retardataires)
+
+- Phrase de relance courte : récapituler en une ligne où on en est (« on sait faire un PDF brandé ; maintenant on assemble plusieurs docs en livre »).
+- **Accueil des arrivants** : le bloc 2 est autonome (`index.qmd` « Vous arrivez en cours ? ») — pointer la boussole bloc 2, démarrer du starter Exo 2.
+
+---
+
+## 4. Accueil & clôture (scripts oraux)
+
+### Ouverture (10h00, ~8 min)
+
+- Se présenter (CD + Maëlle, et son rôle : aide en salle, pas au tableau).
+- Cadrer les 2h : l'arc `.qmd → PDF pro → livre`, le rythme **My turn → Our turn → Your turn** (montrer la slide rythme).
+- Consigne immédiate : **« Ouvrez votre éditeur maintenant. »**
+- Vérif install éclair : qui n'a pas réussi le mini-test d'install ? → orienter vers le [Plan B des préparatifs](../preparatifs.qmd) et vers Maëlle.
+
+### Clôture (11h36, ~12 min)
+
+- Dérouler les 3 slides de wrap-up (« Ce que vous savez faire » / « Et maintenant ? » / « Merci ! Questions ? ») — déjà rédigées dans `2-projets/2-projets.qmd`.
+- **Q&A final** : relancer si silence avec les 2 questions stock (dans les notes de `2-projets.qmd`).
+- Où pointer après : [Ressources](../4-ressources.qmd), contacts, dépôt GitHub.
+- Gérer le dépassement : si on déborde, le buffer (11h48) absorbe ; ne pas couper le wrap-up.
+
+---
+
+## 5. Contingences (niveau séance)
+
+Agrège les tableaux « Fallbacks si ça plante » des deux zooms démo (qui restent la référence détaillée par démo).
+
+| Problème | Plan B |
+|---|---|
+| Réseau / Google fonts indisponible | Plan B offline des [préparatifs](../preparatifs.qmd) ; pour la démo bloc 1, basculer sur `correction/_brand-offline.yml` (palette sans police Google) |
+| Render de démo échoue | Suivre le tableau « Fallbacks » du zoom démo concerné ; montrer le PDF de `correction/` si besoin |
+| Projecteur / double écran HS | Lire le code à voix haute, demander aux participants d'ouvrir la `correction/` ; slides en local |
+| Salle bloquée en masse (Your turn) | Regrouper 1 min au tableau sur l'étape qui coince ; prolonger un peu le countdown ; rappeler la boussole |
+| Quarto trop vieux (`< 1.9`) | Orange-book / brand limités → expliquer le requirement, montrer la correction |
+
+**À préparer en amont** (sinon ces filets n'existent pas le jour J) : workspace Posit Cloud de secours, screenshots des PDF de correction. Voir la checklist logistique de `.claude/PLAN.md`.
+
+---
+
+## Annexe — Checklist matériel salle (à cocher en entrant)
+
+- [ ] Double écran / projecteur OK, résolution testée
+- [ ] **Taille de police de l'éditeur** augmentée (lisible du fond de salle)
+- [ ] Terminal ouvert dans le bon dossier, lecteur PDF prêt
+- [ ] Réseau testé **et** Plan B offline sous la main (`_brand-offline.yml`, polices locales)
+- [ ] Slides en local (au cas où le réseau lâche)
+- [ ] Adaptateurs / câbles / batterie
+- [ ] Workspace Posit Cloud de secours ouvert en onglet
+- [ ] `_charte/charte-starwars.pdf` prêt à projeter (référence palette, bloc 1)
+- [ ] Les deux zooms démo ouverts ([bloc 1](demo-bloc1-our-turn.qmd) · [bloc 2](demo-bloc2-our-turn.qmd))
