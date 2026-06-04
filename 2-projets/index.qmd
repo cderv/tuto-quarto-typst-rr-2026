@@ -189,18 +189,19 @@ Détails et explication du choix de couleur (pourquoi pas le jaune SW iconique e
 ::: {.callout-tip collapse="true"}
 ## Bonus 4 — Brander tableaux et graphiques avec votre `_brand.yml`
 
-Le package R [`brand.yml`](https://posit-dev.github.io/brand-yml/pkg/r/) lit votre charte depuis R. Couplé à `gt::tab_style()` et `theme_brand_ggplot2()`, vous appliquez vos couleurs Star Wars à tous les tableaux et graphiques du livre sans dupliquer aucun hex.
+Le package R [`brand.yml`](https://posit-dev.github.io/brand-yml/pkg/r/) lit votre charte depuis R et fournit les helpers `read_brand_yml()`, `brand_color_pluck()`, `theme_brand_gt()` et `theme_brand_ggplot2()`. Couplés à `gt::tab_style()`, ils appliquent vos couleurs Star Wars à tous les tableaux et graphiques du livre sans dupliquer aucun hex.
 
 **L'effet spectaculaire** : combinez ce bonus avec le Bonus 3 (changement de palette). Une seule ligne YAML modifiée fait suivre les lignes 1 des tableaux, les barres du graphique espèces, et les annotations Jabba/Yoda du nuage taille-masse — la charte pilote le PDF *et* toutes les sorties R depuis un seul fichier.
 
-**Étape 1 — Mise en place.** Dans le bloc `setup-*` de chaque chapitre, ajoutez :
+**Étape 1 — Mise en place.** Ce bonus suppose les packages `brand.yml` et `prismatic` **installés** (cf. [Préparatifs](../preparatifs.qmd)) — sinon `library(prismatic)` échoue et tout le chapitre cesse de se rendre. Dans le bloc `setup-*` de chaque chapitre, ajoutez :
 
 ``` r
 library(brand.yml)
 library(prismatic)               # pour dériver des teintes crème de la charte
 brand <- read_brand_yml()
 pal <- function(x) brand_color_pluck(brand, x)
-# Teintes crème (striping + filets) dérivées de la palette, sans hex magique :
+# Teintes crème (striping + filets) dérivées de la palette ; clr_darken renvoie
+# un hex à canal alpha (#RRGGBBAA) → substr(., 1, 7) le tronque en #RRGGBB.
 teinte <- function(x, f) substr(as.character(clr_darken(pal(x), f)), 1, 7)
 ```
 
@@ -270,9 +271,9 @@ Vous devriez voir : bandeau titre jaune SW + en-têtes noir/crème + **striping 
 ![Aperçu du tableau « Les colosses de la galaxie » dans la correction : bandeau titre jaune SW, en-têtes de colonnes en noir SW (texte crème), ligne 1 (Jabba Desilijic Tiure) en rouge impérial avec texte crème gras, lignes suivantes en striping crème, le tout encadré de filets imperial-red.](2-gt.png){fig-alt="Tableau gt « Les colosses de la galaxie » rendu en PDF Typst avec la mise en forme issue de `_brand.yml` : bandeau titre jaune Star Wars, en-têtes noir SW sur texte crème, ligne Jabba surlignée en rouge impérial, lignes alternées en striping crème, filets imperial-red autour du tableau."}
 
 ::: callout-note
-## Piège silencieux à connaître
+## Piège à connaître sur les clés palette
 
-`brand.yml` normalise les clés palette `tiret-séparé` en `tiret_souligné` au read. Donc dans votre code R : `pal("sw_yellow")` (pas `pal("sw-yellow")`). En cas d'erreur de saisie, `brand_color_pluck()` renvoie la chaîne d'entrée telle quelle sans lever d'erreur — votre mise en forme disparaît silencieusement du PDF.
+`brand.yml` normalise les clés palette `tiret-séparé` en `tiret_souligné` au read. Donc dans votre code R : `pal("sw_yellow")` (pas `pal("sw-yellow")`). En cas d'erreur de saisie, `brand_color_pluck()` ne lève pas d'erreur lui-même : il renvoie la chaîne d'entrée telle quelle (`"sw-yellow"`). Cette valeur, n'étant pas une couleur valide, fait ensuite **planter le rendu** au niveau de `cell_fill()` / `data_color()` — un message d'erreur Typst peu parlant. Le réflexe : vérifier d'abord vos clés palette (underscore, pas tiret).
 :::
 
 :::

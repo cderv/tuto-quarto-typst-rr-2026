@@ -2,6 +2,7 @@
 
 ```{r}
 #| label: setup-origines
+# --- Bonus 4 (optionnel) appliqué : brand styling des tableaux gt + ggplot ---
 library(dplyr)
 library(ggplot2)
 library(gt)
@@ -9,6 +10,8 @@ library(brand.yml)
 library(prismatic)
 brand <- read_brand_yml()
 pal <- function(x) brand_color_pluck(brand, x)
+# Teintes crème dérivées de la palette (striping + filets) ; clr_darken renvoie
+# un hex à canal alpha (#RRGGBBAA) → on tronque à #RRGGBB avec substr(., 1, 7).
 teinte <- function(x, f) substr(as.character(clr_darken(pal(x), f)), 1, 7)
 
 # Habillage charte commun à tous les tableaux gt du livre : police Inter,
@@ -36,14 +39,6 @@ styliser_brand <- function(t) {
       heading.align                     = "left"
     )
 }
-
-# Dégradé « heatmap » aux couleurs de la charte (crème → jaune → rouge) sur
-# une colonne numérique bien répartie.
-colorer_metrique <- function(t, col) {
-  t |> data_color(columns = {{ col }},
-                  palette = c(pal("background"), pal("sw_yellow"), pal("primary")),
-                  apply_to = "fill")
-}
 ```
 
 Les colosses du chapitre précédent venaient d'horizons divers. Élargissons :
@@ -68,7 +63,9 @@ starwars |>
   ) |>
   styliser_brand() |>
   # Comptages bien répartis → dégradé charte (Naboo/Tatooine ressortent en rouge)
-  colorer_metrique(n)
+  data_color(columns = n,
+             palette  = c(pal("background"), pal("sw_yellow"), pal("primary")),
+             apply_to = "fill")
 ```
 
 Naboo et Tatooine se partagent le devant : la planète d'Amidala devance d'un
@@ -129,7 +126,9 @@ films_par_perso |>
   ) |>
   styliser_brand() |>
   # Nombre de films (1–7) bien réparti → dégradé charte (R2-D2 ressort en rouge)
-  colorer_metrique(n_films)
+  data_color(columns = n_films,
+             palette  = c(pal("background"), pal("sw_yellow"), pal("primary")),
+             apply_to = "fill")
 ```
 
 **R2-D2** mène avec `r films_par_perso$n_films[1]` films, plus que
