@@ -1,7 +1,7 @@
 ## Exercice 1 — Starter
 
 > Mémo rapide. La consigne complète est sur le site :
-> [Bloc 1 — PDF avec Typst](https://cderv.github.io/cderv-tuto-quarto-typst-rr-2026/1-quarto-typst/).
+> [Bloc 1 — PDF avec Typst](https://cderv.github.io/tuto-quarto-typst-rr-2026/1-quarto-typst/).
 
 ### Contenu du dossier
 
