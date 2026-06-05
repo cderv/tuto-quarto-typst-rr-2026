@@ -105,4 +105,4 @@ Le dépôt est **public** et assume le « dev in the open » : plans et reviews 
 - **Drafts d'issues** (à remonter en amont) → `.claude/archive/issues/`.
 - Agents reviewers : `.claude/agents/` (`workshop-reviewer-{pedagogue,debutant,technique,fr}`).
 
-**Jamais committé** (`.gitignore`) : secrets, liens vers des documents privés, infos perso de tiers. Aujourd'hui concrètement : `review.md` (racine, doublon) et `.claude/plan-remarques-maelle.md` (lien privé, à purger de l'historique).
+**Jamais committé** (`.gitignore`) : secrets, liens vers des documents privés, infos perso de tiers. Aujourd'hui concrètement : `review.md` (racine, doublon). Le plan « remarques Maëlle » est archivé (`archive/plans/`) **après retrait du lien privé** ; ce lien reste à purger de l'historique git (cf. note de passage public).

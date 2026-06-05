@@ -30,11 +30,9 @@ pkg/docs/
 # État runtime par-utilisateur de RStudio (les .Rproj eux-mêmes sont versionnés)
 **/.Rproj.user/
 
-# Notes de travail NON publiables (hors dépôt). Tout le reste des notes de
-# conception et des reviews est désormais archivé et VERSIONNÉ sous
-# .claude/archive/ (cf. .claude/CLAUDE.md, section « Archivage »).
+# Note de travail NON publiable (hors dépôt). Le reste des notes de conception
+# et des reviews est archivé et VERSIONNÉ sous .claude/archive/ (cf.
+# .claude/CLAUDE.md, section « Archivage »). Le plan « remarques Maëlle » y est
+# aussi, nettoyé du lien privé — qui reste néanmoins à purger de l'historique.
 #  - review.md : doublon des reviews archivées
-#  - plan-remarques-maelle.md : contient un lien vers un doc privé (à purger
-#    de l'historique, cf. note de passage public)
 /review.md
-/.claude/plan-remarques-maelle.md
