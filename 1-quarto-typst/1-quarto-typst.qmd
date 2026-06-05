@@ -47,6 +47,24 @@ Exercice en autonomie avec chronomètre.
 Expliquer le rythme dès le début. Chaque bloc suit ce cycle. L'idée c'est de passer un maximum de temps les mains dans le code, pas à regarder des slides.
 :::
 
+## Code de conduite {.smaller}
+
+Les Rencontres R 2026 s'engagent à offrir une conférence **sans harcèlement**, dans un environnement **bienveillant et sûr** pour toutes et tous, quels que soient l'âge, le genre, l'orientation, le handicap, l'apparence, l'origine ou la religion.
+
+::: incremental
+- **Être prévenant·e** dans le langage et les actions, respecter les limites de chacun·e
+- **S'abstenir** de tout comportement dégradant, discriminatoire ou harcelant
+- **En cas de souci** : alerter un membre de l'équipe organisatrice (identifiable au badge), même pour un fait qui semble anodin
+:::
+
+::: {.fragment}
+Code complet : [code de conduite des Rencontres R 2026](https://rr2026.sciencesconf.org/resource/page/id/13){target="_blank"} · contact [rr2026@sciencesconf.org](mailto:rr2026@sciencesconf.org)
+:::
+
+::: notes
+Prendre 30 secondes là-dessus, sérieusement mais sans plomber l'ambiance. On anime un atelier : on est responsables du cadre. Rappeler que Maëlle passe dans les rangs et qu'on est tous les deux dispo si quoi que ce soit. Le code de conduite s'applique aussi aux ateliers, pas seulement aux plénières. Texte adapté de useR! 2020 / rOpenSci, sous licence CC BY-SA.
+:::
+
 ## C'est quoi Typst ?
 
 [Typst](https://typst.app/) joue le même rôle que LaTeX : produire un PDF. Avec Quarto, vous restez côté Markdown — la traduction vers Typst est automatique.
