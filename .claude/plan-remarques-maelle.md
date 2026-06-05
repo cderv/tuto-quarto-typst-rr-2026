@@ -14,7 +14,7 @@ Source : https://docs.google.com/document/d/1a97itHue_stpNbtQrLZ3ntl7f9UBl_7uI1Q
 - [x] Message "ouvrir RStudio le jour J" → **RStudio ou Positron** (exemple `preparatifs.qmd` + code `pkg/R/verifier-installation.R` + snapshot)
 - [x] Lien ouverture plein écran des slides → `{target="_blank"}` (les deux `index.qmd`)
 - [x] Slides Bloc 1 : **slide « ☕ Pause »** ajoutée en fin de deck (annonce durée + reprise + réutilisation du `_brand.yml`)
-- [~] Lien répétitif vers la page courante : **PARTIE FAITE** = lien boussole ajouté dans la section exercice des deux `index.qmd`. **À CONFIRMER** : je n'ai pas identifié avec certitude le « truc répétitif avec lien vers la page courante » à supprimer (aucun self-link littéral trouvé ; les boussoles pointent vers `index.qmd`, pas vers elles-mêmes). → préciser ce qui doit sauter exactement.
+- [x] Lien répétitif vers la page courante / partie exercice des `index.qmd` : **tranché (2026-06-05)**. Lien boussole ajouté dans la section exercice des deux `index.qmd`. La question « supprimer la partie exercice de l'index au profit de la boussole » a été soumise aux agents **pédagogue** + **élève débutant** : verdict convergent = **garder l'index comme référence profonde, boussole = vue glanceable**. Le « truc répétitif » = les renvois boussole→index (≈7×) + l'objectif/étapes courts dupliqués → **jugés voulus et anodins, on ne touche pas** (décision CD : laisser tel quel). Rapport : `.claude/reviews/review-2026-06-05-pedagogue.md`.
 - [x] Slides Bloc 2 : slide `_quarto.yml` → **arborescence** ajoutée (colonnes YAML + arbre du projet)
 
 ---
