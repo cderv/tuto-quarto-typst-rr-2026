@@ -4,7 +4,7 @@
 
 ## Mise en place
 
-Partez de [`starter/`](starter/) — voir le [README starter](starter/README.md) pour le quick-ref opérationnel.
+Partez de [`starter/`](starter/) — voir le [README starter](starter/README.md) pour l'aide-mémoire opérationnel.
 
 ## Consigne complète
 

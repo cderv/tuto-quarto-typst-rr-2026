@@ -34,7 +34,7 @@ En 5-6 min, on crée un `_quarto.yml` puis on bascule le projet en livre :
 1.  Créer `_quarto.yml` avec `project: { type: default }` + `format: typst` → 5 PDF séparés
 2.  Passer à `type: book` + bloc `book: { title, chapters }` → **PDF unique** avec couverture orange-book, TOC, numérotation par chapitre
 
-Le reste (`appendices`, `_brand.yml` projet, cross-refs, pagebreak) = Exercice 2.
+Le reste (`appendices`, `_brand.yml` projet, références croisées, pagebreak) = Exercice 2.
 
 ## Exercice 2
 
@@ -252,7 +252,7 @@ styliser_brand <- function(t) {
              apply_to = "fill")
 ```
 
-- **Valeur aberrante** (masse : Jabba à 1 358 écrase tout dégradé) → un simple **highlight de la ligne 1** en imperial-red ressort mieux :
+- **Valeur aberrante** (masse : Jabba à 1 358 écrase tout dégradé) → un simple **surlignage de la ligne 1** en imperial-red ressort mieux :
 
 ``` r
 ... |>

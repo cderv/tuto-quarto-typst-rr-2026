@@ -30,7 +30,7 @@ Transformer 5 `.qmd` en un livre PDF Typst stylé via `_quarto.yml` + `_brand.ym
 
 **Bonus** (pour les rapides) :
 
-- B1. Cross-refs `@fig-anatomie-mass` + `@sec-origines`
+- B1. Réf. croisées `@fig-anatomie-mass` + `@sec-origines`
 - B2. Pagebreak conditionnel `content-visible when-format="typst"`
 :::
 

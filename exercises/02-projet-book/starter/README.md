@@ -1,7 +1,7 @@
 ## Exercice 2 — Starter
 
-> Mémo rapide. La consigne complète est sur le site :
-> [Bloc 2 — Projets & book](https://cderv.github.io/tuto-quarto-typst-rr-2026/2-projets/).
+> **Mémo du dossier `starter/`.** Contenu et commande de rendu ci-dessous.
+> Le pas-à-pas complet (étapes, indices doc, modèle `_quarto.yml`, « Si vous bloquez ») est sur la page de l'exercice.
 
 ### Contenu du dossier
 
