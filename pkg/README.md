@@ -29,7 +29,7 @@ Plan B (si l'univers ne répond pas) — une fois le paquet sur la branche `main
 
 ```r
 # install.packages("pak")
-pak::pak("github::cderv/cderv-tuto-quarto-typst-rr-2026/pkg")
+pak::pak("github::cderv/tuto-quarto-typst-rr-2026/pkg")
 ```
 
 > **À installer d'abord** : **Quarto** et **RStudio**. Le paquet les *vérifie*
