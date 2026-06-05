@@ -140,6 +140,38 @@
   identical(reponse, 1L)
 }
 
+# Choix du dossier de destination des exercices quand l'utilisateur n'en fournit
+# pas (`dest = NULL`). Stratégie en cascade :
+#   - non-interactif OU `force` : renvoie `defaut` sans rien demander (scripts/CI) ;
+#   - RStudio avec `selectDirectory()` : sélecteur graphique (on choisit le dossier
+#     PARENT, un sous-dossier `defaut` y est créé) ; annulation -> NULL ;
+#   - sinon : invite texte `readline()`, `Entrée` = `defaut`.
+.choisir_dossier_dest <- function(defaut = "exercices-typst", force = FALSE) {
+  if (isTRUE(force) || !rlang::is_interactive()) {
+    return(defaut)
+  }
+  if (rlang::is_installed("rstudioapi") &&
+    rstudioapi::isAvailable() &&
+    rstudioapi::hasFun("selectDirectory")) {
+    parent <- tryCatch(
+      rstudioapi::selectDirectory(
+        caption = "Dossier où créer les exercices",
+        label = "Installer ici"
+      ),
+      error = function(e) NULL
+    )
+    if (is.null(parent) || !nzchar(parent)) {
+      return(NULL)
+    }
+    return(file.path(parent, basename(defaut)))
+  }
+  reponse <- tryCatch(
+    trimws(readline(sprintf("Dossier d'installation des exercices [%s] : ", defaut))),
+    error = function(e) ""
+  )
+  if (nzchar(reponse)) reponse else defaut
+}
+
 # Ouvre un dossier dans l'IDE / l'explorateur si possible (best-effort, silencieux)
 .ouvrir_dossier <- function(chemin) {
   if (rlang::is_installed("rstudioapi") &&

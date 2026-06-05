@@ -39,6 +39,17 @@ test_that("installer_exercices() annule sans confirmation en non-interactif", {
   )
 })
 
+test_that(".choisir_dossier_dest() renvoie le défaut en non-interactif", {
+  expect_identical(.choisir_dossier_dest("exercices-typst", force = FALSE), "exercices-typst")
+  expect_identical(.choisir_dossier_dest("autre", force = TRUE), "autre")
+})
+
+test_that("installer_exercices() sans dest s'annule en non-interactif sans force", {
+  # dest = NULL -> repli sur "exercices-typst" puis confirmation requise.
+  withr::local_dir(withr::local_tempdir())
+  expect_error(installer_exercices(quels = "01"), "annul")
+})
+
 test_that("reinitialiser_exercice() sauvegarde avant de restaurer", {
   dest <- withr::local_tempdir()
   installer_exercices(dest, quels = "01", force = TRUE)
