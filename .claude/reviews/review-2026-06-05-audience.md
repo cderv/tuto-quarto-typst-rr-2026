@@ -4,7 +4,7 @@
 - **Type** : audience (qui lit quoi : participant·e / animateur)
 - **Déclencheur** : remarque CD — « on dit *le workaround à donner en salle* ; c'est vraiment à destination du public ? On a besoin d'auditer ce qui est dit pour qui. »
 - **Périmètre** : toutes les surfaces publiées + semi-publiées + privées du site.
-- **Statut** : diagnostic à traiter **plus tard** (rien corrigé à ce stade).
+- **Statut** : périmètre **minimal appliqué** le 2026-06-05 (vraies fuites). Le reste (alléger tout le pilotage des `::: notes`) est **délibérément différé** : décision CD = les `::: notes` sont le prompteur animateur légitime, on ne les vide pas. Voir « Traitement » en bas.
 
 ## Modèle d'audience (3 niveaux)
 
@@ -61,4 +61,17 @@
 
 ## Bilan
 
-Cloisonnement **corps / HTML excellent**. Le travail porte **exclusivement** sur l'hygiène des blocs `::: notes` (semi-publics) qui contiennent du pilotage déjà présent dans `_speaker/`. Décision de fond ouverte : **considère-t-on les `::: notes` comme privées (on les nettoie) ou comme acceptablement semi-publiques (on tolère) ?** — cf. discussion avec CD.
+Cloisonnement **corps / HTML excellent**. Le travail porte **exclusivement** sur l'hygiène des blocs `::: notes` (semi-publics) qui contiennent du pilotage déjà présent dans `_speaker/`.
+
+## Traitement (2026-06-05) — périmètre minimal retenu
+
+Décision CD : les `::: notes` restent le **prompteur animateur** (vue présentateur reveal) — on ne corrige que les **vraies fuites**, pas le pilotage légitime.
+
+**Appliqué :**
+- M4 — chemins privés `_speaker/demo-bloc*-our-turn.qmd` exposés dans les notes → remplacés par « pas-à-pas démo (doc animateur dédié) » (`1-quarto-typst.qmd`, `2-projets.qmd`).
+- M1 — heure interne « reprise à 11h00 » + réf. « chronogramme de pilotage » dans la note de la slide Pause → retirées (garde « ~10 min »).
+- H5 — didascalie « **CD parle.** » retirée (le récit de clôture est conservé).
+
+**Différé volontairement (notes conservées telles quelles) :**
+- H1, H2 — « fusible à couper » ; H3, H4 — « Maëlle passe dans les rangs / CD au tableau » ; M2, M3 — gestes scéniques + régie de projection charte. Jugés acceptables comme guidage animateur en vue présentateur (et déjà dupliqués dans `_speaker/` si on veut les déplacer un jour).
+- Catégorie « à remonter » (méta-cohérence l.249, glose « rôles » l.251) : non traitée — optionnelle.
