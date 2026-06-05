@@ -272,7 +272,7 @@ color:
 :::
 
 ::: notes
-C'est la démo live, **format ultra-court** : 5-6 minutes max. Pas-à-pas détaillé (snippets prêts à copier, ressources à ouvrir, pièges anticipés) dans `_speaker/demo-bloc1-our-turn.qmd`.
+C'est la démo live, **format ultra-court** : 5-6 minutes max. Pas-à-pas détaillé (snippets prêts à copier, ressources à ouvrir, pièges anticipés) dans le pas-à-pas démo (doc animateur dédié).
 
 **Pourquoi minimal** : Our turn montre l'effet d'une édition YAML sur le PDF rendu (une couleur suffit), Your turn traduit la charte SW complète. Si Our turn fait tout, Your turn = répétition.
 
@@ -341,5 +341,5 @@ On se retrouve dans **10 minutes** pour le **Bloc 2 — passer du document au li
 Gardez votre PDF de l'Exercice 1 sous la main : on réutilise votre `_brand.yml` juste après la pause.
 
 ::: notes
-Annoncer clairement la durée (~10 min) et l'heure de reprise (cf. chronogramme de pilotage : reprise à 11h00). Inviter à se dégourdir les jambes. Rappeler que le Bloc 2 repart de leur `_brand.yml` du Bloc 1 (ou du `_brand-starter.yml` de secours pour les arrivants / ceux qui n'ont pas fini) — l'arc `.qmd → livre` continue, on ne repart pas de zéro.
+Annoncer clairement la durée (~10 min) et l'heure de reprise. Inviter à se dégourdir les jambes. Rappeler que le Bloc 2 repart de leur `_brand.yml` du Bloc 1 (ou du `_brand-starter.yml` de secours pour les arrivants / ceux qui n'ont pas fini) — l'arc `.qmd → livre` continue, on ne repart pas de zéro.
 :::
