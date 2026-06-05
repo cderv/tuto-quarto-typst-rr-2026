@@ -41,7 +41,7 @@ test_that("basculer_charte() applique une variante et sauvegarde", {
 })
 
 test_that("comparer_chartes() renvoie les couleurs principales nommées", {
-  cols <- suppressMessages(comparer_chartes())
+  suppressMessages(capture.output(cols <- comparer_chartes()))
   expect_setequal(names(cols), c("empire", "jedi", "mando"))
   expect_match(cols[["empire"]], "^#")
 })
@@ -76,7 +76,7 @@ test_that("recuperer_correction() refuse d'écraser sans force", {
 test_that("exporter_diagnostic() affiche le diagnostic et peut l'écrire", {
   d <- withr::local_tempdir()
   f <- file.path(d, "diag.txt")
-  lignes <- suppressMessages(exporter_diagnostic(f))
+  invisible(capture.output(lignes <- suppressMessages(exporter_diagnostic(f))))
   expect_match(paste(lignes, collapse = "\n"), "Diagnostic tutoquartotypst")
   expect_true(file.exists(f)) # écriture optionnelle quand `fichier` est fourni
   expect_match(paste(readLines(f), collapse = "\n"), "Diagnostic tutoquartotypst")
