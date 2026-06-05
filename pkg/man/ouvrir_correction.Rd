@@ -22,11 +22,11 @@ elles sont plus utiles \strong{après} avoir cherché par vous-même. Une confir
 est demandée. Pour en obtenir une \strong{copie locale à retravailler}, voir
 \code{\link[=recuperer_correction]{recuperer_correction()}}.
 }
-\seealso{
-\code{\link[=recuperer_correction]{recuperer_correction()}} pour copier la correction en local.
-}
 \examples{
 \dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
 ouvrir_correction("01")
 \dontshow{\}) # examplesIf}
+}
+\seealso{
+\code{\link[=recuperer_correction]{recuperer_correction()}} pour copier la correction en local.
 }
