@@ -51,6 +51,28 @@ test_that("ouvrir_correction() renvoie l'URL en ligne", {
   expect_match(url, "02-projet-book/correction$")
 })
 
+test_that("recuperer_correction() copie les sources de la correction", {
+  dest <- withr::local_tempdir()
+  chemin <- recuperer_correction("02", dest = dest, force = TRUE)
+  expect_true(dir.exists(chemin))
+  expect_match(chemin, "02-projet-book/correction$")
+  # sources présentes, pas d'artefact de rendu embarqué
+  expect_true(file.exists(file.path(chemin, "_quarto.yml")))
+  expect_true(file.exists(file.path(chemin, "index.qmd")))
+  expect_length(list.files(chemin, pattern = "\\.(pdf|typ)$", recursive = TRUE), 0)
+})
+
+test_that("recuperer_correction() annule sans confirmation en non-interactif", {
+  dest <- withr::local_tempdir()
+  expect_error(recuperer_correction("01", dest = dest), "annul")
+})
+
+test_that("recuperer_correction() refuse d'écraser sans force", {
+  dest <- withr::local_tempdir()
+  recuperer_correction("01", dest = dest, force = TRUE)
+  expect_error(recuperer_correction("01", dest = dest), "existe d")
+})
+
 test_that("exporter_diagnostic() affiche le diagnostic et peut l'écrire", {
   d <- withr::local_tempdir()
   f <- file.path(d, "diag.txt")

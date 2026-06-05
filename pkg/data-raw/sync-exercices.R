@@ -4,10 +4,12 @@
 # (paquet, français). `system.file("exercices", package = "tutoquartotypst")` doit matcher
 # le dossier généré ici. Ne « corrigez » pas l'un sans l'autre.
 #
-# On ne copie QUE les `starter/` (état « avant » des exercices) + le test d'install.
-# Les corrections restent en ligne sur le site (cf. .claude/CLAUDE.md). On exclut tout
-# artefact de rendu (.quarto/, *_files/, *.typ, *.pdf rendus) — SAUF charte-starwars.pdf
-# (référence visuelle versionnée).
+# On copie les `starter/` (état « avant » des exercices) + le test d'install +
+# les `correction/` (SOURCES uniquement, pour `recuperer_correction()`). On exclut
+# tout artefact de rendu (.quarto/, _book/, *_files/, *.typ, *.pdf rendus, .gitignore)
+# — SAUF charte-starwars.pdf (référence visuelle versionnée). Les corrections ne
+# sont jamais posées par `installer_exercices()` (starters only) : elles ne se
+# copient en local que via `recuperer_correction()`, après confirmation.
 #
 # Lancer depuis la racine du repo :  Rscript pkg/data-raw/sync-exercices.R
 # ou via :                           just pkg-sync
@@ -72,15 +74,17 @@ invisible(file.copy(
   overwrite = TRUE, copy.mode = FALSE
 ))
 
-# --- 01 et 02 : uniquement les starter/ -------------------------------------------
+# --- 01 et 02 : starter/ (toujours) + correction/ (sources, pour recuperer_correction) --
 exos <- c("01-document-typst", "02-projet-book")
 total <- 1L
 for (exo in exos) {
-  from <- file.path(src, exo, "starter")
-  to   <- file.path(dest, exo, "starter")
-  n <- copy_tree(from, to)
-  total <- total + n
-  message(sprintf("  %s/starter : %d fichiers", exo, n))
+  for (sous in c("starter", "correction")) {
+    from <- file.path(src, exo, sous)
+    to   <- file.path(dest, exo, sous)
+    n <- copy_tree(from, to)
+    total <- total + n
+    message(sprintf("  %s/%s : %d fichiers", exo, sous, n))
+  }
 }
 
 message(sprintf("\nSync exercices : %d fichiers dans %s", total,
