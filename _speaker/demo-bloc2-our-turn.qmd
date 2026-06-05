@@ -48,13 +48,19 @@ ls                  # confirme : 5 .qmd + charte, PAS de _quarto.yml
 
 **Action écran** : montrer rapidement `ls` → 5 `.qmd` + charte, **pas** de `_quarto.yml`.
 
-**Render avant** (pour montrer le baseline) :
+**Render avant** (baseline, pour montrer un doc isolé) — on **nomme le fichier** :
 
 ```bash
-quarto render
+quarto render index.qmd
 ```
 
-**À montrer** : 5 fichiers HTML séparés générés. Pas de PDF, pas de cohésion.
+**À montrer** : un HTML isolé (`format: html` par défaut), aucun PDF, aucune cohésion entre les fichiers.
+
+::: callout-warning
+## Piège vérifié (Quarto 1.9.x) — à ne pas faire en démo
+
+`quarto render` **tout court** (ou `quarto render .`) dans un dossier **sans** `_quarto.yml` ne rend **rien** : pas d'erreur, juste un **no-op silencieux** (exit 0). Pour un projet, il faut d'abord créer `_quarto.yml` ; tant qu'il n'existe pas, il faut **nommer le fichier** (`quarto render index.qmd`). C'est pour ça que le baseline ci-dessus cible `index.qmd` explicitement, et que le render « 5 PDF » plus bas n'arrive **qu'après** la création du `_quarto.yml`.
+:::
 
 **Action écran** : créer `_quarto.yml` à la racine.
 
@@ -133,7 +139,7 @@ quarto render
 
 **À dire** :
 
-> "La transformation est faite : `project → book` active orange-book et fait apparaître la structure livre. À vous maintenant : basculer `annexe-donnees` en annexe (champ `appendices`), copier votre `_brand.yml` du Bloc 1 (ou le `_brand-starter.yml` fourni) pour réveiller la charte Star Wars au niveau projet, et les bonus si vous avez le temps. 12 minutes."
+> "La transformation est faite : `project → book` active orange-book et fait apparaître la structure livre. À vous maintenant : basculer `annexe-donnees` en annexe (champ `appendices`), copier votre `_brand.yml` du Bloc 1 (ou le `_brand-starter.yml` fourni) pour réveiller la charte Star Wars au niveau projet, et les bonus si vous avez le temps. 15 minutes."
 
 ::: callout-tip
 ## Où sont `_brand-starter.yml` et `_logo-sw.svg` ?
@@ -143,7 +149,7 @@ quarto render
 
 **Action écran** : passer à la slide "Exercice 2 — À vous !" + ouvrir `2-projets/boussole.html` sur écran secondaire (countdown).
 
-**Rôles pendant les 12 min de Your turn** :
+**Rôles pendant les 15 min de Your turn** :
 
 - **Maëlle** passe dans les rangs et dépanne en 1:1 (pièges anticipés ci-dessous = aide-mémoire pour elle aussi).
 - **CD** reste disponible au tableau pour rebondir sur les questions communes (le saut conceptuel `type: book`, `appendices` vs `chapters`).

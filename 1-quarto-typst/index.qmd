@@ -11,7 +11,7 @@ date: ""
 
 ## Diapos
 
-{{< fa tv >}} [Ouvrir les diapos en plein écran](1-quarto-typst.html)
+{{< fa tv >}} [Ouvrir les diapos en plein écran](1-quarto-typst.html){target="_blank"}
 
 ```{=html}
 <iframe class="slide-deck" src="1-quarto-typst.html" height="420" width="747" style="border: 1px solid #123233;"></iframe>
@@ -45,9 +45,13 @@ Le reste (charte complète, polices, logo, `keep-typ`) = Exercice 1.
 
 🎯 **Objectif :** transformer un rapport `.qmd` HTML en PDF Typst stylé via `_brand.yml`.
 
+🧭 **Pendant l'exercice :** [boussole Exercice 1](boussole.qmd){target="_blank"} — objectif, étapes et chrono dans un panneau autonome (pratique en second écran).
+
 Fichier : {{< fa download >}} [exercises/01-document-typst/starter/](https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/starter)
 
 📄 **Charte fournie :** `charte-starwars.pdf` (dans le starter) — palette, polices, logo et rôles (`primary` / `foreground` / `background`) à traduire en YAML.
+
+💡 **Commencez par l'étape 1 seule** : faites le passage `format: html` → `format: typst` et rendez **vous-même**, puis regardez le PDF brut (sans charte) avant de toucher à `_brand.yml`. C'est le réflexe de base — un PDF en une ligne de YAML — qu'on veut ancrer avant d'ajouter le style.
 
 **4 étapes principales (12 min) — attendues de tous :**
 
@@ -63,6 +67,10 @@ Fichier : {{< fa download >}} [exercises/01-document-typst/starter/](https://git
 | \# | Action | Vous devriez voir |
 |----|-----------------------------|-----------------------------------------|
 | B1 | Activer `keep-typ: true`, ouvrir le `.typ` généré. | Fichier `.typ` à côté du PDF, syntaxe Typst lisible (`= titre`, `#strong[...]`, etc.). |
+:::
+
+::: {.callout-warning appearance="minimal"}
+**PDF inchangé après avoir modifié `_brand.yml` ?** Le plus souvent, le PDF est encore **ouvert dans un lecteur** qui le verrouille (fréquent sous Windows) : fermez le lecteur (ou supprimez le `.pdf`) puis re-rendez. Si le rendu reste figé, supprimez le `.pdf` (voire le dossier `.quarto/`) avant de relancer.
 :::
 
 ::: {.callout-tip collapse="true"}

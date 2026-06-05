@@ -17,11 +17,13 @@ installer_exercices(
 \item{quels}{Quels exercices installer : \code{"tous"} (défaut), \code{"01"}
 (document Typst) ou \code{"02"} (projet livre).}
 
-\item{force}{Logique. Écraser un dossier de destination déjà existant et non
-vide ? Par défaut \code{FALSE}.}
+\item{force}{Logique. Passer la confirmation interactive \strong{et} écraser un
+dossier de destination déjà existant et non vide ? Par défaut \code{FALSE} (en
+mode non-interactif, \code{force = TRUE} est requis pour confirmer la copie).}
 }
 \value{
-Invisiblement, le chemin absolu du dossier de destination.
+Invisiblement, le chemin absolu du dossier de destination, ou \code{NULL}
+si l'installation a été annulée.
 }
 \description{
 Copie les fichiers de départ (« starters ») des exercices, embarqués dans le

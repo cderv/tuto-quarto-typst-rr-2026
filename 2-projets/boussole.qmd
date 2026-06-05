@@ -12,7 +12,7 @@ sidebar: false
 ::: {.boussole-header}
 [🧭 Exercice 2 [Du document au livre PDF Typst stylé]{.boussole-sub}]{.boussole-title}
 
-{{< countdown 12:00 id="timer-boussole-2" class="inline" font_size="3.4rem" start_immediately=true >}}
+{{< countdown 15:00 id="timer-boussole-2" class="inline" font_size="3.4rem" start_immediately=true >}}
 :::
 
 ::: {.boussole-grid}

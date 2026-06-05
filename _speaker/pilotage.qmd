@@ -28,7 +28,7 @@ Vue **bout-à-bout des 2h** pour piloter la séance : chronogramme minuté, colo
 ## Deux paramètres figés (ne pas re-débattre le jour J)
 
 - **Créneau réel : 10h–12h** (pause + Q&A inclus dans le créneau). ⚠️ Pas 9h–11h.
-- **Durée des Your turn : 12:00** (countdown des boussoles et slides). `PLAN.md` mentionne 15:00 dans son journal — **obsolète**, les fichiers réels font foi.
+- **Durée des Your turn : Exo 1 = 12:00, Exo 2 = 15:00** (countdown des boussoles et slides). L'Exo 2 (polices + logo au niveau projet) demande un peu plus de temps que l'Exo 1.
 :::
 
 ---
@@ -46,12 +46,12 @@ Vue **bout-à-bout des 2h** pour piloter la séance : chronogramme minuté, colo
 | 10h50 | 10 min | ☕ **Pause** | — | — | — |
 | 11h00 | 10 min | Reprise post-pause + **My turn** bloc 2 | CD | deck bloc 2 | au fil |
 | 11h10 | 7 min | **Our turn** bloc 2 → [démo](demo-bloc2-our-turn.qmd) | CD | éditeur + PDF | — |
-| 11h17 | 12 min | **Your turn** Exo 2 (countdown 12:00) | Maëlle / CD | boussole bloc 2 | 1:1 Maëlle |
-| 11h29 | 7 min | Débrief Exo 2 + pépite | CD | deck | **collectif** |
-| 11h36 | 12 min | Wrap-up (3 slides) + ressources | CD | deck | **final** |
-| 11h48 | 12 min | **Buffer contingence** (fin anticipée / 1:1) | CD + Maëlle | — | filet |
+| 11h17 | 15 min | **Your turn** Exo 2 (countdown 15:00) | Maëlle / CD | boussole bloc 2 | 1:1 Maëlle |
+| 11h32 | 7 min | Débrief Exo 2 + pépite | CD | deck | **collectif** |
+| 11h39 | 12 min | Wrap-up (3 slides) + ressources | CD | deck | **final** |
+| 11h51 | 9 min | **Buffer contingence** (fin anticipée / 1:1) | CD + Maëlle | — | filet |
 
-**Lecture du budget** : ~87 min animé + 10 min pause + ~12 min de buffer. Le buffer final est un **filet anti-dépassement**, pas un créneau Q&A : s'il n'est pas consommé, fin anticipée ou dépannage 1:1.
+**Lecture du budget** : ~90 min animé + 10 min pause + ~9 min de buffer. Le buffer final est un **filet anti-dépassement**, pas un créneau Q&A : s'il n'est pas consommé, fin anticipée ou dépannage 1:1.
 
 ### Q&A : un principe transverse, pas un segment
 
@@ -128,12 +128,12 @@ L'Exo 2 est **volontairement autonome** (un `_brand-starter.yml` de secours exis
 - Consigne immédiate : **« Ouvrez votre éditeur maintenant. »**
 - Vérif install éclair : qui n'a pas réussi le mini-test d'install ? → orienter vers le [Plan B des préparatifs](../preparatifs.qmd) et vers Maëlle.
 
-### Clôture (11h36, ~12 min)
+### Clôture (11h39, ~12 min)
 
 - Dérouler les 3 slides de wrap-up (« Ce que vous savez faire » / « Et maintenant ? » / « Merci ! Questions ? ») — déjà rédigées dans `2-projets/2-projets.qmd`.
 - **Q&A final** : relancer si silence avec les 2 questions stock (dans les notes de `2-projets.qmd`).
 - Où pointer après : [Ressources](../4-ressources.qmd), contacts, dépôt GitHub.
-- Gérer le dépassement : si on déborde, le buffer (11h48) absorbe ; ne pas couper le wrap-up.
+- Gérer le dépassement : si on déborde, le buffer (11h51) absorbe ; ne pas couper le wrap-up.
 
 ---
 

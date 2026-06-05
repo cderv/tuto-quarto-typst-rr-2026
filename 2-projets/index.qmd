@@ -11,7 +11,7 @@ date: ""
 
 ## Diapos
 
-{{< fa tv >}} [Ouvrir les diapos en plein écran](2-projets.html)
+{{< fa tv >}} [Ouvrir les diapos en plein écran](2-projets.html){target="_blank"}
 
 ```{=html}
 <iframe class="slide-deck" src="2-projets.html" height="420" width="747" style="border: 1px solid #123233;"></iframe>
@@ -49,14 +49,16 @@ L'Exercice 2 est **indépendant de l'Exercice 1** : si vous n'avez pas terminé 
 
 🎯 **Objectif :** transformer 5 `.qmd` en un livre PDF Typst stylé via `_quarto.yml` + `_brand.yml`.
 
+🧭 **Pendant l'exercice :** [boussole Exercice 2](boussole.qmd){target="_blank"} — objectif, étapes et chrono dans un panneau autonome (pratique en second écran).
+
 Fichier : {{< fa download >}} [exercises/02-projet-book/starter/](https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises/02-projet-book/starter)
 
-**3 étapes principales (12 min) — attendues de tous :**
+**3 étapes principales (15 min) — attendues de tous :**
 
 | # | Action | Vous devriez voir |
 |---|--------|-------------------|
-| 1 | Créer `_quarto.yml` à la racine du starter avec `project: { type: default }` et `format: typst`. | 5 PDF séparés (un par fichier). Une référence croisée non résolue (`?@sec-origines`) + un *warning* à la compilation : **normal** à ce stade, ça se résout en mode livre à l'étape 2a. |
-| 2a | Passer à `type: book` et ajouter `book: { title, chapters: [...] }`. Le `format: typst` reste — orange-book s'active automatiquement. | **PDF unique** + couverture orange-book + Figure 1.1 / Figure 2.1 / Table 1.1 / Table 2.1 + TOC. `annexe-donnees` apparaît comme dernier chapitre numéroté. |
+| 1 | Créer `_quarto.yml` à la racine du starter : un projet (`project.type: default`) et `format: typst` (modèle complet à copier plus bas). | 5 PDF séparés (un par fichier). Une référence croisée non résolue (`?@sec-origines`) + un *warning* à la compilation : **normal** à ce stade, ça se résout en mode livre à l'étape 2a. |
+| 2a | Passer à `project.type: book` et ajouter un bloc `book:` avec `title`, `author` et la liste `chapters:` (cf. modèle plus bas). Le `format: typst` reste — orange-book s'active automatiquement. | **PDF unique** + couverture orange-book + Figure 1.1 / Figure 2.1 / Table 1.1 / Table 2.1 + TOC. `annexe-donnees` apparaît comme dernier chapitre numéroté. |
 | 2b | Ajouter `appendices: [annexe-donnees.qmd]` au bloc `book:`. | `annexe-donnees` bascule en « Annexe A » à la fin du livre, hors numérotation des chapitres. |
 | 3 | Copier `_brand.yml` (+ `_logo-sw.svg` + `_fonts/`) à la racine. Si vous avez fini Bloc 1 → reprenez votre `_brand.yml`. Sinon → renommez [`_brand-starter.yml`](https://github.com/cderv/tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/_brand-starter.yml) en `_brand.yml`. (Le `charte-starwars.pdf` du starter reste votre référence visuelle.) | Couverture aux couleurs Star Wars (bande imperial-red + logo étoile jaune), titres Star Jedi, corps Inter. (Les tableaux `gt` restent bruts à ce stade — leur mise aux couleurs de la charte est l'objet du Bonus 4.) |
 
@@ -141,6 +143,12 @@ execute:
 ```
 
 `chapters:` reçoit les fichiers numérotés normalement. `appendices:` (parallèle à `chapters:`, pas dedans) reçoit les fichiers qui sortent du flux principal — ils deviennent A, B, C... après tous les chapitres.
+
+**Rendre le projet** : lancez `quarto render` **à la racine du dossier** (là où se trouve `_quarto.yml`), ou utilisez le bouton **Render** de RStudio / Positron. Quarto rend alors **tout le projet** d'un coup — pas besoin de cibler un fichier précis.
+
+::: {.callout-warning appearance="minimal"}
+À l'inverse, `quarto render` lancé dans un dossier **sans** `_quarto.yml` ne fait **rien** (pas d'erreur, juste aucun fichier produit). Créez d'abord le `_quarto.yml` de l'étape 1 ; pour rendre un fichier isolé avant ça, nommez-le : `quarto render index.qmd`.
+:::
 
 ::: {.callout-warning collapse="true"}
 ## Polices de la charte non chargées (Quarto < v1.10.4)

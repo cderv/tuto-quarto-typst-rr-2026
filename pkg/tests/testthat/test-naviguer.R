@@ -8,7 +8,7 @@ test_that("lister_exercices() renvoie les trois exercices", {
 
 test_that("par_ou_commencer() détecte les exercices installés", {
   dest <- withr::local_tempdir()
-  installer_exercices(dest, quels = "01")
+  installer_exercices(dest, quels = "01", force = TRUE)
   # Quarto + paquets présents dans cet environnement -> étape « démarrer ».
   skip_if_no_quarto()
   expect_identical(par_ou_commencer(dest), "demarrer")

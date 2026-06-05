@@ -251,7 +251,7 @@ Méta-cohérence pédagogique à expliciter à l'oral : « ce PDF que vous tenez
 Le terme « rôles » dans nos supports correspond aux « assignments » de la charte (terme anglais conservé dans la spec `_brand.yml`) = mapping `primary` / `foreground` / `background` → noms de palette. Le préciser oralement (la charte n'a pas la place de l'expliquer).
 :::
 
-## Faisons ensemble !
+## Faisons ensemble ! {.smaller}
 
 ::: callout-tip
 ## Faisons ensemble !
@@ -260,6 +260,13 @@ On passe le doc en PDF Typst, puis on lui applique une couleur via `_brand.yml`.
 
 1.  Ouvrez `rapport-starwars.qmd`, passez `format: html` → `format: typst`, rendez → PDF brut
 2.  Créez `_brand.yml` avec **une seule couleur** + rôle `primary`, re-rendez → titres et liens colorés
+
+``` {.yaml filename="_brand.yml"}
+color:
+  palette:
+    imperial-red: "#BC1E22"
+  primary: imperial-red
+```
 
 → À vous ensuite pour la charte complète (palette + rôles + polices).
 :::
@@ -325,4 +332,14 @@ Les problèmes fréquents : oubli des guillemets sur les couleurs hex dans brand
 
 ::: notes
 Slide rapide, 2-3 minutes max. L'objectif est juste de planter des graines. Les gens curieux iront voir la page Ressources. Cette slide est le premier fusible à couper si on manque de temps.
+:::
+
+## ☕ Pause {.center}
+
+On se retrouve dans **10 minutes** pour le **Bloc 2 — passer du document au livre**.
+
+Gardez votre PDF de l'Exercice 1 sous la main : on réutilise votre `_brand.yml` juste après la pause.
+
+::: notes
+Annoncer clairement la durée (~10 min) et l'heure de reprise (cf. chronogramme de pilotage : reprise à 11h00). Inviter à se dégourdir les jambes. Rappeler que le Bloc 2 repart de leur `_brand.yml` du Bloc 1 (ou du `_brand-starter.yml` de secours pour les arrivants / ceux qui n'ont pas fini) — l'arc `.qmd → livre` continue, on ne repart pas de zéro.
 :::

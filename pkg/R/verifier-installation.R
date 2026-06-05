@@ -48,7 +48,7 @@ verifier_installation <- function(tester_rendu = TRUE) {
     cli::cli_alert_success(
       "Tout est prêt : .qmd → PDF pro → livre → à personnaliser. Rendez-vous le 16 juin !"
     )
-    cli::cli_alert_info("Le jour J, pensez à ouvrir RStudio (récent).")
+    cli::cli_alert_info("Le jour J, pensez à ouvrir RStudio ou Positron (récent).")
     cli::cli_alert_info(
       "Prochaine étape : installez les exercices avec {.run tutoquartotypst::installer_exercices()}."
     )

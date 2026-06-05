@@ -125,7 +125,7 @@ test_that("reinitialiser_exercice() restaure même sans dossier préexistant", {
 
 test_that("reinitialiser_exercice() refuse d'écraser sans force en non-interactif", {
   d <- withr::local_tempdir()
-  installer_exercices(d, quels = "01")
+  installer_exercices(d, quels = "01", force = TRUE)
   expect_error(reinitialiser_exercice("01", dossier = d, force = FALSE), "force")
 })
 
