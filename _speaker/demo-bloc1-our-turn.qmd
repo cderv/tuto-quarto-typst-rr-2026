@@ -138,6 +138,12 @@ quarto render rapport-starwars.qmd
 
 → `quarto preview rapport-starwars.qmd` ouvre un viewer auto-refresh. **Mais éviter pendant la démo** : préférer render manuel, plus lisible pour le public.
 
+### "J'ai modifié `_brand.yml` mais le PDF ne change pas"
+
+→ Cause n°1 (surtout **Windows**) : le **PDF est ouvert dans un lecteur** qui verrouille le fichier → Typst ne peut pas le réécrire. **Réflexe** : fermer le lecteur PDF (ou supprimer le `.pdf`), puis re-rendre. Sous Acrobat/Edge le verrou est fréquent ; un lecteur léger (SumatraPDF) ou l'aperçu de l'éditeur ne verrouille pas.
+
+→ Cause n°2 (plus rare) : sortie considérée à jour / cache. **Réflexe** : supprimer le `.pdf` (et au besoin le dossier `.quarto/`) puis re-rendre. À noter, les changements de `_brand.yml` sont normalement détectés au render ; en cas de doute, `quarto render rapport-starwars.qmd` (render explicite) part d'un état propre. Pas de fix Quarto dédié connu à ce jour — c'est le workaround à donner en salle.
+
 ---
 
 ## Checklist finale avant de quitter Our turn

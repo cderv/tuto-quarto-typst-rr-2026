@@ -8,10 +8,12 @@
 #'   `"exercices-typst"` dans le répertoire de travail courant.
 #' @param quels Quels exercices installer : `"tous"` (défaut), `"01"`
 #'   (document Typst) ou `"02"` (projet livre).
-#' @param force Logique. Écraser un dossier de destination déjà existant et non
-#'   vide ? Par défaut `FALSE`.
+#' @param force Logique. Passer la confirmation interactive **et** écraser un
+#'   dossier de destination déjà existant et non vide ? Par défaut `FALSE` (en
+#'   mode non-interactif, `force = TRUE` est requis pour confirmer la copie).
 #'
-#' @return Invisiblement, le chemin absolu du dossier de destination.
+#' @return Invisiblement, le chemin absolu du dossier de destination, ou `NULL`
+#'   si l'installation a été annulée.
 #' @export
 #'
 #' @examplesIf interactive()
@@ -36,6 +38,20 @@ installer_exercices <- function(dest = "exercices-typst",
       "i" = "Relancez avec {.code force = TRUE}, ou choisissez un autre {.arg dest}."
     ))
   }
+
+  # Annonce de la destination + confirmation avant toute écriture sur disque.
+  cli::cli_alert_info("Destination des exercices : {.path {dest_abs}}")
+  if (!.confirmer("Copier les exercices dans ce dossier ?", force = force)) {
+    if (!rlang::is_interactive()) {
+      cli::cli_abort(c(
+        "Installation annulée (mode non-interactif).",
+        "i" = "Relancez avec {.code force = TRUE} pour confirmer, ou changez {.arg dest}."
+      ))
+    }
+    cli::cli_alert_info("Installation annulée. Indiquez un autre {.arg dest} si besoin.")
+    return(invisible(NULL))
+  }
+
   dir.create(dest_abs, recursive = TRUE, showWarnings = FALSE)
 
   for (exo in exos) {

@@ -14,7 +14,7 @@ test_that("nettoyer_cache() supprime les artefacts de rendu", {
 test_that("ouvrir_exercices() exige un dossier existant", {
   expect_error(ouvrir_exercices(file.path(withr::local_tempdir(), "absent")), "introuvable")
   d <- withr::local_tempdir()
-  installer_exercices(file.path(d, "exos"), quels = "01")
+  installer_exercices(file.path(d, "exos"), quels = "01", force = TRUE)
   expect_identical(
     normalizePath(ouvrir_exercices(file.path(d, "exos")), winslash = "/"),
     normalizePath(file.path(d, "exos"), winslash = "/")
