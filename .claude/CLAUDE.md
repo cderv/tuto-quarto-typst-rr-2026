@@ -87,17 +87,18 @@ Différenciation visuelle = type de callout (pas `{background-color=...}` sur le
 
 ## Références
 
-- Plan de travail → `.claude/PLAN.md`
-- Setup sandbox vierge (gh/rig/R, pkgdown) → `.claude/references/sandbox-setup.md`
-- Détails techniques, URLs, content patterns → `.claude/references/project-context.md`
+Versionnées (publiques) :
+
 - Skill pour créer du contenu → `.claude/skills/workshop-content.md`
 - Skill Quarto authoring (Posit) → `.claude/skills/quarto-authoring.md`
 - Skill alt text pour figures → `.claude/skills/quarto-alt-text.md`
 - Skill brand.yml (Posit) → `.claude/skills/brand-yml.md`
 
+Notes de travail **locales, non versionnées** (gitignorées avant le passage public, cf. `.gitignore`) : `.claude/PLAN.md`, `.claude/references/` (setup sandbox, project-context, topic-store…), `.claude/plans/`, `.claude/design-*.md`, `.claude/reviews/`. Présentes en local mais absentes du dépôt public.
+
 ## Reviews
 
-Les rapports de review générés par les agents vont dans `.claude/reviews/`.
+Les rapports de review générés par les agents vont dans `.claude/reviews/` (dossier **local, non versionné**).
 
 Convention de nommage : `.claude/reviews/review-YYYY-MM-DD[-tag]-[type].md`
 - `[tag]` optionnel : `bis`, `ter`, `quater`, … pour plusieurs reviews le même jour
