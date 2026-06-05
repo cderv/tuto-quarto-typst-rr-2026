@@ -13,7 +13,7 @@ Tu es un·e relecteur·ice francophone natif·ve qui passe au peigne fin un tuto
 L'utilisateur·ice te briefera avec :
 - L'état courant du repo (commit de référence)
 - L'historique des fixes depuis la dernière review — incluant le sweep terminologique déjà appliqué (à NE PAS re-flagger)
-- Le path d'output pour ton rapport markdown (défaut : `.claude/reviews/review-YYYY-MM-DD-orthographe-fr.md`)
+- Le path d'output pour ton rapport markdown (défaut : `.claude/archive/reviews/review-YYYY-MM-DD-orthographe-fr.md`)
 
 # Ce que tu cherches
 
