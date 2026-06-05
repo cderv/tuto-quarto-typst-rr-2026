@@ -4,11 +4,7 @@
 \alias{installer_exercices}
 \title{Installer les exercices du tutoriel}
 \usage{
-installer_exercices(
-  dest = NULL,
-  quels = c("tous", "01", "02"),
-  force = FALSE
-)
+installer_exercices(dest = NULL, quels = c("tous", "01", "02"), force = FALSE)
 }
 \arguments{
 \item{dest}{Chemin du dossier de destination (créé si besoin). Par défaut
