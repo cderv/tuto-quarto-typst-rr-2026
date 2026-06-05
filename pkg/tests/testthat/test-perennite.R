@@ -41,7 +41,7 @@ test_that("basculer_charte() applique une variante et sauvegarde", {
 })
 
 test_that("comparer_chartes() renvoie les couleurs principales nommées", {
-  suppressMessages(capture.output(cols <- comparer_chartes()))
+  cols <- suppressMessages(comparer_chartes())
   expect_setequal(names(cols), c("empire", "jedi", "mando"))
   expect_match(cols[["empire"]], "^#")
 })

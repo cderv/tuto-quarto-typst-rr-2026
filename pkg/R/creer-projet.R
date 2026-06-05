@@ -212,7 +212,9 @@ comparer_chartes <- function() {
     cli::cli_li("{.strong {v}} : {couleurs[[v]]}")
   }
   cli::cli_end()
-  if (rlang::is_installed("prismatic")) {
+  # Aperçu coloré (pastilles) réservé à l'usage interactif : en script/test, la
+  # liste cli ci-dessus donne déjà les hex, inutile d'imprimer en plus.
+  if (rlang::is_interactive() && rlang::is_installed("prismatic")) {
     print(prismatic::color(couleurs)) # couleurs est déjà nommé (empire/jedi/mando)
   }
   invisible(couleurs)
