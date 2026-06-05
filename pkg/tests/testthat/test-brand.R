@@ -36,7 +36,7 @@
 test_that("valider_brand() accepte une charte cohérente", {
   d <- withr::local_tempdir()
   .brand_online(d)
-  expect_true(valider_brand(file.path(d, "_brand.yml")))
+  expect_true(suppressMessages(valider_brand(file.path(d, "_brand.yml"))))
 })
 
 test_that("valider_brand() repère une référence cassée et un fichier manquant", {
@@ -46,7 +46,7 @@ test_that("valider_brand() repère une référence cassée et un fichier manquan
   l <- readLines(brand)
   l <- sub("  primary: rouge", "  primary: inexistante", l)
   writeLines(l, brand)
-  expect_false(valider_brand(brand))
+  expect_false(suppressMessages(valider_brand(brand)))
 })
 
 test_that("basculer_hors_ligne() bascule Inter en local puis restaure", {
@@ -54,7 +54,7 @@ test_that("basculer_hors_ligne() bascule Inter en local puis restaure", {
   .brand_online(d)
   brand <- file.path(d, "_brand.yml")
 
-  basculer_hors_ligne(d)
+  suppressMessages(basculer_hors_ligne(d))
   contenu <- paste(readLines(brand, warn = FALSE), collapse = "\n")
   expect_match(contenu, "_fonts/Inter-Regular.ttf")
   expect_no_match(contenu, "source:\\s*google")
@@ -63,7 +63,7 @@ test_that("basculer_hors_ligne() bascule Inter en local puis restaure", {
   # la palette/les couleurs sont préservées (garde : on ne touche pas au reste)
   expect_match(contenu, "primary: rouge")
 
-  basculer_hors_ligne(d, retour = TRUE)
+  suppressMessages(basculer_hors_ligne(d, retour = TRUE))
   expect_match(paste(readLines(brand, warn = FALSE), collapse = "\n"), "source: google")
   expect_false(file.exists(file.path(d, "_brand.yml.avant-hors-ligne")))
 })
@@ -73,10 +73,10 @@ test_that("basculer_hors_ligne() ne touche rien si pas de source: google", {
   .brand_online(d)
   brand <- file.path(d, "_brand.yml")
   # on passe Inter en file -> plus aucune source: google
-  basculer_hors_ligne(d)
+  suppressMessages(basculer_hors_ligne(d))
   avant <- xfun::read_utf8(brand)
   # second appel : structure inattendue (déjà hors-ligne) -> no-op
-  expect_null(basculer_hors_ligne(d))
+  expect_null(suppressMessages(basculer_hors_ligne(d)))
   expect_identical(xfun::read_utf8(brand), avant)
 })
 
@@ -93,7 +93,7 @@ test_that("basculer_hors_ligne() refuse une charte dont la police google n'est p
     "  base: Autre"
   ), brand)
   avant <- xfun::read_utf8(brand)
-  expect_null(basculer_hors_ligne(d))
+  expect_null(suppressMessages(basculer_hors_ligne(d)))
   expect_identical(xfun::read_utf8(brand), avant) # inchangé
 })
 
@@ -111,9 +111,9 @@ test_that("appliquer_polices_locales() ajoute font-paths puis est idempotent", {
     c("project:", "  type: book", "format:", "  typst:", "    papersize: a4"), qfile
   )
 
-  expect_true(appliquer_polices_locales(d))
+  expect_true(suppressMessages(appliquer_polices_locales(d)))
   expect_match(paste(readLines(qfile, warn = FALSE), collapse = "\n"), "font-paths")
   expect_true(file.exists(paste0(qfile, ".avant-fontpaths")))
   # deuxième appel : idempotent
-  expect_false(appliquer_polices_locales(d))
+  expect_false(suppressMessages(appliquer_polices_locales(d)))
 })
