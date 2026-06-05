@@ -10,7 +10,7 @@ Produire des **documents PDF professionnels** avec Quarto en utilisant **Typst**
 - **Durée :** 2h (~1h30 de contenu + pause + Q&A au fil)
 - **Prérequis :** Quarto 1.9+, R 4.2+, RStudio / VS Code / Positron — voir [`preparatifs.qmd`](preparatifs.qmd)
 
-🔗 **Site du tutoriel :** <https://connect.posit.cloud/cderv/content/019df82c-7202-2165-28ea-7f9ca734ad26>
+🔗 **Site du tutoriel :** <https://cderv.github.io/tuto-quarto-typst-rr-2026/>
 
 ## Programme
 
@@ -69,4 +69,9 @@ _speaker/               # Docs d'animation (pilotage, démos, notes) — interne
 
 ## Licence
 
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — Christophe Dervieux & Maëlle Salmon.
+- **Contenu** (texte, slides, exercices, pages) : [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — voir [`LICENSE`](LICENSE). © Christophe Dervieux & Maëlle Salmon.
+- **Code** du paquet R `pkg/` : licence MIT — voir [`pkg/LICENSE.md`](pkg/LICENSE.md).
+
+Composants tiers redistribués sous leur propre licence : extensions Quarto (`_extensions/**/LICENSE`, MIT), packages Typst (`_typst-packages/`, voir leurs `LICENSE`), police Inter (OFL 1.1), police Star Jedi (freeware fan-made, voir `LICENSE-StarJedi.txt`).
+
+> _Star Wars et les noms associés sont des marques de Lucasfilm Ltd. Ce tutoriel utilise l'univers Star Wars à des seules fins pédagogiques et n'est affilié ni à Lucasfilm ni à Disney._
