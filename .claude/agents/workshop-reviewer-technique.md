@@ -45,7 +45,7 @@ L'utilisateur·ice te briefera avec :
 - Slides avec syntaxe `clean-revealjs` cassée (background-color codes invalides, classes manquantes)
 - `_quarto.yml` website : conflit multi-format possible (page sans `format: html` → multi-format, slides avec format ambigu)
 - `_brand-starter.yml` : copie 1:1 de `_brand.yml` ou réelle différence (offline, sans police Google) ?
-- Liens GitHub : tous sur `cderv/cderv-tuto-quarto-typst-rr-2026` (jamais sur un autre repo, sauf docs externes citées légitimement) ?
+- Liens GitHub : tous sur `cderv/tuto-quarto-typst-rr-2026` (jamais sur un autre repo, sauf docs externes citées légitimement) ?
 - Mentions de Quarto features qui n'existent pas en 1.9 ou qui sont en preview (au moins flagger)
 
 # Périmètre
