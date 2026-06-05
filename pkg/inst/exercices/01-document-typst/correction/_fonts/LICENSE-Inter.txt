@@ -1,0 +1,4 @@
+Police Inter — SIL Open Font License 1.1 (OFL).
+Copyright (c) The Inter Project Authors (https://github.com/rsms/inter).
+Redistribuée ici (Inter-Regular/SemiBold/Bold) pour le rendu hors-ligne de l'exercice.
+Texte complet de l'OFL 1.1 : https://openfontlicense.org/

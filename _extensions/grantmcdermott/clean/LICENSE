@@ -1,6 +1,6 @@
-# MIT License
+MIT License
 
-Copyright (c) 2026 Christophe Dervieux
+Copyright (c) Grant McDermott
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +19,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+Thème Quarto RevealJS « clean » vendorisé depuis https://github.com/grantmcdermott/quarto-clean-theme
+(licence MIT amont). Reproduite ici pour une redistribution conforme et un build hors-ligne.
