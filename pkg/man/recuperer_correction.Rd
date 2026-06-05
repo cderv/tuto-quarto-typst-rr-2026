@@ -4,14 +4,18 @@
 \alias{recuperer_correction}
 \title{Récupérer la correction d'un exercice en local}
 \usage{
-recuperer_correction(quel = c("01", "02"), dest = "exercices-typst", force = FALSE)
+recuperer_correction(
+  quel = c("01", "02"),
+  dest = "exercices-typst",
+  force = FALSE
+)
 }
 \arguments{
 \item{quel}{\code{"01"} (défaut) ou \code{"02"}.}
 
 \item{dest}{Dossier de travail où poser la correction (créé si besoin). Par
 défaut \code{"exercices-typst"} — la correction atterrit alors dans
-\code{exercices-typst/<exercice>/correction/}, à côté du \verb{starter/}.}
+\verb{exercices-typst/<exercice>/correction/}, à côté du \verb{starter/}.}
 
 \item{force}{Logique. Passer la confirmation \strong{et} écraser une correction
 déjà copiée et non vide ? Par défaut \code{FALSE} (en mode non-interactif,
@@ -29,9 +33,9 @@ est plus utile une fois que vous avez cherché par vous-même.
 }
 \details{
 Par défaut, la correction est posée à côté du \verb{starter/} correspondant (dans
-\code{exercices-typst/<exercice>/correction/}), ce qui reproduit l'arborescence du
+\verb{exercices-typst/<exercice>/correction/}), ce qui reproduit l'arborescence du
 dépôt. Aucun artefact de rendu n'est embarqué : pour obtenir le PDF / livre,
-rendez la correction avec \code{quarto render}.
+rendez la correction avec \verb{quarto render}.
 }
 \examples{
 \dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
