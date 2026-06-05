@@ -316,9 +316,9 @@ color:
 
 ⏱ **12 minutes** — chrono + étapes projetés à l'écran.
 
-🧭 [Ouvrir la boussole](boussole.html){target="_blank" preview-link="false"}
+🧭 [Boussole](boussole.html){target="_blank" preview-link="false"} — objectif, étapes & chrono, à garder sous les yeux
 
-📖 Consigne complète : [Page Exercice 1](index.qmd)
+📖 [Page de l'exercice](index.qmd) — consigne détaillée, indices doc, correction
 :::
 
 ::: notes

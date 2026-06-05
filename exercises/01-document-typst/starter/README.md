@@ -1,7 +1,7 @@
 ## Exercice 1 — Starter
 
-> Mémo rapide. La consigne complète est sur le site :
-> [Bloc 1 — PDF avec Typst](https://cderv.github.io/tuto-quarto-typst-rr-2026/1-quarto-typst/).
+> **Mémo du dossier `starter/`.** Contenu et commande de rendu ci-dessous.
+> Le pas-à-pas complet (étapes, indices doc, « Si vous bloquez ») est sur la page de l'exercice.
 
 ### Contenu du dossier
 
@@ -9,6 +9,7 @@
 |---|---|
 | `rapport-starwars.qmd` | **Fichier à éditer** — point de départ HTML, à transformer en PDF Typst |
 | `charte-starwars.pdf` | **Charte graphique** à traduire en `_brand.yml` (étapes 3-4) |
+| `_logo-sw.svg` | Logo à référencer dans `_brand.yml` (clé `logo:`) — étape 3 |
 | `_fonts/Starjedi.ttf` | Police locale (étape 4) |
 | `exercice-01.Rproj` | Projet RStudio — **double-cliquez-le** pour ouvrir l'exercice (répertoire de travail correct) |
 | _(pas de `_brand.yml`)_ | **À créer aux étapes 3-4** d'après la charte |
