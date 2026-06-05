@@ -1,0 +1,158 @@
+---
+title: "Anatomie d'une saga"
+subtitle: "Qui sont les colosses de la galaxie ?"
+lang: fr
+format:
+  typst:
+    papersize: a4
+    margin:
+      x: 2cm
+      y: 2.5cm
+    mainfont: Inter
+    toc: true
+    number-sections: true
+    linestretch: 1.4
+    keep-typ: true
+    logo:
+      path: sw-star
+      location: left-top
+      width: 0.6in
+      padding: 0.4in
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+# --- Brand styling des tableaux gt + figures ggplot via _brand.yml ---
+library(dplyr)
+library(ggplot2)
+library(ggrepel)
+library(gt)
+library(brand.yml)
+library(prismatic)
+# Charge _brand.yml du dossier courant → applique la même charte aux figures
+# ggplot et tableaux gt qu'à la mise en page Typst.
+brand <- read_brand_yml()
+pal <- function(x) brand_color_pluck(brand, x)
+# Teintes crème dérivées de la palette (striping + filets) ; clr_darken renvoie
+# un hex à canal alpha (#RRGGBBAA) → on tronque à #RRGGBB avec substr(., 1, 7).
+teinte <- function(x, f) substr(as.character(clr_darken(pal(x), f)), 1, 7)
+
+# Habillage charte commun à tous les tableaux gt : police Inter, bandeau titre
+# jaune SW, en-têtes noir/crème, striping crème, filets imperial-red.
+styliser_brand <- function(t) {
+  t |>
+    theme_brand_gt(brand) |>
+    # opt_table_font : Inter en tête → évite l'espacement parasite « 1 7 5 »
+    opt_table_font(font = "Inter") |>
+    opt_row_striping() |>
+    tab_style(style = list(cell_fill(color = pal("sw_yellow")),
+                           cell_text(weight = "bold", color = pal("foreground"))),
+              locations = cells_title(groups = "title")) |>
+    tab_style(style = list(cell_fill(color = pal("foreground")),
+                           cell_text(color = pal("background"), weight = "bold")),
+              locations = cells_column_labels()) |>
+    tab_options(
+      row.striping.background_color     = teinte("background", 0.06),
+      table_body.hlines.color           = teinte("background", 0.12),
+      table.border.top.color            = pal("primary"),
+      table.border.top.width            = px(2),
+      table.border.bottom.color         = pal("primary"),
+      table.border.bottom.width         = px(2),
+      column_labels.border.bottom.color = pal("primary"),
+      column_labels.border.bottom.width = px(2),
+      heading.align                     = "left"
+    )
+}
+```
+
+# Introduction
+
+Le jeu de données `dplyr::starwars` recense 87 personnages de la saga Star Wars, avec 14 variables (taille, masse, espèce, planète d'origine, films...). Dans ce court rapport, on regarde une question simple : **qui sont les colosses de la galaxie ?**
+
+# Top 5 des personnages les plus massifs
+
+```{r}
+#| label: tbl-mass
+top_mass <- starwars |>
+  filter(!is.na(mass)) |>
+  arrange(desc(mass)) |>
+  slice_head(n = 5) |>
+  select(name, height, mass, species, homeworld)
+
+top_mass |>
+  gt() |>
+  tab_header(
+    title = "Les colosses de la galaxie",
+    subtitle = "Top 5 par masse (kg)"
+  ) |>
+  fmt_number(columns = mass, decimals = 0, sep_mark = " ") |>
+  cols_label(
+    name = "Personnage",
+    height = "Taille (cm)",
+    mass = "Masse (kg)",
+    # libellés sans accent : contournement bug gt → Typst sur les en-têtes
+    species = "Espece",
+    homeworld = "Planete"
+  ) |>
+  # theme_brand_gt : applique fond + texte de la charte au tableau
+  # Habillage charte commun (police, bandeau, en-têtes, striping, filets)
+  styliser_brand() |>
+  # Ligne 1 (Jabba) : rouge impérial — ici l'outlier EST l'histoire,
+  # on le met en avant plutôt qu'un dégradé (écrasé par sa valeur extrême).
+  tab_style(
+    style = list(
+      cell_fill(color = pal("primary")),
+      cell_text(color = pal("background"), weight = "bold")
+    ),
+    locations = cells_body(rows = 1)
+  )
+```
+
+Sans surprise, **Jabba the Hutt** écrase tout le monde avec ses `r format(top_mass$mass[1], big.mark = " ")` kg. Mais les vraies stars de la saga sont les `#highlight(fill: brand-color.sw-yellow)[droïdes]`{=typst} : R2-D2 apparaît dans plus de films que n'importe quel humain.
+
+# Taille vs masse
+
+```{r}
+#| label: fig-mass
+#| fig-cap: "Taille et masse des personnages — Jabba et Yoda mis en évidence (échelle log)"
+#| fig-alt: "Nuage de points montrant la masse en fonction de la taille pour les 87 personnages de Star Wars. La masse est en échelle logarithmique. Deux cas remarquables sont colorés en rouge impérial et annotés : Jabba the Hutt en haut à droite, et Yoda en bas à gauche."
+sw <- starwars |>
+  filter(!is.na(height), !is.na(mass)) |>
+  # `categorie` ne sert qu'à mapper la couleur dans aes(color = categorie).
+  # Les chaînes ci-dessous DOIVENT correspondre aux noms dans scale_color_manual.
+  mutate(categorie = if_else(mass > 200 | name == "Yoda",
+                             "Cas remarquables", "Autres"))
+
+remarquables <- sw |> filter(categorie == "Cas remarquables")
+
+ggplot(sw, aes(x = height, y = mass, color = categorie)) +
+  geom_point(alpha = 0.4, size = 2) +
+  geom_text_repel(
+    data = remarquables,
+    aes(label = name),
+    size = 3, min.segment.length = 0,
+    show.legend = FALSE
+  ) +
+  # Légende à 2 couleurs depuis la charte : foreground neutre + primary highlight
+  scale_color_manual(values = c(
+    "Autres"           = brand_color_pluck(brand, "foreground"),
+    "Cas remarquables" = brand_color_pluck(brand, "primary")
+  )) +
+  scale_y_log10(labels = scales::label_number(big.mark = " ")) +
+  labs(
+    x = "Taille (cm)",
+    y = "Masse (kg, échelle log)",
+    title = "Tailles et masses des personnages",
+    color = NULL
+  ) +
+  theme_minimal(base_size = 11) +
+  theme_brand_ggplot2(brand)
+```
+
+# Conclusion
+
+Une seule question, deux visualisations, un PDF lisible : Star Wars est un terrain de jeu compact mais riche. Pour aller plus loin (origines des personnages, présence dans la saga...), il faudrait étendre ce rapport en **livre** — c'est l'objet du Bloc 2 de ce tutoriel.

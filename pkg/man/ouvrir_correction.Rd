@@ -17,8 +17,13 @@ Invisiblement, l'URL de la correction, ou \code{NULL} si annulé.
 }
 \description{
 Ouvre, \strong{en ligne} sur GitHub, le dossier \verb{correction/} d'un exercice. Les
-corrections ne sont volontairement pas installées en local : elles sont plus
-utiles \strong{après} avoir cherché par vous-même. Une confirmation est demandée.
+corrections ne sont volontairement pas posées par \code{\link[=installer_exercices]{installer_exercices()}} :
+elles sont plus utiles \strong{après} avoir cherché par vous-même. Une confirmation
+est demandée. Pour en obtenir une \strong{copie locale à retravailler}, voir
+\code{\link[=recuperer_correction]{recuperer_correction()}}.
+}
+\seealso{
+\code{\link[=recuperer_correction]{recuperer_correction()}} pour copier la correction en local.
 }
 \examples{
 \dontshow{if (interactive()) withAutoprint(\{ # examplesIf}

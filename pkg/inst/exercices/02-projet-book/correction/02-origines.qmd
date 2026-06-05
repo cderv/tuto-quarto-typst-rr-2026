@@ -1,0 +1,137 @@
+# Origines {#sec-origines}
+
+```{r}
+#| label: setup-origines
+# --- Bonus 4 (optionnel) appliqué : brand styling des tableaux gt + ggplot ---
+library(dplyr)
+library(ggplot2)
+library(gt)
+library(brand.yml)
+library(prismatic)
+brand <- read_brand_yml()
+pal <- function(x) brand_color_pluck(brand, x)
+# Teintes crème dérivées de la palette (striping + filets) ; clr_darken renvoie
+# un hex à canal alpha (#RRGGBBAA) → on tronque à #RRGGBB avec substr(., 1, 7).
+teinte <- function(x, f) substr(as.character(clr_darken(pal(x), f)), 1, 7)
+
+# Habillage charte commun à tous les tableaux gt du livre : police Inter,
+# bandeau titre jaune SW, en-têtes noir/crème, striping crème, filets imperial-red.
+styliser_brand <- function(t) {
+  t |>
+    theme_brand_gt(brand) |>
+    opt_table_font(font = "Inter") |>
+    opt_row_striping() |>
+    tab_style(style = list(cell_fill(color = pal("sw_yellow")),
+                           cell_text(weight = "bold", color = pal("foreground"))),
+              locations = cells_title(groups = "title")) |>
+    tab_style(style = list(cell_fill(color = pal("foreground")),
+                           cell_text(color = pal("background"), weight = "bold")),
+              locations = cells_column_labels()) |>
+    tab_options(
+      row.striping.background_color     = teinte("background", 0.06),
+      table_body.hlines.color           = teinte("background", 0.12),
+      table.border.top.color            = pal("primary"),
+      table.border.top.width            = px(2),
+      table.border.bottom.color         = pal("primary"),
+      table.border.bottom.width         = px(2),
+      column_labels.border.bottom.color = pal("primary"),
+      column_labels.border.bottom.width = px(2),
+      heading.align                     = "left"
+    )
+}
+```
+
+Les colosses du chapitre précédent venaient d'horizons divers. Élargissons :
+**d'où viennent les personnages, et à quelles espèces appartiennent-ils ?**
+
+## D'où viennent-ils ?
+
+```{r}
+#| label: tbl-origines-homeworlds
+starwars |>
+  filter(!is.na(homeworld)) |>
+  count(homeworld, sort = TRUE) |>
+  slice_head(n = 10) |>
+  gt() |>
+  tab_header(
+    title = "Top 10 des mondes natals",
+    subtitle = "Personnages par planète d'origine"
+  ) |>
+  cols_label(
+    homeworld = "Planete",
+    n = "Personnages"
+  ) |>
+  styliser_brand() |>
+  # Comptages bien répartis → dégradé charte (Naboo/Tatooine ressortent en rouge)
+  data_color(columns = n,
+             palette  = c(pal("background"), pal("sw_yellow"), pal("primary")),
+             apply_to = "fill")
+```
+
+Naboo et Tatooine se partagent le devant : la planète d'Amidala devance d'un
+cheveu celle de Luke et Anakin. À elles deux, elles concentrent près d'un
+quart du casting renseigné — la galaxie de la saga est, statistiquement, un
+village.
+
+## Espèces dominantes
+
+```{r}
+#| label: fig-origines-especes
+#| fig-cap: "Top 8 des espèces les plus représentées dans le casting"
+#| fig-alt: "Diagramme en barres horizontales du nombre de personnages par espèce, restreint aux 8 espèces les plus représentées. Les humains dominent largement, suivis par les droïdes."
+starwars |>
+  filter(!is.na(species)) |>
+  count(species, sort = TRUE) |>
+  slice_head(n = 8) |>
+  ggplot(aes(x = reorder(species, n), y = n)) +
+  # Barres en couleur primary du _brand.yml — suit un palette swap éventuel
+  geom_col(fill = brand_color_pluck(brand, "primary")) +
+  coord_flip() +
+  labs(
+    x = NULL,
+    y = "Personnages",
+    title = "Top 8 des espèces représentées"
+  ) +
+  theme_minimal(base_size = 11) +
+  theme_brand_ggplot2(brand)
+```
+
+Les humains dominent — saga « centrée humaine » comme on dit dans la
+critique. Mais juste derrière, les droïdes : R2-D2 et C-3PO ne sont pas
+seuls, ils ont de la compagnie. Reste à comparer leur **présence à
+l'écran**.
+
+## Présence dans la saga
+
+```{r}
+#| label: tbl-origines-films
+films_par_perso <- starwars |>
+  mutate(n_films = lengths(films)) |>
+  arrange(desc(n_films), name) |>
+  select(name, species, n_films)
+
+top_humain <- films_par_perso |> filter(species == "Human") |> slice(1)
+
+films_par_perso |>
+  slice_head(n = 8) |>
+  gt() |>
+  tab_header(
+    title = "Les piliers de la saga",
+    subtitle = "Top 8 des personnages par nombre de films"
+  ) |>
+  cols_label(
+    name = "Personnage",
+    species = "Espece",
+    n_films = "Films"
+  ) |>
+  styliser_brand() |>
+  # Nombre de films (1–7) bien réparti → dégradé charte (R2-D2 ressort en rouge)
+  data_color(columns = n_films,
+             palette  = c(pal("background"), pal("sw_yellow"), pal("primary")),
+             apply_to = "fill")
+```
+
+**R2-D2** mène avec `r films_par_perso$n_films[1]` films, plus que
+n'importe quel humain — `r top_humain$name`, le plus présent, plafonne
+à `r top_humain$n_films`. C-3PO suit de près. La chute du chapitre
+*Anatomie* tombe : les droïdes sont bien les vraies stars de la saga.

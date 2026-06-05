@@ -107,13 +107,16 @@ Les dossiers `correction/` contiennent les solutions complètes — ⚠️ ne le
 :::
 
 ::: {.callout-note appearance="minimal"}
-**Les corrections ne sont pas copiées en local** par `installer_exercices()` (choix
-délibéré : une correction est plus utile *après* avoir cherché). Elles restent
-consultables en ligne — dans le dépôt GitHub ci-dessus, ou via le paquet, qui
-ouvre la bonne page après confirmation :
+**Les corrections ne sont pas posées par `installer_exercices()`** (choix
+délibéré : une correction est plus utile *après* avoir cherché). Deux façons d'y
+accéder via le paquet, chacune après confirmation :
 
 ``` r
-tutoquartotypst::ouvrir_correction("01")   # ou "02"
+# Les consulter en ligne (ouvre la page GitHub)
+tutoquartotypst::ouvrir_correction("01")     # ou "02"
+
+# Les copier en local pour les retravailler (à côté du starter)
+tutoquartotypst::recuperer_correction("01")  # ou "02"
 ```
 :::
 
