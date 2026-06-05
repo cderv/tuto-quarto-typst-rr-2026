@@ -85,23 +85,24 @@ Paquet R qui installe les prérequis, vérifie l'environnement et pose les exerc
 
 Différenciation visuelle = type de callout (pas `{background-color=...}` sur les slides — trop flashy). Couleurs ajustées via variables SASS dans `reveal-style.scss` : `$callout-color-tip: #27ae60`, `$callout-color-warning: #FDC538`, note par défaut bleu.
 
-## Références
+## Références (versionnées, en place)
 
-Versionnées (publiques) :
+Documentation vivante :
 
-- Skill pour créer du contenu → `.claude/skills/workshop-content.md`
-- Skill Quarto authoring (Posit) → `.claude/skills/quarto-authoring.md`
-- Skill alt text pour figures → `.claude/skills/quarto-alt-text.md`
-- Skill brand.yml (Posit) → `.claude/skills/brand-yml.md`
+- Skills → `.claude/skills/` : `workshop-content.md`, `quarto-authoring.md`, `quarto-alt-text.md`, `brand-yml.md`
+- Références techniques → `.claude/references/` : setup sandbox, project-context, topic-store, workshop-pacing, brand-typst-capabilities
+- Inventaire des liens doc → `.claude/plans/2026-05-19-doc-mapping.md` (utilisé par `scripts/audit-doc-links.sh`)
 
-Notes de travail **locales, non versionnées** (gitignorées avant le passage public, cf. `.gitignore`) : `.claude/PLAN.md`, `.claude/references/` (setup sandbox, project-context, topic-store…), `.claude/plans/`, `.claude/design-*.md`, `.claude/reviews/`. Présentes en local mais absentes du dépôt public.
+## Archivage des notes de travail
 
-## Reviews
+Le dépôt est **public** et assume le « dev in the open » : plans et reviews sont **versionnés**, rangés sous `.claude/archive/` (voir son `README.md`). On n'y met **aucun secret**.
 
-Les rapports de review générés par les agents vont dans `.claude/reviews/` (dossier **local, non versionné**).
+- **Plan de travail en cours** → `.claude/plans/<nom>.md`. Une fois clos/obsolète → le **déplacer** vers `.claude/archive/plans/`.
+- **Reviews d'agents** → directement dans `.claude/archive/reviews/`, datées : `review-YYYY-MM-DD[-tag]-[type].md`
+  - `[tag]` optionnel : `bis`, `ter`, `quater`, … pour plusieurs reviews le même jour
+  - `[type]` : `pedagogue`, `eleve-debutant`, `quarto-technique`, `orthographe-fr`, `content`
+  - **Instantanés** : on n'édite pas une review passée, on en crée une nouvelle.
+- **Drafts d'issues** (à remonter en amont) → `.claude/archive/issues/`.
+- Agents reviewers : `.claude/agents/` (`workshop-reviewer-{pedagogue,debutant,technique,fr}`).
 
-Convention de nommage : `.claude/reviews/review-YYYY-MM-DD[-tag]-[type].md`
-- `[tag]` optionnel : `bis`, `ter`, `quater`, … pour plusieurs reviews le même jour
-- `[type]` : `pedagogue`, `eleve-debutant`, `quarto-technique`, `orthographe-fr`, `content`
-
-Agents disponibles dans `.claude/agents/` : `workshop-reviewer-pedagogue`, `workshop-reviewer-debutant`, `workshop-reviewer-technique`, `workshop-reviewer-fr`.
+**Jamais committé** (`.gitignore`) : secrets, liens vers des documents privés, infos perso de tiers. Aujourd'hui concrètement : `review.md` (racine, doublon) et `.claude/plan-remarques-maelle.md` (lien privé, à purger de l'historique).

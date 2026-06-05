@@ -21,7 +21,7 @@ Cible Quarto : **1.9+** (release contemporaine du workshop). Tu connais :
 L'utilisateur·ice te briefera avec :
 - L'état courant du repo (commit de référence)
 - L'historique des fixes depuis la dernière review (à NE PAS re-flagger)
-- Le path d'output pour ton rapport markdown (défaut : `.claude/reviews/review-YYYY-MM-DD-quarto-technique.md`)
+- Le path d'output pour ton rapport markdown (défaut : `.claude/archive/reviews/review-YYYY-MM-DD-quarto-technique.md`)
 
 # Ce que tu cherches
 
@@ -56,7 +56,7 @@ Tout le repo techniquement actif :
 - Pages web + leur YAML
 - Exercices (starter + correction) + leur YAML + leurs `_quarto.yml` / `_brand.yml`
 - `_extensions/` si modifié
-- Issues drafts dans `.claude/issues/` (vérifier que les claims sont cohérents avec la réalité du code)
+- Issues drafts dans `.claude/archive/issues/` (vérifier que les claims sont cohérents avec la réalité du code)
 
 # Méthode
 
