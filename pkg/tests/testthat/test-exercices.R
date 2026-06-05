@@ -1,6 +1,6 @@
 test_that("installer_exercices() copie les starters", {
   dest <- withr::local_tempdir()
-  chemin <- installer_exercices(file.path(dest, "exos"))
+  chemin <- installer_exercices(file.path(dest, "exos"), force = TRUE)
   expect_true(dir.exists(chemin))
   expect_true(file.exists(file.path(
     chemin, "01-document-typst", "starter", "rapport-starwars.qmd"
@@ -12,7 +12,7 @@ test_that("installer_exercices() utilise le dossier par défaut dans le cwd", {
   # withr::local_dir : se place dans un dossier temporaire et restaure le cwd
   # à la fin du test (permet de tester le défaut dest = "exercices-typst").
   withr::local_dir(withr::local_tempdir())
-  installer_exercices(quels = "01")
+  installer_exercices(quels = "01", force = TRUE)
   expect_true(dir.exists(file.path("exercices-typst", "01-document-typst")))
 })
 
@@ -27,13 +27,21 @@ test_that("le starter du livre reste à l'état « avant »", {
 
 test_that("installer_exercices() refuse d'écraser sans force", {
   dest <- withr::local_tempdir()
-  installer_exercices(dest, quels = "01")
+  installer_exercices(dest, quels = "01", force = TRUE)
   expect_error(installer_exercices(dest, quels = "01"), "existe d")
+})
+
+test_that("installer_exercices() annule sans confirmation en non-interactif", {
+  dest <- withr::local_tempdir()
+  expect_error(
+    installer_exercices(file.path(dest, "exos"), quels = "01"),
+    "annul"
+  )
 })
 
 test_that("reinitialiser_exercice() sauvegarde avant de restaurer", {
   dest <- withr::local_tempdir()
-  installer_exercices(dest, quels = "01")
+  installer_exercices(dest, quels = "01", force = TRUE)
   qmd <- file.path(dest, "01-document-typst", "starter", "rapport-starwars.qmd")
   writeLines("casse", qmd)
   reinitialiser_exercice("01", dossier = dest, force = TRUE)
