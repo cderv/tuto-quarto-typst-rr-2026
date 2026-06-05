@@ -72,6 +72,6 @@ Les exercices utilisent le jeu de données **Star Wars** (`dplyr::starwars`) en 
 - **Contenu** (texte, slides, exercices, pages) : [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — voir [`LICENSE`](LICENSE). © Christophe Dervieux & Maëlle Salmon.
 - **Code** du paquet R `pkg/` : licence MIT — voir [`pkg/LICENSE.md`](pkg/LICENSE.md).
 
-Composants tiers redistribués sous leur propre licence : extensions Quarto (`_extensions/**/LICENSE`, MIT), packages Typst (`_typst-packages/`, voir leurs `LICENSE`), police Inter (OFL 1.1), police Star Jedi (freeware fan-made, voir `LICENSE-StarJedi.txt`). Contributions soumises au [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md).
+Composants tiers redistribués avec leur attribution : extension `clean` (MIT, `_extensions/grantmcdermott/clean/LICENSE`), extension `countdown` (`_extensions/gadenbuie/countdown/NOTICE` — pas de licence déclarée en amont pour l'extension), packages Typst (`_typst-packages/`, voir leurs `LICENSE`), police Inter (OFL 1.1, `LICENSE-Inter.txt`), police Star Jedi (freeware fan-made, `LICENSE-StarJedi.txt`). Contributions soumises au [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md).
 
 > _Star Wars et les noms associés sont des marques de Lucasfilm Ltd. Ce tutoriel utilise l'univers Star Wars à des seules fins pédagogiques et n'est affilié ni à Lucasfilm ni à Disney._
