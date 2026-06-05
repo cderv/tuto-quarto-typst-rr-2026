@@ -1,0 +1,15 @@
+Extension Quarto « countdown »
+
+Auteurs : Garrick Aden-Buie et James Joseph Balamuta
+Source  : https://github.com/gadenbuie/countdown
+
+Vendorisée ici (copie figée) pour un build reproductible et hors-ligne du
+tutoriel, via `quarto add gadenbuie/countdown`.
+
+Statut de licence : le dépôt amont ne déclare PAS de licence pour l'extension
+Quarto elle-même. Seul le package R (sous-dossier `r/`) est sous licence MIT
+(« Copyright (c) 2024 countdown authors »,
+https://github.com/gadenbuie/countdown/blob/main/r/LICENSE.md).
+
+Ce fichier sert à créditer les auteurs et la source. Pour une redistribution
+pleinement couverte, demander aux auteurs d'ajouter une licence à l'extension.
