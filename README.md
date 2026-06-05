@@ -2,68 +2,68 @@
 
 > Tutoriel aux [Rencontres R 2026](https://rr2026.sciencesconf.org/) — mardi 16 juin 2026, Nantes Université (10h–12h).
 
-Produire des **documents PDF professionnels** avec Quarto en utilisant **Typst** (à la place de LaTeX) pour fabriquer le PDF, sans rien installer. Personnalisation avec `_brand.yml` et templates Typst, puis passage du document isolé au **livre** multi-chapitres.
+Atelier de 2 h pour produire des **documents PDF professionnels** avec Quarto en s'appuyant sur **Typst** (à la place de LaTeX) : sans installation lourde, avec des erreurs lisibles. On personnalise avec `_brand.yml` et des templates Typst, puis on passe du document isolé au **livre** multi-chapitres.
 
-**Arc narratif :** `.qmd` → PDF professionnel → livre → personnalisé / pérennisé
+**Arc :** `.qmd` → PDF professionnel → livre → personnalisé / pérennisé
 
-- **Instructeurs :** Christophe Dervieux ([Posit](https://posit.co/)) & Maëlle Salmon ([rOpenSci](https://ropensci.org/) / [cynkra](https://cynkra.com/))
-- **Durée :** 2h (~1h30 de contenu + pause + Q&A au fil)
-- **Prérequis :** Quarto 1.9+, R 4.2+, RStudio / VS Code / Positron — voir [`preparatifs.qmd`](preparatifs.qmd)
+- **Instructeur·rices :** Christophe Dervieux ([Posit](https://posit.co/)) & Maëlle Salmon ([rOpenSci](https://ropensci.org/) / [cynkra](https://cynkra.com/))
+- **Pour qui :** utilisateur·rices de Quarto / R qui veulent de beaux PDF (aucune connaissance de Typst ni de LaTeX requise)
 
-🔗 **Site du tutoriel :** <https://cderv.github.io/tuto-quarto-typst-rr-2026/>
+## 🔗 Le site du tutoriel
+
+Tout le contenu (slides, consignes, ressources) est en ligne :
+
+### **<https://cderv.github.io/tuto-quarto-typst-rr-2026/>**
+
+Ce dépôt en contient le **code source**.
+
+## Se préparer (avant le 16 juin)
+
+L'atelier est **interactif** : venez avec un environnement prêt.
+
+1. Installez **Quarto 1.9+** (pré-release `1.10.4+` recommandée), **R 4.2+** et un éditeur (**RStudio**, **Positron** ou **VS Code**).
+2. Le plus simple ensuite : le **paquet R compagnon `tutoquartotypst`**, qui installe les paquets, vérifie votre environnement et pose les exercices :
+
+   ```r
+   install.packages("tutoquartotypst",
+     repos = c("https://cderv.r-universe.dev", "https://cloud.r-project.org"))
+
+   tutoquartotypst::verifier_installation()   # tout en vert = prêt·e
+   tutoquartotypst::installer_exercices()     # pose les exercices en local
+   ```
+
+👉 **Guide complet** (avec chemin d'installation manuel) : [page Préparatifs](https://cderv.github.io/tuto-quarto-typst-rr-2026/preparatifs.html).
 
 ## Programme
 
 | | Bloc | Durée |
 |---|------|:-----:|
-| 1 | [**Un PDF pro en quelques minutes**](1-quarto-typst/index.qmd) — `format: typst`, options, `keep-typ`, `_brand.yml` | ~40 min |
+| 1 | [**Un PDF pro en quelques minutes**](https://cderv.github.io/tuto-quarto-typst-rr-2026/1-quarto-typst/) — `format: typst`, options, `keep-typ`, `_brand.yml` | ~40 min |
 | | _☕ Pause_ | 10 min |
-| 2 | [**Passer du document au livre**](2-projets/index.qmd) — projet Quarto, `type: book`, brand au niveau projet | ~40 min |
+| 2 | [**Passer du document au livre**](https://cderv.github.io/tuto-quarto-typst-rr-2026/2-projets/) — projet Quarto, `type: book`, brand au niveau projet | ~40 min |
 
-Chaque bloc suit le rythme **My turn → Our turn → Your turn**. Une [boussole](1-quarto-typst/boussole.qmd) (objectif + étapes + countdown) accompagne chaque exercice. Le bloc 2 est **autonome** : on peut le suivre sans avoir fait le bloc 1.
+Chaque bloc suit le rythme **My turn → Our turn → Your turn**, avec une **boussole** (objectif + étapes + countdown) par exercice. Le bloc 2 est **autonome** : suivable sans avoir fait le bloc 1. Le contenu « [Aller plus loin](https://cderv.github.io/tuto-quarto-typst-rr-2026/3-aller-plus-loin/) » est une référence pour les curieux, sans créneau dédié.
 
-Le contenu « [Aller plus loin](3-aller-plus-loin/index.qmd) » (raw Typst, template partials, extensions) est une référence pour les curieux, sans créneau dédié.
-
-## Exercices
-
-Tous les exercices utilisent le jeu de données **Star Wars** (`dplyr::starwars`, 87 personnages × 14 variables), en complexité progressive :
-
-| Exercice | Objectif | Difficulté |
-|----------|----------|:----------:|
-| 1 — [`01-document-typst/`](exercises/01-document-typst/) | `format: typst` + `_brand.yml` + `keep-typ` | ★ |
-| 2 — [`02-projet-book/`](exercises/02-projet-book/) | projet `type: book`, brand promu au projet, cross-refs | ★★ |
-
-Chaque exercice fournit un `starter/` (état de départ) et une `correction/`.
-
-## Construire le site
-
-Le build complet est orchestré par [`just`](https://github.com/casey/just) — `quarto render` seul ne suffit pas (il ne rend ni la charte ni les corrections d'exercices) :
-
-```bash
-just all        # charte + exercices + paquet R + site (build de référence)
-just preview    # ou : quarto preview
-```
-
-Nécessite Quarto 1.9+ (pré-release `v1.10.4+` recommandée). Voir les recettes dans le `justfile`.
-
-## Structure du dépôt
+## Que contient ce dépôt ?
 
 ```
-index.qmd               # Page d'accueil (programme, bios)
-preparatifs.qmd         # Instructions d'installation (participants)
-1-quarto-typst/         # Bloc 1 — page + slides + boussole
-2-projets/              # Bloc 2 — page + slides + boussole
-3-aller-plus-loin/      # Topic store complémentaire
-4-ressources.qmd        # Liens et ressources externes
-exercises/              # Starters + corrections des exercices
-pkg/                    # Paquet R compagnon tutoquartotypst
-_charte/                # Charte Star Wars (référence palette/typo)
-_speaker/               # Docs d'animation (pilotage, démos, notes) — interne
+index.qmd · preparatifs.qmd   Page d'accueil et instructions d'installation
+1-quarto-typst/               Bloc 1 — page + slides + boussole
+2-projets/                    Bloc 2 — page + slides + boussole
+3-aller-plus-loin/            Ressources complémentaires (hors créneau)
+4-ressources.qmd              Liens et ressources externes
+exercises/                    Starters + corrections des exercices (Star Wars)
+pkg/                          Paquet R compagnon « tutoquartotypst »
+_charte/                      Charte graphique Star Wars (palette / typo)
 ```
+
+Les exercices utilisent le jeu de données **Star Wars** (`dplyr::starwars`) en difficulté progressive : un PDF stylé (★) puis un livre multi-chapitres (★★). Chacun fournit un `starter/` et une `correction/` — le paquet `tutoquartotypst` les pose pour vous.
+
+> Détails de build et conventions de développement : [`.claude/CLAUDE.md`](.claude/CLAUDE.md) (le site se construit avec [`just`](https://github.com/casey/just) — `just all`).
 
 ## Contexte
 
-- Suit la structure du [tutoriel RR 2023](https://github.com/cderv/tuto-quarto-rr-2023) (website + slides embarquées).
+- Suit la structure du [tutoriel RR 2023](https://github.com/cderv/tuto-quarto-rr-2023) (site web + slides embarquées).
 - Prolonge la [présentation `_brand.yml` RR 2025](https://cderv.github.io/rr2025-quarto-brand-yml/).
 - Focus **Quarto + Typst** (pas Typst standalone).
 
@@ -72,6 +72,6 @@ _speaker/               # Docs d'animation (pilotage, démos, notes) — interne
 - **Contenu** (texte, slides, exercices, pages) : [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — voir [`LICENSE`](LICENSE). © Christophe Dervieux & Maëlle Salmon.
 - **Code** du paquet R `pkg/` : licence MIT — voir [`pkg/LICENSE.md`](pkg/LICENSE.md).
 
-Composants tiers redistribués sous leur propre licence : extensions Quarto (`_extensions/**/LICENSE`, MIT), packages Typst (`_typst-packages/`, voir leurs `LICENSE`), police Inter (OFL 1.1), police Star Jedi (freeware fan-made, voir `LICENSE-StarJedi.txt`).
+Composants tiers redistribués sous leur propre licence : extensions Quarto (`_extensions/**/LICENSE`, MIT), packages Typst (`_typst-packages/`, voir leurs `LICENSE`), police Inter (OFL 1.1), police Star Jedi (freeware fan-made, voir `LICENSE-StarJedi.txt`). Contributions soumises au [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md).
 
 > _Star Wars et les noms associés sont des marques de Lucasfilm Ltd. Ce tutoriel utilise l'univers Star Wars à des seules fins pédagogiques et n'est affilié ni à Lucasfilm ni à Disney._
