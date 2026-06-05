@@ -58,7 +58,7 @@ Vue **bout-à-bout des 2h** pour piloter la séance : chronogramme minuté, colo
 Les questions se traitent **au fil de la séance**, à chaque étape :
 
 - **Question individuelle / bug perso** → Maëlle, en 1:1, à tout moment (surtout pendant les Your turn).
-- **Question collective / concept** → CD la capte au vol et la traite au **débrief** suivant. Les débriefs (10h43, 11h29) et le wrap-up (11h36) sont les checkpoints Q&A collectifs.
+- **Question collective / concept** → CD la capte au vol et la traite au **débrief** suivant. Les débriefs (10h43, 11h32) et le wrap-up (11h39) sont les checkpoints Q&A collectifs.
 
 ### Ordre de coupe des fusibles (si un bloc déborde *avant* la pause)
 

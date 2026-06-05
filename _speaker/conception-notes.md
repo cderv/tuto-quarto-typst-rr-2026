@@ -5,7 +5,7 @@ Notes internes sorties du `README.md` (devenu vitrine publique). Décisions d'an
 ## Décisions déjà tranchées
 
 - **Qui anime ?** CD pilote tout le programme et l'animation au tableau. Maëlle aide en salle (1:1 dans les rangs), pas d'animation au tableau. → plus de « à décider » dans le programme.
-- **Créneau & timing** : 10h–12h, ~87 min animé + 10 min pause + 12 min buffer, Q&A au fil. Your turn = countdown **12:00** (figé, fichiers font foi ; `PLAN.md` mentionne 15:00 = obsolète).
+- **Créneau & timing** : 10h–12h, ~87 min animé + 10 min pause + 12 min buffer, Q&A au fil. Your turn = countdown **12:00 (Exo 1)** et **15:00 (Exo 2)** — les boussoles font foi.
 - **Exercice 1 — point de départ** : le starter est `format: html` (état « avant »), converti en `format: typst` (pas `format: pdf`). Bien le dire à l'oral.
 
 ## Questions ouvertes (à arbitrer avant le jour J)
