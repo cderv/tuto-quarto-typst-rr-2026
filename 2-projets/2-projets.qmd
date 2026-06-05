@@ -159,7 +159,7 @@ format: typst
 :::
 
 ::: notes
-Démo live **ultra-courte** : 5-6 minutes. Pas-à-pas détaillé (snippets prêts à coller, ressources, pièges) dans `_speaker/demo-bloc2-our-turn.qmd`.
+Démo live **ultra-courte** : 5-6 minutes. Pas-à-pas détaillé (snippets prêts à coller, ressources, pièges) dans le pas-à-pas démo (doc animateur dédié).
 
 **Pourquoi minimal** : Our turn montre comment `_quarto.yml` + `type: book` produit un livre PDF unique. `appendices`, copie de `_brand.yml` et bonus restent dans Your turn — éviter la redondance Bloc 1.
 
@@ -250,7 +250,7 @@ Fusible à couper si le timing serre — sauter directement au wrap-up qui suit 
 :::
 
 ::: notes
-**CD parle.** Vous êtes parti·e d'un `.qmd` HTML, vous repartez avec un livre PDF stylé multi-chapitres. Trois lignes de YAML, un fichier de charte, un projet — et c'est tout.
+Vous êtes parti·e d'un `.qmd` HTML, vous repartez avec un livre PDF stylé multi-chapitres. Trois lignes de YAML, un fichier de charte, un projet — et c'est tout.
 
 Les 5 bullets font écho aux 3 questions posées en intro (cf. `index.qmd:17-19`) et aux apprentissages détaillés des 2 pages de bloc (cf. `1-quarto-typst/index.qmd:24-29` + `2-projets/index.qmd:24-28`). Le 5ᵉ bullet (« partials, formats communautaires ») est explicitement annoncé comme piste post-tutoriel — pas une promesse non tenue. Rappel mémoriel : pointer du doigt vers la slide précédente Bloc 1 ou la page d'accueil si besoin.
 :::
