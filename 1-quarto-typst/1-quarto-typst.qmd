@@ -47,22 +47,20 @@ Exercice en autonomie avec chronomètre.
 Expliquer le rythme dès le début. Chaque bloc suit ce cycle. L'idée c'est de passer un maximum de temps les mains dans le code, pas à regarder des slides.
 :::
 
-## Code de conduite {.smaller}
+## Code de conduite
 
-Les Rencontres R 2026 s'engagent à offrir une conférence **sans harcèlement**, dans un environnement **bienveillant et sûr** pour toutes et tous, quels que soient l'âge, le genre, l'orientation, le handicap, l'apparence, l'origine ou la religion.
+Cet atelier s'inscrit dans le **code de conduite des Rencontres R 2026** — on s'engage à le faire respecter ici comme ailleurs.
 
-::: incremental
-- **Être prévenant·e** dans le langage et les actions, respecter les limites de chacun·e
-- **S'abstenir** de tout comportement dégradant, discriminatoire ou harcelant
-- **En cas de souci** : alerter un membre de l'équipe organisatrice (identifiable au badge), même pour un fait qui semble anodin
-:::
+L'esprit, en deux mots :
 
-::: {.fragment}
-Code complet : [code de conduite des Rencontres R 2026](https://rr2026.sciencesconf.org/resource/page/id/13){target="_blank"} · contact [rr2026@sciencesconf.org](mailto:rr2026@sciencesconf.org)
-:::
+- Un environnement **bienveillant et sûr**, sans harcèlement, pour toutes et tous
+- **Respect et bienveillance** dans le langage comme dans les échanges
+- Un souci, une gêne ? **Parlez-nous** ou à un membre de l'orga (badge)
+
+[Code de conduite complet des Rencontres R 2026](https://rr2026.sciencesconf.org/resource/page/id/13){target="_blank"}
 
 ::: notes
-Prendre 30 secondes là-dessus, sérieusement mais sans plomber l'ambiance. On anime un atelier : on est responsables du cadre. Rappeler que Maëlle passe dans les rangs et qu'on est tous les deux dispo si quoi que ce soit. Le code de conduite s'applique aussi aux ateliers, pas seulement aux plénières. Texte adapté de useR! 2020 / rOpenSci, sous licence CC BY-SA.
+30 secondes, ton sérieux mais sans plomber l'ambiance. Le message clé : on ne fait pas un code à part, on s'inclut dans celui de la conf et on s'engage à le faire vivre dans la salle. Rappeler qu'on est deux (Maëlle passe dans les rangs) et joignables si quoi que ce soit. Pas besoin de lire la liste : donner l'esprit et le lien.
 :::
 
 ## C'est quoi Typst ?
