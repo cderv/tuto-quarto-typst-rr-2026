@@ -5,14 +5,18 @@
 \title{Installer les exercices du tutoriel}
 \usage{
 installer_exercices(
-  dest = "exercices-typst",
+  dest = NULL,
   quels = c("tous", "01", "02"),
   force = FALSE
 )
 }
 \arguments{
 \item{dest}{Chemin du dossier de destination (créé si besoin). Par défaut
-\code{"exercices-typst"} dans le répertoire de travail courant.}
+\code{NULL} : en session interactive, le dossier est \strong{demandé} (sélecteur
+RStudio si disponible, sinon invite texte ; valeur proposée
+\code{"exercices-typst"}). Fournir un chemin explicite court-circuite la demande
+(utile en script). En mode non-interactif sans \code{dest}, \code{"exercices-typst"}
+(dans le répertoire courant) est utilisé.}
 
 \item{quels}{Quels exercices installer : \code{"tous"} (défaut), \code{"01"}
 (document Typst) ou \code{"02"} (projet livre).}
@@ -27,8 +31,9 @@ si l'installation a été annulée.
 }
 \description{
 Copie les fichiers de départ (« starters ») des exercices, embarqués dans le
-paquet, vers un dossier de travail local. Seuls les \verb{starter/} sont copiés :
-les corrections restent en ligne sur le site du tutoriel.
+paquet, vers un dossier de travail local. Seuls les \verb{starter/} sont copiés ;
+les corrections ne sont pas posées ici (voir \code{\link[=ouvrir_correction]{ouvrir_correction()}} pour les
+consulter en ligne, \code{\link[=recuperer_correction]{recuperer_correction()}} pour les copier en local).
 }
 \examples{
 \dontshow{if (interactive()) withAutoprint(\{ # examplesIf}

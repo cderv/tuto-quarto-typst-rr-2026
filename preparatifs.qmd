@@ -34,8 +34,9 @@ tutoquartotypst::verifier_installation()
 
 Si tout s'affiche en vert, vous êtes prêt·e.
 
-**3. Installer les exercices** dans un dossier de travail local (la fonction vous
-indique la destination et demande confirmation avant de copier) :
+**3. Installer les exercices** dans un dossier de travail local. En session
+interactive, la fonction vous **demande où** les installer (sélecteur de dossier
+dans RStudio, sinon une invite), puis affiche la destination retenue :
 
 ``` r
 tutoquartotypst::installer_exercices()

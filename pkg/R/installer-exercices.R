@@ -1,11 +1,16 @@
 #' Installer les exercices du tutoriel
 #'
 #' Copie les fichiers de départ (« starters ») des exercices, embarqués dans le
-#' paquet, vers un dossier de travail local. Seuls les `starter/` sont copiés :
-#' les corrections restent en ligne sur le site du tutoriel.
+#' paquet, vers un dossier de travail local. Seuls les `starter/` sont copiés ;
+#' les corrections ne sont pas posées ici (voir [ouvrir_correction()] pour les
+#' consulter en ligne, [recuperer_correction()] pour les copier en local).
 #'
 #' @param dest Chemin du dossier de destination (créé si besoin). Par défaut
-#'   `"exercices-typst"` dans le répertoire de travail courant.
+#'   `NULL` : en session interactive, le dossier est **demandé** (sélecteur
+#'   RStudio si disponible, sinon invite texte ; valeur proposée
+#'   `"exercices-typst"`). Fournir un chemin explicite court-circuite la demande
+#'   (utile en script). En mode non-interactif sans `dest`, `"exercices-typst"`
+#'   (dans le répertoire courant) est utilisé.
 #' @param quels Quels exercices installer : `"tous"` (défaut), `"01"`
 #'   (document Typst) ou `"02"` (projet livre).
 #' @param force Logique. Passer la confirmation interactive **et** écraser un
@@ -19,7 +24,7 @@
 #' @examplesIf interactive()
 #' installer_exercices()
 #' installer_exercices(quels = "01")
-installer_exercices <- function(dest = "exercices-typst",
+installer_exercices <- function(dest = NULL,
                                 quels = c("tous", "01", "02"),
                                 force = FALSE) {
   quels <- match.arg(quels)
@@ -31,6 +36,19 @@ installer_exercices <- function(dest = "exercices-typst",
     "02" = "02-projet-book"
   )
 
+  # Destination : si non fournie, on la demande (sélecteur RStudio / invite
+  # texte) ; le choix interactif vaut confirmation. En non-interactif/`force`,
+  # repli silencieux sur "exercices-typst".
+  choisi_interactivement <- FALSE
+  if (is.null(dest)) {
+    dest <- .choisir_dossier_dest("exercices-typst", force = force)
+    if (is.null(dest)) {
+      cli::cli_alert_info("Installation annulée (aucun dossier choisi).")
+      return(invisible(NULL))
+    }
+    choisi_interactivement <- !isTRUE(force) && rlang::is_interactive()
+  }
+
   dest_abs <- xfun::normalize_path(dest)
   if (dir.exists(dest_abs) && length(list.files(dest_abs)) > 0 && !isTRUE(force)) {
     cli::cli_abort(c(
@@ -39,9 +57,11 @@ installer_exercices <- function(dest = "exercices-typst",
     ))
   }
 
-  # Annonce de la destination + confirmation avant toute écriture sur disque.
+  # Annonce de la destination + confirmation avant écriture — sauf si
+  # l'utilisateur vient déjà de choisir le dossier (le choix fait office d'accord).
   cli::cli_alert_info("Destination des exercices : {.path {dest_abs}}")
-  if (!.confirmer("Copier les exercices dans ce dossier ?", force = force)) {
+  if (!choisi_interactivement &&
+    !.confirmer("Copier les exercices dans ce dossier ?", force = force)) {
     if (!rlang::is_interactive()) {
       cli::cli_abort(c(
         "Installation annulée (mode non-interactif).",
