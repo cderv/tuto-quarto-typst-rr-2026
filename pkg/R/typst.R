@@ -28,10 +28,10 @@ diagnostic_typst <- function(projet = ".") {
         collapse = " ")),
     error = function(e) NA_character_
   )
-  reco <- as.character(.quarto_reco)
+  reco <- as.character(.quarto_fix)
   cache <- file.path(xfun::normalize_path(projet), ".quarto", "typst", "fonts")
   cache_ok <- dir.exists(cache)
-  besoin_fontpaths <- !is.na(qversion) && qversion < .quarto_reco
+  besoin_fontpaths <- !is.na(qversion) && qversion < .quarto_fix
   etat_cache <- if (cache_ok) "présent" else "absent"
 
   cli::cli_alert_info("Quarto : {qversion} ({.path {qpath}})")

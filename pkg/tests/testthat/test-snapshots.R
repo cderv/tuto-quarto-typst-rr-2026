@@ -39,7 +39,7 @@ test_that("verifier_installation() : rapport stable (version R masquée)", {
   file.create(f)
   local_mocked_bindings(
     quarto_path = function(...) f,
-    quarto_version = function(...) numeric_version("1.10.4"),
+    quarto_version = function(...) numeric_version("1.10.7"),
     .package = "quarto"
   )
   scrub <- function(x) sub("R [0-9][0-9.]* :", "R <version> :", x)

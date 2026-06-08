@@ -80,7 +80,7 @@ d'entreprise…), suivez simplement le chemin manuel ci-dessous.
   - **RStudio `2026.05` ou plus récent** — [download](https://posit.co/download/rstudio-desktop/)
   - **Positron `2026.05` ou plus récent** — [download](https://positron.posit.co/download.html) (l'éditeur de Posit basé sur VS Code)
 - **Quarto** :
-  - **Recommandé** : [pre-release `v1.10.4` ou supérieure](https://quarto.org/docs/download/prerelease.html) — contient des corrections de bugs.
+  - **Recommandé** : [pre-release `v1.10.7` ou supérieure](https://quarto.org/docs/download/prerelease.html) — la dernière, qui contient toutes les corrections de bugs.
   - **Version minimale** : [stable `1.9` ou supérieure](https://quarto.org/docs/get-started) — fonctionnera, mais le tutoriel signalera un contournement à appliquer à l'étape concernée de l'exercice 2.
 
   **RStudio** récent inclut Quarto, donc rien de plus à installer. **Positron** embarque Quarto 1.9 (suffisant comme minimum) ; pour profiter de la pre-release recommandée, installez Quarto séparément et, au besoin, réglez le chemin via le paramètre `quarto.path` de Positron.
@@ -126,7 +126,7 @@ tutoquartotypst::recuperer_correction("01")  # ou "02"
 Vérifiez que tout fonctionne en exécutant dans R :
 
 ``` r
-quarto::quarto_version() # >= 1.9 minimum, 1.10.4+ pre-release recommandée
+quarto::quarto_version() # >= 1.9 minimum, 1.10.7+ pre-release recommandée
 library(dplyr)
 head(starwars)
 ```

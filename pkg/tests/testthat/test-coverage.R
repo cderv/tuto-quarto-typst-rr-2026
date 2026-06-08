@@ -46,6 +46,17 @@ test_that("verifier_quarto() : version recommandée -> TRUE", {
   file.create(f)
   local_mocked_bindings(
     quarto_path = function(...) f,
+    quarto_version = function(...) numeric_version("1.10.7"),
+    .package = "quarto"
+  )
+  expect_true(suppressMessages(verifier_quarto()))
+})
+
+test_that("verifier_quarto() : correctif présent mais < reco -> TRUE", {
+  f <- withr::local_tempfile()
+  file.create(f)
+  local_mocked_bindings(
+    quarto_path = function(...) f,
     quarto_version = function(...) numeric_version("1.10.4"),
     .package = "quarto"
   )

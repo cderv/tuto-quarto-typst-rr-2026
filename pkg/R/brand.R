@@ -147,11 +147,11 @@ basculer_hors_ligne <- function(projet = ".", retour = FALSE) {
 #' @examplesIf interactive()
 #' appliquer_polices_locales()
 appliquer_polices_locales <- function(projet = ".") {
-  reco <- as.character(.quarto_reco)
+  reco <- as.character(.quarto_fix)
   projet <- xfun::normalize_path(projet)
 
   qversion <- tryCatch(quarto::quarto_version(), error = function(e) NA)
-  if (length(qversion) == 1 && !is.na(qversion) && qversion >= .quarto_reco) {
+  if (length(qversion) == 1 && !is.na(qversion) && qversion >= .quarto_fix) {
     cli::cli_alert_success(
       "Quarto {qversion} >= {reco} : le contournement `font-paths` est inutile. Rien à faire."
     )

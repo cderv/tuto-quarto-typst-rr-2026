@@ -71,7 +71,7 @@
       
       -- Vérification de votre installation ------------------------------------------
       v R <version> : version compatible (>= 4.1.0).
-      v Quarto 1.10.4 : version recommandée.
+      v Quarto 1.10.7 : version recommandée.
       v Paquets R : les 8 prérequis sont installés.
       i Rendu de test ignoré (`tester_rendu = FALSE`).
       

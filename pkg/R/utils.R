@@ -4,12 +4,19 @@
 # (section « Installation ») du site. Si vous changez un seuil ici, mettez à jour
 # `preparatifs.qmd` (et inversement).
 #   - R : « Dernier R 4 » côté site ; plancher effectif 4.1 (requis par brand.yml).
-#   - Quarto : >= 1.9 plancher, >= 1.10.4 recommandé (pre-release).
+#   - Quarto : >= 1.9 plancher, >= 1.10.7 recommandé (dernière pre-release).
+#
+# `.quarto_fix` est distinct de `.quarto_reco` : c'est la version où le correctif
+# des polices `_brand.yml` en mode livre a atterri (quarto-cli#14517, livré en
+# v1.10.4). En dessous, le contournement `font-paths` est nécessaire ; au-dessus,
+# il est inutile — même si une version plus récente reste recommandée. Ne pas
+# aligner cette borne sur `.quarto_reco` : un Quarto 1.10.4–1.10.6 a déjà le fix.
 
 # Seuils de version
 .seuil_r <- numeric_version("4.1.0")
 .quarto_min <- numeric_version("1.9")
-.quarto_reco <- numeric_version("1.10.4")
+.quarto_reco <- numeric_version("1.10.7")
+.quarto_fix <- numeric_version("1.10.4")
 
 # Prérequis « participants » du tutoriel (mêmes 8 paquets que preparatifs.qmd)
 .paquets_requis <- c(

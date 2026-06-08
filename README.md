@@ -21,7 +21,7 @@ Ce dépôt en contient le **code source**.
 
 L'atelier est **interactif** : venez avec un environnement prêt.
 
-1. Installez **Quarto 1.9+** (pré-release `1.10.4+` recommandée), **R 4.2+** et un éditeur (**RStudio**, **Positron** ou **VS Code**).
+1. Installez **Quarto 1.9+** (pré-release `1.10.7+` recommandée), **R 4.2+** et un éditeur (**RStudio**, **Positron** ou **VS Code**).
 2. Le plus simple ensuite : le **paquet R compagnon `tutoquartotypst`**, qui installe les paquets, vérifie votre environnement et pose les exercices :
 
    ```r
