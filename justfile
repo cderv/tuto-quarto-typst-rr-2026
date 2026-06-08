@@ -80,13 +80,13 @@ typst-packages:
 [group('publish')]
 [confirm("Publier sur Posit Connect Cloud ?")]
 publish: all
-    quarto publish posit-connect-cloud
+    quarto publish posit-connect-cloud --no-render
 
 # Publier sans rebuilder (si just all déjà fait)
 [group('publish')]
 [confirm("Publier sur Posit Connect Cloud ?")]
 publish-only:
-    quarto publish posit-connect-cloud
+    quarto publish posit-connect-cloud --no-render 
 
 [group('publish')]
 [confirm("Publier version pretuto ?")]
