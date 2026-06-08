@@ -51,7 +51,7 @@ tutoquartotypst::installer_exercices()
 
 ── Vérification de votre installation ────────────────────────────────────────────────────────────────────────────────────────────
 ✔ R 4.6.0 : version compatible (>= 4.1.0).
-✔ Quarto 1.10.4 : version recommandée.
+✔ Quarto 1.10.7 : version recommandée.
 ✔ Paquets R : les 8 prérequis sont installés.
 ✔ Rendu de test réussi : PDF produit (chaîne R → Quarto → Typst → gt → ggplot OK).
 

@@ -19,14 +19,13 @@
 
 ### Rendu
 
-Depuis ce dossier :
+Une fois le `_quarto.yml` créé (étape 1), rendez le projet depuis ce dossier :
 
 ```bash
 quarto render
 ```
 
-Sortie initiale (sans `_quarto.yml`) : **rien** — `quarto render` ne produit aucun fichier tant que le projet n'est pas déclaré. C'est précisément l'objet de l'étape 1.
-Après les 3 étapes : un livre PDF Typst unique, stylé.
+Résultat après les 3 étapes : un livre PDF Typst unique, stylé.
 
 ### Pas de `_brand.yml` du Bloc 1 ?
 
