@@ -53,13 +53,15 @@ CeTZ (CeTZ, ein Typst Zeichenpaket) is a library for drawing with [Typst](https:
 
 *Click on the example image to jump to the code.*
 
+You can explore an example gallery of scientific diagrams at [janosh.github.io/diagrams](https://janosh.github.io/diagrams).
+
 ## Usage
 
 For information, see the [online manual](https://cetz-package.github.io/docs).
 
 To use this package, simply add the following code to your document:
 ```
-#import "@preview/cetz:0.3.2"
+#import "@preview/cetz:0.3.4"
 
 #cetz.canvas({
   import cetz.draw: *
@@ -83,7 +85,7 @@ just install
 The installed version can be imported by prefixing the package name with `@local`.
 
 ```typ
-#import "@local/cetz:0.3.2"
+#import "@local/cetz:0.3.4"
 
 #cetz.canvas({
   import cetz.draw: *
@@ -102,7 +104,7 @@ To install `just` on your system, use your systems package manager. On Windows, 
 
 This package comes with some unit tests under the `tests` directory.
 To run all tests you can run the `just test` target. You need to have
-[`typst-test`](https://github.com/tingerrr/typst-test/) in your `PATH`: `cargo install typst-test --git https://github.com/tingerrr/typst-test`.
+[`tytanic`](https://github.com/tingerrr/tytanic/) in your `PATH`: `cargo install tytanic`.
 
 ## Projects using CeTZ
 - [cirCeTZ](https://github.com/fenjalien/cirCeTZ) A port of [circuitikz](https://github.com/circuitikz/circuitikz) to Typst.

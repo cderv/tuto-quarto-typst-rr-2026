@@ -205,7 +205,7 @@ typography:
 ::: {.center style="width:60%; margin:0 auto;"}
 ```{typst}
 //| alt: "Schéma en étoile : au centre, le fichier _brand.yml ; des flèches partent vers cinq sorties qu'il stylise — PDF (Typst), Page web (HTML), Slides (RevealJS), Graphe ggplot2 et Tableau gt."
-#import "@preview/fletcher:0.5.5" as fletcher: diagram, node, edge
+#import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge
 
 #let blue = rgb("#2568B0")
 #let gold = rgb("#c78d22")

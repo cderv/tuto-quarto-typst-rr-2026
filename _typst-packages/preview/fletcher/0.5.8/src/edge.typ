@@ -323,6 +323,53 @@
 
 
 
+// Convert to `(segment, pos)`, where `segment` is an `int` and `pos` is a
+// `relative`. `pos` is relative to segment `segment`.
+// 
+// Possible inputs:
+//   * `(segment, pos)`, where `segment` is an int and `pos` is accepted by
+//     `as-relative`. `pos` will be interpreted as relative to segment
+//     `segment`.
+//   * `pos`, where `pos` is accepted by `as-relative`. `pos` will be
+//     interpreted as relative to the whole edge.
+#let normalize-label-pos(pos, n-segments) = {
+	// panic(pos, n-segments)
+
+	let segment
+	let position
+	
+	if type(pos) == array and type(pos.at(0)) == int {
+		// Segment specified
+		segment = pos.at(0)
+		position = as-relative(pos.at(1))
+
+	} else {
+		// No segment specified
+		pos = as-relative(pos)
+		pos = pos.ratio*n-segments + pos.length
+
+		// Which segment does the position refer to?
+		// Use ceil-1 instead of floor to put positions that fall on the boundary
+		// between two segment on the end of the first, not the beginning of the
+		// second. There's no particular reason to do it like this, other than
+		// compatibility.
+		segment = calc.ceil(float(pos.ratio)) - 1
+		segment = calc.clamp(segment, 0, n-segments - 1)
+
+		// Make the position relative to the selected segment. This applies only to
+		// the `ratio` part of the `relative` position, not to the `length` part.
+		position = (pos.ratio - 100% * segment) + pos.length
+	}
+
+	if segment < 0 or segment >= n-segments {
+		error("segment of `label-pos` must be at least zero and less than number of segments (#1); got #0.", segment, n-segments)
+	}
+
+	(segment: segment, position: position)
+}
+
+
+
 
 /// Draw a connecting edge in a diagram.
 ///
@@ -429,13 +476,13 @@
 ///    - roughly above the connector, in the case of straight lines; or
 ///    - on the outside of the curve, in the case of arcs.
 ///
-/// - label-pos (float, ratio, relative length): Position of the label along the
+/// - label-pos (float, ratio, relative length, array): Position of the label along the
 ///   edge, from the start to end.
 ///
 ///   A number or ratio between zero and one is interpreted as a fraction of the
 ///   edge length. Physical and relative relative lengths work too. For example,
 ///   `100% - 1em` means `1em` from the end.
-///
+/// 
 ///   #stack(
 ///   	dir: ltr,
 ///   	spacing: 1fr,
@@ -448,6 +495,12 @@
 ///   For `"poly"` edges (see @edge-types), a number does not specify a fraction
 ///   of the path length; instead, the $k$th vertex is at position $k/n$ where
 ///   $n$ is the number of vertices. Each midpoint is then at $k/n + 0.5$.
+/// 
+///   As an alternative, the position can be specified by an array
+///   `(segment, position)`, where `segment` is an integer that indicates which
+///   segment the label is placed on (segment $s$ is the one between vertices
+///   $s$ and $s+1$). `position` is then relative to the specified segment; the
+///   segment midpoint is at `(s, 50%)`.
 ///
 /// - label-sep (length): Separation between the connector and the label anchor.
 ///
@@ -508,10 +561,10 @@
 ///   background (see #param[edge][crossing-fill]), and can be used to adjust
 ///   the label's padding, outline, and so on.
 ///
-///   #example(```
-///   diagram(edge($f$, label-wrapper: e =>
+///   ```example
+///   #diagram(edge($f$, label-wrapper: e =>
 ///   	circle(e.label, fill: e.label-fill)))
-///   ```)
+///   ```
 ///
 ///   Default: #the-param[diagram][label-wrapper]
 ///
@@ -526,8 +579,8 @@
 ///   also be passed as convenience positional arguments), but a decoration
 ///   function may also be specified.
 ///
-///   #example(```
-///   diagram(
+///   ```example
+///   #diagram(
 ///   	$
 ///   		A edge("wave") &
 ///   		B edge("zigzag") &
@@ -539,7 +592,7 @@
 ///   			.with(amplitude: .4)
 ///   	)
 ///   )
-///   ```)
+///   ```
 ///
 /// - marks (array): The marks (arrowheads) to draw along an edge's stroke. This
 ///   may be:
@@ -702,15 +755,15 @@
 ///   If an edge has many vertices, the shifts only affect the first and last
 ///   segments of the edge.
 ///
-///   #example(```
-///   diagram(
+///   ```example
+///   #diagram(
 ///   	node-fill: luma(70%),
 ///   	node((0,0), [Hello]),
 ///   	edge("u,r,d", "->"),
 ///   	edge("u,r,d", "-->", shift: 8pt),
 ///   	node((1,0), [World]),
 ///   )
-///   ```)
+///   ```
 ///
 /// - snap-to (pair): The nodes the start and end of an edge should snap to.
 /// Each node can be a position or node #param[node][name], or `none` to disable
@@ -725,6 +778,24 @@
 ///   Objects on a higher `layer` are drawn on top of objects on a lower
 ///   `layer`. Objects on the same layer are drawn in the order they are passed
 ///   to `diagram()`.
+///
+/// - floating (bool): Whether the edge should be _floating_ so as not to affect
+///   the diagram's bounding box.
+/// 
+///   When `floating: true`, the edge is wrapped in `cetz.draw.floating(..)` which
+///   prevents the objects from affecting the canvas' bounding box.
+/// 
+///   ```example
+///   An inline #diagram($
+/// 		A edge(->, bend: #45deg, floating: #true) & B
+/// 	$) diagram.
+/// 
+/// 	#rect(width: 7cm, align(center, diagram(
+/// 		node((0,1), $A$),
+/// 		edge("->", floating: true, [centered despite label]),
+/// 		node((0,0), $B$),
+/// 	)))
+///   ```
 ///
 /// - post (function): Callback function to intercept `cetz` objects before they
 ///   are drawn to the canvas.
@@ -762,13 +833,14 @@
 	crossing-fill: auto,
 	snap-to: (auto, auto),
 	layer: 0,
+	floating: false,
 	post: x => x,
 ) = {
 
 	let options = (
 		vertices: vertices,
 		label: label,
-		label-pos: as-relative(label-pos),
+		label-pos: label-pos,
 		label-sep: label-sep,
 		label-angle: label-angle,
 		label-anchor: label-anchor,
@@ -794,6 +866,7 @@
 		snap-to: as-pair(snap-to),
 		layer: layer,
 		post: post,
+		floating: as-bool(floating, message: "`floating` must be boolean"),
 	)
 
 	options += interpret-edge-args(args, options)
@@ -815,6 +888,10 @@
 	}
 	options.vertices = options.vertices.map(interpret-coord-str)
 
+	// guess the number of segments
+	let n-segments = options.vertices.len() - 1
+	if options.corner != none { n-segments += 1 }
+	options.label-pos = normalize-label-pos(options.label-pos, n-segments)
 
 
 	if options.label-side not in (left, center, right, auto) {
@@ -844,7 +921,6 @@
 
 	metadata(obj)
 }
-
 
 
 #let resolve-edge-options(edge, options) = {
@@ -935,6 +1011,10 @@
 	if edge.label-fill == false { edge.label-fill = none }
 
 	edge.label-wrapper = map-auto(edge.label-wrapper, options.label-wrapper)
+
+	if edge.floating {
+		edge.post = x => cetz.draw.floating((edge.post)(x))
+	}
 
 	edge
 }

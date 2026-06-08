@@ -5,6 +5,10 @@
 #let DEBUG_COLOR = rgb("f008")
 #let DEBUG_COLOR2 = rgb("0f08")
 
+#let draw-debug(objs) = {
+	cetz.draw.floating(objs)
+}
+
 #let draw-node-outline(node) = {
 	cetz.draw.group({
 		cetz.draw.translate(node.pos.xyz)
@@ -15,7 +19,7 @@
 #let draw-node(node, debug: 0) = {
 
 	let result = {
-		if node.stroke != none or node.fill != none {
+		if node.stroke != none or node.fill != none or not node.auto-shape {
 			cetz.draw.group({
 				cetz.draw.translate(node.pos.xyz)
 				for (i, extrude) in node.extrude.enumerate() {
@@ -51,31 +55,32 @@
 	// Draw debug stuff
 	if debug >= 1 {
 		// dot at node anchor
-		cetz.draw.circle(
+		draw-debug(cetz.draw.circle(
 			node.pos.xyz,
 			radius: 0.5pt,
 			fill: DEBUG_COLOR,
 			stroke: none,
-		)
+		))
 	}
 
 	if debug >= 2 and node.radius != 0pt {
 		// node bounding rectangle
-		cetz.draw.rect(
-			..rect-at(node.pos.xyz, node.size),
-			stroke: DEBUG_COLOR + .1pt,
-		)
+		draw-debug({
+			cetz.draw.rect(
+				..rect-at(node.pos.xyz, node.size),
+				stroke: DEBUG_COLOR + .1pt,
+			)
 
-		// node anchoring outline (what edges snap to)
-		// cetz.draw.group({
-		// 	cetz.draw.translate(node.pos.xyz)
-		// 	(node.shape)(node, node.outset)
-		// })
-		cetz.draw.set-style(
-			stroke: DEBUG_COLOR2 + 0.25pt,
-			fill: none,
-		)
-		draw-node-outline(node)
+			// node anchoring outline (what edges snap to)
+			cetz.draw.set-style(stroke: DEBUG_COLOR2 + 0.25pt)
+			draw-node-outline(node)
+		})
+	}
+
+	if debug >= 3 and "enclosed-vertices" in node {
+		draw-debug(node.enclosed-vertices.map(pos => {
+			cetz.draw.circle(pos, radius: node.inset, stroke: 0.1pt + blue)
+		}).join())
 	}
 }
 
@@ -97,8 +102,8 @@
 ///   the edge in $x y$ coordinates.
 #let place-edge-label-on-curve(edge, curve, debug: 0) = {
 
-	let curve-point = curve(edge.label-pos)
-	let curve-point-ε = curve(edge.label-pos + 1e-3%)
+	let curve-point = curve(edge.label-pos.position)
+	let curve-point-ε = curve(edge.label-pos.position + 1e-3%)
 
 	let θ = wrap-angle-180(angle-between(curve-point, curve-point-ε))
 	let θ-normal = θ + if edge.label-side == right { +90deg } else { -90deg }
@@ -138,12 +143,12 @@
 	)
 
 	if debug >= 2 {
-		cetz.draw.circle(
+		draw-debug(cetz.draw.circle(
 			label-pos,
 			radius: 0.75pt,
 			stroke: none,
 			fill: DEBUG_COLOR2,
-		)
+		))
 	}
 }
 
@@ -228,9 +233,10 @@
 	// Draw marks
 	let total-path-len = vector-len(vector.sub(from, to))
 	let curve(t) = {
-		// panic(t, total-path-len)
-		t = relative-to-float(t, len: total-path-len)
-		vector.lerp(from, to, t)
+		if calc.abs(total-path-len) > 1e-3pt {
+			t = relative-to-float(t, len: total-path-len)
+			vector.lerp(from, to, t)
+		} else { from }
 	}
 
 	for mark in edge.marks {
@@ -238,7 +244,11 @@
 	}
 
 	// Draw label
-	if edge.label != none {
+	// This edge only has a single segment, so don't draw the label unless it's 
+	// placed on segment 0. This means that when calling this function for the
+	// individual segments of an edge (`draw-edge-polyline`), the `segment` field
+	// of `label-pos` must be set to 0.
+	if edge.label != none and edge.label-pos.segment == 0 {
 
 		// Choose label anchor based on edge direction,
 		// preferring to place labels above the edge
@@ -302,7 +312,7 @@
 	}
 
 	// Draw label
-	if edge.label != none {
+	if edge.label != none and edge.label-pos.segment == 0 {
 
 		if edge.label-side == auto {
 			// Choose label side to be on outside of arc
@@ -460,7 +470,7 @@
 				Δphase += vector-len(vector.sub(from, to))
 
 				for d in edge.extrude {
-					if delta != 0deg {
+					if calc.abs(delta) > 1deg {
 						cetz.draw.arc(
 							arc-center,
 							radius: arc-radius - d,
@@ -493,9 +503,15 @@
 			mark
 		}).filter(mark => mark.pos != none)
 
-		let label-pos = lerp-scale(edge.label-pos, i)
-		let label-options = if label-pos == none { (label: none) }
-		else { (label-pos: label-pos, label: edge.label) }
+		// If the current segment is the one where the label is placed, keep the
+		// label (but change its segment to 0 because `draw-edge-line` will consider
+		// this segment a single-segment edge and only draw labels on segment 0).
+		// Otherwise, draw no label.
+		let label-options = if i == edge.label-pos.segment {
+			(label-pos: edge.label-pos + (segment: 0), label: edge.label)
+		} else {
+			(label: none)
+		}
 
 
 		draw-edge-line(
@@ -616,7 +632,7 @@
 	let dummy-line = cetz.draw.line(from, to)
 
 	let intersection-objects = nodes.map(nodes => {
-		nodes.map(draw-node-outline).join()
+		cetz.draw.group(nodes.map(draw-node-outline).join())
 		dummy-line
 	})
 
@@ -643,7 +659,7 @@
 		))
 
 	let intersection-objects = nodes.zip(dummy-lines).map(((nodes, dummy-line)) => {
-		nodes.map(draw-node-outline).join()
+		cetz.draw.group(nodes.map(draw-node-outline).join())
 		dummy-line
 	})
 
@@ -667,7 +683,7 @@
 	let dummy-lines = end-segments.map(points => cetz.draw.line(..points))
 
 	let intersection-objects = nodes.zip(dummy-lines).map(((nodes, dummy-line)) => {
-		nodes.map(draw-node-outline).join()
+		cetz.draw.group(nodes.map(draw-node-outline).join())
 		dummy-line
 	})
 
@@ -706,7 +722,7 @@
 ///   - `centers: (x-centers, y-centers)`, the physical offsets of each row and each column,
 ///   - `cell-sizes: (x-sizes, y-sizes)`, the physical sizes of each row and
 ///     each column.
-#let draw-debug-axes(grid, debug: false) = {
+#let draw-debug-axes(grid, debug: false, floating: true) = {
 
 	let (x-lims, y-lims) = range(2).map(axis => (
 		grid.centers.at(axis).at( 0) - grid.cell-sizes.at(axis).at( 0)/2,
@@ -725,7 +741,7 @@
 	if grid.flip.xy { (u-range, v-range) = (v-range, u-range) }
 
 	import cetz.draw
-	draw.group({
+	let objs = draw.group({
 		let (a, b) = array.zip(x-lims, y-lims)
 		if a == b { b = vector.add(b, (1e-3pt, 1e-3pt)) }
 		draw.rect(a, b, stroke: DEBUG_COLOR + .5pt)
@@ -781,6 +797,12 @@
 		}
 
 	})
+
+	if floating {
+		cetz.draw.floating(objs)
+	} else {
+		objs
+	}
 }
 
 // Find candidate nodes that an edge should snap to
@@ -825,8 +847,8 @@
 		first-last(edge.final-vertices),
 	).map(((given, vertex, xy)) => {
 		if given == none { return () } // user explicitly disabled snapping
-		let key = map-auto(given, if type(vertex) == label { vertex } else { xy })
-		select-nodes(key)
+		let key = if type(vertex) == label { vertex } else { xy }
+		select-nodes(map-auto(given, key))
 	})
 }
 

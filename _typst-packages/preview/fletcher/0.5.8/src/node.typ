@@ -19,14 +19,14 @@
 ///
 ///   Names can sometimes be used in place of coordinates. For example:
 ///
-///   #example(```
-///   fletcher.diagram(
+///   ```example
+///   #diagram(
 ///   	node((0,0), $A$, name: <A>),
 ///   	node((1,0.6), $B$, name: <B>),
 ///   	edge(<A>, <B>, "->"),
 ///   	node((rel: (1, 0), to: <B>), $C$)
 ///   )
-///   ```)
+///   ```
 ///
 ///   Node names are _labels_ (instead of strings like in CeTZ) to disambiguate
 ///   them from other positional string arguments given to `edge()`. If a string
@@ -38,26 +38,26 @@
 ///   If a node is larger than its label, you can wrap the label in `align()` to
 ///   control the label alignment within the node.
 ///
-///   #example(```typc
-///   diagram(
+///   ```example
+///   #diagram(
 ///   	node((0,0), align(bottom + left)[¡Hola!],
 ///   		width: 3cm, height: 2cm, fill: yellow),
 ///   )
-///   ```)
+///   ```
 ///
 /// - inset (length): Padding between the node's content and its outline.
 ///
 ///   In debug mode, the inset is visualised by a thin green outline.
 ///
-///   #example(```
-///   diagram(
+///   ```example
+///   #diagram(
 ///   	debug: 3,
 ///   	node-stroke: 1pt,
 ///   	node((0,0), [Hello,]),
 ///   	edge(),
 ///   	node((1,0), [World!], inset: 10pt),
 ///   )
-///   ```)
+///   ```
 ///
 ///   Defaults to #the-param[diagram][node-inset].
 ///
@@ -69,15 +69,15 @@
 ///
 ///   In debug mode, the outset is visualised by a thin green outline.
 ///
-///   #example(```
-///   diagram(
+///   ```example
+///   #diagram(
 ///   	debug: 3,
 ///   	node-stroke: 1pt,
 ///   	node((0,0), [Hello,]),
 ///   	edge(),
 ///   	node((1,0), [World!], outset: 10pt),
 ///   )
-///   ```)
+///   ```
 ///
 ///   Defaults to #the-param[diagram][node-outset].
 ///
@@ -99,8 +99,8 @@
 ///   the node's position if `enclose` is given, but still affects connecting
 ///   edges.
 ///
-///   #box(example(```
-///   diagram(
+///   ```example
+///   #diagram(
 ///   	node-stroke: 1pt,
 ///   	node((0,0), [ABC], name: <A>),
 ///   	node((1,1), [XYZ], name: <Z>),
@@ -109,7 +109,7 @@
 ///   		enclose: (<A>, <Z>), name: <group>),
 ///   	edge(<group>, (3,0.5), stroke: teal),
 ///   )
-///   ```))
+///   ```
 ///
 /// - shape (rect, circle, function): Shape of the node's outline. If `auto`,
 ///   one of `rect` or `circle` is chosen depending on the aspect ratio of the
@@ -118,7 +118,7 @@
 ///   Other shapes are defined in the `fletcher.shapes`
 ///   submodule, including
 ///   #{
-///   	dictionary(fletcher.shapes).pairs()
+///   	fletcher.shapes.ALL_SHAPES.pairs()
 ///   	.filter(((k, v)) => type(v) != module)
 ///   	.map(((k, v)) => [#raw(k)])
 ///   	.join(last: [, and ])[, ]
@@ -133,9 +133,8 @@
 ///     extruded outwards by. This serves two functions: to support automatic
 ///     edge anchoring with a non-zero node `outset`, and to create multi-stroke
 ///     effects using the `extrude` node option.
-///   See the
-///   #link("https://github.com/Jollywatt/typst-fletcher/blob/master/src/shapes.typ", 
-///   ```plain src/shapes.typ```) source file for example shape implementations.
+///   See the ```plain src/shapes.typ``` source file for example shape
+///   implementations.
 ///
 ///   Defaults to #the-param[diagram][node-shape].
 ///
@@ -310,9 +309,10 @@
 
 	node.shape = map-auto(node.shape, options.node-shape)
 
-	if node.shape == auto {
-		if node.radius != auto { node.shape = "circle" }
-		if node.size != (auto, auto) { node.shape = "rect" }
+	node.auto-shape = node.shape == auto
+	if node.shape == auto and node.enclose == () {
+		if node.radius != auto { node.shape = shapes.circle }
+		if node.size != (auto, auto) { node.shape = shapes.rect }
 	}
 
 	let thickness = if node.stroke == none { 1pt } else {
@@ -369,9 +369,14 @@
 
 		node.aspect = if width == 0pt or height == 0pt { 1 } else { width/height }
 
+		// automatically choose a node shape
 		if node.shape == auto {
-			let is-roundish = calc.max(node.aspect, 1/node.aspect) < 1.5
-			node.shape = if is-roundish { "circle" } else { "rect" }
+			if node.enclose.len() > 0 {
+				node.shape = rect
+			} else {
+				let is-roundish = calc.max(node.aspect, 1/node.aspect) < 1.5
+				node.shape = if is-roundish { "circle" } else { "rect" }
+			}
 		}
 
 		// Add node inset
@@ -405,7 +410,8 @@
 		let enclosed-vertices = node.enclose.map(key => {
 			let near-node = find-node(nodes, key)
 
-			if near-node == none or near-node.pos.raw == auto {
+			// if near-node == none or near-node.pos.raw == auto {
+			if near-node == none {
 				// if enclosed point doesn't resolve to a node
 				// enclose the point itself
 				let (_, coord) = resolve(ctx, key)
@@ -414,6 +420,9 @@
 				// if enclosed point resolves to a node
 				// enclose its bounding box
 				let (x, y) = near-node.pos.xyz
+				if "bounding-center" in near-node {
+					(x, y) = near-node.bounding-center
+				}
 				let (w, h) = near-node.size
 				(
 					(x - w/2, y - h/2),
@@ -427,11 +436,13 @@
 		let (center, size) = bounding-rect(enclosed-vertices)
 
 		node.pos.xyz = center
+		node.bounding-center = center
 		node.size = vector-max(
 			size.map(d => d + node.inset*2),
 			node.size,
 		)
-		node.shape = shapes.rect // TODO: support different node shapes with enclose
+		node.resolved-enclose = true
+		assert(node.shape != auto)
 
 		node
 	})
@@ -442,7 +453,6 @@
 
 #let register-node-anchors(ctx, node) = {
 	if node.name == none { return ctx }
-	let node-origin = node.pos.at(ctx.target-system)
 	let calculate-anchors
 
 	if ctx.target-system == "uv" {
@@ -454,25 +464,45 @@
 				("default",)
 			} else {
 				if a == "default" {
-					node-origin
+					node.pos.uv
 				} else {
 					NAN_COORD
 				}
 			}
 		}
 	} else if ctx.target-system == "xyz" {
-		if is-nan-vector(node-origin) { return ctx }
+		// get node center, taking care for enclose nodes
+		let physical-origin = node.at("bounding-center", default: node.pos.xyz)
+		let uv-origin = node.pos.xyz
+		// enclose nodes are a bit confusing because they have two 'centers'...
+		// the physical center of the shape which is drawn is node.bounding-center,
+		// whereas node.pos.xyz is the uv-space midpoint (which can be different to the xyz
+		// midpoint for irregular grids.)
+		// This is a deliberate design decision - often, edges connecting to enclose
+		// nodes should be nice and straight, not angled toward the exact centre.
 
-		let cetz-obj = (node.shape)(node, node.outset).at(0)
-		calculate-anchors = (k) => {
-			if k == "default" { return node-origin }
-			let a = ((cetz-obj)(ctx).anchors)(k)
-			if not is-number-vector(a) { return a }
-			a.at(1) *= -1 // CETZ Y AXIS
-			vector.add(
-				node-origin, // node center
-				vector-2d(vector.scale(a, ctx.length)),
-			)
+		if is-nan-vector(physical-origin) { return ctx }
+
+		// do not compute anchors for enclose nodes before they have been resolved
+		if node.enclose.len() > 0 and "resolved-enclose" not in node {
+			// we should return NAN_COORD to indicate the anchors are not yet resolvable
+			// however, units must be length (float.nan + length panics) but there is
+			// so such thing as nan length (float.nan*1pt == 0pt, interestingly)
+			calculate-anchors = (k) => (0pt, 0pt)
+			// so we just return zero, hoping it doesn't cause incorrect anchors --
+			// it's better than crashing -- and they might get resolved properly later
+		} else {
+			let cetz-obj = (node.shape)(node, node.outset).at(0)
+			calculate-anchors = (k) => {
+				if k == "default" { return uv-origin }
+				let a = ((cetz-obj)(ctx).anchors)(k)
+				if not is-number-vector(a) { return a }
+				a.at(1) *= -1 // CETZ Y AXIS
+				vector.add(
+					physical-origin, // node center
+					vector-2d(vector.scale(a, ctx.length)),
+				)
+			}
 		}
 	}
 
@@ -495,6 +525,7 @@
 /// -> array
 #let resolve-node-coordinates(nodes, ctx: (:)) = {
 	let ctx = default-ctx + ctx
+	let system = ctx.target-system
 
 	// nodes which enclose other points are allowed to have
 	// position `auto`; they are placed after normal nodes
@@ -520,7 +551,6 @@
 			(ctx, coord) = resolve(ctx, node.pos.raw)
 		}
 
-		assert(coord.len() == 2)
 		node.pos.insert(ctx.target-system, coord)
 		nodes.at(i) = node
 		ctx = register-node-anchors(ctx, node)

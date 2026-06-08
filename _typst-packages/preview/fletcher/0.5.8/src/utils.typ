@@ -27,6 +27,11 @@
 // Make a function propagage `none`
 #let pass-none(f) = x => if x == none { x } else { f(x) }
 
+#let as-bool(obj, message: "Expected boolean") = {
+	if type(obj) == bool { obj }
+	else { error(message + "; got #0.", repr(obj)) }
+}
+
 // for when `stroke` is already in namespace
 #let as-stroke(x) = stroke(x)
 
@@ -123,6 +128,19 @@
 
 // Ensure angle is in range -180deg <= θ <= 180deg
 #let wrap-angle-180(θ) = (θ/360deg - calc.round(θ/360deg))*360deg
+
+#let dir-to-anchor(dir) = {
+	(
+		repr(top): "north",
+		repr(top + right): "north-east",
+		repr(right): "east",
+		repr(bottom + right): "south-east",
+		repr(bottom): "south",
+		repr(bottom + left): "south-west",
+		repr(left): "west",
+		repr(top + left): "north-west",
+	).at(repr(dir))
+}
 
 #let angle-to-anchor(θ) = {
 	let i = calc.rem(8*θ/1rad/calc.tau, 8)
@@ -280,24 +298,28 @@
 
 
 // find a node near a given uv coordinate
-#let find-node-at(nodes, uv) = {
+#let find-node-at(nodes, uv, snap: true) = {
 	nodes.filter(node => {
 		if is-nan-vector(node.pos.uv) { return false }
 
-		// node must be within a one-unit block around pos
-		vector.sub(node.pos.uv, uv).all(Δ => calc.abs(Δ) < 1)
+		if snap {
+			// node must be within a one-unit block around pos
+			vector.sub(node.pos.uv, uv).all(Δ => calc.abs(Δ) < 0.1)
+		} else {
+			node.pos.uv == uv
+		}
 	})
 		.sorted(key: node => vector.len(vector.sub(node.pos.uv, uv)))
 		.at(0, default: none)
 }
 
-#let find-node(nodes, key, snap: false) = {
+#let find-node(nodes, key, snap: true) = {
 	if type(key) == label {
 		let node = nodes.find(node => node.name == key)
 		assert(node != none, message: "Couldn't find node with name " + repr(key))
 		node
 	} else if type(key) == array and is-number-vector(key) {
-		find-node-at(nodes, key)
+		find-node-at(nodes, key, snap: snap)
 	} else {
 		none
 	}

@@ -15,19 +15,31 @@
 
 #let pi = calc.pi
 
-/// Create identity matrix with dimensions $m \times n$
+/// Create a (square) identity matrix with dimensions $size \times size$
 ///
-/// - m (int): The number of rows
-/// - n (int): The number of columns
-/// - one (float): Value to set as $1$
-/// - zero (float): Value to set as $0$
+/// - size (int): Size of the matrix
 /// -> matrix
-#let ident(m: 4, n: 4, one: 1, zero: 0) = {
-  ({for m in range(0, m) {
-    ({for n in range(0, n) {
-        if m == n { (one,) } else { (zero,) }
-     }},)
-    }})
+#let ident(size) = {
+  assert(size >= 1, message: "Invalid dimension")
+
+  range(0, size).map(j => range(0, size).map(k => {
+    if j == k { 1 } else { 0 }
+  }))
+}
+
+/// Create a square matrix with the diagonal set to the
+/// given values
+///
+/// - ..diag (float): Diagonal values
+/// -> matrix
+#let diag(..diag) = {
+  assert(diag.pos().len() >= 1, message: "Invalid dimension")
+  assert.eq(diag.named(), (), messaged: "Unexpected named argument")
+
+  let diag = diag.pos()
+  range(0, diag.len()).map(m => range(0, diag.len()).map(n => {
+    if n == m { diag.at(m) } else { 0 }
+  }))
 }
 
 /// Returns the dimension of the given matrix as `(m, n)`
@@ -248,15 +260,17 @@
 /// -> vector
 #let mul4x4-vec3(mat, vec, w: 1) = {
   assert(vec.len() <= 4)
-  let out = (0, 0, 0)
-  for m in range(0, 3) {
-    let v = (mat.at(m).at(0) * vec.at(0, default: 0)
-           + mat.at(m).at(1) * vec.at(1, default: 0)
-           + mat.at(m).at(2) * vec.at(2, default: 0)
-           + mat.at(m).at(3) * vec.at(3, default: w))
-    out.at(m) = v
-  }
-  return out
+
+  let x = vec.at(0)
+  let y = vec.at(1)
+  let z = vec.at(2, default: 0)
+  let w = vec.at(3, default: w)
+
+  let ((a1,a2,a3,a4), (b1,b2,b3,b4), (c1,c2,c3,c4), _) = mat
+  return (
+    a1 * x + a2 * y + a3 * z + a4 * w,
+    b1 * x + b2 * y + b3 * z + b4 * w,
+    c1 * x + c2 * y + c3 * z + c4 * w)
 }
 
 // Multiply matrix with vector
@@ -289,7 +303,7 @@
   }
 
   let N = range(n)
-  let inverted = ident(m: n, n: n)
+  let inverted = ident(n)
   let p
   for j in N {
     for i in range(j, n) {
@@ -319,7 +333,7 @@
   return inverted
 }
 
-/// Swaps the ath column with the bth column.
+/// Swaps the a-th column with the b-th column.
 ///
 /// - mat (matrix): Matrix
 /// - a (int): The index of column a.

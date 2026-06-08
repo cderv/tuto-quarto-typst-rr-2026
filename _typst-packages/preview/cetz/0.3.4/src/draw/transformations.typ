@@ -26,7 +26,7 @@
 /// - mat (none, matrix): The 4x4 transformation matrix to set. If `none` is passed, the transformation matrix is set to the identity matrix (`matrix.ident()`).
 #let set-transform(mat) = {
   let mat = if mat == none {
-    matrix.ident()
+    matrix.ident(4)
   } else {
     matrix.round(mat)
   }
@@ -147,6 +147,8 @@
 /// scale(y: 50%)
 /// circle((0,0))
 /// ```
+///
+/// Note that content like text does not scale automatically. See `auto-scale` styling of content for that.
 ///
 /// - ..args (float, ratio): A single value to scale the transformation matrix by or per axis
 ///   scaling factors. Accepts a single float or ratio value or any combination of the named arguments

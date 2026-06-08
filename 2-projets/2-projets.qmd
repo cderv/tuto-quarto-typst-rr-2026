@@ -83,7 +83,7 @@ Depuis Quarto 1.9, `format: typst` sur un book active [**orange-book**](https://
 ::: {.fragment .fade-in}
 ```{typst}
 //| alt: "Schéma de fusion : cinq fichiers .qmd (index, 01-anatomie, 02-origines, conclusion, annexe-donnees) reliés par des flèches portant la mention type: book vers un livre PDF unique « Anatomie d'une saga » offrant couverture, TOC, numérotation par chapitre et en-têtes & pieds."
-#import "@preview/fletcher:0.5.5" as fletcher: diagram, node, edge
+#import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge
 
 #let blue = rgb("#2568B0")
 #let gold = rgb("#c78d22")

@@ -1,18 +1,26 @@
-# fletcher
+![Version](https://img.shields.io/badge/version-0.5.8-green)
+[![Typst Universe](https://img.shields.io/badge/Typst-Universe-239dad)](https://typst.app/universe/package/fletcher/)
+[![Repo](https://img.shields.io/badge/GitHub-repo-444)](https://github.com/Jollywatt/typst-fletcher)
+[![Development version](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fgithub.com%2FJollywatt%2Ftypst-fletcher%2Fraw%2Fmain%2Ftypst.toml&query=package.version&label=main&color=444)](https://github.com/Jollywatt/typst-fletcher/tree/main)
 
-[![Manual](https://img.shields.io/badge/docs-manual.pdf-green)](docs/manual.pdf?raw=true)
-![Version](https://img.shields.io/badge/version-0.5.5-green)
-[![Development version](https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fgithub.com%2FJollywatt%2Ftypst-fletcher%2Fraw%2Fdev%2Ftypst.toml&query=package.version&label=dev&color=blue)](https://github.com/Jollywatt/typst-fletcher/tree/dev)
-[![Repo](https://img.shields.io/badge/GitHub-repo-blue)](https://github.com/Jollywatt/typst-fletcher)
+# fletcher
 
 _**fletcher** (noun) a maker of arrows_
 
 A [Typst](https://typst.app/) package for drawing diagrams with arrows,
 built on top of [CeTZ](https://github.com/johannes-wolf/cetz).
-See the [manual](docs/manual.pdf?raw=true) for documentation.
+
+See the [manual](docs/manual.pdf?raw=true) for documentation or ask the community for help.
+
+[![Manual](https://img.shields.io/badge/docs-manual.pdf-orange)](docs/manual.pdf?raw=true)
+[![Ask on Discord](https://img.shields.io/badge/ask-on%20Typst%20forum-239dad
+)](https://forum.typst.app)
+[![Ask on Discord](https://img.shields.io/badge/ask-on%20Discord-2a4d7e
+)](https://discord.com/channels/1054443721975922748/1260973351900414102)
+
 
 ```typ
-#import "@preview/fletcher:0.5.5" as fletcher: diagram, node, edge
+#import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge
 ```
 
 
@@ -93,57 +101,80 @@ Pull requests are most welcome!
 <table>
   <tr>
     <td style="background: white;">
-      <a href="docs/gallery/1-commutative.typ">
+      <a href="docs/gallery/01-commutative.typ">
         <center>
-          <img src="docs/gallery/1-commutative.svg" width="100%"/>
+          <img src="docs/gallery/01-commutative.svg" width="100%"/>
         </center>
       </a>
     </td>
     <td style="background: white;">
-      <a href="docs/gallery/2-algebra-cube.typ">
+      <a href="docs/gallery/02-algebra-cube.typ">
         <center>
-          <img src="docs/gallery/2-algebra-cube.svg" width="100%"/>
-        </center>
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td style="background: white;">
-      <a href="docs/gallery/3-ml-architecture.typ">
-        <center>
-          <img src="docs/gallery/3-ml-architecture.svg" width="100%"/>
-        </center>
-      </a>
-    </td>
-    <td style="background: white;">
-      <a href="docs/gallery/4-io-flowchart.typ">
-        <center>
-          <img src="docs/gallery/4-io-flowchart.svg" width="100%"/>
+          <img src="docs/gallery/02-algebra-cube.svg" width="100%"/>
         </center>
       </a>
     </td>
   </tr>
   <tr>
     <td style="background: white;">
-      <a href="docs/gallery/5-digraph.typ">
+      <a href="docs/gallery/03-ml-architecture.typ">
         <center>
-          <img src="docs/gallery/5-digraph.svg" width="100%"/>
+          <img src="docs/gallery/03-ml-architecture.svg" width="100%"/>
         </center>
       </a>
     </td>
     <td style="background: white;">
-      <a href="docs/gallery/6-node-groups.typ">
+      <a href="docs/gallery/04-io-flowchart.typ">
         <center>
-          <img src="docs/gallery/6-node-groups.svg" width="100%"/>
+          <img src="docs/gallery/04-io-flowchart.svg" width="100%"/>
         </center>
       </a>
     </td>
   </tr>
   <tr>
     <td style="background: white;">
-      <a href="docs/gallery/7-uml-diagram.typ">
+      <a href="docs/gallery/05-digraph.typ">
         <center>
-          <img src="docs/gallery/7-uml-diagram.svg" width="100%"/>
+          <img src="docs/gallery/05-digraph.svg" width="100%"/>
+        </center>
+      </a>
+    </td>
+    <td style="background: white;">
+      <a href="docs/gallery/06-node-groups.typ">
+        <center>
+          <img src="docs/gallery/06-node-groups.svg" width="100%"/>
+        </center>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td style="background: white;">
+      <a href="docs/gallery/07-uml-diagram.typ">
+        <center>
+          <img src="docs/gallery/07-uml-diagram.svg" width="100%"/>
+        </center>
+      </a>
+    </td>
+    <td style="background: white;">
+      <a href="docs/gallery/08-tree.typ">
+        <center>
+          <img src="docs/gallery/08-tree.svg" width="100%"/>
+        </center>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td style="background: white;">
+      <a href="docs/gallery/09-feynman-diagram.typ">
+        <center>
+          <img src="docs/gallery/09-feynman-diagram.svg" width="100%"/>
+        </center>
+      </a>
+    </td>
+    <td style="background: white;">
+      <a href="docs/gallery/10-category-theory.typ">
+        <center>
+          <img src="docs/gallery/10-category-theory.svg" width="100%"/>
         </center>
       </a>
     </td>
@@ -151,7 +182,29 @@ Pull requests are most welcome!
 </table>
 
 
+
 ## Change log
+
+### 0.5.8
+
+- Added bracket and parenthesis mark types, with shorthands `"["`, `"]"`, `"("`, `")"`, `"bracket"`, `"parenthesis"` (#102).
+- Added `cylinder`, `brace`, `bracket`, `paren` and `stretched-glyph` node shapes (#99, #109).
+- Allow specifying label positions as `(segment, position)` (#107, #112, [@deffi](https://github.com/deffi)).
+- Fix bugs with anchors of absolutely-positioned enclose nodes (#95, #113).
+- Fix some instabilities with edges related to division by zero (#100, #105).
+
+### 0.5.7
+
+- Update `cetz` dependency to `0.3.4` fixing bugs with `typst` version `0.13.1` (#89, #90, #91).
+
+### 0.5.6
+
+- **Require `typst` version `>=0.13.0`.**
+- Update `cetz` dependency to `0.3.3`.
+- Support CeTZ anchors on nodes which dynamically enclose other nodes (#81).
+- Allow nested enclosing of nodes (#45).
+- Add `floating` option to `edge()` to make certain objects not affect the diagram's bounds (#38).
+- Make `debug` annotations "floating" so they don't affect diagram size and layout.
 
 ### 0.5.5
 

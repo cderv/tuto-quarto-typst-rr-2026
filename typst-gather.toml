@@ -1,0 +1,19 @@
+# Packages Typst vendorisés pour build offline (typst-render dans les slides)
+# Mettre à jour : éditer les versions ci-dessous, puis `just typst-packages`
+# Résultat : _typst-packages/preview/{name}/{version}/ — à committer
+
+# Dossier de destination (structure standard Typst : preview/{name}/{version}/)
+destination = "_typst-packages"
+
+# [preview] = packages publiés sur le registre Typst (typst.app/universe, namespace @preview)
+# → téléchargés automatiquement par typst-gather
+# Les dépendances transitives (@preview/cetz, @preview/oxifmt) sont découvertes
+# en lisant les imports du package téléchargé — pas besoin de les lister.
+[preview]
+fletcher = "0.5.8"
+
+# [local] = packages locaux (@local namespace, non publiés sur le registre)
+# → chemins à configurer manuellement, copiés depuis le disque
+# Exemple :
+# [local]
+# mon-pkg = "/chemin/vers/mon-pkg"

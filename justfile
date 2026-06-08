@@ -69,6 +69,12 @@ preview:
 audit:
     bash ./scripts/audit-doc-links.sh
 
+# Rafraîchit les packages Typst vendorisés (_typst-packages/) depuis typst-gather.toml
+# Workflow : éditer typst-gather.toml → just typst-packages → git add _typst-packages/ && git commit
+[group('dev')]
+typst-packages:
+    quarto call typst-gather
+
 # === publish ===
 
 [group('publish')]
