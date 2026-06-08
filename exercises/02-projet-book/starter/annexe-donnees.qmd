@@ -1,7 +1,7 @@
 # Le jeu de données starwars
 
 Toutes les analyses de ce livre s'appuient sur le jeu de données [`dplyr::starwars`](https://dplyr.tidyverse.org/reference/starwars.html),
-livré avec le package R [`{dplyr}`](https://dplyr.tidyverse.org/). Il recense
+livré avec le paquet R [`{dplyr}`](https://dplyr.tidyverse.org/). Il recense
 **87 personnages** de la saga, décrits par **14 variables**. Les données
 proviennent à l'origine de SWAPI (Star Wars API),
 intégrées et nettoyées par l'équipe `{dplyr}`.

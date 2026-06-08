@@ -25,7 +25,7 @@ Depuis ce dossier :
 quarto render
 ```
 
-Sortie initiale (sans `_quarto.yml`) : 5 fichiers HTML séparés.
+Sortie initiale (sans `_quarto.yml`) : **rien** — `quarto render` ne produit aucun fichier tant que le projet n'est pas déclaré. C'est précisément l'objet de l'étape 1.
 Après les 3 étapes : un livre PDF Typst unique, stylé.
 
 ### Pas de `_brand.yml` du Bloc 1 ?

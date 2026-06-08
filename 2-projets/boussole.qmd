@@ -22,6 +22,8 @@ sidebar: false
 
 Transformer 5 `.qmd` en un livre PDF Typst stylé via `_quarto.yml` + `_brand.yml`.
 
+L'Exercice 2 part d'un **dossier neuf** (`starter/`), indépendant de l'Exercice 1 — vous y réappliquez juste votre `_brand.yml`.
+
 ## 📋 Étapes
 
 1. `_quarto.yml` avec `type: default` + `format: typst`

@@ -59,7 +59,7 @@ Fichier : {{< fa download >}} [exercises/01-document-typst/starter/](https://git
 |----|---------------------------------------|-----------------------------------------|
 | 1 | Ouvrir `rapport-starwars.qmd`, ajouter `format: typst`, rendre. | PDF généré à la place du HTML, polices et marges par défaut Typst. |
 | 2 | Personnaliser avec des options : `papersize`, `toc`, `mainfont`, `lang: fr`... | TOC en tête (titrée « Table des matières » grâce à `lang: fr`), marges/format adaptés, police corps modifiée. |
-| 3 | Créer `_brand.yml` en traduisant la **charte Star Wars** fournie ([`charte-starwars.pdf`](/_charte/charte-starwars.pdf), également dans le starter) : palette + rôles (`primary` / `foreground` / `background`) + police Google sous `typography.fonts` puis `typography.base` + logo (clé `logo:` pointant `_logo-sw.svg`, fourni dans le starter). | Liens colorés en imperial-red, fond crème, police corps Google (Inter) appliquée, logo en haut-gauche. (Les titres restent en `foreground` noir — la couleur `primary` sur les titres arrivera avec le livre, au Bloc 2.) |
+| 3 | Créer `_brand.yml` en traduisant la **charte Star Wars** fournie ([`charte-starwars.pdf`](/_charte/charte-starwars.pdf) — le même fichier que celui livré dans le starter) : palette + rôles (`primary` / `foreground` / `background`) + police Google sous `typography.fonts` puis `typography.base` + logo (clé `logo:` pointant `_logo-sw.svg`, fourni dans le starter). | Liens colorés en imperial-red, fond crème, police corps Google (Inter) appliquée, logo en haut-gauche. (Les titres restent en `foreground` noir — la couleur `primary` sur les titres arrivera avec le livre, au Bloc 2.) |
 | 4 | Ajouter la police locale Star Jedi (`_fonts/Starjedi.ttf`, `source: file`) sur `typography.headings` — cf. section Typographie de la charte. | Titres de section en lettres décoratives Star Jedi. |
 
 **+ Bonus inspection (si temps restant) :**
@@ -71,6 +71,12 @@ Fichier : {{< fa download >}} [exercises/01-document-typst/starter/](https://git
 
 ::: {.callout-warning appearance="minimal"}
 **PDF inchangé après avoir modifié `_brand.yml` ?** Le plus souvent, le PDF est encore **ouvert dans un lecteur** qui le verrouille (fréquent sous Windows) : fermez le lecteur (ou supprimez le `.pdf`) puis re-rendez. Si le rendu reste figé, supprimez le `.pdf` (voire le dossier `.quarto/`) avant de relancer.
+:::
+
+::: {.callout-warning collapse="true"}
+## Bug `gt` à connaître (étape 3)
+
+Après avoir appliqué `_brand.yml`, si un nombre du tableau s'affiche « 1 3 5 8 » au lieu de « 1 358 » (chiffres espacés, typique sur Windows/macOS), c'est un bug connu de `gt` → Typst qui se déclenche quand les polices de la charte s'appliquent au tableau. **Correction** : ajoutez `|> opt_table_font(font = "Inter")` à la fin de votre pipeline `gt`. Non bloquant — vous pouvez continuer sans.
 :::
 
 ::: {.callout-tip collapse="true"}
