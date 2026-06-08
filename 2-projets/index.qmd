@@ -191,17 +191,19 @@ La correction propose 3 variantes de `_brand.yml` clés en main : Empire / Sith 
 brand: _brand-jedi.yml
 ```
 
+Testez `_brand-jedi.yml` ou `_brand-mando.yml` pour voir un vrai changement : `_brand-empire.yml` est **identique au `_brand.yml` par défaut** (l'Empire est la palette de référence du livre), donc le pointer dessus ne modifie rien à l'écran.
+
 Détails et explication du choix de couleur (pourquoi pas le jaune SW iconique en `primary`) dans le [README de l'exercice](https://github.com/cderv/tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/README.md#bonus-3--changer-de-palette-star-wars).
 :::
 
 ::: {.callout-tip collapse="true"}
 ## Bonus 4 — Brander tableaux et graphiques avec votre `_brand.yml`
 
-Le package R [`brand.yml`](https://posit-dev.github.io/brand-yml/pkg/r/) lit votre charte depuis R et fournit les helpers `read_brand_yml()`, `brand_color_pluck()`, `theme_brand_gt()` et `theme_brand_ggplot2()`. Couplés à `gt::tab_style()`, ils appliquent vos couleurs Star Wars à tous les tableaux et graphiques du livre sans dupliquer aucun hex.
+Le paquet R [`brand.yml`](https://posit-dev.github.io/brand-yml/pkg/r/) lit votre charte depuis R et fournit les helpers `read_brand_yml()`, `brand_color_pluck()`, `theme_brand_gt()` et `theme_brand_ggplot2()`. Couplés à `gt::tab_style()`, ils appliquent vos couleurs Star Wars à tous les tableaux et graphiques du livre sans dupliquer aucun hex.
 
 **Le moment « waouh »** : combinez ce bonus avec le Bonus 3 (changement de palette). Une seule ligne YAML modifiée fait suivre les lignes 1 des tableaux, les barres du graphique espèces, et les annotations Jabba/Yoda du nuage taille-masse — la charte pilote le PDF *et* toutes les sorties R depuis un seul fichier.
 
-**Étape 1 — Mise en place.** Ce bonus suppose les packages `brand.yml` et `prismatic` **installés** (cf. [Préparatifs](../preparatifs.qmd)) — sinon `library(prismatic)` échoue et tout le chapitre cesse de se rendre. Dans le bloc `setup-*` de chaque chapitre, ajoutez :
+**Étape 1 — Mise en place.** Ce bonus suppose les paquets `brand.yml` et `prismatic` **installés** (cf. [Préparatifs](../preparatifs.qmd)) — sinon `library(prismatic)` échoue et tout le chapitre cesse de se rendre. Dans le bloc `setup-*` de chaque chapitre, ajoutez :
 
 ``` r
 library(brand.yml)

@@ -235,7 +235,7 @@ typography:
 ::: notes
 C'est le deuxième moment fort : on passe d'un PDF basique à un PDF aux couleurs de son organisation. Rappeler que \_brand.yml a été présenté aux RR 2025 pour ceux qui l'ont vu.
 
-**Mention orale \~30 sec pendant la démo Our turn** : le `_brand.yml` ne pilote pas que le PDF. Le package R `brand.yml` fournit des helpers `theme_brand_ggplot2()` et `theme_brand_gt()` qui appliquent la même charte aux figures et tableaux. Visible dans `correction/rapport-starwars.qmd`. On en parle pas plus, c'est dans les Ressources.
+**Mention orale \~30 sec pendant la démo Our turn** : le `_brand.yml` ne pilote pas que le PDF. Le paquet R `brand.yml` fournit des helpers `theme_brand_ggplot2()` et `theme_brand_gt()` qui appliquent la même charte aux figures et tableaux. Visible dans `correction/rapport-starwars.qmd`. On en parle pas plus, c'est dans les Ressources.
 
 Parler des helpers R `theme_brand_*()`.
 
@@ -336,9 +336,9 @@ Les problèmes fréquents : oubli des guillemets sur les couleurs hex dans brand
 ::: callout-note
 ## Saviez-vous que...
 
+- **Une charte, partout** — Lisez `_brand.yml` depuis R via `brand_color_pluck(brand, "ma_couleur")` : les couleurs de votre PDF, de vos graphes `ggplot` et de vos tableaux `gt` viennent du même fichier
 - **Blocs raw Typst** — Besoin de Typst natif ? Utilisez ```` ```{=typst} ```` pour injecter du code Typst directement dans votre `.qmd`
 - **Vos tableaux fonctionnent** — Les tableaux `gt` (R) et `Great Tables` (Python) avec du CSS sont traduits automatiquement en Typst par Quarto
-- **Une charte, partout** — Lisez `_brand.yml` depuis R via `brand_color_pluck(brand, "ma_couleur")` : les couleurs de votre PDF, de vos graphes `ggplot` et de vos tableaux `gt` viennent du même fichier
 - **PDF accessible en une ligne** — Ajoutez `pdf-standard: ua-1` dans le YAML pour un PDF conforme au standard d'accessibilité PDF/UA-1
 :::
 
