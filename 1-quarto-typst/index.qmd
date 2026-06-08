@@ -73,12 +73,6 @@ Fichier : {{< fa download >}} [exercises/01-document-typst/starter/](https://git
 **PDF inchangé après avoir modifié `_brand.yml` ?** Le plus souvent, le PDF est encore **ouvert dans un lecteur** qui le verrouille (fréquent sous Windows) : fermez le lecteur (ou supprimez le `.pdf`) puis re-rendez. Si le rendu reste figé, supprimez le `.pdf` (voire le dossier `.quarto/`) avant de relancer.
 :::
 
-::: {.callout-warning collapse="true"}
-## Bug `gt` à connaître (étape 3)
-
-Après avoir appliqué `_brand.yml`, si un nombre du tableau s'affiche « 1 3 5 8 » au lieu de « 1 358 » (chiffres espacés, typique sur Windows/macOS), c'est un bug connu de `gt` → Typst qui se déclenche quand les polices de la charte s'appliquent au tableau. **Correction** : ajoutez `|> opt_table_font(font = "Inter")` à la fin de votre pipeline `gt`. Non bloquant — vous pouvez continuer sans.
-:::
-
 ::: {.callout-tip collapse="true"}
 ## 💡 Indices doc
 
