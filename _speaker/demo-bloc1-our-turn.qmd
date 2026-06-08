@@ -37,7 +37,7 @@ Faire voir l'effet `_brand.yml` sur le PDF en 5-6 min : on passe le doc en `form
 ### Vérification éclair
 
 ```bash
-quarto --version    # >= 1.9, idéalement 1.10.4+
+quarto --version    # >= 1.9, idéalement 1.10.7+
 ```
 
 ---

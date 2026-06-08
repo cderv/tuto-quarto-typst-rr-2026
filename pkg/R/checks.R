@@ -27,6 +27,7 @@ verifier_quarto <- function() {
   url_quarto <- .url_quarto
   qmin <- .quarto_min
   qreco <- .quarto_reco
+  qfix <- .quarto_fix
 
   chemin <- tryCatch(quarto::quarto_path(), error = function(e) NULL)
   if (is.null(chemin) || !nzchar(chemin) || !file.exists(chemin)) {
@@ -50,10 +51,17 @@ verifier_quarto <- function() {
     ))
     return(FALSE)
   }
-  if (v < qreco) {
+  if (v < qfix) {
     cli::cli_alert_warning(c(
       "Quarto {v} : fonctionne pour le tutoriel. ",
       "À l'exercice 2, une petite manipulation (font-paths) vous sera indiquée à l'écran."
+    ))
+    return(TRUE)
+  }
+  if (v < qreco) {
+    cli::cli_alert_success(c(
+      "Quarto {v} : compatible (le correctif polices est présent). ",
+      "Dernière pre-release {qreco}+ recommandée."
     ))
     return(TRUE)
   }

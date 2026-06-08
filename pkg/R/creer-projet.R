@@ -68,7 +68,7 @@ creer_projet_typst <- function(dest,
 
   recent <- {
     v <- tryCatch(quarto::quarto_version(), error = function(e) NA)
-    length(v) == 1 && !is.na(v) && v >= .quarto_reco
+    length(v) == 1 && !is.na(v) && v >= .quarto_fix
   }
 
   if (brand) {

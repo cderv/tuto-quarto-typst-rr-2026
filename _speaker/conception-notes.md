@@ -19,6 +19,6 @@ Notes internes sorties du `README.md` (devenu vitrine publique). Décisions d'an
 
 - [ ] **Démos live vs screenshots** — pour `theorem-appearance`, orange-book : quels filets de secours en captures ?
 - [ ] **Dry-run chronométré** — valider que ~87 min animé tient dans le créneau (cf. `pilotage.qmd`).
-- [ ] **Contenu Quarto 1.9/1.10** — vérifier que les features citées sont stables dans la release utilisée le jour J (pré-release `v1.10.4+` recommandée).
+- [ ] **Contenu Quarto 1.9/1.10** — vérifier que les features citées sont stables dans la release utilisée le jour J (pré-release `v1.10.7+` recommandée).
 - [ ] **Transition RR 2025 → RR 2026** — combien de rappels sur `_brand.yml` ? Les participants n'ont pas forcément vu la présentation 2025.
 - [ ] **Matériel salle** — voir la checklist dans [`pilotage.qmd`](pilotage.qmd) (annexe).
