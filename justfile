@@ -86,15 +86,9 @@ publish: all
 [group('publish')]
 [confirm("Publier sur Posit Connect Cloud ?")]
 publish-only:
-    quarto publish posit-connect-cloud --no-render 
+    quarto publish posit-connect-cloud --no-render
 
 [group('publish')]
 [confirm("Publier version pretuto ?")]
-publish-pretuto: charte exos site-pretuto
-    quarto publish posit-connect-cloud --profile pretuto
-
-# Publier pretuto sans rebuilder (si déjà buildé)
-[group('publish')]
-[confirm("Publier version pretuto ?")]
-publish-pretuto-only:
-    quarto publish posit-connect-cloud --profile pretuto
+publish-pretuto: site-pretuto
+    quarto publish gh-pages --profile pretuto
