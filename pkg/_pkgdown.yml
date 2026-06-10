@@ -22,7 +22,12 @@ lang: fr
 navbar:
   structure:
     left: [reference, articles]
-    right: [search, github]
+    right: [search, r-universe, github]
+  components:
+    r-universe:
+      icon: fa-box
+      href: https://cderv.r-universe.dev/tutoquartotypst
+      aria-label: r-universe
 
 reference:
 - title: Vérification & installation
