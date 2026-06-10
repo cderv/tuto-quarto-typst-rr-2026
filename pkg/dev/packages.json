@@ -3,5 +3,9 @@
     "package": "tutoquartotypst",
     "url": "https://github.com/cderv/tuto-quarto-typst-rr-2026",
     "subdir": "pkg"
+  },
+  {
+    "package": "pandoc",
+    "url": "https://github.com/cderv/pandoc"
   }
 ]
