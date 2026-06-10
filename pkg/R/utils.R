@@ -125,8 +125,16 @@
 }
 
 # Copie récursive d'un dossier `from` -> `to` (crée `to`, écrase les fichiers)
-.copier_dossier <- function(from, to) {
+# `exclure` : noms de sous-dossiers de premier niveau à NE PAS copier (p. ex.
+# "correction" pour ne poser que les `starter/` chez les participants).
+.copier_dossier <- function(from, to, exclure = NULL) {
   fichiers <- list.files(from, recursive = TRUE, all.files = TRUE, no.. = TRUE)
+  if (length(exclure)) {
+    premier <- vapply(
+      strsplit(fichiers, "/", fixed = TRUE), `[`, character(1), 1L
+    )
+    fichiers <- fichiers[!premier %in% exclure]
+  }
   for (f in fichiers) {
     cible <- file.path(to, f)
     dir.create(dirname(cible), recursive = TRUE, showWarnings = FALSE)

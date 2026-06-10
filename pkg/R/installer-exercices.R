@@ -75,7 +75,13 @@ installer_exercices <- function(dest = NULL,
   dir.create(dest_abs, recursive = TRUE, showWarnings = FALSE)
 
   for (exo in exos) {
-    .copier_dossier(file.path(src_root, exo), file.path(dest_abs, exo))
+    # `exclure = "correction"` : on ne pose que les `starter/` (les corrections
+    # se consultent en ligne via ouvrir_correction(), ou se copient à la
+    # demande via recuperer_correction()).
+    .copier_dossier(
+      file.path(src_root, exo), file.path(dest_abs, exo),
+      exclure = "correction"
+    )
   }
 
   # --- message d'orientation ---------------------------------------------------
@@ -166,7 +172,8 @@ reinitialiser_exercice <- function(quel = c("01", "02", "00"),
   }
 
   dir.create(cible, recursive = TRUE, showWarnings = FALSE)
-  .copier_dossier(src, cible)
+  # Comme installer_exercices() : on restaure le `starter/`, pas la `correction/`.
+  .copier_dossier(src, cible, exclure = "correction")
   cli::cli_alert_success(
     "Exercice {exo} réinitialisé à l'état de départ : {.path {cible}}"
   )
