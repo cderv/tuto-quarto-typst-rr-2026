@@ -36,3 +36,4 @@ pkg/docs/
 # aussi, nettoyé du lien privé — qui reste néanmoins à purger de l'historique.
 #  - review.md : doublon des reviews archivées
 /review.md
+.positai
