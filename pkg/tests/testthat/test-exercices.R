@@ -8,6 +8,21 @@ test_that("installer_exercices() copie les starters", {
   expect_true(file.exists(file.path(chemin, "00-test-install", "test-install.qmd")))
 })
 
+test_that("installer_exercices() ne pose JAMAIS les corrections", {
+  # Les corrections se consultent en ligne (ouvrir_correction) ou se copient à
+  # la demande (recuperer_correction) — installer_exercices ne doit poser que
+  # les starters. Garde-fou contre une régression de la copie récursive.
+  dest <- withr::local_tempdir()
+  chemin <- suppressMessages(installer_exercices(dest, force = TRUE))
+  for (exo in c("01-document-typst", "02-projet-book")) {
+    expect_false(
+      dir.exists(file.path(chemin, exo, "correction")),
+      info = exo
+    )
+  }
+  expect_length(list.files(chemin, pattern = "correction", recursive = TRUE), 0)
+})
+
 test_that("installer_exercices() utilise le dossier par défaut dans le cwd", {
   # withr::local_dir : se place dans un dossier temporaire et restaure le cwd
   # à la fin du test (permet de tester le défaut dest = "exercices-typst").
@@ -60,4 +75,6 @@ test_that("reinitialiser_exercice() sauvegarde avant de restaurer", {
   expect_gt(length(list.files(dest, pattern = "sauvegarde")), 0)
   # le fichier est restauré (n'est plus la version cassée)
   expect_false(identical(readLines(qmd, warn = FALSE), "casse"))
+  # la réinitialisation ne ramène pas non plus la correction
+  expect_false(dir.exists(file.path(dest, "01-document-typst", "correction")))
 })
