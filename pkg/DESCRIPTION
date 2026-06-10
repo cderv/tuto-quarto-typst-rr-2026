@@ -10,7 +10,8 @@ Description: Fonctions utilitaires pour preparer et suivre le tutoriel
     installe localement les exercices et aide au rendu Typst. Installer le
     paquet tire automatiquement tous les prerequis du tutoriel.
 License: MIT + file LICENSE
-URL: https://cderv.github.io/tuto-quarto-typst-rr-2026,
+URL: https://cderv.r-universe.dev/tutoquartotypst,
+    https://cderv.github.io/tuto-quarto-typst-rr-2026,
     https://github.com/cderv/tuto-quarto-typst-rr-2026
 BugReports: https://github.com/cderv/tuto-quarto-typst-rr-2026/issues
 Depends:
@@ -37,5 +38,6 @@ SystemRequirements: Quarto (>= 1.9.0), Typst (bundled with Quarto)
 Config/testthat/edition: 3
 Config/roxygen2/markdown: TRUE
 Config/roxygen2/version: 8.0.0
+X-schema.org-keywords: quarto, typst, reproducible-research, tutorial, pdf
 Encoding: UTF-8
 Language: fr
