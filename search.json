@@ -100,31 +100,11 @@
     ]
   },
   {
-    "objectID": "index.html#vous-arrivez-en-cours",
-    "href": "index.html#vous-arrivez-en-cours",
-    "title": "PDF sans frictions : Typst dans vos projets Quarto",
-    "section": "Vous arrivez en cours ?",
-    "text": "Vous arrivez en cours ?\nPas de panique — le matériel est conçu pour rattraper rapidement :\n\n📦 Récupérez les starters dans le zip du dépôt (cf. Préparatifs) ou directement sur GitHub : exercises/.\n🧭 La boussole du bloc en cours vous donne objectif, étapes et countdown : Boussole Bloc 1 · Boussole Bloc 2.\nLe Bloc 2 est autonome vis-à-vis du Bloc 1 : si vous arrivez après la pause, démarrez directement depuis le starter d’Exercice 2.",
-    "crumbs": [
-      "Accueil"
-    ]
-  },
-  {
     "objectID": "index.html#instructeurs",
     "href": "index.html#instructeurs",
     "title": "PDF sans frictions : Typst dans vos projets Quarto",
     "section": "Instructeurs",
     "text": "Instructeurs\nChristophe Dervieux — développeur open source, Posit Software, PBC. Contributeur aux projets R Markdown et Quarto.\nMaëlle Salmon — Research Software Engineer, rOpenSci / cynkra.",
-    "crumbs": [
-      "Accueil"
-    ]
-  },
-  {
-    "objectID": "index.html#ressources",
-    "href": "index.html#ressources",
-    "title": "PDF sans frictions : Typst dans vos projets Quarto",
-    "section": "Ressources",
-    "text": "Ressources\n Liens et ressources pour aller plus loin après le tutoriel.",
     "crumbs": [
       "Accueil"
     ]
