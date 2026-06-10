@@ -2,27 +2,26 @@
 
 > Tutoriel aux [Rencontres R 2026](https://rr2026.sciencesconf.org/) — mardi 16 juin 2026, Nantes Université (10h–12h).
 
-Atelier de 2 h pour produire des **documents PDF professionnels** avec Quarto en s'appuyant sur **Typst** (à la place de LaTeX) : sans installation lourde, avec des erreurs lisibles. On personnalise avec `_brand.yml` et des templates Typst, puis on passe du document isolé au **livre** multi-chapitres.
+Atelier de 2 h pour produire des **documents PDF professionnels** avec Quarto en s'appuyant sur **Typst**. On personnalise, y compris avec `_brand.yml`, puis on passe du document isolé au **livre** multi-chapitres.
 
-**Arc :** `.qmd` → PDF professionnel → livre → personnalisé / pérennisé
-
-- **Instructeur·rices :** Christophe Dervieux ([Posit](https://posit.co/)) & Maëlle Salmon ([rOpenSci](https://ropensci.org/) / [cynkra](https://cynkra.com/))
-- **Pour qui :** utilisateur·rices de Quarto / R qui veulent de beaux PDF (aucune connaissance de Typst ni de LaTeX requise)
+- **Instructeur·rices:** Christophe Dervieux ([Posit](https://posit.co/)) & Maëlle Salmon ([rOpenSci](https://ropensci.org/) / [cynkra](https://cynkra.com/))
+- **Pour qui :** utilisateur·rices de Quarto / R qui veulent de beaux PDF (aucune connaissance de Typst ni de LaTeX requise). 
 
 ## 🔗 Le site du tutoriel
 
-Tout le contenu (slides, consignes, ressources) est en ligne :
+Tout le contenu (slides, consignes, ressources) est en ligne : <https://cderv.github.io/tuto-quarto-typst-rr-2026/>
 
-### **<https://cderv.github.io/tuto-quarto-typst-rr-2026/>**
+Ce dépôt en contient le code source.
 
-Ce dépôt en contient le **code source**.
+## Prérequis
 
-## Se préparer (avant le 16 juin)
+Le tutorial en présentiel est interactif : venez avec un environnement prêt.
 
-L'atelier est **interactif** : venez avec un environnement prêt.
+1. Un éditeur - ex. **RStudio**, **Positron** ou **VS Code**
+2. **Quarto 1.9+** (idéalement, prérelease `1.10.7+`) - vérifier la version incluse avec les IDE, ou installer (<https://quarto.org>) 
+3. La dernière version de R, à minima **R 4.5** 
 
-1. Installez **Quarto 1.9+** (pré-release `1.10.7+` recommandée), **R 4.2+** et un éditeur (**RStudio**, **Positron** ou **VS Code**).
-2. Le plus simple ensuite : le **paquet R compagnon `tutoquartotypst`**, qui installe les paquets, vérifie votre environnement et pose les exercices :
+Pour vous aider: installer le **paquet R compagnon `tutoquartotypst`**, qui installe les paquets, vérifie votre environnement et pose les exercices :
 
    ```r
    install.packages("tutoquartotypst",
@@ -46,6 +45,9 @@ Chaque bloc suit le rythme **My turn → Our turn → Your turn**, avec une **bo
 
 ## Que contient ce dépôt ?
 
+Ce projet est un project quarto avec des contenus pour les apprenants, mais aussi des contenus de travails pour les instructeurs.
+Les principaux documents sources sont:
+
 ```
 index.qmd · preparatifs.qmd   Page d'accueil et instructions d'installation
 1-quarto-typst/               Bloc 1 — page + slides + boussole
@@ -57,21 +59,14 @@ pkg/                          Paquet R compagnon « tutoquartotypst »
 _charte/                      Charte graphique Star Wars (palette / typo)
 ```
 
-Les exercices utilisent le jeu de données **Star Wars** (`dplyr::starwars`) en difficulté progressive : un PDF stylé (★) puis un livre multi-chapitres (★★). Chacun fournit un `starter/` et une `correction/` — le paquet `tutoquartotypst` les pose pour vous.
-
-> Détails de build et conventions de développement : [`.claude/CLAUDE.md`](.claude/CLAUDE.md) (le site se construit avec [`just`](https://github.com/casey/just) — `just all`).
-
-## Contexte
-
-- Suit la structure du [tutoriel RR 2023](https://github.com/cderv/tuto-quarto-rr-2023) (site web + slides embarquées).
-- Prolonge la [présentation `_brand.yml` RR 2025](https://cderv.github.io/rr2025-quarto-brand-yml/).
-- Focus **Quarto + Typst** (pas Typst standalone).
+Les exercices utilisent le jeu de données **Star Wars** (`dplyr::starwars`) en difficulté progressive : un PDF stylisé (★) puis un livre multi-chapitres (★★). Chacun fournit un `starter/` et une `correction/` — le paquet `tutoquartotypst` lp
 
 ## Licence
 
-- **Contenu** (texte, slides, exercices, pages) : [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — voir [`LICENSE`](LICENSE). © Christophe Dervieux & Maëlle Salmon.
+- **Contenu** (texte, slides, exercices, pages) : [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — voir [`LICENSE`](LICENSE).
 - **Code** du paquet R `pkg/` : licence MIT — voir [`pkg/LICENSE.md`](pkg/LICENSE.md).
 
-Composants tiers redistribués avec leur attribution : extension `clean` (MIT, `_extensions/grantmcdermott/clean/LICENSE`), extension `countdown` (`_extensions/gadenbuie/countdown/NOTICE` — pas de licence déclarée en amont pour l'extension), packages Typst (`_typst-packages/`, voir leurs `LICENSE`), police Inter (OFL 1.1, `LICENSE-Inter.txt`), police Star Jedi (freeware fan-made, `LICENSE-StarJedi.txt`). Contributions soumises au [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md).
+Composants tiers redistribués avec leur attribution : extension `clean` (MIT, `_extensions/grantmcdermott/clean/LICENSE`), extension `countdown` (`_extensions/gadenbuie/countdown/NOTICE` — pas de licence déclarée en amont pour l'extension), packages Typst (`_typst-packages/`, voir leurs `LICENSE`), police Inter (OFL 1.1, `LICENSE-Inter.txt`), police Star Jedi (freeware fan-made, `LICENSE-StarJedi.txt`). 
+Contributions soumises au [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md).
 
 > _Star Wars et les noms associés sont des marques de Lucasfilm Ltd. Ce tutoriel utilise l'univers Star Wars à des seules fins pédagogiques et n'est affilié ni à Lucasfilm ni à Disney._
