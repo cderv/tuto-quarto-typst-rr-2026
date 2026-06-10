@@ -23,12 +23,15 @@ Ce tutoriel vous apprendra à produire des **documents PDF professionnels** avec
 ## Programme
 
 ::: programme
-- {{< fa file-pdf >}} [Bloc 1 — Un PDF pro en quelques minutes](1-quarto-typst/index.qmd)
+
+- {{< fa file-pdf >}} [[Bloc 1 — Un PDF pro en quelques minutes](1-quarto-typst/index.qmd)]{.content-visible when-profile=tuto} [Bloc 1 — Un PDF pro en quelques minutes]{.content-visible when-profile=pretuto}
 
 - *☕ Pause*
 
-- {{< fa folder >}} [Bloc 2 — Passer du document au livre](2-projets/index.qmd)
+- {{< fa folder >}} [[Bloc 2 — Passer du document au livre](2-projets/index.qmd)]{.content-visible when-profile=tuto} [Bloc 2 — Passer du document au livre]{.content-visible when-profile=pretuto}
 :::
+
+::: {.content-visible when-profile=tuto}
 
 ## Vous arrivez en cours ?
 
@@ -38,15 +41,21 @@ Pas de panique — le matériel est conçu pour rattraper rapidement :
 - 🧭 La boussole du bloc en cours vous donne objectif, étapes et countdown : [Boussole Bloc 1](1-quarto-typst/boussole.qmd) · [Boussole Bloc 2](2-projets/boussole.qmd).
 - Le **Bloc 2 est autonome** vis-à-vis du Bloc 1 : si vous arrivez après la pause, démarrez directement depuis le starter d'Exercice 2.
 
+:::
+
 ## Instructeurs
 
 **Christophe Dervieux** — développeur open source, [Posit Software, PBC](https://posit.co/). Contributeur aux projets R Markdown et Quarto.
 
 **Maëlle Salmon** — Research Software Engineer, [rOpenSci](https://ropensci.org/) / [cynkra](https://cynkra.com/).
 
+::: {.content-visible when-profile=tuto}
+
 ## Ressources
 
 {{< fa link >}} [Liens et ressources](4-ressources.qmd) pour aller plus loin après le tutoriel.
+
+:::
 
 ## Licence
 
