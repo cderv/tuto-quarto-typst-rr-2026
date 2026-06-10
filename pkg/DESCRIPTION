@@ -11,8 +11,7 @@ Description: Fonctions utilitaires pour preparer et suivre le tutoriel
     paquet tire automatiquement tous les prerequis du tutoriel.
 License: MIT + file LICENSE
 URL: https://cderv.github.io/tuto-quarto-typst-rr-2026,
-    https://github.com/cderv/tuto-quarto-typst-rr-2026,
-    https://connect.posit.cloud/cderv/content/019df82c-7202-2165-28ea-7f9ca734ad26/package
+    https://github.com/cderv/tuto-quarto-typst-rr-2026
 BugReports: https://github.com/cderv/tuto-quarto-typst-rr-2026/issues
 Depends:
     R (>= 4.1)
