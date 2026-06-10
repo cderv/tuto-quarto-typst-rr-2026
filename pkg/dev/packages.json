@@ -7,5 +7,17 @@
   {
     "package": "pandoc",
     "url": "https://github.com/cderv/pandoc"
+  },
+  {
+    "package": "proxyconfig",
+    "url": "https://github.com/cderv/proxyconfig"
+  },
+  {
+    "package": "bfr",
+    "url": "https://github.com/cderv/bfr"
+  },
+  {
+    "package": "opendatarte",
+    "url": "https://github.com/cderv/opendatarte"
   }
 ]
