@@ -21,7 +21,7 @@ Le tutorial en présentiel est interactif : venez avec un environnement prêt.
 2. **Quarto 1.9+** (idéalement, prérelease `1.10.7+`) - vérifier la version incluse avec les IDE, ou installer (<https://quarto.org>) 
 3. La dernière version de R, à minima **R 4.5** 
 
-Pour vous aider: installer le **paquet R compagnon `tutoquartotypst`**, qui installe les paquets, vérifie votre environnement et pose les exercices :
+Pour vous aider: installer le **paquet R compagnon `tutoquartotypst`** ([![r-universe](https://cderv.r-universe.dev/badges/tutoquartotypst)](https://cderv.r-universe.dev/tutoquartotypst)), qui installe les paquets, vérifie votre environnement et pose les exercices :
 
    ```r
    install.packages("tutoquartotypst",
