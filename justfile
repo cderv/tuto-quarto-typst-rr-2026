@@ -77,16 +77,28 @@ typst-packages:
 
 # === publish ===
 
+# Publier le site complet : just publish connect  →  Posit Connect Cloud
+#                           just publish gh       →  GitHub Pages (remplace pretuto le jour J)
 [group('publish')]
-[confirm("Publier sur Posit Connect Cloud ?")]
-publish: all
-    quarto publish posit-connect-cloud --no-render
+[confirm("Publier le site complet ?")]
+publish target: all
+    #!/usr/bin/env bash
+    case "{{target}}" in
+      connect) quarto publish posit-connect-cloud --no-render ;;
+      gh)      quarto publish gh-pages --no-render ;;
+      *)       echo "Cible inconnue : '{{target}}' — utiliser 'connect' ou 'gh'" && exit 1 ;;
+    esac
 
 # Publier sans rebuilder (si just all déjà fait)
 [group('publish')]
-[confirm("Publier sur Posit Connect Cloud ?")]
-publish-only:
-    quarto publish posit-connect-cloud --no-render
+[confirm("Publier le site complet (sans rebuild) ?")]
+publish-only target:
+    #!/usr/bin/env bash
+    case "{{target}}" in
+      connect) quarto publish posit-connect-cloud --no-render ;;
+      gh)      quarto publish gh-pages --no-render ;;
+      *)       echo "Cible inconnue : '{{target}}' — utiliser 'connect' ou 'gh'" && exit 1 ;;
+    esac
 
 [group('publish')]
 [confirm("Publier version pretuto ?")]
