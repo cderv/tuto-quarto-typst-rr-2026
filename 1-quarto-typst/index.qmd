@@ -1,0 +1,102 @@
+---
+title: "Un PDF pro en quelques minutes"
+format: html
+author: ""
+date: ""
+---
+
+::: callout-note
+## \~40 minutes — avant la pause
+:::
+
+## Diapos
+
+{{< fa tv >}} [Ouvrir les diapos en plein écran](1-quarto-typst.html){target="_blank"}
+
+```{=html}
+<iframe class="slide-deck" src="1-quarto-typst.html" height="420" width="747" style="border: 1px solid #123233;"></iframe>
+```
+
+## Points couverts
+
+Ce bloc suit le rythme **My turn → Our turn → Your turn**.
+
+### My turn — À la fin de ce bloc, vous saurez
+
+- Produire un PDF pro avec `format: typst` — alternative à LaTeX sans installation, rapide, erreurs lisibles
+- Régler les options essentielles : `papersize`, `margin` (d'autres en démo)
+- Voir ce qui se passe entre le `.qmd` et le `.pdf`, avec `keep-typ: true`
+- Personnaliser couleurs, polices et logo via un seul fichier `_brand.yml`
+- Mixer polices Google et polices locales (`source: file`) dans la même charte
+
+### Our turn — Démo live
+
+En 5-6 min, on passe le doc en `format: typst`, puis on lui applique une couleur via `_brand.yml` :
+
+1.  Passer `format: html` → `format: typst` et rendre
+2.  Créer `_brand.yml` avec **une couleur** + `primary`, re-rendre → titres et liens colorés
+
+Le reste (charte complète, polices, logo, `keep-typ`) = Exercice 1.
+
+## Exercice 1
+
+::: callout-warning
+## À vous !
+
+🎯 **Objectif :** transformer un rapport `.qmd` HTML en PDF Typst stylé via `_brand.yml`.
+
+🧭 **Pendant l'exercice :** [boussole Exercice 1](boussole.qmd){target="_blank"} — objectif, étapes et chrono dans un panneau autonome (pratique en second écran).
+
+Fichier : {{< fa download >}} [exercises/01-document-typst/starter/](https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/starter)
+
+📄 **Charte fournie :** `charte-starwars.pdf` (dans le starter) — palette, polices, logo et rôles (`primary` / `foreground` / `background`) à traduire en YAML.
+
+💡 **Commencez par l'étape 1 seule** : faites le passage `format: html` → `format: typst` et rendez **vous-même**, puis regardez le PDF brut (sans charte) avant de toucher à `_brand.yml`. C'est le réflexe de base — un PDF en une ligne de YAML — qu'on veut ancrer avant d'ajouter le style.
+
+**4 étapes principales (12 min) — attendues de tous :**
+
+| \# | Action | Vous devriez voir |
+|----|---------------------------------------|-----------------------------------------|
+| 1 | Ouvrir `rapport-starwars.qmd`, ajouter `format: typst`, rendre. | PDF généré à la place du HTML, polices et marges par défaut Typst. |
+| 2 | Personnaliser avec des options : `papersize`, `toc`, `mainfont`, `lang: fr`... | TOC en tête (titrée « Table des matières » grâce à `lang: fr`), marges/format adaptés, police corps modifiée. |
+| 3 | Créer `_brand.yml` en traduisant la **charte Star Wars** fournie ([`charte-starwars.pdf`](/_charte/charte-starwars.pdf) — le même fichier que celui livré dans le starter) : palette + rôles (`primary` / `foreground` / `background`) + police Google sous `typography.fonts` puis `typography.base` + logo (clé `logo:` pointant `_logo-sw.svg`, fourni dans le starter). | Liens colorés en imperial-red, fond crème, police corps Google (Inter) appliquée, logo en haut-gauche. (Les titres restent en `foreground` noir — la couleur `primary` sur les titres arrivera avec le livre, au Bloc 2.) |
+| 4 | Ajouter la police locale Star Jedi (`_fonts/Starjedi.ttf`, `source: file`) sur `typography.headings` — cf. section Typographie de la charte. | Titres de section en lettres décoratives Star Jedi. |
+
+**+ Bonus inspection (si temps restant) :**
+
+| \# | Action | Vous devriez voir |
+|----|-----------------------------|-----------------------------------------|
+| B1 | Activer `keep-typ: true`, ouvrir le `.typ` généré. | Fichier `.typ` à côté du PDF, syntaxe Typst lisible (`= titre`, `#strong[...]`, etc.). |
+:::
+
+::: {.callout-warning appearance="minimal"}
+**PDF inchangé après avoir modifié `_brand.yml` ?** Le plus souvent, le PDF est encore **ouvert dans un lecteur** qui le verrouille (fréquent sous Windows) : fermez le lecteur (ou supprimez le `.pdf`) puis re-rendez. Si le rendu reste figé, supprimez le `.pdf` (voire le dossier `.quarto/`) avant de relancer.
+:::
+
+::: {.callout-tip collapse="true"}
+## 💡 Indices doc
+
+- **Étape 1** ([`format: typst`](https://quarto.org/docs/output-formats/typst.html)) — section "Overview".
+- **Étape 2** ([options Typst](https://quarto.org/docs/output-formats/typst.html#format-options)) — section "Format Options". Référence complète : [reference/formats/typst](https://quarto.org/docs/reference/formats/typst.html).
+- **Étape 3** ([`_brand.yml`](https://quarto.org/docs/authoring/brand.html)) — sections "Color" et "Typography" ; spec complète sur [brand-yml](https://posit-dev.github.io/brand-yml/).
+- **Étape 4** ([typography](https://posit-dev.github.io/brand-yml/brand/typography.html)) — chercher `source: file`.
+- **Bonus B1** ([`keep-typ`](https://quarto.org/docs/output-formats/typst.html?q=keep-typ)) — Pour voir le fichier `.typ`
+:::
+
+::: callout-caution
+## 🆘 Si vous bloquez après \~5 min sur une étape
+
+1.  Relisez l'objectif + le "Vous devriez voir" de l'étape.
+2.  Ouvrez le collapse **💡 Indices doc** ci-dessus.
+3.  Ouvrez [`exercises/01-document-typst/correction/`](https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/correction) (filet final).
+:::
+
+### Mémo rapide starter
+
+{{< include ../exercises/01-document-typst/starter/README.md >}}
+
+::: {.callout-warning collapse="true"}
+## Correction
+
+{{< fa download >}} [Voir la correction](https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/correction)
+:::

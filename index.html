@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.3">
+<meta name="generator" content="quarto-1.10.8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Christophe Dervieux">
+<meta name="author" content="Christophe Dervieux &amp; Maëlle Salmon">
 
 <title>PDF sans frictions : Typst dans vos projets Quarto</title>
 <style>
@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e44360b8a8db1e130c7792fece1c8032.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-b856dee10e21950d696b022d144bb914.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-c70c6a9a2c2019a740cbe9c2a036f017.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -111,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">PDF sans frictions : Typst dans vos projets Quarto</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026" title="Dépôt GitHub" class="quarto-navigation-tool px-1" aria-label="Dépôt GitHub"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/cderv/tuto-quarto-typst-rr-2026" title="Dépôt GitHub" class="quarto-navigation-tool px-1" aria-label="Dépôt GitHub"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
@@ -134,31 +134,6 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Préparatifs</span></a>
   </div>
 </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./1-quarto-typst/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Bloc 1 — PDF avec Typst</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./2-projets/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Bloc 2 — Projets &amp; book</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./3-aller-plus-loin/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Pour aller plus loin…</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./4-ressources.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ressources</span></a>
-  </div>
-</li>
     </ul>
     </div>
 </nav>
@@ -172,11 +147,12 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#à-propos" id="toc-à-propos" class="nav-link active" data-scroll-target="#à-propos">À propos</a></li>
   <li><a href="#se-préparer" id="toc-se-préparer" class="nav-link" data-scroll-target="#se-préparer">Se préparer</a></li>
   <li><a href="#programme" id="toc-programme" class="nav-link" data-scroll-target="#programme">Programme</a></li>
+  <li><a href="#vous-arrivez-en-cours" id="toc-vous-arrivez-en-cours" class="nav-link" data-scroll-target="#vous-arrivez-en-cours">Vous arrivez en cours ?</a></li>
   <li><a href="#instructeurs" id="toc-instructeurs" class="nav-link" data-scroll-target="#instructeurs">Instructeurs</a></li>
   <li><a href="#ressources" id="toc-ressources" class="nav-link" data-scroll-target="#ressources">Ressources</a></li>
   <li><a href="#licence" id="toc-licence" class="nav-link" data-scroll-target="#licence">Licence</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Modifier cette page</a></li><li><a href="https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/issues/new" class="toc-action"><i class="bi empty"></i>Faire part d'un problème</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Modifier cette page</a></li><li><a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/issues/new" class="toc-action"><i class="bi empty"></i>Faire part d'un problème</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -194,14 +170,14 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Auteur·rice</div>
     <div class="quarto-title-meta-contents">
-             <p>Christophe Dervieux </p>
+             <p>Christophe Dervieux &amp; Maëlle Salmon </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Date de publication</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">6 avril 2027</p>
+      <p class="date">16 juin 2026</p>
     </div>
   </div>
   
@@ -214,11 +190,11 @@ ul.task-list li input[type="checkbox"] {
 
 
 <div class="when-where">
-<p>🗓️ Mardi 16 juin 2026 · 🕙 9h – 11h · 🏢 Nantes Université, Campus Lombarderie</p>
+<p>🗓️ Mardi 16 juin 2026 · 🕙 10h – 12h · 🏢 Nantes Université, Campus Lombarderie</p>
 </div>
 <section id="à-propos" class="level2">
 <h2 class="anchored" data-anchor-id="à-propos">À propos</h2>
-<p>Ce tutoriel vous apprendra à produire des <strong>documents PDF professionnels</strong> avec Quarto en utilisant <strong>Typst</strong> comme moteur de rendu, sans avoir besoin d’installer LaTeX. Vous découvrirez comment personnaliser vos documents grâce à <code>_brand.yml</code> et aux templates Typst, pour obtenir des résultats soignés en quelques minutes.</p>
+<p>Ce tutoriel vous apprendra à produire des <strong>documents PDF professionnels</strong> avec Quarto en utilisant <strong>Typst</strong> pour fabriquer le PDF (à la place de LaTeX), sans rien installer. Vous découvrirez comment personnaliser vos documents grâce à <code>_brand.yml</code> et aux templates Typst, pour obtenir des résultats soignés en quelques minutes.</p>
 <ul>
 <li>Comment remplacer LaTeX par Typst pour des PDF sans frictions ?</li>
 <li>Comment personnaliser vos documents avec <code>_brand.yml</code> ?</li>
@@ -233,13 +209,20 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="programme">Programme</h2>
 <div class="programme">
 <ul>
-<li><p><i class="fa-solid fa-file-pdf" aria-label="file-pdf"></i> <a href="./1-quarto-typst/index.html">Bloc 1 — Un PDF pro en quelques minutes</a></p>
-<p><code>format: typst</code>, options essentielles, <code>keep-typ: true</code>, <code>_brand.yml</code></p></li>
+<li><p><i class="fa-solid fa-file-pdf" aria-label="file-pdf"></i> <a href="1-quarto-typst/index.qmd">Bloc 1 — Un PDF pro en quelques minutes</a></p></li>
 <li><p><em>☕ Pause</em></p></li>
-<li><p><i class="fa-solid fa-folder" aria-label="folder"></i> <a href="./2-projets/index.html">Bloc 2 — Passer à l’échelle : projet et livre</a></p>
-<p><code>_quarto.yml</code>, <code>type: book</code>, <code>_brand.yml</code> au niveau projet</p></li>
+<li><p><i class="fa-solid fa-folder" aria-label="folder"></i> <a href="2-projets/index.qmd">Bloc 2 — Passer du document au livre</a></p></li>
 </ul>
 </div>
+</section>
+<section id="vous-arrivez-en-cours" class="level2">
+<h2 class="anchored" data-anchor-id="vous-arrivez-en-cours">Vous arrivez en cours ?</h2>
+<p>Pas de panique — le matériel est conçu pour rattraper rapidement :</p>
+<ul>
+<li>📦 Récupérez les starters dans le zip du dépôt (cf.&nbsp;<a href="./preparatifs.html">Préparatifs</a>) ou directement sur GitHub : <a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises"><code>exercises/</code></a>.</li>
+<li>🧭 La boussole du bloc en cours vous donne objectif, étapes et countdown : <a href="1-quarto-typst/boussole.qmd">Boussole Bloc 1</a> · <a href="2-projets/boussole.qmd">Boussole Bloc 2</a>.</li>
+<li>Le <strong>Bloc 2 est autonome</strong> vis-à-vis du Bloc 1 : si vous arrivez après la pause, démarrez directement depuis le starter d’Exercice 2.</li>
+</ul>
 </section>
 <section id="instructeurs" class="level2">
 <h2 class="anchored" data-anchor-id="instructeurs">Instructeurs</h2>
@@ -248,16 +231,11 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="ressources" class="level2">
 <h2 class="anchored" data-anchor-id="ressources">Ressources</h2>
-<p><i class="fa-solid fa-link" aria-label="link"></i> <a href="./4-ressources.html">Liens et ressources</a> pour aller plus loin après le tutoriel.</p>
+<p><i class="fa-solid fa-link" aria-label="link"></i> <a href="4-ressources.qmd">Liens et ressources</a> pour aller plus loin après le tutoriel.</p>
 </section>
 <section id="licence" class="level2">
 <h2 class="anchored" data-anchor-id="licence">Licence</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="https://creativecommons.org/licenses/by/4.0/"><img src="https://licensebuttons.net/l/by/4.0/88x31.png" class="img-fluid figure-img"></a></p>
-<figcaption>CC BY 4.0</figcaption>
-</figure>
-</div>
+<p><a href="https://creativecommons.org/licenses/by/4.0/"><img src="https://licensebuttons.net/l/by/4.0/88x31.png" class="img-fluid" alt="CC BY 4.0 logo"></a></p>
 <p>Ce contenu est mis à disposition sous licence <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a>.</p>
 
 
@@ -337,7 +315,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/cderv\.github\.io\/tuto-quarto-typst-rr-2026\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -681,7 +659,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Modifier cette page</a></li><li><a href="https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/issues/new" class="toc-action"><i class="bi empty"></i>Faire part d'un problème</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Modifier cette page</a></li><li><a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/issues/new" class="toc-action"><i class="bi empty"></i>Faire part d'un problème</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Site construit avec <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

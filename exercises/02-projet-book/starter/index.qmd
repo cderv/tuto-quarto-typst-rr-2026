@@ -1,6 +1,6 @@
 # Préface {.unnumbered}
 
-Ce livre explore le dataset `dplyr::starwars` — 87 personnages, 14 variables —
+Ce livre explore le jeu de données `dplyr::starwars` — 87 personnages, 14 variables —
 pour répondre à une question simple : qui sont les colosses de la galaxie ?
 
 Le fil rouge se déploie en deux chapitres : *Anatomie* (taille, masse, valeurs aberrantes)

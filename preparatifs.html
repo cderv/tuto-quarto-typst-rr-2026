@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.3">
+<meta name="generator" content="quarto-1.10.8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e44360b8a8db1e130c7792fece1c8032.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-b856dee10e21950d696b022d144bb914.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-c70c6a9a2c2019a740cbe9c2a036f017.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -144,7 +144,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="sidebar-title mb-0 py-0">
       <a href="./">PDF sans frictions : Typst dans vos projets Quarto</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026" title="Dépôt GitHub" class="quarto-navigation-tool px-1" aria-label="Dépôt GitHub"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/cderv/tuto-quarto-typst-rr-2026" title="Dépôt GitHub" class="quarto-navigation-tool px-1" aria-label="Dépôt GitHub"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
@@ -167,31 +167,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Préparatifs</span></a>
   </div>
 </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./1-quarto-typst/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Bloc 1 — PDF avec Typst</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./2-projets/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Bloc 2 — Projets &amp; book</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./3-aller-plus-loin/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Pour aller plus loin…</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./4-ressources.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Ressources</span></a>
-  </div>
-</li>
     </ul>
     </div>
 </nav>
@@ -206,9 +181,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#téléchargements" id="toc-téléchargements" class="nav-link" data-scroll-target="#téléchargements">Téléchargements</a></li>
   <li><a href="#vérification" id="toc-vérification" class="nav-link" data-scroll-target="#vérification">Vérification</a></li>
   <li><a href="#test-de-la-chaîne-typst" id="toc-test-de-la-chaîne-typst" class="nav-link" data-scroll-target="#test-de-la-chaîne-typst">Test de la chaîne Typst</a></li>
-  <li><a href="#plan-b-si-pas-de-réseau-le-jour-j" id="toc-plan-b-si-pas-de-réseau-le-jour-j" class="nav-link" data-scroll-target="#plan-b-si-pas-de-réseau-le-jour-j">Plan B — si pas de réseau le jour J</a></li>
+  <li><a href="#plan-b-polices-sans-réseau-le-jour-j" id="toc-plan-b-polices-sans-réseau-le-jour-j" class="nav-link" data-scroll-target="#plan-b-polices-sans-réseau-le-jour-j">Plan B — polices sans réseau le jour J</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/edit/main/preparatifs.qmd" class="toc-action"><i class="bi bi-github"></i>Modifier cette page</a></li><li><a href="https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/issues/new" class="toc-action"><i class="bi empty"></i>Faire part d'un problème</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/edit/main/preparatifs.qmd" class="toc-action"><i class="bi bi-github"></i>Modifier cette page</a></li><li><a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/issues/new" class="toc-action"><i class="bi empty"></i>Faire part d'un problème</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -233,26 +208,91 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Avant le tutoriel, merci de préparer votre environnement de travail.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Raccourci recommandé : le paquet <code>tutoquartotypst</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>À installer d’abord</strong> : <strong>Quarto</strong> et un éditeur (<strong>RStudio</strong> ou <strong>Positron</strong>) — voir la section <em>Installation</em> juste en dessous. Le paquet R compagnon les <strong>vérifie</strong> mais ne peut pas les installer à votre place.</p>
+<p>Une fois Quarto et votre éditeur en place, le paquet <code>tutoquartotypst</code> enchaîne le reste : il installe <strong>tous les paquets R</strong> du tutoriel, vérifie votre environnement et pose les exercices.</p>
+<p><strong>1. Installer le paquet.</strong> Il tire automatiquement les 8 paquets R du tutoriel :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tutoquartotypst"</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">repos =</span> <span class="fu">c</span>(<span class="st">"https://cderv.r-universe.dev"</span>, <span class="st">"https://cloud.r-project.org"</span>))</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>2. Vérifier que tout est prêt</strong> — R, Quarto, Typst, paquets, et un rendu de test de bout en bout :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>tutoquartotypst<span class="sc">::</span><span class="fu">verifier_installation</span>()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Si tout s’affiche en vert, vous êtes prêt·e.</p>
+<p><strong>3. Installer les exercices</strong> dans un dossier de travail local. En session interactive, la fonction vous <strong>demande où</strong> les installer (sélecteur de dossier dans RStudio, sinon une invite), puis affiche la destination retenue :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tutoquartotypst<span class="sc">::</span><span class="fu">installer_exercices</span>()</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exemple quand tout est ok
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> tutoquartotypst<span class="sc">::</span><span class="fu">verifier_installation</span>()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>── Vérification de votre installation ────────────────────────────────────────────────────────────────────────────────────────────</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>✔ R <span class="dv">4</span>.<span class="fl">6.0</span> <span class="sc">:</span> version <span class="fu">compatible</span> (<span class="sc">&gt;=</span> <span class="dv">4</span>.<span class="fl">1.0</span>).</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>✔ Quarto <span class="dv">1</span>.<span class="fl">10.7</span> <span class="sc">:</span> version recommandée.</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>✔ Paquets R <span class="sc">:</span> les <span class="dv">8</span> prérequis sont installés.</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>✔ Rendu de test réussi <span class="sc">:</span> PDF <span class="fu">produit</span> (chaîne R → Quarto → Typst → gt → ggplot OK).</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>── Bilan ──</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>✔ R</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>✔ Quarto</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>✔ Paquets R</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>✔ Rendu PDF de test</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>✔ Tout est prêt <span class="sc">:</span> .qmd → PDF pro → livre → à personnaliser. Rendez<span class="sc">-</span>vous le <span class="dv">16</span> juin <span class="sc">!</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>ℹ Le jour J, pensez à ouvrir RStudio ou <span class="fu">Positron</span> (récent).</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>ℹ Prochaine étape <span class="sc">:</span> installez les exercices avec tutoquartotypst<span class="sc">::</span><span class="fu">installer_exercices</span>().</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<p>Les sections ci-dessous deviennent <strong>facultatives</strong> (elles détaillent le même chemin <strong>à la main</strong>). <strong>Si l’installation via r-universe échoue</strong> (réseau, pare-feu d’entreprise…), suivez simplement le chemin manuel ci-dessous.</p>
+</div>
+</div>
 <section id="installation" class="level2">
 <h2 class="anchored" data-anchor-id="installation">Installation</h2>
 <ul>
-<li><strong>Quarto 1.9 ou supérieur</strong> : <a href="https://quarto.org/docs/get-started" class="uri">https://quarto.org/docs/get-started</a></li>
-<li><strong>Dernier R 4</strong> : <a href="https://cran.r-project.org" class="uri">https://cran.r-project.org</a> ou avec <a href="https://github.com/r-lib/rig">rig</a>.</li>
-<li><strong>RStudio</strong> (dernière version) ou <strong>VS Code</strong> / <strong>Positron</strong></li>
-<li><strong>Packages R</strong> :</li>
+<li><p><strong>Dernier R 4</strong> : <a href="https://cran.r-project.org" class="uri">https://cran.r-project.org</a> ou avec <a href="https://github.com/r-lib/rig">rig</a>.</p></li>
+<li><p><strong>Un éditeur</strong>, au choix :</p>
+<ul>
+<li><strong>RStudio <code>2026.05</code> ou plus récent</strong> — <a href="https://posit.co/download/rstudio-desktop/">download</a></li>
+<li><strong>Positron <code>2026.05</code> ou plus récent</strong> — <a href="https://positron.posit.co/download.html">download</a> (l’éditeur de Posit basé sur VS Code)</li>
+</ul></li>
+<li><p><strong>Quarto</strong> :</p>
+<ul>
+<li><strong>Recommandé</strong> : <a href="https://quarto.org/docs/download/prerelease.html">pre-release <code>v1.10.7</code> ou supérieure</a> — la dernière, qui contient toutes les corrections de bugs.</li>
+<li><strong>Version minimale</strong> : <a href="https://quarto.org/docs/get-started">stable <code>1.9</code> ou supérieure</a> — fonctionnera, mais le tutoriel signalera un contournement à appliquer à l’étape concernée de l’exercice 2.</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pkg <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"rmarkdown"</span>, <span class="st">"quarto"</span>, <span class="st">"dplyr"</span>, <span class="st">"ggplot2"</span>, <span class="st">"ggrepel"</span>, <span class="st">"gt"</span>, <span class="st">"knitr"</span>, <span class="st">"scales"</span>, <span class="st">"brand.yml"</span>, <span class="st">"prismatic"</span>, <span class="st">"htmltools"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(pkg)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ou pak </span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pkg_install</span>(pkg)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>RStudio</strong> récent inclut Quarto, donc rien de plus à installer. <strong>Positron</strong> embarque Quarto 1.9 (suffisant comme minimum) ; pour profiter de la pre-release recommandée, installez Quarto séparément et, au besoin, réglez le chemin via le paramètre <code>quarto.path</code> de Positron.</p></li>
+<li><p><strong>Paquets R</strong> :</p></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pkg <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"quarto"</span>, <span class="st">"dplyr"</span>, <span class="st">"ggplot2"</span>, <span class="st">"ggrepel"</span>, <span class="st">"gt"</span>, <span class="st">"scales"</span>, <span class="st">"brand.yml"</span>, <span class="st">"prismatic"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(pkg)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ou pak </span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pkg_install</span>(pkg)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="téléchargements" class="level2">
 <h2 class="anchored" data-anchor-id="téléchargements">Téléchargements</h2>
 <p>Les exercices sont versionnés dans le dépôt GitHub du tutoriel.</p>
 <ul>
-<li>📦 <a href="https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/archive/refs/heads/main.zip">Télécharger le dépôt en zip</a> — décompresser sur le bureau, le matériel est dans <code>exercises/</code></li>
-<li>📁 <a href="https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises">Parcourir <code>exercises/</code> sur GitHub</a></li>
+<li>📦 <a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/archive/refs/heads/main.zip">Télécharger le dépôt en zip</a> — décompresser sur le bureau, le matériel est dans <code>exercises/</code></li>
+<li>📁 <a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises">Parcourir <code>exercises/</code> sur GitHub</a></li>
 </ul>
+<p>Chaque dossier <code>starter/</code> contient un fichier <code>.Rproj</code> : <strong>double-cliquez-le</strong> pour ouvrir l’exercice comme projet RStudio (le répertoire de travail est alors correct pour <code>quarto render</code>).</p>
 <div class="callout callout-style-simple callout-warning no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -263,34 +303,58 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Les corrections ne sont pas posées par <code>installer_exercices()</code></strong> (choix délibéré : une correction est plus utile <em>après</em> avoir cherché). Deux façons d’y accéder via le paquet, chacune après confirmation :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Les consulter en ligne (ouvre la page GitHub)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>tutoquartotypst<span class="sc">::</span><span class="fu">ouvrir_correction</span>(<span class="st">"01"</span>)     <span class="co"># ou "02"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Les copier en local pour les retravailler (à côté du starter)</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>tutoquartotypst<span class="sc">::</span><span class="fu">recuperer_correction</span>(<span class="st">"01"</span>)  <span class="co"># ou "02"</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
 </section>
 <section id="vérification" class="level2">
 <h2 class="anchored" data-anchor-id="vérification">Vérification</h2>
 <p>Vérifiez que tout fonctionne en exécutant dans R :</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>quarto<span class="sc">::</span><span class="fu">quarto_version</span>() <span class="co"># doit afficher 1.9 ou supérieur</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(starwars)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>quarto<span class="sc">::</span><span class="fu">quarto_version</span>() <span class="co"># &gt;= 1.9 minimum, 1.10.7+ pre-release recommandée</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(starwars)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Si la version de quarto n’est pas celle attendue, utilisez <code>quarto::quarto_binary_sitrep(debug = TRUE)</code> pour aider à diagnostiquer.</p>
 </section>
 <section id="test-de-la-chaîne-typst" class="level2">
 <h2 class="anchored" data-anchor-id="test-de-la-chaîne-typst">Test de la chaîne Typst</h2>
 <p>La vérification ci-dessus n’exécute que du R. Pour valider que <strong>Quarto + Typst + gt + ggplot</strong> s’enchaînent bien sur votre machine, rendez le mini-fichier de test fourni dans le dépôt :</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render exercises/00-test-install/test-install.qmd</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Résultat attendu</strong> : un fichier <code>test-install.pdf</code> apparaît à côté du <code>.qmd</code>, avec un titre accentué, un tableau de 3 lignes et un graphique. Aucune <strong>erreur</strong> en console (un avertissement sur la police est normal et documenté ci-dessous).</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render exercises/00-test-install/test-install.qmd</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Résultat attendu</strong> : un fichier <code>test-install.pdf</code> apparaît à côté du <code>.qmd</code>, avec un titre accentué, un tableau de 3 lignes et un graphique. Aucune <strong>erreur</strong> en console — en revanche <strong>plusieurs avertissements</strong> <code>unknown font family</code> sont normaux et documentés ci-dessous. Tant que vous voyez <code>Output created</code>, c’est bon.</p>
 <p><strong>Si ça échoue</strong> :</p>
 <ul>
 <li><code>Typst executable not found</code> → Quarto &lt; 1.9, mettez à jour.</li>
-<li><code>unknown font family</code> → ignorez cet avertissement, le PDF se génère quand même avec une police de repli (ce test n’utilise pas <code>_brand.yml</code>). Suivi sur <a href="https://github.com/quarto-dev/quarto-cli/issues/11683">Github</a></li>
+<li><code>unknown font family</code> (souvent <strong>plusieurs</strong> : <code>sans-serif</code>, <code>segoe ui</code>, <code>roboto</code>…) → ignorez-les, le PDF se génère quand même avec une police de repli (ce test n’utilise pas <code>_brand.yml</code>). Ces avertissements sont <strong>purement visuels</strong> (sans conséquence) : Typst signale chaque police absente de la liste de polices, là où le navigateur les ignore en silence — pas de moyen de les masquer pour l’instant. Suivi sur <a href="https://github.com/quarto-dev/quarto-cli/issues/12556">quarto-cli#12556</a>. <em>(À ne pas confondre avec le bug d’affichage « 1 7 5 » dans les tableaux, <a href="https://github.com/quarto-dev/quarto-cli/issues/11683">quarto-cli#11683</a>, corrigé par <code>gt::opt_table_font()</code>.)</em></li>
 </ul>
 </section>
-<section id="plan-b-si-pas-de-réseau-le-jour-j" class="level2">
-<h2 class="anchored" data-anchor-id="plan-b-si-pas-de-réseau-le-jour-j">Plan B — si pas de réseau le jour J</h2>
-<p>Le tutoriel utilise par défaut <code>_brand.yml</code> avec <code>source: google</code>, qui télécharge les polices Inter et Orbitron au premier rendu. Si vous n’avez <strong>pas</strong> d’accès réseau le matin du tutoriel :</p>
+<section id="plan-b-polices-sans-réseau-le-jour-j" class="level2">
+<h2 class="anchored" data-anchor-id="plan-b-polices-sans-réseau-le-jour-j">Plan B — polices sans réseau le jour J</h2>
+<p>Le tutoriel utilise par défaut <code>_brand.yml</code> avec <code>source: google</code> pour Inter (corps), qui télécharge la police au premier rendu. Star Jedi (titres) est livrée en local dans <code>_fonts/</code>. Si vous n’avez <strong>pas</strong> d’accès réseau le matin du tutoriel, un <code>_brand-offline.yml</code> avec Inter en <code>source: file</code> est fourni pour <strong>chaque exercice</strong> :</p>
+<p><strong>Exercice 1</strong> :</p>
 <ol type="1">
-<li>Récupérez les fichiers <code>_brand-offline.yml</code> et <code>_fonts/</code> depuis le dossier <a href="https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/correction"><code>exercises/01-document-typst/correction/</code></a>.</li>
-<li>Copiez-les à côté de votre <code>rapport-starwars.qmd</code>.</li>
+<li>Récupérez <code>_brand-offline.yml</code> et le dossier <code>_fonts/</code> depuis <a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/correction"><code>exercises/01-document-typst/correction/</code></a>.</li>
+<li>Copiez-les à côté de votre <code>rapport-starwars.qmd</code> (dans <code>starter/</code>).</li>
 <li>Renommez <code>_brand-offline.yml</code> en <code>_brand.yml</code>.</li>
 </ol>
-<p>Le rendu Typst utilisera alors les fichiers TTF locaux (<code>Inter-*.ttf</code> + <code>Orbitron-*.ttf</code>, ~1,3 Mo) — aucun téléchargement requis.</p>
+<p><strong>Exercice 2</strong> :</p>
+<ol type="1">
+<li>Récupérez <code>_brand-offline.yml</code> et les 3 fichiers <code>_fonts/Inter-*.ttf</code> depuis <a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises/02-projet-book"><code>exercises/02-projet-book/</code></a> (à la racine de l’exercice, à côté de <code>_brand-starter.yml</code>).</li>
+<li>Copiez-les à la racine de votre projet livre (<code>starter/</code> — <code>Starjedi.ttf</code> y est déjà dans <code>_fonts/</code>, complétez avec les Inter).</li>
+<li>Renommez <code>_brand-offline.yml</code> en <code>_brand.yml</code>.</li>
+<li>Récupérez aussi <a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/_logo-sw.svg"><code>_logo-sw.svg</code></a> à la racine de l’exo si ce n’est pas déjà fait (cf.&nbsp;README starter).</li>
+</ol>
+<p>Le rendu Typst utilisera alors les fichiers TTF locaux (<code>Inter-*.ttf</code> + <code>Starjedi.ttf</code>, ~1 Mo) — aucun téléchargement requis.</p>
 
 
 </section>
@@ -369,7 +433,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/cderv\.github\.io\/tuto-quarto-typst-rr-2026\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -713,7 +777,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/edit/main/preparatifs.qmd" class="toc-action"><i class="bi bi-github"></i>Modifier cette page</a></li><li><a href="https://github.com/cderv/cderv-tuto-quarto-typst-rr-2026/issues/new" class="toc-action"><i class="bi empty"></i>Faire part d'un problème</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/edit/main/preparatifs.qmd" class="toc-action"><i class="bi bi-github"></i>Modifier cette page</a></li><li><a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/issues/new" class="toc-action"><i class="bi empty"></i>Faire part d'un problème</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Site construit avec <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
