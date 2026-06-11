@@ -63,7 +63,7 @@ Fichier : {{< fa download >}} [exercises/01-document-typst/starter/](https://git
 | 4 | Ajouter la police locale Star Jedi (`_fonts/Starjedi.ttf`, `source: file`) sur `typography.headings` — cf. section Typographie de la charte. | Titres de section en lettres décoratives Star Jedi. |
 
 ::: {.callout-note appearance="minimal"}
-**Étape 2 — où ranger les options ?** Le `format: typst` d'une seule ligne (étape 1) devient un **bloc indenté**, et `lang:` reste une **clé racine** (au même niveau que `format:`, pas en dessous) :
+**Étape 2 — où ranger les options ?** Le `format: typst` d'une seule ligne (étape 1) devient un **bloc indenté**, et `lang:` se met **à la racine** (au même niveau que `format:`, pas en dessous) — vous la créez, elle n'est pas dans le starter :
 
 ``` yaml
 ---
