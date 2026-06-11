@@ -22,7 +22,7 @@ Un moyen pour injecter du Typst natif quand Quarto ne suffit pas.
 - Traduction CSS → Typst : propriétés CSS utilisables sur "spans" et "divs" (depuis Quarto 1.5)
 - Tableaux stylisés : les tableaux HTML avec CSS (`gt`, `pandas`) sont rendus dans Typst
 
-### 2 — Template "partials" (fragments de gabarit)
+### 2 — Template partials (fragments de gabarit)
 
 Personnaliser la génération du fichier `.typ` pour contrôler le "layout" du PDF.
 
