@@ -15,7 +15,12 @@ reinitialiser_exercice(
 (le test d'installation).}
 
 \item{dossier}{Dossier où les exercices ont été installés (le \code{dest} de
-\code{\link[=installer_exercices]{installer_exercices()}}). Par défaut \code{"exercices-typst"}.}
+\code{\link[=installer_exercices]{installer_exercices()}}). Par défaut \code{"exercices-typst"} : dans ce cas, la
+fonction \strong{retrouve automatiquement} le bon dossier à partir du répertoire
+courant — lancée depuis l'intérieur d'un exercice (p. ex. son \code{starter/})
+ou depuis la racine d'installation, elle réinitialise le bon dossier sans
+créer d'arborescence imbriquée. Fournir un chemin explicite court-circuite
+cette détection.}
 
 \item{force}{Logique. Réinitialiser sans confirmation interactive ? Par
 défaut \code{FALSE} (en mode non-interactif, \code{force = TRUE} est requis).}
