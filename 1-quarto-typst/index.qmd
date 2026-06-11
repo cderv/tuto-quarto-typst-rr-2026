@@ -59,7 +59,7 @@ Fichier : {{< fa download >}} [exercises/01-document-typst/starter/](https://git
 |----|---------------------------------------|-----------------------------------------|
 | 1 | Ouvrir `rapport-starwars.qmd`, ajouter `format: typst`, rendre. | PDF généré à la place du HTML, polices et marges par défaut Typst. |
 | 2 | Personnaliser avec des options : `papersize`, `toc`, `mainfont`, `lang: fr`... | TOC en tête (titrée « Table des matières » grâce à `lang: fr`), marges/format adaptés, police corps modifiée. |
-| 3 | Créer `_brand.yml` en traduisant la **charte Star Wars** fournie ([`charte-starwars.pdf`](/_charte/charte-starwars.pdf) — le même fichier que celui livré dans le starter) : palette + rôles (`primary` / `foreground` / `background`) + police Google sous `typography.fonts` puis `typography.base` + logo (clé `logo:` pointant `_logo-sw.svg`, fourni dans le starter). | Liens colorés en imperial-red, fond crème, police corps Google (Inter) appliquée, logo en haut-gauche. (Les titres restent en `foreground` noir — la couleur `primary` sur les titres arrivera avec le livre, au Bloc 2.) |
+| 3 | Créer `_brand.yml` en traduisant la **charte Star Wars** fournie ([`charte-starwars.pdf`](/_charte/charte-starwars.pdf) — le même fichier que celui livré dans le starter) : palette + rôles (`primary` / `foreground` / `background`) + police Google sous `typography.fonts` puis `typography.base` + logo (bloc `logo:` **imbriqué** — `images:` puis `medium:` — pointant `_logo-sw.svg`, fourni dans le starter ; structure dans les Indices doc). | Liens colorés en imperial-red, fond crème, police corps Google (Inter) appliquée, logo en haut à gauche (placement par défaut Quarto ; son réglage fin se fait au Bloc 2). (Les titres restent en `foreground` noir — la couleur `primary` sur les titres arrivera avec le livre, au Bloc 2.) |
 | 4 | Ajouter la police locale Star Jedi (`_fonts/Starjedi.ttf`, `source: file`) sur `typography.headings` — cf. section Typographie de la charte. | Titres de section en lettres décoratives Star Jedi. |
 
 ::: {.callout-note appearance="minimal"}
@@ -93,7 +93,7 @@ format:
 
 - **Étape 1** ([`format: typst`](https://quarto.org/docs/output-formats/typst.html)) — section "Overview".
 - **Étape 2** ([options Typst](https://quarto.org/docs/output-formats/typst.html#format-options)) — section "Format Options". Référence complète : [reference/formats/typst](https://quarto.org/docs/reference/formats/typst.html).
-- **Étape 3** ([`_brand.yml`](https://quarto.org/docs/authoring/brand.html)) — sections "Color" et "Typography" ; spec complète sur [brand-yml](https://posit-dev.github.io/brand-yml/).
+- **Étape 3** ([`_brand.yml`](https://quarto.org/docs/authoring/brand.html)) — sections "Color" et "Typography" ; le **logo** est un bloc **imbriqué** (`logo:` → `images:` → `<nom>:` avec `path`/`alt`, puis `medium: <nom>` — *pas* `logo: _logo-sw.svg`), cf. [logo](https://posit-dev.github.io/brand-yml/brand/logo.html) ; spec complète sur [brand-yml](https://posit-dev.github.io/brand-yml/).
 - **Étape 4** ([typography](https://posit-dev.github.io/brand-yml/brand/typography.html)) — chercher `source: file`.
 - **Bonus B1** ([`keep-typ`](https://quarto.org/docs/output-formats/typst.html?q=keep-typ)) — Pour voir le fichier `.typ`
 :::

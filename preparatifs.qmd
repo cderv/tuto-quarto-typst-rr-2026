@@ -133,6 +133,10 @@ head(starwars)
 
 Si la version de quarto n'est pas celle attendue, utilisez `quarto::quarto_binary_sitrep(debug = TRUE)` pour aider à diagnostiquer.
 
+::: {.callout-tip appearance="minimal"}
+**Locale UTF-8.** R doit tourner en UTF-8 — c'est le cas par défaut sous R ≥ 4.2 (Windows), macOS et la plupart des Linux. Sinon, le rendu des fichiers accentués (`_brand.yml`, titres) peut échouer. Contrôle rapide : `l10n_info()[["UTF-8"]]` doit valoir `TRUE` (au besoin : `Sys.setlocale("LC_CTYPE", "en_US.UTF-8")`). `tutoquartotypst::verifier_installation()` vous prévient automatiquement si ce n'est pas le cas.
+:::
+
 ## Test de la chaîne Typst
 
 La vérification ci-dessus n'exécute que du R. Pour valider que **Quarto + Typst + gt + ggplot** s'enchaînent bien sur votre machine, rendez le mini-fichier de test fourni dans le dépôt :
