@@ -75,6 +75,12 @@ invisible(file.copy(
 ))
 
 # --- 01 et 02 : starter/ (toujours) + correction/ (sources, pour recuperer_correction) --
+# + ASSETS À LA RACINE de l'exo. Ces fichiers (p. ex. `_brand-starter.yml` pour
+# qui n'a pas fini le Bloc 1, `_logo-sw.svg`, `_brand-offline.yml` + `_fonts/`
+# du plan B hors-ligne, README) sont NÉCESSAIRES au parcours participant
+# (étape 3 de l'exo 2, fallback, offline) : `installer_exercices()` doit donc les
+# poser localement — pas renvoyer vers GitHub. On les pose à la racine de l'exo,
+# exactement comme dans le dépôt (« à la racine de l'exercice »).
 exos <- c("01-document-typst", "02-projet-book")
 total <- 1L
 for (exo in exos) {
@@ -85,6 +91,17 @@ for (exo in exos) {
     total <- total + n
     message(sprintf("  %s/%s : %d fichiers", exo, sous, n))
   }
+  # Entrées à la racine de l'exo, hors sous-dossiers starter/ & correction/ (déjà
+  # traités) et hors artefacts de rendu.
+  racine <- list.files(file.path(src, exo), recursive = TRUE, all.files = TRUE, no.. = TRUE)
+  racine <- racine[!grepl("^(starter|correction)/", racine) & !is_artifact(racine)]
+  for (f in racine) {
+    target <- file.path(dest, exo, f)
+    dir.create(dirname(target), recursive = TRUE, showWarnings = FALSE)
+    file.copy(file.path(src, exo, f), target, overwrite = TRUE, copy.mode = FALSE)
+  }
+  total <- total + length(racine)
+  message(sprintf("  %s/ (racine de l'exo) : %d fichiers", exo, length(racine)))
 }
 
 message(sprintf("\nSync exercices : %d fichiers dans %s", total,
