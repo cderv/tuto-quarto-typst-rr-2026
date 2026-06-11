@@ -2,7 +2,7 @@
 
 ```{r}
 #| label: setup-origines
-# --- Bonus 4 (optionnel) appliqué : brand styling des tableaux gt + ggplot ---
+# --- Bonus B4 (optionnel) appliqué : brand styling des tableaux gt + ggplot ---
 library(dplyr)
 library(ggplot2)
 library(gt)
