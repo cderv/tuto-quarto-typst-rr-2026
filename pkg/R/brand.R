@@ -45,7 +45,8 @@ basculer_hors_ligne <- function(projet = ".", retour = FALSE) {
   if (!file.exists(brand)) {
     cli::cli_abort(c(
       "{.path _brand.yml} introuvable dans {.path {projet}}.",
-      "i" = "Lancez la fonction depuis le dossier de votre exercice."
+      "i" = "La bascule hors-ligne agit sur la charte {.path _brand.yml}, qui n'apparaît qu'une fois la charte ajoutée à votre rapport (étapes 3-4 de l'exercice 1).",
+      "i" = "Relancez cette fonction après cette étape, depuis le dossier qui contient votre {.path _brand.yml}."
     ))
   }
 

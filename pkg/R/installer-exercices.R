@@ -102,9 +102,15 @@ installer_exercices <- function(dest = NULL,
   cli::cli_alert_info(
     "Astuce RStudio : double-cliquez le fichier {.path .Rproj} d'un dossier {.path starter/} pour ouvrir l'exercice comme projet (répertoire de travail correct)."
   )
-  cli::cli_alert_warning(
-    "N'ouvrez pas les dossiers {.path correction/} (en ligne) avant le tutoriel."
-  )
+  # L'avertissement n'a de sens que si une `correction/` est réellement posée en
+  # local : `installer_exercices()` n'en pose jamais (copie `exclure = "correction"`),
+  # donc le message ne s'affiche pas ici. Il reste utile si une correction a été
+  # récupérée via recuperer_correction() avant une réinstallation.
+  if (any(dir.exists(file.path(dest_abs, exos, "correction")))) {
+    cli::cli_alert_warning(
+      "N'ouvrez pas les dossiers {.path correction/} avant le tutoriel (mieux vaut chercher d'abord !)."
+    )
+  }
   cli::cli_alert_info(
     "Sans réseau le jour J ? {.run tutoquartotypst::basculer_hors_ligne()} passe un exercice en polices locales."
   )
@@ -125,7 +131,12 @@ installer_exercices <- function(dest = NULL,
 #' @param quel Quel exercice réinitialiser : `"01"` (défaut), `"02"` ou `"00"`
 #'   (le test d'installation).
 #' @param dossier Dossier où les exercices ont été installés (le `dest` de
-#'   [installer_exercices()]). Par défaut `"exercices-typst"`.
+#'   [installer_exercices()]). Par défaut `"exercices-typst"` : dans ce cas, la
+#'   fonction **retrouve automatiquement** le bon dossier à partir du répertoire
+#'   courant — lancée depuis l'intérieur d'un exercice (p. ex. son `starter/`)
+#'   ou depuis la racine d'installation, elle réinitialise le bon dossier sans
+#'   créer d'arborescence imbriquée. Fournir un chemin explicite court-circuite
+#'   cette détection.
 #' @param force Logique. Réinitialiser sans confirmation interactive ? Par
 #'   défaut `FALSE` (en mode non-interactif, `force = TRUE` est requis).
 #'
@@ -141,7 +152,21 @@ reinitialiser_exercice <- function(quel = c("01", "02", "00"),
   quel <- match.arg(quel)
   exo <- .exo_dossier(quel)
   src <- file.path(.dossier_exercices_paquet(), exo)
-  cible <- file.path(xfun::normalize_path(dossier), exo)
+
+  # Sans `dossier` explicite, on déduit la racine d'installation du répertoire
+  # courant : lancée depuis le `starter/` (ce que conseille installer_exercices)
+  # ou depuis la racine, la fonction vise alors le bon dossier au lieu de résoudre
+  # "exercices-typst" relativement au cwd (qui imbriquerait .../starter/exercices-typst/...).
+  racine <- if (missing(dossier)) .racine_install_exo(exo) else NULL
+  cible <- file.path(xfun::normalize_path(racine %||% dossier), exo)
+  cible_norm <- xfun::normalize_path(cible, must_work = FALSE)
+
+  # Sommes-nous DANS le dossier qu'on va remplacer ? Si oui, il faut en sortir
+  # avant le renommage de sauvegarde (sinon échec sous Windows : dossier verrouillé ;
+  # cwd orphelin sous Unix). On y replacera l'utilisateur (dans `starter/`) à la fin.
+  wd <- xfun::normalize_path(getwd())
+  dans_cible <- identical(wd, cible_norm) ||
+    startsWith(paste0(wd, "/"), paste0(cible_norm, "/"))
 
   sauvegarde <- NULL
   if (dir.exists(cible)) {
@@ -158,6 +183,9 @@ reinitialiser_exercice <- function(quel = c("01", "02", "00"),
       }
       cli::cli_alert_info("Réinitialisation annulée.")
       return(invisible(NULL))
+    }
+    if (dans_cible) {
+      setwd(dirname(cible_norm))
     }
     horodatage <- format(Sys.time(), "%Y%m%d-%H%M%S")
     sauvegarde <- paste0(cible, "-sauvegarde-", horodatage)
@@ -179,6 +207,13 @@ reinitialiser_exercice <- function(quel = c("01", "02", "00"),
   )
   if (!is.null(sauvegarde)) {
     cli::cli_alert_info("Votre travail précédent reste dans {.path {sauvegarde}}.")
+  }
+  # On replace l'utilisateur dans le starter restauré (il en était sorti ci-dessus).
+  if (dans_cible) {
+    retour <- file.path(cible, "starter")
+    if (!dir.exists(retour)) retour <- cible
+    setwd(retour)
+    cli::cli_alert_info("Répertoire de travail replacé dans {.path {retour}}.")
   }
   invisible(cible)
 }

@@ -124,6 +124,27 @@
   )
 }
 
+# Racine d'installation des exercices déduite du répertoire courant `wd`.
+# Permet à reinitialiser_exercice() de « retrouver » le bon dossier quel que soit
+# l'endroit d'où on la lance, au lieu d'interpréter "exercices-typst" relativement
+# au cwd (ce qui crée une arborescence imbriquée). Renvoie le dossier qui CONTIENT
+# `<exo>`, ou NULL si on ne sait pas (repli sur le `dossier` par défaut).
+#   1) cwd à l'intérieur d'un exercice (.../exercices-typst/<exo>/starter) ->
+#      racine = le segment parent de `<exo>` ;
+#   2) cwd à la racine d'install (un sous-dossier `<exo>` existe) -> racine = cwd.
+.racine_install_exo <- function(exo, wd = getwd()) {
+  wd <- xfun::normalize_path(wd)
+  segments <- strsplit(wd, "/", fixed = TRUE)[[1]]
+  hit <- which(segments == exo)
+  if (length(hit) >= 1 && hit[1] > 1) {
+    return(paste(segments[seq_len(hit[1] - 1L)], collapse = "/"))
+  }
+  if (dir.exists(file.path(wd, exo))) {
+    return(wd)
+  }
+  NULL
+}
+
 # Copie récursive d'un dossier `from` -> `to` (crée `to`, écrase les fichiers)
 # `exclure` : noms de sous-dossiers de premier niveau à NE PAS copier (p. ex.
 # "correction" pour ne poser que les `starter/` chez les participants).

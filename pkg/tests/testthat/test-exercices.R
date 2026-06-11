@@ -78,3 +78,58 @@ test_that("reinitialiser_exercice() sauvegarde avant de restaurer", {
   # la réinitialisation ne ramène pas non plus la correction
   expect_false(dir.exists(file.path(dest, "01-document-typst", "correction")))
 })
+
+test_that("installer_exercices() n'avertit sur correction/ que si elle est présente", {
+  # Pas de correction posée -> pas d'avertissement trompeur (le défaut).
+  dest <- withr::local_tempdir()
+  out <- cli::cli_fmt(installer_exercices(file.path(dest, "exos"), quels = "01", force = TRUE))
+  expect_false(any(grepl("correction", out)))
+
+  # Une correction présente en local (p. ex. via recuperer_correction()) ->
+  # l'avertissement réapparaît à la réinstallation.
+  chemin <- file.path(dest, "exos")
+  dir.create(file.path(chemin, "01-document-typst", "correction"), recursive = TRUE)
+  out2 <- cli::cli_fmt(installer_exercices(chemin, quels = "01", force = TRUE))
+  expect_true(any(grepl("N'ouvrez pas les dossiers", out2)))
+})
+
+test_that("basculer_hors_ligne() guide quand _brand.yml n'existe pas encore", {
+  # Le starter de l'exo 1 n'a pas de _brand.yml (ajouté aux étapes 3-4) : le
+  # message doit l'expliquer plutôt que de suggérer un mauvais répertoire.
+  dest <- withr::local_tempdir()
+  starter <- file.path(dest, "01-document-typst", "starter")
+  suppressMessages(installer_exercices(dest, quels = "01", force = TRUE))
+  expect_false(file.exists(file.path(starter, "_brand.yml")))
+  expect_error(basculer_hors_ligne(starter), "charte|étapes 3-4")
+})
+
+test_that(".racine_install_exo() retrouve la racine d'installation", {
+  # cwd à l'intérieur d'un exercice -> racine = le dossier qui contient <exo>
+  expect_identical(
+    .racine_install_exo("01-document-typst",
+      wd = "/home/u/exercices-typst/01-document-typst/starter"),
+    "/home/u/exercices-typst"
+  )
+  # cwd sans rapport avec un exercice installé -> NULL (repli sur le défaut)
+  expect_null(.racine_install_exo("01-document-typst", wd = withr::local_tempdir()))
+})
+
+test_that("reinitialiser_exercice() lancée depuis le starter n'imbrique rien", {
+  # Reproduit le piège : lancée depuis .../<exo>/starter avec le `dossier` par
+  # défaut, elle visait jadis .../starter/exercices-typst/... (imbriqué).
+  dest <- withr::local_tempdir()
+  suppressMessages(installer_exercices(dest, quels = "01", force = TRUE))
+  starter <- file.path(dest, "01-document-typst", "starter")
+  writeLines("casse", file.path(starter, "rapport-starwars.qmd"))
+  withr::with_dir(starter, {
+    suppressMessages(reinitialiser_exercice(force = TRUE))
+  })
+  # Aucune arborescence imbriquée sous le starter
+  expect_false(dir.exists(file.path(starter, "exercices-typst")))
+  # Le fichier a bien été restauré au bon endroit
+  expect_false(identical(
+    readLines(file.path(starter, "rapport-starwars.qmd"), warn = FALSE), "casse"
+  ))
+  # Une sauvegarde du dossier d'exercice a été créée à la racine d'install
+  expect_gt(length(list.files(dest, pattern = "sauvegarde")), 0)
+})
