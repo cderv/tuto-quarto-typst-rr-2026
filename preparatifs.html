@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.8">
+<meta name="generator" content="quarto-1.10.11">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -76,7 +76,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-b856dee10e21950d696b022d144bb914.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-5947b73a06bce04bf1d622ae23e1ec5b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-c70c6a9a2c2019a740cbe9c2a036f017.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -326,6 +326,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(starwars)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Si la version de quarto n’est pas celle attendue, utilisez <code>quarto::quarto_binary_sitrep(debug = TRUE)</code> pour aider à diagnostiquer.</p>
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Locale UTF-8.</strong> R doit tourner en UTF-8. C’est le cas par défaut sur un poste récent (R ≥ 4.2 sous Windows, macOS, distributions Linux de bureau) — donc rien à faire pour la quasi-totalité des participant·e·s. Les environnements <strong>minimaux</strong> (conteneurs, CI, serveurs sans locale configurée) démarrent parfois R en locale <code>C</code> (ASCII), et là le rendu des fichiers accentués (<code>_brand.yml</code>, titres) échoue. Contrôle : <code>l10n_info()[["UTF-8"]]</code> doit valoir <code>TRUE</code> ; sinon, lancez R avec une locale UTF-8 <strong>installée sur la machine</strong> (variable d’environnement <code>LANG</code>, p.&nbsp;ex. <code>C.UTF-8</code> ou <code>fr_FR.UTF-8</code>). <code>tutoquartotypst::verifier_installation()</code> vous prévient automatiquement.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="test-de-la-chaîne-typst" class="level2">
 <h2 class="anchored" data-anchor-id="test-de-la-chaîne-typst">Test de la chaîne Typst</h2>

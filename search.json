@@ -34,7 +34,7 @@
     "href": "preparatifs.html#vérification",
     "title": "Préparatifs",
     "section": "Vérification",
-    "text": "Vérification\nVérifiez que tout fonctionne en exécutant dans R :\nquarto::quarto_version() # &gt;= 1.9 minimum, 1.10.7+ pre-release recommandée\nlibrary(dplyr)\nhead(starwars)\nSi la version de quarto n’est pas celle attendue, utilisez quarto::quarto_binary_sitrep(debug = TRUE) pour aider à diagnostiquer.",
+    "text": "Vérification\nVérifiez que tout fonctionne en exécutant dans R :\nquarto::quarto_version() # &gt;= 1.9 minimum, 1.10.7+ pre-release recommandée\nlibrary(dplyr)\nhead(starwars)\nSi la version de quarto n’est pas celle attendue, utilisez quarto::quarto_binary_sitrep(debug = TRUE) pour aider à diagnostiquer.\n\n\n\n\n\n\nLocale UTF-8. R doit tourner en UTF-8. C’est le cas par défaut sur un poste récent (R ≥ 4.2 sous Windows, macOS, distributions Linux de bureau) — donc rien à faire pour la quasi-totalité des participant·e·s. Les environnements minimaux (conteneurs, CI, serveurs sans locale configurée) démarrent parfois R en locale C (ASCII), et là le rendu des fichiers accentués (_brand.yml, titres) échoue. Contrôle : l10n_info()[[\"UTF-8\"]] doit valoir TRUE ; sinon, lancez R avec une locale UTF-8 installée sur la machine (variable d’environnement LANG, p. ex. C.UTF-8 ou fr_FR.UTF-8). tutoquartotypst::verifier_installation() vous prévient automatiquement.",
     "crumbs": [
       "Préparatifs"
     ]
