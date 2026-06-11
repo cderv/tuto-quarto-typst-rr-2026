@@ -133,3 +133,18 @@ test_that("reinitialiser_exercice() lancée depuis le starter n'imbrique rien", 
   # Une sauvegarde du dossier d'exercice a été créée à la racine d'install
   expect_gt(length(list.files(dest, pattern = "sauvegarde")), 0)
 })
+
+test_that("installer_exercices() pose les assets racine de l'exo 2 (fallback sans Bloc 1)", {
+  # `_brand-starter.yml` (+ `_logo-sw.svg`, `_brand-offline.yml`) vivent à la
+  # racine de l'exo : nécessaires à l'étape 3 / au fallback sans Bloc 1 / au plan B
+  # hors-ligne. Ils doivent être POSÉS par le paquet, pas seulement disponibles
+  # sur GitHub. Garde-fou contre une régression du sync (cf. data-raw/sync-exercices.R).
+  dest <- withr::local_tempdir()
+  chemin <- suppressMessages(installer_exercices(dest, quels = "02", force = TRUE))
+  exo <- file.path(chemin, "02-projet-book")
+  expect_true(file.exists(file.path(exo, "_brand-starter.yml")))
+  expect_true(file.exists(file.path(exo, "_logo-sw.svg")))
+  expect_true(file.exists(file.path(exo, "_brand-offline.yml")))
+  # ... mais toujours pas la correction.
+  expect_false(dir.exists(file.path(exo, "correction")))
+})
