@@ -80,14 +80,14 @@ Les questions se traitent **au fil de la séance**, à chaque étape :
 
 ## 2. Carte de progression pédagogique
 
-L'arc du tutoriel : **`.qmd` → PDF pro → livre → personnalisé/pérennisé**. Quatre bascules conceptuelles à faire vivre — c'est la colonne vertébrale, pas une option.
+L'arc du tutoriel : **`.qmd` → PDF pro → livre → personnalisé/pérennisé**. Quatre bascules conceptuelles à faire vivre — c'est la colonne vertébrale, pas une option. Notées **W1–W4** (« wow ») pour ne pas les confondre avec les **bonus B1–B4** des exercices (numérotation côté participants).
 
 | # | Bascule (« moment wow ») | Phrase-clé à dire | Filet si non acquis |
 |---|---|---|---|
-| **B1** | `format: typst` — Markdown → PDF en **une ligne** | « Une ligne. PDF généré. Pas d'install LaTeX. » | montrer le PDF de l'étape 1 de la démo — le résultat parle de lui-même |
-| **B2** | `keep-typ` — la magie n'est **pas une boîte noire** | « Vous pouvez ouvrir le `.typ` intermédiaire et voir ce que Quarto génère. » | facultatif à la compréhension fine ; ne pas s'attarder si le groupe décroche |
-| **B3** | `_brand.yml` — un PDF **aux couleurs de mon orga** | « Une couleur définie, deux endroits où elle apparaît. Pas de CSS, pas de template. » | la démo Our turn (1 couleur) suffit à planter l'idée ; la charte complète est du Your turn |
-| **B4** | `type: book` — 5 docs isolés → **1 livre pro** | « Une ligne + un bloc `book:` → couverture, TOC, numérotation par chapitre. Intégré, pas de template. » | si fonts manquent, montrer le PDF même imparfait — le **wow** est la structure, pas la police |
+| **W1** | `format: typst` — Markdown → PDF en **une ligne** | « Une ligne. PDF généré. Pas d'install LaTeX. » | montrer le PDF de l'étape 1 de la démo — le résultat parle de lui-même |
+| **W2** | `keep-typ` — la magie n'est **pas une boîte noire** | « Vous pouvez ouvrir le `.typ` intermédiaire et voir ce que Quarto génère. » | facultatif à la compréhension fine ; ne pas s'attarder si le groupe décroche |
+| **W3** | `_brand.yml` — un PDF **aux couleurs de mon orga** | « Une couleur définie, deux endroits où elle apparaît. Pas de CSS, pas de template. » | la démo Our turn (1 couleur) suffit à planter l'idée ; la charte complète est du Your turn |
+| **W4** | `type: book` — 5 docs isolés → **1 livre pro** | « Une ligne + un bloc `book:` → couverture, TOC, numérotation par chapitre. Intégré, pas de template. » | si fonts manquent, montrer le PDF même imparfait — le **wow** est la structure, pas la police |
 
 Objectifs détaillés par bloc : déjà côté participants dans `1-quarto-typst/index.qmd` et `2-projets/index.qmd` (sections « À la fin de ce bloc, vous saurez »). Ce tableau en est la **version pilotage** (les bascules à provoquer, pas l'état d'arrivée).
 
