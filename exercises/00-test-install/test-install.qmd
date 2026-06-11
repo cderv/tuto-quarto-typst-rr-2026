@@ -22,6 +22,10 @@ library(gt)
 head(starwars, 3) |>
   select(name, height, mass, species) |>
   gt() |>
+  # Arial (police système) et non Inter : ce test est volontairement « nu »
+  # (sans _brand.yml). opt_table_font() applique surtout le contournement du
+  # bug d'affichage « 1 7 5 » des nombres (quarto-cli#11683). Dans les
+  # exercices, on stylera plutôt avec "Inter" via la charte.
   opt_table_font(font = "Arial")
 ```
 

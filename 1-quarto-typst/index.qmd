@@ -101,7 +101,7 @@ format:
 ::: callout-caution
 ## 🆘 Si vous bloquez après \~5 min sur une étape
 
-1.  Relisez l'objectif + le "Vous devriez voir" de l'étape.
+1.  Relisez l'objectif + le « Vous devriez voir » de l'étape.
 2.  Ouvrez le collapse **💡 Indices doc** ci-dessus.
 3.  Ouvrez [`exercises/01-document-typst/correction/`](https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/correction) (filet final).
 :::

@@ -7,7 +7,7 @@
 
 - Quarto 1.9+ (cf. [`preparatifs.qmd`](../../preparatifs.qmd))
 - Paquets R installés : `dplyr`, `ggplot2`, `ggrepel`, `gt`, `scales`
-- Pour le Bonus 4 (optionnel, mise en forme avancée via la charte) : `brand.yml` + `prismatic` (cf. [`preparatifs.qmd`](../../preparatifs.qmd))
+- Pour le Bonus B4 (optionnel, mise en forme avancée via la charte) : `brand.yml` + `prismatic` (cf. [`preparatifs.qmd`](../../preparatifs.qmd))
 - L'extension `orange-book` (livrée avec Quarto 1.9, pas d'install à faire)
 
 ## Mise en place
@@ -27,7 +27,7 @@ Pas grave. Copiez ces 2 fichiers à la racine de votre projet :
 
 C'est une copie 1:1 de la charte utilisée dans la correction.
 
-## Bonus 3 — Changer de palette Star Wars
+## Bonus B3 — Changer de palette Star Wars
 
 Trois variantes de `_brand.yml` clés en main dans [`correction/`](correction/) :
 
