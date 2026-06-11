@@ -113,7 +113,7 @@ Les tableaux produits par `gt` (R) ou `Great Tables` (Python) avec du CSS sont r
 
 - Blog post : [Beautiful Tables in Typst](https://quarto.org/docs/blog/posts/2024-07-02-beautiful-tables-in-typst/)
 
-## Template partials (fragments de gabarit) — guide
+## Template partials — guide
 
 Le pipeline de compilation Typst dans Quarto :
 

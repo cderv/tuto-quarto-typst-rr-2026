@@ -36,11 +36,12 @@ verifier_r <- function() {
   locale <- Sys.getlocale("LC_CTYPE")
   cli::cli_alert_warning(c(
     "R ne tourne pas en UTF-8 (locale {.val {locale}}) : ",
-    "les fichiers accentués peuvent casser le rendu (erreur YAML sur un texte accentué)."
+    "les fichiers accentués ({.path _brand.yml}, titres) peuvent casser le rendu."
   ))
-  cli::cli_alert_info(
-    "Passez en locale UTF-8 (ex. {.code Sys.setlocale(\"LC_CTYPE\", \"en_US.UTF-8\")}), puis relancez."
-  )
+  cli::cli_alert_info(c(
+    "Lancez R dans une locale UTF-8 (le cas par défaut sur un poste de bureau ; ",
+    "rare hors conteneurs/serveurs minimaux). Contrôle : {.code l10n_info()[[\"UTF-8\"]]} doit valoir TRUE."
+  ))
   invisible(FALSE)
 }
 

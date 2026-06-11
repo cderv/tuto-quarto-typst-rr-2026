@@ -185,7 +185,19 @@ reinitialiser_exercice <- function(quel = c("01", "02", "00"),
       return(invisible(NULL))
     }
     if (dans_cible) {
-      setwd(dirname(cible_norm))
+      # On DOIT quitter le dossier avant de le renommer (Windows : dossier
+      # verrouillé ; Unix : cwd orphelin). On ne touche au wd QUE dans ce cas
+      # (lancement depuis l'intérieur du dossier visé), et `on.exit` GARANTIT de
+      # reposer ensuite l'utilisateur dans un dossier valide + message — même si
+      # une erreur survient pendant la copie (pas de cwd orphelin laissé derrière).
+      parent <- dirname(cible_norm)
+      setwd(parent)
+      on.exit({
+        retour <- file.path(cible, "starter")
+        if (!dir.exists(retour)) retour <- if (dir.exists(cible)) cible else parent
+        setwd(retour)
+        cli::cli_alert_info("Répertoire de travail replacé dans {.path {retour}}.")
+      }, add = TRUE)
     }
     horodatage <- format(Sys.time(), "%Y%m%d-%H%M%S")
     sauvegarde <- paste0(cible, "-sauvegarde-", horodatage)
@@ -208,12 +220,7 @@ reinitialiser_exercice <- function(quel = c("01", "02", "00"),
   if (!is.null(sauvegarde)) {
     cli::cli_alert_info("Votre travail précédent reste dans {.path {sauvegarde}}.")
   }
-  # On replace l'utilisateur dans le starter restauré (il en était sorti ci-dessus).
-  if (dans_cible) {
-    retour <- file.path(cible, "starter")
-    if (!dir.exists(retour)) retour <- cible
-    setwd(retour)
-    cli::cli_alert_info("Répertoire de travail replacé dans {.path {retour}}.")
-  }
+  # Le retour du wd dans le starter restauré est géré par on.exit() ci-dessus
+  # (garanti même en cas d'erreur), uniquement quand on était DANS le dossier visé.
   invisible(cible)
 }
