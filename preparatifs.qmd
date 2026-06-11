@@ -134,7 +134,7 @@ head(starwars)
 Si la version de quarto n'est pas celle attendue, utilisez `quarto::quarto_binary_sitrep(debug = TRUE)` pour aider à diagnostiquer.
 
 ::: {.callout-tip appearance="minimal"}
-**Locale UTF-8.** R doit tourner en UTF-8 — c'est le cas par défaut sous R ≥ 4.2 (Windows), macOS et la plupart des Linux. Sinon, le rendu des fichiers accentués (`_brand.yml`, titres) peut échouer. Contrôle rapide : `l10n_info()[["UTF-8"]]` doit valoir `TRUE` (au besoin : `Sys.setlocale("LC_CTYPE", "en_US.UTF-8")`). `tutoquartotypst::verifier_installation()` vous prévient automatiquement si ce n'est pas le cas.
+**Locale UTF-8.** R doit tourner en UTF-8. C'est le cas par défaut sur un poste récent (R ≥ 4.2 sous Windows, macOS, distributions Linux de bureau) — donc rien à faire pour la quasi-totalité des participant·e·s. Les environnements **minimaux** (conteneurs, CI, serveurs sans locale configurée) démarrent parfois R en locale `C` (ASCII), et là le rendu des fichiers accentués (`_brand.yml`, titres) échoue. Contrôle : `l10n_info()[["UTF-8"]]` doit valoir `TRUE` ; sinon, lancez R avec une locale UTF-8 **installée sur la machine** (variable d'environnement `LANG`, p. ex. `C.UTF-8` ou `fr_FR.UTF-8`). `tutoquartotypst::verifier_installation()` vous prévient automatiquement.
 :::
 
 ## Test de la chaîne Typst
