@@ -62,6 +62,21 @@ Fichier : {{< fa download >}} [exercises/01-document-typst/starter/](https://git
 | 3 | Créer `_brand.yml` en traduisant la **charte Star Wars** fournie ([`charte-starwars.pdf`](/_charte/charte-starwars.pdf) — le même fichier que celui livré dans le starter) : palette + rôles (`primary` / `foreground` / `background`) + police Google sous `typography.fonts` puis `typography.base` + logo (clé `logo:` pointant `_logo-sw.svg`, fourni dans le starter). | Liens colorés en imperial-red, fond crème, police corps Google (Inter) appliquée, logo en haut-gauche. (Les titres restent en `foreground` noir — la couleur `primary` sur les titres arrivera avec le livre, au Bloc 2.) |
 | 4 | Ajouter la police locale Star Jedi (`_fonts/Starjedi.ttf`, `source: file`) sur `typography.headings` — cf. section Typographie de la charte. | Titres de section en lettres décoratives Star Jedi. |
 
+::: {.callout-note appearance="minimal"}
+**Étape 2 — où ranger les options ?** Le `format: typst` d'une seule ligne (étape 1) devient un **bloc indenté**, et `lang:` reste une **clé racine** (au même niveau que `format:`, pas en dessous) :
+
+``` yaml
+---
+lang: fr              # clé racine (francise la « Table des matières »)
+format:
+  typst:              # le « : typst » de l'étape 1, maintenant un bloc
+    papersize: a4
+    toc: true
+    mainfont: "…"     # à vous de compléter
+---
+```
+:::
+
 **+ Bonus inspection (si temps restant) :**
 
 | \# | Action | Vous devriez voir |
