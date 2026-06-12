@@ -27,7 +27,7 @@ L'Exercice 2 part d'un **dossier neuf** (`starter/`), indépendant de l'Exercice
 ## 📋 Étapes
 
 1. `_quarto.yml` avec `type: default` + `format: typst`
-2. Passer à `type: book` + `chapters:` (orange-book s'active auto), puis ajouter `appendices: [annexe-donnees.qmd]` → bascule en « Annexe A »
+2. **2a.** `type: book` + `chapters:` (orange-book s'active auto) — **2b.** ajouter `appendices: [annexe-donnees.qmd]` → bascule en « Annexe A »
 3. Copier `_brand.yml` (+ logo + `_fonts/`) à la racine + bloc `format.typst.logo` custom (sinon chevauchement titres p. 2+)
 
 **Bonus** (pour les rapides) :
