@@ -104,6 +104,6 @@ Le dépôt est **public** et assume le « dev in the open » : plans et reviews 
   - `[type]` : `pedagogue`, `eleve-debutant`, `quarto-technique`, `orthographe-fr`, `content`
   - **Instantanés** : on n'édite pas une review passée, on en crée une nouvelle.
 - **Drafts d'issues** (à remonter en amont) → `.claude/archive/issues/`.
-- Agents reviewers : `.claude/agents/` (`workshop-reviewer-{pedagogue,debutant,technique,fr}`).
+- Agents reviewers : `.claude/agents/` (`workshop-reviewer-{pedagogue,debutant,technique,fr,wording}`).
 
 **Jamais committé** (`.gitignore`) : secrets, liens vers des documents privés, infos perso de tiers. Aujourd'hui concrètement : `review.md` (racine, doublon). Le plan « remarques Maëlle » est archivé (`archive/plans/`) **après retrait du lien privé** ; ce lien reste à purger de l'historique git (cf. note de passage public).
