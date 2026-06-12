@@ -147,7 +147,9 @@ Si la version de quarto n'est pas celle attendue, utilisez `quarto::quarto_binar
 
 ## Test de la chaîne Typst
 
-*Pas besoin de le faire à la main si vous avez utilisé le paquet : `verifier_installation()` rend **déjà** ce même fichier de test (ligne « Rendu de test réussi » du bilan). La commande ci-dessous est l'équivalent manuel.*
+::: {.callout-note appearance="minimal"}
+Pas besoin de le faire à la main si vous avez utilisé le paquet : `verifier_installation()` rend **déjà** ce même fichier de test (ligne « Rendu de test réussi » du bilan). La commande ci-dessous est l'équivalent manuel.
+:::
 
 La vérification ci-dessus n'exécute que du R. Pour valider que **Quarto + Typst + gt + ggplot** s'enchaînent bien sur votre machine, rendez le mini-fichier de test fourni dans le dépôt :
 
