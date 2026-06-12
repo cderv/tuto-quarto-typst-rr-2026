@@ -38,6 +38,13 @@ Le reste (`appendices`, `_brand.yml` projet, références croisées, pagebreak) 
 
 ## Exercice 2
 
+::: {.callout-note appearance="simple"}
+## 🧭 Boussole = suivi live · cette page = le détail
+
+- **[Boussole Exercice 2](boussole.qmd){target="_blank"}** — votre **compagnon de suivi en direct** : étapes télégraphiques + chrono, dans un panneau autonome à garder en **second écran** pendant que vous codez.
+- **Cette page** — la **référence détaillée** de l'exercice : tableau étape par étape (« Vous devriez voir »), indices doc, modèle `_quarto.yml`, approfondissements et correction. À consulter dès que vous voulez le détail.
+:::
+
 ::: {.callout-note appearance="minimal"}
 L'Exercice 2 est **indépendant de l'Exercice 1** : si vous n'avez pas terminé le Bloc 1, partez directement du dossier `starter/` ci-dessous.
 
@@ -48,8 +55,6 @@ L'Exercice 2 est **indépendant de l'Exercice 1** : si vous n'avez pas terminé 
 ## À vous !
 
 🎯 **Objectif :** transformer 5 `.qmd` en un livre PDF Typst stylé via `_quarto.yml` + `_brand.yml`.
-
-🧭 **Pendant l'exercice :** [boussole Exercice 2](boussole.qmd){target="_blank"} — objectif, étapes et chrono dans un panneau autonome (pratique en second écran).
 
 Fichier : {{< fa download >}} [exercises/02-projet-book/starter/](https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises/02-projet-book/starter)
 
