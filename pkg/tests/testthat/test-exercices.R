@@ -104,11 +104,17 @@ test_that("basculer_hors_ligne() guide quand _brand.yml n'existe pas encore", {
 })
 
 test_that(".racine_install_exo() retrouve la racine d'installation", {
+  # On part d'un vrai tempdir (chemin absolu valide sur tous les OS) plutôt que
+  # d'un littéral POSIX "/home/u/..." : sous Windows ce dernier, sans lettre de
+  # lecteur, est traité comme relatif au disque courant et normalize_path() lui
+  # préfixe "D:/" -> le test cassait sur le builder Windows r-universe.
+  racine <- withr::local_tempdir()
+  starter <- file.path(racine, "01-document-typst", "starter")
+  dir.create(starter, recursive = TRUE)
   # cwd à l'intérieur d'un exercice -> racine = le dossier qui contient <exo>
   expect_identical(
-    .racine_install_exo("01-document-typst",
-      wd = "/home/u/exercices-typst/01-document-typst/starter"),
-    "/home/u/exercices-typst"
+    .racine_install_exo("01-document-typst", wd = starter),
+    xfun::normalize_path(racine)
   )
   # cwd sans rapport avec un exercice installé -> NULL (repli sur le défaut)
   expect_null(.racine_install_exo("01-document-typst", wd = withr::local_tempdir()))
