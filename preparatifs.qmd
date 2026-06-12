@@ -96,6 +96,8 @@ pak::pkg_install(pkg)
 
 ## Téléchargements
 
+*Déjà couvert par `tutoquartotypst::installer_exercices()`, qui pose les exercices pour vous. Cette section est le **téléchargement manuel**, utile seulement si vous n'avez pas utilisé le paquet.*
+
 Les exercices sont versionnés dans le dépôt GitHub du tutoriel.
 
 - 📦 [Télécharger le dépôt en zip](https://github.com/cderv/tuto-quarto-typst-rr-2026/archive/refs/heads/main.zip) — décompresser sur le bureau, le matériel est dans `exercises/`
@@ -123,6 +125,8 @@ tutoquartotypst::recuperer_correction("01")  # ou "02"
 
 ## Vérification
 
+*Déjà couvert par `tutoquartotypst::verifier_installation()`. Ces commandes sont l'**équivalent manuel**, utile seulement si vous n'avez pas utilisé le paquet.*
+
 Vérifiez que tout fonctionne en exécutant dans R :
 
 ``` r
@@ -138,6 +142,8 @@ Si la version de quarto n'est pas celle attendue, utilisez `quarto::quarto_binar
 :::
 
 ## Test de la chaîne Typst
+
+*Pas besoin de le faire à la main si vous avez utilisé le paquet : `verifier_installation()` rend **déjà** ce même fichier de test (ligne « Rendu de test réussi » du bilan). La commande ci-dessous est l'équivalent manuel.*
 
 La vérification ci-dessus n'exécute que du R. Pour valider que **Quarto + Typst + gt + ggplot** s'enchaînent bien sur votre machine, rendez le mini-fichier de test fourni dans le dépôt :
 
