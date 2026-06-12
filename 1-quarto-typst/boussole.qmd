@@ -29,7 +29,7 @@ Transformer un rapport `.qmd` HTML en PDF Typst stylé via `_brand.yml`.
 1. Remplacer `format: html` par `format: typst` et rendre
 2. Régler les options sous `format:` → `typst:` (`papersize`, `toc`, `mainfont`) — `lang: fr` à la racine (clé à créer)
 3. Créer `_brand.yml` (couleurs + police Google + logo)
-4. Ajouter Star Jedi en police locale (`source: file`)
+4. Ajouter Star Jedi en police locale (`source: file`) + `color: primary` → titres rouges
 
 **Bonus** (pour les rapides) :
 
