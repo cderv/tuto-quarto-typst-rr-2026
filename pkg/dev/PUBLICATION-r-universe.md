@@ -18,8 +18,8 @@ cderv.r-universe.dev
 
 (le nom du repo = `<votre-univers>.r-universe.dev`).
 
-À la racine de ce repo, ajouter un fichier **`packages.json`** dont le contenu est
-déjà prêt ici : [`pkg/dev/packages.json`](packages.json). Copier-coller :
+À la racine de ce repo, ajouter un fichier **`packages.json`** avec exactement ce
+contenu (copier-coller) :
 
 ```json
 [
@@ -37,7 +37,7 @@ Commit + push sur la branche par défaut.
 > ```bash
 > gh repo create cderv/cderv.r-universe.dev --public --clone
 > cd cderv.r-universe.dev
-> cp /chemin/vers/pkg/dev/packages.json .
+> # créer packages.json avec le contenu JSON ci-dessus
 > git add packages.json && git commit -m "Add tutoquartotypst" && git push
 > ```
 
@@ -45,7 +45,7 @@ Commit + push sur la branche par défaut.
 
 Aller sur <https://github.com/apps/r-universe> → **Install** → choisir le compte
 `cderv` → autoriser l'accès (au minimum au repo `cderv.r-universe.dev` ; l'accès
-au repo source `cderv-tuto-quarto-typst-rr-2026` est public donc pas requis, mais
+au repo source `cderv/tuto-quarto-typst-rr-2026` est public donc pas requis, mais
 l'autoriser ne gêne pas).
 
 C'est l'app qui déclenche les builds quand `packages.json` change ou quand le repo
@@ -83,7 +83,7 @@ C'est la commande exacte déjà présente dans `preparatifs.qmd`.
 ## 5. Mises à jour ultérieures
 
 - **Nouveau code du paquet** : push sur `main` de
-  `cderv-tuto-quarto-typst-rr-2026` → r-universe rebuild automatiquement (l'app
+  `cderv/tuto-quarto-typst-rr-2026` → r-universe rebuild automatiquement (l'app
   surveille le repo source).
 - **Forcer un rebuild** : sur <https://cderv.r-universe.dev/builds>, bouton de
   re-trigger, ou un commit vide sur `cderv.r-universe.dev`.
@@ -101,7 +101,6 @@ r-universe génère aussi sa propre page paquet (étape 3) ; les deux coexistent
 
 | Fichier | Rôle |
 |---|---|
-| `pkg/dev/packages.json` | contenu à copier dans le repo de registre |
 | `pkg/DESCRIPTION` (`subdir` implicite) | `url`/`BugReports` du paquet |
 | `preparatifs.qmd` | commande d'install montrée aux participants |
 | `.claude/CLAUDE.md` § « Publication r-universe » | rappel synthétique |

@@ -24,7 +24,7 @@ Les profiles `tuto` (complet) et `pretuto` (préparatifs only) sont définis dan
 
 `quarto render` seul **ne suffit pas** : c'est seulement la recette `site`, et le profil `tuto` **exclut les exercices** (`_quarto-tuto.yml` → `render: - "!exercises/"`). Le build complet passe par `just` :
 
-- `just all` = `charte` + `exos` + `site` (le build de référence, ce que fait aussi `just publish`)
+- `just all` = `charte` + `exos` + `pkg-sync` + `pkg-site` + `site` (le build de référence, ce que fait aussi `just publish`)
 - `just exos` rend les **corrections** : `exo-typst` (`exercises/01-.../correction/rapport-starwars.qmd` → PDF Typst) et `exo-book` (`exercises/02-.../correction/` → `_book/`). **Aucune recette ne rend les `starter/`.**
 - `just charte` rend `_charte/charte-starwars.qmd` ; son `_charte/_post-render.R` copie le `charte-starwars.pdf` dans les deux `starter/`.
 - `just site` / `just site-pretuto` = `quarto render [--profile pretuto]`
