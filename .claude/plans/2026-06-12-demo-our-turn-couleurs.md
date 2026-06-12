@@ -77,6 +77,27 @@ Note : cette même cellule de l'étape 3 promet « **Liens colorés en imperial-
 4. **Wording** : « le document prend les couleurs de la charte » est-il assez précis / juste, côté débutant et côté FR ?
 5. Le `background` crème est **subtil** (#F5F0E1 ≈ blanc cassé) — suffisamment visible en projection ? Sinon, quel levier (titres colorés ? un accent plus franc ?).
 
+## 6 bis. Enrichir l'exercice avec les leviers `typography` (piste CD)
+
+Matrice `typography` brand.yml → **Typst** (deepwiki + vérifié sandbox 1.10.11, rendus PNG) :
+
+| Cible | Sous-propriétés honorées en Typst |
+|---|---|
+| `base` | `family`, `size`, `weight`, `line-height` |
+| `headings` | `family`, `weight`, `style`, `color`, `line-height` |
+| `monospace` | `family` (police de code) |
+| `monospace-inline` | `weight`, `size`, `color`, `background-color` |
+| `monospace-block` | `weight`, `size`, `color`, `background-color`, `line-height` |
+| `link` | `weight`, `color`, `decoration` (underline), `background-color` |
+
+L'exo n'exploite aujourd'hui que `base` (Inter) + `headings.family` (Star Jedi). Leviers **inexploités, visibles et sûrs** : `headings.color`, `link.decoration`, `monospace-inline.color`/`background-color`. Tous générés correctement (`#show heading: set text(...)`, `#show link: ... underline()`, `#show raw.where(block:false): ... highlight(...)`) et vérifiés visuellement.
+
+**Question reviewers (Q6) :** jusqu'où enrichir ? Options non exclusives —
+- (a) démo Our turn = un levier visible (`headings.color` *ou* `background`+`foreground`) ;
+- (b) ajouter une étape/bonus « typographie de la charte » exploitant `link`/`monospace-inline` ;
+- (c) ne rien ajouter à l'exo, juste documenter ces leviers en pépite / page Ressources.
+Contrainte : rester dans l'enveloppe 12 min de l'exo + l'arc Bloc 1→Bloc 2 (titres colorés réservés au livre).
+
 ## 7. Fichiers concernés
 
 - `1-quarto-typst/1-quarto-typst.qmd` (slide Our turn + notes orateur)
