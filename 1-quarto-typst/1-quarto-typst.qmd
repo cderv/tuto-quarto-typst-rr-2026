@@ -280,7 +280,7 @@ Le terme « rôles » dans nos supports correspond aux « assignments » de la c
 On passe le doc en PDF Typst, puis on lui applique une couleur via `_brand.yml`.
 
 1.  Ouvrez `rapport-starwars.qmd` (dossier `01-document-typst/starter/`), passez `format: html` → `format: typst`, rendez → PDF brut
-2.  Créez `_brand.yml` avec **une seule couleur** + rôle `primary`, re-rendez → titres et liens colorés
+2.  Créez `_brand.yml` **dans le même dossier** (à côté du `.qmd`) avec **une seule couleur** + rôle `primary`, re-rendez → titres et liens colorés
 
 ``` {.yaml filename="_brand.yml"}
 color:
