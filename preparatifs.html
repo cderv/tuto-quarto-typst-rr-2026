@@ -260,7 +260,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Les sections ci-dessous deviennent <strong>facultatives</strong> (elles détaillent le même chemin <strong>à la main</strong>). <strong>Si l’installation via r-universe échoue</strong> (réseau, pare-feu d’entreprise…), suivez simplement le chemin manuel ci-dessous.</p>
+<p>Les sections ci-dessous sont <strong>facultatives</strong> : c’est le même chemin, mais <strong>à la main</strong>. <strong>Si l’installation via r-universe échoue</strong> (réseau, pare-feu d’entreprise…), suivez simplement le chemin manuel ci-dessous.</p>
 </div>
 </div>
 <section id="installation" class="level2">
@@ -287,6 +287,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="téléchargements" class="level2">
 <h2 class="anchored" data-anchor-id="téléchargements">Téléchargements</h2>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Déjà couvert par <code>tutoquartotypst::installer_exercices()</code>, qui pose les exercices pour vous. Cette section est le <strong>téléchargement manuel</strong>, utile seulement si vous n’avez pas utilisé le paquet.</p>
+</div>
+</div>
+</div>
 <p>Les exercices sont versionnés dans le dépôt GitHub du tutoriel.</p>
 <ul>
 <li>📦 <a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/archive/refs/heads/main.zip">Télécharger le dépôt en zip</a> — décompresser sur le bureau, le matériel est dans <code>exercises/</code></li>
@@ -321,11 +331,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="vérification" class="level2">
 <h2 class="anchored" data-anchor-id="vérification">Vérification</h2>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Déjà couvert par <code>tutoquartotypst::verifier_installation()</code>. Ces commandes sont l’<strong>équivalent manuel</strong>, utile seulement si vous n’avez pas utilisé le paquet.</p>
+</div>
+</div>
+</div>
 <p>Vérifiez que tout fonctionne en exécutant dans R :</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>quarto<span class="sc">::</span><span class="fu">quarto_version</span>() <span class="co"># &gt;= 1.9 minimum, 1.10.7+ pre-release recommandée</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(starwars)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Si la version de quarto n’est pas celle attendue, utilisez <code>quarto::quarto_binary_sitrep(debug = TRUE)</code> pour aider à diagnostiquer.</p>
+<p>Si la version de quarto n’est pas celle attendue, lancez <code>quarto::quarto_binary_sitrep(debug = TRUE)</code> pour diagnostiquer.</p>
 <div class="callout callout-style-simple callout-tip no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -339,6 +359,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="test-de-la-chaîne-typst" class="level2">
 <h2 class="anchored" data-anchor-id="test-de-la-chaîne-typst">Test de la chaîne Typst</h2>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Pas besoin de le faire à la main si vous avez utilisé le paquet : <code>verifier_installation()</code> rend <strong>déjà</strong> ce même fichier de test (ligne « Rendu de test réussi » du bilan). La commande ci-dessous est l’équivalent manuel.</p>
+</div>
+</div>
+</div>
 <p>La vérification ci-dessus n’exécute que du R. Pour valider que <strong>Quarto + Typst + gt + ggplot</strong> s’enchaînent bien sur votre machine, rendez le mini-fichier de test fourni dans le dépôt :</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render exercises/00-test-install/test-install.qmd</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Résultat attendu</strong> : un fichier <code>test-install.pdf</code> apparaît à côté du <code>.qmd</code>, avec un titre accentué, un tableau de 3 lignes et un graphique. Aucune <strong>erreur</strong> en console — en revanche <strong>plusieurs avertissements</strong> <code>unknown font family</code> sont normaux et documentés ci-dessous. Tant que vous voyez <code>Output created</code>, c’est bon.</p>

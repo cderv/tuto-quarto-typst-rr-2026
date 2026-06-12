@@ -1,7 +1,7 @@
 # Retrouver et ouvrir le dossier des exercices installés
 
 Filet de sécurité quand on a perdu le message de
-[`installer_exercices()`](https://connect.posit.cloud/cderv/content/019df82c-7202-2165-28ea-7f9ca734ad26/package/reference/installer_exercices.md)
+[`installer_exercices()`](https://cderv.github.io/tuto-quarto-typst-rr-2026/package/reference/installer_exercices.md)
 : ré-affiche le chemin absolu et ouvre le dossier.
 
 ## Utilisation

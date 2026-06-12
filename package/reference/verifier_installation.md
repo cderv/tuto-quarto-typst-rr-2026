@@ -1,8 +1,8 @@
 # Vérifier que votre environnement est prêt pour le tutoriel
 
 Contrôle, dans l'ordre, votre version de R, la présence et la version de
-Quarto, les paquets R prérequis, puis (par défaut) effectue un **rendu
-de test** d'un mini-document Typst pour valider la chaîne complète R -\>
+Quarto, les paquets R prérequis, puis (par défaut) fait un **rendu de
+test** d'un mini-document Typst pour valider la chaîne complète R -\>
 Quarto -\> Typst -\> `gt` -\> `ggplot2`. Affiche un bilan et la
 prochaine étape conseillée.
 

@@ -54,16 +54,16 @@ tutoquartotypst::par_ou_commencer()
 Le paquet va au-delà de la préparation :
 
 - **Pendant** : dépannage et confort
-  ([`diagnostiquer_rendu()`](https://connect.posit.cloud/cderv/content/019df82c-7202-2165-28ea-7f9ca734ad26/package/reference/diagnostiquer_rendu.md),
-  [`basculer_hors_ligne()`](https://connect.posit.cloud/cderv/content/019df82c-7202-2165-28ea-7f9ca734ad26/package/reference/basculer_hors_ligne.md)
+  ([`diagnostiquer_rendu()`](https://cderv.github.io/tuto-quarto-typst-rr-2026/package/reference/diagnostiquer_rendu.md),
+  [`basculer_hors_ligne()`](https://cderv.github.io/tuto-quarto-typst-rr-2026/package/reference/basculer_hors_ligne.md)
   sans réseau,
-  [`valider_brand()`](https://connect.posit.cloud/cderv/content/019df82c-7202-2165-28ea-7f9ca734ad26/package/reference/valider_brand.md),
-  [`nettoyer_cache()`](https://connect.posit.cloud/cderv/content/019df82c-7202-2165-28ea-7f9ca734ad26/package/reference/nettoyer_cache.md)…).
+  [`valider_brand()`](https://cderv.github.io/tuto-quarto-typst-rr-2026/package/reference/valider_brand.md),
+  [`nettoyer_cache()`](https://cderv.github.io/tuto-quarto-typst-rr-2026/package/reference/nettoyer_cache.md)…).
 - **Après le tutoriel** : réutilisez Quarto + Typst chez vous avec
-  [`creer_projet_typst()`](https://connect.posit.cloud/cderv/content/019df82c-7202-2165-28ea-7f9ca734ad26/package/reference/creer_projet_typst.md),
+  [`creer_projet_typst()`](https://cderv.github.io/tuto-quarto-typst-rr-2026/package/reference/creer_projet_typst.md),
   et explorez les variantes de charte
-  ([`basculer_charte()`](https://connect.posit.cloud/cderv/content/019df82c-7202-2165-28ea-7f9ca734ad26/package/reference/basculer_charte.md),
-  [`comparer_chartes()`](https://connect.posit.cloud/cderv/content/019df82c-7202-2165-28ea-7f9ca734ad26/package/reference/comparer_chartes.md)).
+  ([`basculer_charte()`](https://cderv.github.io/tuto-quarto-typst-rr-2026/package/reference/basculer_charte.md),
+  [`comparer_chartes()`](https://cderv.github.io/tuto-quarto-typst-rr-2026/package/reference/comparer_chartes.md)).
 
 ## Licence
 

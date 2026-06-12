@@ -24,8 +24,13 @@ reinitialiser_exercice(
 - dossier:
 
   Dossier où les exercices ont été installés (le `dest` de
-  [`installer_exercices()`](https://connect.posit.cloud/cderv/content/019df82c-7202-2165-28ea-7f9ca734ad26/package/reference/installer_exercices.md)).
-  Par défaut `"exercices-typst"`.
+  [`installer_exercices()`](https://cderv.github.io/tuto-quarto-typst-rr-2026/package/reference/installer_exercices.md)).
+  Par défaut `"exercices-typst"` : dans ce cas, la fonction **retrouve
+  automatiquement** le bon dossier à partir du répertoire courant —
+  lancée depuis l'intérieur d'un exercice (p. ex. son `starter/`) ou
+  depuis la racine d'installation, elle réinitialise le bon dossier sans
+  créer d'arborescence imbriquée. Fournir un chemin explicite
+  court-circuite cette détection.
 
 - force:
 

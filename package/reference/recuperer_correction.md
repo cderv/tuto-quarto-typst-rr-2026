@@ -3,7 +3,7 @@
 Copie les **sources** de la correction d'un exercice (embarquées dans le
 paquet) vers un dossier de travail local, pour la **retravailler** après
 coup. Comme
-[`ouvrir_correction()`](https://connect.posit.cloud/cderv/content/019df82c-7202-2165-28ea-7f9ca734ad26/package/reference/ouvrir_correction.md),
+[`ouvrir_correction()`](https://cderv.github.io/tuto-quarto-typst-rr-2026/package/reference/ouvrir_correction.md),
 une confirmation est demandée : une correction est plus utile une fois
 que vous avez cherché par vous-même.
 

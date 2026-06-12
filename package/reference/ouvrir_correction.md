@@ -2,11 +2,11 @@
 
 Ouvre, **en ligne** sur GitHub, le dossier `correction/` d'un exercice.
 Les corrections ne sont volontairement pas posées par
-[`installer_exercices()`](https://connect.posit.cloud/cderv/content/019df82c-7202-2165-28ea-7f9ca734ad26/package/reference/installer_exercices.md)
+[`installer_exercices()`](https://cderv.github.io/tuto-quarto-typst-rr-2026/package/reference/installer_exercices.md)
 : elles sont plus utiles **après** avoir cherché par vous-même. Une
 confirmation est demandée. Pour en obtenir une **copie locale à
 retravailler**, voir
-[`recuperer_correction()`](https://connect.posit.cloud/cderv/content/019df82c-7202-2165-28ea-7f9ca734ad26/package/reference/recuperer_correction.md).
+[`recuperer_correction()`](https://cderv.github.io/tuto-quarto-typst-rr-2026/package/reference/recuperer_correction.md).
 
 ## Utilisation
 
@@ -30,7 +30,7 @@ Invisiblement, l'URL de la correction, ou `NULL` si annulé.
 
 ## Voir également
 
-[`recuperer_correction()`](https://connect.posit.cloud/cderv/content/019df82c-7202-2165-28ea-7f9ca734ad26/package/reference/recuperer_correction.md)
+[`recuperer_correction()`](https://cderv.github.io/tuto-quarto-typst-rr-2026/package/reference/recuperer_correction.md)
 pour copier la correction en local.
 
 ## Exemples

@@ -12,7 +12,7 @@ au-delà de la préparation du tutoriel, embarque quelques fonctions pour
 
 ## Démarrer un nouveau projet
 
-[`creer_projet_typst()`](https://connect.posit.cloud/cderv/content/019df82c-7202-2165-28ea-7f9ca734ad26/package/reference/creer_projet_typst.md)
+[`creer_projet_typst()`](https://cderv.github.io/tuto-quarto-typst-rr-2026/package/reference/creer_projet_typst.md)
 génère un squelette prêt à rendre (`quarto render`), avec une charte
 `_brand.yml` à adapter — **générique**, pas le thème Star Wars du tuto.
 
@@ -80,5 +80,5 @@ inspecter_typ("mon-rapport.qmd")   # voir le .typ intermédiaire produit
 - La page **« Pour aller plus loin »** du site du tutoriel
   (documentation Typst, `_brand.yml`, blocs raw Typst, extensions…).
 - La [référence des
-  fonctions](https://connect.posit.cloud/cderv/content/019df82c-7202-2165-28ea-7f9ca734ad26/package/reference/index.md)
+  fonctions](https://cderv.github.io/tuto-quarto-typst-rr-2026/package/reference/index.md)
   du paquet.

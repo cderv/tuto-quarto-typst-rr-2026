@@ -29,7 +29,7 @@ Résultat après les 3 étapes : un livre PDF Typst unique, stylé.
 
 ### Pas de `_brand.yml` du Bloc 1 ?
 
-Copiez à la racine du projet :
+Ces fichiers sont fournis **à la racine de l'exercice** (le dossier qui contient `starter/`) — posés par `tutoquartotypst::installer_exercices()`, ou sur GitHub. Copiez-les à la racine de votre projet :
 
 - [`_brand-starter.yml`](https://github.com/cderv/tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/_brand-starter.yml) → renommer en `_brand.yml`
 - [`_logo-sw.svg`](https://github.com/cderv/tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/_logo-sw.svg)

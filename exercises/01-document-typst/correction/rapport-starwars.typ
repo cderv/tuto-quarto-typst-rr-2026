@@ -435,7 +435,7 @@
   )
 )
 #set text()
-#show heading: set text(font: ("Star Jedi",), )
+#show heading: set text(font: ("Star Jedi",), fill: rgb("#bc1e22"), )
 #show link: set text(fill: rgb("#bc1e22"), )
 
 #set page(
@@ -452,7 +452,7 @@
   lang: "fr",
   font: ("Inter",),
   heading-family: ("Star Jedi",),
-  heading-color: rgb("#0b0b0f"),
+  heading-color: rgb("#bc1e22"),
   sectionnumbering: "1.1.a",
   linestretch: 1.4,
   toc: true,
@@ -463,12 +463,12 @@
 
 = Introduction
 <introduction>
-Le jeu de données #NormalTok("dplyr::starwars"); recense 87 personnages de la saga Star Wars, avec 14 variables (taille, masse, espèce, planète d'origine, films…). Dans ce court rapport, on regarde une question simple : #strong[qui sont les colosses de la galaxie ?]
+Le jeu de données #NormalTok("dplyr::starwars"); (#link("https://dplyr.tidyverse.org/reference/starwars.html")[documentation]) recense 87 personnages de la saga Star Wars, avec 14 variables (taille, masse, espèce, planète d'origine, films…). Dans ce court rapport, on regarde une question simple : #strong[qui sont les colosses de la galaxie ?]
 
 = Top 5 des personnages les plus massifs
 <top-5-des-personnages-les-plus-massifs>
 #figure([
-#{set text(font: ("Inter", "system-ui", "Segoe UI", "Roboto", "Helvetica", "Arial", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji") , size: 12pt); table(
+#{set text(font: ("Inter", "Segoe UI", "Roboto", "Arial", "sans-serif", "Segoe UI Emoji", "Segoe UI Symbol") , size: 12pt); table(
   columns: 5,
   align: (left,right,right,left,left,),
   table.header(table.cell(align: left, colspan: 5, fill: rgb("#ffe81f"))[#set text(size: 1.25em , weight: "bold" , fill: rgb("#0b0b0f")); Les colosses de la galaxie],
