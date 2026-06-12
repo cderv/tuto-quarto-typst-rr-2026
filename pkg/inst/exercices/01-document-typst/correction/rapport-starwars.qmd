@@ -71,7 +71,7 @@ styliser_brand <- function(t) {
 
 # Introduction
 
-Le jeu de données `dplyr::starwars` recense 87 personnages de la saga Star Wars, avec 14 variables (taille, masse, espèce, planète d'origine, films...). Dans ce court rapport, on regarde une question simple : **qui sont les colosses de la galaxie ?**
+Le jeu de données `dplyr::starwars` ([documentation](https://dplyr.tidyverse.org/reference/starwars.html)) recense 87 personnages de la saga Star Wars, avec 14 variables (taille, masse, espèce, planète d'origine, films...). Dans ce court rapport, on regarde une question simple : **qui sont les colosses de la galaxie ?**
 
 # Top 5 des personnages les plus massifs
 
