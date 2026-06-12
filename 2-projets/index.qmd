@@ -41,8 +41,8 @@ Le reste (`appendices`, `_brand.yml` projet, références croisées, pagebreak) 
 ::: {.callout-note appearance="simple"}
 ## 🧭 Boussole = suivi live · cette page = le détail
 
-- **[Boussole Exercice 2](boussole.qmd){target="_blank"}** — votre **compagnon de suivi en direct** : étapes télégraphiques + chrono, dans un panneau autonome à garder en **second écran** pendant que vous codez.
-- **Cette page** — la **référence détaillée** de l'exercice : tableau étape par étape (« Vous devriez voir »), indices doc, modèle `_quarto.yml`, approfondissements et correction. À consulter dès que vous voulez le détail.
+- **[Boussole Exercice 2](boussole.qmd){target="_blank"}** — à suivre **pendant l'exercice** : les étapes en bref + le chrono, à garder ouverte en **second écran**.
+- **Cette page** — le **détail complet** : étapes pas à pas (« Vous devriez voir »), indices doc, modèle `_quarto.yml` et correction.
 :::
 
 ::: {.callout-note appearance="minimal"}
