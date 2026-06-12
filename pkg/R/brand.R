@@ -154,7 +154,7 @@ appliquer_polices_locales <- function(projet = ".") {
   qversion <- tryCatch(quarto::quarto_version(), error = function(e) NA)
   if (length(qversion) == 1 && !is.na(qversion) && qversion >= .quarto_fix) {
     cli::cli_alert_success(
-      "Quarto {qversion} >= {reco} : le contournement `font-paths` est inutile. Rien à faire."
+      "Quarto {qversion} >= {reco} : pas besoin du contournement `font-paths`. Rien à faire."
     )
     return(invisible(FALSE))
   }

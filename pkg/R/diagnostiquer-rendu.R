@@ -88,7 +88,7 @@ diagnostiquer_rendu <- function(texte = NULL) {
   } else if ("bloquant" %in% gravites) {
     # Si un cas bloquant et un cas bénin coexistent, on lève l'ambiguïté.
     cli::cli_alert_info(
-      "Traitez d'abord le ou les points bloquants ci-dessus ; les avertissements bénins peuvent être ignorés."
+      "Traitez d'abord les points bloquants ci-dessus ; vous pouvez ignorer les avertissements bénins."
     )
   }
   invisible(gravites)

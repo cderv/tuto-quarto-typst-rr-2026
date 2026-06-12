@@ -15,7 +15,7 @@ Invisiblement, \code{TRUE} si tout est prêt, \code{FALSE} sinon.
 }
 \description{
 Contrôle, dans l'ordre, votre version de R, la présence et la version de
-Quarto, les paquets R prérequis, puis (par défaut) effectue un \strong{rendu de
+Quarto, les paquets R prérequis, puis (par défaut) fait un \strong{rendu de
 test} d'un mini-document Typst pour valider la chaîne complète
 R -> Quarto -> Typst -> \code{gt} -> \code{ggplot2}. Affiche un bilan et la prochaine
 étape conseillée.
