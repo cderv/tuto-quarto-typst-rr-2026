@@ -20,20 +20,20 @@ test_that(".ouvrir_fichier() emprunte rstudioapi quand disponible", {
     navigateToFile = function(...) invisible(),
     .package = "rstudioapi"
   )
-  expect_true(.ouvrir_fichier(tempfile()))
+  expect_true(.ouvrir_fichier(withr::local_tempfile()))
 })
 
 test_that(".ouvrir_fichier() ouvre dans l'éditeur en interactif (hors RStudio)", {
   rlang::local_interactive(TRUE)
   local_mocked_bindings(isAvailable = function(...) FALSE, .package = "rstudioapi")
   local_mocked_bindings(file.edit = function(...) invisible(), .package = "utils")
-  expect_true(.ouvrir_fichier(tempfile()))
+  expect_true(.ouvrir_fichier(withr::local_tempfile()))
 })
 
 test_that(".ouvrir_fichier() ne fait rien en non-interactif", {
   rlang::local_interactive(FALSE)
   local_mocked_bindings(isAvailable = function(...) FALSE, .package = "rstudioapi")
-  expect_false(.ouvrir_fichier(tempfile()))
+  expect_false(.ouvrir_fichier(withr::local_tempfile()))
 })
 
 test_that(".ouvrir_dossier() emprunte rstudioapi quand disponible", {
