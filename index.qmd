@@ -33,7 +33,7 @@ Ce tutoriel vous apprendra à produire des **documents PDF professionnels** avec
 
 ::: {.content-visible when-profile=tuto}
 
-## Vous arrivez en cours ?
+## Vous arrivez en cours de route ?
 
 Pas de panique — le matériel est conçu pour rattraper rapidement :
 

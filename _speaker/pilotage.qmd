@@ -115,7 +115,7 @@ L'Exo 2 est **volontairement autonome** (un `_brand-starter.yml` de secours exis
 ### ⚠️ Reprise post-pause (décrochage + retardataires)
 
 - Phrase de relance courte : récapituler en une ligne où on en est (« on sait faire un PDF brandé ; maintenant on assemble plusieurs docs en livre »).
-- **Accueil des arrivants** : le bloc 2 est autonome (`index.qmd` « Vous arrivez en cours ? ») — pointer la boussole bloc 2, démarrer du starter Exo 2.
+- **Accueil des arrivants** : le bloc 2 est autonome (`index.qmd` « Vous arrivez en cours de route ? ») — pointer la boussole bloc 2, démarrer du starter Exo 2.
 
 ---
 
