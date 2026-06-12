@@ -96,7 +96,9 @@ pak::pkg_install(pkg)
 
 ## Téléchargements
 
-*Déjà couvert par `tutoquartotypst::installer_exercices()`, qui pose les exercices pour vous. Cette section est le **téléchargement manuel**, utile seulement si vous n'avez pas utilisé le paquet.*
+::: {.callout-note appearance="minimal"}
+Déjà couvert par `tutoquartotypst::installer_exercices()`, qui pose les exercices pour vous. Cette section est le **téléchargement manuel**, utile seulement si vous n'avez pas utilisé le paquet.
+:::
 
 Les exercices sont versionnés dans le dépôt GitHub du tutoriel.
 
@@ -125,7 +127,9 @@ tutoquartotypst::recuperer_correction("01")  # ou "02"
 
 ## Vérification
 
-*Déjà couvert par `tutoquartotypst::verifier_installation()`. Ces commandes sont l'**équivalent manuel**, utile seulement si vous n'avez pas utilisé le paquet.*
+::: {.callout-note appearance="minimal"}
+Déjà couvert par `tutoquartotypst::verifier_installation()`. Ces commandes sont l'**équivalent manuel**, utile seulement si vous n'avez pas utilisé le paquet.
+:::
 
 Vérifiez que tout fonctionne en exécutant dans R :
 
