@@ -92,9 +92,17 @@ et un #link("https://example.org")[lien].
 ::: notes
 Slide visuelle : le but n'est pas d'enseigner Typst, c'est de rassurer. "Tu écris du Markdown, t'as pas besoin d'apprendre Typst pour démarrer." Le snippet Typst montre la traduction concrète — `=` pour le titre, `#strong[...]` pour le gras, `#link(...)[...]` pour les liens.
 
-Contrat oral : on ouvrira ensemble le `.typ` 2 slides plus loin (`keep-typ: true`) — pas une option facultative. Le participant est prévenu, pas de surprise à l'Exo 1 étape 3.
+Contrat oral : la slide suivante montre le pipeline (`.qmd → .typ → PDF`), et on ouvrira ensemble le vrai `.typ` un peu plus loin (`keep-typ: true`) — pas une option facultative. Le participant est prévenu, pas de surprise à l'Exo 1 étape 3.
 
 On y jettera un œil ensemble avec `keep-typ: true` — juste pour démystifier.
+:::
+
+## Du `.qmd` au PDF
+
+![](quarto_typst_pipeline.svg){width="100%" fig-alt="Pipeline en trois étapes : rapport.qmd (source) → Pandoc → rapport.typ (intermédiaire Typst) → Typst → rapport.pdf (sortie)."}
+
+::: notes
+Vue d'ensemble, posée juste après la traduction Markdown→Typst : où se place chaque pièce. Quarto (via Pandoc) traduit votre `.qmd` en `.typ`, puis Typst compile ce `.typ` en PDF. Ce `.typ` intermédiaire, on l'ouvrira concrètement un peu plus loin avec `keep-typ: true`.
 :::
 
 ## `format: typst` — un PDF sans LaTeX
@@ -143,10 +151,7 @@ Ne pas tout montrer ici. Juste papersize et margin pour que les gens voient la s
 
 ## `keep-typ: true` — comprendre les coulisses
 
-![](quarto_typst_pipeline.svg){width="100%" fig-alt="Pipeline en trois étapes : rapport.qmd (source) → Pandoc → rapport.typ (intermédiaire, gardé grâce à keep-typ) → Typst → rapport.pdf (sortie)."}
-
-
-## `keep-typ: true` — comprendre les coulisses
+Souvenez-vous du pipeline : le `.typ` intermédiaire, entre votre `.qmd` et le PDF. `keep-typ: true` le **conserve** sur le disque pour que vous puissiez l'ouvrir.
 
 ::: {.fragment .fade-in}
 ``` {.yaml filename="rapport.qmd" code-line-numbers="4"}
