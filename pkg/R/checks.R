@@ -77,7 +77,7 @@ verifier_quarto <- function() {
   if (v < qfix) {
     cli::cli_alert_warning(c(
       "Quarto {v} : fonctionne pour le tutoriel. ",
-      "À l'exercice 2, une petite manipulation (font-paths) vous sera indiquée à l'écran."
+      "À l'exercice 2, on vous indiquera une petite manipulation (font-paths) à l'écran."
     ))
     return(TRUE)
   }

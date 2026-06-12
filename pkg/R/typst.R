@@ -39,10 +39,10 @@ diagnostic_typst <- function(projet = ".") {
   cli::cli_alert_info("Cache de polices (.quarto/typst/fonts) : {etat_cache}")
   if (besoin_fontpaths) {
     cli::cli_alert_warning(
-      "Quarto < {reco} : le contournement `font-paths` peut être nécessaire pour le livre (exercice 2)."
+      "Quarto < {reco} : le contournement `font-paths` peut servir pour le livre (exercice 2)."
     )
   } else {
-    cli::cli_alert_success("Quarto >= {reco} : pas de contournement `font-paths` nécessaire.")
+    cli::cli_alert_success("Quarto >= {reco} : pas besoin du contournement `font-paths`.")
   }
   invisible(list(
     quarto = qversion, typst = tversion, cache_polices = cache_ok,

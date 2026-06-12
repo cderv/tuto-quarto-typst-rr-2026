@@ -65,7 +65,7 @@ L'esprit, en deux mots :
 
 ## C'est quoi Typst ?
 
-[Typst](https://typst.app/) joue le même rôle que LaTeX : produire un PDF. Avec Quarto, vous restez côté Markdown — la traduction vers Typst est automatique.
+[Typst](https://typst.app/) joue le même rôle que LaTeX : produire un PDF. Avec Quarto, vous restez côté Markdown — il traduit vers Typst tout seul.
 
 ::: {.fragment}
 Ce que **vous écrivez** (Markdown) :

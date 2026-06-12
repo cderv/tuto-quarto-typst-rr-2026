@@ -288,7 +288,7 @@ Vous devriez voir : bandeau titre jaune SW + en-têtes noir/crème + **striping 
 ::: callout-note
 ## Piège à connaître sur les clés palette
 
-`brand.yml` normalise les clés palette `tiret-séparé` en `tiret_souligné` au read. Donc dans votre code R : `pal("sw_yellow")` (pas `pal("sw-yellow")`). En cas d'erreur de saisie, `brand_color_pluck()` ne lève pas d'erreur lui-même : il renvoie la chaîne d'entrée telle quelle (`"sw-yellow"`). Cette valeur, n'étant pas une couleur valide, fait ensuite **planter le rendu** au niveau de `cell_fill()` / `data_color()` — un message d'erreur Typst peu parlant. Le réflexe : vérifier d'abord vos clés palette (underscore, pas tiret).
+`brand.yml` normalise les clés palette `tiret-séparé` en `tiret_souligné` à la lecture. Donc dans votre code R : `pal("sw_yellow")` (pas `pal("sw-yellow")`). Si vous vous trompez de clé, `brand_color_pluck()` ne lève pas d'erreur lui-même : il renvoie la chaîne d'entrée telle quelle (`"sw-yellow"`). Cette valeur, n'étant pas une couleur valide, fait ensuite **planter le rendu** au niveau de `cell_fill()` / `data_color()` — un message d'erreur Typst peu parlant. Le réflexe : vérifier d'abord vos clés palette (underscore, pas tiret).
 :::
 
 :::

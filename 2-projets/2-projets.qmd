@@ -45,7 +45,7 @@ mon-projet/
 ::: incremental
 - Tous les `.qmd` du projet produisent un **PDF via Typst** automatiquement
 - Votre `_brand.yml` à la racine s'applique à **tout le projet**
-- Finie la répétition de YAML dans chaque fichier !
+- Plus besoin de répéter le YAML dans chaque fichier !
 :::
 
 ::: notes
