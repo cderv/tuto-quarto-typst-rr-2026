@@ -341,7 +341,7 @@ Les problèmes fréquents : oubli des guillemets sur les couleurs hex dans brand
 ::: callout-note
 ## Saviez-vous que...
 
-- **Une charte, partout** — Lisez `_brand.yml` depuis R via `brand_color_pluck(brand, "ma_couleur")` : les couleurs de votre PDF, de vos graphes `ggplot` et de vos tableaux `gt` viennent du même fichier
+- **Une charte, partout** — Côté R, le paquet `brand.yml` lit ce même fichier : `brand <- read_brand_yml()` puis `brand_color_pluck(brand, "ma_couleur")`. Les couleurs de votre PDF, de vos graphes `ggplot` et de vos tableaux `gt` viennent d'une seule source
 - **Blocs raw Typst** — Besoin de Typst natif ? Utilisez ```` ```{=typst} ```` pour injecter du code Typst directement dans votre `.qmd`
 - **Vos tableaux fonctionnent** — Les tableaux `gt` (R) et `Great Tables` (Python) avec du CSS sont traduits automatiquement en Typst par Quarto
 - **PDF accessible en une ligne** — Ajoutez `pdf-standard: ua-1` dans le YAML pour un PDF conforme au standard d'accessibilité PDF/UA-1
@@ -359,7 +359,7 @@ Slide rapide, 2-3 minutes max. L'objectif est juste de planter des graines. Les 
 
 On se retrouve dans **10 minutes** pour le **Bloc 2 — passer du document au livre**.
 
-Gardez votre PDF de l'Exercice 1 sous la main : on réutilise votre `_brand.yml` juste après la pause.
+Gardez votre dossier de l'Exercice 1 sous la main : on réutilise votre `_brand.yml` juste après la pause.
 
 ::: notes
 Annoncer clairement la durée (~10 min) et l'heure de reprise. Inviter à se dégourdir les jambes. Rappeler que le Bloc 2 repart de leur `_brand.yml` du Bloc 1 (ou du `_brand-starter.yml` de secours pour les arrivants / ceux qui n'ont pas fini) — l'arc `.qmd → livre` continue, on ne repart pas de zéro.
