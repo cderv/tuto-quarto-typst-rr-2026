@@ -39,6 +39,22 @@ test_that("valider_brand() accepte une charte cohérente", {
   expect_true(suppressMessages(valider_brand(file.path(d, "_brand.yml"))))
 })
 
+test_that("valider_brand() accepte typography.headings en forme étendue (family + color)", {
+  d <- withr::local_tempdir()
+  .brand_online(d)
+  brand <- file.path(d, "_brand.yml")
+  l <- readLines(brand)
+  # forme courte `headings: "Star Jedi"` -> forme étendue family/color
+  l <- sub(
+    "  headings: \"Star Jedi\"",
+    "  headings:\n    family: \"Star Jedi\"\n    color: primary",
+    l,
+    fixed = TRUE
+  )
+  writeLines(l, brand)
+  expect_true(suppressMessages(valider_brand(brand)))
+})
+
 test_that("valider_brand() repère une référence cassée et un fichier manquant", {
   d <- withr::local_tempdir()
   .brand_online(d)

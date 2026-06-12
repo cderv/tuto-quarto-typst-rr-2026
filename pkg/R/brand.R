@@ -280,9 +280,12 @@ valider_brand <- function(chemin = "_brand.yml") {
   familles <- vapply(fonts, function(f) f$family %||% NA_character_, character(1))
   for (slot in c("base", "headings")) {
     v <- raw$typography[[slot]]
-    if (is.character(v) && length(v) == 1 && !(v %in% familles)) {
+    # `base`/`headings` acceptent la forme courte ("Inter") ou la forme
+    # étendue (`family:` + `color:`, `weight:`...). On valide la famille.
+    fam <- if (is.list(v)) v$family else v
+    if (is.character(fam) && length(fam) == 1 && !(fam %in% familles)) {
       probs <- c(probs, sprintf(
-        "typography.%s = '%s' n'est pas une famille déclarée.", slot, v
+        "typography.%s = '%s' n'est pas une famille déclarée.", slot, fam
       ))
     }
   }

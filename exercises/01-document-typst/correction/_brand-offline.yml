@@ -25,7 +25,9 @@ typography:
         - path: _fonts/Inter-Bold.ttf
           weight: 700
   base: Inter
-  headings: "Star Jedi"
+  headings:
+    family: "Star Jedi"
+    color: primary
 
 logo:
   images:
