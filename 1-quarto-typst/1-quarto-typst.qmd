@@ -251,7 +251,7 @@ Parler des helpers R `theme_brand_*()`.
 
 :::::: columns
 ::: {.column width="55%"}
-![](charte-starwars.png){fig-alt="Page A4 de la charte graphique Star Wars : logo étoile jaune en haut-gauche, titre 'CHARTE GRAPHIQUE' en rouge impérial gras, sous-titre Saga Star Wars, 4 échantillons de couleur (rouge impérial, noir SW, crème, jaune SW) avec codes hexadécimaux, sections Typographie (Star Jedi locale, Inter Google) et Logo, pied de page méta."}
+![](charte-starwars.png){fig-alt="Page A4 de la charte graphique Star Wars : logo étoile jaune en haut-gauche, titre 'CHARTE GRAPHIQUE' en rouge impérial gras, sous-titre Saga Star Wars, 4 échantillons de couleur (rouge impérial, noir SW, crème, jaune SW) avec codes hexadécimaux, titres de section (Palette, Typographie, Logo) en Star Jedi rouge impérial, sections Typographie (Star Jedi locale, Inter Google) et Logo, pied de page méta."}
 :::
 
 ::: {.column width="45%"}
@@ -267,7 +267,7 @@ Parler des helpers R `theme_brand_*()`.
 ::: notes
 Slide-pont entre le concept générique (`_brand.yml`) et la démo concrète. Le PDF est dans le starter de l'exercice — chaque apprenant·e l'ouvre côté lecteur PDF. **Côté Our turn et Your turn** : projeter `_charte/charte-starwars.pdf` à l'écran (ou via `1-quarto-typst/charte-starwars.png` si plus rapide) pour que l'apprenant·e voie cible et transcription en parallèle.
 
-Méta-cohérence pédagogique à expliciter à l'oral : « ce PDF que vous tenez n'est pas qu'une spec, c'est un exemple rendu — son logo, ses titres en Star Jedi, sa palette viennent d'un `_brand.yml` identique à celui que vous allez écrire ».
+Méta-cohérence pédagogique à expliciter à l'oral : « ce PDF que vous tenez n'est pas qu'une spec, c'est un exemple rendu — son logo, ses titres en Star Jedi rouge, sa palette viennent d'un `_brand.yml` identique à celui que vous allez écrire ».
 
 Le terme « rôles » dans nos supports correspond aux « assignments » de la charte (terme anglais conservé dans la spec `_brand.yml`) = mapping `primary` / `foreground` / `background` → noms de palette. Le préciser oralement (la charte n'a pas la place de l'expliquer).
 :::
@@ -307,7 +307,7 @@ color:
   primary: imperial-red
 ```
 
-**Transition vers Your turn** : « vous avez vu la boucle, à vous avec la charte complète — 4 couleurs au lieu d'1, rôles `foreground` + `background`, Google sur le corps, Star Jedi sur les titres. 12 min. »
+**Transition vers Your turn** : « vous avez vu la boucle, à vous avec la charte complète — 4 couleurs au lieu d'1, rôles `foreground` + `background`, Google sur le corps, Star Jedi rouge sur les titres. 12 min. »
 :::
 
 ## Exercice 1 {.wide-list}
@@ -331,7 +331,7 @@ color:
 
 Les problèmes fréquents : oubli des guillemets sur les couleurs hex dans brand.yml, nom de police Google mal orthographié, indentation YAML, et **espacement parasite des chiffres dans le tableau gt** (bug `gt → Typst` côté Windows/macOS, workaround `gt::opt_table_font("Inter")` visible dans la correction).
 
-**Étape 4 (Star Jedi)** : pour les participants bloqués sur la syntaxe `source: file` + `files:`, montrer rapidement le bloc dans `correction/_brand.yml` au tableau. Ne pas paniquer si certains zappent l'étape — le rendu reste correct sans (titres en police Google par défaut). C'est l'étape la plus « visuelle » de l'exo : tous les titres de section passent en lettres décoratives Star Jedi, effet immédiat.
+**Étape 4 (Star Jedi)** : pour les participants bloqués sur la syntaxe `source: file` + `files:`, montrer rapidement le bloc dans `correction/_brand.yml` au tableau. Ne pas paniquer si certains zappent l'étape — le rendu reste correct sans (titres en police Google par défaut). C'est l'étape la plus « visuelle » de l'exo : tous les titres de section passent en lettres décoratives Star Jedi rouge, effet immédiat.
 
 **Indication pour les participants qui finissent vite** : leur dire « ouvrez `correction/rapport-starwars.qmd` et regardez les 3 derniers blocs `tab_style()` du tableau gt — les couleurs viennent de votre `_brand.yml` via `brand_color_pluck()` ». Ancre le message de la pépite "Une charte, partout" sur du code concret.
 :::

@@ -19,7 +19,9 @@ typography:
       source: google
       weight: [400, 600]
   base: Inter
-  headings: "Star Jedi"
+  headings:
+    family: "Star Jedi"
+    color: primary
 
 logo:
   images:
