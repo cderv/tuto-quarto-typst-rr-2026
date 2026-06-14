@@ -1,0 +1,92 @@
+---
+title: "Déroulé minute par minute — antisèche pilotage"
+subtitle: "Vue condensée à projeter / imprimer · une page · le jour J"
+format:
+  html:
+    toc: false
+    code-copy: true
+author: ""
+date: ""
+---
+
+::: callout-important
+## À quoi sert cette page
+
+Antisèche **chronologique** à garder sous les yeux pendant la séance : pour chaque créneau, ce que **tu** fais, ce que tu **dis** (phrase-clé), ce qui est **à l'écran**, et la vigilance s'il y en a.
+
+**Source de vérité = [`pilotage.qmd`](pilotage.qmd)** (chronogramme complet, critères on avance/on ralentit, contingences, scripts accueil/clôture). Cette page n'en est que la projection télégraphique — **si tu modifies un horaire, une durée ou une bascule, corrige d'abord `pilotage.qmd` puis répercute ici.** Pas-à-pas démo : [bloc 1](demo-bloc1-our-turn.qmd) · [bloc 2](demo-bloc2-our-turn.qmd).
+
+**Deux chiffres figés** : créneau **10h–12h** · Your turn **12:00 (Exo 1)** / **15:00 (Exo 2)**.
+:::
+
+## 🟢 10h00–10h08 · Accueil (8 min) — *slide titre*
+
+- Te présenter + **Maëlle** (aide en salle, **pas** au tableau).
+- Cadrer les 2h : arc **`.qmd → PDF pro → livre`** + rythme **My / Our / Your** (slide rythme).
+- Consigne : **« Ouvrez votre éditeur maintenant. »**
+- Vérif install éclair : qui a raté le mini-test ? → Plan B préparatifs + Maëlle.
+
+## 10h08–10h11 · Slide rythme (3 min) — *deck bloc 1*
+
+My turn (je montre) → Our turn (on fait ensemble) → Your turn (à vous).
+
+## 10h11–10h24 · **My turn bloc 1** (13 min) — *deck · Q&A au fil*
+
+Typst → `format` → options → `keep-typ` → brand → charte. **3 bascules :**
+
+- **W1** `format: typst` → *« Une ligne. PDF généré. Pas d'install LaTeX. »*
+- **W2** `keep-typ` → *« Vous pouvez ouvrir le `.typ` intermédiaire. »* (ne pas s'attarder si décrochage)
+- **W3** `_brand.yml` → *« Une couleur définie, deux endroits où elle apparaît. Pas de CSS, pas de template. »*
+
+## 10h24–10h31 · **Our turn bloc 1 — démo live** (7 min) — *éditeur + PDF*
+
+1. YAML `format: html` → **`format: typst`**, `quarto render` → montrer le PDF (**W1**).
+2. Créer **`_brand.yml`** (1 couleur : `imperial-red` + `primary`), render → titres & liens rouges (**W3**).
+
+Transition → *« À vous, charte complète : 4 couleurs, `foreground`/`background`, police Google, Star Jedi. 12 minutes. »*
+🔧 Plante ? → `correction/_brand-offline.yml` ou montrer la correction.
+
+## 10h31–10h43 · **Your turn Exo 1** — ⏱ **12:00** (12 min) — *boussole bloc 1*
+
+- **Toi** au tableau (bugs connus : guillemets sur le hex, indentation YAML). **Maëlle** : 1:1.
+- ⚠️ **Pic de charge étapes 3-4** (Star Jedi + `color: primary`), juste avant la pause → *« Pas de panique si vous n'atteignez pas l'étape 4 — l'essentiel est la boucle `_brand.yml` → render. »*
+- Débriefer **dès que la majorité a la couleur** (pas 100 %).
+
+## 10h43–10h50 · Débrief Exo 1 + pépite (7 min) — *deck · Q&A collectif*
+
+Questions communes du Your turn + pépite « Saviez-vous que… ». *(1er fusible si retard.)*
+
+## ☕ 10h50–11h00 · Pause (10 min)
+
+## 11h00–11h10 · Reprise + **My turn bloc 2** (10 min) — *deck bloc 2*
+
+- ⚠️ Relance : *« On sait faire un PDF brandé ; maintenant on assemble plusieurs docs en livre. »*
+- ⚠️ **Couture de l'arc (à dire absolument)** : *« Vous réutilisez votre `_brand.yml` d'avant la pause — on ne repart pas de zéro, on monte d'un cran. »*
+- Retardataires : bloc 2 autonome → boussole + starter Exo 2.
+
+## 11h10–11h17 · **Our turn bloc 2 — démo live** (7 min) — *éditeur + PDF*
+
+1. `ls` (5 `.qmd`, pas de `_quarto.yml`) + `quarto render index.qmd`. ⚠️ **Ne PAS** lancer `quarto render` tout court → no-op silencieux.
+2. `_quarto.yml` (`type: default` + `format: typst`), render → 5 PDF.
+3. `type: book` + bloc `book:` (title/author/chapters), render → **PDF unique** couverture + TOC + num. par chapitre (**W4**). *« Une ligne + un bloc → livre pro. Pas de template, c'est intégré. »*
+
+Transition → *« À vous : `appendices`, copier votre `_brand.yml` (ou le `_brand-starter.yml` fourni), bonus si le temps. 15 minutes. »*
+
+## 11h17–11h32 · **Your turn Exo 2** — ⏱ **15:00** (15 min) — *boussole bloc 2*
+
+- **Toi** : saut conceptuel `type: book`, `appendices` vs `chapters`. **Maëlle** : 1:1.
+- 📍 `_brand-starter.yml` et `_logo-sw.svg` = **racine de l'exo**, pas dans `starter/`.
+
+## 11h32–11h39 · Débrief Exo 2 + pépite (7 min) — *deck · Q&A collectif*
+
+## 11h39–11h51 · **Wrap-up + ressources** (12 min) — *deck · Q&A final*
+
+3 slides : **« Ce que vous savez faire maintenant »** / **« Et maintenant ? »** / **« Merci ! Questions ? »** + ressources, contacts, dépôt. ❌ **Jamais coupé.**
+
+## 11h51–12h00 · Buffer contingence (9 min)
+
+Filet anti-dépassement → sinon fin anticipée ou 1:1.
+
+---
+
+**Fusibles si ça déborde avant la pause (dans l'ordre)** : 1) pépites — 2) options bonus des démos (`papersize`) — 3) bonus Exo 2 (cross-refs + pagebreak). **Jamais le wrap-up.**
