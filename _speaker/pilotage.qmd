@@ -131,7 +131,7 @@ L'Exo 2 est **volontairement autonome** (un `_brand-starter.yml` de secours exis
 ### Clôture (11h39, ~12 min)
 
 - Dérouler les 3 slides de wrap-up (« Ce que vous savez faire » / « Et maintenant ? » / « Merci ! Questions ? ») — déjà rédigées dans `2-projets/2-projets.qmd`.
-- **Q&A final** : relancer si silence avec les 2 questions stock (dans les notes de `2-projets.qmd`).
+- **Q&A final** : relancer si silence (pointer une ressource ou une fonctionnalité vue pendant la séance).
 - Où pointer après : [Ressources](../4-ressources.qmd), contacts, dépôt GitHub.
 - Gérer le dépassement : si on déborde, le buffer (11h51) absorbe ; ne pas couper le wrap-up.
 
@@ -149,7 +149,7 @@ Agrège les tableaux « Fallbacks si ça plante » des deux zooms démo (qui res
 | Salle bloquée en masse (Your turn) | Regrouper 1 min au tableau sur l'étape qui coince ; prolonger un peu le countdown ; rappeler la boussole |
 | Quarto trop vieux (`< 1.9`) | Orange-book / brand limités → expliquer le requirement, montrer la correction |
 
-**À préparer en amont** (sinon ces filets n'existent pas le jour J) : workspace Posit Cloud de secours, screenshots des PDF de correction. Voir la checklist logistique de `.claude/PLAN.md`.
+**À préparer en amont** (sinon ces filets n'existent pas le jour J) : workspace Posit Cloud de secours, screenshots des PDF de correction. Voir la checklist logistique de `.claude/archive/plans/PLAN.md`.
 
 ---
 
