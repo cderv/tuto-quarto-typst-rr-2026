@@ -36,7 +36,7 @@ Typst → `format` → options → `keep-typ` → brand → charte. **3 bascules
 
 - **W1** `format: typst` → *« Une ligne. PDF généré. Pas d'install LaTeX. »*
 - **W2** `keep-typ` → *« Vous pouvez ouvrir le `.typ` intermédiaire. »* (ne pas s'attarder si décrochage)
-- **W3** `_brand.yml` → *« Une couleur définie, deux endroits où elle apparaît. Pas de CSS, pas de template. »*
+- **W3** `_brand.yml` → *« Une couleur définie, le lien passe en rouge. Pas de CSS, pas de template. »*
 
 ## 10h24–10h31 · **Our turn bloc 1 — démo live** (7 min) — *éditeur + PDF*
 

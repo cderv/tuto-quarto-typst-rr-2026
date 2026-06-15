@@ -95,12 +95,12 @@ quarto render rapport-starwars.qmd
 ```
 
 **À montrer** sur le PDF :
-- Titres en rouge impérial
-- Liens en rouge impérial
+- Le **lien** de l'intro passe en rouge impérial (`primary` colore les **liens**)
+- Les **titres restent noirs** — c'est normal : leur couleur arrive au Your turn (étape 4, via `typography.headings.color: primary` + police Star Jedi)
 - Rien d'autre changé (police corps, marges = défaut)
 
 **À dire** :
-- "Une couleur définie, deux endroits où elle apparaît. Pas de CSS, pas de LaTeX template."
+- "Une couleur définie dans le YAML, et le lien passe en rouge dans le PDF. Pas de CSS, pas de LaTeX template."
 - "Et c'est exactement ce que vous allez faire — en version complète — dans 30 secondes."
 
 ---
@@ -130,9 +130,9 @@ quarto render rapport-starwars.qmd
 
 → Doit être dans le **même dossier** que le `.qmd` (ou racine projet). Vérifier `ls`.
 
-### "Pourquoi le titre du document est rouge mais pas le sous-titre ?"
+### "Pourquoi les titres ne deviennent-ils pas rouges ?"
 
-→ Normal. `primary` cible les titres `=` (sections) + liens. Le titre frontmatter et le sous-titre sont des éléments distincts.
+→ Normal avec ce `_brand.yml` minimal : `primary` colore les **liens**, pas les titres. La couleur des titres se règle séparément avec `typography.headings.color: primary` — c'est l'étape 4 du Your turn (en même temps que la police Star Jedi).
 
 ### "Y a-t-il un live preview ?"
 
@@ -151,7 +151,7 @@ quarto render rapport-starwars.qmd
 - [ ] `format: typst` rendu visible dans YAML édité
 - [ ] PDF d'étape 1 affiché (avant brand)
 - [ ] `_brand.yml` créé et visible à l'écran
-- [ ] PDF d'étape 2 affiché (titres rouges)
+- [ ] PDF d'étape 2 affiché (lien de l'intro en rouge)
 - [ ] Charte SW toujours projetée (transition vers Your turn)
 - [ ] Slide Exercice 1 + boussole prêtes
 
