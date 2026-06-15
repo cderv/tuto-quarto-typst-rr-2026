@@ -339,7 +339,7 @@ Les problèmes fréquents : oubli des guillemets sur les couleurs hex dans brand
 ::: callout-note
 ## Saviez-vous que...
 
-- **Une charte, deux niveaux** — `_brand.yml` habille **automatiquement** la mise en page (titres, liens, fond, polices). Vos tableaux `gt` et graphes `ggplot` sont du **R** : ils ne suivent que si vous les branchez avec le paquet `brand.yml` (`read_brand_yml()`, `theme_brand_gt()`, `theme_brand_ggplot2()`) — une seule source, un petit geste en plus (détaillé au Bonus B4 du Bloc 2)
+- **Une charte, deux niveaux** — `_brand.yml` habille **automatiquement** la mise en page (titres, liens, fond, polices). Vos tableaux `gt` et graphes `ggplot` sont du **R** : ils ne suivent que si vous les branchez avec le paquet `brand.yml` — un petit geste en plus, détaillé au Bonus B4 du Bloc 2
 - **Blocs raw Typst** — Besoin de Typst natif ? Utilisez ```` ```{=typst} ```` pour injecter du code Typst directement dans votre `.qmd`
 - **Vos tableaux passent en Typst** — la **structure** des tableaux `gt` (R) et `Great Tables` (Python) est traduite automatiquement en Typst par Quarto (les *couleurs* de la charte, elles, viennent du point ci-dessus)
 - **PDF accessible en une ligne** — Ajoutez `pdf-standard: ua-1` dans le YAML pour un PDF conforme au standard d'accessibilité PDF/UA-1
