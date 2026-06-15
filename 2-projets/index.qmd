@@ -19,22 +19,19 @@ date: ""
 
 ## Points couverts
 
-Ce bloc suit le rythme **My turn → Our turn → Your turn**.
-
 ### À la fin de ce bloc, vous saurez
 
 - Régler `format: typst` et `_brand.yml` une seule fois pour tout le projet, dans `_quarto.yml`
 - Assembler plusieurs `.qmd` en un livre avec `type: book` (TOC, numérotation, références croisées)
 - Reconnaître que `format: typst` + `type: book` active automatiquement l'extension orange-book (Quarto 1.9)
 
-### Our turn — Démo live
+### Le déroulé — My turn → Our turn → Your turn
 
-En 5-6 min, on crée un `_quarto.yml` puis on bascule le projet en livre :
-
-1.  Créer `_quarto.yml` avec `project: { type: default }` + `format: typst` → 5 PDF séparés
-2.  Passer à `type: book` + bloc `book: { title, chapters }` → **PDF unique** avec couverture orange-book, TOC, numérotation par chapitre
-
-Le reste (`appendices`, `_brand.yml` projet, références croisées, pagebreak) = Exercice 2.
+- **My turn** — je présente aux diapos (ci-dessus).
+- **Our turn** — démo live (5-6 min) : on crée un `_quarto.yml` puis on bascule le projet en livre.
+    1.  Créer `_quarto.yml` avec `project: { type: default }` + `format: typst` → 5 PDF séparés
+    2.  Passer à `type: book` + bloc `book: { title, chapters }` → **PDF unique** avec couverture orange-book, TOC, numérotation par chapitre
+- **Your turn** — à vous l'**Exercice 2** ci-dessous : le reste (`appendices`, `_brand.yml` projet, références croisées, pagebreak).
 
 ## Exercice 2
 
