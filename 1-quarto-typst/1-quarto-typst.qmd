@@ -149,7 +149,7 @@ D'autres options existent (`mainfont`, `number-sections`, `linestretch`...) — 
 Ne pas tout montrer ici. Juste papersize et margin pour que les gens voient la structure YAML. Le reste sera manipulé en live.
 :::
 
-## `keep-typ: true` — comprendre les coulisses
+## `keep-typ: true` — comprendre les coulisses {footer=false}
 
 Souvenez-vous du pipeline : le `.typ` intermédiaire, entre votre `.qmd` et le PDF. `keep-typ: true` le **conserve** sur le disque pour que vous puissiez l'ouvrir.
 
