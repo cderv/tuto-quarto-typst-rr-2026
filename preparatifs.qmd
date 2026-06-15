@@ -61,8 +61,8 @@ tutoquartotypst::installer_exercices()
 ✔ Quarto
 ✔ Paquets R
 ✔ Rendu PDF de test
-✔ Tout est prêt : .qmd → PDF pro → livre → à personnaliser. Rendez-vous le 16 juin !
-ℹ Le jour J, pensez à ouvrir RStudio ou Positron (récent).
+✔ Tout est prêt : .qmd → PDF pro → livre → à personnaliser. On se retrouve pour le tutoriel !
+ℹ Au moment de démarrer, ouvrez RStudio ou Positron (récent).
 ℹ Prochaine étape : installez les exercices avec tutoquartotypst::installer_exercices().
 ```
 :::
