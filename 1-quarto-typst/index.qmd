@@ -21,7 +21,7 @@ date: ""
 
 Ce bloc suit le rythme **My turn → Our turn → Your turn**.
 
-### My turn — À la fin de ce bloc, vous saurez
+### À la fin de ce bloc, vous saurez
 
 - Produire un PDF pro avec `format: typst` — alternative à LaTeX sans installation, rapide, erreurs lisibles
 - Régler les options essentielles : `papersize`, `margin` (d'autres en démo)

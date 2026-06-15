@@ -21,7 +21,7 @@ date: ""
 
 Ce bloc suit le rythme **My turn → Our turn → Your turn**.
 
-### My turn — À la fin de ce bloc, vous saurez
+### À la fin de ce bloc, vous saurez
 
 - Régler `format: typst` et `_brand.yml` une seule fois pour tout le projet, dans `_quarto.yml`
 - Assembler plusieurs `.qmd` en un livre avec `type: book` (TOC, numérotation, références croisées)
