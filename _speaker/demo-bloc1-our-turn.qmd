@@ -138,11 +138,23 @@ quarto render rapport-starwars.qmd
 
 → `quarto preview rapport-starwars.qmd` ouvre un viewer auto-refresh. **Mais éviter pendant la démo** : préférer render manuel, plus lisible pour le public.
 
+::: callout-important
+## ⚠️ `quarto preview` ne re-render PAS quand on modifie *seulement* `_brand.yml`
+
+**Vérifié** (Quarto **1.9.36** *et* **1.10.11**, single-file *et* projet) : en `quarto preview`, éditer uniquement `_brand.yml` **ne déclenche aucun re-render** — le PDF affiché reste l'ancien, on croit à tort que `primary` « ne fait rien ». Seule une modif du **`.qmd`** est watchée.
+
+- **Cause** : le watcher du preview single-file (`createChangeHandler`) ne liste pas `_brand.yml` dans ses fichiers surveillés. `_brand.yml` est bien relu **à chaque render**, mais pas surveillé.
+- **Réflexe en salle** : après avoir touché `_brand.yml`, **re-sauver le `.qmd`** (Ctrl-S, même sans changement) pour forcer le re-render — ou relancer `quarto preview`, ou faire un `quarto render` explicite.
+- **Amont** : pas d'issue dédiée ; même classe de bug que [quarto-cli#14406](https://github.com/quarto-dev/quarto-cli/issues/14406) (preview ignore les fichiers dépendants, cas du `.bib`).
+:::
+
 ### "J'ai modifié `_brand.yml` mais le PDF ne change pas"
 
 → Cause n°1 (surtout **Windows**) : le **PDF est ouvert dans un lecteur** qui verrouille le fichier → Typst ne peut pas le réécrire. **Réflexe** : fermer le lecteur PDF (ou supprimer le `.pdf`), puis re-rendre. Sous Acrobat/Edge le verrou est fréquent ; un lecteur léger (SumatraPDF) ou l'aperçu de l'éditeur ne verrouille pas.
 
-→ Cause n°2 (plus rare) : sortie considérée à jour / cache. **Réflexe** : supprimer le `.pdf` (et au besoin le dossier `.quarto/`) puis re-rendre. À noter, les changements de `_brand.yml` sont normalement détectés au render ; en cas de doute, `quarto render rapport-starwars.qmd` (render explicite) part d'un état propre. Pas de fix Quarto dédié connu à ce jour — c'est le workaround à donner en salle.
+→ Cause n°2 (très fréquente en `quarto preview`) : **preview ne watche pas `_brand.yml`** → re-sauver le `.qmd` ou relancer le preview (cf. callout ci-dessus).
+
+→ Cause n°3 (plus rare) : sortie considérée à jour / cache. **Réflexe** : supprimer le `.pdf` (et au besoin le dossier `.quarto/`) puis re-rendre. À noter, les changements de `_brand.yml` sont bien détectés en `quarto render` (render explicite) ; en cas de doute, `quarto render rapport-starwars.qmd` part d'un état propre.
 
 ---
 
