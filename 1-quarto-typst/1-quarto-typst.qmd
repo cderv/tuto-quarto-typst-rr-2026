@@ -175,7 +175,7 @@ Le fichier `.typ` intermédiaire vous permet de :
 Moment pédagogique clé. Le pipeline démystifie la magie : Quarto n'est pas une boîte noire, on peut voir ce qui se passe entre le .qmd et le .pdf.
 :::
 
-## `_brand.yml` — un doc stylé en un fichier {.smaller}
+## `_brand.yml` — un doc stylé en un fichier
 
 Un seul fichier YAML pour définir l'identité visuelle de vos documents :
 
@@ -206,7 +206,8 @@ typography:
 ::::
 :::::::
 
-:::: {.fragment .fade-in}
+## `_brand.yml` — un doc stylé en un fichier
+
 ::: {.center style="width:60%; margin:0 auto;"}
 ```{typst}
 //| alt: "Schéma en étoile : au centre, le fichier _brand.yml ; des flèches partent vers cinq sorties qu'il stylise — PDF (Typst), Page web (HTML), Slides (RevealJS), Graphe ggplot2 et Tableau gt."
@@ -235,10 +236,8 @@ typography:
 )
 ```
 :::
-::::
 
 ::: notes
-C'est le deuxième moment fort : on passe d'un PDF basique à un PDF aux couleurs de son organisation. Rappeler que \_brand.yml a été présenté aux RR 2025 pour ceux qui l'ont vu.
 
 **Mention orale \~30 sec pendant la démo Our turn** : le `_brand.yml` ne pilote pas que le PDF. Le paquet R `brand.yml` fournit des helpers `theme_brand_ggplot2()` et `theme_brand_gt()` qui appliquent la même charte aux figures et tableaux. Visible dans `correction/rapport-starwars.qmd`. On en parle pas plus, c'est dans les Ressources.
 
