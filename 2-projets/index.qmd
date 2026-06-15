@@ -27,7 +27,7 @@ date: ""
 
 ### Le déroulé — My turn → Our turn → Your turn
 
-- **My turn** — je présente aux diapos (ci-dessus).
+- **My turn** — je présente à partir des diapos (ci-dessus).
 - **Our turn** — démo live (5-6 min) : on crée un `_quarto.yml` puis on bascule le projet en livre.
     1.  Créer `_quarto.yml` avec `project: { type: default }` + `format: typst` → 5 PDF séparés
     2.  Passer à `type: book` + bloc `book: { title, chapters }` → **PDF unique** avec couverture orange-book, TOC, numérotation par chapitre
@@ -57,16 +57,16 @@ Fichier : {{< fa download >}} [exercises/02-projet-book/starter/](https://github
 
 **3 étapes principales (15 min) — attendues de tous :**
 
-| # | Action | Doc utile (ouvrez-la !) | Vous devriez voir |
+| # | Action | Doc utile | Vous devriez voir |
 |---|--------|------------------------|-------------------|
 | 1 | Créer `_quarto.yml` à la racine du starter : un projet (`project.type: default`) et `format: typst` (modèle complet à copier plus bas). | [Projets › Project Metadata](https://quarto.org/docs/projects/quarto-projects.html) | 5 PDF séparés (un par fichier). Une référence croisée non résolue (`?@sec-origines`) + un *warning* à la compilation : **normal** à ce stade, ça se résout en mode livre à l'étape 2a. |
 | 2a | Passer à `project.type: book` et ajouter un bloc `book:` avec `title`, `author` et la liste `chapters:` (cf. modèle plus bas). Le `format: typst` reste — orange-book s'active automatiquement. | [Books](https://quarto.org/docs/books/) · [book structure](https://quarto.org/docs/books/book-structure.html) | **PDF unique** + couverture orange-book + Figure 1.1 / Figure 2.1 / Table 1.1 / Table 2.1 + TOC. `annexe-donnees` apparaît comme dernier chapitre numéroté. |
-| 2b | Ajouter `appendices: [annexe-donnees.qmd]` au bloc `book:`. | [book structure › appendices](https://quarto.org/docs/books/book-structure.html#appendices) | `annexe-donnees` bascule en « Annexe A » à la fin du livre, hors numérotation des chapitres. |
+| 2b | Ajouter `appendices: [annexe-donnees.qmd]` au bloc `book:`. | [book structure › appendices](https://quarto.org/docs/books/book-structure.html#parts-appendices) | `annexe-donnees` bascule en « Annexe A » à la fin du livre, hors numérotation des chapitres. |
 | 3 | Copier `_brand.yml` (+ `_logo-sw.svg` + `_fonts/`) à la racine. Si vous avez fini Bloc 1 → reprenez votre `_brand.yml`. Sinon → renommez [`_brand-starter.yml`](https://github.com/cderv/tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/_brand-starter.yml) en `_brand.yml`. (Le `charte-starwars.pdf` du starter reste votre référence visuelle.) | [`_brand.yml` › Project-level brand](https://quarto.org/docs/authoring/brand.html) | Couverture aux couleurs Star Wars (bande imperial-red + logo étoile jaune), titres Star Jedi, corps Inter. (Les tableaux `gt` restent bruts à ce stade — leur mise aux couleurs de la charte est l'objet du Bonus B4.) |
 
 **+ 2 bonus (3 min, pour les rapides) :**
 
-| # | Action | Doc utile (ouvrez-la !) | Vous devriez voir |
+| # | Action | Doc utile | Vous devriez voir |
 |---|--------|------------------------|-------------------|
 | B1 | Dans `conclusion.qmd`, référencer `@fig-anatomie-mass` et `@sec-origines`. | [Cross-references › Figures & Sections](https://quarto.org/docs/authoring/cross-references.html) | « Comme l'a montré la **Figure 1.1**… » avec lien actif. |
 | B2 | Saut de page conditionnel à la fin de `conclusion.qmd` (bloc ci-dessous). | [Conditional › content-visible](https://quarto.org/docs/authoring/conditional.html) | Saut de page entre conclusion et annexe **dans le PDF uniquement**. |
