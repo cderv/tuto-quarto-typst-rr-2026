@@ -178,6 +178,10 @@ quarto render
 
 → "Excellente question, c'est exactement ce que vous allez faire dans 30 secondes". Pas de spoil.
 
+### "Pourquoi le corps du livre est en serif (pas en Inter) ?"
+
+→ **Bug Quarto connu, côté book** — assume-le franchement. Les **titres** prennent bien Star Jedi, mais la **police de corps** de la charte (`typography.base: Inter`) n'est **pas propagée** au template orange-book en mode `book` : le `book.with(...)` généré ne reçoit jamais d'argument `font:`, donc Typst retombe sur sa serif par défaut (Libertinus). **Ce n'est pas notre `_brand.yml`** : la même charte applique bien Inter en doc simple (`format: typst`). C'est distinct du bug polices-book déjà corrigé (#14517, qui portait sur les *titres*/disponibilité). Constaté sur Quarto 1.10.11. **On ne corrige pas en séance** (matériel gelé) ; correctif prévu après l'atelier. Détails + repro : `.claude/archive/issues/2026-06-15-quarto-book-typst-base-font.md`. *(Si quelqu'un veut le workaround : `include-in-header` avec `#set text(font: "Inter")` dans `format.typst`.)*
+
 ### "Pourquoi `@sec-origines` apparaît tel quel dans le PDF de l'étape 1 ?"
 
 → Normal et attendu. `01-anatomie.qmd` contient une référence croisée vers `@sec-origines` (chapitre 2). À l'étape 1 (`type: default`), chaque `.qmd` rend en PDF isolé donc la référence ne résout pas — Quarto émet un warning et laisse `@sec-origines` littéral. À l'étape 2 (`type: book`), tous les chapitres se résolvent ensemble et la référence devient cliquable.
