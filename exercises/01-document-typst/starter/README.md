@@ -8,11 +8,11 @@
 | Fichier | Rôle |
 |---|---|
 | `rapport-starwars.qmd` | **Fichier à éditer** — point de départ HTML, à transformer en PDF Typst |
-| `charte-starwars.pdf` | **Charte graphique** à traduire en `_brand.yml` (étapes 3-4) |
-| `_logo-sw.svg` | Logo à référencer dans `_brand.yml` (clé `logo:`) — étape 3 |
+| `charte-starwars.pdf` | **Charte graphique** à traduire en `_brand.yml` (étapes 3a-4) |
+| `_logo-sw.svg` | Logo à référencer dans `_brand.yml` (clé `logo:`) — étape 3b |
 | `_fonts/Starjedi.ttf` | Police locale (étape 4) |
 | `exercice-01.Rproj` | Projet RStudio — **double-cliquez-le** pour ouvrir l'exercice (répertoire de travail correct) |
-| _(pas de `_brand.yml`)_ | **À créer aux étapes 3-4** d'après la charte |
+| _(pas de `_brand.yml`)_ | **À créer aux étapes 3a-4** d'après la charte |
 
 ### Rendu
 
