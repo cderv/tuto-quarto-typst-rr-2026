@@ -59,11 +59,11 @@ Fichier : {{< fa download >}} [exercises/01-document-typst/starter/](https://git
 
 | \# | Action | Vous devriez voir | Doc |
 |----|--------|-------------------|:--:|
-| 1 | Ouvrir `rapport-starwars.qmd`, ajouter `format: typst`, rendre. | PDF généré à la place du HTML, polices et marges par défaut Typst. | [📖](#doc-e1) |
-| 2 | Personnaliser avec des options : `papersize`, `toc`, `mainfont`, `lang: fr`... | TOC en tête (titrée « Table des matières » grâce à `lang: fr`), marges/format adaptés, police corps modifiée. | [📖](#doc-e2) |
-| 3a | Créer `_brand.yml` et traduire la **charte** ([`charte-starwars.pdf`](/_charte/charte-starwars.pdf), fournie dans le starter) : la **palette** + les **rôles** (`primary` / `foreground` / `background`), puis la **police corps** Google sous `typography.fonts` → `typography.base`. | Liens en imperial-red, fond crème, police corps Google (Inter) appliquée. *(Les titres restent noirs jusqu'à l'étape 4.)* | [📖](#doc-e3a) |
-| 3b | Ajouter le **logo** : bloc `logo:` **imbriqué** — `images:` (un nom → `_logo-sw.svg`, fourni dans le starter) puis `medium: <nom>` — **pas** `logo: _logo-sw.svg` en direct. | Logo en haut à gauche (placement par défaut Quarto ; réglage fin au Bloc 2). | [📖](#doc-e3b) |
-| 4 | Renseigner `typography.headings` : police locale Star Jedi (`_fonts/Starjedi.ttf`, `source: file`) **et** `color: primary` — cf. section Typographie de la charte. | Titres de section en lettres décoratives Star Jedi, en rouge imperial. | [📖](#doc-e4) |
+| 1 | Ouvrir `rapport-starwars.qmd`, ajouter `format: typst`, rendre. | PDF généré à la place du HTML, polices et marges par défaut Typst. | [{{< fa link >}}](#doc-e1) |
+| 2 | Personnaliser avec des options : `papersize`, `toc`, `mainfont`, `lang: fr`... | TOC en tête (titrée « Table des matières » grâce à `lang: fr`), marges/format adaptés, police corps modifiée. | [{{< fa link >}}](#doc-e2) |
+| 3a | Créer `_brand.yml` et traduire la **charte** ([`charte-starwars.pdf`](/_charte/charte-starwars.pdf), fournie dans le starter) : la **palette** + les **rôles** (`primary` / `foreground` / `background`), puis la **police corps** Google sous `typography.fonts` → `typography.base`. | Liens en imperial-red, fond crème, police corps Google (Inter) appliquée. *(Les titres restent noirs jusqu'à l'étape 4.)* | [{{< fa link >}}](#doc-e3a) |
+| 3b | Ajouter le **logo** : bloc `logo:` **imbriqué** — `images:` (un nom → `_logo-sw.svg`, fourni dans le starter) puis `medium: <nom>` — **pas** `logo: _logo-sw.svg` en direct. | Logo en haut à gauche (placement par défaut Quarto ; réglage fin au Bloc 2). | [{{< fa link >}}](#doc-e3b) |
+| 4 | Renseigner `typography.headings` : police locale Star Jedi (`_fonts/Starjedi.ttf`, `source: file`) **et** `color: primary` — cf. section Typographie de la charte. | Titres de section en lettres décoratives Star Jedi, en rouge imperial. | [{{< fa link >}}](#doc-e4) |
 
 ::: {.callout-note collapse="true"}
 ## Étape 2 — où ranger les options ?
@@ -86,13 +86,13 @@ format:
 
 | \# | Action | Vous devriez voir | Doc |
 |----|--------|-------------------|:--:|
-| B1 | Activer `keep-typ: true`, ouvrir le `.typ` généré. | Fichier `.typ` à côté du PDF, syntaxe Typst lisible (`= titre`, `#strong[...]`, etc.). | [📖](#doc-b1) |
+| B1 | Activer `keep-typ: true`, ouvrir le `.typ` généré. | Fichier `.typ` à côté du PDF, syntaxe Typst lisible (`= titre`, `#strong[...]`, etc.). | [{{< fa link >}}](#doc-b1) |
 :::
 
 ::: {.callout-note}
 ## 📖 Doc utile par étape
 
-Pour chaque étape, la page (et la section) à ouvrir — le **📖** du tableau y mène directement. La doc Quarto/brand-yml est faite pour être consultée en cours de route :
+Pour chaque étape, la page (et la section) à ouvrir — le lien {{< fa link >}} de chaque ligne du tableau y mène directement. La doc Quarto/brand-yml est faite pour être consultée en cours de route :
 
 - [**Étape 1**]{#doc-e1} — [Typst › Overview](https://quarto.org/docs/output-formats/typst.html)
 - [**Étape 2**]{#doc-e2} — [Typst › options de format](https://quarto.org/docs/output-formats/typst.html) · [référence complète](https://quarto.org/docs/reference/formats/typst.html)
@@ -112,7 +112,7 @@ Le plus souvent, le PDF est encore **ouvert dans un lecteur** qui le verrouille 
 ## 🆘 Si vous bloquez après \~5 min sur une étape
 
 1.  Relisez l'objectif + le « Vous devriez voir » de l'étape.
-2.  Ouvrez le **📖** de l'étape (ou le bloc **Doc utile par étape** ci-dessus) et cherchez la section indiquée.
+2.  Ouvrez le lien {{< fa link >}} de l'étape (ou le bloc **Doc utile par étape** ci-dessus) et cherchez la section indiquée.
 3.  Ouvrez [`exercises/01-document-typst/correction/`](https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/correction) (filet final).
 :::
 
