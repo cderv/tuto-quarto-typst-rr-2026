@@ -181,7 +181,7 @@ Démo live **ultra-courte** : 5-6 min. Le pas-à-pas détaillé (snippets à col
 
 🧭 [Boussole](boussole.html){target="_blank" preview-link="false"} — objectif, étapes & chrono, à garder sous les yeux
 
-📖 [Page de l'exercice](index.qmd) — consigne détaillée, indices doc, correction
+📖 [Page de l'exercice](index.qmd) — consigne détaillée, doc utile par étape, correction
 
 > Pas de `_brand.yml` ? `_brand-starter.yml` + `_logo-sw.svg` dispo dans le dossier exo.
 :::

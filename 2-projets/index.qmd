@@ -39,7 +39,7 @@ date: ""
 ## 🧭 Boussole = suivi live · cette page = le détail
 
 - **[Boussole Exercice 2](boussole.qmd){target="_blank"}** — à suivre **pendant l'exercice** : les étapes en bref + le chrono, à garder ouverte en **second écran**.
-- **Cette page** — le **détail complet** : étapes pas à pas (« Vous devriez voir »), indices doc, modèle `_quarto.yml` et correction.
+- **Cette page** — le **détail complet** : étapes pas à pas (« Vous devriez voir »), la doc utile par étape, le modèle `_quarto.yml` et la correction.
 :::
 
 ::: {.callout-note appearance="minimal"}
@@ -57,19 +57,19 @@ Fichier : {{< fa download >}} [exercises/02-projet-book/starter/](https://github
 
 **3 étapes principales (15 min) — attendues de tous :**
 
-| # | Action | Vous devriez voir |
-|---|--------|-------------------|
-| 1 | Créer `_quarto.yml` à la racine du starter : un projet (`project.type: default`) et `format: typst` (modèle complet à copier plus bas). | 5 PDF séparés (un par fichier). Une référence croisée non résolue (`?@sec-origines`) + un *warning* à la compilation : **normal** à ce stade, ça se résout en mode livre à l'étape 2a. |
-| 2a | Passer à `project.type: book` et ajouter un bloc `book:` avec `title`, `author` et la liste `chapters:` (cf. modèle plus bas). Le `format: typst` reste — orange-book s'active automatiquement. | **PDF unique** + couverture orange-book + Figure 1.1 / Figure 2.1 / Table 1.1 / Table 2.1 + TOC. `annexe-donnees` apparaît comme dernier chapitre numéroté. |
-| 2b | Ajouter `appendices: [annexe-donnees.qmd]` au bloc `book:`. | `annexe-donnees` bascule en « Annexe A » à la fin du livre, hors numérotation des chapitres. |
-| 3 | Copier `_brand.yml` (+ `_logo-sw.svg` + `_fonts/`) à la racine. Si vous avez fini Bloc 1 → reprenez votre `_brand.yml`. Sinon → renommez [`_brand-starter.yml`](https://github.com/cderv/tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/_brand-starter.yml) en `_brand.yml`. (Le `charte-starwars.pdf` du starter reste votre référence visuelle.) | Couverture aux couleurs Star Wars (bande imperial-red + logo étoile jaune), titres Star Jedi, corps Inter. (Les tableaux `gt` restent bruts à ce stade — leur mise aux couleurs de la charte est l'objet du Bonus B4.) |
+| # | Action | Doc utile (ouvrez-la !) | Vous devriez voir |
+|---|--------|------------------------|-------------------|
+| 1 | Créer `_quarto.yml` à la racine du starter : un projet (`project.type: default`) et `format: typst` (modèle complet à copier plus bas). | [Projets › Project Metadata](https://quarto.org/docs/projects/quarto-projects.html) | 5 PDF séparés (un par fichier). Une référence croisée non résolue (`?@sec-origines`) + un *warning* à la compilation : **normal** à ce stade, ça se résout en mode livre à l'étape 2a. |
+| 2a | Passer à `project.type: book` et ajouter un bloc `book:` avec `title`, `author` et la liste `chapters:` (cf. modèle plus bas). Le `format: typst` reste — orange-book s'active automatiquement. | [Books](https://quarto.org/docs/books/) · [book structure](https://quarto.org/docs/books/book-structure.html) | **PDF unique** + couverture orange-book + Figure 1.1 / Figure 2.1 / Table 1.1 / Table 2.1 + TOC. `annexe-donnees` apparaît comme dernier chapitre numéroté. |
+| 2b | Ajouter `appendices: [annexe-donnees.qmd]` au bloc `book:`. | [book structure › appendices](https://quarto.org/docs/books/book-structure.html#appendices) | `annexe-donnees` bascule en « Annexe A » à la fin du livre, hors numérotation des chapitres. |
+| 3 | Copier `_brand.yml` (+ `_logo-sw.svg` + `_fonts/`) à la racine. Si vous avez fini Bloc 1 → reprenez votre `_brand.yml`. Sinon → renommez [`_brand-starter.yml`](https://github.com/cderv/tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/_brand-starter.yml) en `_brand.yml`. (Le `charte-starwars.pdf` du starter reste votre référence visuelle.) | [`_brand.yml` › Project-level brand](https://quarto.org/docs/authoring/brand.html) | Couverture aux couleurs Star Wars (bande imperial-red + logo étoile jaune), titres Star Jedi, corps Inter. (Les tableaux `gt` restent bruts à ce stade — leur mise aux couleurs de la charte est l'objet du Bonus B4.) |
 
 **+ 2 bonus (3 min, pour les rapides) :**
 
-| # | Action | Vous devriez voir |
-|---|--------|-------------------|
-| B1 | Dans `conclusion.qmd`, référencer `@fig-anatomie-mass` et `@sec-origines`. | « Comme l'a montré la **Figure 1.1**… » avec lien actif. |
-| B2 | Saut de page conditionnel à la fin de `conclusion.qmd` (bloc ci-dessous). | Saut de page entre conclusion et annexe **dans le PDF uniquement**. |
+| # | Action | Doc utile (ouvrez-la !) | Vous devriez voir |
+|---|--------|------------------------|-------------------|
+| B1 | Dans `conclusion.qmd`, référencer `@fig-anatomie-mass` et `@sec-origines`. | [Cross-references › Figures & Sections](https://quarto.org/docs/authoring/cross-references.html) | « Comme l'a montré la **Figure 1.1**… » avec lien actif. |
+| B2 | Saut de page conditionnel à la fin de `conclusion.qmd` (bloc ci-dessous). | [Conditional › content-visible](https://quarto.org/docs/authoring/conditional.html) | Saut de page entre conclusion et annexe **dans le PDF uniquement**. |
 
 **B2 — bloc à coller en fin de `conclusion.qmd`** :
 
@@ -80,22 +80,15 @@ Fichier : {{< fa download >}} [exercises/02-projet-book/starter/](https://github
 ```
 :::
 
-::: {.callout-tip collapse="true"}
-## 💡 Indices doc
-
-- **Étape 1** ([projets Quarto](https://quarto.org/docs/projects/quarto-projects.html)) — section "Project Metadata".
-- **Étape 2a** ([books](https://quarto.org/docs/books/)) — page d'accueil books, structure minimale. Détails : [book structure](https://quarto.org/docs/books/book-structure.html).
-- **Étape 2b** ([book structure → appendices](https://quarto.org/docs/books/book-structure.html#appendices)).
-- **Étape 3** ([`_brand.yml`](https://quarto.org/docs/authoring/brand.html)) — section "Project-level brand".
-- **Bonus B1** ([cross-references](https://quarto.org/docs/authoring/cross-references.html)) — sections "Figures" et "Sections".
-- **Bonus B2** ([conditional content](https://quarto.org/docs/authoring/conditional.html)) — `content-visible when-format`.
+::: {.callout-note appearance="simple"}
+La colonne **Doc utile** du tableau pointe, pour chaque étape, la page (et la section) à ouvrir. C'est le réflexe à prendre : la doc Quarto/brand-yml est faite pour être consultée en cours de route.
 :::
 
 ::: callout-caution
 ## 🆘 Si vous bloquez après ~5 min sur une étape
 
 1. Relisez l'objectif + le « Vous devriez voir » de l'étape.
-2. Ouvrez le collapse **💡 Indices doc** ci-dessus.
+2. Ouvrez le lien **Doc utile** de l'étape (colonne du tableau) et cherchez la section indiquée.
 3. Ouvrez [`exercises/02-projet-book/correction/`](https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises/02-projet-book/correction) (filet final).
 :::
 
