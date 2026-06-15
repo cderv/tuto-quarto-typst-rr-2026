@@ -161,38 +161,11 @@ format: typst
 :::
 
 ::: notes
-Démo live **ultra-courte** : 5-6 minutes. Pas-à-pas détaillé (snippets prêts à coller, ressources, pièges) dans le pas-à-pas démo (doc animateur dédié).
+Démo live **ultra-courte** : 5-6 min. Le pas-à-pas détaillé (snippets à coller, ressources, pièges, transition Your turn) est dans le doc animateur dédié `_speaker/demo-bloc2-our-turn.qmd` — pas de duplication ici (les snippets sont déjà sur la slide).
 
 **Pourquoi minimal** : Our turn montre comment `_quarto.yml` + `type: book` produit un livre PDF unique. `appendices`, copie de `_brand.yml` et bonus restent dans Your turn — éviter la redondance Bloc 1.
 
 **Effet visuel** à l'étape 2 : on passe de 5 PDF séparés à 1 PDF unique avec couverture + TOC + numérotation auto (Figure 1.1, Table 2.1...) sans rien d'autre que `type: book`. C'est orange-book qui s'active sur `format: typst` + `type: book`.
-
-**Snippet étape 1 à coller** :
-```yaml
-project:
-  type: default
-
-format: typst
-```
-
-**Snippet étape 2 à coller** (remplace l'étape 1 complète) :
-```yaml
-project:
-  type: book
-
-book:
-  title: "Anatomie d'une saga"
-  author: "Mon Mothma"
-  chapters:
-    - index.qmd
-    - 01-anatomie.qmd
-    - 02-origines.qmd
-    - conclusion.qmd
-
-format: typst
-```
-
-**Transition vers Your turn** : « le saut est planté. À vous d'ajouter `appendices`, votre `_brand.yml` du Bloc 1 (ou `_brand-starter.yml`), et les bonus cross-refs + pagebreak. 15 min. »
 :::
 
 ## Exercice 2 {.wide-list}
