@@ -43,6 +43,16 @@ Pas de panique — le matériel est conçu pour rattraper rapidement :
 
 :::
 
+::: {.content-visible when-profile=tuto}
+
+## À votre rythme, tous niveaux
+
+Les exercices sont **volontairement riches** — vous n'êtes pas censé·e tout boucler dans le temps imparti. Le matériel reste à vous, à **reprendre tranquillement après** la séance avec les [ressources](4-ressources.qmd) et le [paquet R compagnon](preparatifs.qmd). Le cœur des exercices tient en Quarto / YAML / Typst : **pas besoin d'écrire du R**, il est déjà prêt dans les fichiers de départ.
+
+Vous **connaissez déjà bien Quarto** ? Partez en **hors-piste** dès maintenant : explorez le bonus orienté `brand.yml` côté R — brander vos tableaux `gt` et graphiques `ggplot` aux couleurs de la charte — déjà visible dans les starters et les corrections, doc à l'appui.
+
+:::
+
 ## Instructeurs
 
 **Christophe Dervieux** — développeur open source, [Posit Software, PBC](https://posit.co/). Contributeur aux projets R Markdown et Quarto.
