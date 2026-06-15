@@ -81,7 +81,7 @@
       v Quarto
       v Paquets R
       ! Rendu PDF de test
-      v Tout est prêt : .qmd → PDF pro → livre → à personnaliser. Rendez-vous le 16 juin !
-      i Le jour J, pensez à ouvrir RStudio ou Positron (récent).
+      v Tout est prêt : .qmd → PDF pro → livre → à personnaliser. On se retrouve pour le tutoriel !
+      i Au moment de démarrer, ouvrez RStudio ou Positron (récent).
       i Prochaine étape : installez les exercices avec `tutoquartotypst::installer_exercices()`.
 

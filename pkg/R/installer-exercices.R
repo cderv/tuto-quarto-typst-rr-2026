@@ -112,7 +112,7 @@ installer_exercices <- function(dest = NULL,
     )
   }
   cli::cli_alert_info(
-    "Sans réseau le jour J ? {.run tutoquartotypst::basculer_hors_ligne()} passe un exercice en polices locales."
+    "Sans réseau ? {.run tutoquartotypst::basculer_hors_ligne()} passe un exercice en polices locales."
   )
   cli::cli_alert_info(
     "Vous avez cassé un fichier ? {.run tutoquartotypst::reinitialiser_exercice()} le restaure."
