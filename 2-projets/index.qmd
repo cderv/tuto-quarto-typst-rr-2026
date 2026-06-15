@@ -64,6 +64,10 @@ Fichier : {{< fa download >}} [exercises/02-projet-book/starter/](https://github
 | 2b | Ajouter `appendices: [annexe-donnees.qmd]` au bloc `book:`. | `annexe-donnees` bascule en « Annexe A » à la fin du livre, hors numérotation des chapitres. | [{{< fa link >}}](#doc-2b) |
 | 3 | Copier `_brand.yml` (+ `_logo-sw.svg` + `_fonts/`) à la racine. Si vous avez fini Bloc 1 → reprenez votre `_brand.yml`. Sinon → renommez [`_brand-starter.yml`](https://github.com/cderv/tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/_brand-starter.yml) en `_brand.yml`. (Le `charte-starwars.pdf` du starter reste votre référence visuelle.) | Couverture aux couleurs Star Wars (bande imperial-red + logo étoile jaune), titres Star Jedi, corps Inter. (Les tableaux `gt` restent bruts à ce stade — leur mise aux couleurs de la charte est l'objet du Bonus B4.) | [{{< fa link >}}](#doc-e3) |
 
+::: {.callout-note appearance="minimal"}
+**Le chapitre « Origines » s'affiche « Nrigines » ?** Même règle du jeu qu'au Bloc 1 : la fonte décorative Star Jedi stylise les initiales majuscules I/O/Q/U — c'est normal. Explication + les deux façons de corriger (simple ou Typst) sur la [page Exercice 1](../1-quarto-typst/index.qmd).
+:::
+
 **+ 2 bonus (3 min, pour les rapides) :**
 
 | # | Action | Vous devriez voir | Doc |

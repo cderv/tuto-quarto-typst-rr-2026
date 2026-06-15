@@ -34,6 +34,8 @@ Transformer un rapport `.qmd` HTML en PDF Typst stylé via `_brand.yml`.
 
 *Tableaux `gt` / nuage `ggplot` restés gris = normal : `_brand.yml` style la mise en page, pas les sorties R (→ index · Bonus B4 Bloc 2).*
 
+*Titres « Hntroduction » / « Mui » ? Normal : fonte Star Jedi décorative, initiales I/O/Q/U stylisées (→ index pour corriger).*
+
 **Bonus** (pour les rapides) :
 
 - B1. Activer `keep-typ: true` et ouvrir le `.typ`

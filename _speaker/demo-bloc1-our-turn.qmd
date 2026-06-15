@@ -162,7 +162,25 @@ quarto render rapport-starwars.qmd
 
 ### "Pourquoi mon titre / ma section affiche *Mui* / *Hntroduction* ?" (étape 4, police Star Jedi)
 
-→ C'est la **fonte Star Jedi** ([dafont](https://www.dafont.com/star-jedi.font)), **ni un bug, ni notre config**. Fonte décorative « logo » : ses emplacements **MAJUSCULES** portent des glyphes stylisés (**I→H, O→N, Q→M, U→K**…), ses **minuscules** donnent des capitales propres. Donc une initiale majuscule I/O/Q/U sort déformée — le reste (minuscules) est net. Concrètement, seuls **3 titres** de l'atelier sont touchés : sous-titre « **Qui**… » → Mui et section « **Introduction** » → Hntroduction (Bloc 1), chapitre « **Origines** » → Nrigines (Bloc 2). Tout le reste (Anatomie, Conclusion, Préface, Top 5, Taille vs masse…) est parfaitement lisible. **Non bloquant, c'est dans le thème Star Wars.** Correctif prévu en 1.0.2 (show-rule Typst `lower()` sur les titres — cf. backlog `.claude/archive/issues/2026-06-15-post-tuto-1.0.2-brand-styling-exo1.md`).
+→ C'est la **fonte Star Jedi** ([dafont](https://www.dafont.com/star-jedi.font)), **ni un bug, ni notre config**. Fonte décorative « logo » : ses emplacements **MAJUSCULES** portent des glyphes stylisés (**I→H, O→N, Q→M, U→K**…), ses **minuscules** donnent des capitales propres. Donc une initiale majuscule I/O/Q/U sort déformée — le reste (minuscules) est net. Concrètement, seuls **3 titres** de l'atelier sont touchés : sous-titre « **Qui**… » → Mui et section « **Introduction** » → Hntroduction (Bloc 1), chapitre « **Origines** » → Nrigines (Bloc 2). Tout le reste (Anatomie, Conclusion, Préface, Top 5, Taille vs masse…) est parfaitement lisible. **Non bloquant, c'est dans le thème Star Wars.**
+
+**C'est assumé sur la page Exercice 1** (callout « Saviez-vous que… » = notre vrai cas + bloc replié « Comment on corrige » à deux niveaux) :
+
+- **Simple** — reformuler le titre pour éviter l'initiale piégée : « Qui sont les colosses… » → « **Les** colosses de la galaxie, qui sont-ils ? ».
+- **Avancé (Typst)** — show-rule à projeter si on te le demande :
+
+```yaml
+format:
+  typst:
+    include-in-header:
+      text: |
+        #show heading: it => {
+          show regex("\p{Lu}"): c => lower(c.text)
+          it
+        }
+```
+
+`regex("\p{Lu}")` = **toute majuscule Unicode** (`Lu` = *Letter, uppercase*, accents compris) ; `lower(c.text)` la passe en minuscule, que Star Jedi rend en capitale propre. **Limite à dire** : corrige les **titres de section**, pas le **sous-titre** du document. Le correctif *intégré aux corrections* reste pour la 1.0.2 (cf. backlog `.claude/archive/issues/2026-06-15-post-tuto-1.0.2-brand-styling-exo1.md`).
 
 ---
 

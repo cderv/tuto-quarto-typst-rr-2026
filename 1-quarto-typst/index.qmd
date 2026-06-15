@@ -69,6 +69,36 @@ Fichier : {{< fa download >}} [exercises/01-document-typst/starter/](https://git
 **Tableaux et graphiques restés gris ?** C'est normal. `_brand.yml` colore la **mise en page** (titres, liens, fond, polices), pas les sorties **R** : vos tableaux `gt` et votre nuage `ggplot` ne prennent la charte que si on les branche en R — c'est le **Bonus B4 du Bloc 2**. Pour l'exercice 1, seules les étapes YAML ci-dessus comptent.
 :::
 
+::: callout-note
+## Saviez-vous que… (ça nous est arrivé pour de vrai)
+
+En préparant ce tuto, on a voulu **brander nos titres** avec une vraie fonte Star Wars, **[Star Jedi](https://www.dafont.com/star-jedi.font)**, branchée via `_brand.yml`. Au rendu : surprise — « Introduction » devient « **Hntroduction** », « Qui… » devient « **Mui…** ». Rien de cassé : c'est une **fonte décorative**, ses initiales **majuscules I, O, Q, U** sont stylisées (I→H, O→N, Q→M, U→K) ; tout le reste sort net (Anatomie, Conclusion, Top 5…). La morale : **une belle fonte de titre, ça a ses règles du jeu** — bon à savoir quand on choisit les polices d'une charte.
+:::
+
+::: {.callout-tip collapse="true"}
+## Comment on corrige — au choix, simple ou avancé
+
+**① Simple — dans le `.qmd`** : on tourne le titre pour éviter l'initiale piégée.
+Ex. : *« **Qui** sont les colosses de la galaxie ? »* → *« **Les** colosses de la galaxie, qui sont-ils ? »* (le « qui » minuscule, lui, sort déjà propre). Zéro code.
+
+**② Avancé — en Typst** : un *show-rule* qui passe les **majuscules**[^sj-lu] des titres en minuscules (que Star Jedi rend alors en capitales propres), **sans toucher au texte** :
+
+``` yaml
+format:
+  typst:
+    include-in-header:
+      text: |
+        #show heading: it => {
+          show regex("\p{Lu}"): c => lower(c.text)
+          it
+        }
+```
+
+⚠️ Corrige les **titres de section** (pas le sous-titre du document) ; à éviter sur un titre qui contient du **code ou une formule** (tout le titre passe en minuscules).
+:::
+
+[^sj-lu]: `regex("\p{Lu}")` cible toute **lettre majuscule Unicode** (`Lu` = *Letter, uppercase*) — A–Z **et** les accentuées (É, À, Ç…), là où `[A-Z]` raterait les accents. `lower(c.text)` la remplace par sa minuscule, que Star Jedi affiche en capitale propre.
+
 ::: {.callout-note collapse="true"}
 ## Étape 2 — où ranger les options ?
 
