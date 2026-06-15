@@ -27,9 +27,10 @@ Transformer un rapport `.qmd` HTML en PDF Typst stylé via `_brand.yml`.
 ## 📋 Étapes
 
 1. Remplacer `format: html` par `format: typst` et rendre
-2. Régler les options sous `format:` → `typst:` (`papersize`, `toc`, `mainfont`) — `lang: fr` à la racine (clé à créer)
-3. Créer `_brand.yml` (couleurs + police Google + logo)
-4. Ajouter Star Jedi en police locale (`source: file`) + `color: primary` → titres rouges
+2. Options sous `format:` → `typst:` (`papersize`, `toc`, `mainfont`) — `lang: fr` à la racine (clé à créer)
+3a. `_brand.yml` : palette + rôles (`primary`/`foreground`/`background`) + police corps Google
+3b. Logo : bloc `logo:` imbriqué (`images:` → `medium:`)
+4. Star Jedi en police locale (`source: file`) + `color: primary` → titres rouges
 
 **Bonus** (pour les rapides) :
 
@@ -40,7 +41,7 @@ Transformer un rapport `.qmd` HTML en PDF Typst stylé via `_brand.yml`.
 ## 🆘 Si vous bloquez
 
 1. Relire l'objectif + le « Vous devriez voir » de l'étape
-2. Ouvrir le lien **Doc utile** de l'étape (colonne du tableau sur la [page Exercice 1](index.qmd))
+2. Ouvrir le **📖** de l'étape (ou le bloc **Doc utile par étape**) sur la [page Exercice 1](index.qmd)
 3. Ouvrir [`exercises/01-document-typst/correction/`](https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/correction)
 
 ## 📖 Consigne complète

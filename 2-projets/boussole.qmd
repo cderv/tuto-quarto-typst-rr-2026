@@ -40,7 +40,7 @@ L'Exercice 2 part d'un **dossier neuf** (`starter/`), indépendant de l'Exercice
 ## 🆘 Si vous bloquez
 
 1. Relire l'objectif + le « Vous devriez voir » de l'étape
-2. Ouvrir le lien **Doc utile** de l'étape (colonne du tableau sur la [page Exercice 2](index.qmd))
+2. Ouvrir le **📖** de l'étape (ou le bloc **Doc utile par étape**) sur la [page Exercice 2](index.qmd)
 3. Ouvrir [`exercises/02-projet-book/correction/`](https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises/02-projet-book/correction)
 
 ## 📖 Consigne complète
