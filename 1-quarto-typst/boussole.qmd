@@ -32,6 +32,8 @@ Transformer un rapport `.qmd` HTML en PDF Typst stylé via `_brand.yml`.
 3b. Logo : bloc `logo:` imbriqué (`images:` → `medium:`)
 4. Star Jedi en police locale (`source: file`) + `color: primary` → titres rouges
 
+*Tableaux `gt` / nuage `ggplot` restés gris = normal : `_brand.yml` style la mise en page, pas les sorties R (→ index · Bonus B4 Bloc 2).*
+
 **Bonus** (pour les rapides) :
 
 - B1. Activer `keep-typ: true` et ouvrir le `.typ`
@@ -42,7 +44,7 @@ Transformer un rapport `.qmd` HTML en PDF Typst stylé via `_brand.yml`.
 
 1. Relire l'objectif + le « Vous devriez voir » de l'étape
 2. Ouvrir le lien {{< fa link >}} de l'étape (ou le bloc **Doc utile par étape**) sur la [page Exercice 1](index.qmd)
-3. Ouvrir [`exercises/01-document-typst/correction/`](https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/correction)
+3. Ouvrir [`exercises/01-document-typst/correction/`](https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/correction) — va plus loin que les étapes (bonus R, cf. index)
 
 ## 📖 Consigne complète
 

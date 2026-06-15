@@ -47,6 +47,18 @@ Exercice en autonomie avec chronomètre.
 Expliquer le rythme dès le début. Chaque bloc suit ce cycle. L'idée c'est de passer un maximum de temps les mains dans le code, pas à regarder des slides.
 :::
 
+## Un atelier pour tous les niveaux
+
+::: incremental
+- **Exercices volontairement riches** — pas grave si vous ne finissez pas en séance : tout reste à reprendre après (ressources + paquet R compagnon)
+- **Pas besoin d'écrire du R** — le cœur des exos, c'est Quarto / YAML / Typst ; le R des tableaux et graphes est déjà prêt dans les fichiers
+- **Déjà à l'aise avec Quarto ?** — partez en **hors-piste** : explorez le bonus `brand.yml` côté R (déjà dans les starters / corrections), doc à l'appui
+:::
+
+::: notes
+Annoncer dès le départ : tuto pensé pour **tous les niveaux**, le rythme My/Our/Your turn cale tout le monde. Trois messages : (1) les exos sont riches exprès — personne n'est censé tout boucler dans le chrono, le matériel reste à eux (site + paquet) pour rejouer après ; (2) débutant·es : on rassure, pas de R à écrire dans les étapes principales ; (3) avancé·es : on les invite explicitement à aller plus loin, hors-piste, vers le branding R (gt/ggplot) déjà présent dans les corrections, en s'aidant des docs — plutôt que d'attendre. ~45 s, ne pas s'attarder.
+:::
+
 ## Code de conduite
 
 Cet atelier s'inscrit dans le **code de conduite des Rencontres R 2026** — on s'engage à le faire respecter ici comme ailleurs.
@@ -327,9 +339,9 @@ Les problèmes fréquents : oubli des guillemets sur les couleurs hex dans brand
 ::: callout-note
 ## Saviez-vous que...
 
-- **Une charte, partout** — Côté R, le paquet `brand.yml` lit ce même fichier : `brand <- read_brand_yml()` puis `brand_color_pluck(brand, "ma_couleur")`. Les couleurs de votre PDF, de vos graphes `ggplot` et de vos tableaux `gt` viennent d'une seule source
+- **Une charte, deux niveaux** — `_brand.yml` habille **automatiquement** la mise en page (titres, liens, fond, polices). Vos tableaux `gt` et graphes `ggplot` sont du **R** : ils ne suivent que si vous les branchez avec le paquet `brand.yml` (`read_brand_yml()`, `theme_brand_gt()`, `theme_brand_ggplot2()`) — une seule source, un petit geste en plus (détaillé au Bonus B4 du Bloc 2)
 - **Blocs raw Typst** — Besoin de Typst natif ? Utilisez ```` ```{=typst} ```` pour injecter du code Typst directement dans votre `.qmd`
-- **Vos tableaux fonctionnent** — Les tableaux `gt` (R) et `Great Tables` (Python) avec du CSS sont traduits automatiquement en Typst par Quarto
+- **Vos tableaux passent en Typst** — la **structure** des tableaux `gt` (R) et `Great Tables` (Python) est traduite automatiquement en Typst par Quarto (les *couleurs* de la charte, elles, viennent du point ci-dessus)
 - **PDF accessible en une ligne** — Ajoutez `pdf-standard: ua-1` dans le YAML pour un PDF conforme au standard d'accessibilité PDF/UA-1
 :::
 

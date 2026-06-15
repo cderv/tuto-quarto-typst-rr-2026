@@ -65,6 +65,10 @@ Fichier : {{< fa download >}} [exercises/01-document-typst/starter/](https://git
 | 3b | Ajouter le **logo** : bloc `logo:` **imbriqué** — `images:` (un nom → `_logo-sw.svg`, fourni dans le starter) puis `medium: <nom>` — **pas** `logo: _logo-sw.svg` en direct. | Logo en haut à gauche (placement par défaut Quarto ; réglage fin au Bloc 2). | [{{< fa link >}}](#doc-e3b) |
 | 4 | Renseigner `typography.headings` : police locale Star Jedi (`_fonts/Starjedi.ttf`, `source: file`) **et** `color: primary` — cf. section Typographie de la charte. | Titres de section en lettres décoratives Star Jedi, en rouge imperial. | [{{< fa link >}}](#doc-e4) |
 
+::: {.callout-note appearance="minimal"}
+**Tableaux et graphiques restés gris ?** C'est normal. `_brand.yml` colore la **mise en page** (titres, liens, fond, polices), pas les sorties **R** : vos tableaux `gt` et votre nuage `ggplot` ne prennent la charte que si on les branche en R — c'est le **Bonus B4 du Bloc 2**. Pour l'exercice 1, seules les étapes YAML ci-dessus comptent.
+:::
+
 ::: {.callout-note collapse="true"}
 ## Étape 2 — où ranger les options ?
 
@@ -113,7 +117,7 @@ Le plus souvent, le PDF est encore **ouvert dans un lecteur** qui le verrouille 
 
 1.  Relisez l'objectif + le « Vous devriez voir » de l'étape.
 2.  Ouvrez le lien {{< fa link >}} de l'étape (ou le bloc **Doc utile par étape** ci-dessus) et cherchez la section indiquée.
-3.  Ouvrez [`exercises/01-document-typst/correction/`](https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/correction) (filet final).
+3.  Ouvrez [`exercises/01-document-typst/correction/`](https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/correction) (filet final). ⚠️ Elle **va plus loin que les étapes de l'exercice** (elle brande aussi tableaux et graphiques en R, cf. Bonus B4 Bloc 2) : pour l'exo 1, concentrez-vous sur le YAML.
 :::
 
 ### Mémo rapide starter
@@ -122,6 +126,8 @@ Le plus souvent, le PDF est encore **ouvert dans un lecteur** qui le verrouille 
 
 ::: {.callout-warning collapse="true"}
 ## Correction
+
+⚠️ Cette correction **va plus loin que les étapes de l'exercice** : son bloc `setup` applique en plus la charte aux tableaux `gt` et graphiques `ggplot` en R (c'est le **Bonus B4 du Bloc 2**). Pour l'exercice 1, **seules les étapes YAML comptent** — tableaux et graphiques restés gris = attendu.
 
 {{< fa download >}} [Voir la correction](https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/correction)
 :::
