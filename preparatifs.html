@@ -167,6 +167,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Préparatifs</span></a>
   </div>
 </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1-quarto-typst/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bloc 1 — PDF avec Typst</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2-projets/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bloc 2 — Projets &amp; book</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3-aller-plus-loin/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pour aller plus loin…</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4-ressources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ressources</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./package/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Documentation du paquet R</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -254,8 +286,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>✔ Quarto</span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>✔ Paquets R</span>
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>✔ Rendu PDF de test</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>✔ Tout est prêt <span class="sc">:</span> .qmd → PDF pro → livre → à personnaliser. Rendez<span class="sc">-</span>vous le <span class="dv">16</span> juin <span class="sc">!</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>ℹ Le jour J, pensez à ouvrir RStudio ou <span class="fu">Positron</span> (récent).</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>✔ Tout est prêt <span class="sc">:</span> .qmd → PDF pro → livre → à personnaliser. On se retrouve pour le tutoriel <span class="sc">!</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>ℹ Au moment de démarrer, ouvrez RStudio ou <span class="fu">Positron</span> (récent).</span>
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>ℹ Prochaine étape <span class="sc">:</span> installez les exercices avec tutoquartotypst<span class="sc">::</span><span class="fu">installer_exercices</span>().</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
@@ -473,7 +505,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/cderv\.github\.io\/tuto-quarto-typst-rr-2026\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

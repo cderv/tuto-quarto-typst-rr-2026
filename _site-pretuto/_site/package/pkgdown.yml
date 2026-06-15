@@ -1,0 +1,9 @@
+pandoc: '3.10'
+pkgdown: 2.2.0
+pkgdown_sha: ~
+articles:
+  articles/apres-le-tutoriel: apres-le-tutoriel.html
+last_built: 2026-06-12T16:38Z
+urls:
+  reference: https://cderv.github.io/tuto-quarto-typst-rr-2026/package/reference
+  article: https://cderv.github.io/tuto-quarto-typst-rr-2026/package/articles

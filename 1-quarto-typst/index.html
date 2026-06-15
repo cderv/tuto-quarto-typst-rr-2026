@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.11">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="">
+
+<title>Un PDF pro en quelques minutes – PDF sans frictions : Typst dans vos projets Quarto</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../2-projets/index.html" rel="next">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-5947b73a06bce04bf1d622ae23e1ec5b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-c70c6a9a2c2019a740cbe9c2a036f017.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Pas de résultats",
+    "search-matching-documents-text": "documents trouvés",
+    "search-copy-link-title": "Copier le lien vers la recherche",
+    "search-hide-matches-text": "Cacher les correspondances additionnelles",
+    "search-more-match-text": "correspondance de plus dans ce document",
+    "search-more-matches-text": "correspondances de plus dans ce document",
+    "search-clear-button-title": "Effacer",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Annuler",
+    "search-submit-button-title": "Envoyer",
+    "search-label": "Recherche"
+  }
+}</script>
+
+
+<meta property="og:title" content="Un PDF pro en quelques minutes – PDF sans frictions : Typst dans vos projets Quarto">
+<meta property="og:description" content="Tutoriel Quarto+Typst de 2h aux Rencontres R 2026 — PDF sans frictions">
+<meta property="og:site_name" content="PDF sans frictions : Typst dans vos projets Quarto">
+<meta name="twitter:title" content="Un PDF pro en quelques minutes – PDF sans frictions : Typst dans vos projets Quarto">
+<meta name="twitter:description" content="Tutoriel Quarto+Typst de 2h aux Rencontres R 2026 — PDF sans frictions">
+<meta name="twitter:creator" content="@chrisderv">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../1-quarto-typst/index.html">Bloc 1 — PDF avec Typst</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Recherche" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">PDF sans frictions : Typst dans vos projets Quarto</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/cderv/tuto-quarto-typst-rr-2026" title="Dépôt GitHub" class="quarto-navigation-tool px-1" aria-label="Dépôt GitHub"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Recherche"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Accueil</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../preparatifs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Préparatifs</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../1-quarto-typst/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Bloc 1 — PDF avec Typst</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../2-projets/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bloc 2 — Projets &amp; book</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../3-aller-plus-loin/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pour aller plus loin…</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../4-ressources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ressources</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../package/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Documentation du paquet R</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Sur cette page</h2>
+   
+  <ul>
+  <li><a href="#diapos" id="toc-diapos" class="nav-link active" data-scroll-target="#diapos">Diapos</a></li>
+  <li><a href="#points-couverts" id="toc-points-couverts" class="nav-link" data-scroll-target="#points-couverts">Points couverts</a>
+  <ul class="collapse">
+  <li><a href="#à-la-fin-de-ce-bloc-vous-saurez" id="toc-à-la-fin-de-ce-bloc-vous-saurez" class="nav-link" data-scroll-target="#à-la-fin-de-ce-bloc-vous-saurez">À la fin de ce bloc, vous saurez</a></li>
+  <li><a href="#le-déroulé-my-turn-our-turn-your-turn" id="toc-le-déroulé-my-turn-our-turn-your-turn" class="nav-link" data-scroll-target="#le-déroulé-my-turn-our-turn-your-turn">Le déroulé — My turn → Our turn → Your turn</a></li>
+  </ul></li>
+  <li><a href="#exercice-1" id="toc-exercice-1" class="nav-link" data-scroll-target="#exercice-1">Exercice 1</a>
+  <ul class="collapse">
+  <li><a href="#mémo-rapide-starter" id="toc-mémo-rapide-starter" class="nav-link" data-scroll-target="#mémo-rapide-starter">Mémo rapide starter</a></li>
+  </ul></li>
+  <li><a href="#exercice-1-starter" id="toc-exercice-1-starter" class="nav-link" data-scroll-target="#exercice-1-starter">Exercice 1 — Starter</a>
+  <ul class="collapse">
+  <li><a href="#contenu-du-dossier" id="toc-contenu-du-dossier" class="nav-link" data-scroll-target="#contenu-du-dossier">Contenu du dossier</a></li>
+  <li><a href="#rendu" id="toc-rendu" class="nav-link" data-scroll-target="#rendu">Rendu</a></li>
+  <li><a href="#bloqué" id="toc-bloqué" class="nav-link" data-scroll-target="#bloqué">Bloqué ?</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/edit/main/1-quarto-typst/index.qmd" class="toc-action"><i class="bi bi-github"></i>Modifier cette page</a></li><li><a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/issues/new" class="toc-action"><i class="bi empty"></i>Faire part d'un problème</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Un PDF pro en quelques minutes</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>~40 minutes — avant la pause
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<section id="diapos" class="level2">
+<h2 class="anchored" data-anchor-id="diapos">Diapos</h2>
+<p><i class="fa-solid fa-tv" aria-label="tv"></i> <a href="1-quarto-typst.html" target="_blank">Ouvrir les diapos en plein écran</a></p>
+<iframe class="slide-deck" src="1-quarto-typst.html" height="420" width="747" style="border: 1px solid #123233;"></iframe>
+</section>
+<section id="points-couverts" class="level2">
+<h2 class="anchored" data-anchor-id="points-couverts">Points couverts</h2>
+<section id="à-la-fin-de-ce-bloc-vous-saurez" class="level3">
+<h3 class="anchored" data-anchor-id="à-la-fin-de-ce-bloc-vous-saurez">À la fin de ce bloc, vous saurez</h3>
+<ul>
+<li>Produire un PDF pro avec <code>format: typst</code> — alternative à LaTeX sans installation, rapide, erreurs lisibles</li>
+<li>Régler les options essentielles : <code>papersize</code>, <code>margin</code> (d’autres en démo)</li>
+<li>Voir ce qui se passe entre le <code>.qmd</code> et le <code>.pdf</code>, avec <code>keep-typ: true</code></li>
+<li>Personnaliser couleurs, polices et logo via un seul fichier <code>_brand.yml</code></li>
+<li>Mixer polices Google et polices locales (<code>source: file</code>) dans la même charte</li>
+</ul>
+</section>
+<section id="le-déroulé-my-turn-our-turn-your-turn" class="level3">
+<h3 class="anchored" data-anchor-id="le-déroulé-my-turn-our-turn-your-turn">Le déroulé — My turn → Our turn → Your turn</h3>
+<ul>
+<li><strong>My turn</strong> — je présente à partir des diapos (ci-dessus).</li>
+<li><strong>Our turn</strong> — démo live (5-6 min) : on passe le doc en <code>format: typst</code>, puis on lui applique une couleur via <code>_brand.yml</code>.
+<ol type="1">
+<li>Passer <code>format: html</code> → <code>format: typst</code> et rendre</li>
+<li>Créer <code>_brand.yml</code> avec <strong>une couleur</strong> + <code>primary</code>, re-rendre → le lien passe en rouge (<code>primary</code> colore les liens ; les titres se coloreront à l’étape 4 de l’exercice, avec le bloc <code>typography.headings</code>)</li>
+</ol></li>
+<li><strong>Your turn</strong> — à vous l’<strong>Exercice 1</strong> ci-dessous : le reste (charte complète, polices, logo, <code>keep-typ</code>).</li>
+</ul>
+</section>
+</section>
+<section id="exercice-1" class="level2">
+<h2 class="anchored" data-anchor-id="exercice-1">Exercice 1</h2>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>🧭 Boussole = suivi live · cette page = le détail
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong><a href="../1-quarto-typst/boussole.html" target="_blank">Boussole Exercice 1</a></strong> — à suivre <strong>pendant l’exercice</strong> : les étapes en bref + le chrono, à garder ouverte en <strong>second écran</strong>.</li>
+<li><strong>Cette page</strong> — le <strong>détail complet</strong> : étapes pas à pas (« Vous devriez voir »), la doc utile par étape et la correction.</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avertissement</span>À vous !
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🎯 <strong>Objectif :</strong> transformer un rapport <code>.qmd</code> HTML en PDF Typst stylé via <code>_brand.yml</code>.</p>
+<p>Fichier : <i class="fa-solid fa-download" aria-label="download"></i> <a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/starter">exercises/01-document-typst/starter/</a></p>
+<p>📄 <strong>Charte fournie :</strong> <code>charte-starwars.pdf</code> (dans le starter) — palette, polices, logo et rôles (<code>primary</code> / <code>foreground</code> / <code>background</code>) à traduire en YAML.</p>
+<p>💡 <strong>Commencez par l’étape 1 seule</strong> : faites le passage <code>format: html</code> → <code>format: typst</code> et rendez <strong>vous-même</strong>, puis regardez le PDF brut (sans charte) avant de toucher à <code>_brand.yml</code>. C’est le réflexe de base — un PDF en une ligne de YAML — qu’on veut ancrer avant d’ajouter le style.</p>
+<p><strong>Étapes principales (12 min) — attendues de tous :</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Action</th>
+<th>Vous devriez voir</th>
+<th style="text-align: center;">Doc</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Ouvrir <code>rapport-starwars.qmd</code>, ajouter <code>format: typst</code>, rendre.</td>
+<td>PDF généré à la place du HTML, polices et marges par défaut Typst.</td>
+<td style="text-align: center;"><a href="#doc-e1"><i class="fa-solid fa-link" aria-label="link"></i></a></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Personnaliser avec des options : <code>papersize</code>, <code>toc</code>, <code>mainfont</code>, <code>lang: fr</code>…</td>
+<td>TOC en tête (titrée « Table des matières » grâce à <code>lang: fr</code>), marges/format adaptés, police corps modifiée.</td>
+<td style="text-align: center;"><a href="#doc-e2"><i class="fa-solid fa-link" aria-label="link"></i></a></td>
+</tr>
+<tr class="odd">
+<td>3a</td>
+<td>Créer <code>_brand.yml</code> et traduire la <strong>charte</strong> (<a href="..\_charte/charte-starwars.pdf"><code>charte-starwars.pdf</code></a>, fournie dans le starter) : la <strong>palette</strong> + les <strong>rôles</strong> (<code>primary</code> / <code>foreground</code> / <code>background</code>), puis la <strong>police corps</strong> Google sous <code>typography.fonts</code> → <code>typography.base</code>.</td>
+<td>Liens en imperial-red, fond crème, police corps Google (Inter) appliquée. <em>(Les titres restent noirs jusqu’à l’étape 4.)</em></td>
+<td style="text-align: center;"><a href="#doc-e3a"><i class="fa-solid fa-link" aria-label="link"></i></a></td>
+</tr>
+<tr class="even">
+<td>3b</td>
+<td>Ajouter le <strong>logo</strong> : bloc <code>logo:</code> <strong>imbriqué</strong> — <code>images:</code> (un nom → <code>_logo-sw.svg</code>, fourni dans le starter) puis <code>medium: &lt;nom&gt;</code> — <strong>pas</strong> <code>logo: _logo-sw.svg</code> en direct.</td>
+<td>Logo en haut à gauche (placement par défaut Quarto ; réglage fin au Bloc 2).</td>
+<td style="text-align: center;"><a href="#doc-e3b"><i class="fa-solid fa-link" aria-label="link"></i></a></td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>Renseigner <code>typography.headings</code> : police locale Star Jedi (<code>_fonts/Starjedi.ttf</code>, <code>source: file</code>) <strong>et</strong> <code>color: primary</code> — cf.&nbsp;section Typographie de la charte.</td>
+<td>Titres de section en lettres décoratives Star Jedi, en rouge imperial.</td>
+<td style="text-align: center;"><a href="#doc-e4"><i class="fa-solid fa-link" aria-label="link"></i></a></td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Tableaux et graphiques restés gris ?</strong> C’est normal. <code>_brand.yml</code> colore la <strong>mise en page</strong> (titres, liens, fond, polices), pas les sorties <strong>R</strong> : vos tableaux <code>gt</code> et votre nuage <code>ggplot</code> ne prennent la charte que si on les branche en R — c’est le <strong>Bonus B4 du Bloc 2</strong>. Pour l’exercice 1, seules les étapes YAML ci-dessus comptent.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Saviez-vous que… (ça nous est arrivé pour de vrai)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>En préparant ce tuto, on a voulu <strong>brander nos titres</strong> avec une vraie fonte Star Wars, <strong><a href="https://www.dafont.com/star-jedi.font">Star Jedi</a></strong>, branchée via <code>_brand.yml</code>. Au rendu : surprise — « Introduction » devient « <strong>Hntroduction</strong> », « Qui… » devient « <strong>Mui…</strong> ». Rien de cassé : c’est une <strong>fonte décorative</strong>, ses initiales <strong>majuscules I, O, Q, U</strong> sont stylisées (I→H, O→N, Q→M, U→K) ; tout le reste sort net (Anatomie, Conclusion, Top 5…). La morale : <strong>une belle fonte de titre, ça a ses règles du jeu</strong> — bon à savoir quand on choisit les polices d’une charte.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Comment on corrige — au choix, simple ou avancé
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>① Simple — dans le <code>.qmd</code></strong> : on tourne le titre pour éviter l’initiale piégée. Ex. : <em>« <strong>Qui</strong> sont les colosses de la galaxie ? »</em> → <em>« <strong>Les</strong> colosses de la galaxie, qui sont-ils ? »</em> (le « qui » minuscule, lui, sort déjà propre). Zéro code.</p>
+<p><strong>② Avancé — en Typst</strong> : un <em>show-rule</em> qui passe les <strong>majuscules</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> des titres en minuscules (que Star Jedi rend alors en capitales propres), <strong>sans toucher au texte</strong> :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">typst</span><span class="kw">:</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">include-in-header</span><span class="kw">:</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">      text</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        #show heading: it =&gt; {</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>          show regex("\p{Lu}"): c =&gt; lower(c.text)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>          it</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        }</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>⚠️ Corrige les <strong>titres de section</strong> (pas le sous-titre du document) ; à éviter sur un titre qui contient du <strong>code ou une formule</strong> (tout le titre passe en minuscules).</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Étape 2 — où ranger les options ?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Le <code>format: typst</code> d’une seule ligne (étape 1) devient un <strong>bloc indenté</strong>, et <code>lang:</code> se met <strong>à la racine</strong> (au même niveau que <code>format:</code>, pas en dessous) — vous la créez, elle n’est pas dans le starter :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lang</span><span class="kw">:</span><span class="at"> fr</span><span class="co">              # clé racine (francise la « Table des matières »)</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">typst</span><span class="kw">:</span><span class="co">              # le « : typst » de l'étape 1, maintenant un bloc</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">papersize</span><span class="kw">:</span><span class="at"> a4</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">mainfont</span><span class="kw">:</span><span class="at"> </span><span class="st">"…"</span><span class="co">     # à vous de compléter</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<p><strong>+ Bonus inspection (si temps restant) :</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Action</th>
+<th>Vous devriez voir</th>
+<th style="text-align: center;">Doc</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>B1</td>
+<td>Activer <code>keep-typ: true</code>, ouvrir le <code>.typ</code> généré.</td>
+<td>Fichier <code>.typ</code> à côté du PDF, syntaxe Typst lisible (<code>= titre</code>, <code>#strong[...]</code>, etc.).</td>
+<td style="text-align: center;"><a href="#doc-b1"><i class="fa-solid fa-link" aria-label="link"></i></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>📖 Doc utile par étape
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Pour chaque étape, la page (et la section) à ouvrir — le lien <i class="fa-solid fa-link" aria-label="link"></i> de chaque ligne du tableau y mène directement. La doc Quarto/brand-yml est faite pour être consultée en cours de route :</p>
+<ul>
+<li><span id="doc-e1"><strong>Étape 1</strong></span> — <a href="https://quarto.org/docs/output-formats/typst.html">Typst › Overview</a></li>
+<li><span id="doc-e2"><strong>Étape 2</strong></span> — <a href="https://quarto.org/docs/output-formats/typst.html">Typst › options de format</a> · <a href="https://quarto.org/docs/reference/formats/typst.html">référence complète</a></li>
+<li><span id="doc-e3a"><strong>Étape 3a</strong></span> — <a href="https://quarto.org/docs/authoring/brand.html"><code>_brand.yml</code> › Color &amp; Typography</a></li>
+<li><span id="doc-e3b"><strong>Étape 3b</strong></span> — <a href="https://posit-dev.github.io/brand-yml/brand/logo.html">logo (brand-yml)</a> — bloc imbriqué <code>images:</code> → <code>medium:</code></li>
+<li><span id="doc-e4"><strong>Étape 4</strong></span> — <a href="https://posit-dev.github.io/brand-yml/brand/typography.html">brand-yml › typography</a> — cherchez <code>source: file</code></li>
+<li><span id="doc-b1"><strong>Bonus B1</strong></span> — <a href="https://quarto.org/docs/output-formats/typst.html?q=keep-typ"><code>keep-typ</code></a></li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avertissement</span>PDF inchangé après avoir modifié <code>_brand.yml</code> ?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Le plus souvent, le PDF est encore <strong>ouvert dans un lecteur</strong> qui le verrouille (fréquent sous Windows) : fermez le lecteur (ou supprimez le <code>.pdf</code>) puis re-rendez. Si le rendu reste figé, supprimez le <code>.pdf</code> (voire le dossier <code>.quarto/</code>) avant de relancer.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Mise en garde</span>🆘 Si vous bloquez après ~5 min sur une étape
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Relisez l’objectif + le « Vous devriez voir » de l’étape.</li>
+<li>Ouvrez le lien <i class="fa-solid fa-link" aria-label="link"></i> de l’étape (ou le bloc <strong>Doc utile par étape</strong> ci-dessus) et cherchez la section indiquée.</li>
+<li>Ouvrez <a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/correction"><code>exercises/01-document-typst/correction/</code></a> (filet final). ⚠️ Elle <strong>va plus loin que les étapes de l’exercice</strong> (elle brande aussi tableaux et graphiques en R, cf.&nbsp;Bonus B4 Bloc 2) : pour l’exo 1, concentrez-vous sur le YAML.</li>
+</ol>
+</div>
+</div>
+<section id="mémo-rapide-starter" class="level3">
+<h3 class="anchored" data-anchor-id="mémo-rapide-starter">Mémo rapide starter</h3>
+</section>
+</section>
+<section id="exercice-1-starter" class="level2">
+<h2 class="anchored" data-anchor-id="exercice-1-starter">Exercice 1 — Starter</h2>
+<blockquote class="blockquote">
+<p><strong>Mémo du dossier <code>starter/</code>.</strong> Contenu et commande de rendu ci-dessous. Le pas-à-pas complet (étapes, indices doc, « Si vous bloquez ») est sur la page de l’exercice.</p>
+</blockquote>
+<section id="contenu-du-dossier" class="level3">
+<h3 class="anchored" data-anchor-id="contenu-du-dossier">Contenu du dossier</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Fichier</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>rapport-starwars.qmd</code></td>
+<td><strong>Fichier à éditer</strong> — point de départ HTML, à transformer en PDF Typst</td>
+</tr>
+<tr class="even">
+<td><code>charte-starwars.pdf</code></td>
+<td><strong>Charte graphique</strong> à traduire en <code>_brand.yml</code> (étapes 3-4)</td>
+</tr>
+<tr class="odd">
+<td><code>_logo-sw.svg</code></td>
+<td>Logo à référencer dans <code>_brand.yml</code> (clé <code>logo:</code>) — étape 3</td>
+</tr>
+<tr class="even">
+<td><code>_fonts/Starjedi.ttf</code></td>
+<td>Police locale (étape 4)</td>
+</tr>
+<tr class="odd">
+<td><code>exercice-01.Rproj</code></td>
+<td>Projet RStudio — <strong>double-cliquez-le</strong> pour ouvrir l’exercice (répertoire de travail correct)</td>
+</tr>
+<tr class="even">
+<td><em>(pas de <code>_brand.yml</code>)</em></td>
+<td><strong>À créer aux étapes 3-4</strong> d’après la charte</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="rendu" class="level3">
+<h3 class="anchored" data-anchor-id="rendu">Rendu</h3>
+<p>Depuis ce dossier :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render rapport-starwars.qmd</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Sortie initiale : <code>rapport-starwars.html</code> (format par défaut). Après ajout de <code>format: typst</code> : <code>rapport-starwars.pdf</code>.</p>
+</section>
+<section id="bloqué" class="level3">
+<h3 class="anchored" data-anchor-id="bloqué">Bloqué ?</h3>
+<p>Cf. le bloc « Si vous bloquez » sur le site (page exo) ou la <a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/correction"><code>correction/</code></a> en dernier recours.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avertissement</span>Correction
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>⚠️ Cette correction <strong>va plus loin que les étapes de l’exercice</strong> : son bloc <code>setup</code> applique en plus la charte aux tableaux <code>gt</code> et graphiques <code>ggplot</code> en R (c’est le <strong>Bonus B4 du Bloc 2</strong>). Pour l’exercice 1, <strong>seules les étapes YAML comptent</strong> — tableaux et graphiques restés gris = attendu.</p>
+<p><i class="fa-solid fa-download" aria-label="download"></i> <a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises/01-document-typst/correction">Voir la correction</a></p>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Notes de bas de page</h2>
+
+<ol>
+<li id="fn1"><p><code>regex("\p{Lu}")</code> cible toute <strong>lettre majuscule Unicode</strong> (<code>Lu</code> = <em>Letter, uppercase</em>) — A–Z <strong>et</strong> les accentuées (É, À, Ç…), là où <code>[A-Z]</code> raterait les accents. <code>lower(c.text)</code> la remplace par sa minuscule, que Star Jedi affiche en capitale propre.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copié");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copié");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../2-projets/index.html" class="pagination-link" aria-label="Bloc 2 — Projets &amp; book">
+        <span class="nav-page-text">Bloc 2 — Projets &amp; book</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© CC BY 4.0 · Christophe Dervieux &amp; Maëlle Salmon · Rencontres R 2026</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/edit/main/1-quarto-typst/index.qmd" class="toc-action"><i class="bi bi-github"></i>Modifier cette page</a></li><li><a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/issues/new" class="toc-action"><i class="bi empty"></i>Faire part d'un problème</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>Site construit avec <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

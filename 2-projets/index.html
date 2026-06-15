@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.11">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="">
+
+<title>Passer du document au livre – PDF sans frictions : Typst dans vos projets Quarto</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../3-aller-plus-loin/index.html" rel="next">
+<link href="../1-quarto-typst/index.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-5947b73a06bce04bf1d622ae23e1ec5b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-c70c6a9a2c2019a740cbe9c2a036f017.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Pas de résultats",
+    "search-matching-documents-text": "documents trouvés",
+    "search-copy-link-title": "Copier le lien vers la recherche",
+    "search-hide-matches-text": "Cacher les correspondances additionnelles",
+    "search-more-match-text": "correspondance de plus dans ce document",
+    "search-more-matches-text": "correspondances de plus dans ce document",
+    "search-clear-button-title": "Effacer",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Annuler",
+    "search-submit-button-title": "Envoyer",
+    "search-label": "Recherche"
+  }
+}</script>
+
+
+<meta property="og:title" content="Passer du document au livre – PDF sans frictions : Typst dans vos projets Quarto">
+<meta property="og:description" content="Tutoriel Quarto+Typst de 2h aux Rencontres R 2026 — PDF sans frictions">
+<meta property="og:image" content="2-gt.png">
+<meta property="og:site_name" content="PDF sans frictions : Typst dans vos projets Quarto">
+<meta property="og:image:alt" content="Tableau gt « Les colosses de la galaxie » rendu en PDF Typst avec la mise en forme issue de `_brand.yml` : bandeau titre jaune Star Wars, en-têtes noir SW sur texte crème, ligne Jabba surlignée en rouge impérial, lignes alternées en striping crème, filets imperial-red autour du tableau.">
+<meta name="twitter:title" content="Passer du document au livre – PDF sans frictions : Typst dans vos projets Quarto">
+<meta name="twitter:description" content="Tutoriel Quarto+Typst de 2h aux Rencontres R 2026 — PDF sans frictions">
+<meta name="twitter:image" content="2-gt.png">
+<meta name="twitter:creator" content="@chrisderv">
+<meta name="twitter:image:alt" content="Tableau gt « Les colosses de la galaxie » rendu en PDF Typst avec la mise en forme issue de `_brand.yml` : bandeau titre jaune Star Wars, en-têtes noir SW sur texte crème, ligne Jabba surlignée en rouge impérial, lignes alternées en striping crème, filets imperial-red autour du tableau.">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../2-projets/index.html">Bloc 2 — Projets &amp; book</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Recherche" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">PDF sans frictions : Typst dans vos projets Quarto</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/cderv/tuto-quarto-typst-rr-2026" title="Dépôt GitHub" class="quarto-navigation-tool px-1" aria-label="Dépôt GitHub"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Recherche"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Accueil</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../preparatifs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Préparatifs</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../1-quarto-typst/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bloc 1 — PDF avec Typst</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../2-projets/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Bloc 2 — Projets &amp; book</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../3-aller-plus-loin/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pour aller plus loin…</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../4-ressources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ressources</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../package/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Documentation du paquet R</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Sur cette page</h2>
+   
+  <ul>
+  <li><a href="#diapos" id="toc-diapos" class="nav-link active" data-scroll-target="#diapos">Diapos</a></li>
+  <li><a href="#points-couverts" id="toc-points-couverts" class="nav-link" data-scroll-target="#points-couverts">Points couverts</a>
+  <ul class="collapse">
+  <li><a href="#à-la-fin-de-ce-bloc-vous-saurez" id="toc-à-la-fin-de-ce-bloc-vous-saurez" class="nav-link" data-scroll-target="#à-la-fin-de-ce-bloc-vous-saurez">À la fin de ce bloc, vous saurez</a></li>
+  <li><a href="#le-déroulé-my-turn-our-turn-your-turn" id="toc-le-déroulé-my-turn-our-turn-your-turn" class="nav-link" data-scroll-target="#le-déroulé-my-turn-our-turn-your-turn">Le déroulé — My turn → Our turn → Your turn</a></li>
+  </ul></li>
+  <li><a href="#exercice-2" id="toc-exercice-2" class="nav-link" data-scroll-target="#exercice-2">Exercice 2</a>
+  <ul class="collapse">
+  <li><a href="#mémo-rapide-starter" id="toc-mémo-rapide-starter" class="nav-link" data-scroll-target="#mémo-rapide-starter">Mémo rapide starter</a></li>
+  </ul></li>
+  <li><a href="#exercice-2-starter" id="toc-exercice-2-starter" class="nav-link" data-scroll-target="#exercice-2-starter">Exercice 2 — Starter</a>
+  <ul class="collapse">
+  <li><a href="#contenu-du-dossier" id="toc-contenu-du-dossier" class="nav-link" data-scroll-target="#contenu-du-dossier">Contenu du dossier</a></li>
+  <li><a href="#rendu" id="toc-rendu" class="nav-link" data-scroll-target="#rendu">Rendu</a></li>
+  <li><a href="#pas-de-_brand.yml-du-bloc-1" id="toc-pas-de-_brand.yml-du-bloc-1" class="nav-link" data-scroll-target="#pas-de-_brand.yml-du-bloc-1">Pas de <code>_brand.yml</code> du Bloc 1 ?</a></li>
+  <li><a href="#bloqué" id="toc-bloqué" class="nav-link" data-scroll-target="#bloqué">Bloqué ?</a></li>
+  <li><a href="#modèle-_quarto.yml-pour-les-étapes-2a-2b" id="toc-modèle-_quarto.yml-pour-les-étapes-2a-2b" class="nav-link" data-scroll-target="#modèle-_quarto.yml-pour-les-étapes-2a-2b">Modèle <code>_quarto.yml</code> pour les étapes 2a + 2b</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/edit/main/2-projets/index.qmd" class="toc-action"><i class="bi bi-github"></i>Modifier cette page</a></li><li><a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/issues/new" class="toc-action"><i class="bi empty"></i>Faire part d'un problème</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Passer du document au livre</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>~40 minutes — après la pause
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<section id="diapos" class="level2">
+<h2 class="anchored" data-anchor-id="diapos">Diapos</h2>
+<p><i class="fa-solid fa-tv" aria-label="tv"></i> <a href="2-projets.html" target="_blank">Ouvrir les diapos en plein écran</a></p>
+<iframe class="slide-deck" src="2-projets.html" height="420" width="747" style="border: 1px solid #123233;"></iframe>
+</section>
+<section id="points-couverts" class="level2">
+<h2 class="anchored" data-anchor-id="points-couverts">Points couverts</h2>
+<section id="à-la-fin-de-ce-bloc-vous-saurez" class="level3">
+<h3 class="anchored" data-anchor-id="à-la-fin-de-ce-bloc-vous-saurez">À la fin de ce bloc, vous saurez</h3>
+<ul>
+<li>Régler <code>format: typst</code> et <code>_brand.yml</code> une seule fois pour tout le projet, dans <code>_quarto.yml</code></li>
+<li>Assembler plusieurs <code>.qmd</code> en un livre avec <code>type: book</code> (TOC, numérotation, références croisées)</li>
+<li>Reconnaître que <code>format: typst</code> + <code>type: book</code> active automatiquement l’extension orange-book (Quarto 1.9)</li>
+</ul>
+</section>
+<section id="le-déroulé-my-turn-our-turn-your-turn" class="level3">
+<h3 class="anchored" data-anchor-id="le-déroulé-my-turn-our-turn-your-turn">Le déroulé — My turn → Our turn → Your turn</h3>
+<ul>
+<li><strong>My turn</strong> — je présente à partir des diapos (ci-dessus).</li>
+<li><strong>Our turn</strong> — démo live (5-6 min) : on crée un <code>_quarto.yml</code> puis on bascule le projet en livre.
+<ol type="1">
+<li>Créer <code>_quarto.yml</code> avec <code>project: { type: default }</code> + <code>format: typst</code> → 5 PDF séparés</li>
+<li>Passer à <code>type: book</code> + bloc <code>book: { title, chapters }</code> → <strong>PDF unique</strong> avec couverture orange-book, TOC, numérotation par chapitre</li>
+</ol></li>
+<li><strong>Your turn</strong> — à vous l’<strong>Exercice 2</strong> ci-dessous : le reste (<code>appendices</code>, <code>_brand.yml</code> projet, références croisées, pagebreak).</li>
+</ul>
+</section>
+</section>
+<section id="exercice-2" class="level2">
+<h2 class="anchored" data-anchor-id="exercice-2">Exercice 2</h2>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>🧭 Boussole = suivi live · cette page = le détail
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong><a href="../2-projets/boussole.html" target="_blank">Boussole Exercice 2</a></strong> — à suivre <strong>pendant l’exercice</strong> : les étapes en bref + le chrono, à garder ouverte en <strong>second écran</strong>.</li>
+<li><strong>Cette page</strong> — le <strong>détail complet</strong> : étapes pas à pas (« Vous devriez voir »), la doc utile par étape, le modèle <code>_quarto.yml</code> et la correction.</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>L’Exercice 2 est <strong>indépendant de l’Exercice 1</strong> : si vous n’avez pas terminé le Bloc 1, partez directement du dossier <code>starter/</code> ci-dessous.</p>
+<p>📄 La <strong>charte Star Wars</strong> reste votre référence visuelle (même <code>charte-starwars.pdf</code> qu’au Bloc 1, fourni dans le starter) — vous ne la retraduisez pas ici, vous appliquez le <code>_brand.yml</code> que vous avez déjà (ou celui de secours) à un projet livre.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avertissement</span>À vous !
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>🎯 <strong>Objectif :</strong> transformer 5 <code>.qmd</code> en un livre PDF Typst stylé via <code>_quarto.yml</code> + <code>_brand.yml</code>.</p>
+<p>Fichier : <i class="fa-solid fa-download" aria-label="download"></i> <a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises/02-projet-book/starter">exercises/02-projet-book/starter/</a></p>
+<p><strong>3 étapes principales (15 min) — attendues de tous :</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Action</th>
+<th>Vous devriez voir</th>
+<th style="text-align: center;">Doc</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Créer <code>_quarto.yml</code> à la racine du starter : un projet (<code>project.type: default</code>) et <code>format: typst</code> (modèle complet à copier plus bas).</td>
+<td>5 PDF séparés (un par fichier).<br><strong>⚠️ Normal à ce stade :</strong> une référence croisée non résolue (<code>?@sec-origines</code>) + un <em>warning</em> à la compilation — ça se résout en mode livre à l’étape 2a.</td>
+<td style="text-align: center;"><a href="#doc-e1"><i class="fa-solid fa-link" aria-label="link"></i></a></td>
+</tr>
+<tr class="even">
+<td>2a</td>
+<td>Passer à <code>project.type: book</code> et ajouter un bloc <code>book:</code> avec <code>title</code>, <code>author</code> et la liste <code>chapters:</code> (cf.&nbsp;modèle plus bas). Le <code>format: typst</code> reste — orange-book s’active automatiquement.</td>
+<td><strong>PDF unique</strong> + couverture orange-book + Figure 1.1 / Figure 2.1 / Table 1.1 / Table 2.1 + TOC. <code>annexe-donnees</code> apparaît comme dernier chapitre numéroté.</td>
+<td style="text-align: center;"><a href="#doc-2a"><i class="fa-solid fa-link" aria-label="link"></i></a></td>
+</tr>
+<tr class="odd">
+<td>2b</td>
+<td>Ajouter <code>appendices: [annexe-donnees.qmd]</code> au bloc <code>book:</code>.</td>
+<td><code>annexe-donnees</code> bascule en « Annexe A » à la fin du livre, hors numérotation des chapitres.</td>
+<td style="text-align: center;"><a href="#doc-2b"><i class="fa-solid fa-link" aria-label="link"></i></a></td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>Copier <code>_brand.yml</code> (+ <code>_logo-sw.svg</code> + <code>_fonts/</code>) à la racine. Si vous avez fini Bloc 1 → reprenez votre <code>_brand.yml</code>. Sinon → renommez <a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/_brand-starter.yml"><code>_brand-starter.yml</code></a> en <code>_brand.yml</code>. (Le <code>charte-starwars.pdf</code> du starter reste votre référence visuelle.)</td>
+<td>Couverture aux couleurs Star Wars (bande imperial-red + logo étoile jaune), titres Star Jedi, corps Inter. (Les tableaux <code>gt</code> restent bruts à ce stade — leur mise aux couleurs de la charte est l’objet du Bonus B4.)</td>
+<td style="text-align: center;"><a href="#doc-e3"><i class="fa-solid fa-link" aria-label="link"></i></a></td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Le chapitre « Origines » s’affiche « Nrigines » ?</strong> Même règle du jeu qu’au Bloc 1 : la fonte décorative Star Jedi stylise les initiales majuscules I/O/Q/U — c’est normal. Explication + les deux façons de corriger (simple ou Typst) sur la <a href="../1-quarto-typst/index.html">page Exercice 1</a>.</p>
+</div>
+</div>
+</div>
+<p><strong>+ 2 bonus (3 min, pour les rapides) :</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Action</th>
+<th>Vous devriez voir</th>
+<th style="text-align: center;">Doc</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>B1</td>
+<td>Dans <code>conclusion.qmd</code>, référencer <code>@fig-anatomie-mass</code> et <code>@sec-origines</code>.</td>
+<td>« Comme l’a montré la <strong>Figure 1.1</strong>… » avec lien actif.</td>
+<td style="text-align: center;"><a href="#doc-b1"><i class="fa-solid fa-link" aria-label="link"></i></a></td>
+</tr>
+<tr class="even">
+<td>B2</td>
+<td>Saut de page conditionnel à la fin de <code>conclusion.qmd</code> (bloc ci-dessous).</td>
+<td>Saut de page entre conclusion et annexe <strong>dans le PDF uniquement</strong>.</td>
+<td style="text-align: center;"><a href="#doc-b2"><i class="fa-solid fa-link" aria-label="link"></i></a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>B2 — bloc à coller en fin de <code>conclusion.qmd</code></strong> :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>::: {.content-visible when-format="typst"}</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>{{&lt; pagebreak &gt;}}</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>📖 Doc utile par étape
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Pour chaque étape, la page (et la section) à ouvrir — le lien <i class="fa-solid fa-link" aria-label="link"></i> de chaque ligne du tableau y mène directement. La doc Quarto/brand-yml est faite pour être consultée en cours de route :</p>
+<ul>
+<li><span id="doc-e1"><strong>Étape 1</strong></span> — <a href="https://quarto.org/docs/projects/quarto-projects.html">Projets › Project Metadata</a></li>
+<li><span id="doc-2a"><strong>Étape 2a</strong></span> — <a href="https://quarto.org/docs/books/">Books</a> · <a href="https://quarto.org/docs/books/book-structure.html">book structure</a></li>
+<li><span id="doc-2b"><strong>Étape 2b</strong></span> — <a href="https://quarto.org/docs/books/book-structure.html#parts-appendices">book structure › appendices</a></li>
+<li><span id="doc-e3"><strong>Étape 3</strong></span> — <a href="https://quarto.org/docs/authoring/brand.html"><code>_brand.yml</code> › Project-level brand</a></li>
+<li><span id="doc-b1"><strong>Bonus B1</strong></span> — <a href="https://quarto.org/docs/authoring/cross-references.html">Cross-references › Figures &amp; Sections</a></li>
+<li><span id="doc-b2"><strong>Bonus B2</strong></span> — <a href="https://quarto.org/docs/authoring/conditional.html">Conditional › content-visible</a></li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Mise en garde</span>🆘 Si vous bloquez après ~5 min sur une étape
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Relisez l’objectif + le « Vous devriez voir » de l’étape.</li>
+<li>Ouvrez le lien <i class="fa-solid fa-link" aria-label="link"></i> de l’étape (ou le bloc <strong>Doc utile par étape</strong> ci-dessus) et cherchez la section indiquée.</li>
+<li>Ouvrez <a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises/02-projet-book/correction"><code>exercises/02-projet-book/correction/</code></a> (filet final).</li>
+</ol>
+</div>
+</div>
+<section id="mémo-rapide-starter" class="level3">
+<h3 class="anchored" data-anchor-id="mémo-rapide-starter">Mémo rapide starter</h3>
+</section>
+</section>
+<section id="exercice-2-starter" class="level2">
+<h2 class="anchored" data-anchor-id="exercice-2-starter">Exercice 2 — Starter</h2>
+<blockquote class="blockquote">
+<p><strong>Mémo du dossier <code>starter/</code>.</strong> Contenu et commande de rendu ci-dessous. Le pas-à-pas complet (étapes, indices doc, modèle <code>_quarto.yml</code>, « Si vous bloquez ») est sur la page de l’exercice.</p>
+</blockquote>
+<section id="contenu-du-dossier" class="level3">
+<h3 class="anchored" data-anchor-id="contenu-du-dossier">Contenu du dossier</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Fichier</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>index.qmd</code></td>
+<td>Préface du livre (à garder)</td>
+</tr>
+<tr class="even">
+<td><code>01-anatomie.qmd</code></td>
+<td>Chapitre 1 (à garder)</td>
+</tr>
+<tr class="odd">
+<td><code>02-origines.qmd</code></td>
+<td>Chapitre 2 (à garder)</td>
+</tr>
+<tr class="even">
+<td><code>conclusion.qmd</code></td>
+<td>Conclusion (à garder)</td>
+</tr>
+<tr class="odd">
+<td><code>annexe-donnees.qmd</code></td>
+<td>Sera basculé en annexe à l’étape 2b</td>
+</tr>
+<tr class="even">
+<td><code>charte-starwars.pdf</code></td>
+<td><strong>Charte graphique</strong> Star Wars (référence visuelle pour l’étape 3)</td>
+</tr>
+<tr class="odd">
+<td><code>exercice-02.Rproj</code></td>
+<td>Projet RStudio — <strong>double-cliquez-le</strong> pour ouvrir l’exercice (répertoire de travail correct)</td>
+</tr>
+<tr class="even">
+<td><em>(pas de <code>_quarto.yml</code>)</em></td>
+<td><strong>À créer à l’étape 1</strong></td>
+</tr>
+<tr class="odd">
+<td><em>(pas de <code>_brand.yml</code>)</em></td>
+<td><strong>À copier à l’étape 3</strong> (ou traduire d’après la charte)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="rendu" class="level3">
+<h3 class="anchored" data-anchor-id="rendu">Rendu</h3>
+<p>Une fois le <code>_quarto.yml</code> créé (étape 1), rendez le projet depuis ce dossier :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Résultat après les 3 étapes : un livre PDF Typst unique, stylé.</p>
+</section>
+<section id="pas-de-_brand.yml-du-bloc-1" class="level3">
+<h3 class="anchored" data-anchor-id="pas-de-_brand.yml-du-bloc-1">Pas de <code>_brand.yml</code> du Bloc 1 ?</h3>
+<p>Ces fichiers sont fournis <strong>à la racine de l’exercice</strong> (le dossier qui contient <code>starter/</code>) — posés par <code>tutoquartotypst::installer_exercices()</code>, ou sur GitHub. Copiez-les à la racine de votre projet :</p>
+<ul>
+<li><a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/_brand-starter.yml"><code>_brand-starter.yml</code></a> → renommer en <code>_brand.yml</code></li>
+<li><a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/_logo-sw.svg"><code>_logo-sw.svg</code></a></li>
+</ul>
+</section>
+<section id="bloqué" class="level3">
+<h3 class="anchored" data-anchor-id="bloqué">Bloqué ?</h3>
+<p>Cf. le bloc « Si vous bloquez » sur le site (page exo) ou la <a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises/02-projet-book/correction"><code>correction/</code></a> en dernier recours.</p>
+</section>
+<section id="modèle-_quarto.yml-pour-les-étapes-2a-2b" class="level3">
+<h3 class="anchored" data-anchor-id="modèle-_quarto.yml-pour-les-étapes-2a-2b">Modèle <code>_quarto.yml</code> pour les étapes 2a + 2b</h3>
+<p>Si vous bloquez sur la syntaxe, voici un exemple complet à adapter. À l’<strong>étape 2a</strong>, <code>annexe-donnees.qmd</code> est le dernier item de <code>chapters:</code> (dernier chapitre numéroté). À l’<strong>étape 2b</strong>, déplacez-le sous <code>appendices:</code> (décommentez le bloc) — il bascule alors en « Annexe A » :</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>_quarto.yml</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-filename="_quarto.yml"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">project</span><span class="kw">:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> book</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lang</span><span class="kw">:</span><span class="at"> fr</span><span class="co">          # ← labels en français : « Chapitre », « Table des matières »</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">book</span><span class="kw">:</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Anatomie d'une saga"</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Mon Mothma"</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">chapters</span><span class="kw">:</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> index.qmd</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> 01-anatomie.qmd</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> 02-origines.qmd</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> conclusion.qmd</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> annexe-donnees.qmd</span><span class="co">   # ← état 2a : dernier chapitre numéroté</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">  # appendices:            # ← étape 2b : déplacez la ligne ci-dessus ICI</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">  #   - annexe-donnees.qmd #    (annexe-donnees passe de chapitre à « Annexe A »)</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">typst</span><span class="kw">:</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">    # Logo personnalisé : sans cette section, Quarto place le logo</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co">    # `_brand.yml` à 1.5in width / 0.75in padding par défaut, ce qui</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co">    # chevauche les titres dès la 2e page.</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co">    # NB : `sw-star` est défini par `_brand.yml` (étape 3) — avant, ce</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co">    #      bloc est sans effet (logo absent, aucune erreur).</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">logo</span><span class="kw">:</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">path</span><span class="kw">:</span><span class="at"> sw-star</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">location</span><span class="kw">:</span><span class="at"> left-top</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">width</span><span class="kw">:</span><span class="at"> 0.6in</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">padding</span><span class="kw">:</span><span class="at"> 0.4in</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="fu">execute</span><span class="kw">:</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">echo</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">warning</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">message</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><code>chapters:</code> reçoit les fichiers numérotés normalement. <code>appendices:</code> (parallèle à <code>chapters:</code>, pas dedans) reçoit les fichiers qui sortent du flux principal — ils deviennent A, B, C… après tous les chapitres.</p>
+<p><strong>Rendre le projet</strong> : lancez <code>quarto render</code> <strong>à la racine du dossier</strong> (là où se trouve <code>_quarto.yml</code>), ou utilisez le bouton <strong>Render</strong> de RStudio / Positron. Quarto rend alors <strong>tout le projet</strong> d’un coup — pas besoin de cibler un fichier précis.</p>
+<div class="callout callout-style-simple callout-warning no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>À l’inverse, <code>quarto render</code> lancé dans un dossier <strong>sans</strong> <code>_quarto.yml</code> ne fait <strong>rien</strong> (pas d’erreur, juste aucun fichier produit). Créez d’abord le <code>_quarto.yml</code> de l’étape 1 ; pour rendre un fichier isolé avant ça, nommez-le : <code>quarto render index.qmd</code>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avertissement</span>Polices de la charte non chargées (Quarto &lt; v1.10.4)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sur <strong>Quarto stable <code>1.9.x</code></strong> ou <strong>pre-release <code>1.10.0</code> à <code>1.10.3</code></strong>, les polices déclarées dans <code>_brand.yml</code> ne sont pas passées automatiquement à Typst en mode <code>book</code> (titres en serif au lieu de Star Jedi, warning <code>unknown font family: ...</code> à la compilation). Bug corrigé par <a href="https://github.com/quarto-dev/quarto-cli/pull/14517">quarto-dev/quarto-cli#14517</a>, fix livré à partir de la pre-release <code>v1.10.4</code>.</p>
+<p>Si vous êtes sur une version concernée, ajoutez ce bloc dans <code>format.typst</code> de votre <code>_quarto.yml</code> :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">typst</span><span class="kw">:</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">font-paths</span><span class="kw">:</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> .quarto/typst/fonts</span><span class="co">   # cache des polices Google (Inter)</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> _fonts</span><span class="co">                # polices locales `source: file` (Star Jedi)</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Sur Quarto <code>v1.10.4+</code>, ce bloc est inutile (anodin mais redondant).</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avertissement</span>Bug <code>gt</code> à connaître (étape 3)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Si vous voyez « 1 7 5 » au lieu de « 175 » dans les tableaux après avoir copié <code>_brand.yml</code> (typique sur Windows/macOS), c’est un bug connu de <code>gt</code> → Typst quand les polices de remplacement du tableau s’appliquent. <strong>Correction</strong> : ajoutez <code>|&gt; opt_table_font(font = "Inter")</code> à la fin de votre pipeline <code>gt</code>. Non bloquant — vous pouvez continuer sans.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-warning no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Pas de <code>_brand.yml</code> ? Copiez les fichiers fournis à la racine du dossier exo : <a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/_brand-starter.yml"><code>exercises/02-projet-book/_brand-starter.yml</code></a> (à renommer en <code>_brand.yml</code>) et <a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/_logo-sw.svg"><code>exercises/02-projet-book/_logo-sw.svg</code></a>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Les bonus B3 et B4 ci-dessous, c’est pour aller plus loin</strong> — à explorer après l’atelier si vous manquez de temps en séance.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Bonus B3 — Changer de palette Star Wars
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>La correction propose 3 variantes de <code>_brand.yml</code> clés en main : Empire / Sith (rouge), Jedi / R2-D2 (bleu), Mandalorien (crimson). Pour permuter sans renommer de fichier, ajoutez dans <code>_quarto.yml</code> :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">brand</span><span class="kw">:</span><span class="at"> _brand-jedi.yml</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Testez <code>_brand-jedi.yml</code> ou <code>_brand-mando.yml</code> pour voir un vrai changement : <code>_brand-empire.yml</code> est <strong>identique au <code>_brand.yml</code> par défaut</strong> (l’Empire est la palette de référence du livre), donc le pointer dessus ne modifie rien à l’écran.</p>
+<p>Détails et explication du choix de couleur (pourquoi pas le jaune SW iconique en <code>primary</code>) dans le <a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/blob/main/exercises/02-projet-book/README.md#bonus-b3--changer-de-palette-star-wars">README de l’exercice</a>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Astuce</span>Bonus B4 — Brander tableaux et graphiques avec votre <code>_brand.yml</code>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Le paquet R <a href="https://posit-dev.github.io/brand-yml/pkg/r/"><code>brand.yml</code></a> lit votre charte depuis R et fournit les helpers <code>read_brand_yml()</code>, <code>brand_color_pluck()</code>, <code>theme_brand_gt()</code> et <code>theme_brand_ggplot2()</code>. Couplés à <code>gt::tab_style()</code>, ils appliquent vos couleurs Star Wars à tous les tableaux et graphiques du livre sans dupliquer aucun hex.</p>
+<p><strong>Le moment « waouh »</strong> : combinez ce bonus avec le Bonus B3 (changement de palette). Une seule ligne YAML modifiée fait suivre les lignes 1 des tableaux, les barres du graphique espèces, et les annotations Jabba/Yoda du nuage taille-masse — la charte pilote le PDF <em>et</em> toutes les sorties R depuis un seul fichier.</p>
+<p><strong>Étape 1 — Mise en place.</strong> Ce bonus suppose les paquets <code>brand.yml</code> et <code>prismatic</code> <strong>installés</strong> (cf.&nbsp;<a href="../preparatifs.html">Préparatifs</a>) — sinon <code>library(prismatic)</code> échoue et tout le chapitre cesse de se rendre. Dans le bloc <code>setup-*</code> de chaque chapitre, ajoutez :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(brand.yml)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(prismatic)               <span class="co"># pour dériver des teintes crème de la charte</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>brand <span class="ot">&lt;-</span> <span class="fu">read_brand_yml</span>()</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>pal <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">brand_color_pluck</span>(brand, x)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Teintes crème (striping + filets) dérivées de la palette ; clr_darken renvoie</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># un hex à canal alpha (#RRGGBBAA) → substr(., 1, 7) le tronque en #RRGGBB.</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>teinte <span class="ot">&lt;-</span> <span class="cf">function</span>(x, f) <span class="fu">substr</span>(<span class="fu">as.character</span>(<span class="fu">clr_darken</span>(<span class="fu">pal</span>(x), f)), <span class="dv">1</span>, <span class="dv">7</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Étape 2a — Un habillage <code>gt</code> réutilisable.</strong> Plutôt que de répéter les mêmes <code>tab_style()</code> sur chaque tableau, on les regroupe dans <strong>un helper</strong> appliqué partout : police Inter (corrige le « 1 7 5 »), bandeau titre jaune, en-têtes noir/crème, striping crème et filets imperial-red — <strong>toutes les couleurs viennent de <code>_brand.yml</code></strong> :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>styliser_brand <span class="ot">&lt;-</span> <span class="cf">function</span>(t) {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  t <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_brand_gt</span>(brand) <span class="sc">|&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">opt_table_font</span>(<span class="at">font =</span> <span class="st">"Inter"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">opt_row_striping</span>() <span class="sc">|&gt;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tab_style</span>(<span class="at">style =</span> <span class="fu">list</span>(<span class="fu">cell_fill</span>(<span class="at">color =</span> <span class="fu">pal</span>(<span class="st">"sw_yellow"</span>)),</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">cell_text</span>(<span class="at">weight =</span> <span class="st">"bold"</span>, <span class="at">color =</span> <span class="fu">pal</span>(<span class="st">"foreground"</span>))),</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="at">groups =</span> <span class="st">"title"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tab_style</span>(<span class="at">style =</span> <span class="fu">list</span>(<span class="fu">cell_fill</span>(<span class="at">color =</span> <span class="fu">pal</span>(<span class="st">"foreground"</span>)),</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="fu">pal</span>(<span class="st">"background"</span>), <span class="at">weight =</span> <span class="st">"bold"</span>)),</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>              <span class="at">locations =</span> <span class="fu">cells_column_labels</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tab_options</span>(</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">row.striping.background_color     =</span> <span class="fu">teinte</span>(<span class="st">"background"</span>, <span class="fl">0.06</span>),</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">table_body.hlines.color           =</span> <span class="fu">teinte</span>(<span class="st">"background"</span>, <span class="fl">0.12</span>),</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">table.border.top.color            =</span> <span class="fu">pal</span>(<span class="st">"primary"</span>),    <span class="at">table.border.top.width            =</span> <span class="fu">px</span>(<span class="dv">2</span>),</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">table.border.bottom.color         =</span> <span class="fu">pal</span>(<span class="st">"primary"</span>),    <span class="at">table.border.bottom.width         =</span> <span class="fu">px</span>(<span class="dv">2</span>),</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">column_labels.border.bottom.color =</span> <span class="fu">pal</span>(<span class="st">"primary"</span>),    <span class="at">column_labels.border.bottom.width =</span> <span class="fu">px</span>(<span class="dv">2</span>),</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">heading.align                     =</span> <span class="st">"left"</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="co"># usage : votre_table |&gt; gt() |&gt; tab_header(...) |&gt; cols_label(...) |&gt; styliser_brand()</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Étape 2b — Faire ressortir le chiffre clé.</strong> Deux stratégies selon la donnée :</p>
+<ul>
+<li><strong>Colonne bien répartie</strong> (comptages : <code>n</code> des mondes natals, <code>n_films</code> des piliers) → un <strong>dégradé <code>data_color()</code></strong> crème → jaune → rouge transforme la colonne en mini-heatmap (Naboo/R2-D2 ressortent) :</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>... <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">styliser_brand</span>() <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data_color</span>(<span class="at">columns =</span> n,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">palette  =</span> <span class="fu">c</span>(<span class="fu">pal</span>(<span class="st">"background"</span>), <span class="fu">pal</span>(<span class="st">"sw_yellow"</span>), <span class="fu">pal</span>(<span class="st">"primary"</span>)),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">apply_to =</span> <span class="st">"fill"</span>)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><strong>Valeur aberrante</strong> (masse : Jabba à 1 358 écrase tout dégradé) → un simple <strong>surlignage de la ligne 1</strong> en imperial-red ressort mieux :</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>... <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">styliser_brand</span>() <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(<span class="at">style =</span> <span class="fu">list</span>(<span class="fu">cell_fill</span>(<span class="at">color =</span> <span class="fu">pal</span>(<span class="st">"primary"</span>)),</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="fu">pal</span>(<span class="st">"background"</span>), <span class="at">weight =</span> <span class="st">"bold"</span>)),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">locations =</span> <span class="fu">cells_body</span>(<span class="at">rows =</span> <span class="dv">1</span>))</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Étape 3 — Graphiques <code>ggplot2</code>.</strong> Ajoutez <code>theme_brand_ggplot2(brand)</code> à la fin de chaque pipeline <code>ggplot()</code>. Remplacez les couleurs en dur par <code>pal("primary")</code> (utile pour le <code>geom_col</code> des espèces dans <code>02-origines.qmd</code>).</p>
+<p>Pour une <strong>légende à deux couleurs</strong> (ex. Cas remarquables / Autres dans <code>01-anatomie.qmd</code>), le même principe s’applique via <code>scale_color_manual(values = c(...))</code> — voir la correction.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(...) <span class="sc">+</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="fu">pal</span>(<span class="st">"primary"</span>)) <span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  ... <span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">11</span>) <span class="sc">+</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_brand_ggplot2</span>(brand)</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Vous devriez voir : bandeau titre jaune SW + en-têtes noir/crème + <strong>striping crème + filets imperial-red</strong> dans tous les tableaux ; le chiffre clé en <strong>dégradé</strong> (mondes natals, films) ou en <strong>ligne-1 rouge</strong> (masses) ; et fond crème + axes noirs sur les graphiques.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2-gt.png" class="img-fluid figure-img" alt="Tableau gt « Les colosses de la galaxie » rendu en PDF Typst avec la mise en forme issue de `_brand.yml` : bandeau titre jaune Star Wars, en-têtes noir SW sur texte crème, ligne Jabba surlignée en rouge impérial, lignes alternées en striping crème, filets imperial-red autour du tableau."></p>
+<figcaption>Aperçu du tableau « Les colosses de la galaxie » dans la correction : bandeau titre jaune SW, en-têtes de colonnes en noir SW (texte crème), ligne 1 (Jabba Desilijic Tiure) en rouge impérial avec texte crème gras, lignes suivantes en striping crème, le tout encadré de filets imperial-red.</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Piège à connaître sur les clés palette
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>brand.yml</code> normalise les clés palette <code>tiret-séparé</code> en <code>tiret_souligné</code> à la lecture. Donc dans votre code R : <code>pal("sw_yellow")</code> (pas <code>pal("sw-yellow")</code>). Si vous vous trompez de clé, <code>brand_color_pluck()</code> ne lève pas d’erreur lui-même : il renvoie la chaîne d’entrée telle quelle (<code>"sw-yellow"</code>). Cette valeur, n’étant pas une couleur valide, fait ensuite <strong>planter le rendu</strong> au niveau de <code>cell_fill()</code> / <code>data_color()</code> — un message d’erreur Typst peu parlant. Le réflexe : vérifier d’abord vos clés palette (underscore, pas tiret).</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Avertissement</span>Correction
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><i class="fa-solid fa-download" aria-label="download"></i> <a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/tree/main/exercises/02-projet-book/correction">Voir la correction</a></p>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copié");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copié");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../1-quarto-typst/index.html" class="pagination-link" aria-label="Bloc 1 — PDF avec Typst">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Bloc 1 — PDF avec Typst</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../3-aller-plus-loin/index.html" class="pagination-link" aria-label="Pour aller plus loin...">
+        <span class="nav-page-text">Pour aller plus loin…</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© CC BY 4.0 · Christophe Dervieux &amp; Maëlle Salmon · Rencontres R 2026</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/edit/main/2-projets/index.qmd" class="toc-action"><i class="bi bi-github"></i>Modifier cette page</a></li><li><a href="https://github.com/cderv/tuto-quarto-typst-rr-2026/issues/new" class="toc-action"><i class="bi empty"></i>Faire part d'un problème</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>Site construit avec <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

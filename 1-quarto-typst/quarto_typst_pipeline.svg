@@ -1,0 +1,41 @@
+<svg width="100%" viewBox="0 0 680 170" role="img" xmlns="http://www.w3.org/2000/svg"
+     font-family="-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, sans-serif">
+  <title>Pipeline Quarto vers PDF Typst</title>
+  <desc>Pipeline en trois étapes : rapport.qmd est converti par Pandoc en rapport.typ, puis par Typst en rapport.pdf. Le fichier intermédiaire rapport.typ est conservé grâce à l'option keep-typ.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <!-- Box 1: rapport.qmd (source) -->
+  <g>
+    <rect x="40" y="48" width="160" height="64" rx="10" fill="rgb(8, 80, 65)" stroke="rgb(93, 202, 165)" stroke-width="0.5"/>
+    <text x="120" y="72" text-anchor="middle" dominant-baseline="central" font-size="12" fill="rgb(93, 202, 165)">source</text>
+    <text x="120" y="92" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="rgb(159, 225, 203)">rapport.qmd</text>
+  </g>
+
+  <!-- Arrow 1 + Pandoc label -->
+  <line x1="200" y1="80" x2="258" y2="80" marker-end="url(#arrow)" fill="none" stroke="rgb(156, 154, 146)" stroke-width="1.5"/>
+  <text x="229" y="68" text-anchor="middle" dominant-baseline="central" font-size="12" fill="rgb(120, 118, 110)">Pandoc</text>
+
+  <!-- Box 2: rapport.typ (intermédiaire) -->
+  <g>
+    <rect x="260" y="48" width="160" height="64" rx="10" fill="rgb(60, 52, 137)" stroke="rgb(175, 169, 236)" stroke-width="0.5"/>
+    <text x="340" y="72" text-anchor="middle" dominant-baseline="central" font-size="12" fill="rgb(175, 169, 236)">intermédiaire</text>
+    <text x="340" y="92" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="rgb(206, 203, 246)">rapport.typ</text>
+  </g>
+  <!-- Annotation keep-typ sous la box intermédiaire -->
+  <text x="340" y="132" text-anchor="middle" dominant-baseline="central" font-size="12" font-style="italic" fill="rgb(96, 86, 173)">gardé grâce à keep-typ</text>
+
+  <!-- Arrow 2 + Typst label -->
+  <line x1="420" y1="80" x2="478" y2="80" marker-end="url(#arrow)" fill="none" stroke="rgb(156, 154, 146)" stroke-width="1.5"/>
+  <text x="449" y="68" text-anchor="middle" dominant-baseline="central" font-size="12" fill="rgb(120, 118, 110)">Typst</text>
+
+  <!-- Box 3: rapport.pdf (sortie) -->
+  <g>
+    <rect x="480" y="48" width="160" height="64" rx="10" fill="rgb(113, 43, 19)" stroke="rgb(240, 153, 123)" stroke-width="0.5"/>
+    <text x="560" y="72" text-anchor="middle" dominant-baseline="central" font-size="12" fill="rgb(240, 153, 123)">sortie</text>
+    <text x="560" y="92" text-anchor="middle" dominant-baseline="central" font-size="14" font-weight="500" fill="rgb(245, 196, 179)">rapport.pdf</text>
+  </g>
+</svg>

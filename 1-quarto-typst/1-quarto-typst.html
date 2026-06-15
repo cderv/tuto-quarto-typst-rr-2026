@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-5947b73a06bce04bf1d622ae23e1ec5b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.11">
+
+  <meta name="author" content="Christophe Dervieux &amp; Maëlle Salmon">
+  <title>PDF sans frictions : Typst dans vos projets Quarto – Quarto &amp; PDF avec Typst</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-4ae2fb36ca4041eee5b9682bc3fb6bd2.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+<meta property="og:title" content="Quarto &amp; PDF avec Typst – PDF sans frictions : Typst dans vos projets Quarto">
+<meta property="og:description" content="PDF sans frictions : Typst dans vos projets Quarto">
+<meta property="og:site_name" content="PDF sans frictions : Typst dans vos projets Quarto">
+<meta name="twitter:title" content="Quarto &amp; PDF avec Typst – PDF sans frictions : Typst dans vos projets Quarto">
+<meta name="twitter:description" content="PDF sans frictions : Typst dans vos projets Quarto">
+<meta name="twitter:creator" content="@chrisderv">
+<meta name="twitter:card" content="summary">
+</head>
+<body class="quarto-light">
+<script src="mathjax-config.js"></script>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Quarto &amp; PDF avec Typst</h1>
+  <p class="subtitle">PDF sans frictions : Typst dans vos projets Quarto</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Christophe Dervieux &amp; Maëlle Salmon
+</div>
+        <p class="quarto-title-affiliation">
+            Posit / rOpenSci
+          </p>
+    </div>
+</div>
+
+  <p class="date">16 juin 2026</p>
+</section>
+<section id="le-rythme-du-tutoriel" class="slide level2">
+<h2>Le rythme du tutoriel</h2>
+<div class="columns">
+<div class="column" style="width:33%;">
+<div class="callout callout-note no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>My turn</strong></p>
+</div>
+<div class="callout-content">
+<p>Quelques slides pour poser les concepts clés.</p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="callout callout-tip no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Our turn</strong></p>
+</div>
+<div class="callout-content">
+<p>Démo live — vous suivez dans votre éditeur.</p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="callout callout-warning no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Your turn</strong></p>
+</div>
+<div class="callout-content">
+<p>Exercice en autonomie avec chronomètre.</p>
+</div>
+</div>
+</div>
+</div></div>
+<aside class="notes">
+<p>Expliquer le rythme dès le début. Chaque bloc suit ce cycle. L’idée c’est de passer un maximum de temps les mains dans le code, pas à regarder des slides.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="un-atelier-pour-tous-les-niveaux" class="slide level2">
+<h2>Un atelier pour tous les niveaux</h2>
+<ul>
+<li class="fragment"><strong>Exercices volontairement riches</strong> — pas grave si vous ne finissez pas en séance : tout reste à reprendre après (ressources + paquet R compagnon)</li>
+<li class="fragment"><strong>Pas besoin d’écrire du R</strong> — le cœur des exos, c’est Quarto / YAML / Typst ; le R des tableaux et graphes est déjà prêt dans les fichiers</li>
+<li class="fragment"><strong>Déjà à l’aise avec Quarto ?</strong> — partez en <strong>hors-piste</strong> : explorez le bonus <code>brand.yml</code> côté R (déjà dans les starters / corrections), doc à l’appui</li>
+</ul>
+<aside class="notes">
+<p>Annoncer dès le départ : tuto pensé pour <strong>tous les niveaux</strong>, le rythme My/Our/Your turn cale tout le monde. Trois messages : (1) les exos sont riches exprès — personne n’est censé tout boucler dans le chrono, le matériel reste à eux (site + paquet) pour rejouer après ; (2) débutant·es : on rassure, pas de R à écrire dans les étapes principales ; (3) avancé·es : on les invite explicitement à aller plus loin, hors-piste, vers le branding R (gt/ggplot) déjà présent dans les corrections, en s’aidant des docs — plutôt que d’attendre. ~45 s, ne pas s’attarder.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="code-de-conduite" class="slide level2">
+<h2>Code de conduite</h2>
+<p>Cet atelier s’inscrit dans le <strong>code de conduite des Rencontres R 2026</strong> — on s’engage à le faire respecter ici comme ailleurs.</p>
+<p>L’esprit, en deux mots :</p>
+<ul>
+<li>Un environnement <strong>bienveillant et sûr</strong>, sans harcèlement, pour toutes et tous</li>
+<li><strong>Respect et bienveillance</strong> dans le langage comme dans les échanges</li>
+<li>Un souci, une gêne ? <strong>Parlez-nous</strong> ou à un membre de l’orga (badge)</li>
+</ul>
+<p><a href="https://rr2026.sciencesconf.org/page/mentions_legales_chartes" target="_blank">Code de conduite complet des Rencontres R 2026</a></p>
+<aside class="notes">
+<p>30 secondes, ton sérieux mais sans plomber l’ambiance. Le message clé : on ne fait pas un code à part, on s’inclut dans celui de la conf et on s’engage à le faire vivre dans la salle. Rappeler qu’on est deux (Maëlle passe dans les rangs) et joignables si quoi que ce soit. Pas besoin de lire la liste : donner l’esprit et le lien.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="cest-quoi-typst" class="slide level2">
+<h2>C’est quoi Typst ?</h2>
+<p><a href="https://typst.app/">Typst</a> joue le même rôle que LaTeX : produire un PDF. Avec Quarto, vous restez côté Markdown — il traduit vers Typst tout seul.</p>
+<div class="fragment">
+<p>Ce que <strong>vous écrivez</strong> (Markdown) :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a></a><span class="fu"># Mon rapport</span></span>
+<span id="cb1-2"><a></a></span>
+<span id="cb1-3"><a></a>Un mot **en gras**</span>
+<span id="cb1-4"><a></a>et un <span class="co">[</span><span class="ot">lien</span><span class="co">](https://example.org)</span>.</span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment">
+<p>Ce que <strong>Quarto génère</strong> (Typst) :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource typ number-lines code-with-copy"><code class="sourceCode typst"><span id="cb2-1"><a></a><span class="fu">= Mon rapport</span></span>
+<span id="cb2-2"><a></a></span>
+<span id="cb2-3"><a></a>Un mot <span class="kw">#</span>strong<span class="op">[</span>en gras<span class="op">]</span></span>
+<span id="cb2-4"><a></a>et un <span class="kw">#</span>link<span class="op">(</span><span class="st">"https://example.org"</span><span class="op">)[</span>lien<span class="op">].</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<aside class="notes">
+<p>Slide visuelle : le but n’est pas d’enseigner Typst, c’est de rassurer. “Tu écris du Markdown, t’as pas besoin d’apprendre Typst pour démarrer.” Le snippet Typst montre la traduction concrète — <code>=</code> pour le titre, <code>#strong[...]</code> pour le gras, <code>#link(...)[...]</code> pour les liens.</p>
+<p>Contrat oral : la slide suivante montre le pipeline (<code>.qmd → .typ → PDF</code>), et on ouvrira ensemble le vrai <code>.typ</code> un peu plus loin (<code>keep-typ: true</code>) — pas une option facultative. Le participant est prévenu, pas de surprise à l’Exo 1 étape 3.</p>
+<p>On y jettera un œil ensemble avec <code>keep-typ: true</code> — juste pour démystifier.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="du-.qmd-au-pdf" class="slide level2">
+<h2>Du <code>.qmd</code> au PDF</h2>
+
+<img data-src="quarto_typst_pipeline.svg" style="width:100.0%" alt="Pipeline en trois étapes : rapport.qmd (source) → Pandoc → rapport.typ (intermédiaire Typst) → Typst → rapport.pdf (sortie)." class="r-stretch"><aside class="notes">
+<p>Vue d’ensemble, posée juste après la traduction Markdown→Typst : où se place chaque pièce. Quarto (via Pandoc) traduit votre <code>.qmd</code> en <code>.typ</code>, puis Typst compile ce <code>.typ</code> en PDF. Ce <code>.typ</code> intermédiaire, on l’ouvrira concrètement un peu plus loin avec <code>keep-typ: true</code>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="format-typst-un-pdf-sans-latex" class="slide level2">
+<h2><code>format: typst</code> — un PDF sans LaTeX</h2>
+<p>Vous avez un document Quarto et vous voulez un PDF ?</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>rapport.qmd</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-filename="rapport.qmd"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a></a><span class="pp">---</span></span>
+<span id="cb3-2"><a></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Mon rapport"</span></span>
+<span id="cb3-3"><a></a><span class="fu">format</span><span class="kw">:</span><span class="at"> typst</span></span>
+<span id="cb3-4"><a></a><span class="pp">---</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ul>
+<li class="fragment"><strong>Rien à installer</strong> — Typst est intégré à Quarto depuis la version 1.5</li>
+<li class="fragment"><strong>Rapide</strong> — compilation en quelques secondes, pas plusieurs minutes</li>
+<li class="fragment"><strong>Erreurs lisibles</strong> — fini les messages LaTeX cryptiques</li>
+<li class="fragment"><strong>Léger</strong> — pas de distribution TeX de 1 Go à gérer</li>
+</ul>
+<aside class="notes">
+<p>Le point d’entrée : une seule ligne de YAML. Pas besoin de convaincre les gens que LaTeX est mauvais — montrer directement que Typst est simple.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="les-options-de-formats" class="slide level2">
+<h2>Les options de formats</h2>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>rapport.qmd</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-filename="rapport.qmd" data-code-line-numbers="3-5"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a></a><span class="pp">---</span></span>
+<span id="cb4-2"><a></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb4-3"><a></a><span class="at">  </span><span class="fu">typst</span><span class="kw">:</span></span>
+<span id="cb4-4"><a></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb4-5"><a></a><span class="at">    </span><span class="fu">papersize</span><span class="kw">:</span><span class="at"> a4</span></span>
+<span id="cb4-6"><a></a><span class="at">    </span><span class="fu">margin</span><span class="kw">:</span></span>
+<span id="cb4-7"><a></a><span class="at">      </span><span class="fu">x</span><span class="kw">:</span><span class="at"> 2.5cm</span></span>
+<span id="cb4-8"><a></a><span class="at">      </span><span class="fu">y</span><span class="kw">:</span><span class="at"> 2.5cm</span></span>
+<span id="cb4-9"><a></a><span class="pp">---</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment fade-in">
+<p>D’autres options existent (<code>mainfont</code>, <code>number-sections</code>, <code>linestretch</code>…) — on les verra en démo.</p>
+</div>
+<aside class="notes">
+<p>Ne pas tout montrer ici. Juste papersize et margin pour que les gens voient la structure YAML. Le reste sera manipulé en live.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="keep-typ-true-comprendre-les-coulisses" class="slide level2" data-footer="false">
+<h2><code>keep-typ: true</code> — comprendre les coulisses</h2>
+<p>Souvenez-vous du pipeline : le <code>.typ</code> intermédiaire, entre votre <code>.qmd</code> et le PDF. <code>keep-typ: true</code> le <strong>conserve</strong> sur le disque pour que vous puissiez l’ouvrir.</p>
+<div class="fragment fade-in">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>rapport.qmd</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" data-filename="rapport.qmd" data-code-line-numbers="4"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a></a><span class="pp">---</span></span>
+<span id="cb5-2"><a></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb5-3"><a></a><span class="at">  </span><span class="fu">typst</span><span class="kw">:</span></span>
+<span id="cb5-4"><a></a><span class="at">    </span><span class="fu">keep-typ</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb5-5"><a></a><span class="pp">---</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div class="fragment fade-in">
+<p>Le fichier <code>.typ</code> intermédiaire vous permet de :</p>
+<ul>
+<li>Comprendre ce que Quarto génère pour Typst</li>
+<li>Déboguer un rendu inattendu</li>
+<li>Apprendre la syntaxe Typst progressivement</li>
+</ul>
+</div>
+<aside class="notes">
+<p>Moment pédagogique clé. Le pipeline démystifie la magie : Quarto n’est pas une boîte noire, on peut voir ce qui se passe entre le .qmd et le .pdf.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="brand.yml-un-doc-stylé-en-un-fichier" class="slide level2">
+<h2><code>_brand.yml</code> — un doc stylé en un fichier</h2>
+<p>Un seul fichier YAML pour définir l’identité visuelle de vos documents :</p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>_brand.yml</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-filename="_brand.yml"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><a></a><span class="fu">color</span><span class="kw">:</span></span>
+<span id="cb6-2"><a></a><span class="at">  </span><span class="fu">primary</span><span class="kw">:</span><span class="at"> </span><span class="st">"#1a5276"</span></span>
+<span id="cb6-3"><a></a><span class="at">  </span><span class="fu">secondary</span><span class="kw">:</span><span class="at"> </span><span class="st">"#f39c12"</span></span>
+<span id="cb6-4"><a></a><span class="fu">typography</span><span class="kw">:</span></span>
+<span id="cb6-5"><a></a><span class="at">  </span><span class="fu">fonts</span><span class="kw">:</span></span>
+<span id="cb6-6"><a></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">family</span><span class="kw">:</span><span class="at"> </span><span class="st">"Noto Sans"</span></span>
+<span id="cb6-7"><a></a><span class="at">      </span><span class="fu">source</span><span class="kw">:</span><span class="at"> google</span></span>
+<span id="cb6-8"><a></a><span class="at">  </span><span class="fu">base</span><span class="kw">:</span><span class="at"> </span><span class="st">"Noto Sans"</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:45%;">
+<ul>
+<li class="fragment">Placez <code>_brand.yml</code> à côté de votre <code>.qmd</code></li>
+<li class="fragment">Quarto l’applique <strong>automatiquement</strong></li>
+<li class="fragment">Couleurs, polices, logo…</li>
+<li class="fragment">Fonctionne avec HTML, Typst, RevealJS…</li>
+</ul>
+</div></div>
+</section>
+<section id="brand.yml-un-doc-stylé-en-un-fichier-1" class="slide level2">
+<h2><code>_brand.yml</code> — un doc stylé en un fichier</h2>
+<div class="center" style="width:100%; margin:0 auto;">
+<p><img data-src="..\1-quarto-typst\typst-figures\typst-block-1.svg" class="img-fluid" alt="Schéma en étoile : au centre, le fichier _brand.yml ; des flèches partent vers cinq sorties qu'il stylise — PDF (Typst), Page web (HTML), Slides (RevealJS), Graphe ggplot2 et Tableau gt."></p>
+</div>
+<aside class="notes">
+<p><strong>Mention orale ~30 sec pendant la démo Our turn</strong> : le <code>_brand.yml</code> ne pilote pas que le PDF. Le paquet R <code>brand.yml</code> fournit des helpers <code>theme_brand_ggplot2()</code> et <code>theme_brand_gt()</code> qui appliquent la même charte aux figures et tableaux. Visible dans <code>correction/rapport-starwars.qmd</code>. On en parle pas plus, c’est dans les Ressources.</p>
+<p>Parler des helpers R <code>theme_brand_*()</code>.</p>
+<p>(La Q&amp;A sur le placement du logo — question d’étape 3 du Your turn — est dans <code>_speaker/demo-bloc1-our-turn.qmd</code>, section Pièges.)</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="voici-la-charte" class="slide level2" data-footer="false">
+<h2>Voici la charte</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><img data-src="charte-starwars.png" alt="Page A4 de la charte graphique Star Wars : logo étoile jaune en haut-gauche, titre 'CHARTE GRAPHIQUE' en rouge impérial gras, sous-titre Saga Star Wars, 4 échantillons de couleur (rouge impérial, noir SW, crème, jaune SW) avec codes hexadécimaux, titres de section (Palette, Typographie, Logo) en Star Jedi rouge impérial, sections Typographie (Star Jedi locale, Inter Google) et Logo, pied de page méta."></p>
+</div><div class="column" style="width:45%;">
+<ul>
+<li class="fragment">Une <strong>vraie charte</strong> à traduire</li>
+<li class="fragment">Palette nommée + rôles (<code>primary</code>, <code>foreground</code>, <code>background</code>)</li>
+<li class="fragment">Polices: Inter (Google) + Star Jedi (locale)</li>
+<li class="fragment">Ce PDF est lui-même rendu par Quarto + Typst + <code>_brand.yml</code> — vous allez faire pareil</li>
+</ul>
+</div></div>
+<aside class="notes">
+<p>Slide-pont entre le concept générique (<code>_brand.yml</code>) et la démo concrète. Le PDF est dans le starter de l’exercice — chaque apprenant·e l’ouvre côté lecteur PDF. <strong>Côté Our turn et Your turn</strong> : projeter <code>_charte/charte-starwars.pdf</code> à l’écran (ou via <code>1-quarto-typst/charte-starwars.png</code> si plus rapide) pour que l’apprenant·e voie cible et transcription en parallèle.</p>
+<p>Méta-cohérence pédagogique à expliciter à l’oral : « ce PDF que vous tenez n’est pas qu’une spec, c’est un exemple rendu — son logo, ses titres en Star Jedi rouge, sa palette viennent d’un <code>_brand.yml</code> identique à celui que vous allez écrire ».</p>
+<p>Le terme « rôles » dans nos supports correspond aux « assignments » de la charte (terme anglais conservé dans la spec <code>_brand.yml</code>) = mapping <code>primary</code> / <code>foreground</code> / <code>background</code> → noms de palette. Le préciser oralement (la charte n’a pas la place de l’expliquer).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="faisons-ensemble" class="slide level2">
+<h2>Faisons ensemble !</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Faisons ensemble !</strong></p>
+</div>
+<div class="callout-content">
+<p>On passe le doc en PDF Typst, puis on lui applique une couleur via <code>_brand.yml</code>.</p>
+<ol type="1">
+<li>Ouvrez <code>rapport-starwars.qmd</code> (dossier <code>01-document-typst/starter/</code>), passez <code>format: html</code> → <code>format: typst</code>, rendez → PDF brut</li>
+<li>Créez <code>_brand.yml</code> <strong>dans le même dossier</strong> (à côté du <code>.qmd</code>) avec <strong>une seule couleur</strong> + rôle <code>primary</code>, re-rendez → le lien de l’intro passe en rouge (<code>primary</code> colore les <strong>liens</strong>)</li>
+</ol>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>_brand.yml</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-filename="_brand.yml"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb7-1"><a></a><span class="fu">color</span><span class="kw">:</span></span>
+<span id="cb7-2"><a></a><span class="at">  </span><span class="fu">palette</span><span class="kw">:</span></span>
+<span id="cb7-3"><a></a><span class="at">    </span><span class="fu">imperial-red</span><span class="kw">:</span><span class="at"> </span><span class="st">"#BC1E22"</span></span>
+<span id="cb7-4"><a></a><span class="at">  </span><span class="fu">primary</span><span class="kw">:</span><span class="at"> imperial-red</span></span></code></pre></div><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>→ À vous ensuite pour la charte complète (palette + rôles + polices).</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Démo live, <strong>format ultra-court</strong> : 5-6 min max. Le pas-à-pas détaillé (snippet à coller, projection de la charte, ressources, pièges, transition Your turn) est dans le doc animateur dédié <code>_speaker/demo-bloc1-our-turn.qmd</code> — pas de duplication ici (le snippet est déjà sur la slide).</p>
+<p><strong>Pourquoi minimal</strong> : Our turn montre l’effet d’une édition YAML sur le PDF (une couleur → le lien passe en rouge), Your turn traduit la charte SW complète. Si Our turn fait tout, Your turn = répétition.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exercice-1" class="slide level2 wide-list">
+<h2>Exercice 1</h2>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>À vous !</strong></p>
+</div>
+<div class="callout-content">
+<p>🎯 Transformer un <code>.qmd</code> HTML en PDF Typst stylé via <code>_brand.yml</code>.</p>
+<p>📄 <strong>Charte fournie</strong> : <code>charte-starwars.pdf</code> dans le starter (palette + polices + logo + rôles).</p>
+<p>⏱ <strong>12 minutes</strong> — chrono + étapes projetés à l’écran.</p>
+<p>🧭 <a href="boussole.html" target="_blank" data-preview-link="false">Boussole</a> — objectif, étapes &amp; chrono, à garder sous les yeux</p>
+<p>📖 <a href="../1-quarto-typst/index.html">Page de l’exercice</a> — consigne détaillée, doc utile par étape, correction</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>12 minutes. Ouvrir la page boussole — <a href="boussole.html" target="_blank" data-preview-link="false"><code>1-quarto-typst/boussole.html</code></a> — dans un onglet à projeter à côté (countdown autonome, démarre au chargement). Maëlle passe dans les rangs pour aider les bloqué·e·s ; CD reste disponible au tableau pour rebondir sur les questions communes.</p>
+<p>Les problèmes fréquents : oubli des guillemets sur les couleurs hex dans brand.yml, nom de police Google mal orthographié, indentation YAML, et <strong>espacement parasite des chiffres dans le tableau gt</strong> (bug <code>gt → Typst</code> côté Windows/macOS, workaround <code>gt::opt_table_font("Inter")</code> visible dans la correction).</p>
+<p><strong>Étape 4 (Star Jedi)</strong> : pour les participants bloqués sur la syntaxe <code>source: file</code> + <code>files:</code>, montrer rapidement le bloc dans <code>correction/_brand.yml</code> au tableau. Ne pas paniquer si certains zappent l’étape — le rendu reste correct sans (titres en police Google par défaut). C’est l’étape la plus « visuelle » de l’exo : tous les titres de section passent en lettres décoratives Star Jedi rouge, effet immédiat.</p>
+<p><strong>Indication pour les participants qui finissent vite</strong> : leur dire « ouvrez <code>correction/rapport-starwars.qmd</code> et regardez les 3 derniers blocs <code>tab_style()</code> du tableau gt — les couleurs viennent de votre <code>_brand.yml</code> via <code>brand_color_pluck()</code> ». Ancre le message de la pépite “Une charte, partout” sur du code concret.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="saviez-vous-que" class="slide level2">
+<h2>Saviez-vous que…</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Saviez-vous que…</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><strong>Une charte, deux niveaux</strong> — <code>_brand.yml</code> habille <strong>automatiquement</strong> la mise en page (titres, liens, fond, polices). Vos tableaux <code>gt</code> et graphes <code>ggplot</code> sont du <strong>R</strong> : ils ne suivent que si vous les branchez avec le paquet <code>brand.yml</code> — un petit geste en plus, détaillé au Bonus B4 du Bloc 2</li>
+<li><strong>Blocs raw Typst</strong> — Besoin de Typst natif ? Utilisez <code>```{=typst}</code> pour injecter du code Typst directement dans votre <code>.qmd</code></li>
+<li><strong>Vos tableaux passent en Typst</strong> — la <strong>structure</strong> des tableaux <code>gt</code> (R) et <code>Great Tables</code> (Python) est traduite automatiquement en Typst par Quarto (les <em>couleurs</em> de la charte, elles, viennent du point ci-dessus)</li>
+<li><strong>PDF accessible en une ligne</strong> — Ajoutez <code>pdf-standard: ua-1</code> dans le YAML pour un PDF conforme au standard d’accessibilité PDF/UA-1</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="fragment fade-in">
+<p><i class="fa-solid fa-link" aria-label="link"></i> Plus de détails sur la page <a href="../4-ressources.html">Ressources</a></p>
+</div>
+<aside class="notes">
+<p>Slide rapide, 2-3 minutes max. L’objectif est juste de planter des graines. Les gens curieux iront voir la page Ressources. Cette slide est le premier fusible à couper si on manque de temps.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="pause" class="slide level2 center">
+<h2>☕ Pause</h2>
+<p>On se retrouve dans <strong>10 minutes</strong> pour le <strong>Bloc 2 — passer du document au livre</strong>.</p>
+<p>Gardez votre dossier de l’Exercice 1 sous la main : on réutilise votre <code>_brand.yml</code> juste après la pause.</p>
+<aside class="notes">
+<p>Annoncer clairement la durée (~10 min) et l’heure de reprise. Inviter à se dégourdir les jambes. Rappeler que le Bloc 2 repart de leur <code>_brand.yml</code> du Bloc 1 (ou du <code>_brand-starter.yml</code> de secours pour les arrivants / ceux qui n’ont pas fini) — l’arc <code>.qmd → livre</code> continue, on ne repart pas de zéro.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p><a href="https://cderv.github.io/tuto-quarto-typst-rr-2026">🔗 cderv.github.io/tuto-quarto-typst-rr-2026</a></p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': true,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copié");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copié");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

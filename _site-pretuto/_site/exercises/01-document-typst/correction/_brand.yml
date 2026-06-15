@@ -1,0 +1,31 @@
+color:
+  palette:
+    imperial-red: "#BC1E22"
+    sw-black:     "#0B0B0F"
+    sw-cream:     "#F5F0E1"
+    sw-yellow:    "#FFE81F"
+  primary:    imperial-red
+  foreground: sw-black
+  background: sw-cream
+
+typography:
+  fonts:
+    - family: "Star Jedi"
+      source: file
+      files:
+        - path: _fonts/Starjedi.ttf
+          weight: 400
+    - family: Inter
+      source: google
+      weight: [400, 600, 700]
+  base: Inter
+  headings:
+    family: "Star Jedi"
+    color: primary
+
+logo:
+  images:
+    sw-star:
+      path: _logo-sw.svg
+      alt: "Étoile jaune Star Wars"
+  medium: sw-star
