@@ -160,6 +160,10 @@ quarto render rapport-starwars.qmd
 
 → Placement par défaut en `format: typst` : `page(background)` haut-gauche, taille **1.5in**, padding **0.75in** — assez gros pour **chevaucher les titres dès la page 2** ! Personnalisation via `format.typst.logo: { path, location, width, padding }` dans le YAML doc (Bloc 1) ou dans `_quarto.yml` (Bloc 2). La correction utilise `width: 0.6in` + `padding: 0.4in` pour tenir dans la marge top de 2.5cm. Le placement fin `header`/`footer` est encore en discussion côté Quarto upstream — voir la [discussion #13591](https://github.com/orgs/quarto-dev/discussions/13591).
 
+### "Pourquoi mon titre / ma section affiche *Mui* / *Hntroduction* ?" (étape 4, police Star Jedi)
+
+→ C'est la **fonte Star Jedi** ([dafont](https://www.dafont.com/star-jedi.font)), **ni un bug, ni notre config**. Fonte décorative « logo » : ses emplacements **MAJUSCULES** portent des glyphes stylisés (**I→H, O→N, Q→M, U→K**…), ses **minuscules** donnent des capitales propres. Donc une initiale majuscule I/O/Q/U sort déformée — le reste (minuscules) est net. Concrètement, seuls **3 titres** de l'atelier sont touchés : sous-titre « **Qui**… » → Mui et section « **Introduction** » → Hntroduction (Bloc 1), chapitre « **Origines** » → Nrigines (Bloc 2). Tout le reste (Anatomie, Conclusion, Préface, Top 5, Taille vs masse…) est parfaitement lisible. **Non bloquant, c'est dans le thème Star Wars.** Correctif prévu en 1.0.2 (show-rule Typst `lower()` sur les titres — cf. backlog `.claude/archive/issues/2026-06-15-post-tuto-1.0.2-brand-styling-exo1.md`).
+
 ---
 
 ## Checklist finale avant de quitter Our turn
