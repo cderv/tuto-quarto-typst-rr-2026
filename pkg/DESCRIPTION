@@ -1,6 +1,6 @@
 Package: tutoquartotypst
 Title: Paquet Compagnon du Tutoriel Quarto + Typst (Rencontres R 2026)
-Version: 1.0.1
+Version: 1.0.2
 Authors@R:
     person("Christophe", "Dervieux", , "christophe.dervieux@gmail.com",
            role = c("aut", "cre"))
