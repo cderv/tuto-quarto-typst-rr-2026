@@ -25,7 +25,7 @@ Invisiblement, les lignes du diagnostic.
 
 ``` r
 exporter_diagnostic()
-#> Diagnostic tutoquartotypst — 2026-06-16 01:43:34
+#> Diagnostic tutoquartotypst — 2026-06-16 09:52:59
 #> 
 #> R      : R version 4.5.3 (2026-03-11 ucrt)
 #> OS     : Windows 11 x64 (build 26200)
