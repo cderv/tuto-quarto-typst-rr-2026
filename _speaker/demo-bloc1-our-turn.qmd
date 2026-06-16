@@ -180,7 +180,7 @@ format:
         }
 ```
 
-`regex("\p{Lu}")` = **toute majuscule Unicode** (`Lu` = *Letter, uppercase*, accents compris) ; `lower(c.text)` la passe en minuscule, que Star Jedi rend en capitale propre. **Limite à dire** : corrige les **titres de section**, pas le **sous-titre** du document. Le correctif *intégré aux corrections* reste pour la 1.0.2 (cf. backlog `.claude/archive/issues/2026-06-15-post-tuto-1.0.2-brand-styling-exo1.md`).
+`regex("\p{Lu}")` = **toute majuscule Unicode** (`Lu` = *Letter, uppercase*, accents compris) ; `lower(c.text)` la passe en minuscule, que Star Jedi rend en capitale propre. **Limite à dire** : corrige les **titres de section**, pas le **sous-titre** du document. Le correctif est *intégré aux corrections* depuis la 1.0.2 (cf. backlog `.claude/archive/issues/2026-06-15-post-tuto-1.0.2-brand-styling-exo1.md`).
 
 ---
 
