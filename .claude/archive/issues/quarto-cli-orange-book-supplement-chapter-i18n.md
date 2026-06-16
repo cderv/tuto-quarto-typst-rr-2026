@@ -1,5 +1,10 @@
 # Issue draft — quarto-cli: `orange-book-typst` running header not localized via `lang: fr` (typst-show.typ doesn't pipe `crossref-ch-prefix`)
 
+> **Statut (2026-06-16) — OUVERTE ET CORRIGÉE** : issue
+> [#14524](https://github.com/quarto-dev/quarto-cli/issues/14524) + PR
+> [#14525](https://github.com/quarto-dev/quarto-cli/pull/14525), *closed* le 2026-05-22,
+> milestone v1.10. Plus rien à faire — ce draft est superflu.
+
 **Repo cible :** [`quarto-dev/quarto-cli`](https://github.com/quarto-dev/quarto-cli)
 **À ouvrir par :** Christophe (CD)
 **Note interne :** orange-book est livré directement avec `quarto-cli` — subtree à `src/resources/extension-subtrees/orange-book/_extensions/orange-book/` (path confirmé sur HEAD `quarto-dev/quarto-cli`, cf. directory listing `src/resources/`). Le fix se fait donc côté `quarto-cli` en un seul PR — pas besoin de double-tracking via `quarto-ext/orange-book` (existe en tant que repo public mais le code utilisé par les utilisateurs vient du subtree quarto-cli).

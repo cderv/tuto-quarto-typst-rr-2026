@@ -1,5 +1,10 @@
 # Quarto issue draft — book + typst : police de **corps** (`base`/`mainfont`) non appliquée
 
+> **Statut (2026-06-16) — PUBLIÉE** : ouverte sur `quarto-dev/quarto-cli` sous
+> [#14597](https://github.com/quarto-dev/quarto-cli/issues/14597) (labels `bug`, `typst`,
+> `books`). Aucun doublon préexistant (recherche `mainfont/typography base/book.with font`
+> = 0). Cause racine suspectée commune avec #14516.
+>
 > **Statut (2026-06-15)** — Constaté sur Quarto **1.10.11** (dernière pre-release) **et** 1.9.36.
 > **Distinct** de `quarto-book-brand-fonts.md` (résolu par #14517) : celui-là portait sur la
 > *disponibilité* des polices (`font-paths` non passé → **titres** en serif + warning

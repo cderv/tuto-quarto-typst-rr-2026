@@ -1,5 +1,9 @@
 # Issue draft — quarto-cli: `orange-book` conflates accent color and body text color via single `main-color`
 
+> **Statut (2026-06-16) — DÉJÀ OUVERTE** : suivie sous
+> [#14510](https://github.com/quarto-dev/quarto-cli/issues/14510) (par CD, *open*, labels
+> `enhancement`, `books`, `typst`, `themes`, sans milestone). Non résolue à ce jour.
+
 **Repo cible :** [`quarto-dev/quarto-cli`](https://github.com/quarto-dev/quarto-cli)
 **À ouvrir par :** Christophe (CD)
 **Note interne :** orange-book est livré comme subtree dans `quarto-cli` (`src/resources/extension-subtrees/orange-book/_extensions/orange-book/`). Fix en un seul PR côté `quarto-cli`. Repro construit sur le tuto Quarto+Typst pour Rencontres R 2026 (book avec `_brand.yml` Star Wars).
