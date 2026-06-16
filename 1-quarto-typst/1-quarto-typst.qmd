@@ -59,6 +59,29 @@ Expliquer le rythme dès le début. Chaque bloc suit ce cycle. L'idée c'est de 
 Annoncer dès le départ : tuto pensé pour **tous les niveaux**, le rythme My/Our/Your turn cale tout le monde. Trois messages : (1) les exos sont riches exprès — personne n'est censé tout boucler dans le chrono, le matériel reste à eux (site + paquet) pour rejouer après ; (2) débutant·es : on rassure, pas de R à écrire dans les étapes principales ; (3) avancé·es : on les invite explicitement à aller plus loin, hors-piste, vers le branding R (gt/ggplot) déjà présent dans les corrections, en s'aidant des docs — plutôt que d'attendre. ~45 s, ne pas s'attarder.
 :::
 
+## Bloqué·e ? Fini ? Un post-it suffit
+
+::::: columns
+:::: {.column style="width:52%"}
+![](postit-photo.jpg){.illustration fig-alt="Photo de deux familles de post-it posés sur une table en bois : à gauche, des post-it roses et orange ; à droite, des post-it verts et jaunes."}
+::::
+
+:::: {.column style="width:48%"}
+Pendant les exercices, **posez un post-it sur votre écran** — on vous repère d'un coup d'œil, pas besoin de lever la main.
+
+- 🟧 **Rose / orange** — « je suis bloqué·e » → on passe vous voir
+- 🟩 **Vert / jaune** — « c'est bon, j'ai fini ! »
+
+::: {.fragment .fade-in}
+👉 **En clôture**, on les recycle en feedback : un point qui vous a plu sur un **vert/jaune**, un point à améliorer sur un **rose/orange**.
+:::
+::::
+:::::
+
+::: notes
+30 secondes, à montrer juste avant le premier exercice. Le but : un canal de signalement silencieux et lisible depuis le fond de la salle. **Rose/orange = appel à l'aide** (Maëlle passe dans les rangs, CD rebondit au tableau si la question est commune) ; **vert/jaune = terminé** (permet de jauger le rythme et d'aiguiller les rapides vers le hors-piste / bonus). Rappeler le double usage : en clôture, on rouvre les deux tas pour récolter un feedback express — positif sur vert/jaune, à améliorer sur rose/orange — à coller sur un mur ou à nous remettre. Cohérence des couleurs : vert/jaune = « ça va », rose/orange = « ça coince », dans les deux temps.
+:::
+
 ## Code de conduite
 
 Cet atelier s'inscrit dans le **code de conduite des Rencontres R 2026** — on s'engage à le faire respecter ici comme ailleurs.
