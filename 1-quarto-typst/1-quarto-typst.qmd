@@ -83,7 +83,7 @@ Un **bloc-notes collaboratif** ouvert à toutes et tous — on y écrit ensemble
 À ouvrir tout de suite avec la salle — projeter l'URL/QR et laisser 30 s pour que chacun·e l'ouvre. C'est notre canal écrit partagé pour toute la durée : on y dépose les liens au fil de l'eau, les participant·es y posent leurs questions (Maëlle et CD y répondent, surtout les questions communes), et tout le monde repart avec les notes. Complémentaire des post-it (signal physique dans l'instant) : le pad, c'est l'écrit qui reste. Pensez à vérifier que le pad existe et est accessible avant la session.
 :::
 
-## Bloqué·e ? Fini ? Un post-it suffit
+## Bloqué·e ? Fini ? Un post-it suffit {footer=false}
 
 ::::: columns
 :::: {.column style="width:52%"}
@@ -91,7 +91,7 @@ Un **bloc-notes collaboratif** ouvert à toutes et tous — on y écrit ensemble
 ::::
 
 :::: {.column style="width:48%"}
-Pendant les exercices, **posez un post-it sur votre écran** — on vous repère d'un coup d'œil, pas besoin de lever la main.
+Pendant les exercices, **posez un post-it sur le dos votre écran** — on vous repère d'un coup d'œil, pas besoin de lever la main.
 
 - 🟧 **Rose / orange** — « je suis bloqué·e » → on passe vous voir
 - 🟩 **Vert / jaune** — « c'est bon, j'ai fini ! »
