@@ -59,6 +59,30 @@ Expliquer le rythme dès le début. Chaque bloc suit ce cycle. L'idée c'est de 
 Annoncer dès le départ : tuto pensé pour **tous les niveaux**, le rythme My/Our/Your turn cale tout le monde. Trois messages : (1) les exos sont riches exprès — personne n'est censé tout boucler dans le chrono, le matériel reste à eux (site + paquet) pour rejouer après ; (2) débutant·es : on rassure, pas de R à écrire dans les étapes principales ; (3) avancé·es : on les invite explicitement à aller plus loin, hors-piste, vers le branding R (gt/ggplot) déjà présent dans les corrections, en s'aidant des docs — plutôt que d'attendre. ~45 s, ne pas s'attarder.
 :::
 
+## Le pad partagé de l'atelier
+
+::::: columns
+:::: {.column style="width:58%"}
+Un **bloc-notes collaboratif** ouvert à toutes et tous — on y écrit ensemble, en direct.
+
+- 🔗 Les **liens** de l'atelier (site, ressources, paquet R)
+- ❓ **Vos questions** — posez-les ici, on y répond
+- 📝 Vos **notes** et trouvailles à reprendre après
+
+**Gardez-le ouvert** pendant les 2 h.
+::::
+
+:::: {.column style="width:42%; text-align:center"}
+![](framapad-qr.png){width="62%" fig-alt="QR code menant au pad collaboratif Framapad de l'atelier."}
+
+[annuel.framapad.org/p/quartorr-aluv](https://annuel.framapad.org/p/quartorr-aluv){target="_blank"}
+::::
+:::::
+
+::: notes
+À ouvrir tout de suite avec la salle — projeter l'URL/QR et laisser 30 s pour que chacun·e l'ouvre. C'est notre canal écrit partagé pour toute la durée : on y dépose les liens au fil de l'eau, les participant·es y posent leurs questions (Maëlle et CD y répondent, surtout les questions communes), et tout le monde repart avec les notes. Complémentaire des post-it (signal physique dans l'instant) : le pad, c'est l'écrit qui reste. Pensez à vérifier que le pad existe et est accessible avant la session.
+:::
+
 ## Bloqué·e ? Fini ? Un post-it suffit
 
 ::::: columns
