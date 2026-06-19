@@ -6,12 +6,18 @@ project:
     # Site pkgdown du paquet R (généré par `just pkg-site` dans `package/`),
     # publié sous /package/. Cf. pkg/_pkgdown.yml.
     - "package/**"
+    # Carte Open Graph (vignette des liens partagés). Source : _assets/.
+    - "og-card.png"
 
 website:
   title: "PDF sans frictions : Typst dans vos projets Quarto"
   description: "Tutoriel Quarto+Typst de 2h aux Rencontres R 2026 — PDF sans frictions"
   page-navigation: true
 
+  # Vignette par défaut des liens partagés (open-graph + twitter-card).
+  # Sans elle, les réseaux prennent la 1re image de la page (ici le logo CC BY).
+  # Générée depuis _assets/ (voir _assets/README.md).
+  image: og-card.png
   open-graph: true
   twitter-card:
     creator: "@chrisderv"

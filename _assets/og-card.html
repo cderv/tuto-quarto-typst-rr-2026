@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--
+  Carte Open Graph (1200x630) du site du tutoriel — version HTML.
+  Police Atkinson Hyperlegible chargee en local (_assets/fonts) pour une
+  repro hors-ligne. Rendu via _assets/render-card.js (Playwright) :
+    NODE_PATH=/opt/node22/lib/node_modules node _assets/render-card.js
+  Sortie : og-card.png a la racine (2400x1260, ratio 1200x630).
+-->
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face {
+    font-family:"Atkinson Hyperlegible"; font-weight:400; font-style:normal;
+    src:url("fonts/AtkinsonHyperlegible-Regular.ttf") format("truetype");
+  }
+  @font-face {
+    font-family:"Atkinson Hyperlegible"; font-weight:700; font-style:normal;
+    src:url("fonts/AtkinsonHyperlegible-Bold.ttf") format("truetype");
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1200px; height:630px; overflow:hidden; }
+  body {
+    font-family:"Atkinson Hyperlegible","Segoe UI",Arial,sans-serif;
+    background:#FDC538;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .card {
+    width:1120px; height:550px; background:#ffffff; border-radius:28px;
+    box-shadow:0 24px 60px rgba(0,0,0,.18);
+    display:flex; overflow:hidden;
+  }
+  .left { flex:1.35; padding:58px 50px 50px 60px; display:flex; flex-direction:column; }
+  .eyebrow {
+    font-size:25px; font-weight:700; letter-spacing:.04em; color:#0B0B0F;
+    text-transform:uppercase; display:flex; align-items:center; gap:14px;
+  }
+  .eyebrow .dot { width:16px; height:16px; border-radius:50%; background:#FDC538; box-shadow:0 0 0 5px #fdc53840; }
+  h1 { font-size:74px; line-height:1.02; font-weight:700; color:#111; margin-top:26px; }
+  .sub { font-size:37px; font-weight:700; color:#444; margin-top:14px; }
+  .spacer { flex:1; }
+  .pills { display:flex; gap:14px; margin-bottom:26px; }
+  .pill { font-size:24px; font-weight:700; padding:9px 22px; border-radius:999px; background:#FDC538; color:#1a1a1a; }
+  .pill.alt { background:#111; color:#fff; }
+  .authors { font-size:27px; font-weight:700; color:#111; }
+  .url { font-size:23px; color:#666; margin-top:8px; }
+  .right { flex:1; background:linear-gradient(135deg,#FDC538 0%,#f0b400 100%); display:flex; align-items:center; justify-content:center; }
+  .right img {
+    width:300px; height:auto; border-radius:8px;
+    box-shadow:0 18px 40px rgba(0,0,0,.35); transform:rotate(3deg);
+    border:1px solid rgba(0,0,0,.08);
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="left">
+      <div class="eyebrow"><span class="dot"></span>Tutoriel · Rencontres R 2026</div>
+      <h1>PDF sans<br>frictions</h1>
+      <div class="sub">Typst dans vos projets Quarto</div>
+      <div class="spacer"></div>
+      <div class="pills"><span class="pill">Quarto</span><span class="pill alt">Typst</span></div>
+      <div class="authors">Christophe Dervieux &amp; Maëlle Salmon</div>
+      <div class="url">cderv.github.io/tuto-quarto-typst-rr-2026</div>
+    </div>
+    <div class="right">
+      <img src="../1-quarto-typst/charte-starwars.png" alt="">
+    </div>
+  </div>
+</body>
+</html>
