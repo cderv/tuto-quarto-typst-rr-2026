@@ -77,28 +77,21 @@ typst-packages:
 
 # === publish ===
 
+# Dispatch de cible partagé (recipe privée) : conditionnel natif just, pas de shebang.
+# Évite la dépendance à cygpath/bash sur Windows — la commande émise tourne dans windows-shell (pwsh).
+_publish target:
+    {{ if target == "gh" { "quarto publish gh-pages --no-render" } else if target == "connect" { "quarto publish posit-connect-cloud --no-render" } else { error("Cible inconnue : '" + target + "' — utiliser 'connect' ou 'gh'") } }}
+
 # Publier le site complet : just publish connect  →  Posit Connect Cloud
 #                           just publish gh       →  GitHub Pages (remplace pretuto le jour J)
 [group('publish')]
 [confirm("Publier le site complet ?")]
-publish target: all
-    #!/usr/bin/env bash
-    case "{{target}}" in
-      connect) quarto publish posit-connect-cloud --no-render ;;
-      gh)      quarto publish gh-pages --no-render ;;
-      *)       echo "Cible inconnue : '{{target}}' — utiliser 'connect' ou 'gh'" && exit 1 ;;
-    esac
+publish target: all (_publish target)
 
 # Publier sans rebuilder (si just all déjà fait)
 [group('publish')]
 [confirm("Publier le site complet (sans rebuild) ?")]
-publish-only target:
-    #!/usr/bin/env bash
-    case "{{target}}" in
-      connect) quarto publish posit-connect-cloud --no-render ;;
-      gh)      quarto publish gh-pages --no-render ;;
-      *)       echo "Cible inconnue : '{{target}}' — utiliser 'connect' ou 'gh'" && exit 1 ;;
-    esac
+publish-only target: (_publish target)
 
 [group('publish')]
 [confirm("Publier version pretuto ?")]
