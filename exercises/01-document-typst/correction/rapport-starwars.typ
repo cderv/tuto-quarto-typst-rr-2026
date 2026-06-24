@@ -400,6 +400,10 @@
   inset: 6pt,
   stroke: none
 )
+#show heading: it => {
+  show regex("\p{Lu}"): c => lower(c.text)
+  it
+}
 #let brand-color = (
   background: rgb("#f5f0e1"),
   foreground: rgb("#0b0b0f"),
@@ -448,7 +452,7 @@
 
 #show: doc => article(
   title: [Anatomie d'une saga],
-  subtitle: [Qui sont les colosses de la galaxie ?],
+  subtitle: [Les colosses de la galaxie, qui sont-ils ?],
   lang: "fr",
   font: ("Inter",),
   heading-family: ("Star Jedi",),

@@ -1,6 +1,8 @@
 ---
 title: "Anatomie d'une saga"
-subtitle: "Qui sont les colosses de la galaxie ?"
+# Sous-titre reformulé pour éviter l'initiale « Q » : la fonte Star Jedi rend
+# ses MAJUSCULES en glyphes décoratifs (Q→M), donc « Qui… » sortait « Mui… ».
+subtitle: "Les colosses de la galaxie, qui sont-ils ?"
 lang: fr
 format:
   typst:
@@ -12,6 +14,16 @@ format:
     toc: true
     number-sections: true
     linestretch: 1.4
+    # Star Jedi : ses MAJUSCULES sont des glyphes décoratifs (I→H, O→N, Q→M,
+    # U→K). Ce show-rule passe les majuscules des titres en minuscules, que
+    # Star Jedi rend en capitales propres — corrige p. ex. « Introduction ».
+    # Le sous-titre n'est pas un heading : reformulé ci-dessus pour éviter le Q.
+    include-in-header:
+      - text: |
+          #show heading: it => {
+            show regex("\p{Lu}"): c => lower(c.text)
+            it
+          }
     keep-typ: true
     logo:
       path: sw-star
@@ -26,7 +38,10 @@ execute:
 
 ```{r}
 #| label: setup
-# --- Brand styling des tableaux gt + figures ggplot via _brand.yml ---
+# --- Bonus B4 (optionnel) appliqué : brand styling des tableaux gt + ggplot ---
+# Ce câblage R de la charte (gt + ggplot via le paquet brand.yml) VA AU-DELÀ
+# des 4 étapes de l'énoncé Bloc 1 (qui ne brandent que la mise en page Typst).
+# C'est le Bonus B4 de l'exercice 2 : pas d'inquiétude s'il vous est inconnu.
 library(dplyr)
 library(ggplot2)
 library(ggrepel)
@@ -112,6 +127,9 @@ top_mass |>
   )
 ```
 
+<!-- `#highlight(...)`{=typst} : 3e voie d'accès à la charte (couleur brand
+     côté Typst). Comme le câblage gt/ggplot ci-dessus, ça relève du Bonus B4
+     (exo 2), pas des 4 étapes du Bloc 1. -->
 Sans surprise, **Jabba the Hutt** écrase tout le monde avec ses `r format(top_mass$mass[1], big.mark = " ")` kg. Mais les vraies stars de la saga sont les `#highlight(fill: brand-color.sw-yellow)[droïdes]`{=typst} : R2-D2 apparaît dans plus de films que n'importe quel humain.
 
 # Taille vs masse

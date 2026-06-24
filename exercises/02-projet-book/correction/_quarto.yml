@@ -27,6 +27,23 @@ format:
     font-paths:
       - .quarto/typst/fonts
       - _fonts
+    # Deux correctifs Typst combinés dans le même en-tête :
+    #  A. Corps en serif au lieu d'Inter. En mode `book`, Quarto ne passe pas
+    #     `typography.base`/`mainfont` au template orange-book (`book.with(...)`
+    #     sans argument `font:`) → le corps retombe en Libertinus serif. Notre
+    #     `_brand.yml` est correct (Inter s'applique bien en doc simple, exo 1).
+    #     `#set text(font: "Inter")` force le corps en Inter. Bug Quarto, pas
+    #     notre config — vérifié sur 1.9.36 et 1.10.x.
+    #  B. Star Jedi : ses MAJUSCULES sont des glyphes décoratifs (I→H, O→N,
+    #     Q→M, U→K). Le show-rule passe les majuscules des titres en minuscules,
+    #     que Star Jedi rend en capitales propres — corrige p. ex. « Origines ».
+    include-in-header:
+      - text: |
+          #set text(font: "Inter")
+          #show heading: it => {
+            show regex("\p{Lu}"): c => lower(c.text)
+            it
+          }
     # Logo personnalisé : sans cette section, Quarto place le logo
     # `_brand.yml` à 1.5in width / 0.75in padding par défaut, ce qui
     # chevauche les titres dès la 2e page.

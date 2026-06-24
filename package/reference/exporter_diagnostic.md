@@ -25,12 +25,12 @@ Invisiblement, les lignes du diagnostic.
 
 ``` r
 exporter_diagnostic()
-#> Diagnostic tutoquartotypst — 2026-06-16 09:52:59
+#> Diagnostic tutoquartotypst — 2026-06-24 17:41:58
 #> 
 #> R      : R version 4.5.3 (2026-03-11 ucrt)
 #> OS     : Windows 11 x64 (build 26200)
-#> Quarto : 1.10.11
-#>   chemin: C:/Users/chris/scoop/shims/quarto.exe
+#> Quarto : 1.10.12
+#>   chemin: C:/Users/chris/scoop/apps/quarto-prerelease/1.10.12/bin/quarto.exe
 #> 
 #> Paquets requis :
 #>   - quarto : 1.5.1
